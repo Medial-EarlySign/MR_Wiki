@@ -1,0 +1,119 @@
+Read code,Description,Original Mapping,New Mapping,
+G_1371.,Never smoked tobacco,N,N,TRUE
+G_9kn..,Non-smoker annual review - enhanced services administration,N,N,TRUE
+G_137K.,Stopped smoking,E,E,TRUE
+G_137L.,Current non-smoker,E,N/E,FALSE
+G_137N.,Ex pipe smoker,E,E,TRUE
+G_137O.,Ex cigar smoker,E,E,TRUE
+G_137S.,Ex smoker,E,E,TRUE
+G_137T.,Date ceased smoking,E,E,TRUE
+G_1377.,Ex-trivial smoker (< 1 per day),E,E,TRUE
+G_1378.,Ex-light smoker (1 - 9 per day),E,E,TRUE
+G_1379.,Ex-moderate smoker (10 - 19 per day),E,E,TRUE
+G_137A.,Ex-heavy smoker (20 - 39 per day),E,E,TRUE
+G_137B.,Ex-very heavy smoker (40 + per day),E,E,TRUE
+G_137F.,Ex-smoker - amount unknown,E,E,TRUE
+G_137i.,Ex tobacco chewer,E,E,TRUE
+G_137j.,Ex-cigarette smoker,E,E,TRUE
+G_137K0,Recently stopped smoking,E,E,TRUE
+G_9km..,Ex-smoker annual review - enhanced services administration,E,E,TRUE
+G_13p4.,Smoking free weeks,E,E,TRUE
+G_137l.,Ex roll-up cigarette smoker,E,E,TRUE
+G_745H.,(Various) Smoking cessation therapy,S,S,TRUE
+G_E251.,(Various) tobacco dependence,S,S,TRUE
+G_137..,Tobacco consumption,S (All with EVENT_VAL greater than 0),S (All with EVENT_VAL greater than 0),TRUE
+G_137Z.,Tobacco consumption NOS,S,S,TRUE
+G_137X.,Cigarette consumption,S,S,TRUE
+G_137Y.,Cigar consumption,S,S,TRUE
+G_137E.,Tobacco consumption unknown,S,S,TRUE
+G_137g.,Cigarette pack years,S,S,TRUE
+G_1372.,Trivial smoker - < 1 per day,S,S,TRUE
+G_1373.,Light smoker - 1-9 per day,S,S,TRUE
+G_1374.,Moderate smoker - 10-19 per day,S,S,TRUE
+G_1375.,Heavy smoker - 20-39 per day,S,S,TRUE
+G_1376.,Very heavy smoker - 20-39 per day,S,S,TRUE
+G_137a.,Pipe tobacco consumption,S,S,TRUE
+G_137b.,Ready to stop smoking,S,S,TRUE
+G_137C.,Keeps trying to stop smoking,S,S,TRUE
+G_137c.,Thinking about stopping smoking,S,S,TRUE
+G_137e.,Smoking restarted,S,S,TRUE
+G_137G.,Trying to give up smoking,S,S,TRUE
+G_137H.,Pipe smoker,S,S,TRUE
+G_137J.,Cigar smoker,S,S,TRUE
+G_137M.,Rolls own cigarettes,S,S,TRUE
+G_137P.,Cigarette smoker,S,S,TRUE
+G_137Q.,Smoking started,S,S,TRUE
+G_137R.,Current smoker,S,S,TRUE
+G_137V.,Smoking reduced,S,S,TRUE
+G_137D.,Admitted tobacco cons untrue   ?,S,S,TRUE
+G_137d.,Not interested in stopping smoking,S,S,TRUE
+G_137f.,Reason for restarting smoking,S,S,TRUE
+G_137h.,Minutes from waking to first tobacco consumption,S,S,TRUE
+G_6791.,Health ed. - smoking,S,,FALSE
+G_67910,Health education - parental smoking,S,S,TRUE
+G_137m.,Failed attempt to stop smoking,S,S,TRUE
+G_13p..,Smoking cessation milestones,S,S,TRUE
+G_13p0.,Negotiated date for cessation of smoking,S,S,TRUE
+G_13p8.,Lost to smoking cessation follow-up,S,S,TRUE
+G_38DH.,Fagerstrom test for nicotine dependence,S,S,TRUE
+G_67A3.,Pregnancy smoking advice,S,S,TRUE
+G_67H1.,Lifestyle advice regarding smoking,S,S,TRUE
+G_67H6.,Brief cessation for smoking cessation,S,S,TRUE
+G_8B2B.,Nicotine replacement therapy,S,S,TRUE
+G_8B3f.,Nicotine replacement therapy provided free,S,S,TRUE
+G_8B3Y.,Over the counter nicotine replacement therapy,S,S,TRUE
+G_8BP3.,Nicotine replacement therapy provided by community pharmacis,S,S,TRUE
+G_8CAg.,Smoking cessation advice provided by community pharmacist,S,S,TRUE
+G_8CAL.,Smoking cessation advice,S,,FALSE
+G_8CdB.,Stop smoking service opportunity signposted,S,S,TRUE
+G_8H7i.,Referral to smoking cessation advisor,S,S,TRUE
+G_8HBM.,Stop smoking face to face follow-up,S,S,TRUE
+G_8HkQ.,Referral to NHS stop smoking service,S,S,TRUE
+G_8HTK.,Referral to stop-smoking clinic,S,S,TRUE
+G_8I2I.,Nicotine replacement therapy contraindicated,S,S,TRUE
+G_8I2J.,Bupropion contraindicated,S,S,TRUE
+G_8I39.,Nicotine replacement therapy refused,S,S,TRUE
+G_8I3M.,Bupropion refused,S,S,TRUE
+G_8I6H.,Smoking review not indicated,S,S,TRUE
+G_8IAj.,Smoking cessation advice declined,S,S,TRUE
+G_8IEK.,Smoking cessation program declined,S,S,TRUE
+G_8IEM.,Smoking cessation drug therapy declined,S,S,TRUE
+G_9hG..,Exception reporting: smoking quality indicators,S,S,TRUE
+G_9hG0.,Excepted from smoking quality indicators: Patient unsuitable,S,S,TRUE
+G_9hG1.,Excepted from smoking quality indicators: Informed dissent,S,S,TRUE
+G_9kc..,Smoking cessation - enhanced services administration,S,S,TRUE
+G_9kc0.,Smoking cessatn monitor template complet - enhanc serv admin,S,S,TRUE
+G_9ko..,Current smoker annual review - enhanced service admin,S,S,TRUE
+G_9N2k.,Seen by smoking cessation advisor,S,S,TRUE
+G_9N4M.,DNA - did not attend smoking cessation clinic,S,S,TRUE
+G_9Ndg.,Declined consent for follow-up by smoking cessation team,S,S,TRUE
+G_9NdV.,Consent given follow-up after smoking cessation intervention,S,S,TRUE
+G_9NdW.,Consent given for smoking cessation data sharing,S,S,TRUE
+G_9NdY.,Declin cons follow-up evaluation after smoking cess interven,S,S,TRUE
+G_9NdZ.,Declined consent for smoking cessation data sharing,S,S,TRUE
+G_9NS02,Referral for smoking cessation service offered,S,S,TRUE
+G_9OO..,Attends stop smoking monitor admin,S,S,TRUE
+G_9OO1.,Attends stop smoking monitor,S,S,TRUE
+G_9OO2.,Refuses stop smoking monitor,S,S,TRUE
+G_9OO3.,Stop smoking monitor default,S,S,TRUE
+G_9OO4.,Stop smoking monitor 1st lettr,S,S,TRUE
+G_9OO5.,Stop smoking monitor 2nd lettr,S,S,TRUE
+G_9OO6.,Stop smoking monitor 3rd lettr,S,S,TRUE
+G_9OO7.,Stop smoking monitor verb.inv.,S,S,TRUE
+G_9OO8.,Stop smoking monitor phone inv,S,S,TRUE
+G_9OO9.,Stop smoking monitoring delete,S,S,TRUE
+G_9OOA.,Stop smoking monitor check.done,S,S,TRUE
+G_9OOB.,Stop smoking invitation short message service text message,S,S,TRUE
+G_9OOB0,Stop smoking invitation first SMS text message,S,S,TRUE
+G_9OOB1,Stop smoking invitation second SMS text message,S,S,TRUE
+G_9OOB2,Stop smoking invitation third SMS text message,S,S,TRUE
+G_9OOZ.,Stop smoking monitor admin.NOS,S,S,TRUE
+G_E023.,Nicotine withdrawal,S,S,TRUE
+G_J0364,Tobacco deposit on teeth,S,S,TRUE
+G_SMC..,Toxic effect of tobacco and nicotine,S,S,TRUE
+G_TJHy2,Adverse reaction to nicotine,S,S,TRUE
+G_U6099,[X] Bupropion causing adverse effects in therapeutic use,S,S,TRUE
+G_ZV4K0,[V] Tobacco use,S,S,TRUE
+G_ZV6D8,[V] Tobacco abuse counselling,S,S,TRUE
+G_13p5.,Smoking cessation programme start date,S,S,TRUE
+G_9ko..,Current smoker annual review - enhanced service admin,S,S,TRUE
