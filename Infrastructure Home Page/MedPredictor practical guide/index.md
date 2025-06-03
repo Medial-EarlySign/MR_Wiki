@@ -1,0 +1,22 @@
+# MedPredictor practical guide
+- Linear model : type = "linear_model" - linear regression using coordinate descent with Ridge factors
+- Linear-SGD : type = "linear_sgd" - linear regression using stochastic gradient descent
+- GDLM : type = "gdlm" - Generalized linear model using stochastic gradient descent
+- QRF : type = "qrf" - Random Forest using quantization for efficency
+- KNN : type = "knn" - K Nearest Neighbors
+- MARS : type = "mars" - (quite slow) impliminationg of MARS (Multivariate Additive Regression Spline)
+- GBM : type = "gbm" - Gradient Boosting Machine  - imported public library used in R
+- BP : type = "BP" - Back propogation. (Obsolete) version of NN
+- Multi-Class : type = "multi_class" - an enevelope for multi-class problems, currently implementing one-vs-all
+- XGBoost : type = "xgb" - public implementation of xgboost + [internaly added features](XGBoost%20added%20features)
+- Lasso : type = "lasso" - Lasso linear regression using gradient descent
+- MicNet : type = "micNet" - Neural Net
+- Booster : type = "booster" - Envelope for boosting models
+- Deep-Bit : type = "deep_bit" - Nir's deep bit using Yoav's implementation
+- Light-GBM : type = "light_gbm" - public implementation of fast GBM
+- SVM : type = "svm" - Support Vector Machine
+- multi-models : type = "multi_models" - an envelope for multiple models for different inputs (e.g. - age specific models)
+- vw : type = "vw" - an envelope for Vowpal Wabbit models
+- TQRF : type = "tqrf" - new version of quantized RF (Not ready yet ?)
+- BART : type = "bart" - public implementation of BART (Bayesian Additive Regression Trees)
+- MASK: type="by_missing_value_subset" - [see here](MASK%20predictor%20-%20predict%20by_missing_value_subset) 

@@ -1,0 +1,11 @@
+# MedProcessTools Library
+- ## Data Handlers:
+  - ### [MedRegistry](MedRegistry):** Handling a registry - individuals + (dated) outcome (A more generic format of MedCohort****)**
+    - ### **: Wrapper class for MedRegistry and additional labeling policy arguments (like time window) to define labels from registry for each sample time**
+    - ### **: Handling of creating MedSamples from MedRegistry**
+  - ### [MedCohort](MedCohort): Handling a cohort - individuals + (dated) outcome + follow-periods
+  - ### [MedSamples](MedSamples): Handling samples - individual + (dated) outcome + time-points
+  - ### [MedFeatures](MedFeatures): Handling a features matrix : samples + features information
+  - ### [SerializableObject](SerializableObject):  Base class for Handling Serializations
+- ## Data Processors:
+- ## Analysis Processors:
