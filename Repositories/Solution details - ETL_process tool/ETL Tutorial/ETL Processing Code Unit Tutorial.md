@@ -1,72 +1,100 @@
 # ETL Processing Code Unit Tutorial
-# In this section, we will cover the steps required to process the data retrieved in the previous section of our ETL (Extract, Transform, Load) pipeline.
-# The focus will be on transforming the data into the desired format and ensuring that it meets the necessary specifications for further analysis.
-## Step-by-Step Guide
-### 1. Understanding the ETL Processing Workflow
-After data retrieval, the ETL processing involves several key steps:
-1. PID Mapping: Convert non-numeric PID values to numeric. The mapping is stored under [WORK_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/WORK_DIR)/FinalSignals/ID2NR. The dictionary is created by demographic signals (each new PID with unknown mapping, is being added), and "inner joined" for all other signals. If patient is missing, it will be dropped with a message.
-2. Signal Mapping: Map signals using the [CODE_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/CODE_DIR)/
-```
- file if you have "signal" column in the dataframe. 
-3. Data Transformation: Process the DataFrame to the final format.  -** WE ARE HERE, we are writing/customizing this part in the ETL.**
-4. Testing: Implement and run tests to validate the processed data.
-5. Storing: Sort and store the processed data in the designated directory - [WORK_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/WORK_DIR)/FinalSignals.
- 
+
+This section explains how to transform your raw DataFrame into the required format for downstream analysis in the ETL pipeline.
+
+---
+
+## ETL Processing Workflow
+
+After retrieving your data, the processing step includes:
+
+1. **PID Mapping:**  
+   Convert non-numeric patient IDs to numeric. The mapping is stored in `[WORK_DIR]/FinalSignals/ID2NR`. Demographic signals create this mapping; all other signals join on it. Rows with missing patients are dropped (with a message).
+
+2. **Signal Mapping:**  
+   If your DataFrame has a `signal` column, map signals using your `[CODE_DIR]` resources.
+
+3. **Data Transformation:**  
+   Transform the DataFrame to the final format.  
+   **This is the main customization step for your ETL.**
+
+4. **Testing:**  
+   Implement and run tests to validate the processed data.
+
+5. **Storing:**  
+   Sort and save the processed data in `[WORK_DIR]/FinalSignals`.
+
 <img src="/attachments/14811382/14811576.png"/>
-### 2. Processing the DataFrame
-We will start with a DataFrame called 
-```
- and transform it to include necessary columns and format. For this example, we will process demographic signals, such as GENDER.
-You also have variable called "code_dir" of string type the points to the current ETL code path - for example if you want to access "configs" folder or some other resources.
-#### Example Source DataFrame
-```
+
+---
+
+## Processing the DataFrame
+
+Suppose you start with a DataFrame called `df` and want to process demographic signals (e.g., GENDER).  
+You also have a `code_dir` variable pointing to your ETL code directory for accessing configs or helpers.
+
+**Example Source DataFrame:**
+
+```text
    dup  index_dato  LC  date_LCdiagnosis  outpatientclinic_date  Age  FEV1  height  weight   BMI   Sex Smokingstatus  stage  NSCLC  pathology signal  pid
 0    0  12mar2013   0              NaN             12mar2013     85   NaN     NaN    NaN    23.0  male  Formersmoker   NaN    NaN        NaN   None    1
 1    1  04jun2021   0              NaN             04jun2021     92  0.89   164.0   50.0     NaN  male  Formersmoker   NaN    NaN        NaN   None    2
-2    2  26oct2022   0              NaN             26oct2022     93  0.88   164.0   48.0     NaN  male  Formersmoker   NaN    NaN        NaN   None    2
-3    0  04nov2015   0              NaN             04nov2015     81   NaN     NaN    NaN    26.0  male  Formersmoker   NaN    NaN        NaN   None    3
-4    0  08dec2016   0              NaN             08dec2016     81   NaN     NaN    NaN    18.0  male  Formersmoker   NaN    NaN        NaN   None    4
+...
 ```
-### 3. Transforming the DataFrame
-Here’s the code to transform the input DataFrame 
-```
- into the required format:
-#### Code:
+
+---
+
+## Transforming the DataFrame
+
+Here’s how to convert the input DataFrame into the required format for the GENDER signal:
+
 ```python
-#You have dataframe called "df". Please process it to generare signal/s of class "demographic"
-#Example signal from this class might be GENDER
-#The target dataframe should have those columns:
-#    pid
-#    signal
-#    value_0 - string categorical (rep channel type i)
- 
+# Start with DataFrame "df" and process it to generate the "demographic" signal (e.g., GENDER)
+# The output DataFrame should have these columns:
+#   pid
+#   signal
+#   value_0 (string categorical, e.g., 'Male', 'Female')
+
 # Extract relevant columns and rename 'Sex' to 'value_0'
 df = df[['pid', 'Sex']].rename(columns={'Sex': 'value_0'})
 # Create a new 'signal' column with the value 'GENDER'
 df['signal'] = 'GENDER'
-# Standardize values in 'value_0' column
+# Standardize values in 'value_0'
 df.loc[df['value_0'] == 'male', 'value_0'] = 'Male'
 df.loc[df['value_0'] == 'female', 'value_0'] = 'Female'
-# Select final columns and remove duplicates, per patient. Otherwise the a test will fail later, since patient can have only one sex value.
+# Keep only the required columns and remove duplicates per patient
 df = df[['pid', 'signal', 'value_0']].drop_duplicates().reset_index(drop=True)
 ```
- 
-****Some notes:****
-1. The ETL infrastructures knows the signal type, so if something is missing, a test will fail and you will be asked to fix the test.
-2. When you call "print" in the code block the output will be collected and stored in log files
-3. The first part of the comments is part of the "template" the ETL constructs if the code file is missing with instructions to help you to complete the code under  
+
+**Notes:**
+- The ETL infrastructure will validate the signal type. If something is missing, a test will fail and prompt you to fix it.
+- Any `print` statements will be logged automatically.
+- The comments above are part of the ETL template to help you complete your code.
+- To import helpers, use your `code_dir` path, e.g.,  
+  `from signal_processings.process_helper import *`
+
+---
+
+## Code File Organization & Execution Order
+
+- If your DataFrame has a non-None `signal` column, its value determines the signal name. Otherwise, the name passed to `prepare_final_signals` is used.
+- If the DataFrame contains multiple signal names, it will be split by signal.
+- For each signal, the ETL will execute the most specific code found in `[CODE_DIR]/signal_processings/$SIGNAL_NAME_OR_TAG.py`.  
+  If not found, it will fall back to more general tags as defined in the global signal definitions (`rep_signals/`).
+
+**Example Directory Structure:**
+
+```text
+CODE_DIR/
+├── signal_processings/
+│   ├── GENDER.py
+│   ├── cbc.py
+│   └── labs.py
+├── configs/
+└── ...
 ```
-.
-4. If you want to "import" a helper function/module, your path is $[CODE_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/CODE_DIR) for running. So use for example: "from signal_processings.process_helper import *" 
-### 4. Code File Organization - which code will be executed?
-The order of code execution decision is ordered by:
-1. If DataFrame has "signal" column which is not None, it will use the name under "signal" to identify the signal name, otherwise it will use the name passed to "prepare_finall_signals" sigs argument. If the DataFrame contains multiple signal names, it will be divided into each name.rows with "None" in "signal" column willl be treated as "sigs" argument from "prepare_final_signals"
-2. For the "signal" - the most specific logic exists in [CODE_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/CODE_DIR)/signal_processings/$SIGNAL_NAME_OR_PROCESSING_UNIT_NAME_OR_TAG.py will be executed. If there is a specific code with excat signal name, this logic will be executed, if not it will use "tags" in the [global signal definitions](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/ETL_INFRA_DIR) under "**rep_signals/**". The order of the tags is from most specific to less specifc. For example: Hemoglobin has those tags: "cbc,labs". So it will first look for cbc.py and if not exists will look for "labs.py" 
-Example Directory Structure:
-- 
-```
-- 
-```
-- 
-```
- 
+
+---
+
+For more details, refer to the [global signal definitions](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/ETL_INFRA_DIR).
+
