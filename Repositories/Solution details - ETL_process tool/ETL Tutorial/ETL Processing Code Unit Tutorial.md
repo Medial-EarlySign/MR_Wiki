@@ -12,7 +12,7 @@ After retrieving your data, the processing step includes:
    Convert non-numeric patient IDs to numeric. The mapping is stored in `[WORK_DIR]/FinalSignals/ID2NR`. Demographic signals create this mapping; all other signals join on it. Rows with missing patients are dropped (with a message).
 
 2. **Signal Mapping:**  
-   If your DataFrame has a `signal` column, map signals using your `[CODE_DIR]` resources.
+   If your DataFrame has a `signal` column, map signals using your [CODE_DIR](../High%20level%20-%20important%20paths/CODE_DIR) resources - under `configs/map.tsv` need to have columns: source, destination
 
 3. **Data Transformation:**  
    Transform the DataFrame to the final format.  
