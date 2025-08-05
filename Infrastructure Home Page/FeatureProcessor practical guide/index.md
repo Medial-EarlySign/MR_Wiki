@@ -84,11 +84,9 @@
 <td><p>"binning" to create <a class="external-link" href="http://node-04/Libs/html/classBinningFeatProcessor.html" rel="nofollow" title="GetProbProcessor: ">BinningFeatProcessor</a> - binning with one hot on the bins</p></td>
 </tr>
 </tbody></table>
+
  
-- 
-"remove_deg" - removes features that most of the time are same value (or missing) 
-****
- Expand source
+- "remove_deg" - removes features that most of the time are same value (or missing) 
 ```
 {
       "action_type": "fp_set",
@@ -100,10 +98,7 @@
       ]
   }
 ```
-- 
-"normalizer" - to normalize features:
-****
- Expand source
+- "normalizer" - to normalize features:
 ```
  {
       "action_type": "fp_set",
@@ -118,11 +113,8 @@
       ]
     }
 ```
-tag + duplicate=1, results in wrapping this feature processor with MultiFeatureProcessors that iterates over all features and filter out features by "tag" to apply this normalization processing. I tagged all the required relevant features with tag "need_norm"
-- 
-"imputer" by strata of age+sex+other features. Take median,common, average, sample, etc:
-****
- Expand source
+  tag + duplicate=1, results in wrapping this feature processor with MultiFeatureProcessors that iterates over all features and filter out features by "tag" to apply this normalization processing. I tagged all the required relevant features with tag "need_norm"
+- "imputer" by strata of age+sex+other features. Take median,common, average, sample, etc:
 ```
 {
 "action_type": "fp_set",
@@ -137,10 +129,7 @@ tag + duplicate=1, results in wrapping this feature processor with MultiFeatureP
 ]
 }
 ```
-- 
-"do_calc" - calculator of some features from others. For example "or" on features, can also "sum" features
-****
- Expand source
+- "do_calc" - calculator of some features from others. For example "or" on features, can also "sum" features
 ```
 {
 		"action_type": "fp_set",
@@ -154,15 +143,9 @@ tag + duplicate=1, results in wrapping this feature processor with MultiFeatureP
 		]
 	}
 ```
- 
-- 
-importance_selector - selection of features based on most important features in a model that is trained on the data. 
-- 
-iterative_selector - please use the tool to do it, it takes forever!! [Iterative Feature Selector](/Medial%20Tools/Iterative%20Feature%20Selector)
-- 
-resample_with_missing - used in training to "generate" more samples with missing values and increasing data size (not doing imputations, that
-****
- Expand source
+- importance_selector - selection of features based on most important features in a model that is trained on the data. 
+- iterative_selector - please use the tool to do it, it takes forever!! [Iterative Feature Selector](/Medial%20Tools/Iterative%20Feature%20Selector)
+- resample_with_missing - used in training to "generate" more samples with missing values and increasing data size (not doing imputations, that
 ```
 {
       "action_type": "fp_set",
@@ -185,11 +168,8 @@ resample_with_missing - used in training to "generate" more samples with missing
 	  ]
 	}
 ```
-No need for duplicate, it is scanning the features by it's own and operating on "selected_tags". add_new_data- - how many new data points to add. grouping is used to generate masks of missing values in groups and not feature by features. This is another feature processor job). similar to data augmentation in imaging
-- 
-"binning" - binning feature value - can be specified directly the cutoffs or using some binning_method, equal width, minimal observations in each bin, etc.
-****
- Expand source
+  No need for duplicate, it is scanning the features by it's own and operating on "selected_tags". add_new_data- - how many new data points to add. grouping is used to generate masks of missing values in groups and not feature by features. This is another feature processor job). similar to data augmentation in imaging
+- "binning" - binning feature value - can be specified directly the cutoffs or using some binning_method, equal width, minimal observations in each bin, etc.
 ```
 {
 	"action_type": "fp_set",
@@ -205,10 +185,7 @@ No need for duplicate, it is scanning the features by it's own and operating on 
 	]
     }
 ```
-- 
-"predcitor_imputer" - much more complicated/smart imputer based on model. Gibbs samplings, masked GAN, univariate sampling from features distributions, etc.. 
-****
- Expand source
+- "predcitor_imputer" - much more complicated/smart imputer based on model. Gibbs samplings, masked GAN, univariate sampling from features distributions, etc.. 
 ```
 {
       "action_type": "fp_set",
@@ -229,32 +206,21 @@ No need for duplicate, it is scanning the features by it's own and operating on 
     }
 ```
 Instead of GIBBS, GAN, can select:
-  - 
-RANDOM_DIST - random value from normal dist around 0,5 (not related to feature dist)
-  - 
-UNIVARIATE_DIST - strata by some features, store distribution in each strata. In apply, find strata and select value randomly from dist
-  - 
-MISSING - put missing value
-  - 
-GAN - generator_args is path to trained model. Please refer to this path to train: [TrainingMaskedGAN](/Medial%20Tools/GANs%20for%20imputing%20matrices/TrainingMaskedGAN)
-  - 
-GIBBS - arguments 
-    - 
-sampling_args - 
-      - 
-burn_in_count - how many round to do in the start and to ignore them till stablize on reasonable vector. 
-      - 
-jump_between_samples - how many rounds to do before generating new sample. when continuing to iterate in rounds, after several loops we end up with different sample
+  - RANDOM_DIST - random value from normal dist around 0,5 (not related to feature dist)
+  - UNIVARIATE_DIST - strata by some features, store distribution in each strata. In apply, find strata and select value randomly from dist
+  - MISSING - put missing value
+  - GAN - generator_args is path to trained model. Please refer to this path to train: [TrainingMaskedGAN](/Medial%20Tools/GANs%20for%20imputing%20matrices/TrainingMaskedGAN)
+  - GIBBS - arguments 
+    - sampling_args - 
+      - burn_in_count - how many round to do in the start and to ignore them till stablize on reasonable vector. 
+      - jump_between_samples - how many rounds to do before generating new sample. when continuing to iterate in rounds, after several loops we end up with different sample
       - find_real_value_bin - if true will round values to existing values only from feature values. When you try to see if model can discriminate between real data and generated data, the resolution of the feature values is important. tree can detect different between 3 nd 3.000001. If true this will cause 3.00001 to be 3. No good reason why to turn off
       - samples_count - how many samples to extract
-    - 
-generator_args
-      - 
-calibration_save_ratio - what percentage of data to keep for clibration to probability. 0.2 (20%) is good number
+    - generator_args
+      - calibration_save_ratio - what percentage of data to keep for clibration to probability. 0.2 (20%) is good number
       - bin_settings - how to split the feature value into bins. The prediction problem will be multi category to those binned values. For example, hemoglobin last : 13.1-13.3, 13.4-13.6, etc... The target will be what's the probability to have hemoglobin in each value range. after having this, we can sample from this distribution bin value for the feature. 
       - calibration_string - how to calibarte. keep as isotonic_regression, it's good
       - predictor_type - predictor type for the multi class prediction
       - predictor_args - arguments for the predictor. please pay attention this is multi category prediction! For example objective for lightGBM is "objective=multiclass"
       - num_class_setup - since this is multiclass, some predictors requires to setup how many classes there are. This argument controls the name of this parameters. In LightGBM for example it's called "num_class"
       - selection_count - down sampling for training those models to speedup
- 

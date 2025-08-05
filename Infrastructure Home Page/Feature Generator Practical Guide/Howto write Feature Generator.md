@@ -1,4 +1,8 @@
 # How to Write a Feature Generator
+A Feature Generator is a processing unit that takes raw input signals directly from a data repository or EMR.
+Its process has two main stages:
+- It runs all relevant rep processors to pre-process the input signals. This prepares the data before it can be used to generate new features. This is being called by the infrastructure.
+- It calls the generate function, which receives this pre-processed, patient-specific data and produces the final output.
 
 Feature Generators in MedModel follow a specific sequence of method calls. Hereâ€™s the typical lifecycle:
 
@@ -53,7 +57,7 @@ Feature Generators in MedModel follow a specific sequence of method calls. Hereâ
 
 11. **Feature Generation**
     - `generate()`  
-      Generates the feature for each sample.
+      Generates the feature for each sample. The infrastructure already execuated all relavent rep processors for the desired input signals the feature generator is using. 
 
 12. **Summary**
     - `make_summary()`  
