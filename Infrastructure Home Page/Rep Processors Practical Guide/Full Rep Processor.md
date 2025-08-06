@@ -5,8 +5,7 @@ This Page will describe and demonstrate a full rep processor json with all out c
 - Common Virtual Signals: for example eGFR
 - Registries
  
-The json can be found in git under [http://bitbucket:7990/scm/med/mr_resources.git](http://bitbucket:7990/scm/med/mr_resources.git)
-in Path:  **configs/full_model_jsons****/full_rep_processors.json **
+The json can be found in git under [https://github.com/Medial-EarlySign/AM_Lung/blob/main/configs/training/full_rep_processors.json](https://github.com/Medial-EarlySign/AM_Lung/blob/main/configs/training/full_rep_processors.json)
 
 ```json
 {

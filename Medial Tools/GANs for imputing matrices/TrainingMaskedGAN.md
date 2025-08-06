@@ -1,6 +1,5 @@
 # TrainingMaskedGAN
-Please clone this: [http://bitbucket:7990/scm/med/butwhy.git](http://bitbucket:7990/scm/med/butwhy.git)
-To watch in bitbucket: [http://bitbucket:7990/projects/MED/repos/butwhy/browse](http://bitbucket:7990/projects/MED/repos/butwhy/browse)
+Please clone this: [https://github.com/Medial-EarlySign/MR_Projects/tree/main/ButWhy](https://github.com/Medial-EarlySign/MR_Projects/tree/main/ButWhy)
  
 There is a python script called "channels_GAN\train_channels_GAN.py"
 Example running command from directory with "train_channels_GAN.py":

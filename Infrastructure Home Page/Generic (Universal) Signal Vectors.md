@@ -100,11 +100,3 @@ The val_channel_types array is inspected to select the correct casting to type T
 Performance tests showed a slight improvement comparing to the old implementation. 
 That might be due to the fact that the new implementation eliminates the used of C function callbacks which are un-optimizable by C/C++ compilers.
  
-## Conversion App for old models
-The app exists under git repo of [http://bitbucket:7990/scm/med/fullmodelrunner.git](http://bitbucket:7990/scm/med/fullmodelrunner.git) - app called ModelConvertor.
-A version is stored under "/server/Work/FrozenTools/ModelConvertor/ModelConvertor" which accepts --input_model and --output_model to rewrite the bianry model again without retrain
- 
- 
- 
- 
- 

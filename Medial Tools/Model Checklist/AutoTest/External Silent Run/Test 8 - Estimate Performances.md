@@ -4,7 +4,7 @@
 Estimate performance on tested dataset based on matching important factors.
  
 **Parameters (see env.sh)**
-All parameters are included in env.sh and described in [External Silent Run](http://confluence:8090/display/WIK/External+Silent+Run).
+All parameters are included in env.sh and described in [External Silent Run](../External%20Silent%20Run).
 In particular, this test uses:
 - REFERENCE_MATRIX=... reference matrix to compare with
 - CMP_FEATURE_RES=... list of important features

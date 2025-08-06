@@ -1,7 +1,7 @@
 # TestGibbs
 There is utility to test the gibbs imputations method - it has several options for controlling gibbs parameters for training, testing it.
 The default test is to impute all values (harder) - generate a full example and compare it to the original population. You can also contol to test only "earsing" randomly masks of values and imputing them (easier for gibbs).
-Please git pull [http://bitbucket:7990/scm/med/but_why.git](http://bitbucket:7990/scm/med/but_why.git) and compile TestGibbs, then run with TestGibbs --base_config $CONFIG_FILE  or just specify all parameters in the command.
+Please git pull [https://github.com/Medial-EarlySign/MR_Projects/tree/main/But_Why](https://github.com/Medial-EarlySign/MR_Projects/tree/main/But_Why) and compile TestGibbs, then run with TestGibbs --base_config $CONFIG_FILE  or just specify all parameters in the command.
  
 Gibbs config examples with all params:
 ```ini

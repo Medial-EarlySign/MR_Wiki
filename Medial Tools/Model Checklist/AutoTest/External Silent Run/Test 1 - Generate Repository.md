@@ -9,7 +9,7 @@ Inputs: 
 - SILENCE_RUN_INPUT_FILES_PATH - The path to the input data files in "file_api" format
 Outputs:
 - Repository in directory ${WORK_DIR}/rep
-- ETL tests results in ${WORK_DIR}/ETL (see also [ETL_WORK_DIR](http://confluence:8090/display/WIK/WORK_DIR))
+- ETL tests results in ${WORK_DIR}/ETL (see also [ETL_WORK_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/WORK_DIR))
 **Test Results Review**
 Full ETL log including tests - WORK_DIR/01.generate_repository.log
 The following is a recipe for checking the log.

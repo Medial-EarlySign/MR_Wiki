@@ -1,6 +1,6 @@
 # InfraMed Library page
  
-Git Link: [http://git2/libs/inframed.git](http://git2/libs/inframed.git)
+Git Link: [https://github.com/Medial-EarlySign/MR_Libs](https://github.com/Medial-EarlySign/MR_Libs)
 ### General
 The InfraMed Library is a non-sql data structure tailored to hold medical records data.
 The main goal is to provide an efficient way to get a vector of time signals (date/time, value) for a pair of patient and signal type (pid , sid).

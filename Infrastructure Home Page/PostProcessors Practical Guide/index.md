@@ -17,7 +17,7 @@ Examples:
 - Calibration
 - Explainer of prediction "But Why"
  
-Example for calibration (full json example can be found under Resources git repository - [http://bitbucket:7990/scm/med/mr_resources.git](http://bitbucket:7990/scm/med/mr_resources.git) $ROOT/examples/post_processors.json):
+Example for calibration:
 ```json
 {
 	  "action_type":"post_processor",
@@ -29,7 +29,7 @@ Example for calibration (full json example can be found under Resources git repo
 	  "verbose":"1"
 }
 ```
-Example for explainer (full json example can be found under Resources git repository - [http://bitbucket:7990/scm/med/mr_resources.git](http://bitbucket:7990/scm/med/mr_resources.git) $ROOT/examples/post_processors.explainer.json):
+Example for explainer:
  
 Tree Shapley:
 ```json

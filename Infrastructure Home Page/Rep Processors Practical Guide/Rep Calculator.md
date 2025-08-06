@@ -1,7 +1,6 @@
 # Rep Calculator
 Rep processor to calculate things:
  
-example can be found under Resources git ([http://bitbucket:7990/scm/med/mr_resources.git](http://bitbucket:7990/scm/med/mr_resources.git)):
 examples/rep_processor_calc.json
 Full parameter list: [http://node-04/Libs/html/classRepCalcSimpleSignals.html](http://node-04/Libs/html/classRepCalcSimpleSignals)
  

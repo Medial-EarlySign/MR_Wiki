@@ -186,6 +186,6 @@ See original and modified mapping in the table below. 
 <img src="/attachments/11206807/11206834.png"/>
 **Figure 1 - Logic for setting the smoking status.**
 The code that generates the smoking vectors in THIN:
-[http://bitbucket:7990/projects/MED/repos/gensmoking/browse](http://bitbucket:7990/projects/MED/repos/gensmoking/browse)
+http://bitbucket:7990/projects/MED/repos/gensmoking/browse
  
  

@@ -7,7 +7,7 @@ The Flow App Currently contains the options to:
  
 The Flow App assumes the latest Mode 3 repository version is used. Many things might work for previous versions, but it is not guaranteed.
  
-Git link: [http://git2/general/flow.git](http://git2/general/flow.git)
+Git link: [https://github.com/Medial-EarlySign/MR_Tools/tree/main/Flow](https://github.com/Medial-EarlySign/MR_Tools/tree/main/Flow)
 ### Flow App Options
  
 #### General

@@ -25,7 +25,7 @@ cd $MR_ROOT/Libs/Internal/MedPyExport/generate_binding/
 Node-05 is currently an exception since we have a cuda version tensorflow (and keras) there, based on python2.7 , the python we use is /use/bin/python .
 In order to compile to the following steps in a node-05 window:
 1. export PYTHON_INCLUDE_DIR=/usr/include/python2.7
-2. export PYTHON_LIBRARY=/usr/lib64/[libpython2.7.so](http://libpython2.7.so)
+2. export PYTHON_LIBRARY=/usr/lib64/libpython2.7.so
 3.  Not Need anymore
 4. run make.sh from MR/Libs/Internal/MedPyExport/generate_binding
  

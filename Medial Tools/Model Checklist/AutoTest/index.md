@@ -6,7 +6,7 @@ For example, we have knowledge on how we should test a new model, for example - 
 Second thing we achieve is standardize way to validate/document a new model. Suppose to be faster to move from one project to another when needed.
 
 ## Location
-Under tools repository: [http://bitbucket:7990/scm/med/mr_tools.git](http://bitbucket:7990/scm/med/mr_tools.git) 
+Under tools repository: [https://github.com/Medial-EarlySign/MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) 
 In Linux: $MR_ROOT/Tools/AutoValidation\kits.
 In Windows: %MR_ROOT%\Tools\AutoValidation (for example U:\Alon\MR\Tools\AutoValidation\kits)
 Or environment variable: "$AUTOTEST_LIB"

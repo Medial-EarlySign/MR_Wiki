@@ -1,6 +1,6 @@
 # Pack AlgoMarker
 Example of packaging script can be found in GastroFlag:
-[http://bitbucket:7990/projects/AL/repos/lgi/browse/Extended_model/scripts/pack_algomarker.sh](http://bitbucket:7990/projects/AL/repos/lgi/browse/Extended_model/scripts/pack_algomarker.sh)
+[https://github.com/Medial-EarlySign/AM_LGI/blob/main/Extended_model/scripts/pack_algomarker.sh](https://github.com/Medial-EarlySign/AM_LGI/blob/main/Extended_model/scripts/pack_algomarker.sh)
  
 Structure
 1. There are setup steps on the script to define variable to the model + repository, reference matrix, deployment path etc.

@@ -33,5 +33,5 @@ Applying on new dataset without labels for validation:
 - Stats of outliers from cleaners
  
 ## Test Kit for validation of models Under some stage: Development, External with labels, Silent_Run:
-In this Tools git repository: [http://bitbucket:7990/scm/med/mr_tools.git](http://bitbucket:7990/scm/med/mr_tools.git) under for example: $MR_ROOT/Tools/AutoValidation. In Windows: U:\Alon\MR\Tools\AutoValidation
+In this Tools git repository: [https://github.com/Medial-EarlySign/MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) under for example: $MR_ROOT/Tools/AutoValidation. In Windows: U:\Alon\MR\Tools\AutoValidation
  

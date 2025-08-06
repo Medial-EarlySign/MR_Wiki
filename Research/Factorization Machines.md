@@ -32,8 +32,8 @@ Where possible we compared results returned by libFM to those of XGBoost, traine
 1. Age, Gender columns only
 2. Age,Gender and all RC-related and ATC-related columns of type "category set" used in CKD Fast Progressors project (not including features generated via "category_depend" mechanism)
 3.  Age,Gender,RC-related and ATC-related columns of type "category set" and "category_depend" used in CKD Fast Progressors project 
-4. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](http://confluence:8090/x/BQKV) project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
-5. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](http://confluence:8090/x/BQKV) project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
+4. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20Home%20Page/FeatureProcessor%20practical%20guide/Embeddings) project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
+5. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20Home%20Page/FeatureProcessor%20practical%20guide/Embeddings) project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
 ## Results
 1. Age, Gender columns only
 2. 
@@ -58,9 +58,10 @@ Results produced by libFM are marginally better in this scenario
 <td>0.581</td>
 </tr>
 </tbody></table>
+
 3.  Age,Gender,RC-related and ATC-related columns of type "category set" and "category_depend" used in CKD Fast Progressors project 
-4. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](http://confluence:8090/x/BQKV) project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
-5. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](http://confluence:8090/x/BQKV) project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
+4. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20Home%20Page/FeatureProcessor%20practical%20guide/Embeddings) project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
+5. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20Home%20Page/FeatureProcessor%20practical%20guide/Embeddings) project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
  
  
  

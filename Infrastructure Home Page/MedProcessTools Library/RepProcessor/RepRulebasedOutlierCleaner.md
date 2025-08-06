@@ -33,7 +33,7 @@
 **                                  : the additional signals that are loaded by this cleaner because  addRequiredSignals was set to "1", may not go through the preprocessing by cleaners that preceed this cleaner, if they are not in the signals list for that cleaner.**
 **,**
 - **Description: ** A child class of RepProcessor used for point-wise cleaning of outliers according to predefined rules
-- **Inherits from:** [R](http://confluence:8090/display/WIK/SampleFilter)[epProcessor](http://confluence:8090/display/WIK/RepProcessor)
+- **Inherits from:** [SampleFilter](../SampleFilter) [RepProcessor](../RepProcessor)
 - **Generate new dynamic-version: **No
 - **Members:**
  

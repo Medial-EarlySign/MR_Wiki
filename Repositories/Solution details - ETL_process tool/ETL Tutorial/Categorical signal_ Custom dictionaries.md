@@ -23,7 +23,7 @@ The first optional dataframe is the "translation" dict - from internal codes to 
 The second optional dataframe is "mapping" dict - from the code/value we recieved from client to our known ontologies codes - a dataframe with 2 columns: client value, our coding ontology.
  
 # Howto read the output of prepare_dicts/finish_prepare_load
-TODO: complete. [itamar Menuhin](http://confluence:8090/display/~itamar-internal)
+TODO: complete. [itamar Menuhin](https://www.linkedin.com/in/itamar-menuhin-932252a7/)
  
  
  

@@ -1,7 +1,5 @@
 # Cleaners Json Examples
-Examples for creating Jsons with default cleaner. The recommanded cleaner for THIN can be found in git: [http://bitbucket:7990/scm/med/mr_resources.git](http://bitbucket:7990/scm/med/mr_resources.git)
-in Path: **configs/full_model_jsons/full_cleaners.json **
-Or in Path: "$MR_ROOT/Projects/Resources/configsfull_model_jsons/full_cleaners.json" 
+Examples for creating Jsons with default cleaner. An Example of cleaner can be found in git: [https://github.com/Medial-EarlySign/AM_Lung/blob/main/configs/training/full_rep_processors.json](https://github.com/Medial-EarlySign/AM_Lung/blob/main/configs/training/full_rep_processors.json)
  
 full_cleaners is based on:
 - configured simple cleaner with strict boundaries for each signal 

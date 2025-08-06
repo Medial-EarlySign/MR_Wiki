@@ -2,7 +2,7 @@
  
 # Process bootstrap result to create text table (Excel like):
 You can use bootstrap_format.py to process the results into nice table.
-The script is under "[MR_SCRIPTS](http://bitbucket:7990/projects/MED/repos/mr_scripts/browse)" git repo and suppose to be in your PATH under $MR_ROOT/Projects/Scripts/Python-scripts, so you can just call it.
+The script is under "[MR_SCRIPTS](https://github.com/Medial-EarlySign/MR_Scripts)" git repo and suppose to be in your PATH under $MR_ROOT/Projects/Scripts/Python-scripts, so you can just call it.
 ```bash
 bootstrap_format.py --report_path $BT_REPORT_PATH_1 $BT_REPORT_PATH_2 $BT_REPORT_PATH_3 ... $BT_REPORT_PATH_N \
   --report_name $NAME_FOR_1 $NAME_FOR_2 $NAME_FOR_3 ... $NAME_FOR_N \

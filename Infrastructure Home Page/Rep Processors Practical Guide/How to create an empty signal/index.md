@@ -25,5 +25,3 @@ While add_empty_signal.json is:
   ]
 }
 ```
- 
-[ ](http://confluence:8090/display/WIK/How+to+rename+signal)

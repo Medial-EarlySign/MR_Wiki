@@ -4,7 +4,7 @@
 Here we compare score distribution over special groups checking model ability to highlight high risk populations  
 ****
 **Parameters (see env.sh)**
-All parameters are included in env.sh and described in [External Silent Run](http://confluence:8090/display/WIK/External+Silent+Run).
+All parameters are included in env.sh and described in [External Silent Run](../External%20Silent%20Run).
 In particular, this test uses:
 - configs/coverage_groups.py - definition of risk groups
 - Assumes test 02 completed

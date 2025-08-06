@@ -50,7 +50,6 @@ sudo doxygen Doxyfile
 ```
 
 If OUTPUT_DIRECTORY was empty, simply view html/index.html in the project directory with any browser. The public documentation (e.g., for Libs) look for Creating Lib documentation section
-[](http://node-04)
 
 # How to create documentation in code
 1. An example of documenting class members:
