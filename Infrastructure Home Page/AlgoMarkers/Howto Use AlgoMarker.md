@@ -60,6 +60,9 @@ To use the Python wrapper, run [`run_server.sh`](https://github.com/Medial-Early
    docker build -t algomarker_X --no-cache .
    ```
 
+4. **Run a Container**
+   execute this command `docker run -id algomarker_X --name algomarker_container_X -p 1234:1234` and expose port 1234 to 1234 in your local machine.
+
 ---
 
 ## How to Use the Deployed AlgoMarker
