@@ -1,9 +1,38 @@
 # Infrastructure Home Page
 
 ## Overview of Medial Infrastructure
-Medial Infrastructure is designed to turn the Electronic Medical Record (EMR)-a complex, semi-structured time-series dataset—into a machine-learning-ready resource. Unlike images or free text, EMR data can be stored in countless formats, and its "labels" (the outcomes or targets you want to predict) aren’t always obvious. We address this by standardizing both the storage and the processing of time-series signals.
+Medial Infrastructure is designed to turn the Electronic Medical Record (EMR)-a complex, semi-structured time-series dataset, into a machine-learning-ready resource. Unlike images or free text, EMR data can be stored in countless formats, and its "labels" (the outcomes or targets you want to predict) aren’t always obvious. We address this by standardizing both the storage and the processing of time-series signals.
+We can think about this infrastructure as "TensorFlow" of medical data machine learning. 
 
-## Goals
+### Howto Use this
+Suppose you're a potential user or client interested in using a specific model.
+You're not concerned with how the model was built or which tools were used, you simply want to deploy and use it.
+Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20AlgoMarker)
+
+### Main contributers from recent years:
+- [Avi Shoshan](https://www.linkedin.com/in/avi-shoshan-a684933b/)
+- [Yaron Kinar](https://www.linkedin.com/in/yaron-kinar-il/)
+- [Alon Lanyado](https://www.linkedin.com/in/lanyado/)
+
+### Challenges
+- **Variety of Questions**: Risk prediction (e.g., cancer, CKD), compliance, diagnostics, treatment recommendations
+- **Medical Data Complexity**: Temporal irregularity, high dimensionality (>100k categories), sparse signals, multiple data types
+- **Retrospective Data Issues**: Noise, bias, spurious patterns, policy sensitivity
+
+### Goals
+- Avoid reinventing common methodologies each project. Sometimes complicated code/logic with debugging
+- Maintain shareable, versioned, regulatory‑compliant pipelines
+- Facilitate reproducible transfer from research to product
+- Provide end-to-end support: data import → analysis → productization
+
+### Platform Requirements
+- **Performance**: Ultra-efficient in memory & time (>100x compare to native python pandas in some cases, mainly in preprocessing)
+- **Extensibility**: Rich APIs, configurable pipelines, support new data types
+- **Minimal Rewriting & Ease Of Usage**: JSON‑driven configs, unified codebase, python API to the C library
+- **Comprehensive**: From "raw" data to model deployment
+- **Reproducible & Versioned**: Track data, code, models, and parameters
+
+## Infrastructure Components
 1. **MedRepository: a high-performance EMR time-series store**
     * Fast retrieval of any patient’s full record or a specific signal across all patients.
     * [Unified representation](Generic%20(Universal)%20Signal%20Vectors): each signal consists of zero or more time channels plus zero or more value channels, all tied to a patient ID.
