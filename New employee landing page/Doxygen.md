@@ -11,8 +11,6 @@ $MR_ROOT/Libs/document_code_user.sh
 
 The documentation will be created in /home/$USER/html/libs/html, just open the index.html file
 
-- To create server documentation (will be done automatically after pushing to the git repository, **so not needed to be run be yourself**!! you may see how I did it [here](/New%20employee%20landing%20page/Moving%20to%20the%20new%20git%20repositories/Bitbucket%20and%20git%20hooks))
-
 ```bash
 $MR_ROOT/Libs/document_code_server.sh
 ```
