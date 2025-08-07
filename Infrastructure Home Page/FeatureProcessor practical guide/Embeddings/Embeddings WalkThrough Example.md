@@ -32,7 +32,7 @@ General Vocabulary of terms we use:
 - **outcome training** : the process of training the actual model for the outcome (in this example cvd_mi)
 - **embedding training** : the process of preparing the x,y matrices, the scheme files, train a deep learning embedding model in keras, and get the layers file. Scheme and layer files will later be used as a feature generator in the infrastructure.
 ## Step 2: Prepare basic lists , and cohort
-```
+```bash
 # creating a cohort file for cvd_mi : first verified mi, censoring cases with other mi's before , and cases with no BP or Glucose or LDL tests
  
 /nas1/UsersData/avi/MR/Projects/Shared/Embeddings/Linux/Release/Embeddings --build_example
@@ -78,7 +78,7 @@ To train the embedding we need:
 2. T={0,365,730} , all options or random choice of one for each sample.
 We will use two options: semi-autoencoder (T for y is 0), and option 2b , and randomly set the y time to be 1y or 2y ahead from the sampling point.
 We keep that in a samples file where the time is the time for x and the outcomeTime is the time for y. Our code later supports this.
-```
+```bash
 # preparing embedding_1_A.samples (using awk this time)
 # we could have started from learn_1_A samples, but decided to be more general and use lots of data, hence starting from validate_1_A
  
@@ -92,7 +92,7 @@ For continous signals we can choose the ranges we are interested in.
 We can also use a MedModel generated before from a json file and add the features it creates (this option is still in dev/testing)
 We could use the same embed_params for x and y matrices, but to make things interesting we will use different plans for the x and y matrices.
 some preparations:
-```
+```bash
 # preparing the list of read codes we'll use to generate features (that's ~97K features !)
 less /home/Repositories/THIN/thin_jun2017/dict.read_codes | awk '(/DEF/ && substr($3,0,2)=="G_"){print $3}' > rc.codes
 
@@ -102,7 +102,7 @@ less /home/Repositories/THIN/thin_jun2017/dict.drugs_defs | awk '(/DEF/ && subst
  
  
 x_embed_params :
-```
+```ini
 sigs={
 # sigs are sig=<> format with | between sigs
 # dummy signal is needed to make sure there's at least one entry for each line , helps in matching x,y lines
@@ -132,7 +132,7 @@ sig=BP;type=continuous;val_chan=1;ranges=0,40,50,60,70,80,90,100,110,120,130,140
 ```
  
 y_embed params: preferring do_counts=0 as easier to build loss function for.
-```
+```ini
 sigs={
 # sigs are sig=<> format with | between sigs
 # dummy signal is needed to make sure there's at least one entry for each line , helps in matching x,y lines
@@ -181,7 +181,7 @@ sig=HT_Registry;type=categorial;categories=HT_Registry_Hypertensive;win_from=-18
 Finally we are ready for this stage. We will start with our samples file, and create 2 matrices from it, the x will use time, the y will use outcomeTime. The matrices will use the embed rules we defined in the previous step, and we will also shrink them to only contain values that appear at least 1e-3 of the samples (to have roughly at least ~1000 cases of it appearing), and less than 0.75 of the samples , to screen to frequent or too rare columns.
 Our samples file is the one we prepared before: embedding_1_A.samples (1.6M training points)
 To actually create the matrices we use the Embeddings project, with the --gen_mat option.
-```
+```bash
 # command line to create x matrix
 Embeddings --gen_mat --rep <rep> --f_samples ./embedding_1_A.samples --embed "pFile=x_embed_params" --min_p 0.001 --max_p 0.75 --prefix x
  
@@ -212,7 +212,7 @@ To do that use the Embedder.py script, or copy it and change what you need insid
 8. test modes to generate predictions/embedding layer results on a set of examples (to allow testing vs. the infrastructure)
 The Embedder.py script is in the git in .../MR/Projects/Shared/Embeddings/scripts/
  
-```
+```bash
 # example run training a model
 python ./Embedder.py --xfile ./x.smat --yfile ./y.smat --nepochs 5 --dim 400 200 100 --l1 1e-7 0 0 --out_model emodel --train --wgt 10 --dropout 0.0 0.0 0.0 --noise 0.3 --gpu 1 --full_decode
  
@@ -371,7 +371,7 @@ Some explanation on the model loss and evaluation:
  
 ## Step 7 : Testing we get the same embeddings in Keras and Infrastructure
 This is a needed sanity in order to verify the model we trained is indeed the one our infrastructure will use.
-```
+```bash
 # assuming we prepared t_1.samples : a samples file with a single line
 # we first create a sparse mat for this sample, we use the x.scheme file that was created when we first generated the x matrix
 Embeddings --gen_mat_from_scheme --f_samples ./t_1.samples --f_scheme ../x.scheme --prefix xtest
@@ -497,7 +497,7 @@ Embedding[0] :  0.577931, -1.139361, -1.214531, 0.719889, 1.152678, 2.756100, 4.
 Once we have the .scheme file and the matching .layers file we can generate features using the "embedding" feature generator.
 This feature generator will generate for each sample it's sparse x line, then run it through the embedding model , and add the layer output as features in the MedFeatures matrix.
 To use embeddings as features add the following to your json
-```
+```json
 	{ "action_type": 	"feat_generator", "fg_type": "embedding", 
 						// the name of the feature will be FTR_<num>.<name_prefix>.col_<embedding column number> , if using several embedding FGs give them different name_prefix names
 						"name_prefix" : "Semi_AutoEncoder",

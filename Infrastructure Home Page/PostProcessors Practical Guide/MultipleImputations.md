@@ -39,6 +39,7 @@ Apply with Flow and store attributes:
 Flow --get_model_preds --print_attr 1 --rep /home/Repositories/THIN/thin_jun2017/thin.repository --f_samples /server/Work/Users/Alon/But_Why/outputs/explainers_samples/diabetes/test.samples --f_preds /server/Linux/alon/pre2d_test.tsv --f_model /server/Work/Users/Alon/But_Why/outputs/Stage_B/explainers/diabetes/test_imputer.2.mdl
 ```
  
+
 Example output for pred2d model output:
 [<img src="/rest/documentConversion/latest/conversion/thumbnail/13402394/1"/>](/download/attachments/13402388/pre2d.xlsx?version=1&modificationDate=1670270201910&api=v2)
 There are additional columns: attr_pred.ci_lower,attr_pred.ci_upper,attr_pred.mean,attr_pred.median,attr_pred.std

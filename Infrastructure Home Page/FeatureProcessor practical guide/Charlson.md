@@ -1,10 +1,8 @@
 # Charlson
 Json to generate Charlson score.
 Path: $MR_ROOT/Projects/Resources/examples/Charlson/charlson.pretify.json
-Windows path: %MR_ROOT%\Projects\Resources\examples\Charlson\charlson.pretify.json
  
 This is for THIN,  input is DIAGNOSIS signal
-****
 ```json
 {
 	"model_json_version": "2",

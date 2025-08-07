@@ -3,7 +3,7 @@
 ModelExplainer API:
 <img src="/attachments/11206683/11206684.png"/>
  
-ModelExplainer Types:
+## ModelExplainer Types:
 - [TreeExplainer](https://Medial-EarlySign.github.io/MR_LIBS/classTreeExplainer)  – explains model with SHAPLEY implementation for trees (it has 2 additional flags – do interaction calculation for shap values or use approximate calculation which is faster):
   -  If tree model has its own implementation for shapley (like XGboost, LightGBM) – will use those methods directly
   - If the model is based on ensemble trees (like QRF) it will convert the model into generic tree model in learn. Than in Apply it will run SHAP algorithm for trees with the given flags. I made the function parallel
@@ -13,6 +13,8 @@ ModelExplainer Types:
 - [MissingShapExplainer](https://Medial-EarlySign.github.io/MR_LIBS/classMissingShapExplainer) – Agnostic SHAP algorithm that doesn't use Gibbs or GAN and is much faster… the Algorithm trains proxy model (with same parameters as original model) on the outcome with added masked samples. masked samples are samples where feature values were removed on the mask and replaced with missing value. It reweights all training samples to match SHAP weights for each mask. The results on the simulated data(which are very simple) looks good for lightGBM model, the runtime is also very good. The idea is that the proxy model can now handle much better missing values and we can just feed the model with missing values instead of generating "real" samples. Theoretically for linear\polynomial kernel it's should work(and works) very good
 - [LinearExplainer](https://Medial-EarlySign.github.io/MR_LIBS/classLinearExplainer) - Simple Explainer for linear models to return feature_value*coeff. The implementation is generic for all models - for each feature\group of features, the contribution is calculated as the difference between the model score with the original feature value versus the model score with the feature value set to 0. It's similar to Shapley but much faster - taking mask of all 1's so no need to generate values with Gibbs\GAN. Very similar implementation to MissingShapExplainer but without proxy model
 - [KNNExplainer](https://Medial-EarlySign.github.io/MR_LIBS/classKNN__Explainer) -An explainer that calculates average score for neighbours of sample in training data,  when  neighborhood is calculatesd with and without the tested feature, and the ratio between the two is returned.
+
+
 <table><tbody>
 <tr>
 <th>Explainer</th>
@@ -72,7 +74,8 @@ ModelExplainer Types:
 </tr>
 </tbody></table>
  
-Global Arguments for all explainers:
+
+## Global Arguments for all explainers:
 - [filters](https://Medial-EarlySign.github.io/MR_LIBS/classExplainFilters)
   - max_count - maximal number of features\groups to keep for explaining 
   - sum_ratio - the maximal number of features\groups to keep for explaining when considering the sum of top features contributions as ratio from the total contributions . in range 0-1, 1 - means take all

@@ -87,7 +87,7 @@
 
  
 - "remove_deg" - removes features that most of the time are same value (or missing) 
-```
+```json
 {
       "action_type": "fp_set",
       "members": [
@@ -99,7 +99,7 @@
   }
 ```
 - "normalizer" - to normalize features:
-```
+```json
  {
       "action_type": "fp_set",
       "members": [
@@ -115,7 +115,7 @@
 ```
   tag + duplicate=1, results in wrapping this feature processor with MultiFeatureProcessors that iterates over all features and filter out features by "tag" to apply this normalization processing. I tagged all the required relevant features with tag "need_norm"
 - "imputer" by strata of age+sex+other features. Take median,common, average, sample, etc:
-```
+```json
 {
 "action_type": "fp_set",
 "members": [
@@ -130,7 +130,7 @@
 }
 ```
 - "do_calc" - calculator of some features from others. For example "or" on features, can also "sum" features
-```
+```json
 {
 		"action_type": "fp_set",
 		  "members": [
@@ -146,7 +146,7 @@
 - importance_selector - selection of features based on most important features in a model that is trained on the data. 
 - iterative_selector - please use the tool to do it, it takes forever!! [Iterative Feature Selector](/Medial%20Tools/Iterative%20Feature%20Selector)
 - resample_with_missing - used in training to "generate" more samples with missing values and increasing data size (not doing imputations, that
-```
+```json
 {
       "action_type": "fp_set",
       "members": [
@@ -170,7 +170,7 @@
 ```
   No need for duplicate, it is scanning the features by it's own and operating on "selected_tags". add_new_data- - how many new data points to add. grouping is used to generate masks of missing values in groups and not feature by features. This is another feature processor job). similar to data augmentation in imaging
 - "binning" - binning feature value - can be specified directly the cutoffs or using some binning_method, equal width, minimal observations in each bin, etc.
-```
+```json
 {
 	"action_type": "fp_set",
 	"members": [
@@ -186,7 +186,7 @@
     }
 ```
 - "predcitor_imputer" - much more complicated/smart imputer based on model. Gibbs samplings, masked GAN, univariate sampling from features distributions, etc.. 
-```
+```json
 {
       "action_type": "fp_set",
       "members": [
