@@ -5,83 +5,83 @@
 </tr>
 <tr>
 <td><em>FTR_PROCESS_NORMALIZER</em></td>
-<td><p>"normalizer" to create <a class="external-link" href="http://node-04/Libs/html/classFeatureNormalizer.html" rel="nofollow" title="Feature Normalizer. ">FeatureNormalizer</a></p></td>
+<td><p>"normalizer" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classFeatureNormalizer.html" rel="nofollow" title="Feature Normalizer. ">FeatureNormalizer</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_IMPUTER</em></td>
-<td><p>"imputer" to create <a class="external-link" href="http://node-04/Libs/html/classFeatureImputer.html" rel="nofollow" title="Feature Imputer to complete missing values. ">FeatureImputer</a></p></td>
+<td><p>"imputer" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classFeatureImputer.html" rel="nofollow" title="Feature Imputer to complete missing values. ">FeatureImputer</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_DO_CALC</em></td>
-<td><p>"do_calc" to create <a class="external-link" href="http://node-04/Libs/html/classDoCalcFeatProcessor.html" rel="nofollow" title="User defined calculations on other features. ">DoCalcFeatProcessor</a></p></td>
+<td><p>"do_calc" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classDoCalcFeatProcessor.html" rel="nofollow" title="User defined calculations on other features. ">DoCalcFeatProcessor</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_UNIVARIATE_SELECTOR</em></td>
-<td><p>"univariate_selector" to create <a class="external-link" href="http://node-04/Libs/html/classUnivariateFeatureSelector.html" rel="nofollow" title="Feature Selector : Univariate. ">UnivariateFeatureSelector</a></p></td>
+<td><p>"univariate_selector" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classUnivariateFeatureSelector.html" rel="nofollow" title="Feature Selector : Univariate. ">UnivariateFeatureSelector</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESSOR_MRMR_SELECTOR</em></td>
-<td><p>"mrmr" or "mrmr_selector" to create <a class="external-link" href="http://node-04/Libs/html/classMRMRFeatureSelector.html" rel="nofollow" title="Feature Selector : MRMR. ">MRMRFeatureSelector</a></p></td>
+<td><p>"mrmr" or "mrmr_selector" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classMRMRFeatureSelector.html" rel="nofollow" title="Feature Selector : MRMR. ">MRMRFeatureSelector</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESSOR_LASSO_SELECTOR</em></td>
-<td><p>"lasso" to create <a class="external-link" href="http://node-04/Libs/html/classLassoSelector.html" rel="nofollow" title="Feature Selector : lasso. ">LassoSelector</a></p></td>
+<td><p>"lasso" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classLassoSelector.html" rel="nofollow" title="Feature Selector : lasso. ">LassoSelector</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESSOR_TAGS_SELECTOR</em></td>
-<td><p>"tags_selector" to create <a class="external-link" href="http://node-04/Libs/html/classTagFeatureSelector.html" rel="nofollow">TagFeatureSelector</a></p></td>
+<td><p>"tags_selector" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classTagFeatureSelector.html" rel="nofollow">TagFeatureSelector</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESSOR_IMPORTANCE_SELECTOR</em></td>
-<td><p>"importance_selector" to create <a class="external-link" href="http://node-04/Libs/html/classImportanceFeatureSelector.html" rel="nofollow" title="ImportanceFeatureSelector - selector which uses feature importance method for sepcific model to rank ...">ImportanceFeatureSelector</a></p></td>
+<td><p>"importance_selector" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classImportanceFeatureSelector.html" rel="nofollow" title="ImportanceFeatureSelector - selector which uses feature importance method for sepcific model to rank ...">ImportanceFeatureSelector</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESSOR_ITERATIVE_SELECTOR</em></td>
-<td><p>"iterative_selector" applies bottom-up or top-down iteration for feature selection. Creates <a class="external-link" href="http://node-04/Libs/html/classIterativeFeatureSelector.html" rel="nofollow" title="IterativeFeatureSelector - Apply bottom-up or top-down iteration for feature selection. ">IterativeFeatureSelector</a></p></td>
+<td><p>"iterative_selector" applies bottom-up or top-down iteration for feature selection. Creates <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classIterativeFeatureSelector.html" rel="nofollow" title="IterativeFeatureSelector - Apply bottom-up or top-down iteration for feature selection. ">IterativeFeatureSelector</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_REMOVE_DGNRT_FTRS</em></td>
-<td><p>"remove_deg" to create <a class="external-link" href="http://node-04/Libs/html/classDgnrtFeatureRemvoer.html" rel="nofollow" title="Feature Selector : Remove Degenerate features. ">DgnrtFeatureRemvoer</a></p></td>
+<td><p>"remove_deg" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classDgnrtFeatureRemvoer.html" rel="nofollow" title="Feature Selector : Remove Degenerate features. ">DgnrtFeatureRemvoer</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_ITERATIVE_IMPUTER</em></td>
-<td><p>"iterative_imputer" to create <a class="external-link" href="http://node-04/Libs/html/classIterativeImputer.html" rel="nofollow" title="  IterativeImputer   A general strong imputer that does the following:  (1) Runs a simple stratified ...">IterativeImputer</a></p></td>
+<td><p>"iterative_imputer" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classIterativeImputer.html" rel="nofollow" title="  IterativeImputer   A general strong imputer that does the following:  (1) Runs a simple stratified ...">IterativeImputer</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_ENCODER_PCA</em></td>
-<td><p>"pca" to create <a class="external-link" href="http://node-04/Libs/html/classFeaturePCA.html" rel="nofollow" title="FeaturePCA - PCA encoder. ">FeaturePCA</a></p></td>
+<td><p>"pca" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classFeaturePCA.html" rel="nofollow" title="FeaturePCA - PCA encoder. ">FeaturePCA</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_ONE_HOT</em></td>
-<td><p>"one_hot" to create <a class="external-link" href="http://node-04/Libs/html/classOneHotFeatProcessor.html" rel="nofollow" title="OneHotFeatProcessor: ">OneHotFeatProcessor</a> - make one-hot features from a given feature</p></td>
+<td><p>"one_hot" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classOneHotFeatProcessor.html" rel="nofollow" title="OneHotFeatProcessor: ">OneHotFeatProcessor</a> - make one-hot features from a given feature</p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_GET_PROB</em></td>
-<td><p>"get_prob" to create <a class="external-link" href="http://node-04/Libs/html/classGetProbFeatProcessor.html" rel="nofollow" title="GetProbProcessor: ">GetProbFeatProcessor</a> - replace categorical feature with probability of outcome in training set</p></td>
+<td><p>"get_prob" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classGetProbFeatProcessor.html" rel="nofollow" title="GetProbProcessor: ">GetProbFeatProcessor</a> - replace categorical feature with probability of outcome in training set</p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_PREDICTOR_IMPUTER</em></td>
-<td><p>"predcitor_imputer" to create <a class="external-link" href="http://node-04/Libs/html/classPredictorImputer.html" rel="nofollow" title="Predictor Imputer - use all features in the matrix to predict value to impute selects randomly a valu...">PredictorImputer</a></p></td>
+<td><p>"predcitor_imputer" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classPredictorImputer.html" rel="nofollow" title="Predictor Imputer - use all features in the matrix to predict value to impute selects randomly a valu...">PredictorImputer</a></p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_MULTIPLIER</em></td>
-<td><p>"multiplier" to create <a class="external-link" href="http://node-04/Libs/html/classMultiplierProcessor.html" rel="nofollow" title="MultiplierProcessor: ">MultiplierProcessor</a> - to multiply feature by other feature</p></td>
+<td><p>"multiplier" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classMultiplierProcessor.html" rel="nofollow" title="MultiplierProcessor: ">MultiplierProcessor</a> - to multiply feature by other feature</p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_RESAMPLE_WITH_MISSING</em></td>
-<td><p>"resample_with_missing" to create <a class="external-link" href="http://node-04/Libs/html/classResampleMissingProcessor.html" rel="nofollow" title="ResampleMissingProcessor: Add missing values to the train matrix for the train process. ">ResampleMissingProcessor</a> - adds missing values to learn matrix</p></td>
+<td><p>"resample_with_missing" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classResampleMissingProcessor.html" rel="nofollow" title="ResampleMissingProcessor: Add missing values to the train matrix for the train process. ">ResampleMissingProcessor</a> - adds missing values to learn matrix</p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_DUPLICATE</em></td>
-<td><p>"duplicate" to create <a class="external-link" href="http://node-04/Libs/html/classDuplicateProcessor.html" rel="nofollow" title="Duplicates the samples in Apply only - can be used for multiple imputations to calculate CI adn more...">DuplicateProcessor</a> - duplicates samples in order to do multiple imputations.</p></td>
+<td><p>"duplicate" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classDuplicateProcessor.html" rel="nofollow" title="Duplicates the samples in Apply only - can be used for multiple imputations to calculate CI adn more...">DuplicateProcessor</a> - duplicates samples in order to do multiple imputations.</p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_MISSING_INDICATOR</em></td>
-<td><p>"missing_indicator" to create <a class="external-link" href="http://node-04/Libs/html/classMissingIndicatorProcessor.html" rel="nofollow" title="FeatureMissingIndicator: creates a feature that indicates if a feature is missing or not...">MissingIndicatorProcessor</a> - creates a feature that indicates if a feature is missing or not</p></td>
+<td><p>"missing_indicator" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classMissingIndicatorProcessor.html" rel="nofollow" title="FeatureMissingIndicator: creates a feature that indicates if a feature is missing or not...">MissingIndicatorProcessor</a> - creates a feature that indicates if a feature is missing or not</p></td>
 </tr>
 <tr>
 <td><em>FTR_PROCESS_BINNING</em></td>
-<td><p>"binning" to create <a class="external-link" href="http://node-04/Libs/html/classBinningFeatProcessor.html" rel="nofollow" title="GetProbProcessor: ">BinningFeatProcessor</a> - binning with one hot on the bins</p></td>
+<td><p>"binning" to create <a class="external-link" href="https://Medial-EarlySign.github.io/MR_LIBS/classBinningFeatProcessor.html" rel="nofollow" title="GetProbProcessor: ">BinningFeatProcessor</a> - binning with one hot on the bins</p></td>
 </tr>
 </tbody></table>
 

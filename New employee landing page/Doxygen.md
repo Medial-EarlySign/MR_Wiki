@@ -15,7 +15,7 @@ The documentation will be created in /home/$USER/html/libs/html, just open the i
 $MR_ROOT/Libs/document_code_server.sh
 ```
 
-the documentation will be availabe in [http://node-01](http://node-01/)
+the documentation will be availabe in [https://Medial-EarlySign.github.io/MR_LIBS](https://Medial-EarlySign.github.io/MR_LIBS)
 
 if the node-04 apache server is down run and the page isn't loading, run:
 

@@ -1,5 +1,5 @@
 # RepProcessor
-### [RepProcessor ](http://node-04/Libs/html/classRepProcessor)applies in-place processing to the information held for a single patient-id (a DynamicPidRec)
+### [RepProcessor ](https://Medial-EarlySign.github.io/MR_LIBS/classRepProcessor)applies in-place processing to the information held for a single patient-id (a DynamicPidRec)
 The main functionalities of a RepProcessor include learning the processing parameters from (a subset of) a repository, and applying to a single patient Id (DynamicPidRec) at selected time-points. A processor may act differently at different time points (e.g. a predictor that looks at a range of times, must not consider points after the sample-time) - this is achieved by generating different versions of the affected signals in the DynamicPidRec (a version per time point). If the DynamicPidRec already has different versions in the required signals (i.e. it has been processed by other rep_processors), the correct version should be used when learning and applying the processor.
 RepProcessor is a virtual class. See below for the list of implemeted children classes
 ### Include file is - *H:/MR/Libs/Internal/MedUtils/MedProcessTools/RepProcess.h*

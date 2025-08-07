@@ -1,7 +1,7 @@
 # PostProcessors Practical Guide
 PostProcessors are processors which occours after predicitons.
-Full PostProcessor code doc: [http://node-04/Libs/html/classPostProcessor.html](http://node-04/Libs/html/classPostProcessor)
-Some PostProcessor, for full list of types and json values to put in names please reffer to [PostProcessor_Types](http://node-04/Libs/html/PostProcessorh.html#a1dab070b8206be89206ff19f321a1cfc).
+Full PostProcessor code doc: [https://Medial-EarlySign.github.io/MR_LIBS/classPostProcessor.html](https://Medial-EarlySign.github.io/MR_LIBS/classPostProcessor)
+Some PostProcessor, for full list of types and json values to put in names please reffer to [PostProcessor_Types](https://Medial-EarlySign.github.io/MR_LIBS/PostProcessorh.html#a1dab070b8206be89206ff19f321a1cfc).
 ·          We have now MultiPostProcessor (for parallelism)
 ·          Calibrator – to calibrate scores to probabilities for example
 ·          ModelExplainer – Several options for ButWhy:

@@ -1,10 +1,10 @@
 # MedCohort
-### [MedCohort ](http://node-04/Libs/html/classMedCohort)is a data structure with helpers to deal with a cohort, a list of individuals with (dated) outcomes and followup times.
-MedCohort contatins a vector of basic records ([CohortRec](http://node-04/Libs/html/structCohortRec)), each representing a single period for a specific id (with a corresponding outcome) information.
-A MedCohort can be sampled to generate MedSamples files according to [SamplingParams](http://node-04/Libs/html/structSamplingParams) using one of two fuctions:
+### [MedCohort ](https://Medial-EarlySign.github.io/MR_LIBS/classMedCohort)is a data structure with helpers to deal with a cohort, a list of individuals with (dated) outcomes and followup times.
+MedCohort contatins a vector of basic records ([CohortRec](https://Medial-EarlySign.github.io/MR_LIBS/structCohortRec)), each representing a single period for a specific id (with a corresponding outcome) information.
+A MedCohort can be sampled to generate MedSamples files according to [SamplingParams](https://Medial-EarlySign.github.io/MR_LIBS/structSamplingParams) using one of two fuctions:
 - *int create_sampling_file(SamplingParams &s_params, string out_sample_file)* : Generate samples within cohort times that fit SampleingParams criteria and windows. **Sample dates are selected randomly for each window of s_params.jump_days in the legal period.** 
 - *int create_sampling_file_sticked(SamplingParams &s_params, string out_sample_file)* : Generate samples within cohort times that fit SampleingParams criteria and windows. **Sample dates are those with the required signals for each window of s_params.jump_days in the legal period (if existing).**
-A MedCohort can also be used to estimate the age and gender dependent incidence rate. Estimation is done using the following function which according to [IncidenceParams](http://node-04/Libs/html/structIncidenceParams):
+A MedCohort can also be used to estimate the age and gender dependent incidence rate. Estimation is done using the following function which according to [IncidenceParams](https://Medial-EarlySign.github.io/MR_LIBS/structIncidenceParams):
 - *int create_incidence_file(IncidenceParams &i_params, string out_file) : *Generate an incidence file from cohort + incidence-params. Check all patient-years within cohort that fit IncidenceParams and count positive outcomes within the incidence_years_window.
 **IncidenceParams initialization:**
 <table><tbody>

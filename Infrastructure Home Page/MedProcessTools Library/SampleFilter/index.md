@@ -1,5 +1,5 @@
 # SampleFilter
-### [SampleFilter ](http://node-04/Libs/html/classSampleFilter)filters a set of samples
+### [SampleFilter ](https://Medial-EarlySign.github.io/MR_LIBS/classSampleFilter)filters a set of samples
 SampleFIlter takes a MedSamples object and generates a new one (optionally in-place) which contains a subset of the original samples. SampleFilters may (optinally) require a MedRepository to apply the filtering
 SampleFilter is a virtual class. See below for the list of implemeted children classes
 ### Include file is - *H:/MR/Libs/Internal/MedUtils/MedProcessTools/SampleFliter.h*

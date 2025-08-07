@@ -36,10 +36,10 @@ Categorical example:
  
  
 For full list of arguments, please refer to:
-[http://node-04/Libs/html/classBasicFeatGenerator.html#a076e93350e71c367d5a4e4e05c7d2f8e](http://node-04/Libs/html/classBasicFeatGenerator.html#a076e93350e71c367d5a4e4e05c7d2f8e)
+[https://Medial-EarlySign.github.io/MR_LIBS/classBasicFeatGenerator.html#a076e93350e71c367d5a4e4e05c7d2f8e](https://Medial-EarlySign.github.io/MR_LIBS/classBasicFeatGenerator.html#a076e93350e71c367d5a4e4e05c7d2f8e)
  
 For full list of "type" params:
-[http://node-04/Libs/html/FeatureGenerator_8h.html#a3b295bd15168010bd0cac676528c63a8](http://node-04/Libs/html/FeatureGeneratorh.html#a3b295bd15168010bd0cac676528c63a8)
+[https://Medial-EarlySign.github.io/MR_LIBS/FeatureGenerator_8h.html#a3b295bd15168010bd0cac676528c63a8](https://Medial-EarlySign.github.io/MR_LIBS/FeatureGeneratorh.html#a3b295bd15168010bd0cac676528c63a8)
 Here are some common operators/types:
 - "last" - take last value in the time window
 - "max" - take maximal value

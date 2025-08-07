@@ -1,15 +1,15 @@
 # MedRegistry
-[Code documentation](http://node-04/Libs/html/classMedRegistry)
+[Code documentation](https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistry)
 Methods in MedRegistry:
 - reading the object: *read_text_file* or* read_from_file* to read in text format or in binary format.
 - writing the object: write*_text_file* or* write_from_file* to writein text format or in binary format.
-- [create_registry](http://node-04/Libs/html/classMedRegistry.html#a7e4937c56e85b3246f5a3922fa00a145) - an option to create registry records by implementing private function ** to fetch each patient registry records
-- [calc_signal_stats](http://node-04/Libs/html/classMedRegistry.html#abc3c0e37860a50d7b3386bc683314803) - a method to create contingency table with other signal splited by gender and age groups.
-- [create_incidence_file ](http://node-04/Libs/html/classMedRegistry.html#a71f5c339661ac0ed97ffb2a1612c3ff9)- a method to calc the incidence (also with kaplan meier) 
+- [create_registry](https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistry.html#a7e4937c56e85b3246f5a3922fa00a145) - an option to create registry records by implementing private function ** to fetch each patient registry records
+- [calc_signal_stats](https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistry.html#abc3c0e37860a50d7b3386bc683314803) - a method to create contingency table with other signal splited by gender and age groups.
+- [create_incidence_file ](https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistry.html#a71f5c339661ac0ed97ffb2a1612c3ff9)- a method to calc the incidence (also with kaplan meier) 
  
 A class that holds all registry records on all patients using MedRegistryRecord. very similar to MedCohort, but a more generic class to hold multiple periods for outcome on same patients.
 for example pregnancy, influenza, kidney stones, sofa scores... 
-Each record consist of those fields in [MedRegistryRecord](http://node-04/Libs/html/classMedRegistryRecord):
+Each record consist of those fields in [MedRegistryRecord](https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistryRecord):
 <table><tbody>
 <tr>
 <th>Parameter name</th>

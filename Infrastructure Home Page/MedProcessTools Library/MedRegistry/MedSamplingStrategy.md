@@ -2,13 +2,13 @@
 A Class that controls how to create [MedSamples ](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedSamples)from [MedRegistry ](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry)by sampling methods.
 it has several subclasses, each has it's own parameters and logic to sample the samples form registry:
 <img src="/attachments/9765342/10911920.png"/>
-Code is documented [here](http://node-04/Libs/html/classMedSamplingStrategy).
+Code is documented [here](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingStrategy).
 do_sample aruments in MedSamplingRegistry:
-- const vector<[MedRegistryRecord](http://node-04/Libs/html/classMedRegistryRecord)> &registry - the registry for the labeling the samples by the sampler (already initialized with sampling params)
+- const vector<[MedRegistryRecord](https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistryRecord)> &registry - the registry for the labeling the samples by the sampler (already initialized with sampling params)
 - [MedSamples](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry) &samples - the samples result
-- const vector< [MedRegistryRecord](http://node-04/Libs/html/classMedRegistryRecord) > *censor_registry - optional arg for specifying censoring times for the sampling
+- const vector< [MedRegistryRecord](https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistryRecord) > *censor_registry - optional arg for specifying censoring times for the sampling
 ### Important Samplers:
-**** - can be used by specifying MedSamplingRegistry::make_sampler("time_window"). from the updated documentition reffer to [doxygen](http://node-04/Libs/html/classMedSamplingTimeWindow)
+**** - can be used by specifying MedSamplingRegistry::make_sampler("time_window"). from the updated documentition reffer to [doxygen](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingTimeWindow)
 Used to sample for each registry record randomly withing a specific time window.
 It can define diffrent time windows for cases/controls.
 Parameters:
@@ -56,8 +56,8 @@ Parameters:
 <td>0</td>
 </tr>
 </tbody></table>
-**MedSamplingYearly** - can be used by specifying MedSamplingRegistry::make_sampler("yearly"). from the updated documentition reffer to [doxygen](http://node-04/Libs/html/classMedSamplingYearly) 
-Used to sample from year to year by jumping periodically between sample times for each patient. for sampling in ICU (more generic sampler for sampling in Fixed time, please reffer to [MedSamplingFixedTime](http://node-04/Libs/html/classMedSamplingFixedTime))
+**MedSamplingYearly** - can be used by specifying MedSamplingRegistry::make_sampler("yearly"). from the updated documentition reffer to [doxygen](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingYearly) 
+Used to sample from year to year by jumping periodically between sample times for each patient. for sampling in ICU (more generic sampler for sampling in Fixed time, please reffer to [MedSamplingFixedTime](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingFixedTime))
 The arguments: time_from, time_to, conflict_method, outcome_interaction_mode, censor_interaction_mode - are common in almost all samplers.
 <table><tbody>
 <tr>

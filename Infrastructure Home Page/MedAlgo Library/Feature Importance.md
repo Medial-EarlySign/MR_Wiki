@@ -1,6 +1,6 @@
 # Feature Importance
 The Feature Importance is **virtual** function of MedPredictor called **calc_feature_importance**.
-If you want to support Feature Importance for your predicotr you need to implement the virtual function: [calc_feature_importance](http://node-04/Libs/html/classMedPredictor.html#acd85e157d4b8fa20e8aa91a94e9fde2e)
+If you want to support Feature Importance for your predicotr you need to implement the virtual function: [calc_feature_importance](https://Medial-EarlySign.github.io/MR_LIBS/classMedPredictor.html#acd85e157d4b8fa20e8aa91a94e9fde2e)
 Some notes:
 - This function must be called after learn method only! otherwise and exception will be raised.
 - The functions returns the features importance score in vector with same order of the learned features matrix order (sorted by ABC because we use map object).
