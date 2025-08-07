@@ -253,7 +253,7 @@ Some interesting pages:
 
 - How to Serialize : learn the [SerializableObject](MedProcessTools%20Library/SerializableObject) libarary secrets.
 - [PidDynamicRecs and versions](InfraMed%20Library%20page/PidDynamicRec)
-- [Virtual Signals](Virtual%20Signals)
+- [Virtual Signals](Rep%20Processors%20Practical%20Guide/Virtual%20Signals)
 
 
 ## Installations
