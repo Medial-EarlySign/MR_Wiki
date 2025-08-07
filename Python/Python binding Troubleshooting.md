@@ -4,7 +4,7 @@
 **Possible cause #1:** If it happened in commandline, You probably didn't use the right Python version.
 **Solution:** In bash type the command:
 ```bash
-source /opt/medial/python36/enable
+source /nas1/Work/python-env/python312/bin/enable
 ```
 and try again.
  
@@ -12,7 +12,7 @@ and try again.
 **Solution: **Recompile the Python binding using the correct python headers and environment:
 ```bash
 # You should probably pull git changes before executing the following steps to get the most recent version.
-source /opt/medial/python36/enable
+source /nas1/Work/python-env/python312/bin/enable
 cd $MR_ROOT/Libs/Internal/MedPyExport/generate_binding/
 ./make.sh
 # After compilation, Your Python binding .so file should appear at: $MR_ROOT/Libs/Internal/MedPyExport/generate_binding/Release/medial-python36
