@@ -86,6 +86,8 @@ SVal *sv = (SVal *)rep.get(pid, "BDATE", len);
 rep.uget(pid, "BDATE", usv);
 ```
 
+<a id="med_repository_init"></a>
+
 ### MedPidRepository: Initialization and Usage
 `MedPidRepository` enables loading data for individual pids into memory, which is useful for scanning large repositories with minimal memory usage. Each thread can hold data for a single patient, rather than all data at once.
 
@@ -111,7 +113,7 @@ UniversalSigVec usv;
 rec.uget(sig_name, usv);
 ```
 
-You can also initialize a `PidRec` from an existing `MedRepository` using `init_from_rec()`. This copies the patient record and allows for dynamic modifications.
+You can also initialize a `PidRec` from an existing `MedRepository` using `init_from_rep()`. This copies the patient record and allows for dynamic modifications.
 
 #### Example: Initializing PidRec from MedRepository
 ```c++
@@ -121,7 +123,7 @@ PidRec rec;
 // Repository should be initialized as shown earlier
 
 vector<int> sids; // Leave empty to load all signals
-rec.init_from_rec(&rep, pid, sids);
+rec.init_from_rep(&rep, pid, sids);
 ```
 
 ### Performance Tips
