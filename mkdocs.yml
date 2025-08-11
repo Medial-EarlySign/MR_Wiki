@@ -6,13 +6,15 @@ site_url: https://medial-earlysign.github.io/MR_Wiki/
 repo_name: 'GitHub'
 theme:
   name: material
-  palette:
-    scheme: default
   features:
     - navigation.tabs
     - navigation.top
-    - navigation.expand
-    - navigation.indexes
+    - navigation.instant
+    - search
+    - search.highlight
+    - search.suggest
+    - search.share
+
 
 plugins:
   - search

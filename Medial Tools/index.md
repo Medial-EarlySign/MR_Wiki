@@ -1,9 +1,8 @@
 # Medial Tools
-Documentition of Tools:
-- 
-[action_outcome_effect](action_outcome_effect): A tool for matching and estimating average treatmnet/action effect on outcome
-- 
-[bootstrap_app ](bootstrap_app)- the bootstrap analysis application
+## Documentition of Tools:
+
+- [action_outcome_effect](action_outcome_effect): A tool for matching and estimating average treatmnet/action effect on outcome
+- [bootstrap_app ](bootstrap_app)- the bootstrap analysis application
 - [model_runner ](/Archive/model_runner)- a full tool to build model by pipline of building registry, sampling, filtering, matching, signalDependency, feature selectio, model selection,training and boostrap analysis. with ability to recover from last step / skip steps...
 - [SignalsDependencies](SignalsDependencies) - A tool to find statistical dependency between registry and signal value withing time window. used as selector for categorical signals
 - [Flow ](Using%20the%20Flow%20App)- Our app to create repository and do a lot of things with our data/model/repository
