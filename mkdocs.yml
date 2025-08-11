@@ -1,0 +1,18 @@
+site_name: Medial EarlySign Documentation
+repo_url: https://github.com/Medial-EarlySign/MR_WIki
+site_author: Medial EarlySign
+site_description: Documentation for Medial EarlySign's projects and tools.
+site_url: https://medial-earlysign.github.io/MR_Wiki/
+repo_name: 'GitHub'
+theme:
+  name: material
+  palette:
+    scheme: default
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.expand
+    - navigation.indexes
+
+plugins:
+  - search

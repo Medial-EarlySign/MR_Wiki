@@ -8,7 +8,7 @@ We will usually contains 2 python files - a parser helper library for this ETL a
   - ... - Your call to add more "configuration" files as needed.
 - FOLDER - **signal_processings** - A folder that will be created if not exists and contains the "logic" for processing the different signal / data types.
   - 
-FILE - **XXXX.py** - Each file under this folder is a python file that contains specific code to process this data type. for example "labs.py" will process all signals with "labs" tag in their definition (if no more specific code exists, please refer to [ETL_INFRA_DIR](../ETL_INFRA_DIR) for more info). For example, if we are loading "Hemoglobin" signal which has those tags "labs,cbc". If we have a file name "Hemoglobin.py" this code will be executed, than it will search for "cbc.py" and than for "labs.py". That way you can control and reuse the code easily for different signals. In most cases, just "labs.py" is enough for all numeric labs. In first time usage, if no file exists a "template" for this file will be created with the following format with instructions (it might help you better understand what to do):
+FILE - **XXXX.py** - Each file under this folder is a python file that contains specific code to process this data type. for example "labs.py" will process all signals with "labs" tag in their definition (if no more specific code exists, please refer to [ETL_INFRA_DIR](ETL_INFRA_DIR.md) for more info). For example, if we are loading "Hemoglobin" signal which has those tags "labs,cbc". If we have a file name "Hemoglobin.py" this code will be executed, than it will search for "cbc.py" and than for "labs.py". That way you can control and reuse the code easily for different signals. In most cases, just "labs.py" is enough for all numeric labs. In first time usage, if no file exists a "template" for this file will be created with the following format with instructions (it might help you better understand what to do):
 ```
 #You have dataframe called "df". Please process it to generare signal/s of class "smoking"
 #Example signal from this class might be Smoking_Status
@@ -26,4 +26,4 @@ FILE - **XXXX.py** - Each file under this folder is a python file that contains
 #4  19930000  1001400086       Y                                                  537..00   None    1
 ```
 And than you can write your code that process "df" object into the instructed format.
-- FOLDER - **tests** - optional, used very rarely. To add more tests only for this ETL process. same format as in [ETL_INFRA_DIR](../ETL_INFRA_DIR) tests folder. The code "merges" the folders.
+- FOLDER - **tests** - optional, used very rarely. To add more tests only for this ETL process. same format as in [ETL_INFRA_DIR](ETL_INFRA_DIR.md) tests folder. The code "merges" the folders.

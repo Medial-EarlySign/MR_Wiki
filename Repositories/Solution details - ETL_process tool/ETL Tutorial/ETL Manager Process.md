@@ -76,7 +76,7 @@ prepare_dicts(WORK_DIR, 'DIAGNOSIS', def_dict, set_dict)
 
 > **Tip:**  
 > For more on categorical signals and custom dictionaries, see:  
-> [Categorical signal/ Custom dictionaries](../Categorical%20signal_%20Custom%20dictionaries)
+> [Categorical signal/ Custom dictionaries](Categorical%20signal_%20Custom%20dictionaries.md)
 
 ---
 

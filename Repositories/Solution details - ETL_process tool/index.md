@@ -22,7 +22,7 @@ e.g. renaming of columns, date format conversion etc. Most of this logic can't b
 - The ETL code should support calling external extensions (define API or at least places in the code where the custom calls should be placed)
 - Improve the documentation of the process - each section should be shorter and better divided
 - Provide both windows/Unix path + open the file automatically if not canceled            
-[High level - important paths/structure](High%20level%20-%20important%20paths_structure)
+[High level - important paths/structure](High%20level%20-%20important%20paths)
 [ETL process unit](Howto%20guide%20to%20some%20ETL%20elements/ETL%20process%20unit)
 [ETL_process TODO](ETL_process%20TODO)
  

@@ -7,10 +7,7 @@ In the following sub-pages you will find information about Python utilization in
   - [Extend and Develop](/Python/Extend%20and%20Develop)
   - [Python AlgoMarker API Wrapper](/Python/Python%20AlgoMarker%20API%20Wrapper)
   - [Usage](/Python/Usage)
-- [Medial's Python Environment Project](Medial's%20Python%20Environment%20Project)
 - [Python binding Troubleshooting](Python%20binding%20Troubleshooting)
-- [Python Environments](Python%20Environments)
-
 
 ## Quick start (Usage Level)
 

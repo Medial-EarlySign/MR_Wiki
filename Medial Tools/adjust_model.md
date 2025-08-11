@@ -23,4 +23,4 @@ Template for adding post processors json:
 ] }
 ```
  
-change_model_info examples can be shown in [change_model](../change_model)
+change_model_info examples can be shown in [change_model](change_model)

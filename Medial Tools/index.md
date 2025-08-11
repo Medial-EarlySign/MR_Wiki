@@ -7,9 +7,7 @@ Documentition of Tools:
 - [model_runner ](/Archive/model_runner)- a full tool to build model by pipline of building registry, sampling, filtering, matching, signalDependency, feature selectio, model selection,training and boostrap analysis. with ability to recover from last step / skip steps...
 - [SignalsDependencies](SignalsDependencies) - A tool to find statistical dependency between registry and signal value withing time window. used as selector for categorical signals
 - [Flow ](Using%20the%20Flow%20App)- Our app to create repository and do a lot of things with our data/model/repository
-- [text_file_processor](text_file_processor)
-- 
-[create_registry ](create_registry)- A Tool to create MedRegistry, and if provided sampling startegy - to create MedSamples from it
+- [create_registry ](create_registry)- A Tool to create MedRegistry, and if provided sampling startegy - to create MedSamples from it
 - [TestModelExternal ](TestModelExternal)- A tool to test difference between repositories when applying a model. It build a propensity model to discriminate between repositories to reveal differences
 - [adjust_model ](adjust_model)- an app to change and adjust the model - add rep_processor, post_processor, etc...
  
@@ -20,7 +18,7 @@ Documentition of Tools:
 - [Using the Flow App](Using%20the%20Flow%20App)
   - [Feature Importance with shapley values analysis](Using%20the%20Flow%20App/Feature%20Importance%20with%20shapley%20values%20analysis)
   - [Fit MedModel to Repository](Using%20the%20Flow%20App/Fit%20MedModel%20to%20Repository)
-  - [Load new repository](Using%20the%20Flow%20App/Load%20new%20repository)
+  - [Load new repository](/Repositories/Load%20new%20repository.md)
   - [Outcomes files](Using%20the%20Flow%20App/Outcomes%20files)
   - [Split Files](Using%20the%20Flow%20App/Split%20Files)
   - [train_test mode](Using%20the%20Flow%20App/train_test%20mode)
@@ -46,7 +44,6 @@ Documentition of Tools:
 - [SHAP Feature Importance](SHAP%20Feature%20Importance)
 - [GANs for imputing matrices](GANs%20for%20imputing%20matrices)
   - [TrainingMaskedGAN](GANs%20for%20imputing%20matrices/TrainingMaskedGAN)
-- [text_file_processor](text_file_processor)
 - [SignalsDependencies](SignalsDependencies)
 - [action_outcome_effect](action_outcome_effect)
 - [Fairness extraction](Fairness%20extraction)

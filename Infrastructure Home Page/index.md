@@ -35,7 +35,7 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
 ## Infrastructure Components
 1. **MedRepository: a high-performance EMR time-series store**
     * Fast retrieval of any patient’s full record or a specific signal across all patients.
-    * [Unified representation](Generic%20(Universal)%20Signal%20Vectors): each signal consists of zero or more time channels plus zero or more value channels, all tied to a patient ID.
+    * [Unified representation](InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors): each signal consists of zero or more time channels plus zero or more value channels, all tied to a patient ID.
       - Static example: "Birth year" → no time channels, one value channel.
       - Single-time example: "Hemoglobin" → one time channel (test date), one value channel (numeric result).
       - Interval example: "Hospitalization" → two time channels (admission and discharge dates).

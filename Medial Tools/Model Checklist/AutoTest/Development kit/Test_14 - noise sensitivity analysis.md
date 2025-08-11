@@ -14,7 +14,7 @@ Tests the model sensitivity for noise - noise in missing values, shifting dates 
 - NOISER_JSON - Path to noiser json config
 - TIME_NOISES, VAL_NOISES, DROP_NOISES - parameters to control the noise
 ## Depends:
-[test_06](../Test_06%20-%20bootstrap%20results)
+[test_06](Test_06%20-%20bootstrap%20results)
 
 ## Output
 $WORK_DIR/test_noiser/results

@@ -17,7 +17,7 @@ Pack all tools to external environment:
 full_pack_all.sh
 ```
 In the remote machine, unzip the mes_full.tar with "tar -xvf mes_full.tar" and run "medial_earlysign_setup.sh" to setup environment.
-The environment is similar to what we have in the docker: [Ubuntu docker (medial_dev)](Dockers/Ubuntu%20docker%20(medial_dev)). We can also install a docker if possible. In my opinion docker is 2nd priority.
+The environment is similar to what we have in the docker: Ubuntu docker (medial_dev). We can also install a docker if possible. In my opinion docker is 2nd priority.
 This is based on those actions. If you don't want to to do all of them:
 <table><tbody>
 <tr>
