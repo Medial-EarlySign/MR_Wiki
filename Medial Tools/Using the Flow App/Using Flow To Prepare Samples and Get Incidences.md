@@ -146,7 +146,7 @@ MATCH4="priceRatio=10;maxRatio=4.5;verbose=1;strata=age,5:time,year,1:gender"
 MATCH5="priceRatio=10;maxRatio=4.5;verbose=1;strata=signal,Glucose,10:signal,HbA1C,1.0"
  
 ```
-more details in here: [MatchingSampleFilter](/Infrastructure%20Home%20Page/MedProcessTools%20Library/SampleFilter/MatchingSampleFilter)
+more details in here: [MatchingSampleFilter](/Infrastructure%20Home%20Page/MedProcessTools%20Library/SampleFilter/MatchingSampleFilter.md)
 ## Get Incidence for a cohort
 In order to get an incidence file for a cohort one can use the following Flow line:
 Flow --rep <repository> --cohort_incidence "from_year=2007;to_year=2014;from_age=40;to_age=80;age_bin=40;incidence_days_win=1825" --cohort_fname <cohort file> --cohort_incidence <incidence parameters> --out_incidence <incidence file created> --censor_reg <censor registry> --use_kaplan_meir 1 

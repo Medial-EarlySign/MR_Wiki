@@ -302,6 +302,6 @@ NPY_NTYPES, NPY_NOTYPE, NPY_CHAR, NPY_USERDEF, NPY_NTYPES_ABI_COMPATIBLE
 ## Installation
 
 Each user compiles their own version.  
-[See Build the python extention](Build%20the%20python%20extention)
+[See Build the python extention](Build%20the%20python%20extention.md)
 
 

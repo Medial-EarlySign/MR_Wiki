@@ -19,4 +19,4 @@
 ### Possible Cause 2: Binding Not Compiled or Wrong Python Headers
 
 - **Check:** The binding may not be compiled, or was compiled with incorrect Python headers.
-- **Solution:** [Recompile the Python binding](Medial's%20C++%20API%20in%20Python/Build%20the%20python%20extention) using the correct environment
+- **Solution:** [Recompile the Python binding](Medial's%20C++%20API%20in%20Python/Build%20the%20python%20extention.md) using the correct environment

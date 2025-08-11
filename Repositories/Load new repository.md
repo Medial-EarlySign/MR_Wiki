@@ -46,7 +46,7 @@ The configuration file uses a delimited format with the following settings:
 - **MODE**: Use value 3
 - **PREFIX**: Prefix for data file names stored in OUTDIR
 - **CONFIG**: Output path for the repository config file (contains dictionaries, signals, etc.)
-- **SIGNAL**: Path to signal definitions ([Signal file format](/Repositories/Signal/Repository%20Signals%20file%20format))
+- **SIGNAL**: Path to signal definitions ([Signal file format](/Repositories/Signal/Repository%20Signals%20file%20format.md))
 - **FORCE_SIGNALS**: Comma-separated list of required signals (e.g., BYEAR,GENDER); patients missing these are dropped
 - **DIR**: Path for config files and data files (relative if RELATIVE=1)
 - **OUTDIR**: Output directory for the repository
