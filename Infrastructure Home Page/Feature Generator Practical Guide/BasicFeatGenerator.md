@@ -47,4 +47,4 @@ Here are some common operators/types:
 - "category_set" - for categorical signal. boolean result. Will test if has value part of "sets" parameter in the defined time window
 - "category_set_count" - for categorical signal. numeric result. Will count how many times found a value that is part of "sets" parameter in the defined time window
  
-For full json model format refer to [MedModel json format](../MedModel%20json%20format)
+For full json model format refer to [MedModel json format](../MedModel%20json%20format.md)

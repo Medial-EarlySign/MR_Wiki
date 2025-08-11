@@ -11,7 +11,7 @@ To create a virtual signal, use the `insert_virtual_signal` API from `MedSignals
 
 - `int insert_virtual_signal(const string &sig_name, int type)` or `int insert_virtual_signal(const string &sig_name, const string& signalSpec)` with generic string definition
   - `sig_name`: The new signal's name (must be unique within the repository)
-  - `type`: The signal's data type or signalSpec for [generic signal](../InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors) definition
+  - `type`: The signal's data type or signalSpec for [generic signal](../InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors.md) definition
 
 This function validates the input and sets up the necessary internal structures.
 
@@ -23,7 +23,7 @@ There are two main methods:
    The repository operates entirely in memory, allowing you to add or remove data freely. Refer to the relevant documentation for details.
 
 2. **Dynamic records:**  
-   Use the dynamic records API (see [PidDynamicRec](../InfraMed%20Library%20page/PidDynamicRec)) to modify or add signal data. This method is used in the MedProcessTools library and is described below.
+   Use the dynamic records API (see [PidDynamicRec](../InfraMed%20Library%20page/PidDynamicRec.md)) to modify or add signal data. This method is used in the MedProcessTools library and is described below.
 
 In MedProcessTools, rep processor stages run first, each with `learn` and `apply` methods. For virtual signals that only require calculation (not learning), you simply need to compute and insert the new signal. More complex cases involve learning parameters or models, which are then used for signal calculation. The most advanced scenarios involve virtual signals needed during the learning stage of another processor or feature generator, which are not fully supported yet.
 
@@ -49,7 +49,7 @@ If multiple versions should share the same data, you can link them using:
 
 ## Creating a Rep Processor for Virtual Signals
 
-You can either write a processor from scratch or use the [`RepCalcSimpleSignals`](Rep%20Calculator) processor, which simplifies many common cases.
+You can either write a processor from scratch or use the [`RepCalcSimpleSignals`](Rep%20Calculator.md) processor, which simplifies many common cases.
 
 **From scratch:**
 1. Each `RepProcessor` has a `virtual_signals_generic` vector (defined in the base class) to store all virtual signals it creates. Initialize this vector in the processor's `init()` function. The model will call `add_virtual_signals` at the appropriate time.

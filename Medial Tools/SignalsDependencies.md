@@ -16,7 +16,7 @@ Start_date - is the outcome registry start time for the outcome to be labeled (i
 End_date - is the outcome registry finish time (where after it the outcome value isn't valid anymore) - for example it may be censoring date. for control it's the last time we know it's still control
 for more details reffer to [MedRegistry ](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry)
  
-Explain on labeling_params and inc_labeling_params can be given in [TimeWindowInteraction](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/TimeWindowInteraction). Those arguments are LabelParams objet that defines how to label sampels.
+Explain on labeling_params and inc_labeling_params can be given in [TimeWindowInteraction](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/TimeWindowInteraction.md). Those arguments are LabelParams objet that defines how to label sampels.
  
 **Important parameters for the tool (that most be supplied, don't use default ones unless you know what you are doing):**
 - global_rep - Repository path

@@ -4,7 +4,7 @@
 `MedRepository` and its extension `MedPidRepository` are core classes in the InfraMed library, designed to facilitate reading, managing, and querying repository data. Familiarity with these classes is essential for effective use of the library.
 
 ### MedRepository vs. MedPidRepository
-`MedPidRepository` builds on `MedRepository` by providing APIs to load a complete patient record ([`PidRec`](PidDynamicRec)). This is particularly useful when iterating over patient IDs and needing all associated data for each one.
+`MedPidRepository` builds on `MedRepository` by providing APIs to load a complete patient record ([`PidRec`](PidDynamicRec.md)). This is particularly useful when iterating over patient IDs and needing all associated data for each one.
 
 ### Initializing and Loading Data
 There are several ways to initialize and load data into a `MedRepository`:
@@ -48,7 +48,7 @@ rep.free_all_sigs();
 
 ### Accessing Data in MedRepository
 Once data is loaded, you can access it using the `get()` function (Old API), which returns a time-sorted vector of values for a specific pid and signal. The result is a void pointer that should be cast to the appropriate signal type.
-Please use `uget()` instead and get a generic signal of type [`UniversalSigVec`](MedSignals%20_%20Unified%20Signals)
+Please use `uget()` instead and get a generic signal of type [`UniversalSigVec`](MedSignals%20_%20Unified%20Signals.md)
 
 #### Example: Accessing Data
 ```c++

@@ -10,7 +10,7 @@ Use only the first field, `"model_json_version"`, the rest have default values s
 - `"serialize_learning_set"`: Boolean (`0` or `1`). If enabled, stores learning samples in the model. Default: `0`.
 - `"generate_masks_for_features"`: Boolean (`0` or `1`). If enabled, stores for each feature whether the value was imputed (important for explainers and MASK predictor during calibration). Default: `0`.
 - `"max_data_in_mem"`: Maximum size of a vector the machine can hold (default: `MAX_INT`). Limits number of rows × number of features. Larger values split model apply into batches.
-- `"take_mean_pred"`: Boolean (`0` or `1`). If enabled, averages predictions; otherwise, uses median. Default: `1`. Currenly relevant only for [Multiple Imputations](PostProcessors%20Practical%20Guide/MultipleImputations) mode
+- `"take_mean_pred"`: Boolean (`0` or `1`). If enabled, averages predictions; otherwise, uses median. Default: `1`. Currenly relevant only for [Multiple Imputations](PostProcessors%20Practical%20Guide/MultipleImputations.md) mode
 
 You can use these prefixes for referencing files relative to the JSON:
 
@@ -19,9 +19,9 @@ You can use these prefixes for referencing files relative to the JSON:
 - `comma_rel:`: References a file, extracts content line by line into a comma-separated string (`"line1,line2,..."`).
 - `json:`: References another file, adds its content to this JSON as-is.
 
-The parameters in the model can be later changed using [adjust_model](/Medial%20Tools/adjust_model)or [change_model](/Medial%20Tools/change_model).
+The parameters in the model can be later changed using [adjust_model](/Medial%20Tools/adjust_model.md)or [change_model](/Medial%20Tools/change_model).
 For example, if you are implementing running an existing model in lower memory computer, you might want to lower down `max_data_in_mem`.
-[Howto limit memory](/Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict)
+[Howto limit memory](/Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict.md)
 
 ## Main Model Pipeline
 

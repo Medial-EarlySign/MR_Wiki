@@ -7,7 +7,7 @@ This guide explains how to set up AlgoMarker to run and expose a predictive mode
 ### 1. **Obtain the Model**
 - For public models, simply download the directory containing the model and its configuration files.
 - For your own model, you’ll need to create a configuration file.  
-  See: [Setup a new AlgoMarker](Setup%20a%20new%20AlgoMarker)
+  See: [Setup a new AlgoMarker](Setup%20a%20new%20AlgoMarker.md)
 
 ### 2. **Build the AlgoMarker Library**
 - Follow the [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS) README to build the `libdyn_AlgoMarker.so` library, or use a pre-built version if available.
@@ -29,7 +29,7 @@ Alternatively, you can use the Python wrapper with FastAPI to expose the AlgoMar
 **Note:** The Python wrapper is slower, requires a larger setup, and depends on Python and its libraries. In contrast, `AlgoMarker_Server` only needs glibc and can run in a minimal (distroless) image. However, the Python wrapper allows for easier code modifications and supports legacy ColonFlag models.
 
 To use the Python wrapper, run [`run_server.sh`](https://github.com/Medial-EarlySign/MR_Tools/blob/main/AlgoMarker_python_API/run_server.sh) after setting `AM_CONFIG` and `AM_LIB` in the script. Clone the repository containing `run_server.sh` if needed.
-More details can be found [here](/Python/Medial's%20C++%20API%20in%20Python/Python%20AlgoMarker%20API%20Wrapper)
+More details can be found [here](/Python/Medial's%20C++%20API%20in%20Python/Python%20AlgoMarker%20API%20Wrapper.md)
 
 #### Using Docker
 
@@ -77,7 +77,7 @@ Once the server is running, it exposes two main API endpoints:
 
 2. **POST `/calculate`**  
    - Accepts a JSON request with either a single patient or a batch of patients.
-   - Request format details: [Request json format](Request%20Json%20Format)
+   - Request format details: [Request json format](Request%20Json%20Format.md)
 
 **Example Response:**
 ```json

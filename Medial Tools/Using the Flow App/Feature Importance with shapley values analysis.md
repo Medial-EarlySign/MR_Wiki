@@ -1,5 +1,5 @@
 # Feature Importance with shapley values analysis
-Please reffer to this page: [ButWhy Practical Guide](/Infrastructure%20Home%20Page/PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide) which is more recent
+Please reffer to this page: [ButWhy Practical Guide](/Infrastructure%20Home%20Page/PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md) which is more recent
  
 Prints average/median feature contribution by SHAPLEY values for each feature by different feature value bins.
 For example: average SHAPLEY contribution for the model on young population compared to middle age populaiton and elderly
