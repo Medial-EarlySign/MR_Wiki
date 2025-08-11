@@ -45,7 +45,7 @@ Function inputs:
 - to_use_list - list of columns from "header" that contains our codes for merging with the known dicts from "def_dict + set_dicts"
  
 Example usage of diagnosis loading in Optum - it contains additional 2 categorical columns:
-```
+```python
 def_dicts=['dict.icd9dx', 'dict.icd10']
 set_dicts=['dict.set_icd9dx', 'dict.set_icd10', 'dict.set_icd9_2_icd10']
 header=['pid','signal' ,'diag_date', 'diagnosis_code', 'diagnosis_status', 'diag_source']

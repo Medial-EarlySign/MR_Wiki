@@ -31,45 +31,20 @@ $> Flow --rep ${REPOSITORY_PATH} --shap_val_request --f_model ${MODEL_PATH} --f_
 ```
 
 Can be given either f_matrix  or f_samples .
-group_cnt - how many groups to split each feature, corresponding argument is  group_names  - if we want to provide names to the groups (optional)
-```
-group_ratio - how many values to catch in each bin. 0.2 - means each bin is 20% of the data
-```
-```
-normalize - whether or not to normalize shap values to percentage
-```
-```
-bin_uniq: 0 - the group_ratio is taken with respect to all data. 0.1 means 10% of the data in each bin. 1 - means 10% of the different flatted values. For example if age range is 0-100, 0.1 means taking 10 years in each bin
-```
-```
-remove_b0 : 1 - remove prior/baseline score. the baseline score (like in linear model) is constant that is added to sum the contributions to the prediction score (it is constant for all samples, you can think about it as 
-```
-```
-prior score when no information is given to match the prevalence). if 0 - will keep it and print also b0
-```
-```
-normalize_after :0 - If 1 will use normalization factor after calculating global feature importance by summing contribution for all features (without normalizing) - will normalize by the sum of all global feature importance . 
-```
-```
-If 0 - will do the normalization to for each prediction seperatly.
-```
-```
-group_signals : option to use file path in format of Feature_name [TAB] group_name to map features into groups. can also specify BY_SIGNAL to group feature by signal or BY_SIGNAL_CATEG to group feature by signal, 
-```
-```
-but categorical signals liek Diagnosis/Drug to group also by thier category value.
-```
-```
-bin_method - binning argument of how to bin each feature into groups - more configurable than group_cnt,group_ratio arguments. If provided will use this instead of group_cnt,group_ratio,bin_uniq,group_names arguments
-```
-example parameter: --bin_method "split_method=iterative_merge;binCnt=50;min_bin_count=100;min_res_value=0.1"  
-splits into 50 bins, each has at least 100 observations, minimal feature resulotion value is 0.1 - does the bining iteratively, each iteration combines 2 adjacents bins which thier sum is the smallest.
+- group_cnt - how many groups to split each feature, corresponding argument is  group_names  - if we want to provide names to the groups (optional)
+- group_ratio - how many values to catch in each bin. 0.2 - means each bin is 20% of the data
+- normalize - whether or not to normalize shap values to percentage
+- bin_uniq: 0 - the group_ratio is taken with respect to all data. 0.1 means 10% of the data in each bin. 1 - means 10% of the different flatted values. For example if age range is 0-100, 0.1 means taking 10 years in each bin
+- remove_b0 : 1 - remove prior/baseline score. the baseline score (like in linear model) is constant that is added to sum the contributions to the prediction score (it is constant for all samples, you can think about it as prior score when no information is given to match the prevalence). if 0 - will keep it and print also b0
+- normalize_after :0 - If 1 will use normalization factor after calculating global feature importance by summing contribution for all features (without normalizing) - will normalize by the sum of all global feature importance.  If 0 - will do the normalization to for each prediction seperatly.
+- group_signals : option to use file path in format of Feature_name [TAB] group_name to map features into groups. can also specify BY_SIGNAL to group feature by signal or BY_SIGNAL_CATEG to group feature by signal, but categorical signals liek Diagnosis/Drug to group also by thier category value.
+- bin_method - binning argument of how to bin each feature into groups - more configurable than group_cnt,group_ratio arguments. If provided will use this instead of group_cnt,group_ratio,bin_uniq,group_names arguments example parameter: --bin_method "split_method=iterative_merge;binCnt=50;min_bin_count=100;min_res_value=0.1" splits into 50 bins, each has at least 100 observations, minimal feature resulotion value is 0.1 - does the bining iteratively, each iteration combines 2 adjacents bins which thier sum is the smallest.
  
  
 output example:
 #output of first 3 feature in a model
  
-```
+```bash
 cat /server/Work/Users/Alon/NWP/outputs/new_flu_comp_importance.tsv | head -n 4 | awk ' { for (i=1;i<=NF;i++) a[i]=a[i]"\t"$i; } END { for (i in a) {printf("%d%s\n", i, a[i])} }' | sort -g -k1
 ```
 <table><tbody>
@@ -340,7 +315,9 @@ cat /server/Work/Users/Alon/NWP/outputs/new_flu_comp_importance.tsv | head -n 4 
 <td>1</td>
 </tr>
 </tbody></table>
-Explain for example for Age:
+
+
+## Explain for example for Age:
 - feature importance (normalized) is about 5.3% of the score on average for the XGBoost raw score without applying sigmoid function (and no calibration after it)
 - SHAP::Low_Mean - 15.4 - means that on group "Low" the average contribution is 15.4% of the score (positive). we can see more details about the contribution distribution in this group - std, percentles..
 - FEAT_VAL::Low_Prctile0 - the lowest value in the bin of "Low" is age 0. the highest value is FEAT_VAL::Low_Prctile100 = 9 - which means the "Low" age group is 0-9 years old, the average age is FEAT_VAL::Low_Mean - 5.27
@@ -350,10 +327,11 @@ Explain for example for Age:
 Graph Creation:
 /server/Work/ExternalProjects/NWP_Flu_20190903/scripts/get_feature_importance_2019.sh
 or with:
-```
+```bash
 #Full path of scripts (should already be in system path) $MR_ROOT/Projects/Scripts/Python-scripts/feature_importance_printer.py
 feature_importance_printer.py --report_path FLOW_shap_val_request_output  --output_path new_output_path_for_graph --num_format "%2.1f" --feature_name "" --max_count 20
 ```
+
 To print graph for specific feature influence - pass on feature_name argument - in this example "Age" was passed. to print global features importance of all features (top 20/max_count) eliminate or pass feature_name as empty string.
 num_format - is format string for the numbers
  

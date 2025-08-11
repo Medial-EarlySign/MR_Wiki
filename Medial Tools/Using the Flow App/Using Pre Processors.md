@@ -9,30 +9,22 @@ The way to do that is add a pre processor at apply time to the model.
 This can be done using the Flow --get_model_preds option and adding the pre processors using the --f_pre_json parameter
 
  
-
 Example:
 
 A pre processor json file that limits histrory:
 
-```
-
+```json
 {
-
         "pre_processors" : [ {"rp_type" : "history_limit" , "signal" : "ref:signals", "win_from" : "0" , "win_to" : "365"} ] ,
-
         "signals" : ["Hemoglobin", "MCV", "MCH"]
-
 }
-
 ```
 
  
 
 A Flow get prediction example using pre processors
 
-```
-
+```bash
 Flow --get_model_preds --rep myrep.repository --f_samples test.samples --f_model trained.model --f_preds out.preds --f_pre_json pre.json
-
 ```
 

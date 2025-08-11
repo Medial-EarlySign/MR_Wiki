@@ -4,7 +4,7 @@ The purpose of the tool is to provide a way to rank the features of a model by t
 The tool can be found in **$MR_ROOT/Tools/feature_importance_by_matching**
 (The script is written in python 3, so please run **source /opt/medial/python36/enable **before)
  
-****Explanation of the algorithm:****
+**Explanation of the algorithm:**
 For a given model, and a validation set, we go over all the features, and perform matching per feature. Then we measure out performance on the resulting validation set (after the matching).
 The lower the AUC after the matching, the more important the feature is.
 There are several approaches for handling missing data (per feature):
@@ -12,15 +12,15 @@ There are several approaches for handling missing data (per feature):
 2. keep - match only on non-missing data, and apply on all data (including missing data).
 3. match - match on data including the "missing value". (This will measure whether existence influences performance)
  
-****Main Advantages:****
+**Main Advantages:**
 1. The method works for all predictor types.
 2. Very correlated features, will receive similar score (when using the built-in feature importance of boosted trees it is not guaranteed)
 3. It can be measure on different subgroups. 
  
-****App help:****
+**App help:**
 **help**
 ```bash
-ron@node-04:/server/UsersData/ron/MR/Projects/Shared/python$ python FeatureImportanceByMatching.py -h
+python FeatureImportanceByMatching.py -h
 usage: FeatureImportanceByMatching.py [-h] [--f_model] [--f_samples]
                                       [--f_split] [--f_out] [--handle_missing]
                                       [--split] [--rep_dir] [--missing_value]
@@ -49,9 +49,10 @@ optional arguments:
 example run (single model, checked on TRAIN = 2, on all splits):
 **Single model**
 ```bash
-ron@node-02:/server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_new_serialization$ python /nas1/UsersData/ron/MR/Tools/feature_importance_by_matching/feature_importance_by_matching.py --f_model model_14_matched_new_serialization_S4.model --train_values 2 --f_split /server/Work/Users/Ron/Projects/LungCancer/results/kp4.split --f_samples /nas1/Work/Users/Ron/Projects/LungCancer/results/data_NSCLC_AllStages_rand_controls_test.samples --rep_dir /home/Repositories/KP/kp.repository --f_out /server/Work/Users/Ron/tmp/final_keep_validation.csv --temp_ext 2 --handle_missing keep --split -1
+python /nas1/UsersData/ron/MR/Tools/feature_importance_by_matching/feature_importance_by_matching.py --f_model model_14_matched_new_serialization_S4.model --train_values 2 --f_split /server/Work/Users/Ron/Projects/LungCancer/results/kp4.split --f_samples /nas1/Work/Users/Ron/Projects/LungCancer/results/data_NSCLC_AllStages_rand_controls_test.samples --rep_dir /home/Repositories/KP/kp.repository --f_out /server/Work/Users/Ron/tmp/final_keep_validation.csv --temp_ext 2 --handle_missing keep --split -1
 ```
-****Output:****
+
+**Output:**
 <table><tbody>
 <tr>
 <th> </th>
@@ -246,12 +247,15 @@ ron@node-02:/server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_
 <td>109643</td>
 </tr>
 </tbody></table>
+
+
 **Cross validation models**
+```bash
+python /nas1/UsersData/ron/MR/Tools/feature_importance_by_matching/feature_importance_by_matching.py --f_model /server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_new_serialization/model_14_matched_new_serialization_S0.model,/server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_new_serialization/model_14_matched_new_serialization_S1.model,/server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_new_serialization/model_14_matched_new_serialization_S2.model,/server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_new_serialization/model_14_matched_new_serialization_S3.model --f_split /server/Work/Users/Ron/Projects/LungCancer/results/kp4.split --f_samples /nas1/Work/Users/Ron/Projects/LungCancer/results/data_NSCLC_AllStages_rand_controls_test.samples --rep_dir /home/Repositories/KP/kp.repository --f_out /server/Work/Users/Ron/tmp/final_ignore.csv --handle_missing ignore
 ```
-ron@node-04:/server/UsersData/ron/MR/Projects/Shared/python$ python /nas1/UsersData/ron/MR/Tools/feature_importance_by_matching/feature_importance_by_matching.py --f_model /server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_new_serialization/model_14_matched_new_serialization_S0.model,/server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_new_serialization/model_14_matched_new_serialization_S1.model,/server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_new_serialization/model_14_matched_new_serialization_S2.model,/server/Work/Users/Ron/Projects/LungCancer/results/model_14_matched_new_serialization/model_14_matched_new_serialization_S3.model --f_split /server/Work/Users/Ron/Projects/LungCancer/results/kp4.split --f_samples /nas1/Work/Users/Ron/Projects/LungCancer/results/data_NSCLC_AllStages_rand_controls_test.samples --rep_dir /home/Repositories/KP/kp.repository --f_out /server/Work/Users/Ron/tmp/final_ignore.csv --handle_missing ignore
-```
-****Output:****
-** **
+
+**Output:**
+
 <table><tbody>
 <tr>
 <td> </td>
@@ -749,8 +753,8 @@ ron@node-04:/server/UsersData/ron/MR/Projects/Shared/python$ python /nas1/UsersD
 <td>35865</td>
 </tr>
 </tbody></table>
-********
-****
+
+
 For reference, attached the results of the XGboost built in feature importance:
  
 <table><tbody>
@@ -986,4 +990,3 @@ For reference, attached the results of the XGboost built in feature importance:
 <td>11.45</td>
 </tr>
 </tbody></table>
-****
