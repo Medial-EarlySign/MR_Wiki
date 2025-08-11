@@ -126,7 +126,7 @@ M12data_LargeTest365/processed_data/PTdict_list.npy
 M12data_LargeTest365/processed_data/arr_outcomes.npy
 ```
 #### Convert absolute time into days, clean zero-length entries
-Convert absolute time into days since 20010101 and remove pids which do not have associated dynamic data [TRAINING dataset](/pages/createpage.action?spaceKey=WIK&title=TRAINING+dataset&linkCreation=true&fromPageId=13402215)
+Convert absolute time into days since 20010101 and remove pids which do not have associated dynamic data TRAINING dataset
 
 ```
 20221103_Fix_Test365_FromScratch.ipynb
