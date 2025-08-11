@@ -1,12 +1,33 @@
-# Build the python extention
-From anywhere in the shell:
+# Building the Python Extension
+
+To build the Medial C++ API Python extension:
+
 ```bash
-build_py_wrapper.sh
+# Activate the correct Python environment
+source /nas1/Work/python-env/python312/bin/activate
+
+# Navigate to the binding directory
+cd $MR_ROOT/Libs/Internal/MedPyExport/generate_binding/
+
+# Build the extension
+./make-simple.sh
+
+# After compilation, the .so file will be located at:
+# $MR_ROOT/Libs/Internal/MedPyExport/generate_binding/Release/medial-python312
+
+# Add this path to PYTHONPATH (or your .bashrc):
+export PYTHONPATH=$MR_ROOT/Libs/Internal/MedPyExport/generate_binding/Release/medial-python312:$PYTHONPATH
 ```
- 
-## Known issues:
- 
-If you experience the following error (result of after update to Ubuntu from Centos):
+
+> **Note:**  
+> Ensure `$MR_ROOT` points to the directory where you cloned [MR_LIBS](https://github.com/Medial-EarlySign/MR_Libs).
+
+---
+
+## Known Issues
+
+If you encounter errors like the following after upgrading from CentOS to Ubuntu:
+
 ```
 [ 27%] Swig compile medpython.i for python
 :1: Error: Unable to find 'swig.swg'
@@ -17,20 +38,10 @@ If you experience the following error (result of after update to Ubuntu from Cen
 /nas1/UsersData/git/MR/Libs/Internal/MedPyExport/generate_binding/MedPython/medpython.i:11: Error: Unable to find 'std_vector.i'
 /nas1/UsersData/git/MR/Libs/Internal/MedPyExport/generate_binding/MedPython/medial-numpy.i:3295: Error: Unable to find 'std_complex.i'
 ```
-Please erase CMakeCache.txt, it contains configuration/cache of older swig settings from centos and this file is not being recreated when rebuilding the python wrapper. 
-Run this command:
- 
+
+This is likely due to an outdated `CMakeCache.txt` file containing old SWIG settings.  
+To resolve this, delete the `CMakeCache.txt` file using the following command:
+
 ```bash
 rm $MR_ROOT/Libs/Internal/MedPyExport/generate_binding/CMakeBuild/Linux/Release/CMakeCache.txt
-```
- 
-## Compile your extension (OLD WAY):
- 
-```bash
-# Make sure all dependent libs have makefiles - NOT NEEDED
-# cd $MR_ROOT/Libs/Internal/MedPyExport && new_create_cmake_files.pl
-cd $MR_ROOT/Libs/Internal/MedPyExport/generate_binding
-# This will start compilation
-./make-simple.sh
-# Extension files are now at : $MR_ROOT/Libs/Internal/MedPyExport/generate_binding/Release/
 ```

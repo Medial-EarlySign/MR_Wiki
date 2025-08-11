@@ -20,8 +20,14 @@ System users should still be able to use the local python shiped with the OS, ju
 
 To use the distribution you should execute the following command:
 ```bash
-. /nas1/Work/python-env/python312/bin/enable
+. /nas1/Work/python-env/python312/bin/activate
 # to return to systems python
 deactivate
 # Already set in system level for all users to use this python
+```
+
+You may want to put this line in your ~/.bashrc and ~/.bash_profile , to load that python envirnment every time you log on:
+```bash
+echo "source /nas1/Work/python-env/python312/bin/activate" >> ~/.bashrc
+echo "source /nas1/Work/python-env/python312/bin/activate" >> ~/.bash_profile
 ```

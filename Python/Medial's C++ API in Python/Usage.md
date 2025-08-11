@@ -1,42 +1,38 @@
 # Usage
-# User Guide
+
 ## Quick Start
-1. 
-When writing commandline scripts you should use Medial's Python build which is located at /opt/medial/python36. To use it you sould run:
-```bash
-. /nas1/Work/python-env/python36/bin/activate
-#Or type "python_env python36" the second argument is the python environment name
-```
-```
-You may want to put this line in your ~/.bashrc and ~/.bash_profile , to load that python envirnment every time you log on:
-```
-```
-echo "source /nas1/Work/python-env/python36/bin/activate" >> ~/.bashrc
-echo "source /nas1/Work/python-env/python36/bin/activate" >> ~/.bash_profile
-```
- 
- 
-2. 
-Execute your Python interpreter (Or just use Jupyter):
-```bash
-# Make sure you use python36 environment
-. /nas1/Work/python-env/python36/bin/activate
-python
-```
-3. 
-In your python 3.6 script, load python
+
+1. **Activate Medial's Python Environment**  
+   For command-line scripts, activate the Python environment:
+   ```bash
+   . /nas1/Work/python-env/python312/bin/activate
+   ```
+
+2. **Start Python Interpreter or Jupyter Notebook**  
+   ```bash
+   python
+   ```
+
+3. **Import Medial's API in Python**  
+   ```python
+   import med
+   ```
+
+4. **Get Help**  
+   ```python
+   help(med)
+   ```
+
+<details>
+<summary>Click to see available classes and methods</summary>
+
 ```python
-import med
-```
-4. 
-Get help:
-```pytyhon
-help(med)
-```
-This will output the following:
-****
- Expand source
-```python
+Help on module med:
+
+NAME
+    med
+
+DESCRIPTION
     class Dictionary
         Methods:
             __init__(PidRepository rep) -> Dictionary
@@ -45,6 +41,8 @@ This will output the following:
             name(int id) -> string
             prep_sets_lookup_table(int section_id, StringVector set_names)
             section_id(string name) -> int
+
+
     class FeatureAttr
         Methods:
             imputed -> bool   (property getter)
@@ -52,9 +50,12 @@ This will output the following:
             imputed <- bool   (property setter)
             normalized <- bool   (property setter)
             __init__() -> FeatureAttr
+
         Data descriptors:
             imputed -> bool   (property getter)
             normalized -> bool   (property getter)
+
+
     class Features
         Methods:
             attributes -> StringFeatureAttrMapAdaptor   (property getter)
@@ -90,12 +91,13 @@ This will output the following:
             set_time_unit(int _time_unit)
             version() -> int
             write_as_csv_mat(string const & csv_fname) -> int
- 
+
         Static methods:
         global_serial_id_cnt    (property getter)
             global_serial_id_cnt -> int   (property getter)
         MEDPY_SET_global_serial_id_cnt(*args)
             MEDPY_SET_global_serial_id_cnt(int newval)
+
         Data descriptors:
             attributes -> StringFeatureAttrMapAdaptor   (property getter)
             data -> StringVecFloatMapAdaptor   (property getter)
@@ -105,6 +107,8 @@ This will output the following:
             tags -> StringUOSetStringMapAdaptor   (property getter)
             time_unit -> int   (property getter)
             weights    (property getter)
+
+
     class IdSamples
         Methods:
             id -> int   (property getter)
@@ -116,10 +120,13 @@ This will output the following:
             __init__() -> IdSamples
             same_as(IdSamples other, int mode) -> bool
             set_split(int _split)
+
         Data descriptors:
             id -> int   (property getter)
             samples -> SampleVectorAdaptor   (property getter)
             split -> int   (property getter)
+
+
     class Mat
         Methods:
             avg    (property getter)
@@ -174,11 +181,13 @@ This will output the following:
             write_to_bin_file(string const & fname) -> int
             write_to_csv_file(string const & fname) -> int
             zero()
+
         Static methods:
         Normalize_Cols    (property getter)
             Normalize_Cols -> int   (property getter)
         Normalize_Rows    (property getter)
             Normalize_Rows -> int   (property getter)
+
         Data descriptors:
         Normalize_Cols
         Normalize_Rows
@@ -191,6 +200,8 @@ This will output the following:
             signals -> StringVector   (property getter)
             std    (property getter)
             transposed_flag -> int   (property getter)
+
+
     class Model
         Methods:
             features -> Features   (property getter)
@@ -240,9 +251,12 @@ This will output the following:
             set_predictor(string name, string init_string)
             write_feature_matrix(string const mat_fname) -> int
             write_to_file(std::string const & fname) -> int
+
         Data descriptors:
             features -> Features   (property getter)
             verbosity -> int   (property getter)
+
+
     class ModelStage
         Methods:
             __init__() -> ModelStage
@@ -256,6 +270,9 @@ This will output the following:
         LEARN_FTR_PROCESSORS = 3
         LEARN_PREDICTOR = 5
         LEARN_REP_PROCESSORS = 0
+
+
+
     class PidRepository
         Methods:
             pids -> IntVector   (property getter)
@@ -290,10 +307,13 @@ This will output the following:
               returns signal type id for a given signal name
             uget(int_pid, int_sid) -> SigVectorAdaptor
               returns a vector of universal signals
+
         Data descriptors:
         dict
             PidRepository_dict_get() -> Dictionary
             pids -> IntVector   (property getter)
+
+
     class Sample
         Methods:
             id -> int   (property getter)
@@ -314,6 +334,7 @@ This will output the following:
             print_(string const prefix)
             print_()
             write_to_string(string & s, int time_unit)
+
         Data descriptors:
             id -> int   (property getter)
             outcome -> int   (property getter)
@@ -321,6 +342,8 @@ This will output the following:
             prediction    (property getter)
             split -> int   (property getter)
             time -> int   (property getter)
+
+
     class Samples
         Methods:
             idSamples -> IdSamplesVectorAdaptor   (property getter)
@@ -355,9 +378,12 @@ This will output the following:
             version() -> int
             write_to_bin_file(string const & file_name) -> int
             write_to_file(string const & fname) -> int
+
         Data descriptors:
             idSamples -> IdSamplesVectorAdaptor   (property getter)
             time_unit -> int   (property getter)
+
+
     class Sig
         Methods:
             __init__(Sig other) -> Sig
@@ -378,6 +404,8 @@ This will output the following:
             val() -> float
             years(int chan=0) -> int
             years() -> int
+
+
     class Split
         Methods:
             nsplits -> int   (property getter)
@@ -386,9 +414,12 @@ This will output the following:
             clear()
             read_from_file(string const & fname) -> int
             write_to_file(string const & fname) -> int
+
         Data descriptors:
             nsplits -> int   (property getter)
             pid2split -> IntIntMapAdaptor   (property getter)
+
+
     class Time
         Methods:
             __init__() -> Time
@@ -402,71 +433,105 @@ This will output the following:
         Undefined = 0
         Years = 2
 ```
-## Note: stderr in Jupyter notebooks
-Our API sometimes prints messages to stderr which are not displayed in jupyter notebooks. 
-If you execute the python script in command line you will see the massages however in Jupyter use the cerr() utility function to flush the buffer and print it in the notebook's output window:
+</details>
+
+---
+
+## Note: stderr in Jupyter Notebooks
+
+Some API messages are printed to stderr and may not appear in Jupyter notebooks.  
+To display these messages, use the `cerr()` utility:
+
 ```python
- med.cerr()
+med.cerr()
 ```
-## getting started
-### import the extension:
- 
+
+---
+
+## Getting Started
+
+### Import the Extension
+
 ```python
 import med
 ```
-### Load the repository:
+
+### Load a Repository
+
 ```python
 rep = med.PidRepository()
-rep.read_all('/home/Repositories/THIN/thin_jun2017/thin.repository',[],['GENDER','BYEAR','DEATH','BDATE'])
-print med.cerr()
+rep.read_all(
+    '/nas1/Work/CancerData/Repositories/THIN/thin_2021/thin.repository',
+    [],
+    ['GENDER', 'DEATH', 'BDATE', 'Albumin']
+)
+print(med.cerr())
 ```
-### Use utility function get_sig() to get a signal as Pandas DataFrame
+
+### Get a Signal as a Pandas DataFrame
+
 ```python
-albumin = rep.get_sig('Albumin') 
+albumin = rep.get_sig('Albumin')
 albumin.head(5)
 ```
- 
-### You might want to clean around and change stuff:
-The following functions might be useful:
+
+---
+
+### Useful DataFrame Utility Functions
+
 ```python
 import pandas as pd
+
 def fix_ts_m1900(df, col):
-    """ change minutes timestamp counter since 1900 to a pandas datetime object"""
+    """Convert minutes since 1900 to pandas datetime."""
     import datetime as dt
-    df[col] = dt.datetime(1900,1,1)+pd.TimedeltaIndex(df[col], unit='m')
+    df[col] = dt.datetime(1900, 1, 1) + pd.TimedeltaIndex(df[col], unit='m')
+
 def fix_type(df, col, newtype):
-    """change type of a given column"""
+    """Change column type."""
     df[[col]] = df[[col]].astype(newtype, copy=False)
-def fix_date_ymd(df, col): 
-    """parse a YYYYMMDD integer/string format to a pandas datetime object"""
+
+def fix_date_ymd(df, col):
+    """Parse YYYYMMDD to pandas datetime."""
     df[col] = pd.to_datetime(df[col], format='%Y%m%d')
- 
-def fix_date_ymdms(df, col): 
-    """parse a YYYYMMDD-MM:SS string format to a pandas datetime object"""
-	df[col] = pd.to_datetime(df[col], format='%Y%m%d-%M:%S')
-def fix_name(df, old_col, new_col): 
-    """rename a column"""
+
+def fix_date_ymdms(df, col):
+    """Parse YYYYMMDD-MM:SS to pandas datetime."""
+    df[col] = pd.to_datetime(df[col], format='%Y%m%d-%M:%S')
+
+def fix_name(df, old_col, new_col):
+    """Rename a column."""
     df.rename(columns={old_col: new_col}, inplace=True)
 ```
-These could be used like this:
+
+**Example Usage:**
+
 ```python
 bdate = rep.get_sig('BDATE')
-fix_type(bdate,'val', int)
-bdate['val'] = bdate['val'] + 1
+fix_type(bdate, 'val', int)
+bdate['val'] += 1
 fix_date_ymd(bdate, 'val')
-fix_name(bdate,'val','BDate')
+fix_name(bdate, 'val', 'BDate')
 bdate.head(5)
 ```
-## Inspect the available function and get help (Documentation is work in progress)
- 
+
+---
+
+## Inspect Available Functions
+
+Documentation is a work in progress.  
+To inspect available methods:
+
 ```python
 help(med.PidRepository)
 ```
-```
- 
-# Addional examples
-- Look at $MR_ROOT/Libs/Internal/MedPyExport/examples/MedProcUtils/ , there, you will find the python implementation for some of the increadible MedProcUtils.
-- [get_sig() example](http://node-04:9000/user/shlomi-internal/notebooks/shlomi-internal/MedialAPI/get_sig.ipynb) - Reading a signal from repository, doing Albumin Value Analysis and exploration using Pandas/matplotlib
-- [Model Test+Train example](http://node-04:9000/user/shlomi-internal/notebooks/shlomi-internal/MedialAPI/learn.ipynb) - A partial translation of Flow's TestTrain class to Python.
-- [Iterating over a Signal](http://node-04:9000/user/shlomi-internal/notebooks/shlomi-internal/MedialAPI/USig_Iterate.ipynb) - This is not the proper way to work with Python, since Python loops are very slow, however, it's nice as a poc.
- 
+
+---
+
+## Additional Examples
+
+- See `$MR_ROOT/Libs/Internal/MedPyExport/examples/MedProcUtils/` for more Python implementations.
+- [get_sig() example](Examples#get_sig_pandas): Read a signal, analyze Albumin values, and explore with Pandas/matplotlib.
+- [Model Test+Train example](Examples#train_model): Partial translation of Flow's TestTrain class to Python.
+- [Iterating over a Signal](Examples#iterate_signal): Demonstrates signal iteration (for proof of concept; Python loops are
+

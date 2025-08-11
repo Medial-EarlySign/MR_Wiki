@@ -3,7 +3,6 @@
 When using "get_sig" function, there is no need to call "read_all" before, "init" is enough. get_sig, loads the signal automatically from disk if needed and not loaded
  
 **Using Lookup table in python**
- Expand source
 ```python
 rep = med.PidRepository()
 rep.read_all(FLAGS.rep, readmissions.pid.values.astype('int32'), ['ADMISSION','DIAGNOSIS_IP','DIAGNOSIS_OP'])
@@ -20,6 +19,8 @@ ip_diagnosis = ip_diagnosis[(lut[ip_diagnosis.val0]!=0)]
 op_diagnosis = rep.get_sig('DIAGNOSIS_OP',translate=False)
 op_diagnosis = op_diagnosis[(lut[op_diagnosis.val0]!=0)]
 ```
+
+<a id="iterate_signal"></a>
 **Iterating over a Signal**
 
 ```python
@@ -40,7 +41,7 @@ for pid in rep.pids[20:30]:
     for rec in usv:
       print("Patient {} had {}={:.2} at {}".format(pid, signame, rec.val(), rec.date()))
 ```
-**Setup **
+**Setup**
 
 ```python
 # py2/py3 compatiblity
@@ -70,6 +71,7 @@ def fix_type(df, col, newtype): df[[col]] = df[[col]].astype(newtype, copy=False
 def fix_date_ymd(df, col): df[col] = pd.to_datetime(df[col], format='%Y%m%d')
 def fix_name(df, old_col, new_col): df.rename(columns={old_col: new_col}, inplace=True)
 ```
+<a id="get_sig_pandas"></a>
 **Load some signals**
 
 ```python
@@ -156,6 +158,8 @@ samples.write_to_file('write_to_samples_file')
  
 #feature matrix exists in - model.features.to_df() . The "samples" object now has the scores
 ```
+
+<a id="train_model"></a>
 **Learn model from json to generate matrix**
 
 ```python
