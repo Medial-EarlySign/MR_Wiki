@@ -51,7 +51,10 @@ yaron@node-02:/nas1/Work/Users/yaron/Examples/iterativeSelector$ /nas1/UsersData
  
 **Output Example:**
 File can be found at /nas1/Work/Users/yaron/Examples/iterativeSelector/outReport
+
 **Output example**
+
+```txt
 Removing family RBC with AUC_Obs = 0.747491
 Removing family RDW with AUC_Obs = 0.747476
 Removing family INR with AUC_Obs = 0.749214
@@ -63,5 +66,4 @@ Removing family MCHC-M with AUC_Obs = 0.750825
 Removing family Hemoglobin with AUC_Obs = 0.752080
 Removing family Platelets with AUC_Obs = 0.741643
 Removing family MCH with AUC_Obs = 0.688449
- 
- 
+```

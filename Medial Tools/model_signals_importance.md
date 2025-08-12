@@ -1,5 +1,5 @@
 # model_signals_importance
-# Goal
+## Goal
 Compare model performance with\without passing group os signals to input the model.
 
 - --skip_list  comma deliimited list that contorls which signals to skip - mainly passed Age,Gender. We always have those values and don't/can't check those

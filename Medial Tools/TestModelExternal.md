@@ -34,7 +34,7 @@ Less important (optional)
 - group_shap_params - grouping args for the shapley on the propensity model
 - shap_auc_threshold - if the AUC is smaller than that, will skip shapley analysis to save time
 - print_mat - if > 0 will print propensity matrix. 0 - labels are for train samples, 1 - labels are for test samples,
-****
+
 ## **Mode 2 - Compare when the repositories are in different networks**
 To use this mode, rep_trained and/or samples_train should be empty.
 
@@ -50,4 +50,3 @@ Add this argument:
 Less important (optional):
 - features_subset_file - file to filter features from the MedModel
 - sub_sample_test - sub sampling on test samples. Integer number to limit the maximal number of samples to sub sample to.0 -no subsampling.
-****

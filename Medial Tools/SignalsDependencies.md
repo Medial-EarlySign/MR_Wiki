@@ -23,7 +23,7 @@ Explain on labeling_params and inc_labeling_params can be given in [TimeWindowI
 
 - global_rep - Repository path
 - registry_path - the path to the MedRegistry file
-- **labeling_params** - the parameters to control how to label the samples created by the signal time points
+- labeling_params - the parameters to control how to label the samples created by the signal time points
 - test_from_window, test_to_window - to control the time window
 - test_main_signal - the signal to test
 If you are using default parameters, you are at high risk of a problem.

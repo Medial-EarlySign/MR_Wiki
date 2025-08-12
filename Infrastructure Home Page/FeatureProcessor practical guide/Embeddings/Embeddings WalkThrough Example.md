@@ -4,15 +4,15 @@ All work done here can be found in: /nas1/Work/Users/Avi/test_problems/embeddin
 The code needed for this is either in MR_LIBS or in MR/Projects/Shared/Embeddings.
 Quick Jump:
 
-- [Step 1 : Plan](../#EmbeddingsWalkThroughExample-Step1)
-- [Step 2: Prepare basic lists , and cohort](../#EmbeddingsWalkThroughExample-Step2)
-- [Step 3 : Design and prepare the training dates for embeddings](../#EmbeddingsWalkThroughExample-Step3)
-- [Step 4 : Prepare the embed_params files for x and y](../#EmbeddingsWalkThroughExample-Step4)
-- [Step 5: Create the x and y matrices](../#EmbeddingsWalkThroughExample-Step5)[Step5](../#EmbeddingsWalkThroughExample-Step5)
-- [Step 6: Train the embedding using Keras](../#EmbeddingsWalkThroughExample-Step6)
-- [Step 7 : Testing we get the same embeddings in Keras and Infrastructure](../#EmbeddingsWalkThroughExample-Step7)
-- [Step 8 : Using Embedding In a MedModel](../#EmbeddingsWalkThroughExample-Step8)
-- [Step 9 : Results for MI with/without Embedding , with/without SigDep](../#EmbeddingsWalkThroughExample-Step9)
+- [Step 1 : Plan](#step-1-plan)
+- [Step 2: Prepare basic lists , and cohort](#step-2-prepare-basic-lists-and-cohort)
+- [Step 3 : Design and prepare the training dates for embeddings](#step-3-design-and-prepare-the-training-dates-for-embeddings)
+- [Step 4 : Prepare the embed_params files for x and y](#step-4-prepare-the-embed_params-files-for-x-and-y)
+- [Step 5: Create the x and y matrices ](#step-5-create-the-x-and-y-matrices)
+- [Step 6: Train the embedding using Keras](#step-6-train-the-embedding-using-keras)
+- [Step 7 : Testing we get the same embeddings in Keras and Infrastructure](#step-7-testing-we-get-the-same-embeddings-in-keras-and-infrastructure)
+- [Step 8 : Using Embedding In a MedModel](#step-8-using-embedding-in-a-medmodel-finally)
+- [Step 9 : Results for MI with/without Embedding , with/without SigDep](#step-9-results-for-mi-withwithout-embedding-withwithout-sigdep)
  
 ## Step 1 : Plan
 Our plan is to use the CVD_MI registry, then use TRAIN=1 group for training/cross validation , and TRAIN=2 group for actual validation.
@@ -33,7 +33,9 @@ General Vocabulary of terms we use:
 - **layers file** : a file containing a keras embedding model in a format we can read and use in our infrastructure.
 - **outcome training** : the process of training the actual model for the outcome (in this example cvd_mi)
 - **embedding training** : the process of preparing the x,y matrices, the scheme files, train a deep learning embedding model in keras, and get the layers file. Scheme and layer files will later be used as a feature generator in the infrastructure.
+
 ## Step 2: Prepare basic lists , and cohort
+
 ```bash
 # creating a cohort file for cvd_mi : first verified mi, censoring cases with other mi's before , and cases with no BP or Glucose or LDL tests
  
@@ -53,8 +55,7 @@ Flow --rep /home/Repositories/THIN/thin_jun2017/thin.repository --filter_and_mat
  
 Flow --rep /home/Repositories/THIN/thin_jun2017/thin.repository --filter_and_match --in_samples ./train_2.samples --out_samples ./validate_2.samples --filter_params "min_sample_time=20040101;max_sample_time=20160101;bfilter=sig_name,BP,win_from,0,win_to,730,min_Nvals,1;bfilter=sig,Glucose,win_from,0,win_to,730,min_Nvals,1;bfilter=sig,LDL,win_from,0,win_to,730,min_Nvals,1;min_bfilter=1"
  
-# generate learn_1 matched subset and subsamples to 10x
- Flow --rep /home/Repositories/THIN/thin_jun2017/thin.repository --filter_and_match --in_samples ./validate_1.samples --out_samples ./learn_1.samples --match_params "priceRatio=200;maxRatio=10;verbose=1;strata=time,year,1"
+Flow --rep /home/Repositories/THIN/thin_jun2017/thin.repository --filter_and_match --in_samples ./validate_1.samples --out_samples ./learn_1.samples --match_params "priceRatio=200;maxRatio=10;verbose=1;strata=time,year,1"
  
 # prepare pids groupA (for embedding) and groupB (for model)
 less validate_1.samples | awk '(NR>1){print $2}' | uniq | awk '{print $1, 1+(rand()<0.5)}' > train_pids_groups
@@ -68,6 +69,7 @@ intersect.pl learn_1.samples 1 pids_group_B 0 > learn_1_B.samples
 ```
  
 We now intend to use validate_1_A.samples or learn_1_A.samples to design an embedding training, and then use learn_1_B.samples to train a predictor for cvd_mi, once without embeddings signals, and once with, and compare the results (on validate_2_B in CV, and eventually on validate_2).
+
 ## Step 3 : Design and prepare the training dates for embeddings
 To train the embedding we need:
 1. x matrix , at some points in time, could be random points, or points similar to how we choose validation or learning samples. We will use the pid, time of validate_1_A.samples for that (~1.6M points, ~660K patients)
@@ -80,6 +82,7 @@ To train the embedding we need:
 2. T={0,365,730} , all options or random choice of one for each sample.
 We will use two options: semi-autoencoder (T for y is 0), and option 2b , and randomly set the y time to be 1y or 2y ahead from the sampling point.
 We keep that in a samples file where the time is the time for x and the outcomeTime is the time for y. Our code later supports this.
+
 ```bash
 # preparing embedding_1_A.samples (using awk this time)
 # we could have started from learn_1_A samples, but decided to be more general and use lots of data, hence starting from validate_1_A
@@ -94,16 +97,17 @@ For continous signals we can choose the ranges we are interested in.
 We can also use a MedModel generated before from a json file and add the features it creates (this option is still in dev/testing)
 We could use the same embed_params for x and y matrices, but to make things interesting we will use different plans for the x and y matrices.
 some preparations:
+
 ```bash
 # preparing the list of read codes we'll use to generate features (that's ~97K features !)
 less /home/Repositories/THIN/thin_jun2017/dict.read_codes | awk '(/DEF/ && substr($3,0,2)=="G_"){print $3}' > rc.codes
 
-# preparing the list of atc codes we'll use to generate features (~6k features)
+### preparing the list of atc codes we'll use to generate features (~6k features)
 less /home/Repositories/THIN/thin_jun2017/dict.drugs_defs | awk '(/DEF/ && substr($3,0,4)=="ATC_"){print $3}' | grep -v ":" > atc.codes
 ```
  
- 
 x_embed_params :
+
 ```ini
 sigs={
 # sigs are sig=<> format with | between sigs
@@ -183,22 +187,28 @@ sig=HT_Registry;type=categorial;categories=HT_Registry_Hypertensive;win_from=-18
 Finally we are ready for this stage. We will start with our samples file, and create 2 matrices from it, the x will use time, the y will use outcomeTime. The matrices will use the embed rules we defined in the previous step, and we will also shrink them to only contain values that appear at least 1e-3 of the samples (to have roughly at least ~1000 cases of it appearing), and less than 0.75 of the samples , to screen to frequent or too rare columns.
 Our samples file is the one we prepared before: embedding_1_A.samples (1.6M training points)
 To actually create the matrices we use the Embeddings project, with the --gen_mat option.
+
 ```bash
 # command line to create x matrix
 Embeddings --gen_mat --rep <rep> --f_samples ./embedding_1_A.samples --embed "pFile=x_embed_params" --min_p 0.001 --max_p 0.75 --prefix x
+```
  
-# files created (ls -l) :
+### files created (ls -l) :
+```
 -rwxrwxrwx 1 root root 6521109879 Feb 13 17:58 x.smat			<---- the sparse matrix. And yes, that is a 6.5GB matrix....
 -rwxrwxrwx 1 root root   40597062 Feb 13 18:00 x.meta			<---- pid,time for each line (same number of lines as in our samples file)
 -rwxrwxrwx 1 root root    1892057 Feb 13 18:00 x.scheme			<---- our serialized x scheme file for this matrix : we will need it when we later create features within a model !
 -rwxrwxrwx 1 root root    1256521 Feb 13 18:00 x.dict			<---- the names of all the columns in the shrunk matrix
-# and now creating the y matrix
+```
+### and now creating the y matrix
+```bash
 Embeddings --gen_mat --rep <rep> --f_samples ./embedding_1_A.samples --embed "pFile=./y_embed_params" --min_p 0.001 --max_p 0.75 --prefix y
 ```
  
 ## Step 6: Train the embedding using Keras
 We are now at a state in which we have our x & y matrices ready. Our goal now is to calculate a deep learning model starting from x[i] and ending in y[i], while flowing through a narrow layer with few (say 100-200) neurons. 
 To do that use the Embedder.py script, or copy it and change what you need inside. The Embedder.py script allows the following:
+
 1. Train through 3 layers (last is the embedding) 
 2. Train through 5 simetric layers with the middle as the embedding layer.
 3. Control parameters of network:
@@ -374,17 +384,23 @@ Some explanation on the model loss and evaluation:
  
 ## Step 7 : Testing we get the same embeddings in Keras and Infrastructure
 This is a needed sanity in order to verify the model we trained is indeed the one our infrastructure will use.
+
 ```bash
 # assuming we prepared t_1.samples : a samples file with a single line
 # we first create a sparse mat for this sample, we use the x.scheme file that was created when we first generated the x matrix
 Embeddings --gen_mat_from_scheme --f_samples ./t_1.samples --f_scheme ../x.scheme --prefix xtest
+```
  
-# this created the xtest.smat file
+### this created the xtest.smat file
  
-# we can now check it directly with keras using the following line (the model will initialize from the .json and .h35 files):
+### we can now check it directly with keras using the following line (the model will initialize from the .json and .h35 files):
+```bash
 python ../Embedder.py --embed --in_model ../emodel --xfile ./xtest.smat  
+```
  
-# result is :
+### result is :
+
+```
 Using TensorFlow backend.
 ('arguments---->', Namespace(dim=[400, 200, 100], dropout=[0.0, 0.0, 0.0], embed=True, full_decode=True, gpu=[0], in_model=['../emodel'], l1=[1e-07, 0.0, 0.0], l2=[0.0, 0.0, 0.0], leaky=[0.1], nepochs=-1, no_shuffle=False, noise=[0.3], out_model='', test=False, train=False, wgt=[10.0], xdim=[11933], xfile=['./xtest.smat'], ydim=[3986], yfile='my_y.smat'))
 using gpu  0
@@ -450,13 +466,18 @@ _________________________________________________________________
   -0.5298457   1.7390456   0.1143899   1.6540909   2.9988813   0.4738245
   -5.7533255   5.286108    4.581069    1.6037283  -0.42494774  2.3381634
   -5.95912     2.1251287   5.0158515  -0.31940365]]
-#
-# We now want to do the same using our layers file and infrastructure:
-# layer 9 is usually the layer of the Embedding if you didn't change the Embedder.py script to run a different network
-#
+```
+
+We now want to do the same using our layers file and infrastructure:
+layer 9 is usually the layer of the Embedding if you didn't change the Embedder.py script to run a different network
+
+```bash
 ./Embeddings --get_embedding --f_samples ./t_1.samples --f_scheme ../x.scheme --f_layers ../emodel.layers --to_layer 9
+```
  
-# results ...
+### results ...
+
+```
 initializing rep /home/Repositories/THIN/thin_jun2017/thin.repository
 Read 0 signals, 0 pids :: data  0.000GB :: idx  0.000GB :: tot  0.000GB
 Read data time 0.102909 seconds
@@ -487,19 +508,18 @@ ApplyKeras: Reading 14 : LAYER  type=dropout;name=dropout_6;drop_rate=0.000000
 ApplyKeras: Reading 15 : LAYER  type=dense;name=dense_5;activation=linear;in_dim=200;out_dim=400;n_bias=400
 ApplyKeras: Reading 16 : LAYER  type=dense;name=dense_6;activation=sigmoid;in_dim=400;out_dim=3986;n_bias=3986
 Embedding[0] :  0.577931, -1.139361, -1.214531, 0.719889, 1.152678, 2.756100, 4.706246, -1.920236, 1.462890, -0.289272, -5.909092, -3.852452, 0.899393, -1.745082, -1.624470, 4.210994, 1.899885, 2.428522, 2.119110, -1.181803, 2.511931, 2.407662, -1.645038, 2.574553, 1.351748, 5.622195, 3.143245, 0.970485, -1.932137, 1.659895, -1.135962, 4.104524, -5.893116, -0.985202, -0.226589, 3.065342, 2.677109, 1.325170, -3.731724, 0.782854, 2.749709, -0.715786, -0.644691, -0.542146, 2.122007, 0.161158, 1.699387, 4.197234, -1.103530, -2.823920, -2.409330, 1.767769, -3.795663, 1.063999, -4.507883, -0.575921, 1.521367, -0.011617, 2.636321, -2.110771, 4.447805, 4.924530, 1.111231, 1.699584, 2.810309, -2.249007, -0.576356, 3.646280, 2.262861, 5.652493, -2.473031, 5.102398, 3.055582, 2.293494, -1.472100, -0.355688, 0.700531, 3.670066, 4.944662, -6.186786, 1.000359, 3.628438, -4.352755, 3.938388, -0.529864, 1.739041, 0.114385, 1.654087, 2.998851, 0.473810, -5.753366, 5.286112, 4.581021, 1.603754, -0.424938, 2.338176, -5.959126, 2.125135, 5.015850, -0.319395,
- 
-# and as can be easily seen we indeed create the same Embedding !! We're good to go and use this embedding in our infrastructure.
-# note we got the same embedding up to ~1e-5 error which is just a numerical error difference. Our embedding is much more stable that this small difference
-# since we trained it with added noise 4 orders of magnitude larger.
- 
-# Another way to test this is to use the Flow --get_json_mat option with the right samples file, and the right json file (see below)
- 
 ```
  
+and as can be easily seen we indeed create the same Embedding !! We're good to go and use this embedding in our infrastructure.
+note we got the same embedding up to ~1e-5 error which is just a numerical error difference. Our embedding is much more stable that this small difference
+since we trained it with added noise 4 orders of magnitude larger. 
+Another way to test this is to use the Flow --get_json_mat option with the right samples file, and the right json file (see below)
+  
 ## Step 8 : Using Embedding In a MedModel (Finally !!)
 Once we have the .scheme file and the matching .layers file we can generate features using the "embedding" feature generator.
 This feature generator will generate for each sample it's sparse x line, then run it through the embedding model , and add the layer output as features in the MedFeatures matrix.
 To use embeddings as features add the following to your json
+
 ```json
 	{ "action_type": 	"feat_generator", "fg_type": "embedding", 
 						// the name of the feature will be FTR_<num>.<name_prefix>.col_<embedding column number> , if using several embedding FGs give them different name_prefix names
@@ -529,6 +549,7 @@ Doing these tests in 4 flavors:
  
 Predictor used was the same for all cases: lightgbm with slightly optimized parameters.
 Results are given for the 30-730 time window, ages 40-80 , we compare AUCs
+
 <table><tbody>
 <tr>
 <th>Model</th>

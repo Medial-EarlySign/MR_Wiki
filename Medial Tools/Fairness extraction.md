@@ -1,6 +1,6 @@
 # Fairness extraction
 In order to test fairness we need to compare Sensitivity, Specificity at specific score cutoff among different groups and compare those values.
-We have tool in SCRIPTS git repository, so it is already part of the PATH and we can use it directly.
+We have tool in [SCRIPTS](https://github.com/Medial-EarlySign/MR_Scripts) git repository, so it is already part of the PATH and we can use it directly.
  
 Example usage:
 ```bash

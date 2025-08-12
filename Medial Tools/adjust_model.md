@@ -1,6 +1,7 @@
 # adjust_model
 Template for adding pre processors json:
-**adding rep_processors json template**
+
+## **adding rep_processors json template**
 ```json
 { "pre_processors" : [
   {
@@ -12,11 +13,11 @@ Template for adding pre processors json:
 ] }
 ```
 **Caution**:
- When adding "pre_processros" with "rp_set" - all the rep processors are added in the END of the existing model rep proceossors. 
+When adding "pre_processros" with "rp_set" - all the rep processors are added in the END of the existing model rep proceossors. 
 When using single "rep_processor" in action type, the single rep_processor is added in the begining.
  
 Template for adding post processors json:
-**Json for adding post_processors**
+## **Json for adding post_processors**
 ```json
 { "post_processors": [
          // Add your blocks in here

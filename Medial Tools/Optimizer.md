@@ -1,7 +1,12 @@
-```
-lightgbm_model.options:
-**lightgbm_model.options**
-```
+## Goal
+The goal is to optimize hyper parameters.
+the options are main focused on MedPredictor parameters, but we can also specify weights and different samples for training
+and combineing all those options.
+Please use `Optimizer --help` compiles using AllTools
+
+## **lightgbm_model.options**
+
+```ini
 verbose=0
 silent=2
 num_threads=15
@@ -20,9 +25,3 @@ boosting_type=gbdt
 max_depth=0,5,6,7
 min_data_in_bin=50
 ```
- 
- 
- 
- 
- 
- 

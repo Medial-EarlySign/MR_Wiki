@@ -1,6 +1,7 @@
 # Embeddings
 The Embeddings tool set is designed to allow generation of strong features embedding a very large feature space into a much smaller dimension, and giving the tools to train these Embeddings, and to use them as a feature generator within the InfraStructure.
 The general plan is the following:
+
 1. Define the (large) feature set (use the embed_params many options for that, see below)
 2. Create x,y matrices to train the embedding : this will also create the .scheme file which is the recipe file of how to create a line in the x matrix - this will be needed later.
 3. Train the embedding using Keras (Embedder.py script) : this will also set the dimension of the embedding.

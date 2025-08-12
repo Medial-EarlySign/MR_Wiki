@@ -23,7 +23,7 @@ The minimal properties for unique solution:
 - Linearity - If we have 2 functions v,w and define a new function v+w to explain which sums the 2 functions - so the contribution value for each varaible  in each function v,w can also be summed. 
  
 **Framework for experiments:**
-The git repository is [MR_Projects](https://github.com/alonmedial/MR_Projects) - mapped into $MR_ROOT/Projects/Shared/Projects
+The git repository is [MR_Projects](https://github.com/Medial-EarlySign/MR_Projects) - mapped into $MR_ROOT/Projects/Shared/Projects
 ****
 The experiment will be done on multiple model to test for robustness.
 All the models are on THIN, except CRC which is on MHS.

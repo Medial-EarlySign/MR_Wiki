@@ -2,16 +2,17 @@
 The tool can be found at **$MR_ROOT/Tools/action_outcome_effect**
 The tool check treatment/action effect on outcome.
 the main input is MedSamples+json to create matrix or MedFeatures(the matrix itself) with list of confounders.
-********
- 
-**Disclaimers:**
+
+## **Disclaimers:**
+
 1. We need to list all covariates that effect action\treatment. because it's human based decision it should be doable to list all. If we miss covariate or confounder we may have missleading results
 2. the matching process may be prone to weighting errors that effect matching or predictor with poor results. we may look at the second_weighted_auc and would like it to be as close as it can to 0.5 (0.5 is perfect match, no more information in the covariates left)
 3. We need strong ignorabilty (so except to 1st point for listing all covariates) we need all the population to have probability for action\treatment that is not pure 0 or 1. we have defined cutoff probability to drop patients who have no dilemas. so the final population in which we show results is different from the requested original (probablity no patients who are very healthy). we may look at the covariated distribution in the new population after drop
 4. the action\treatment may effect indirectly on outcome through other covariates. For example taking statins will lower your LDL value and that's what lower your risk for stroke\MI. It's important to understand that if you have 2 patient with dilema for treatment the treatment effect may occour indirectly by the treatment and we also measure that.
 We are not testing for direct treatment effect only
  
-****What the tool does?****
+## **What the tool does?**
+
 1. Selects a model thats when using it's prediction score on cross validation sqeeze all the information in the covariates:If we do inverse probabilty reweighting (similar method like matching to match populations) and try to learn validation model with cross validation we reach low AUC.It selects the model that the secondry validaiton model after the matching achieves the worst AUC.
 2. Trains a model for predicting the action\treatment and calibrates the scores to probabilty 
 3. Matches or Reweight with the model score to cancel the confounders - it drops patients who are only treated\only untreated because we can't measure treatment effect on them.It also show comperasion of the populations before and after the matching for each of the covariates
@@ -20,6 +21,7 @@ We are not testing for direct treatment effect only
  
 ### **App Help**
 **get help from the app**
+
 ```bash
 $> $MR_ROOT/Tools/action_outcome_effect/Linux/Release/action_outcome_effect --h
 ##     ## ######## ########  ####    ###    ##
@@ -63,8 +65,8 @@ Program options:
   --nbootstrap arg (=1)                                                         bootstrap loop count
 ```
 example Run with config file with all arguments in /server/Work/Users/Alon/UnitTesting/examples/action_outcome_effect/base_config_example.cfg:
-**example run**
-```bash
+
+```bash title="example run"
 Linux/Release/action_outcome_effect --base_config /server/Work/Users/Alon/UnitTesting/examples/action_outcome_effect/base_config_example.cfg
 WARNING: header line contains unused fields [EVENT_FIELDS,]
 [date]=2, [id]=1, [outcome]=3, [outcome_date]=4, [split]=5,
@@ -169,6 +171,7 @@ Starting bootstrap loop 2
 ...
  
 ```
+
 you may see that after the matching the secondry model doesn't achieves good results "SECOND_WEIGHTED_AUC = 0.499".
 but you can see that the population is very different from the original requested one. a predictor can seperated them with AUC=0.751. you can see that the "DM_Registry" has more than doubled it's value from 0.05 to 0.11!!
 the GOOD/BAD keywords only shows you where the populations are differs. you need to remember that those diffrences are unavoidable - to induce causality you have to look on population with strong ignorabilty!
@@ -176,9 +179,9 @@ If you have for example very healty patients with LDL = 70, low BMI and without 
 the same thing happend on "very sick people". inducing treatment effect only works on grey zones when we have dilemas
  
 It also output the results to /tmp/LDL.txt (if nbootstrap==1 all the numbers are without STD, and CI):
-**head of output**
-```
-$> head  /tmp/LDL.txt
+
+```bash title="head of output"
+head  /tmp/LDL.txt
 mean_incidence_precantage=2.13% chi-square=4649.937     DOF=119 prob=0.000
 risk_factor     controls_count  cases_count     case percentage lift    chi-square      chi-prob
 LDL_Group=0.00, LDL_Delta=-1, Treated_Group=0   54.0    5.0     8.47%   3.97    11.37   0.00
@@ -187,9 +190,11 @@ LDL_Group=0.00, LDL_Delta=-1, Treated_Group=2   47.9    0.0     0.00%   0.00    
 LDL_Group=0.00, LDL_Delta=-2, Treated_Group=0   6.0     3.0     33.33%  15.63   41.97   0.00
 ```
 We may see each risk_factor and it's stats - number of controls,cases
-**Input Arguments:**
-**$> cat base_config_example.cfg**
-```
+
+### Input Arguments:
+`cat base_config_example.cfg`
+
+```ini
 rep = /home/Repositories/THIN/thin_jun2017/thin.repository
 #input = /server/Work/Users/Alon/UnitTesting/examples/action_outcome_effect/input_option_2/final_matrix.bin
 #input_type = features
@@ -214,17 +219,19 @@ model_prob_clibrator = caliberation_type=binning;min_preds_in_bin=200;min_prob_r
 method_price_ratio = 6.2
 nbootstrap = 5
 ```
+
 the input argument is the main data file and it can be MedSamples with json to create matrix or the MedFeatures itself.
 
 - patient_action - a file with same number of lines as the samples in the input, each line is correspond to the same sample in the input. it may be 0/1 for [no treatment, treatment] mark for each sample
 - confounders_file - a file list with all the confounders search name (searching contains in the column names) in the matrix of input. each line consist of the the confounder search name
-- example:
-**$> head confounder.list**
-```
+- example: **$> head confounder.list**
+
+```txt
 Age
 Gender
 LDL.last
 ```
+
 here we have 3 confounders: Age,Gender and LDL.last
 
 - patient_groups_file - a file with same number of lines as the samples in the input, each line is correspond to the same sample in the input. it will be the risk group name for the sample for later split. 
@@ -232,7 +239,8 @@ you may write for example in line: "Age=20-40;Gender=Male" to mark the sample as
 - models_selection_file - a file with initialization of the parameters of the model. you may provide more than one option for parameter with "," and than the tool will select the best option over all available options. 
 you may also provide only one option and than the tool will just use this. for example:
 **$> head xgb_model_selection.cfg**
-```
+
+```ini
 max_depth=5,6,7
 num_round=200
 eta=0.1,0.3

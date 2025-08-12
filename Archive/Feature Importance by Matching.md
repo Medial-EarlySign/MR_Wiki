@@ -8,11 +8,13 @@ The tool can be found in **$MR_ROOT/Tools/feature_importance_by_matching**
 For a given model, and a validation set, we go over all the features, and perform matching per feature. Then we measure out performance on the resulting validation set (after the matching).
 The lower the AUC after the matching, the more important the feature is.
 There are several approaches for handling missing data (per feature):
+
 1. ignore - match only on non-missing data, and apply the model on non-missing data.
 2. keep - match only on non-missing data, and apply on all data (including missing data).
 3. match - match on data including the "missing value". (This will measure whether existence influences performance)
- 
+
 **Main Advantages:**
+
 1. The method works for all predictor types.
 2. Very correlated features, will receive similar score (when using the built-in feature importance of boosted trees it is not guaranteed)
 3. It can be measure on different subgroups. 

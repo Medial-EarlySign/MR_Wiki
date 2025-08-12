@@ -2,7 +2,7 @@
 SHAP Feature Importance tool caluclates the SHAP values for XGboost or LightGBM models, and generate a pdf document with feature importance information.
 the tool can be found in  **$MR_ROOT/Tools/ShapFeatureImportance/.**
 The tool receives a model file and a samples file (an additional model for filtering the samples is optional). 
-****Important:****
+**Important:**
 
 - Should run in **python 3** (use the command: source /opt/medial/python36/enable)
 - it is not recommended to work on more than 20,000 samples. Usually 10,000 can give a clear enough graphs (use num_samples parameter)
@@ -34,10 +34,10 @@ The final document consists 4 plots:
 4. The main model (**model_file**) is applied for features matrix generation
 5. SHAP values are calculated
 6. features are aggregated to groups.
+
 **Example:**
-**Running Example**
-```bash
-ron-internal@node-01:/nas1/UsersData/ron/MR/Tools/ShapFeatureImportance$ python shap_feature_importance_tool.py --num_samples 10000 --sig_rename_dict "LDL_over_HDL:LDL over HDL,category_set_ATC_C10A____:Drug-LIPIDMODIFYING AGENTS" --samples_file /server/Work/AlgoMarkers/AAA/aaa_1.0.0.2/RegistryAndSamples/aaa_train_age_matched_matched.samples --rep_file /home/Repositories/THIN/thin_2018/thin.repository --model_file_json_filter /server/UsersData/ron-internal/MR/Projects/Shared/AlgoMarkers/aaa/configs/analysis/ever_smokers_json.json --model_file /server/Work/AlgoMarkers/AAA/aaa_1.0.0.2/Performance/model_6_S4.model --output_file /server/Work/Users/Ron/tmp/shap_5.pdf --filter_params "Time-Window:30,180;Age:65,75;Gender:2,2;Ex_or_Current_Smoker:0.5,1.5"
+```bash title="Running Example"
+python shap_feature_importance_tool.py --num_samples 10000 --sig_rename_dict "LDL_over_HDL:LDL over HDL,category_set_ATC_C10A____:Drug-LIPIDMODIFYING AGENTS" --samples_file /server/Work/AlgoMarkers/AAA/aaa_1.0.0.2/RegistryAndSamples/aaa_train_age_matched_matched.samples --rep_file /home/Repositories/THIN/thin_2018/thin.repository --model_file_json_filter /server/UsersData/ron-internal/MR/Projects/Shared/AlgoMarkers/aaa/configs/analysis/ever_smokers_json.json --model_file /server/Work/AlgoMarkers/AAA/aaa_1.0.0.2/Performance/model_6_S4.model --output_file /server/Work/Users/Ron/tmp/shap_5.pdf --filter_params "Time-Window:30,180;Age:65,75;Gender:2,2;Ex_or_Current_Smoker:0.5,1.5"
 ```
 
 
