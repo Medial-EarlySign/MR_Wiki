@@ -6,7 +6,7 @@ The InfraMed Library is a non-sql data structure tailored to hold medical record
 The main goal is to provide an efficient way to get a vector of time signals (date/time, value) for a pair of patient and signal type (pid , sid).
 Main toolsets available in the library:
 
-- Converting a data set to the InfraMed Repository format. (see[ here](/Repositories/Load%20new%20repository)
+- Converting a data set to the InfraMed Repository format. (see [here](/Repositories/Load%20new%20repository.html))
 - Adding a signal to the data set, fixing a signal
 - Reading a data set or a part of it to memory
 - Get the vector of signals for (pid, sid) , date/time sorted
@@ -26,12 +26,12 @@ Main toolsets available in the library:
 ### General Classes 
 It is recommeded to read and understand the following pages explaining the main classes used in the InfraMed library:
 
-- [MedRepository , MedPidRepository](MedRepository) : most used classes packing options to read repositories and query them.
+- [MedRepository , MedPidRepository](MedRepository.md) : most used classes packing options to read repositories and query them.
 - MedConvert : class used when creating a new repository.
-- [MedSignals](MedSignals%20_%20Unified%20Signals): class used to handle signal files and signal properties, also contains the unified way of accessing signals.
-- [MedDictionary , MedDictionarySections](MedDictionary) : classes used to read dictionaries and use them
+- [MedSignals](MedSignals%20_%20Unified%20Signals.md): class used to handle signal files and signal properties, also contains the unified way of accessing signals.
+- [MedDictionary , MedDictionarySections](MedDictionary.md) : classes used to read dictionaries and use them
 More Advanced:
-- [PidDynamicRec](PidDynamicRec) : class with an advanced option to hold versions of the same signal.
+- [PidDynamicRec](PidDynamicRec.md) : class with an advanced option to hold versions of the same signal.
 - InMem repository : the InMemRepData class and its usage in a MedRepository to load data into it.
 Even More... (internal important classes and methods):
 - IndexTable : class to read data for a specific signal on a subset (or all) pids, with a memory efficient fast index.

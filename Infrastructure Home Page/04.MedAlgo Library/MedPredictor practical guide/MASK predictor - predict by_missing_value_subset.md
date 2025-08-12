@@ -3,8 +3,8 @@
 When a model uses BMI (for example), and a sample has no BMI, the 'standard' approach is leave the relevant features as NaN or impute (impute is usually better).
 MASK model takes a different approach - it would score the sample based on a model trained without BMI.
 ****
-****
-```
+
+```ini
 PARAMS="predictor_type=xgb;masks_params=Smoking_Intensity|BMI|Fev1|Hemoglobin,Hematocrit,Platelets,WBC,MCH,Eosinophils%,Neutrophils%,Neutrophils#,RDW,RBC,MCHC-M|ALT,ALKP,Albumin;masks_tw=0,365,365,365,365;predictor_params=${XGB_PARAMS}"
 ```
 A mask is list of signals, separated by ",". Masks are separated by "|". This example has 5 masks:

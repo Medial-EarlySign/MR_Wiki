@@ -5,7 +5,7 @@ The program steps:
 - Creates or load from text file [MedRegistry](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry). Can provide file path or config file to generate MedRegistry
 - Creates or load from text file [MedRegistry](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry) for censoring (a time periods where that marks the patients "Membership" period, it's also in format of MedRegistry) - OPTIONAL, if not given, assume the patient has full membership
 - Creates [MedLabel](https://Medial-EarlySign.github.io/MR_LIBS/classMedLabels) from registry and censor_registry with problem definition arguments - time window argument + labeling policy arguments. This object knows how to "label" the outcome for a sample in a given time or decide to exclude it based on MedRegistry and the LabelParams.
-- Creates [MedSamples ](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedSamples)from [MedSamplingStrategy ](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy)arguments of how to sample + additional filtering arguments you may provide to restrict sampling (Age, Years...)
+- Creates [MedSamples ](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedSamples.html)from [MedSamplingStrategy ](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html)arguments of how to sample + additional filtering arguments you may provide to restrict sampling (Age, Years...)
 ## Create samples from MedRegistry
 ```bash
 create_registry --rep $REP_PATH --registry_load $PATH_TO_MED_REGISTRY_FILE --registry_active_periods_complete_controls_sig MEMBERSHIP \
@@ -14,9 +14,9 @@ create_registry --rep $REP_PATH --registry_load $PATH_TO_MED_REGISTRY_FILE --reg
 #Can also provide additional MedRegistry for Membership if it is not a signal, by passing "--censor_load".
 ```
 
-- LABELING_PARAMS - defines how to label the sample - is it case/control or other outcome value?- The initialization text for [MedLabels](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedLabels)
-- SAMPER_TYPE - type of sampler. The options are in [here](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingStrategy.html#a161f9af97fe2dd90bff67a5ac58679ff) (code documentation make_sampler) or can look for informaiton here: [MedSamplingStrategy](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy)
-- SAMPLER_ARGS - for the specific Sampler, the arguments for it. [MedSamplingStrategy](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy) or browse the arguments of the specifc sampler
+- LABELING_PARAMS - defines how to label the sample - is it case/control or other outcome value?- The initialization text for [MedLabels](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedLabels.html)
+- SAMPER_TYPE - type of sampler. The options are in [here](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingStrategy.html#a161f9af97fe2dd90bff67a5ac58679ff) (code documentation make_sampler) or can look for informaiton here: [MedSamplingStrategy](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html)
+- SAMPLER_ARGS - for the specific Sampler, the arguments for it. [MedSamplingStrategy](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html) or browse the arguments of the specifc sampler
 - OPTIONAL_FILTERING_PARAMS_LIKE_AGE - parameters to filter the samples like age. [FilterParams](https://Medial-EarlySign.github.io/MR_LIBS/classFilterParams). For example "min_age=0;max_age=90;min_time=20120101;max_time=20180101"
 The SAMPLER_TYPE, SAMPLER_ARGS are independent of the labeing - they define just when to give score or try to give score.
  

@@ -3,10 +3,10 @@ This page intends to list current RepProcessors with explanations on parameters 
 
 - basic_cln : Basic outlier cleaner : learn ditribution and throw extreme values
 - nbrs_outlier_cleaner : Neighborhood outlier cleaner
-- [configured_outlier_cleaner ](Cleaners%20Json%20Examples): Configured outlier cleaner - Wrapper for basic_cln  with fixed bounderies for each signal
-- [rulebased_outlier_cleaner ](Cleaners%20Json%20Examples): Rule Based outlier cleaner - Rules based on panels (for example BMI) to remove mismatched values in panels
-- [calculator ](Rep%20Calculator): virtual signals calculator - Virtual signals calculator - linear sum, log, and more..
-- [complete ](Full%20Rep%20Processor): panel completer - Completes signals using panels calculations. searches for signals in exact same time that are relate to calculate (TODO: time window support). for example BMI = Weight/Height^2
+- [configured_outlier_cleaner](Cleaners%20Json%20Examples.md): Configured outlier cleaner - Wrapper for basic_cln  with fixed bounderies for each signal
+- [rulebased_outlier_cleaner](Cleaners%20Json%20Examples.md): Rule Based outlier cleaner - Rules based on panels (for example BMI) to remove mismatched values in panels
+- [calculator](Rep%20Calculator.md): virtual signals calculator - Virtual signals calculator - linear sum, log, and more..
+- [complete](Full%20Rep%20Processor.md): panel completer - Completes signals using panels calculations. searches for signals in exact same time that are relate to calculate (TODO: time window support). for example BMI = Weight/Height^2
 - req : check requirement processor
 - sim_val : sim val processor  - When signal has more than one value in same time - which one to choose
 - signal_rate : signal rate processor - divide signal value by time diff in 2 time channels that describe the signal period
@@ -16,28 +16,27 @@ This page intends to list current RepProcessors with explanations on parameters 
 - basic_range_cleaner : range cleaner
 - aggregate : get signals in or out of a given period signal
 - [create_registry](#RepProcessorsPracticalGuide-create_registry_rp) : create a virtual signal of a registry to some common medical situations (Diabetes, Hypertension)
-- [limit_history](History%20Limit%20repo%20processor) : limit or eliminate signals. Needed mainly as a pre processor
+- [limit_history](History%20Limit%20repo%20processor.md) : limit or eliminate signals. Needed mainly as a pre processor
  
 ## Rep Processors usage in a MedModel
 Rep processors are the first elements running in a MedModel run. They are packed into MultiProcessors, each containing 1 or more rep processors. Each such multi processor contains processors allowed to run in parallel to each other, and indeed the MedModel will parallelize those runs. This is true for both learn and apply stages (mainly for learn, as in apply we anyway parallize on the pids records). Hence once defined it is important to pack the processors in the way that allows maximal parallelism.
 Example of packing processors when defining them in a json file:
 ```json
-#############################################################################################################################
-# new format example
+// new format example
  
 "model_json_version": "2",
 "serialize_learning_set": "0",
  
-# pack all actions (rp, fg, fp) into model_actions
+// pack all actions (rp, fg, fp) into model_actions
   "model_actions": [
-# add a group of first rep processors (will run first and in parallel)
+// add a group of first rep processors (will run first and in parallel)
     { "action_type": "rp_set",
       "members": [
         { "rp_type": "basic_cln", "type": "quantile", "range": "range_min=0.100;range_max=6500.000",  "signal": [ "ALT", "Na" ] }, //Not used in LGI
         { "rp_type": "basic_cln", "type": "iterative", "range": "range_min=0.0001;range_max=10000", "trimming_sd_num": "7","removing_sd_num": "14", "signal": "Hemoglobin"} //USED in LGI
       ]
     },
-# add another group (will run after first group and in parallel)
+// add another group (will run after first group and in parallel)
     { "action_type": "rp_set",
       "members": [
         { "rp_type": "basic_cln", "type": "quantile", "range": "range_min=0.100;range_max=6500.000",  "signal": [ "RBC", "WBC" ] },
@@ -45,20 +44,19 @@ Example of packing processors when defining them in a json file:
       ]
     }
  
-# continue with your json ...
+// continue with your json ...
 	]
  
-####################################################################################################################
-# old format example
+// old format example
   "processes": {
-# rep processors in group 0 (running first and in parallel)
+// rep processors in group 0 (running first and in parallel)
 	"process" : { "process_set": "0", "rp_type": "basic_cln", "type": "quantile", "range": "range_min=0.100;range_max=6500.000",  "signal": [ "ALT", "Na" ] },
 	"process" : { "process_set": "0", "rp_type": "basic_cln", "type": "quantile", "range": "range_min=0.100;range_max=6500.000",  "signal": "Hemoglobin" },
-#rep processors in group 1 (running after first and in parallel)
+// rep processors in group 1 (running after first and in parallel)
 	"process" : { "process_set": "1", "rp_type": "basic_cln", "type": "quantile", "range": "range_min=0.100;range_max=6500.000",  "signal": [ "RBC", "WBC" ] },
 	"process" : { "process_set": "1", "rp_type": "basic_cln", "type": "quantile", "range": "range_min=0.100;range_max=6500.000",  "signal": "Creatinine" }
  
-# continue with your json ....
+// continue with your json ....
 }
 	
 ```
@@ -83,8 +81,10 @@ Flow --rep data.repository --get_model_preds --f_model my.model --f_samples test
 ```
 ### Create Registy Processor
 Creates a registry for the chosen medical condition. Currently implemented are hypertension and diabetes.
+
 - name : "create_registry"
 Rough registry definition:
+
 1. Diabetes:
     1. Diabetes : one of:
         1. 2 tests within 2y of Glucose above 125, or HbA1C above 6.5 (the second one)  
@@ -104,7 +104,7 @@ Rough registry definition:
 4. HyperTension: 
   
 Example:
-```json
+```json title="Example"
     {
       "rp_type":"create_registry",
       "registry":"ht",
@@ -152,10 +152,10 @@ general:
 - registry : "dm" for siabetes, "ht" for hypertension
 - names : the name/names of the virtual signals created by the processor, these will hold the actual registry signal.
 - signals : the signals the rep depends on, in case of working with slightly different signal names than the defaults
-  - defaults for dm : "Glucose","HbA1C","Drug","RC"
-  - defaults for ht : "BP","RC","Drug","BYEAR","DM_Registry"
-  - defaults for proteinuria: all relevant rine tests : "Urine_Microalbumin", "UrineTotalProtein" , "UrineAlbumin" , "Urine_dipstick_for_protein" , "Urinalysis_Protein" , "Urine_Protein_Creatinine" , "UrineAlbumin_over_Creatinine"
-  - defaults for ckd : in ckd it is always reccomended to create the proteinuria signal and then use it, see the examples below.
+    - defaults for dm : "Glucose","HbA1C","Drug","RC"
+    - defaults for ht : "BP","RC","Drug","BYEAR","DM_Registry"
+    - defaults for proteinuria: all relevant rine tests : "Urine_Microalbumin", "UrineTotalProtein" , "UrineAlbumin" , "Urine_dipstick_for_protein" , "Urinalysis_Protein" , "Urine_Protein_Creatinine" , "UrineAlbumin_over_Creatinine"
+    - defaults for ckd : in ckd it is always reccomended to create the proteinuria signal and then use it, see the examples below.
 - time_unit : of repository (can rely on default though)
 - registry_values : the names of the registry values created in a dictionary (first will be 0, second 1, and on....)
 diabetes related:
@@ -179,31 +179,32 @@ ckd related:
 - ckd_proteinuria : the name of the signal holding the proteinuria signal (the 3 levels one !!!)
  
 Json Examples:
+
 ```json
-#
-# creating a diabetes registry
-#
+//
+// creating a diabetes registry
+//
 {"rp_type": "create_registry", "registry" : "dm", "names" : "_v_DM_Registry",
                           "dm_drug_sets" : "list:/nas1/UsersData/avi/MR/Tools/Registries/Lists/diabetes_drug_codes.full",
                      "dm_diagnoses_sets" : "list:/nas1/UsersData/avi/MR/Tools/Registries/Lists/diabetes_read_codes_registry.full.striped"}
  
-#
-# creating a hyper tension registry
-# It is important to clean and handle simultanous values beforehand
-# note that default lists of codes are in $MR_ROOT/Tools/Registries/Lists/
-#
+//
+// creating a hyper tension registry
+// It is important to clean and handle simultanous values beforehand
+// note that default lists of codes are in $MR_ROOT/Tools/Registries/Lists/
+//
 {"action_type":"rep_processor","rp_type":"basic_outlier_cleaner","range_min":"0.001","range_max":"100000","val_channel":"0","signal":"BP"},
 {"action_type":"rep_processor","rp_type":"basic_outlier_cleaner","range_min":"0.001","range_max":"100000","val_channel":"1","signal":"BP"},
 {"action_type":"rep_processor","rp_type":"sim_val","type":"min","signal":"BP"},
 {"action_type":"rep_processor","rp_type":"create_registry","registry":"ht","names":"my_HT_Registry"},
-#
-# creating a proteinuria registry
-#
+//
+// creating a proteinuria registry
+//
 {"action_type":"rep_processor","rp_type":"create_registry","registry":"proteinuria","names":"_v_Proteinuria_State"},
- 
-#
-# creating a CKD registry, note we use the previously defined proteinuria registry
-#
+
+//
+// creating a CKD registry, note we use the previously defined proteinuria registry
+//
 {"action_type":"rep_processor","rp_type":"create_registry","registry":"ckd", "names" : "_v_CKD_State" , 
 				"signals" : "_v_Proteinuria_State,eGFR_CKD_EPI" ,
                 "ckd_egfr_sig" : "eGFR_CKD_EPI" , 

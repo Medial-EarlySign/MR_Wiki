@@ -8,7 +8,7 @@
 - GBM : type = "gbm" - Gradient Boosting Machine  - imported public library used in R
 - BP : type = "BP" - Back propogation. (Obsolete) version of NN
 - Multi-Class : type = "multi_class" - an enevelope for multi-class problems, currently implementing one-vs-all
-- XGBoost : type = "xgb" - public implementation of xgboost + [internaly added features](XGBoost%20added%20features)
+- XGBoost : type = "xgb" - public implementation of xgboost + [internaly added features](XGBoost%20added%20features.md)
 - Lasso : type = "lasso" - Lasso linear regression using gradient descent
 - MicNet : type = "micNet" - Neural Net
 - Booster : type = "booster" - Envelope for boosting models
@@ -19,4 +19,4 @@
 - vw : type = "vw" - an envelope for Vowpal Wabbit models
 - TQRF : type = "tqrf" - new version of quantized RF (Not ready yet ?)
 - BART : type = "bart" - public implementation of BART (Bayesian Additive Regression Trees)
-- MASK: type="by_missing_value_subset" - [see here](MASK%20predictor%20-%20predict%20by_missing_value_subset) 
+- MASK: type="by_missing_value_subset" - [see here](MASK%20predictor%20-%20predict%20by_missing_value_subset.md) 

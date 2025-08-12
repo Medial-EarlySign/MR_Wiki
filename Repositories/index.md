@@ -3,4 +3,4 @@ Link to Tutorial of using our ETL: [ETL Tutorial](Solution%20details%20-%20ETL_
 
 ## Load file format
 
-Please refer to [Load new repository](Load%20new%20repository)
+Please refer to [Load new repository](Load%20new%20repository.md)

@@ -34,7 +34,7 @@ map<string, float> calc_roc_measures_with_inc(Lazy_Iterator *iterator, int threa
  
 ### Function output
 The function returns "map" from string to float. the key of the map is the name of the measurement and the float is the corresponding value. In that way, you can calculate multiple measurements in a single function and give them names. 
-When used, the infrastructure will append suffix for each measurement: "_Mean", "_Std", "_CI.Lower.95", "_CI.Upper.95", "_Obs" as in this page: [Bootstrap legend](/Medial%20Tools/bootstrap_app/Bootstrap%20legend)
+When used, the infrastructure will append suffix for each measurement: "_Mean", "_Std", "_CI.Lower.95", "_CI.Upper.95", "_Obs" as in this page: [Bootstrap legend](../Bootstrap%20legend.md)
 ### Here is a simple example of function that counts how many cases and how many controls exists:
 ```c++
 map<string, float> calc_npos_nneg(Lazy_Iterator *iterator, int thread_num, Measurement_Params *function_params) {

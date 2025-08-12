@@ -26,5 +26,5 @@ e.g. renaming of columns, date format conversion etc. Most of this logic can't b
 - Provide both windows/Unix path + open the file automatically if not canceled            
 [High level - important paths/structure](High%20level%20-%20important%20paths)
 [ETL process unit](Howto%20guide%20to%20some%20ETL%20elements/ETL%20process%20unit)
-[ETL_process TODO](ETL_process%20TODO)
+[ETL_process TODO](ETL_process%20TODO.md)
  

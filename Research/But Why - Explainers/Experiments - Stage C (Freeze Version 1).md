@@ -8,6 +8,7 @@ The current method is to calculate the covariance matrix of the features and mul
 When using groups those are the new options (the first option is what we had in the last experiment):
 In all options these are the definitions:
 Let's mark the features covariance matrix as F(i,j) is size NxN (N is the number of features). Build "covariance matrix" for groups (if we have G groups, the matrix size is GxG), lets mark it C matrix. C(i,i)=1. C(i,j)=C(j,i) the matrix is symmetric
+
 1. C(i,j) := max{ F(k,l) | k is feature in group i, l is feature in group j }
 2. Let's mark feature contribution for the prediction as vector T in size N as the number of features (taking the contribution of the features without iterations) .C(i,j) := Sigma( k is feature in group i, l is feature in group j) { F(k,l)*T(k)*T(l) } / Sigma( k is feature in group i, l is feature in group j) { 1*T(k)*T(l) }
 The advantage in equation #2 is that it should maybe better since it's not taking "max" and using specific feature contributions.

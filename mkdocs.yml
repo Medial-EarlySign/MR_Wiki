@@ -37,3 +37,5 @@ markdown_extensions:
 
 plugins:
   - search
+
+use_directory_urls: false

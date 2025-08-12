@@ -10,7 +10,7 @@
 ## Common Actions
 
 ### 1. Match MedSamples by Year or Criteria
-See: [Using Flow To Prepare Samples and Get Incidences](/Medial%20Tools/Using%20the%20Flow%20App/Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences)
+See: [Using Flow To Prepare Samples and Get Incidences](../Using%20the%20Flow%20App/Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.md)
 
 ### 2. Train a Model from JSON
 **Simple Training:**  
@@ -18,10 +18,10 @@ See: [Using Flow To Prepare Samples and Get Incidences](/Medial%20Tools/Using%20
 Flow --simple_train --rep $REPOSITORY_PATH --f_samples $PATH_TO_TRAIN_SAMPLES --f_json $PATH_TO_JSON_WITH_MODEL_INSTRUCTIONS --f_model $PATH_TO_OUTPUT_TO_STORE_MODEL
 ```
 **Cross-validation:**  
-See: [train_test mode](/Medial%20Tools/Using%20the%20Flow%20App/train_test%20mode)
+See: [train_test mode](../Using%20the%20Flow%20App/train_test%20mode.md)
 
 **Optimizer for Best Parameters:**  
-See: [Optimizer](/Medial%20Tools/Optimizer)  
+See: [Optimizer](../Optimizer.md)  
 Can be compiled in AllTools.
 
 ### 3. Calculate Model Score on Samples
@@ -42,33 +42,33 @@ Flow --get_json_mat --rep $REPOSITORY_PATH --f_samples $PATH_TO_TRAIN_SAMPLES --
 
 ### 5. Adjust Model
 Add or retrain rep_processor or post_processor components. Useful for calibration or explainability.  
-See: [adjust_model](/Medial%20Tools/adjust_model)  
+See: [adjust_model](../adjust_model.md)  
 Can be compiled in AllTools.
 
 ### 6. Change Model
 Remove or modify model components (e.g., enable debug logs, test normalization).  
-See: [change_model](/Medial%20Tools/change_model)  
+See: [change_model](../change_model)  
 Can be compiled in AllTools.
 
 ### 7. Simplify Model / Remove Signals
 Iteratively add or remove signals to simplify the model.  
-See: [Iterative Feature Selector](/Medial%20Tools/Iterative%20Feature%20Selector)  
+See: [Iterative Feature Selector](../Iterative%20Feature%20Selector.md)  
 Can be compiled in AllTools.
 
 ### 8. Analyze Feature Importance & Model Behavior
 "But Why" graphs for feature validation.  
-See: [Feature Importance with shapley values analysis](/Medial%20Tools/Using%20the%20Flow%20App/Feature%20Importance%20with%20shapley%20values%20analysis)
+See: [Feature Importance](../Using%20the%20Flow%20App/Feature%20Importance%20with%20shapley%20values%20analysis.md)
 
 ### 9. Bootstrap Performance Analysis
-See: [bootstrap_app](/Medial%20Tools/bootstrap_app)
+See: [bootstrap_app](../bootstrap_app)
 
 ### 10. Compare/Estimate Model Performance on Different Repository
 Test model on external repository.  
-See: [TestModelExternal](/Medial%20Tools/TestModelExternal)  
+See: [TestModelExternal](../TestModelExternal.md)  
 Can be compiled in AllTools.
 
 ### 11. Create and Load Repository from Files
-See: [Load new repository](/Medial%20Tools/Using%20the%20Flow%20App/Load%20new%20repository)
+See: [Load new repository](/Repositories/Load%20new%20repository.html)
 
 ### 12. Create Random Splits for Train/Test/All Patients
 ```bash
@@ -99,8 +99,8 @@ FilterSamples --filter_train 0 --rep ${REP_PATH} --filter_by_bt_cohort "Time-Win
 ### 16. Check Model Compatibility with Repository / Suggest Adjustments
 
 When applying a model to a different repository, some modifications may be necessary.  
-For instance, MedModel strictly checks for the presence of required signals. If a signal is missing but not critical, you can explicitly mark it as acceptable by adding a rep processor for an ["empty" signal](/Infrastructure%20Home%20Page/01.Rep%20Processors%20Practical%20Guide/How%20to%20create%20an%20empty%20signal).  
-For further guidance, see [Flow fit_model_to_rep](../Using%20the%20Flow%20App/Fit%20MedModel%20to%20Repository).
+For instance, MedModel strictly checks for the presence of required signals. If a signal is missing but not critical, you can explicitly mark it as acceptable by adding a rep processor for an ["empty" signal](/Infrastructure%20Home%20Page/01.Rep%20Processors%20Practical%20Guide/How%20to%20create%20an%20empty%20signal.html).  
+For further guidance, see [Flow fit_model_to_rep](../Using%20the%20Flow%20App/Fit%20MedModel%20to%20Repository.md).
 
 ---
 

@@ -7,7 +7,7 @@ We can think about this infrastructure as "TensorFlow" of medical data machine l
 ### Howto Use this
 Suppose you're a potential user or client interested in using a specific model.
 You're not concerned with how the model was built or which tools were used, you simply want to deploy and use it.
-Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20AlgoMarker)
+Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20AlgoMarker.md)
 
 ### Main contributers from recent years:
 - [Avi Shoshan](https://www.linkedin.com/in/avi-shoshan-a684933b/)
@@ -35,14 +35,14 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
 ## Infrastructure Components
 1. **MedRepository: a high-performance EMR time-series store**
     * Fast retrieval of any patient’s full record or a specific signal across all patients.
-    * [Unified representation](00.InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors): each signal consists of zero or more time channels plus zero or more value channels, all tied to a patient ID.
+    * [Unified representation](00.InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors.md): each signal consists of zero or more time channels plus zero or more value channels, all tied to a patient ID.
         - Static example: "Birth year" → no time channels, one value channel.
         - Single-time example: "Hemoglobin" → one time channel (test date), one value channel (numeric result).
         - Interval example: "Hospitalization" → two time channels (admission and discharge dates).
     * **Hierarchical support for categorical medical ontologies** 
         - Enables seamless integration and translation between different systems when working with a frozen model or algorithm. 
         - Example: A query for ICD-10 codes starting with "J" (respiratory diseases) will also automatically map to corresponding categories in systems like Epic. When dictionary of mapping between ICD and Epic is added, no need to change the model. 
-        - Ontology mappings are managed by [MedDictionary](00.InfraMed%20Library%20page/MedDictionary), which supports many-to-many hierarchical relationships across coding systems.
+        - Ontology mappings are managed by [MedDictionary](00.InfraMed%20Library%20page/MedDictionary.md), which supports many-to-many hierarchical relationships across coding systems.
 2. **Modular processing pipeline (sklearn-style)**
     * **[Rep Processors](01.Rep%20Processors%20Practical%20Guide/)**: Clean or derive "raw" virtual signals, while preventing leakage of future data
         - Example: Outlier cleaner that omits values only when abnormality is detected by future readings (e.g., a hemoglobin value on 2023-Feb-04 flagged only by a 2023-May-21 test remains until after May 21).
@@ -55,7 +55,7 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
     * **[Feature Processors](02.Feature%20Generator%20Practical%20Guide/)**: Operate on the feature matrix—imputation, selection, PCA, etc. 
     * **[Predictors/Classifiers](04.MedAlgo%20Library/)**: LightGBM, XGBoost, or custom algorithms.
     * **[Post-processing](05.PostProcessors%20Practical%20Guide/)**: Score calibration, explainability layers, fairness adjustments, etc.
-3. **JSON-driven pipeline configuration** - Define every processor, feature generator, and model step in a single JSON file. [Json Format](MedModel%20json%20format)
+3. **JSON-driven pipeline configuration** - Define every processor, feature generator, and model step in a single JSON file. [Json Format](MedModel%20json%20format.md)
     Example json for training a model:
 
 <details>
@@ -252,9 +252,9 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
 Home page for in depth pages explaining several different aspects in the infrastructure
 Some interesting pages:
 
-- How to Serialize : learn the [SerializableObject](MedProcessTools%20Library/SerializableObject) libarary secrets.
-- [PidDynamicRecs and versions](00.InfraMed%20Library%20page/PidDynamicRec)
-- [Virtual Signals](01.Rep%20Processors%20Practical%20Guide/Virtual%20Signals)
+- How to Serialize : learn the [SerializableObject](MedProcessTools%20Library/SerializableObject.md) libarary secrets.
+- [PidDynamicRecs and versions](00.InfraMed%20Library%20page/PidDynamicRec.md)
+- [Virtual Signals](01.Rep%20Processors%20Practical%20Guide/Virtual%20Signals.md)
 
 
 ## Installations

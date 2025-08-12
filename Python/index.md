@@ -7,7 +7,7 @@ In the following sub-pages you will find information about Python utilization in
   - [Extend and Develop](Medial's%20C++%20API%20in%20Python/Extend%20and%20Develop.md)
   - [Python AlgoMarker API Wrapper](Medial's%20C++%20API%20in%20Python/Python%20AlgoMarker%20API%20Wrapper.md)
   - [Usage](Medial's%20C++%20API%20in%20Python/Usage.md)
-- [Python binding Troubleshooting](Python%20binding%20Troubleshooting)
+- [Python binding Troubleshooting](Python%20binding%20Troubleshooting.md)
 
 ## Quick start (Usage Level)
 

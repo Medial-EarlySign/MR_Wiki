@@ -10,7 +10,7 @@ This tutorial explains how to use our ETL library, which consists of five core f
 
 1. **Create a Project Directory:**  
    Start by creating an empty directory for your ETL code:  
-   [CODE_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/CODE_DIR)
+   [CODE_DIR](../High%20level%20-%20important%20paths/structure/CODE_DIR.md)
 
 2. **Directory Structure:**  
    Your final `CODE_DIR` will look like this:  
@@ -42,13 +42,13 @@ Our goal is to automate and reuse as much as possible across different ETL loads
 
 The ETL process is divided into three main parts:
 
-1. **[Data Fetching](Data%20Fetching%20step):**  
+1. **[Data Fetching](Data%20Fetching%20step.md):**  
    Write code to read your raw data into a DataFrame. This step is specific to your ETL and should be simple (e.g., `pd.read_csv()` or database queries).
 
-2. **[Data Processing](ETL%20Processing%20Code%20Unit%20Tutorial):**  
+2. **[Data Processing](ETL%20Processing%20Code%20Unit%20Tutorial.md):**  
    Transform the raw DataFrame into the final signal structure. This code is also ETL-specific and may include column renaming, filtering, or unit conversion.
 
-3. **[Manager Script](ETL%20Manager%20Process):**  
+3. **[Manager Script](ETL%20Manager%20Process.md):**  
    Write a short `load.py` script to orchestrate the data fetching and processing steps, and perform the loading. This script should be concise and readable.
 
 ---

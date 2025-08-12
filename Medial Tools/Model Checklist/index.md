@@ -28,7 +28,7 @@
  
 Applying on new dataset without labels for validation:
 
-- Test matrix difference from training repository matrix - compare feature moments with [TestModelExternal ](/Medial%20Tools/TestModelExternal)and\or try to train propensity model.
+- Test matrix difference from training repository matrix - compare feature moments with [TestModelExternal](../TestModelExternal.md) and\or try to train propensity model.
   - Also compare score distribution + score distribution after matching important factors.
 - Test ButWhy importance on the test set - compare with training repo
 - Stats of outliers from cleaners
