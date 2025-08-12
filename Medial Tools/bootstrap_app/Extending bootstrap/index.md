@@ -3,10 +3,8 @@ The main idea of the bootstrap infrastructure is the ability to extend it to mea
 In order to do that, you need to write function that calculates that measurement/s.
 ### Function input - you just need to keep that signature and can't change that.
 - Lazy_Iterator *iterator - this is iterator that allows you to "fetch" the data for calculating the measurements. (It's lazy iterator to allow it to be efficient without allocating memory for each bootstrap experiment, but with doing the randomization process on the fly)
-- 
- int thread_num - the thread num for parallelism - will be used by the "Lazy_Iterator"
-- 
-Measurement_Params *function_params - optional pointer to function parameters (can be null if not given). You can pass parameters to your function in this way
+-  int thread_num - the thread num for parallelism - will be used by the "Lazy_Iterator"
+- Measurement_Params *function_params - optional pointer to function parameters (can be null if not given). You can pass parameters to your function in this way
  
 **How to use the iterator?**
 You need to call "fetch_next" with thread_num, y, pred, w. IT will return true if you didn't reached to end of input. 

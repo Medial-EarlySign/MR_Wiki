@@ -2,6 +2,7 @@
 Examples for creating Jsons with default cleaner. An Example of cleaner can be found in git: [https://github.com/Medial-EarlySign/AM_Lung/blob/main/configs/training/full_rep_processors.json](https://github.com/Medial-EarlySign/AM_Lung/blob/main/configs/training/full_rep_processors.json)
  
 full_cleaners is based on:
+
 - configured simple cleaner with strict boundaries for each signal 
 - sim_val - when signal appears with the same time and different value which value to take? (from my observations in THIN - taking the first value is better)
 - panels calculation and remove mismatches of biological rules. For example wrong calculation of BMI

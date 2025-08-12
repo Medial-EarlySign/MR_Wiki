@@ -5,9 +5,11 @@ The main goal of this 'test' is to load the inputs from the AlgoAnalyzer into re
 Next, tests that are part of the ETL are performed.
 **Parameters (see env.sh)**
 Inputs: 
+
 - WORK_DIR - output folder path to process and load the repository
 - SILENCE_RUN_INPUT_FILES_PATH - The path to the input data files in "file_api" format
 Outputs:
+
 - Repository in directory ${WORK_DIR}/rep
 - ETL tests results in ${WORK_DIR}/ETL (see also [ETL_WORK_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/WORK_DIR.md))
 **Test Results Review**
@@ -37,10 +39,11 @@ Done testing values of signal Hemoglobin
 Output would be list of features where some percentiles are far from the reference:
 q - is the quantile, value_0 - is the quantile in current dataset, reference - the quantile in the reference dataset. ratio1 = value_0 / reference, ratio2 = 1 / ratio1, ratio = max(ratio1, ratio2).
 What may be the reason?
+
 - If unit transformation is wrong, we expect several 'issues' for the same signal with different percentiles (q) ,like in the example above => This would be a RED FLAG.
 - If we see 'issues' here and there, we still need to understand them. For instance:
-  - Are 0 allowed? if the answer is not the same for the two datasets, then we are likely to see alerts on low values
-  - Are kid allowed? different age range in the reference compared to the dataset may affect the range
+    - Are 0 allowed? if the answer is not the same for the two datasets, then we are likely to see alerts on low values
+    - Are kid allowed? different age range in the reference compared to the dataset may affect the range
 *... please add here more possible reasons that you happened to meet/explore*
 **b. Deep dive into important features**
 The important features of this model are defined in env.sh

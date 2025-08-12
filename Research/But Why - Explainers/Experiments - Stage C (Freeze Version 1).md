@@ -125,11 +125,13 @@ Coby results [compare_all - Coby.xlsx](/attachments/11207625/11207634.xlsx):
 <td>1.690289472</td>
 </tr>
 </tbody></table>
+
 ## Conclusions
 - The new equation seem to improve the results. Use it instead of max, that's the default in ExplainProcessings (use_max_cov=0)
 - The mutual information might improve the results. I can't see it when using the new equations since the average score is in saturation (almost all recieved 5 out of 5). Coby and I noticed a huge improvement for the mutual information compared to the covariance when using MAX instead of new equation. Yet, we both got that the best results for CRC are new equations with covaraince.Waiting for Avi Shoshan and Yaron to review the file and grade the results themselves if they want (maybe they will see different things). **Currently my recommandation is to use the new equation with covaraince (also faster learning).** 
  
 To create a nice ButWhy report, you might use:
+
 1. adjust model app to add post_processor with explainer to the model. Later you can change some parameters if needed using change_model (without relearn)
 2. CreateExplainnReport app to generate a nice report
  

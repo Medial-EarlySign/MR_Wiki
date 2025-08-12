@@ -10,6 +10,7 @@ Tests model feature importance with shapley
 
 ## Output
 $WORK_DIR/ButWhy:
+
 - Global.html - global signals importance in the model
 - Global.ungrouped.html - Global features importance in the mode
 - single_features directory - Each of the most important feature ButWhy analysis

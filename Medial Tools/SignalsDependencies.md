@@ -3,6 +3,7 @@ The Code exists in: **$MR_ROOT/Tools/SignalsDependencies **and is basically usi
 This tool will allow you to discover relevant categorical signals (for example: readcodes or drugs) that has statstical connection to you outcome within a defined time-window.
 The tool will create MedSamples based on the signal time points and than label those samples based on the registry and "labeling_params" parameter which defines the rules for the labeling - either case, control or excluded (if can't determine for example).
 It will create contingency table from samples within time-window for each gender and age group:
+
 - Signal value doesn't exists (the patient didn't have certain readcode value in the time window) & the registry outcome is false - will be calcluated based on the incidence rate of the outcome in this age bin
 - Signal value doesn't exists (the patient didn't have certain readcode value in the time window) & the registry outcome is true - will be calcluated based on the incidence rate of the outcome in this age bin
 - Signal value exists (the patient certain readcode value in the time window) & the registry outcome is false
@@ -19,16 +20,18 @@ for more details reffer to [MedRegistry ](/Infrastructure%20Home%20Page/MedPro
 Explain on labeling_params and inc_labeling_params can be given in [TimeWindowInteraction](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/TimeWindowInteraction.md). Those arguments are LabelParams objet that defines how to label sampels.
  
 **Important parameters for the tool (that most be supplied, don't use default ones unless you know what you are doing):**
+
 - global_rep - Repository path
 - registry_path - the path to the MedRegistry file
 - **labeling_params** - the parameters to control how to label the samples created by the signal time points
-- 
-test_from_window, test_to_window - to control the time window
+- test_from_window, test_to_window - to control the time window
 - test_main_signal - the signal to test
 If you are using default parameters, you are at high risk of a problem.
+
 ## Hirarchy Filtering parameters:
 The filtering happens in this method: medial::contingency_tables::filterHirarchy
 The filtering happens in this order:
+
 1. float filter_child_count_ratio (default value is 0.05)
  If child ratio count is similar to the parent, keep only parent code. For example child has 10,000 samples and parent has 10,100 samples. The additional 100 samples out of 10,100 are little ~1% which is less than default value of 5%, so the child is eliminated.
 2. Those are used together
@@ -36,20 +39,21 @@ The filtering happens in this order:
  float filter_child_lift_ratio (default value is 0.05)
 When both p_value difference between parent and child is below filter_child_pval_diff AND diff in average lift is below filter_child_lift_ratio 
 , will remove parent. The parent "behaves" differently from at least 2 children, so aggregation of those children into the parent category might be unreasonable. 
- 
 3 .float filter_child_removed_ratio (default value is 1)
 Only when node has child that pass the above filters and at least 1 child eliminated.
  If the aggregated sum of removed samples due to filtered children is high, consider removal of parent code.
 For example: if parent has 10,000 samples, and removed children with 8,000 codes, than remove the parent, since aggregation of the children below the parent is unreasonable.
+
 ## Examples
 ### labeling_params parameter examples:
 since this parameter is tricky, here are some examples:
+
 - **Outcome which can happen several times for a specific period (For example Flu). labeling_params="label_interaction_mode=0:after_start|1:before_start,after_start;conflict_method=all"**Explaination - cases has the settings of "before_start,after_start",  which means the from_time_window from the signal time should happen before registry start time records (tha patient starts as control) AND the to_time_window from the signal time should happen after the start time of the same registry record (the patient turned into case). Controls has the settings of "before_end,after_start" - which means you should have some overlap with control period of non pregnancy - start time window of signal is before end of control period and end time window of signal is after the start. conflict_method=all - means if we have sample which is also control and also case be those settings - treat it (for counting prupose) also as control and as case.
+
 - **outcome which occours once (for example cancer)-  labeling_params="label_interaction_mode=0:after_start,before_end|1:before_start,after_start;conflict_method=max"**Explanation - controls are the ones who the from_time_window of the sample occours after_start of registry control period AND before_end of the same registry control period - means the whole time window is inside the control period. Cases are those where the from_time_window is before_start of specific case time period and the to_time_window is after_start of that same case period. the end_period for cases in this registry is not use since there is no "due" date for cancer.
 ### Run Examples:
 **Program Help**
- Expand source
-```
+```bash title="Program Help"
 SignalsDependencies --help
 ##     ## ######## ########  ####    ###    ##
 ###   ### ##       ##     ##  ##    ## ##   ##
@@ -120,14 +124,14 @@ Output Options:
 ```
  
 Example Usage can be found here:
-```
+```bash
 SignalsDependencies --base_config /nas1/Work/Users/Alon/UnitTesting/examples/signalDependency/pregnancy.cfg
 ```
  
 The File config file content (where all parameters may be override with command arguments) is:
 **Config File Example**
  Expand source
-```
+```ini title="Config File Example"
 #The Repository path:
 global_rep = /home/Repositories/THIN/thin_jun2017/thin.repository
 #A param which controls if to override "global_stats_path" file or use it if exists and save running time:
@@ -168,12 +172,8 @@ filter_chi_at_least = 0
 #whater to bring general stats on all the values, or print specific tables of male,gender with all age-groups for specific readcode\drug value
 output_value = -1
 ```
- 
-```
- The output for all values (the example for the pregnancy in time window before the pregnancy read code of at least 1 month till 2 years):
-```
+The output for all values (the example for the pregnancy in time window before the pregnancy read code of at least 1 month till 2 years):
 **Output example**
- Expand source
 ```
 read [267598] records on both male and female stats.
 Filter male stats - using only females
@@ -232,7 +232,7 @@ StatRow: 40     264551  8138.74 0       7       397242  52412   1.9975  GROUP: U
 We can see the results are reasonable for pre pregnancy - we see some pre pregnancy tests\vaccinations consults, fertility and IVF treatments... the resutls for the after pregnancy are also reasonables.. you may try it out yourself
  
 Example run for printing out specific value 106283 (which is "Infertility_problem"):
-```
+```bash
 SignalsDependencies --base_config /nas1/Work/Users/Alon/UnitTesting/examples/signalDependency/pregnancy.cfg --output_value 106283
 ```
 And the output (there are some gender problems with the pregancny readcode which needs to be eliminated. Some patients are seen as Males with pregnancy readcode - but small amount.

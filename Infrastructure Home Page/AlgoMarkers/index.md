@@ -1,6 +1,8 @@
 # AlgoMarkers
-## AlgoMarkers are wrappers to models or calculators that are able to "talk" to the AlgoAnalyzer via the API defined in AlgoMarker.h (the api funcs start with AM_API_... ). Since the AlgoAnalyzer uses the AlgoMarker as a DLL from a c# code, it is written is "C" style bare bones to allow for the integration.
+
+AlgoMarkers are wrappers to models or calculators that are able to "talk" to the AlgoAnalyzer via the API defined in AlgoMarker.h (the api funcs start with AM_API_... ). Since the AlgoAnalyzer uses the AlgoMarker as a DLL from a c# code, it is written is "C" style bare bones to allow for the integration.
 This page describes the following:
+
 - How to write a new AlgoMarker
 - Compile the AlgoMarker DLL
 - The MedialInfra AlgoMarker 
@@ -12,22 +14,24 @@ This page describes the following:
 ## How to write a new AlgoMarker
 The AlgoMarker base class is in AlgoMarker.h in the AlgoMarker lib which is part of medial research libs git. So to work with it pull it from git first.
 In order to write a new AlgoMarker one has to go through the following steps:
+
 1. Write a new class that inherits from AlgoMarker (or from one of its derived classes), and make sure the following virtual functions are all filled:
-  - virtual int Load(const char *config_f) : gets a config file (or NULL if you don't need one), and gets the AlgoMarker into a working state.
-  - virtual int Unload()  : releases all allocated memory and closes
-  - virtual int AddData(int patient_id, const char *signalName,  int TimeStamps_len, long long* TimeStamps, int Values_len, float* Values)
-    - Adds data to the AlgoMarker which later could be used to ask scores for
-    - Data is added per pid, for a specific signalName, and then 2 arrays giving the time and value channels. The order in each array is element by element and then each channel for each element.
-  - virtual int ClearData() : Clear all data in the AlgoMarker
-  - virtual int Calculate(AMRequest *request, AMResponses *responses)
-    - Major API : once the AlgoMarker is loaded and has data, one can give it requests and get responses (=results).
-    - To handle requests and responses one can check their classes and the example AlgoMarkers already implemented.
--1. Add a type to your new AlgoMarker in the enum AlgoMarkerType
-0. Update the AlgoMarker::make_algomarker routine to support your new class
-1. That's It !! compile and ready to go. NO NEED to touch any of the API routines - they only rely on the implementation of the 5 routines in (1).
+    - virtual int Load(const char *config_f) : gets a config file (or NULL if you don't need one), and gets the AlgoMarker into a working state.
+    - virtual int Unload()  : releases all allocated memory and closes
+    - virtual int AddData(int patient_id, const char *signalName,  int TimeStamps_len, long long* TimeStamps, int Values_len, float* Values)
+        - Adds data to the AlgoMarker which later could be used to ask scores for
+        - Data is added per pid, for a specific signalName, and then 2 arrays giving the time and value channels. The order in each array is element by element and then each channel for each element.
+    - virtual int ClearData() : Clear all data in the AlgoMarker
+    - virtual int Calculate(AMRequest *request, AMResponses *responses)
+        - Major API : once the AlgoMarker is loaded and has data, one can give it requests and get responses (=results).
+        - To handle requests and responses one can check their classes and the example AlgoMarkers already implemented.
+2. Add a type to your new AlgoMarker in the enum AlgoMarkerType
+3. Update the AlgoMarker::make_algomarker routine to support your new class
+4. That's It !! compile and ready to go. NO NEED to touch any of the API routines - they only rely on the implementation of the 5 routines in (1).
  
 ## Compile The AlgoMarker DLL
 The needed code is all inside the Libs git of Medial Research.
+
 - For compilation to work one needs a correctly set up environment (visual studio version, paths, paths to statically compiled libraries, etc). These are defined elsewhere as these are not AlgoMarker specific.
 - Pull the "Libs" git
 - Compile all libs using the CompileLibs project
@@ -102,18 +106,15 @@ MAX_OVERLALL_OUTLIERS	1
  
 ## Eligibility rules configuration
 Most of the options can be seen in the above example, here are the basics:
+
 - Each filter is given in a line : FILTER <filter type>|<filter params>|<warning_or_error>|<use_for_max_outliers_flag>|<external_rc>|<internal_rc>|<err_msg>
 - Currently <filter type> is always 'simple' or 'attr'
 - <filter params> : see examples above and definitions below
 - <warning_or_error> : one of WARNING or ERROR. A warning will run the test, report the problem if found, but not fail the example and still will give a score for it.
-- 
-<use_for_max_outliers_flag>: ACC=1 or ACC=0 : state from which filters to accumulate the overall number of outliers (MAX_OVERALL_OUTLIERS)
-- 
-<external_rc> : read code to return in the message case the test did not pass
-- 
-<internal_rc> : internal read code returned (another layer of error codes that is neededed
-- 
-<err_msg> : string - free text that will be returned as the error message in case the test did not pass.
+- <use_for_max_outliers_flag>: ACC=1 or ACC=0 : state from which filters to accumulate the overall number of outliers (MAX_OVERALL_OUTLIERS)
+- <external_rc> : read code to return in the message case the test did not pass
+- <internal_rc> : internal read code returned (another layer of error codes that is neededed
+- <err_msg> : string - free text that will be returned as the error message in case the test did not pass.
  
 Filter params is given in a string , separator is ';' and there should be no spaces/tabs. It has many options, see the class SanitySampleFilter to view them formally. 
 ## Parameters for simple filter type
@@ -123,8 +124,8 @@ Filter params is given in a string , separator is ';' and there should be no spa
 - samples_time_unit: default Date
 - min_val , max_val : min and max allowed values for a signal (>=min <=max) when testing for outliers.
 - win_from, win_to : a time window before and relative to the sample in which we apply the test:
-  - Each of the tests asked for will be done only on the signal results in the given time window.
-  - Default is all the tests (infinite window to the past)
+    - Each of the tests asked for will be done only on the signal results in the given time window.
+    - Default is all the tests (infinite window to the past)
 - min_Nvals, max_Nvals : test min or max number of values (ALL values not just those in a given range if one is given) for the given signal and window.
 - max_outliers : maximal allowed number of outliers for the signal in the given time window
 - min_left : minimal number of results left after throwing the outliers.
@@ -136,56 +137,44 @@ A filter can be configured to do one simple test, or several. As explained above
 To set this filter use 'attr' in filter type (see example above).
 The use of this filters relies on the fact the model was built with an option to create those attributes and inject them into the resulted MedSamples object at prediction time. The classical use is to let cleaners and testers running in the model to report their results this way. Formally these actions will add an attribute to each prediction, and the filter defined here is able to create rules based on those attributes.
 Parameters:
+
 - name : the name of the attribute to test
 - max : the maximal value allowed. An error or warning will be given for any value larger than this.
  
 To make sure a model creates those attributes it is needed to make it do so in its json definition.
+
 - To a basic cleaner ( "rp_type": "basic_cln" in json) add : "nrem_attr": "nRem","ntrim_attr": "nTrim",   in order to get an attribute of the number of removed signals, and/or trimmed ones. Note this counts the total number and not in a specific time window....
 - To force a panel use for example:
-  - {"action_type":"rep_processor","rp_type":"req","signals":"Hemoglobin,RBC,Hematocrit", "win_from": "0", "win_to": "365"},
-  - this will count how many of the panel signals are missing in the given time window (relative to prediction point). Note that if placed AFTER cleaners (reccomended) it will test this on the cleaned data that may have some values removed.
+    - {"action_type":"rep_processor","rp_type":"req","signals":"Hemoglobin,RBC,Hematocrit", "win_from": "0", "win_to": "365"},
+    - this will count how many of the panel signals are missing in the given time window (relative to prediction point). Note that if placed AFTER cleaners (reccomended) it will test this on the cleaned data that may have some values removed.
 ## How to freeze a MedialInfra AlgoMarker Version
-1. If using a non frozen libraries version:
-  
-1. Either create a branch with a suitable name for your freeze for the Libs git OR
-  
-2. Tag your version in the branch you want to work with.
-  
-3. It is reccomended to freeze also code for Tools git, and code for releavant projects (for example the Diabetes git project for a diabetes algomarker, etc).
-  
-4. When freezing several different gits, make sure to tag all of them with the same tag.
-  
-5. Document your freeze and branches/tags names.
-5. Make sure you have everything prepared:
-  
-1. A model file trained for the AlgoMarker. Better test this very algomarker gives the expected results on your test set, and runs with the frozen libraries version.
-  
-2. The repository files you were working with: main needed:
-    
-1. the .repository file
-    
-2. the .signals file
-    
-3. the dictionary files for the signals you are using.
-2. Create a new directory, call it with the agreed upon algomarker+version name
-3. Put there:
-  
-1. The algomarker model file
-  
-2. The repository files used
-  
-3. Prepare an algo marker config file as explained above
-    
-1. Make sure the eligibility rules are the ones you want.
-  
-1. Good time to run a small unit-test here to see it loads, runs and gives expected results on some prepared data set.
-1. Zip directory.
+1. If using a non frozen libraries version: 
+2. Either create a branch with a suitable name for your freeze for the Libs git OR
+3. Tag your version in the branch you want to work with.  
+4. It is reccomended to freeze also code for Tools git, and code for releavant projects (for example the Diabetes git project for a diabetes algomarker, etc). 
+5. When freezing several different gits, make sure to tag all of them with the same tag. 
+6. Document your freeze and branches/tags names.
+7. Make sure you have everything prepared: 
+    1. A model file trained for the AlgoMarker. Better test this very algomarker gives the expected results on your test set, and runs with the frozen libraries version.
+    2. The repository files you were working with: main needed:
+    3. the .repository file
+    4. the .signals file
+    5. the dictionary files for the signals you are using.
+8. Create a new directory, call it with the agreed upon algomarker+version name
+9. Put there: 
+    1. The algomarker model file
+    2. The repository files used
+    3. Prepare an algo marker config file as explained above
+10. Make sure the eligibility rules are the ones you want.
+11. Good time to run a small unit-test here to see it loads, runs and gives expected results on some prepared data set.
+12. Zip directory.
  
 ## How to test the AlgoMarker DLL
 The AlgoMarker project includes the DllAPITester, which can be used to test the DLL and compare its output to scores given by the Flow app. 
 **DllAPITester Help**
-```
-> $MR_ROOT/Libs/Internal/AlgoMarker/Linux/Release/DllAPITester --h
+
+```bash title="DllAPITester Help"
+DllAPITester --h
 Reading params
 Program options:
   --help                                produce help message
@@ -202,7 +191,8 @@ Program options:
 ```
 After compiling, it can be used as follows:
 **Example Run**
-```
+
+```bash title="Example Run"
 ./Linux/Release/DllAPITester --rep /home/Repositories/THIN/thin_jun2017/thin.repository --samples /server/Work/Users/Tal/Temp/test.samples --model /server/Products/Pre2D/QA_Versions/1.0.0.1/pre2d.model --amconfig /server/Products/Pre2D/QA_Versions/1.0.0.1/pre2d.amconfig
 ```
 The tester will compare the scores given by both methods and will return passed/failed. For example:
@@ -224,7 +214,7 @@ PASSED
  
 Another option is running a direct test (note the self explanatory test_data format):
 **Testing a single example directly**
-```
+```bash
 Linux/Release/DllAPITester --rep /home/Repositories/THIN/thin_jun2017/thin.repository --amconfig /nas1/Products/Pre2D/QA_Versions/dev/pre2d.amconfig --direct_test --test_data "Glucose:120:20171101;GENDER:1;BYEAR:1988" --date 20180520
 ```
 and get the result :

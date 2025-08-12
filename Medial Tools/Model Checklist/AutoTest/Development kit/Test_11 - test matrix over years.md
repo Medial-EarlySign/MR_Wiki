@@ -13,9 +13,9 @@ It takes the test samples and compares the most recent prediction date samples t
 
 ## Output
 - $WORK_DIR/compare_years
-  - Global.html - the most important features in the propensity model that are different between the years
-  - features_diff - A directory that compares each of the important features in the propensity model - least recent to most recent on the same graph.
-  - single_features - But why single feature analysis directory for each of the important features in the propensity model analysis
-  - compare_rep.txt - text file that compare the average value of each feature
-  - test_propensity.bootstrap.pivot_txt - the propensity model performance
+    - Global.html - the most important features in the propensity model that are different between the years
+    - features_diff - A directory that compares each of the important features in the propensity model - least recent to most recent on the same graph.
+    - single_features - But why single feature analysis directory for each of the important features in the propensity model analysis
+    - compare_rep.txt - text file that compare the average value of each feature
+    - test_propensity.bootstrap.pivot_txt - the propensity model performance
 Please go over on the most important different features and decide if that's OK

@@ -62,6 +62,7 @@ Dictionaries are typically used within a MedRepository, but can be used independ
 ### Key Methods
 
 **MedDictionary:**
+
 - `int id(const string &name)`: Get id from name.
 - `string name(int id)`: Get name from id (returns the last name if multiple exist).
 - `map<int, vector<string>> Id2Names`: Maps id to all its names.
@@ -71,6 +72,7 @@ Dictionaries are typically used within a MedRepository, but can be used independ
 - `int prep_sets_indexed_lookup_table(const vector<string> &set_names, vector<unsigned char> &lut)`: Similar, but notes the serial number of the set for each member.
 
 **MedDictionarySections:**
+
 - `int section_id(const string &name)`: Get section id from name.
 - `vector<MedDictionary> dicts`: Access a dictionary by section id and use all MedDictionary methods.
 

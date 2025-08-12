@@ -2,18 +2,19 @@
 The Feature Importance is **virtual** function of MedPredictor called **calc_feature_importance**.
 If you want to support Feature Importance for your predicotr you need to implement the virtual function: [calc_feature_importance](https://Medial-EarlySign.github.io/MR_LIBS/classMedPredictor.html#acd85e157d4b8fa20e8aa91a94e9fde2e)
 Some notes:
+
 - This function must be called after learn method only! otherwise and exception will be raised.
 - The functions returns the features importance score in vector with same order of the learned features matrix order (sorted by ABC because we use map object).
 Currently the method is implemented by:
 - QRF - no additional parameters are required to run
 - LightGBM - has a parameter "importance_type" which has 2 options: 
-  - "gain" - the average gain of the feature when it is used in trees (in each split of tree node we have loss gain - averaging that)
-  - "frequency" - the number of times a feature is used to split the data across all trees
+    - "gain" - the average gain of the feature when it is used in trees (in each split of tree node we have loss gain - averaging that)
+    - "frequency" - the number of times a feature is used to split the data across all trees
 - XGB - has a parameter "importance_type" which has 3 options: 
-  - "gain" - the average gain of the feature when it is used in trees (in each split of tree node we have loss gain - averaging that)
-  - "gain_total" - sum of gain the of the feature when it is used in trees (not normalized by number of appearances)
-  - "weight" - the number of times a feature is used to split the data across all trees
-  - "cover" - the average coverage of the feature when it is used in trees. it sums the number of samples in the leaves that in their path have this feature (so this feature was used to split and deciede on this observations). it calc's the average coverage
+    - "gain" - the average gain of the feature when it is used in trees (in each split of tree node we have loss gain - averaging that)
+    - "gain_total" - sum of gain the of the feature when it is used in trees (not normalized by number of appearances)
+    - "weight" - the number of times a feature is used to split the data across all trees
+    - "cover" - the average coverage of the feature when it is used in trees. it sums the number of samples in the leaves that in their path have this feature (so this feature was used to split and deciede on this observations). it calc's the average coverage
  
 Example run for XGB
 ```c++

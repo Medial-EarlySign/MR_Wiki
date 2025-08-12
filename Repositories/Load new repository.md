@@ -18,6 +18,7 @@ In this step you will need to create ETL loading files
   9. Any additional columns are ignored
 
 **Notes:**
+
 - A single file can contain multiple signals (different values in the "signal name" column).
 - Rows should be sorted by patient ID and the first time channel (if present).
 - The number of time/value channels used depends on the signal definition.

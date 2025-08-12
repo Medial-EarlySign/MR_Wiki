@@ -2,6 +2,7 @@
 A class the holds the information on how to label samples and outputs the outcome.
 It uses the [MedRegistry](MedRegistry)and internal parameters to define the "labeling" - for example the relevant time window for the outcome. So you can use the same MedRegistry and just change for example the time window for the outcome.
 The parameters for the labeling are called [LabelParams](https://Medial-EarlySign.github.io/MR_LIBS/classLabelParams.html):
+
 - time_from / time_to - the time window defintion for the outcome
 - censor_time_from / censor_time_to - time window for the censor registry
 - conflict_method - how to cop with conflicts. If the rules has more the one option:

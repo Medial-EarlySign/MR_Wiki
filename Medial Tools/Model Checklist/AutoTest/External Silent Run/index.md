@@ -2,6 +2,7 @@
 
 **External Silent Run Goal**
 When we have a new dataset, with no labels, before we give scores we want to:
+
 - Make sure data is OK for running the model
 - Estimate performances
 
@@ -11,6 +12,7 @@ In the silent run, the new dataset is loaded into a repository, and several test
 **Environment Parameters**
 All parameters are set in one file: configs/env.sh
 **What is the dataset? (fix per dataset) **
+
 - AWS_REGION=...
 - AWS_ACCESS_KEY_ID=...
 - AWS_SECRET_ACCESS_KEY=...
@@ -30,20 +32,22 @@ Or if it's not in AWS, you can define the path to the input dataset and AlgoMark
 When you use AWS_* parameters, the SILENCE_RUN_INPUT_FILES_PATH, SILENCE_RUN_OUTPUT_FILES_PATH are set automatically to be downloaded inside the $WORK_DIR/data
  
 **What is the model? (fix per AlgoMarker)**
+
 - ALGOMARKER_PATH=... model directory
 - REFERENCE_MATRIX=... full path to reference matrix
 - CMP_FEATURE_RES=... 
-  - List, comma separated, of important features for the model, to be used in several tests
-  - To get important feature, check butwhy of original model
-  - Format is: 'Feature_Name:Resolution,Feature_Name:Resolution,..."
-    - For instance: ""Age:1,FTR_000074.MCH.slope.win_0_1000:0.01". 
-    - Feature_Name: full name or string that only one feature contains.
-    - Resolution - just for plotting value distribution.
+    - List, comma separated, of important features for the model, to be used in several tests
+    - To get important feature, check butwhy of original model
+    - Format is: 'Feature_Name:Resolution,Feature_Name:Resolution,..."
+        - For instance: ""Age:1,FTR_000074.MCH.slope.win_0_1000:0.01". 
+        - Feature_Name: full name or string that only one feature contains.
+        - Resolution - just for plotting value distribution.
 - SCORE_MIN_RANGE=0.1 Minimal score range for testing the sex ratio of flagged males in those score threshold range
 - SCORE_MAX_RANGE=0.2 Maximal score range for testing the sex ratio of flagged males in those score threshold range
 - FILTER_LAST_DATE=0, In some cases, the AlgoAnalyzer was executed more than once on the input data and there are duplications. This flag is used to filter duplications.
 
 **Where shall we put the output?**
+
 - WORK_DIR=... output directory
 ****
 To run the whole process, simply execute run.sh from the External_Silent_run root. 

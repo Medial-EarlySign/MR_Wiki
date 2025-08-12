@@ -6,6 +6,7 @@
 FilterSamples --filter_train 0 --rep $REP --filter_by_cohort "Time-Window:0,365" --samples $SAMPLES --output $OUTPUT --json_mat $JSON
 ```
 Comments:
+
 - Time Window should be 0 to horizon. Thus, 0,365 means calibrated risk for outcome within 1 year. And 0,730 would mean calibrated risk for outcome within 2 years.
 - json_mat is required even though it has no effect (to be removed)
 - filter_train default is 1 => take just train. As we set '0' - all samples are taken.
@@ -21,6 +22,7 @@ Flow --get_model_preds --rep $REP --f_samples $INPUT --f_model $MODEL --f_preds 
 adjust_model --postProcessors $JSON --rep $REP --samples $PREDS_FOR_CALIBRATION --inModel $MODEL --skip_model_apply 1 --out $OUTPUT 
 ```
 Comments:
+
 - The OUTPUT is a model with calibration
 - The terminal output is 'staircase graph' - bins and calibrated risk (printed on screen and reachable through Flow --print_model_info) 
 Output format example:

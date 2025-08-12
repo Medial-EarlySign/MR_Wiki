@@ -4,11 +4,13 @@ It builds a propensity model to discriminate between repositories to reveal diff
 The goal is to discover that the model is transferable and can well behave on the second repository.
  
 Uses example:
+
 - Estimate model performance/transferability on different repository
 - Test model on different years and the differences in different year. You can pass train_rep==test_rep and just change the samples to test for differences
  
 Part of Tools git repository. Can be found under AllTools solution.
 **Mode 1 - Comparing the model when the 2 repositories are available in the same network:**
+
 - model_path - Must be given in any mode. The path to the binary MedModel that we want to test for.
 - rep_test - repository for testing and comparing with. In the propensity model it will be labeled as 1.
 - samples_test - path to MedSamples to be applied in the test repository
@@ -19,6 +21,7 @@ Part of Tools git repository. Can be found under AllTools solution.
 - calibration_init_str - calibration args. Will be used in the propensity model as Post Processor
  
 Less important (optional)
+
 - smaller_model_feat_size  - if given > 0, will create additional smaller propensity model based on top X group of features. X=smaller_model_feat_size. 
 - additional_importance_to_rank - path fo shaply report created by "Flow --shap_val_request" to rank the difference combained with the importance of each feature to the model
 - features_subset_file - file to filter features from the MedModel
@@ -34,6 +37,7 @@ Less important (optional)
 ****
 ## **Mode 2 - Compare when the repositories are in different networks**
 To use this mode, rep_trained and/or samples_train should be empty.
+
 - model_path - Must be given in any mode. The path to the binary MedModel that we want to test for.
 - rep_test - repository for testing and comparing with. In the propensity model it will be labeled as 1.
 - samples_test - path to MedSamples to be applied in the test repository

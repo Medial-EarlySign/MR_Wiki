@@ -67,6 +67,7 @@ df = df[['pid', 'signal', 'value_0']].drop_duplicates().reset_index(drop=True)
 ```
 
 **Notes:**
+
 - The ETL infrastructure will validate the signal type. If something is missing, a test will fail and prompt you to fix it.
 - Any `print` statements will be logged automatically.
 - The comments above are part of the ETL template to help you complete your code.

@@ -10,8 +10,8 @@ If eGFR is not available in your repository (or you need a different calculation
 To create a virtual signal, use the `insert_virtual_signal` API from `MedSignals.h`:
 
 - `int insert_virtual_signal(const string &sig_name, int type)` or `int insert_virtual_signal(const string &sig_name, const string& signalSpec)` with generic string definition
-  - `sig_name`: The new signal's name (must be unique within the repository)
-  - `type`: The signal's data type or signalSpec for [generic signal](../InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors.md) definition
+    - `sig_name`: The new signal's name (must be unique within the repository)
+    - `type`: The signal's data type or signalSpec for [generic signal](../InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors.md) definition
 
 This function validates the input and sets up the necessary internal structures.
 
@@ -32,16 +32,16 @@ During the apply stage, the library creates a `PidDynamicRec` for each patient, 
 - Calculate the time and value channels for your virtual signal at all relevant time points.
   - **Note:** If dynamic record versions differ, generate a separate data set for each version.
 - Use one of these APIs in `PidDynamicRec`:
-  - `int set_version_data(int sid, int version, void *datap, int len)`
-    - `sid`: Signal ID (retrieve using `rep.sigs.sid(string name)`)
-    - `version`: Target version
-    - `datap`: Pointer to an array of the signal's type (e.g., `vector<sigType> data;` and use `&data[0]`)
-    - `len`: Number of items
-  - `int set_version_universal_data(int sid, int version, int *_times, float *_vals, int len)`
-    - `sid`: Signal ID
-    - `version`: Target version
-    - `_times`, `_vals`: Arrays for time and value channels; if multiple channels exist, arrange them sequentially for each item
-    - `len`: Number of items
+    - `int set_version_data(int sid, int version, void *datap, int len)`
+        - `sid`: Signal ID (retrieve using `rep.sigs.sid(string name)`)
+        - `version`: Target version
+        - `datap`: Pointer to an array of the signal's type (e.g., `vector<sigType> data;` and use `&data[0]`)
+        - `len`: Number of items
+    - `int set_version_universal_data(int sid, int version, int *_times, float *_vals, int len)`
+        - `sid`: Signal ID
+        - `version`: Target version
+        - `_times`, `_vals`: Arrays for time and value channels; if multiple channels exist, arrange them sequentially for each item
+        - `len`: Number of items
 
 If multiple versions should share the same data, you can link them using:
 

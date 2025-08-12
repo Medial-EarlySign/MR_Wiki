@@ -4,13 +4,14 @@ When the repository includes info from inpatients, we might want to remove lab, 
 Note that we are likely to keep diagnosis, as we are typically interested in chronic issues.
 ### Example
 In the following example:
+
 - We use**** rep processor
 - We have **** signal in the repository
 - We set **get_values_in_range** to 0 (will keep just input from inside of timeslots of **ranges_sig_name**) , as default is 1 (outside timeslots)
 - We need to define signal appropriate ****
 - The **signal_options:**
-  - Can have a list of input&output, all of them must have the same ****
-  - The default **output_name** is combination of the **signal_name** and **ranges_sig_name** - in this example (if we have not wrote output_name=BP), it would have been BP_ADMISSION. However, keeping the original name is continent when this rep processor is added in the beginning of existing process. 
+	- Can have a list of input&output, all of them must have the same ****
+	- The default **output_name** is combination of the **signal_name** and **ranges_sig_name** - in this example (if we have not wrote output_name=BP), it would have been BP_ADMISSION. However, keeping the original name is continent when this rep processor is added in the beginning of existing process. 
  
 ```json
 {

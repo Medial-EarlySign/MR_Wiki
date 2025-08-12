@@ -15,8 +15,8 @@ optional arguments:
   --show           show stages
   --fast           skip slow stages
 ```
-- 
-config is the only required parameter. An example of a configuration file is - 
+
+- config is the only required parameter. An example of a configuration file is - 
 ```ini
 nSamples=15000
 nums=--numA 10 --numB 10 --numC 10
@@ -28,14 +28,14 @@ params=--pOutcome 0.1 --outSigMin 0.08 --outSigMax 0.95 --treatSigWidth 5.0 --ou
 dir=/nas1/Work/Users/yaron/CausalEffect/ToyModel_ITE/Test1
 ```
 Note that all keys are required, and no sapces allowed around the assignment sign. All keys are used for generating the synthetic data, and ** is also used for all further steps
-- 
-** tells the script to list all stages and stop:
+
+- ** tells the script to list all stages and stop:
 ```bash
 run_process.py --config dummy --show
 ['Generate', 'Stats', 'Naive.LGBM', 'IPW.LGBM', 'Naive.LGBM.RCT', 'Naive.NN', 'IPW.NN', 'Naive.NN.RCT', 'Quasi.NN', 'Quasi.Full_NN', 'Quasi.LGBM', 'CFR', 'SHAP', 'IPW.SHAP', 'Performance']
 ```
-- 
-** and ** allow running only a subset of the script's stages
+
+- ** and ** allow running only a subset of the script's stages
 - slow stages are - IPW.NN and Quasi.Full_NN
 The stages of the script perform the following tasks-
 <table><tbody>

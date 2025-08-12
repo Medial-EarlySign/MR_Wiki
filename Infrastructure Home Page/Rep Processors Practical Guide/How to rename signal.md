@@ -1,6 +1,7 @@
 # How to rename signal
 When a model is trained on repository A and test on repository B, then we might face signal naming issue.
 Example:
+
 - model A: ICD9_Diagnosis
 - model B: DIAGNOSIS
  To resolve we adjust the model with the following json

@@ -23,7 +23,7 @@ A valid request to AlgoMarker should include the following fields:
             - **unit** (optional): The unit for the signal (e.g., `"fL"`).
 
 #### Example Signal Entry
-```json
+```json title="Example Signal Entry"
 {
     "type": "request",
     "request_id": "999ef0f4-1099-4178-8c86-ecbfac6578e2",

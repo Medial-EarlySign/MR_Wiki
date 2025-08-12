@@ -1,4 +1,4 @@
-# Tutorial
+# Howto Use AlgoMarker
 
 ## How to Deploy AlgoMarker
 
@@ -80,7 +80,7 @@ Once the server is running, it exposes two main API endpoints:
    - Request format details: [Request json format](Request%20Json%20Format.md)
 
 **Example Response:**
-```json
+```json title="Example Response"
 {
   "type": "response",
   "request_id": "999ef0f4-1099-4178-8c86-ecbfac6578e2",

@@ -2,6 +2,7 @@
 To create general graph please use **createHtmlGraph** function in MedPlot. to create ROC graphs use plotAUC function.
  
 plotAUC** Input: **
+
 - vector of all models predictions vector(each record is prediction vector result of specific model)
 - vector of the labels
 - vector of the models\predictors names (same size as the first vector)
@@ -10,6 +11,7 @@ plotAUC** Input: **
  
 plotAUC **Output**:** **
 the function outputs the following graphs:
+
 - ROC graph curve
 - PPV graph curve - for each false positive rate - it's PPV value for each model
 - False Positive rate as function of model score - you may see each model scores VS it's false positive rate

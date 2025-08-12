@@ -13,8 +13,8 @@ Or environment variable: "$AUTOTEST_LIB"
 
 ## Use cases
 There are 4 use cases:
-- Development - testing of new model
-- 
+
+- [Development](Development%20kit) - testing of new model
 - [External Silent Run](External%20Silent%20Run) - auto tests for existin model on dataset WITHOUT labeling
 - External_validation_after_SR - autotest for dataset after "External_Silent_Run" when we received the labeling.
 
@@ -29,6 +29,7 @@ There are 4 use cases:
 
 ## How each test is being executed/ How to write new test:
 Each test in Tests is given 3 arguments:
+
 1. CFG_PATH_OF_CURRENT_KIT - path to config folder of current kit
 2. SCRIPT_DIR_OF_INFRA - path of AutoTest infrastructure
 3. OVERRIDE - binary 0/1 if to override previous results
@@ -37,6 +38,7 @@ You need to respect those arguments when writing a new test
 The tests are being executed one after another, there is a unified log of all tests and a specific log for each test.
 Output of each test has to be manually **verified** (one should make sure that test results make sense)
 There is also a file that show the status of all the Tests called "tests_status.log". Each test has status:
+
 - FINISHED_NEED_VERIFY - test was ended successfully without errors. Please go over output and approve/disapprove the test. 
 - FINISHED_FAILED - Test ended successfully without errors, but failed. The outputs seems wrong or raised a problem. need to rerun. When you want to rerun, erase this status row for the test
 - FINISHED_VERIFIED - If test ended correctly and verified

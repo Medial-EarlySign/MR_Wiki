@@ -13,6 +13,7 @@ For calibration information please refer to [Calibrate model, and calibration te
 - BT_COHORT_CALIBRATION - bootstrap cohort definition to focus on calibration
  
 ## Output
-$WORK_DIR}/calibration
+${WORK_DIR}/calibration
+
 - bt.pivot_txt - bootstrap results of calibration measurement
 - *.html  - calibration graph result for each cohort - for each score bin, plots observed mean outcome, expected confidence internal, etc.

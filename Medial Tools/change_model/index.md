@@ -1,6 +1,7 @@
 # change_model
 In some cases we need to manipulate Existing MedModel without need for relearn.
 For example:
+
 - In production models with use special flags in the BasicCleaner to store in the MedSamples information about the cleaning process
 - Normalization, Imputation - we might want to turn it off for some use cases to create matrixes
 - ButWhy - we might want to turn it off or change some arguments for the apply without realearn - change grouping arguments for example...

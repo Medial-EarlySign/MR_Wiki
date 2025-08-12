@@ -4,6 +4,7 @@ A page to chronically announce information regarding the MR Libs and Tools code 
 ###   - Alon - Build script to compile all our apps with documentition of git version
 When including MedUtils we can use medial::get_git_version() which returns a string with git information about Libs and Tools Repositories used to complie the application.
 Running our apps with --debug will print the app version and --version will just output the application version and exit.
+
 - To compile all our tools with version info use build scripts in Scripts Repo: $MR_ROOT/Projects/Scripts/Bash-Scripts/full_build.sh
 - example of version output running: bootstrap --version
 *Version Info:*
@@ -30,6 +31,7 @@ Running our apps with --debug will print the app version and --version will just
  
 ### 18/12/2018 - Avi Clutter cleaning stage 1
 Several changes in libraries, in order to get rid of old unused code, and break out messy libraries into meaningful libraries, to increase code quality and decrease dependencies.
+
 - MedFeat is no more : you served us well, may you rest in peace. Contained mainly old unused code, needed remains were left in other places.
 - MedSplit : a very small library, left over from MedFeat.
 - Retired : a new library with old unused code (in case we will in some weird scenario need to compile some very old code)

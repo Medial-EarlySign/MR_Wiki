@@ -3,6 +3,7 @@ In this example we will first create an unsupervised embedding space, and then u
 All work done here can be found in: /nas1/Work/Users/Avi/test_problems/embedding_example
 The code needed for this is either in MR_LIBS or in MR/Projects/Shared/Embeddings.
 Quick Jump:
+
 - [Step 1 : Plan](../#EmbeddingsWalkThroughExample-Step1)
 - [Step 2: Prepare basic lists , and cohort](../#EmbeddingsWalkThroughExample-Step2)
 - [Step 3 : Design and prepare the training dates for embeddings](../#EmbeddingsWalkThroughExample-Step3)
@@ -20,6 +21,7 @@ We will give scores at random times before the outcome (and slice with bootstrap
 For the embedding training - we have lots of options, and it is not clear which is the best.
 In this example we will choose the option of using the same dates and outcome times as in the outcome training group, generate a feature rich large x (source) matrix at the sample times, and a large (but smaller) destiny matrix y for the times (outcome, outcome + T) , T = 1y , which will also include our outcome variable. We will then use the embedded layer as features added to the CVD model and see if we see any improvement in perfomance.
 General Vocabulary of terms we use:
+
 - **sparse matrix** : a matrix in which most values are 0 , and hence can be defined by showing only the few non-zero elements. Very efficient in holding large sets of sparse categorial features. We use the MedSparseMat class to handle these objects. Usually we create such matrices with a prefix followed by a suffix :
   - **.smat** : the actual sparse matrix, lines of <line_number>,<column number>,<value>
   - **.meta** : containing the list of pid,time matching each line
@@ -359,15 +361,16 @@ Epoch 2/5
 The one just before the gaussian noise. We take the third layer, then batch normalize it , so that it is in the N(0,1) distribution on each channel, and then add noise (only in training). This is done in order to make sure our embedding layer gives numbers in a reasonable numerical range, is normalized, and that it is immune to noising each channel, making it a more stable embedding.
  
 Some explanation on the model loss and evaluation:
+
 - **Loss function** : we treat the y vector as a binary prediction goal, and to the whole problem as predicting together a vector of binary predictions (in the example above a vector of length 3986). The loss we take is the logloss on each channel , summed over all channels. You will note that our last layer before getting to the y layer is using sigmoid as activation into the y layer, hence predicting a probablily for each channel. Since the y vectors are very sparse we multiply by a weight the cases (y[i][j] == 1) , pushing the model to try better to be right on 1 predictions rather than 0 predictions.
 - **Evaluation** : last 20% of x.y matrices (as they appear in the input files) are always used as evaluation data for the embedding training process, and you see that evaluation after each epoch.
 - Evaluation metrics (all metrics with val_ prefix are the same but on the validation 20% set). All our done at a point which sets >=0.5 predictions as 1 and the others as 0.
-  - loss : overall loss value (as explained above). Big differences between train and validation group hints towards over fit we can try to regilarize (finding the best regularization usually improves results). Note that when using large data sets less regularization is needed. More data is always the best regularizer.
-  - w_bin_cross : loss without the regularization terms (l1, l2).
-  - ppv : #(true==1 && prob>=0.5) / # (prob >= 0.5) : the probability of being right when predicting positive (larger is better)
-  - sens : #(true==1 && prob>=0.5) / # (true == 1) : how many of the positives caught when predicting positive (larger is better)
-  - enpv : #(true==1 && prob<0.5) / #(prob<0.5) : the probability for error when predicting negative (lower is better)
-  - espec : 1-#(true==0 && prob<0.5)/#(true == 0) : percentage of true negatives not predicted right out of all negatives (lower is better)
+    - loss : overall loss value (as explained above). Big differences between train and validation group hints towards over fit we can try to regilarize (finding the best regularization usually improves results). Note that when using large data sets less regularization is needed. More data is always the best regularizer.
+    - w_bin_cross : loss without the regularization terms (l1, l2).
+    - ppv : #(true==1 && prob>=0.5) / # (prob >= 0.5) : the probability of being right when predicting positive (larger is better)
+    - sens : #(true==1 && prob>=0.5) / # (true == 1) : how many of the positives caught when predicting positive (larger is better)
+    - enpv : #(true==1 && prob<0.5) / #(prob<0.5) : the probability for error when predicting negative (lower is better)
+    - espec : 1-#(true==0 && prob<0.5)/#(true == 0) : percentage of true negatives not predicted right out of all negatives (lower is better)
  
 ## Step 7 : Testing we get the same embeddings in Keras and Infrastructure
 This is a needed sanity in order to verify the model we trained is indeed the one our infrastructure will use.
@@ -451,7 +454,7 @@ _________________________________________________________________
 # We now want to do the same using our layers file and infrastructure:
 # layer 9 is usually the layer of the Embedding if you didn't change the Embedder.py script to run a different network
 #
-/Embeddings --get_embedding --f_samples ./t_1.samples --f_scheme ../x.scheme --f_layers ../emodel.layers --to_layer 9
+./Embeddings --get_embedding --f_samples ./t_1.samples --f_scheme ../x.scheme --f_layers ../emodel.layers --to_layer 9
  
 # results ...
 initializing rep /home/Repositories/THIN/thin_jun2017/thin.repository
@@ -512,17 +515,16 @@ To use embeddings as features add the following to your json
 ## Step 9 : Results for MI with/without Embedding , with/without SigDep
 We can now easily train models for our problem. We can use learn_1_B as our training samples and validate_1_B as our cross validation set, and validate_2 as an external test set.
 Doing these tests in 4 flavors:
+
 - No categorial signals
-  - We used "last", "min", "max", "avg", "last_delta", "last_time" on several time windows 
-  - signals : 
-"Glucose", "BMI", "HbA1C", "Triglycerides", "LDL", "Cholesterol", "HDL", "Creatinine", "eGFR_CKD_EPI", "Urea", "Proteinuria_State", "ALT", "AST", "ALKP",
- "WBC", "RBC", "Hemoglobin", "Hematocrit", "RDW", "K+", "Na", "GGT", "Bilirubin", "CRP","BP"
-  - 
-Used also Smoking information, age, gender
+    - We used "last", "min", "max", "avg", "last_delta", "last_time" on several time windows 
+    - signals : 
+        - "Glucose", "BMI", "HbA1C", "Triglycerides", "LDL", "Cholesterol", "HDL", "Creatinine", "eGFR_CKD_EPI", "Urea", "Proteinuria_State", "ALT", "AST", "ALKP", "WBC", "RBC", "Hemoglobin", "Hematocrit", "RDW", "K+", "Na", "GGT", "Bilirubin", "CRP","BP"
+- Used also Smoking information, age, gender
 - Using Signal Dependency on Drugs and RC (choosing top 100 codes in each) to select correlated read codes.
 - Using Embeddings:
-  - Embeddings were trained once as an autoencoder (y matrix created at same times of x matrix) and once as a future-encoder in which y matrix was created on times 1 or 2 years a head.
-  - Embedding dimension was 100
+    - Embeddings were trained once as an autoencoder (y matrix created at same times of x matrix) and once as a future-encoder in which y matrix was created on times 1 or 2 years a head.
+    - Embedding dimension was 100
 - Using both SigDep and Embeddings together.
  
 Predictor used was the same for all cases: lightgbm with slightly optimized parameters.
@@ -557,14 +559,15 @@ Results are given for the 30-730 time window, ages 40-80 , we compare AUCs
  
 CI intervals are more or less +- 0.005
 Some points:
+
 - We see a very minor improvement for using Embeddings.
-  - This is a nice result , as it verifies the whole concept works.
-  - There is a trend towards better results even in this model, and when going to 3y, 5y time windows it gets stronger
+    - This is a nice result , as it verifies the whole concept works.
+    - There is a trend towards better results even in this model, and when going to 3y, 5y time windows it gets stronger
 - Since the SigDep option is much simpler also when interprating the models , it is not clear Embeddings are preffered in this problem.
 - On the other hand the Embedding option is quite general and the same set of features could be used in many different models.
 - Also : it may be that finiding/training the right Embedding model will give an even larger boost.
 - interestingly there was also a very small improvement trend when using both together:
-  - Means most of the information captured by both methods is the same, but still each has some small information parts the other doesn't.
+    - Means most of the information captured by both methods is the same, but still each has some small information parts the other doesn't.
  
  
  

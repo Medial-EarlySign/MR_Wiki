@@ -36,7 +36,6 @@
 - **Inherits from:** [SampleFilter](../SampleFilter) [RepProcessor](../RepProcessor)
 - **Generate new dynamic-version: **No
 - **Members:**
- 
 - vector <string> signalNames;                                      Names of signals that should be cleaned
 - vector <int> signalIds;                                                 Ids of signals to clean
 - int time_channel = 0;
@@ -44,15 +43,12 @@
 - MedDictionarySections myDict;                                    keeping it will enable us to get ids at apply stage
 - bool addRequiredSignals=false;                                   a flag stating if we want to load signals that are not in the cleaned signal list (see explanation above)
 - vector<int> consideredRules;                                       only rules in this list will be considered in this cleaner (see explanation above)
- 
+
 - **Implemented methods:   **
-  - 
-*Constructors :*
-    - 
-*RepRuleBasedOutlierCleaner() *
- 
-  - *void init_defaults() *: init cleaning parameters to default values
-  - *int init(void *processor_params) *: init cleaning parameters according to input params
-  - *virtual int init(map<string, string>& mapper) *: init cleaning parameters according to map
-  - *void set_signal_ids(MedDictionarySections& dict) *: set signalId (actually keep the dictionary for further use in apply).
-  - *int apply(PidDynamicRec& rec, vector<int>& time_points) *: apply outliers-cleaning to signal in dynamic-rec at time-points 
+    - *Constructors :*
+        - *RepRuleBasedOutlierCleaner() *
+    - *void init_defaults() *: init cleaning parameters to default values
+    - *int init(void *processor_params) *: init cleaning parameters according to input params
+    - *virtual int init(map<string, string>& mapper) *: init cleaning parameters according to map
+    - *void set_signal_ids(MedDictionarySections& dict) *: set signalId (actually keep the dictionary for further use in apply).
+    - *int apply(PidDynamicRec& rec, vector<int>& time_points) *: apply outliers-cleaning to signal in dynamic-rec at time-points 

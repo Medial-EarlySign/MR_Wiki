@@ -64,8 +64,8 @@ Program options:
 ```
 example Run with config file with all arguments in /server/Work/Users/Alon/UnitTesting/examples/action_outcome_effect/base_config_example.cfg:
 **example run**
-```
-$> Linux/Release/action_outcome_effect --base_config /server/Work/Users/Alon/UnitTesting/examples/action_outcome_effect/base_config_example.cfg
+```bash
+Linux/Release/action_outcome_effect --base_config /server/Work/Users/Alon/UnitTesting/examples/action_outcome_effect/base_config_example.cfg
 WARNING: header line contains unused fields [EVENT_FIELDS,]
 [date]=2, [id]=1, [outcome]=3, [outcome_date]=4, [split]=5,
 read [635795] samples for [635795] patient IDs. Skipped [0] records
@@ -215,11 +215,10 @@ method_price_ratio = 6.2
 nbootstrap = 5
 ```
 the input argument is the main data file and it can be MedSamples with json to create matrix or the MedFeatures itself.
+
 - patient_action - a file with same number of lines as the samples in the input, each line is correspond to the same sample in the input. it may be 0/1 for [no treatment, treatment] mark for each sample
-- 
-confounders_file - a file list with all the confounders search name (searching contains in the column names) in the matrix of input. each line consist of the the confounder search name
-- 
-example:
+- confounders_file - a file list with all the confounders search name (searching contains in the column names) in the matrix of input. each line consist of the the confounder search name
+- example:
 **$> head confounder.list**
 ```
 Age
@@ -227,11 +226,10 @@ Gender
 LDL.last
 ```
 here we have 3 confounders: Age,Gender and LDL.last
-- 
-patient_groups_file - a file with same number of lines as the samples in the input, each line is correspond to the same sample in the input. it will be the risk group name for the sample for later split. 
+
+- patient_groups_file - a file with same number of lines as the samples in the input, each line is correspond to the same sample in the input. it will be the risk group name for the sample for later split. 
 you may write for example in line: "Age=20-40;Gender=Male" to mark the sample as belong to that group in the output results
-- 
-models_selection_file - a file with initialization of the parameters of the model. you may provide more than one option for parameter with "," and than the tool will select the best option over all available options. 
+- models_selection_file - a file with initialization of the parameters of the model. you may provide more than one option for parameter with "," and than the tool will select the best option over all available options. 
 you may also provide only one option and than the tool will just use this. for example:
 **$> head xgb_model_selection.cfg**
 ```

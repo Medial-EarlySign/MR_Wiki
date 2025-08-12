@@ -14,7 +14,7 @@ gdb EXE_PATH
 
 or better tool (wrapper of gdb) with "gui":
 
-```
+```bash
 cgdb EXE_PATH
 ```
 
@@ -24,14 +24,12 @@ in order to jump between code and command line in the gui - use ESC key to focus
 Some usefull commands used to debug (you may shortend the commands, for example instead of "print" you may write just "p" and "c" instead of "continue").
 remember you have history for your commands even after you close the debugger, so using arrows UP, arrows DOWN to visit history may be usefull.
 
- 
 - "catch th" - sets breakpoint when first exception is thrown
 - "b FILE_NAME.cpp:LINE_NUMBER" - sets breakpoint in line with file. for example: "b MedModel.cpp:100" will set breakpoint at line 100 in MedModel.cpp.
-  - hitting just "b LINENUM" will set breakpoint in line of current file(of stach trace)
-  - Conditional breakpoint - you may specify "if CONDITION" in the end of the command to set conditional breakpoint. example: "b MedModel.cpp:100 if pid==5000001"
+    - hitting just "b LINENUM" will set breakpoint in line of current file(of stach trace)
+    - Conditional breakpoint - you may specify "if CONDITION" in the end of the command to set conditional breakpoint. example: "b MedModel.cpp:100 if pid==5000001"
 - "i b" - prints all breakpoints you have
 - "d #NUM_BREAKPOINT" - deletes breakpoint by number, without number will delete all
-
 - "bt" - prints backtrace of your program to see all program call. example:
 ```
 bt
@@ -73,7 +71,7 @@ The dumps are deleted when new crash dump is created and when we reach the limit
 there is command "show_crashes.sh" in BASH_SCRIPTS - that locate those dump location in the current node.
 to open a crash dump, see backtrace and print variables in the stack use gdb/cgdb to open the dump:
 
-```
+```bash
 sudo cgdb CRASHED_PROGRAM_BIN_PATH CRASH_DUMP_PATH
 # example:
 # $> show_crashes.sh

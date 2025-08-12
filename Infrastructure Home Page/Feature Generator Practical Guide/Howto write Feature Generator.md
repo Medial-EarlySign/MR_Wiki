@@ -1,6 +1,7 @@
 # How to Write a Feature Generator
 A Feature Generator is a processing unit that takes raw input signals directly from a data repository or EMR.
 Its process has two main stages:
+
 - It runs all relevant rep processors to pre-process the input signals. This prepares the data before it can be used to generate new features. This is being called by the infrastructure.
 - It calls the generate function, which receives this pre-processed, patient-specific data and produces the final output.
 

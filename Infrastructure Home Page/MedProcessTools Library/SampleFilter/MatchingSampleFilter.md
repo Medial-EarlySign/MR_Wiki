@@ -1,6 +1,7 @@
 # MatchingSampleFilter
 ### MatchingSampleFilter matches cases a control according to a combination of matching criteria.
 MatchingSampleFilter can use the following matching criteria:
+
 - Age
 - Time (e.g. calendar year)
 - Values of signals

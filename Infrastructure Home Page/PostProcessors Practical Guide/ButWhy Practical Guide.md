@@ -13,11 +13,11 @@ Using Flow shap_val_request - which create a report and shows average outcome/s
 Flow --shap_val_request --f_model $MODEL_PATH --rep $REPOSITORY --f_samples $SAMPLES_TO_ANALYSE_SHAPLEY --max_samples $DOWN_SAMPLE_SAMPLES_TO_THIS_COUNT_OPTIONAL_TO_SPEEDUP --group_signals "" --bin_method "split_method=iterative_merge;binCnt=50;min_bin_count=100;min_res_value=0.1" --f_output $REPORT_STORE_PATH
 ```
 Which creates report and stores it in f_output paramter. There are two additional arguments:
+
 - group_signals - keep empty to report for each feature.
   - BY_SIGNAL_CATEG_TREND - to report by signals, using **different** group for values and trends features
   - BY_SIGNAL_CATEG - to report by signals, using **the same **group for values and trends features
   - Can also specify "$FILE_PATH" where FILE_PATH is tab delimeted file with 2 tokens. The first is the name of the feature and the later is the name of the group to map into.
-
 - bin_method - The report also contains information on how the model behaves in different feature values. This parameter controls how we "bin" the features. 
 Use this argument: "split_method=iterative_merge;binCnt=50;min_bin_count=100;min_res_value=0.1". Which means to bin into 50 bins with at least 100 observations in bin and use resolution for feature value of 0.1.
 Iteratively merges the adjacent bins that sums together with the smallest observation count (greedy). Has more methods and simpler methods, but this is good method to ensure minimal observations in bin.

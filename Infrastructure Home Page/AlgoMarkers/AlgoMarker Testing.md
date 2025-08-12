@@ -3,7 +3,8 @@
 The tool AMApiTester can now generate request/response JSON files which can be used by the AlgoAnalyzer.
 It is done by providing --json-reqfile and --json-resfile in the commandline. These options currently work only with the --single testing mode. 
 To use it you should execute the command normally and provide req/req file names to output the JSON data to, for example:
-```
+
+```bash
 ./AMApiTester \
   --amfile /nas1/Products/LGI-ColonFlag-3.0/QA_Versions/LGI_3.1.0.0/libdyn_AlgoMarker.25102018_1.so \
   --single --print_msgs \
@@ -19,7 +20,8 @@ To use it you should execute the command normally and provide req/req file names
 The JSON generating is done in a library project called AlgoMarker/CommonTestingTools.
 ## ApplyTool
 ApplyTool is another tool with JSON capabilities. This toold is the result from the work with ShareCare. it can:
-```
+
+```bash
 # 1. Convert JSON reqfile to a tab-separated repository data file:
 /nas1/UsersData/shlomi/MR/Libs/Internal/AlgoMarker/Linux/Release/ApplyTool --convert_reqfile_to_data --convert_reqfile_to_data_infile ./long_req.json --convert_reqfile_to_data_outfile ./long_req.data
  
@@ -31,14 +33,12 @@ ApplyTool is another tool with JSON capabilities. This toold is the result from 
 --apply_repdata_jsonreq ./long_req.json \
 --apply_dates_to_score ./long_req.samples.tsv \
 --apply_outfile ./long_req_from_json.pred
- 
 ```
  
 ## The old way (–msgs_file + python scripts)
-```
-The old way to create and test JSON req files involved using AMApiTester with additional commands --print_msgs --msgs_file [TSV_Codes_file].The AMApiTester is being ran as usual but the error codes that the Algomarker emits will be saved into the file specified by --msgs_file . for example:
-```
-```
+The old way to create and test JSON req files involved using AMApiTester with additional commands --print_msgs --msgs_file TSV_Codes_file.The AMApiTester is being ran as usual but the error codes that the Algomarker emits will be saved into the file specified by --msgs_file . for example:
+
+```bash
 ./Linux/Release/AMAPITester 
   --rep /home/Repositories/THIN/thin_jun2017/thin.repository 
   --samples /nas1/Work/Shared/notebooks/shlomi-internal/AATester/pre2d_validate_OnTest_2-10k.samples 
@@ -50,12 +50,12 @@ The old way to create and test JSON req files involved using AMApiTester with ad
   --single 
   --am_res_file /nas1/Work/Shared/notebooks/shlomi-internal/AATester/pre2d_validate_OnTest_2-10k.preds.tsv
 ```
+
  Then we will use a python script as follows to convert the codes+preds files into json:
 (also available as notebook in here: [http://node-04:9000/user/shlomi-internal/notebooks/shlomi-internal/AATester/Phase1.ipynb](http://node-04:9000/user/shlomi-internal/notebooks/shlomi-internal/AATester/Phase1.ipynb))
 Note: the conf object contains script configuration you may change for your specific settings.
-****
- Expand source
-```
+
+```python
 import json
 import med
 import pandas as pd
@@ -300,9 +300,8 @@ print("skipped {} samples".format(len(skipped_samples)))
 Once you have JSON req/res files you may want to insert them into a SQL DB so it can be used by AA. The following python script takes the JSON files and stores then in the DB:
 (also available here: [http://node-04:9000/user/shlomi-internal/notebooks/shlomi-internal/AATester/Phase1-DB-insert.ipynb](http://node-04:9000/user/shlomi-internal/notebooks/shlomi-internal/AATester/Phase1-DB-insert.ipynb))
 Note: the conf object contains script configuration you may change for your specific settings.
-****
- Expand source
-```
+
+```python
 import json
 import med
 import pandas as pd

@@ -1,5 +1,4 @@
 # XGBoost added features
-- **S**
   - When using gbtree::updater_colmaker::spit_evaluator==ElasticNet, it is possible to add feature specific additive penalties
     - Parameter format - a string "fid:valfid:val,..."
     - When spliting according to id fid, loss-change is decreased by val

@@ -16,26 +16,23 @@
 **low dist: The probability distribution used in confirmed or should be used in learned for calculation of lower bound. May be norm, lognorm or manual ( that means do not use learned. Value was chosen manually for confirmed mode.**
 **high bound: see low bound above.**
 **high dist : see low dist above.**
-****
+
 ### Include file is - H:/MR/Libs/Internal/MedUtils/MedProcessTools/RepProcess.h
 ### RepBasicOutlierCleaner
 - **Description: ** A child class of RepBasicOutlierCleaner
 - **Inherits from: **RepBasicOutlierCleaner
 - **Generate new dynamic-version: **No
 - **Members:**
-  - 
-string confFileName;   The file that holds the cleaning parameters for each signal.
- string cleanMethod;    // "logical" "confirmed" or "learned" as explained above.
- map<string,confRecord> outlierParams;         holds the parameter that were read from confFile.
+    - string confFileName;   The file that holds the cleaning parameters for each signal.
+    -  string cleanMethod;    // "logical" "confirmed" or "learned" as explained above.
+    -  map<string,confRecord> outlierParams;         holds the parameter that were read from confFile.
 - **Implemented methods:   **
-  - 
-*Constructors :*
-    - 
-*inheritted*
-  - *void init_defaults() *: init cleaning parameters to default values
-  - *virtual int init(map<string, string>& mapper) *: init cleaning parameters according to map
-  - *int Learn(MedPidRepository& rep, vector<int>& ids, vector<RepProcessor *>& prev_processor) *: Learn the thresholds for removal of values according to the description above.
-  - apply  is inheritted from basic cleaner.
-****
+    - *Constructors :*
+        - *inheritted*
+    - *void init_defaults() *: init cleaning parameters to default values
+    - *virtual int init(map<string, string>& mapper) *: init cleaning parameters according to map
+    - *int Learn(MedPidRepository& rep, vector<int>& ids, vector<RepProcessor *>& prev_processor) *: Learn the thresholds for removal of values according to the description above.
+    - apply  is inheritted from basic cleaner.
+
  
  

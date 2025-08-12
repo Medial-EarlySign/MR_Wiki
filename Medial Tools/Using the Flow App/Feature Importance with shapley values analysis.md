@@ -31,6 +31,7 @@ $> Flow --rep ${REPOSITORY_PATH} --shap_val_request --f_model ${MODEL_PATH} --f_
 ```
 
 Can be given either f_matrix  or f_samples .
+
 - group_cnt - how many groups to split each feature, corresponding argument is  group_names  - if we want to provide names to the groups (optional)
 - group_ratio - how many values to catch in each bin. 0.2 - means each bin is 20% of the data
 - normalize - whether or not to normalize shap values to percentage

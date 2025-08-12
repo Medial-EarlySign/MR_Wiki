@@ -1,11 +1,13 @@
 # Outcomes files
 Outcome files are meant to be a formal definition for outcome groups of patients used in learning and testing.
 An outcome has the following types
+
 - binary - the outcome is 0 or 1 (we always use 0 for controls and 1 for the outcome itself)
 - categorical - the outcome is in the range 0...(ncateg-1).
 - regression - a continous outcome.
  
 Each outcome is a list of rows, in each row we have:
+
 - patient id
 - date/time: the sampling date for the outcome (typically before the raw date)
 - outcome value

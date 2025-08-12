@@ -8,9 +8,9 @@ This will support the validation of a model on the same dataset used to train th
 ## Configuration
 We will call our test kit code folder as TEST_KIT.
 The main configuration file can be found under current TEST_KIT/config/env.sh
-Parameters
-- 
-REPOSITORY_PATH - A path to the repository use to develop the mode - train (& test)
+Parameters:
+
+- REPOSITORY_PATH - A path to the repository use to develop the mode - train (& test)
 - TRAIN_SAMPLES_BEFORE_MATCHING - Path to raw train samples before matching
 - TEST_SAMPLES/PREDS_CV - path to test samples that we can apply the model on without over-fitting (a different set of patient). Or use PREDS_CV to prediction files collection in cross validation manner (fir example by cv or Optimizer)
 - MODEL_PATH - Path of the model
@@ -19,9 +19,9 @@ REPOSITORY_PATH - A path to the repository use to develop the mode - train (& te
 - EXPLAINABLE_MODEL - path to model with explainability if applicable (recommended to create one). It's by default referenced to the same MODEL_PATH.
 - TEST_SAMPLES_CALIBRATION - set of test samples to test model calibration. It's by default referenced to the same TEST_SAMPLES
 - BT_JSON - bootstrap json path. It is reference by default to the current config folder /bootstrap/bootstrap.json. We will use this json to generate features for bootstrap analysis.
-  - bootstrap/bootstrap.json - a bootstrap json file to run bootstrap_app
+    - bootstrap/bootstrap.json - a bootstrap json file to run bootstrap_app
 - BT_COHORT - bootstrap cohorts definition file for bootstrap analysis. It is reference by default to the current config folder /bootstrap/bt.params
-  - bootstrap/bt.params - a bootstrap cohorts file for bootstrap_app
+    - bootstrap/bt.params - a bootstrap cohorts file for bootstrap_app
 - NOISER_JSON - a json that defines rep processors to "noise" the inputs and test model sensitivity to noise. It references a file in current folder named: noiser_base.json. Please refer to [Noiser](/Infrastructure%20Home%20Page/Rep%20Processors%20Practical%20Guide/Noiser) page for more details.
 - TIME_NOISES - vector of values to control the noise in dates. The unit is days, so "30" means uniform randomly shifting dates between 0-30 days backward of all signals in NOISER_JSON.
 - VAL_NOISES - vector of values to control the noise in signal values. The unit is standard deviation multiply by 10 - so "1" means "0.1" * signal std. This will control normal random noise standard deviation based on signal std.
@@ -32,7 +32,7 @@ REPOSITORY_PATH - A path to the repository use to develop the mode - train (& te
 - EXPLAIN_COHORT - bootstrap cohort definitions for explainability. By default it is the same as regular bootstrap
 - BT_JSON_FAIRNESS - bootstrap json to control fairness cohorts if they are different than regular cohorts. By default it is the same as regular bootstrap: BT_JSON_FAIRNESS=${BT_JSON}
 - FAIRNESS_BT_PREFIX - A single cohort to filter samples to test fairness. The syntax is the same as bootstrap cohort. [bootstrap_app](/Medial%20Tools/bootstrap_app)
-  - "configs/fairness_groups.cfg" - more info in [Test_12 - fairness](Test_12%20-%20fairness)
+    - "configs/fairness_groups.cfg" - more info in [Test_12 - fairness](Test_12%20-%20fairness)
 - FAIRNESS_MATCHING_PARAMS - Control How to do matching between groups if fairness isn't met. The default is to do the matching by age - 10 years bin.
 - BASELINE_MODEL_PATH - A path to baseline model to compare with
 - BASELINE_COMPARE_TOP - compare top X% to compare our model with baseline model. van diagram and more...

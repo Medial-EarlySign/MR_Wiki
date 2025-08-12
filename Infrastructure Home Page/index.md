@@ -36,32 +36,33 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
 1. **MedRepository: a high-performance EMR time-series store**
     * Fast retrieval of any patient’s full record or a specific signal across all patients.
     * [Unified representation](InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors): each signal consists of zero or more time channels plus zero or more value channels, all tied to a patient ID.
-      - Static example: "Birth year" → no time channels, one value channel.
-      - Single-time example: "Hemoglobin" → one time channel (test date), one value channel (numeric result).
-      - Interval example: "Hospitalization" → two time channels (admission and discharge dates).
+        - Static example: "Birth year" → no time channels, one value channel.
+        - Single-time example: "Hemoglobin" → one time channel (test date), one value channel (numeric result).
+        - Interval example: "Hospitalization" → two time channels (admission and discharge dates).
     * **Hierarchical support for categorical medical ontologies** 
-      - Enables seamless integration and translation between different systems when working with a frozen model or algorithm. 
-      - Example: A query for ICD-10 codes starting with "J" (respiratory diseases) will also automatically map to corresponding categories in systems like Epic. When dictionary of mapping between ICD and Epic is added, no need to change the model. 
-      - Ontology mappings are managed by [MedDictionary](InfraMed%20Library%20page/MedDictionary), which supports many-to-many hierarchical relationships across coding systems.
+        - Enables seamless integration and translation between different systems when working with a frozen model or algorithm. 
+        - Example: A query for ICD-10 codes starting with "J" (respiratory diseases) will also automatically map to corresponding categories in systems like Epic. When dictionary of mapping between ICD and Epic is added, no need to change the model. 
+        - Ontology mappings are managed by [MedDictionary](InfraMed%20Library%20page/MedDictionary), which supports many-to-many hierarchical relationships across coding systems.
 2. **Modular processing pipeline (sklearn-style)**
     * **[Rep Processors](Rep%20Processors%20Practical%20Guide/)**: Clean or derive "raw" virtual signals, while preventing leakage of future data
-      - Example: Outlier cleaner that omits values only when abnormality is detected by future readings (e.g., a hemoglobin value on 2023-Feb-04 flagged only by a 2023-May-21 test remains until after May 21).
-      - Example: Virtual BMI signal computed from weight/height, or imputed when only two of three inputs exist
+        - Example: Outlier cleaner that omits values only when abnormality is detected by future readings (e.g., a hemoglobin value on 2023-Feb-04 flagged only by a 2023-May-21 test remains until after May 21).
+        - Example: Virtual BMI signal computed from weight/height, or imputed when only two of three inputs exist
     * **[Feature Generators](MedProcessTools%20Library/FeatureGenerator/)**: Convert cleaned signals into predictive features.
-      - Examples:
-        * "Last hemoglobin in past 365 days"
-        * "Hemoglobin slope over three years"
-        * "COPD diagnosis code during any emergency admission in last three years"
+        - Examples:
+            * "Last hemoglobin in past 365 days"
+            * "Hemoglobin slope over three years"
+            * "COPD diagnosis code during any emergency admission in last three years"
     * **[Feature Processors](Feature%20Generator%20Practical%20Guide/)**: Operate on the feature matrix—imputation, selection, PCA, etc. 
     * **[Predictors/Classifiers](MedAlgo%20Library/)**: LightGBM, XGBoost, or custom algorithms.
     * **[Post-processing](PostProcessors%20Practical%20Guide/)**: Score calibration, explainability layers, fairness adjustments, etc.
 3. **JSON-driven pipeline configuration** - Define every processor, feature generator, and model step in a single JSON file. [Json Format](MedModel%20json%20format)
-   Example json for training a model:
+    Example json for training a model:
 
 <details>
-  <summary>Click to expend</summary>
-  
-   ```json
+       <summary>Click to expend</summary>
+
+
+```json title="example json"
    {
 	"model_json_version": "2",
 	"serialize_learning_set": "0",
@@ -237,15 +238,15 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
 
 - MedModel learn and apply 
 - RepProcessors:
-  - [RepProcessors Practical Page](Rep%20Processors%20Practical%20Guide)
+    - [RepProcessors Practical Page](Rep%20Processors%20Practical%20Guide)
 - FeatureGenerators:
-  - [Feature Generator Practical Guide](Feature%20Generator%20Practical%20Guide)
+    - [Feature Generator Practical Guide](Feature%20Generator%20Practical%20Guide)
 - FeatureProcessors:
-  - [FeatureProcessor practical guide](FeatureProcessor%20practical%20guide)
+    - [FeatureProcessor practical guide](FeatureProcessor%20practical%20guide)
 - MedPredictors
-  - [MedPredictors practical guide](MedPredictor%20practical%20guide)
+    - [MedPredictors practical guide](MedPredictor%20practical%20guide)
 - PostProcessors:
-  - [PostProcessors Practical Guide](PostProcessors%20Practical%20Guide)
+    - [PostProcessors Practical Guide](PostProcessors%20Practical%20Guide)
 
 ## Other links
 Home page for in depth pages explaining several different aspects in the infrastructure

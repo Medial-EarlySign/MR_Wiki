@@ -1,6 +1,6 @@
 # Rep Processors Practical Guide
 This page intends to list current RepProcessors with explanations on parameters and a json line example.
- 
+
 - basic_cln : Basic outlier cleaner : learn ditribution and throw extreme values
 - nbrs_outlier_cleaner : Neighborhood outlier cleaner
 - [configured_outlier_cleaner ](Cleaners%20Json%20Examples): Configured outlier cleaner - Wrapper for basic_cln  with fixed bounderies for each signal
@@ -86,37 +86,23 @@ Creates a registry for the chosen medical condition. Currently implemented are h
 - name : "create_registry"
 Rough registry definition:
 1. Diabetes:
+    1. Diabetes : one of:
+        1. 2 tests within 2y of Glucose above 125, or HbA1C above 6.5 (the second one)  
+        2. 1 test of Glucose above 200, or HbA1C above 8.0
+        3. A diagnostic code
+        4. Starting point of using diabetes drugs.
+2. PreDiabetes:  
+    1. Non Diabetic
+    2. 1 Glucose test above 110, or 1 HbA1C above 5.7
+    3. 2 Glucose tests within 2y above 100 (the second), but still not diabetic.
+    4. Not taking diabetes drugs
   
-1. Diabetes : one of:
-    
-1. 2 tests within 2y of Glucose above 125, or HbA1C above 6.5 (the second one)  
-    
-2. 1 test of Glucose above 200, or HbA1C above 8.0
-    
-3. A diagnostic code
-    
-4. Starting point of using diabetes drugs.
+3. Healthy   
+    1. Non Diabetic
+    2. Non PreDiabetic
+    3. Normal range Glucose/HbA1C tests period.
+4. HyperTension: 
   
-4. PreDiabetes:
-    
-1. Non Diabetic
-    
-2. 1 Glucose test above 110, or 1 HbA1C above 5.7
-    
-3. 2 Glucose tests within 2y above 100 (the second), but still not diabetic.
-    
-4. Not taking diabetes drugs
-  
-4. Healthy
-    
-1. Non Diabetic
-    
-2. Non PreDiabetic
-    
-3. Normal range Glucose/HbA1C tests period.
-2. HyperTension: 
-  
-1. 
 Example:
 ```json
     {
@@ -137,52 +123,32 @@ Example:
 ```
   
 2. The code (RepCreateRegistry) uses the following definitions - 
-    
-1. High blood pressure - Diastolic BP over 90 or Systolic BP over 140 (for people younger than 60) or 150 (for people 60 or older)
-    
-2. Drugs - Relevant drugs are divided into 4 groups. The first is always indicative of HT. The second is indicative of HT unless there are other indication of CHF. The third indicative of HT unless there are other indicaiton of Diabetes. The last is indicative of HT uless other indications of CHF, Diabetes or MI
-  
-2. An individual is considered non hyper-tensive, as long as there are no tests showing high blood pressure, no Read (ICD9/10) codes and no drugs indicative of hypertension
-  
-3. Conditions for HT positive:
-    
-1. The first appearance of HT diagnosis (note - until 3/3/25 we waited for 2nd indication)
-    
-2. Two consequtives high BP tests, without normal BP test between them
-    
-3. Drug indication after high BT test
-    
-4. Two drug indications, less than 'ht_drugs_gap' days apart
-    
-5. With just one bad test / drug indication - the status is 'gray' however considered as not HT
-  
+    1. High blood pressure - Diastolic BP over 90 or Systolic BP over 140 (for people younger than 60) or 150 (for people 60 or older)
+    2. Drugs - Relevant drugs are divided into 4 groups. The first is always indicative of HT. The second is indicative of HT unless there are other indication of CHF. The third indicative of HT unless there are other indicaiton of Diabetes. The last is indicative of HT uless other indications of CHF, Diabetes or MI 
+3. An individual is considered non hyper-tensive, as long as there are no tests showing high blood pressure, no Read (ICD9/10) codes and no drugs indicative of hypertension
+4. Conditions for HT positive:   
+    1. The first appearance of HT diagnosis (note - until 3/3/25 we waited for 2nd indication)
+    2. Two consequtives high BP tests, without normal BP test between them
+    3. Drug indication after high BT test
+    4. Two drug indications, less than 'ht_drugs_gap' days apart
+    5. With just one bad test / drug indication - the status is 'gray' however considered as not HT
 5. After first HT positive => always HT positive
-5. Proteinuria:
-  
-1. Goes over a list of urine tests
-  
-2. For the categorial ones: each has the categories that match states of normal, medium, or severe proteinuria.
-  
-3. For the value based tests : ranges are given for the normal, medium and proteinuria stages.
-  
-4. The code goes over all the given tests, and in each day there's a test records if it was normal (0) , medium (1) , or severe (2) .
-  
-5. If there are several tests in the same day, the worst of them is considered as the result to use.
-  
-6. The output is a DateVal signal with times and values of 0,1,2 matching normal, medium, severe states (note this is DIFFERENT from the 0-4 proteinuria states we used in the past and which are calculated in the Diabetes registries calculator.
-6. CKD:
-  
-1. Goes over eGFR and Proteinuria states and calculates at each time point the CKD state (0-4) based on the last known values of eGFR and Proteinuria.
-  
-2. In many cases it would be recommended to have a double layered calculation in which:
-    
-1. Layer 1 creates the virtual signals needed for eGFR and Proteinuria
-    
-2. Layer 2 calculates the CKD levels based on Layer1 results.
- 
- 
+6. Proteinuria: 
+    1. Goes over a list of urine tests
+    2. For the categorial ones: each has the categories that match states of normal, medium, or severe proteinuria.   
+    3. For the value based tests : ranges are given for the normal, medium and proteinuria stages.
+    4. The code goes over all the given tests, and in each day there's a test records if it was normal (0) , medium (1) , or severe (2) .
+    5. If there are several tests in the same day, the worst of them is considered as the result to use.
+7. The output is a DateVal signal with times and values of 0,1,2 matching normal, medium, severe states (note this is DIFFERENT from the 0-4 proteinuria states we used in the past and which are calculated in the Diabetes registries calculator.
+8. CKD: 
+    1. Goes over eGFR and Proteinuria states and calculates at each time point the CKD state (0-4) based on the last known values of eGFR and Proteinuria.
+    2. In many cases it would be recommended to have a double layered calculation in which:
+        1. Layer 1 creates the virtual signals needed for eGFR and Proteinuria
+        2. Layer 2 calculates the CKD levels based on Layer1 results.
+
 parameters:
 general:
+
 - registry : "dm" for siabetes, "ht" for hypertension
 - names : the name/names of the virtual signals created by the processor, these will hold the actual registry signal.
 - signals : the signals the rep depends on, in case of working with slightly different signal names than the defaults
@@ -207,8 +173,7 @@ proteinuria related:
 - urine_tests_categories : a listing of the urine tests to use, each with a bit static if it is numeric or not, and then categories or ranges for the signal for the normal, medium and severe states. 
 - Example: 
 "**Urine_Microalbumin**:1:0,30:30,300:300,1000000/**UrineTotalProtein**:1:0,0.15:0.15,0.60:0.60,1000000/**UrineAlbumin**:1:0,30:30,300:300,1000000/**Urine_dipstick_for_protein**:0:Urine_dipstick_for_protein_normal:Urine_dipstick_for_protein_medium:Urine_dipstick_for_protein_severe"
-- 
-Note the usage of the '/' separator between signals, the use of ':' between the five fields for each signal, and the use of ',' within the ranges or categories fields.
+- Note the usage of the '/' separator between signals, the use of ':' between the five fields for each signal, and the use of ',' within the ranges or categories fields.
 ckd related:
 - ckd_egfr_sig : the name of the signal holding the eGFR
 - ckd_proteinuria : the name of the signal holding the proteinuria signal (the 3 levels one !!!)

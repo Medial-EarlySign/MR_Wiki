@@ -1,6 +1,7 @@
 # How to create an empty signal
 When a model is trained on repository A and test on repository B, then we might face missing signal.
 Example:
+
 - model A: has RDW signal
 - model B: do not have RDW signal
  To resolve we adjust the model with the following json

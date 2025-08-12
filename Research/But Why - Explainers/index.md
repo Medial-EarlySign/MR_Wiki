@@ -17,6 +17,7 @@ For example - if a variable is a copy of another variable (or deterministic fu
 If variable doesn't affect the score - it will get 0 importance. The sum of all variable's importance is the score.
 The problem is that Shapley value is hard to calculate and can only be estimated.
 The minimal properties for unique solution:
+
 - Null player - If variable does't affect the score in any scenario (knowledge of the variable) - it will get 0 importance
 - Symetric/Consitent/Fairness - If i,j are unknown features and in all cases when 1 of them is known the score changes the same as the other one is known - they will get the same contribution score
 - Linearity - If we have 2 functions v,w and define a new function v+w to explain which sums the 2 functions - so the contribution value for each varaible  in each function v,w can also be summed. 
@@ -27,42 +28,49 @@ The git repository is [MR_Projects](https://github.com/alonmedial/MR_Projects) 
 The experiment will be done on multiple model to test for robustness.
 All the models are on THIN, except CRC which is on MHS.
 **The models are:**
+
 - Diabetes model
-  - Repository: THIN 2017
-  - Json to train model: $MR_ROOT/Projects/Shared/Projects/configs/But_Why/test_models/pre2d_model.json
-  - Train\Test samples: /server/Work/Users/Alon/But_Why/outputs/explainers_samples/diabetes
-  - GAN model to generate synthetic samples for shapley calculation if needed: /server/Work/Users/Alon/But_Why/outputs/GAN/pre2d_gan_model.txt
+    - Repository: THIN 2017
+    - Json to train model: $MR_ROOT/Projects/Shared/Projects/configs/But_Why/test_models/pre2d_model.json
+    - Train\Test samples: /server/Work/Users/Alon/But_Why/outputs/explainers_samples/diabetes
+    - GAN model to generate synthetic samples for shapley calculation if needed: /server/Work/Users/Alon/But_Why/outputs/GAN/pre2d_gan_model.txt
 - CRC model
-  - Repository: MHS
-  - Json to train model: $MR_ROOT/Projects/Shared/Projects/configs/But_Why/test_models/crc.json
-  - Train\Test samples: /server/Work/Users/Alon/But_Why/outputs/explainers_samples/crc
-  - GAN model to generate synthetic samples for shapley calculation if needed - **Not exist, need to create one**
+    - Repository: MHS
+    - Json to train model: $MR_ROOT/Projects/Shared/Projects/configs/But_Why/test_models/crc.json
+    - Train\Test samples: /server/Work/Users/Alon/But_Why/outputs/explainers_samples/crc
+    - GAN model to generate synthetic samples for shapley calculation if needed - **Not exist, need to create one**
 - Flu+Complications simpler model (All relevatn drugs, all relevant diagnosis, Age, Gender and 5 top lab tests features)
-  - Repository: NWP
-  - Json to train model: in flu project fo nwp. The final binary of trained model is in here: /server/Work/Users/Alon/But_Why/outputs/explainers/flu_nwp/base_model.bin
-  - Train\Test samples: /server/Work/Users/Alon/But_Why/outputs/explainers_samples/flu_nwp
-  - GAN model to generate synthetic samples for shapley calculation if needed - **Not exist, need to create one**
+    - Repository: NWP
+    - Json to train model: in flu project fo nwp. The final binary of trained model is in here: /server/Work/Users/Alon/But_Why/outputs/explainers/flu_nwp/base_model.bin
+    - Train\Test samples: /server/Work/Users/Alon/But_Why/outputs/explainers_samples/flu_nwp
+    - GAN model to generate synthetic samples for shapley calculation if needed - **Not exist, need to create one**
 ****
 **The Experiment:**
 Experiment will be performed on each model.
 We will try to explain the test samples (special samples were collected for each problem - for example low hemoglobin and high score in CRC and the opposite... several examples for each model) with different explainers.
 Explainers are [PostProcessor](/Infrastructure%20Home%20Page/PostProcessors%20Practical%20Guide) of [ModelExplainer](/Infrastructure%20Home%20Page/PostProcessors%20Practical%20Guide/Explainers%20(But%20Why)). We will try to explain the prediction with different configurations\method for each sample in the model.
 After collecting all the results we will go over the alternatives and Coby Metzger(someone else?) will score them by:
+
 - Good
 - Fair
 - Bad
 **General comments:**
+
 - Options to test - in blined (method changes each row randomly)
 - Test 10 examples for each Explainer setting for sanity before the full experiment
 - Final step to validate with someone else besides Coby (Karni?) 
 ****
+
 - Grouping
 - Output - return top 10 of most contributing with abs value. - will return contribution and normalized contribution in the output (both magnitudes).  will also print value of representative feature in the group (the representative will be chosen by the most important feature in the group)
 **Selected problems:**
+
 1. CRC - about 1400 features and 40 test samples
 2. Diabetes - about 100 features and 143 test samples -** need to reduce number of samples (not need that much)**
 3. Flu simpler - Drug, Diagnosis, Age, Gender + 7 lab features and 20 test samples
+
 **Explainer settings:**
+
 1. KNN - with threshold on 5% without covariance fix
 2. tree without covariance fix
 3. tree with covariance fix
@@ -78,6 +86,7 @@ All the different explainers are configured unders:
 ll $MR_ROOT/Projects/Shared/Projects/configs/But_Why/explainers_cfgs
 ```
 Each post_processor is json for adjust model with ModelExplainer to test - it can be different method or different parameters. the name of the explainer is the name between explainer. to .json
+
 - KNN - coby method for KNN
 - LIME_GAN - LIME Shapley with GAN
 - LIME_gibbs_LightGBM - Lime Shapley with Gibb sampling of LightGBM model to estimate each variable value probability based on other variables in the Gibb sampling
@@ -140,7 +149,8 @@ To create summary resport run:
 #after collecting scores from the expirment form Coby or other physician, to summarize and map to explainer names report run (the diffrent form previous command is the last argument which is 2 instead of 1)
 $MR_ROOT/Projects/Shared/Projects/scripts/But_Why/test_explainers.diabetes.sh KNN_TH 0 2
 ```
-The summary can be found in files: 
+The summary can be found in files:
+
 - summary.tsv - For each record (patient + prediction time) and explainer (now with the name, not blinded) will reveal Coby scores. A table for each sample records X explainer's names - the values in the cells are Coby's scores
 - summary.sum.tsv - A summary for each explainer name and each score how mnay times it happened.
 Conclude into conclusion.

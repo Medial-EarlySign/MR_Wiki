@@ -36,11 +36,12 @@ Categorical example:
  
  
 For full list of arguments, please refer to:
-[https://Medial-EarlySign.github.io/MR_LIBS/classBasicFeatGenerator.html#a076e93350e71c367d5a4e4e05c7d2f8e](https://Medial-EarlySign.github.io/MR_LIBS/classBasicFeatGenerator.html#a076e93350e71c367d5a4e4e05c7d2f8e)
+[https://Medial-EarlySign.github.io/MR_LIBS/classBasicFeatGenerator.html](https://Medial-EarlySign.github.io/MR_LIBS/classBasicFeatGenerator.html)
  
 For full list of "type" params:
-[https://Medial-EarlySign.github.io/MR_LIBS/FeatureGenerator_8h.html#a3b295bd15168010bd0cac676528c63a8](https://Medial-EarlySign.github.io/MR_LIBS/FeatureGeneratorh.html#a3b295bd15168010bd0cac676528c63a8)
+[https://Medial-EarlySign.github.io/MR_LIBS/FeatureGenerator_8h.html](https://Medial-EarlySign.github.io/MR_LIBS/FeatureGenerator_8h.html)
 Here are some common operators/types:
+
 - "last" - take last value in the time window
 - "max" - take maximal value
 - "last_time" - take last time in days of the test in time window (in days)

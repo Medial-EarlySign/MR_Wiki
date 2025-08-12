@@ -5,6 +5,7 @@ Git Link: [https://github.com/Medial-EarlySign/MR_Libs](https://github.com/Medi
 The InfraMed Library is a non-sql data structure tailored to hold medical records data.
 The main goal is to provide an efficient way to get a vector of time signals (date/time, value) for a pair of patient and signal type (pid , sid).
 Main toolsets available in the library:
+
 - Converting a data set to the InfraMed Repository format. (see[ here](/Repositories/Load%20new%20repository)
 - Adding a signal to the data set, fixing a signal
 - Reading a data set or a part of it to memory
@@ -24,6 +25,7 @@ Main toolsets available in the library:
 - The library allows an extremely fast access for a signal vector given a query of a pid + signal_id (or signal name), and this is its main usage.
 ### General Classes 
 It is recommeded to read and understand the following pages explaining the main classes used in the InfraMed library:
+
 - [MedRepository , MedPidRepository](MedRepository) : most used classes packing options to read repositories and query them.
 - MedConvert : class used when creating a new repository.
 - [MedSignals](MedSignals%20_%20Unified%20Signals): class used to handle signal files and signal properties, also contains the unified way of accessing signals.

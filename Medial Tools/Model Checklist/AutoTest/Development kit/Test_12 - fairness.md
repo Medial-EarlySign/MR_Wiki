@@ -22,6 +22,7 @@ Gender:1,1|Gender:2,2  [TAB]   Males|Females
 
 ## Output
 $WORK_DIR/fairness
+
 - fairness_report.tsv - a summary table that compare sensitivity/ specificity AUC in the same cutoff 5%,10%
 - fairness_report.* - result that compare statistical chi square between the groups to see if the different in sensitivity is statistically significant. There are 2 files. 1 for 5% PR cutoff and 1 for 10% PR cutoff
 - Graph_fairness - plots the sensitivity as function of score threshold in the different groups (with confidence intervals) that we can compare not just 5,10%

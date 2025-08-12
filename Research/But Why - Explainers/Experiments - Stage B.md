@@ -1,15 +1,16 @@
 # Experiments - Stage B
 We will preform an additional experiment (not blinded) and more focused to achieve those goals:
+
 - Understand/decide about rules to clean the output.
-  - For example: weird results like giving high contribution to missing value(we already have a parameter to zero it)
-  - Check score for threshold and validate we have enough positive contributions or negative, if the patient wasn't flagged?
-  - Use threshold for absolute and relative contribution scores - for example: patient with low score maybe should not see normal lab results with small contribution
+    - For example: weird results like giving high contribution to missing value(we already have a parameter to zero it)
+    - Check score for threshold and validate we have enough positive contributions or negative, if the patient wasn't flagged?
+    - Use threshold for absolute and relative contribution scores - for example: patient with low score maybe should not see normal lab results with small contribution
 - Understand/decide about the outputs - currently we have groups of features and we reveal top contributing feature with it. Also presenting the feature value and percentage from all contribution. Do we need to change it?
-  - Presents top 10 groups by absolute values- maybe we should sort otherwise, depend on the score?currently we have decided to do it that way
-  - Groups: will split each lab signal into 2 groups of : values, trends. categorical values are aggregated by time windows
-  - Preventative feature in each group - present the most contributing feature in the group. what to do if it has opposite contribution sign?
+    - Presents top 10 groups by absolute values- maybe we should sort otherwise, depend on the score?currently we have decided to do it that way
+    - Groups: will split each lab signal into 2 groups of : values, trends. categorical values are aggregated by time windows
+    - Preventative feature in each group - present the most contributing feature in the group. what to do if it has opposite contribution sign?
 - Complete the documentation of how much time it takes for LIME, trees to run.
-  - CRC - 23.5 seconds for 120 samples. means 3-4 s sample in second (using parallel)...   A  little slow
+    - CRC - 23.5 seconds for 120 samples. means 3-4 s sample in second (using parallel)...   A  little slow
 out of scope: - how to present it in gui, separate into reason we can affect and not...
  
 Will be done on CRC, Flu and with trees_with_covarinace_fix, LIME_GAN
@@ -102,5 +103,6 @@ tree_iterative is similar (with maybe slightly improvement comapre to with_cov
 <td>1.809767105</td>
 </tr>
 </tbody></table>
+
 ## Comments:
 - coby noticed that some missing value features are getting high contribution - we should use the flag to zero it? Coby Metzger - are you sure? maybe because of the groups some features in the group are not missing? - Coby thinks it's OK, the imputed value for example when the glucose is high and no HbA1C, the imputation for HbA1C is also high. He likes it. He gave more reasons...

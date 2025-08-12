@@ -18,6 +18,7 @@ fairness_extraction.py --bt_report ${OUTDIR}/bt.fairness.by_pr.pivot_txt --outpu
 ```
  
 fairness_extraction.py inputs:
+
 - bt_report - accepts bootstrap output file (that we run with many PR or FPR cutoffs and on cohorts with the groups we want to compare)
 - bt_cohort - the basic bootstrap cohort we used to filter/select as baseline, on top of that we will filter the "groups" to compare. If not given will extract from the bootstrap file the shortest cohort description and will use this.
 - output - directory where we will output files:

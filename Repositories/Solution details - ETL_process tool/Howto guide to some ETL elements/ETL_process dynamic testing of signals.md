@@ -1,12 +1,12 @@
 # ETL_process dynamic testing of signals
 We can add both global test for all ETL processes and local/specific ETL process. We can also override global tests when specifying the same name in the local path.
+
 - The global tests can be found under this location $MR_ROOT/Tools/RepoLoadUtils/common/ETL_Infra/tests. The local tests are under $CODE_DIR/tests.
 - The code runs from "$MR_ROOT/Tools/RepoLoadUtils/common/ETL_Infra" - so if you want to search for config files, dictionaries or something you can use relative path.
 - Under each path (global or local), there is additional directory for each group of tests. The name of the directory can be either name of signal or name of group of signals (for example "labs" or "cbc") and by this name, only the relevant signals are being tested.
 - Each test file code should contain a function called "Test" with 4 arguments: dataframe, signal_info, codedir and workdir. The dataframe is the input data frame with the signal for testing, codedir - is the path of the ETL code (might be usefull if you want to use "config" folder in your code dir). workdir is path of workdir to store outputs if wanted. function returns True if test passes and False if it should fail. signal_info contains information about the signal Example of full test path under $MR_ROOT/Tools/RepoLoadUtils/common/tests:
-  - labs
-    - 
-test_non_nulls.py
+    - labs
+        - test_non_nulls.py
 ```python
 import pandas as pd
 def Test(df: pd.DataFrame, si, codedir: str, workdir: str):
@@ -44,7 +44,7 @@ from ETL_Infra.plot_graph import plot_graph
 The function accepts dataframe with 2 columns - or dictionary with name and dataframe of 2 cols to plot multiple series
  
 You can also re/run test on signals using:
-```
+```bash
 python  $MR_ROOT/Tools/RepoLoadUtils/common/ETL_Infra/run_test_on_sig.py --workdir $WORKDIR --codedir $CODEDIR --signal $SIGNAL
 ```
 signal might be several signals comma seperated.

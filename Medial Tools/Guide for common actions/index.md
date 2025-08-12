@@ -79,6 +79,7 @@ Flow --create_splits "nsplits=$SPLIT_NUMBER" --rep $REPOSITORY_PATH --f_split $O
 ```bash
 FilterSamples --rep $REPOSITORY_PATH --samples $INPUT_SAMPLES_PATH --output $OUTPUT_SAMPLES_PATH --filter_train $FILTER_TRAIN_VAL
 ```
+
 - TRAIN == 1: Training set (70%)
 - TRAIN == 2: Test set (20%)
 - TRAIN == 3: Validation set (10%)
@@ -111,10 +112,11 @@ To find missing codes:
 Flow --print_model_signals --f_model $MODEL_NAME --rep $REP --transform_rep 1 --output_dict_path $PATH
 ```
 To resolve:
+
 - Add missing codes to the target dictionary, matching SECTION codes as needed.
 - For example:
-  - Add `ICD9_CODE:786.09` if missing.
-  - Add `ICD9_CODE:420-429.99` for range codes.
-  - For named codes (e.g., `MALIGNANT_NEOPLASM_OF_LIP_ORAL_CAVITY_AND_PHARYNX`), find the equivalent numeric code (e.g., `140-149`) and add accordingly.
+   - Add `ICD9_CODE:786.09` if missing.
+   - Add `ICD9_CODE:420-429.99` for range codes.
+   - For named codes (e.g., `MALIGNANT_NEOPLASM_OF_LIP_ORAL_CAVITY_AND_PHARYNX`), find the equivalent numeric code (e.g., `140-149`) and add accordingly.
 
 Can be compiled in AllTools

@@ -7,6 +7,9 @@ repo_name: 'GitHub'
 edit_uri: 'edit/main/'
 theme:
   name: material
+  font:
+    text: "Segoe UI"
+    code: "Consolas, 'Courier New', monospace"
   features:
     - navigation.tabs
     - navigation.top

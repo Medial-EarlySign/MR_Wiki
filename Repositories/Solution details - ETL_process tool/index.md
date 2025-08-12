@@ -2,6 +2,7 @@
 In Tools repository, there is a file called "etl_process.py" Under Tool/RepoLoadUtils/common/ETL_Infra.
 ****TARGET:****
 Implement ETL process which satisfies following requirements:
+
 - Interactive
 - Assumes that the user has no prior knowledge of ETL process
 - Efficient in loading time, memory handling
@@ -11,6 +12,7 @@ Implement ETL process which satisfies following requirements:
 We assume that most of the actions specific to loading a new dataset are simple,
 e.g. renaming of columns, date format conversion etc. Most of this logic can't be reused and most of the time is to define them.
 ****
+
 - Interactive part should have verbose and informative messages
 - Actions common to all ETL processes should be automated
 - Configuration files should be kept in one place / under one path

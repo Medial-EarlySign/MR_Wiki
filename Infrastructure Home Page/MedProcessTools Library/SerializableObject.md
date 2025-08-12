@@ -1,14 +1,15 @@
 # SerializableObject
 ## **General**
 SerializableObject is a class many classes inherit from. It contains tools for the following:
+
 - Serialization via the:
-  - get_size , serialize , deserialize methods.
-  - the MedSerialize:: namespace mechanisms including the very useful ADD_SERIALIZATION_FUNCS mechanism
+    - get_size , serialize , deserialize methods.
+    - the MedSerialize:: namespace mechanisms including the very useful ADD_SERIALIZATION_FUNCS mechanism
 - Read/Write objects from/to files: this is a general wrapper on top of the serialization.
 - init_from_string mechanism :
-  - parsing of the init string
-  - support the brackets {} mechanism for parameters
-  - support reading parameters from a file (the pFile option)
+    - parsing of the init string
+    - support the brackets {} mechanism for parameters
+    - support reading parameters from a file (the pFile option)
 Together this class provides a powerful and easy way to handle those very needed functionalities.
 To start using the SerializableObject class, simply inherit from it in the definition.
 ## **Serialization**
@@ -21,10 +22,12 @@ SerializableObject contains the declaration of the three major serialization met
 	virtual size_t deserialize(unsigned char *blob) { return 0; } ///<Deserialiazing blob to object. returns number of bytes read
 ```
 Each inheriting class should implement these methods in order to allow for its serialization. There are 2 main methods to do it:
+
 - Directly implementing the methods - recommended only in very complex situations (mainly when using other packages not using this terminology with a need to wrap their internal way to serialize).
 - Using the ADD_SERIALIZATION_FUNCS() macro : this should be the way to go and should always be preffered over any other way.
  
 When using the serialzation mechanism of SerializableObject to its full power (using the ADD_SERIALIZATION_FUNCS macro) one automatically gets the following serializations:
+
 - All needed basic types
 - All supported stl containers (add yours if it is not supported : see below)
 - Recusive on all used classes in variables
@@ -38,6 +41,7 @@ When using the serialzation mechanism of SerializableObject to its full power (u
 The ADD_SERIALIZATION_FUNCS() is a macro that adds the needed get_size, serialize and deserialize methods to the class, thus saving us the tedious work of writing it.
 To use it , simply add ADD_SERIALIZATION_FUNCS to the public side of your class (that inherits from SerializableObject) with the list of the variables you need to serialize. That's it. As simple as that. Any order you like, it is not important.
 The supported variables are:
+
 - Basic types (int, float, double, string, etc...)
 - Stl containers (vector<T> , map<T,S> , pair<T,S>, etc..)
 - Other classes that are under SerializableObject and had implemented the serialization methods.
@@ -55,6 +59,7 @@ ADD_SERIALIZATION_FUNCS(generator_type, type, tags, serial_id, win_from, win_to,
 ```
 ### ADD_CLASS_NAME , MEDSERIALIZE_SUPPORT
 In order to get the full functionality of the serialization process, it is needed to add the following macros for each inheriting class:
+
 - ADD_CLASS_NAME(class name) : in the public area of the class : this creates a functions that returns the class name, and is very useful when serializing T * cases, and polymorphic classes.
 - MEDSERIALIZE_SUPPORT(class name) : this should be added in the same h file but outside the class (typically we add it at the bottom of the h file). It is needed in order to connect the class serialization functions to the general recursive serialization methods.
 Simply add those two simple lines for each new SerializableObject inheritting class you write.
@@ -85,6 +90,7 @@ Some other class contains an element of : Base * var , but var is allocated dyna
 To solve that the serilizer of SerializableObject saves the type name before each T * serialization, the name is taken from the derived class, so the derived class name will be used.
 When deserializing the Base class needs to provide a new_polymorphic function that returns the new to its derived class given its name.
 So , to summarize:
+
 - SerializableObject has a virtual function : void * new_polymorphic(string derived_class_name); by default it returns NULL.
 - Base classes should implement it : it is easy , as it mainly contains lines of the type : if (derived_class_name == string_name_of_derived1) return new derived1; etc...
 - To make implementation of the new_polymorphic function even easier, one can use the CONDITIONAL_NEW_CLASS() macro
@@ -152,6 +158,7 @@ Help others and implement it in SerializableObject_imp.h , see there many exampl
 ## **Init from string**
 The other usage of SerializableObject is the init_from_string parsing you get for free.
 When you call **init_from_string**(string init_s) for your SerializableObject class, it will parse init_s to pairs of string <-> string loaded into a map and call your **init**(map<string, string>& map) method according to the following rules:
+
 - init_s is separated by ;
 - After sepration each part is separated by = : the first element is the variable name, the second is its value (as a string)
 - Should clear whitespaces before and after the variables names and values.

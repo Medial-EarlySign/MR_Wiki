@@ -4,6 +4,7 @@ it has several subclasses, each has it's own parameters and logic to sample the 
 <img src="/attachments/9765342/10911920.png"/>
 Code is documented [here](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingStrategy).
 do_sample aruments in MedSamplingRegistry:
+
 - const vector<[MedRegistryRecord](https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistryRecord)> &registry - the registry for the labeling the samples by the sampler (already initialized with sampling params)
 - [MedSamples](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry) &samples - the samples result
 - const vector< [MedRegistryRecord](https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistryRecord) > *censor_registry - optional arg for specifying censoring times for the sampling

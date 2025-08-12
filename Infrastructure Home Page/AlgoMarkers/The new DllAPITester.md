@@ -87,6 +87,7 @@ It is the major test to be done, to run it:
 DllAPITester --rep <rep> --samples <samples file> --model <model file> --amconfig <algomarker config file>
 This will so a batch run and test the whole samples, producing a summary report.
 In many cases you would need to add:
+
 - --json_dict <list of dictionaries> : if you require additional dictionaries to be loaded.
 - --single : if you wish to do the test in single mode, one by one, mimicking how it is used by AlgoAnalyzer.
 - optional output files:
@@ -106,6 +107,7 @@ This example will test the covid predictor on some samples, on the requested rep
 
 To do that simply run a score compare run with the out_jsons file requested. You need to be in single mode for this option to work.
 You can set up some parameters for the creation (optional):
+
 - --accountId <arg> :  accountId for output json
 - --calculator <arg> :  calculator name for output json
 - --units <arg> : list of units to add for requested signals (example: BMI,kg/m^2,Weight,kg,Height,cm,Pack_Years,pack*years,Smoking_Intensity,cigs/day,Smoking_Quit_Date,date,Smoking_Duration,years)
@@ -132,6 +134,7 @@ IN means : the value is an input categorial value
 OUT means : an output value, a valid value to send to the AlgoMarker.
 There are 2 possible formates for the output, for the one used by the AlgoAnalyzer use --simple_dict option.
 Example run:
+
 ```bash
 DllAPITester --rep /home/Repositories/KPNW/kpnw_apr20/kpnw.repository --dicts_config ../../../NWP/covid_testing/dev_20200504/full_dicts/dicts.config --out_json_dict ./dict.json --simple_dict
 ```

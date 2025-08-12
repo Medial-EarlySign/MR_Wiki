@@ -6,6 +6,7 @@ One more test exploring the differences between the current dataset, and the dat
 **Parameters (see env.sh)**
 All parameters are included in env.sh and described in [External Silent Run](../External%20Silent%20Run).
 In particular, this test uses:
+
 - CMP_FEATURE_RES=... list of important features for the model, with resolution 
 ****
 **What is actually done?**

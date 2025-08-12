@@ -15,8 +15,8 @@ It will do that analysis on top 1000 patients.
 
 ## Output
 $WORK_DIR/ButWhy/explainer_examples
-- 
-group_stats*.tsv - Summary table of most common reasons. For example:
+
+- group_stats*.tsv - Summary table of most common reasons. For example:
 ```
  Group    Frequency    Percentage    leading_feature_1    feature_frequency_1    leading_feature_2    feature_frequency_2    leading_feature_3
 Smoking    996    99.7    Smoking.Smoking_Years    992    Smoking.Smok_Pack_Years_Max    693    Smoking.Never_Smoker

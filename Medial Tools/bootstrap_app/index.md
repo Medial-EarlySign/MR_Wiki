@@ -4,10 +4,11 @@
 this is a bootstrap application for running bootstrap (which uses [MedBootstrap](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedBootstrap) Library). The code is availbe under: $MR_ROOT/Tools/bootstrap_app
 **I have also created alias for the bootstrap_app named "bootstrap" so you can simply type "bootstrap --help" or run bootstrap without providing the full path in linux**
  
-```
+```bash
 ./bootstrap_app --help
 ```
 Program options:
+
 - --help help & exit
 - --h help & continue
 - --base_config arg config file with all arguments - in CMD we override those settings
@@ -55,7 +56,7 @@ the bootstrap_example.cfg contains all program arguments in "ini" file format -
 you may not provide this file or override all parameter with command arguments.
 The bootstrap_example.cfg content is:
  
-```
+```ini title="bootstrap_example.cfg"
 #The repository path:
 rep = /home/Repositories/THIN/thin_jun2017/thin.repository
 #The MedSampels input or if provding other input type we can use input_type paramter
@@ -99,7 +100,7 @@ For exact format of cohorts_file please reffer to [MedBootstrap](/Infrastructure
 It calculates the average incidence in your cohort based on sex, age group and count of patients in this group. Then to calculate ppv: it multiplies the sensitivity by the incidence - sensitivity* average incidence. it divides it with sensitivity* average incidence + fpr * (1 - average incidence). Equivalent to give this weight for cases: average incidence * total cohort / total casesWeight for control as (1- average incidence)*total cohort / total controls . Sanity test: if model is random, results in sensitivity = fpr, results in ppv = incidenceThe bootstrap program also assesses what would happen to the incidence by other filters of the bootstrap cohort besides (sex, age). For example, taking anemic patients would cause bias toward cases and increase the incidence driven from global population SEER. It assumes that the effect on stratified outcome,age,sex within input samples and the SEER samples(Or generated samples yearly) is the similar - by measuring lift in odds ratio between after applying the bootstrap filters and before the filters.
 An example for Incidence file format may be seen here (The file can be created via Flow App):
  
-```
+```bash
 head /nas1/Work/Users/Alon/UnitTesting/examples/bootstrap_app/pre2d_incidence_thin.new_format
 ```
 ```

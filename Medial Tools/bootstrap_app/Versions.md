@@ -74,6 +74,7 @@ tal@[node-01:/server/Work/FrozenTools/test_benchmark$](http://node-01/server/Wor
 </tr>
 </tbody></table>
 **It is also strongly recommend to: **
+
 - Add subcohorts which use the json file and make sure everything works (to do this, uncomment the second line in pre2d_main_cohorts.params and run the command above)
 - Repeat test on other problems which are based on registries of different character (cancer, flu...)
 **Freeze:**

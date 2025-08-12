@@ -154,6 +154,7 @@ Convert absolute time into days since 20010101 and remove pids which do not have
 ### Modifications applied to the Raindrop code
 Original Raindrop code is not well-suited for experimentation 
  for following reasons:
+ 
 - Raindrop.py contains code specific to handling different datasets.
 - Training and testing are done in the same loop
 - In order to get a confidence interval for AUC authors train models for five different splits, rather than using Bootstrap

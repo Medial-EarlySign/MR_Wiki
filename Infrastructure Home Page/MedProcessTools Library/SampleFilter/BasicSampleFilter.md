@@ -1,10 +1,11 @@
 # BasicSampleFilter
 ### BasicSampleFilter applies one (or more) basic filters to the set
 [BasicSampleFilter ](https://Medial-EarlySign.github.io/MR_LIBS/classBasicSampleFilter)filtering options include:
+
 - Allowed time (date) range
 - A list of filters per signal, each specified using [BasicFilteringParams](https://Medial-EarlySign.github.io/MR_LIBS/structBasicFilteringParams)
-  - Allowed value-range of specific signals within a time-window
-  - Requirement on availability of specific signals - number of values within a time-window
+    - Allowed value-range of specific signals within a time-window
+    - Requirement on availability of specific signals - number of values within a time-window
 ### Include file is - *H:/MR/Libs/Internal/MedUtils/MedProcessTools/SampleFliter.h*
 ### BasicFilteringParams initializing:
 <table><tbody>

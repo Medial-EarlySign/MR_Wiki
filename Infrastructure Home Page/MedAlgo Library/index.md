@@ -42,7 +42,7 @@ predictor->predict(Xtest,preds);
 ### Linear Model
 - Use MedPredictor::make_predictor("linear_model")
 - Parameters:
-  - rfactor - 1.0: no ridge , closer to 0.0 - stronger ridge. Reccomended: 0.9 for regular runs, 0.3 for highly regularaized runs.
+    - rfactor - 1.0: no ridge , closer to 0.0 - stronger ridge. Reccomended: 0.9 for regular runs, 0.3 for highly regularaized runs.
 **Linear Model example**
 ```c++
 MedPredicor *predictor;
@@ -54,19 +54,19 @@ predictor->learn(Xtrain,Ytrain);
 ### XGBoost
 - Use MedPredictor::make_predictor("xgb")
 - Parameters
-  - seed
-  - booster
-  - objective
-  - eta - step size in each iteration , should be slow enough to avoid overfitting, and fast enough to get somewhere. If num_round is large, use a small eta and vice versa.
-  - num_round - how many trees to build. Running time is linear with this parameter.
-  - gamma
-  - max_depth - of trees
-  - min_child_weight - limiting size of leaves (larger = more regularization)
-  - missing_value - you can sign the algorithm what are the missing values (if there are any) in your matrix.
-  - lambda
-  - alpha
-  - scale_pos_weight - allows to fix imbalances in data
-  - tree_method
+    - seed
+    - booster
+    - objective
+    - eta - step size in each iteration , should be slow enough to avoid overfitting, and fast enough to get somewhere. If num_round is large, use a small eta and vice versa.
+    - num_round - how many trees to build. Running time is linear with this parameter.
+    - gamma
+    - max_depth - of trees
+    - min_child_weight - limiting size of leaves (larger = more regularization)
+    - missing_value - you can sign the algorithm what are the missing values (if there are any) in your matrix.
+    - lambda
+    - alpha
+    - scale_pos_weight - allows to fix imbalances in data
+    - tree_method
  
 **XGBoost example**
 ```
@@ -78,24 +78,24 @@ predictor->learn(Xtrain,Ytrain);
 ### QRF
 - Use MedPredictor::make_predictor("qrf")
 - Parameters:
-  - ntrees - number of trees to build
-  - maxq - max number of quantized cells for a parameter
-  - type - one of: binary , regression , categorical_chi2 , categorical_entropy
-  - min_node - split only nodes of size above this (larger = more regularization)
-  - ntry - how many random features to test in each node. -1 (or 0) is default and means sqrt(num_features), a specific number is the actual requested ntry. (smaller = more regularization)
-  - max_samp - how many samples to bag for each tree (total neg+pos). 0 means - bag at the number of input and is default. (smaller = more regularization)
-  - n_categ - number of categories. 0/1 for regression , 2 for binary problems, 3 and more for multicategorical data
-  - spread - in regression trees nodes with difference from max to min below spread will not split.
-  - sampsize - a vector (with , delimeter) stating how many samples to take for each tree from each category. example: sampsize=5000,1000 for a binary problem means bag 5000 neg and 1000 pos for each tree.
-  - get_count - 
-    - 0 : avg majority of nodes (less recommended)
-    - 1 : avg probabilities in nodes (in regression = weighted average of nodes , taking their size into account) - recommended
-    - 2:  avg counts in nodes - recommended
-  - get_only_this_categ - 
-    - -1 : get predictions for all categories one after the other (output size is nsamples*n_categ)
-    - 0...n_categ-1 : get only the predictions for this categ (output size is nsamples)
-  - learn_nthreads - how many threads to use in learn (use 8 for windows, and 24 for linux servers)
-  - predict_nthreads - how many threads to use in predict (use 8 for windows, and 24 for linux servers)
+    - ntrees - number of trees to build
+    - maxq - max number of quantized cells for a parameter
+    - type - one of: binary , regression , categorical_chi2 , categorical_entropy
+    - min_node - split only nodes of size above this (larger = more regularization)
+    - ntry - how many random features to test in each node. -1 (or 0) is default and means sqrt(num_features), a specific number is the actual requested ntry. (smaller = more regularization)
+    - max_samp - how many samples to bag for each tree (total neg+pos). 0 means - bag at the number of input and is default. (smaller = more regularization)
+    - n_categ - number of categories. 0/1 for regression , 2 for binary problems, 3 and more for multicategorical data
+    - spread - in regression trees nodes with difference from max to min below spread will not split.
+    - sampsize - a vector (with , delimeter) stating how many samples to take for each tree from each category. example: sampsize=5000,1000 for a binary problem means bag 5000 neg and 1000 pos for each tree.
+    - get_count - 
+        - 0 : avg majority of nodes (less recommended)
+        - 1 : avg probabilities in nodes (in regression = weighted average of nodes , taking their size into account) - recommended
+        - 2:  avg counts in nodes - recommended
+    - get_only_this_categ - 
+        - -1 : get predictions for all categories one after the other (output size is nsamples*n_categ)
+        - 0...n_categ-1 : get only the predictions for this categ (output size is nsamples)
+    - learn_nthreads - how many threads to use in learn (use 8 for windows, and 24 for linux servers)
+    - predict_nthreads - how many threads to use in predict (use 8 for windows, and 24 for linux servers)
  
 **QRF example**
 ```c++
@@ -113,24 +113,25 @@ predictor->learn(Xtrain,Ytrain);
  
 ### **GDLM**
 The gdlm package provides algorithms for linear and logistic regression with ridge and lasso regularizations. The solution is via gradient descent.
+
 - use "gdlm" as the name for the predictor.
 - Parameters:
-  - method: one of full , sgd or logistic_sgd
-    - full : full exact solution to the linear regression problem. Can be slow on huge matrices. Less recommended, but works. Not supporting lasso.
-    - sgd : gradient descent solution to the linear problem with least square loss and optional ridge and/or lasso regularizers.
-    - logistic_sgd : gradient descent solution to the logistic loss function with optional ridge and/or lasso regularizers.
-  - normalize : 0/1 : use 1 if you want the algorithm to normalize the matrix before the optimization. Note that the algorithms converge only when data is normalized, so use this if data was not prepared normalized.
-  - l_ridge : the ridge gamma
-  - l_lasso : the lasso gamma (you'll have to play and find the gamma value that works for you. Typically very small values are needed (0.01, 0.001 , etc).
-  - max_iter : maximal number of iterations (an iteration is a full epoch through all the data)
-  - err_freq : print summary and check stop condition each err_freq iterations
-  - batch_size : the batch size for the gradient descent (coefficients are updated after every batch of course)
-  - rate : learning rate
-  - rate_decay : allow rate to slowly decrease (or stay constant if decay is 1).
-  - momentum : for gradient descent
-  - stop_at_err : once the relative improvement in loss falls below this value, the optimazation will stop.
-  - last_is_bias : leave 0 usually, is there for cases where a bias is given with the x values.
-  - nthreads : number of threads for matrix operations. Number of cores (12 in our nodes) is typically a good choice.
+    - method: one of full , sgd or logistic_sgd
+        - full : full exact solution to the linear regression problem. Can be slow on huge matrices. Less recommended, but works. Not supporting lasso.
+        - sgd : gradient descent solution to the linear problem with least square loss and optional ridge and/or lasso regularizers.
+        - logistic_sgd : gradient descent solution to the logistic loss function with optional ridge and/or lasso regularizers.
+    - normalize : 0/1 : use 1 if you want the algorithm to normalize the matrix before the optimization. Note that the algorithms converge only when data is normalized, so use this if data was not prepared normalized.
+    - l_ridge : the ridge gamma
+    - l_lasso : the lasso gamma (you'll have to play and find the gamma value that works for you. Typically very small values are needed (0.01, 0.001 , etc).
+    - max_iter : maximal number of iterations (an iteration is a full epoch through all the data)
+    - err_freq : print summary and check stop condition each err_freq iterations
+    - batch_size : the batch size for the gradient descent (coefficients are updated after every batch of course)
+    - rate : learning rate
+    - rate_decay : allow rate to slowly decrease (or stay constant if decay is 1).
+    - momentum : for gradient descent
+    - stop_at_err : once the relative improvement in loss falls below this value, the optimazation will stop.
+    - last_is_bias : leave 0 usually, is there for cases where a bias is given with the x values.
+    - nthreads : number of threads for matrix operations. Number of cores (12 in our nodes) is typically a good choice.
 **MedGDLM init examples**
 ```c++
 MedPredictor *predictor;

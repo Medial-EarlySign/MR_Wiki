@@ -50,7 +50,8 @@ SIGNAL	ICD9_Hospitalization	2300	T(i,i),V(f)	1
 SIGNAL	RBC	1001	1	0
 ...
 ```
-In this example:  
+In this example:
+
 - The first two lines define type aliases (`mytype0`, `mytype1`).  
 - The next two lines use these aliases for the GENDER and BMI signals.  
 - The following lines show direct type specification and use of a legacy type code.
@@ -99,6 +100,7 @@ The core logic is in the value getter function:
 		return 0;
 	}
 ```
+
 - This template function retrieves values (defaulting to `float`, but other types are supported).
 - It calculates the value’s location using `val_channel_offsets`.
 - The correct type cast is chosen based on `val_channel_types`.

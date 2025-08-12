@@ -1,6 +1,7 @@
 # MultipleImputations
 The main idea is to do multiple imputations for missing value as post processor on existing model. 
 The steps are:
+
 - Apply model till feature processor imputers (if model has one). If model doesn't have imputer complete apply till the end before predictor. The main idea is that we can't just use the model imputer (it's not stochastic and we need to replace it) so the postprocessor locate the imputer if exists and "replaces" with stochastic one. 
 - Duplicate each row 100 times (parameter) for different imputation in each line. There is also additional parameter "batch" to control the maximal memory needed for Apply the post processor - mainly set to 10K, so we will end up with 1M rows in each batch that each 100 rows are duplicates of the same row and will be aggregated later. 
 - Apply the stochastic imputer given in the post processor argument on all rows - so each row out of the 100 duplication will get different imputations
@@ -24,6 +25,7 @@ Example config:
   ]
 }
 ```
+
 - resample_cnt - how many times we duplicate each row
 - force_cancel_imputations - flag to indicate we need to find model original imputer and replace it (otherwise there will be no missing values, the imputer will impute them).
 - batch_size - how many samples in each batch before duplications

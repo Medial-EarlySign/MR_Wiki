@@ -2,7 +2,7 @@
 Automatic HTML Documentation with C++.
 
 # **Creating Comments in Libs**
-****
+
 - You can create local documentation for your code via:
 
 ```bash

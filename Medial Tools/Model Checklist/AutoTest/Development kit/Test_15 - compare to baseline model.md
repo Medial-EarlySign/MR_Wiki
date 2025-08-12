@@ -19,8 +19,8 @@ We will compare performance and correlation, which patient get flagged and how a
 - $WORK_DIR/bootstrap/bt_baseline_compare.tsv - compares bootstrap result with baseline
 - $WORK_DIR/compare_to_baseline/correlation.txt - correlation of scores
 - $WORK_DIR/compare_to_baseline - result of training propensity model that tries to differentiate which top  "BASELINE_COMPARE_TOP" our model flags compares to baseline flag in top BASELINE_COMPARE_TOP.
-  - Global.html - most important signals in that propensity model . Describe which features our model uses more/different than baseline
-  - single_features - a directory with butwhy analysis of each important feature in that model
-  - compare_rep.txt - a text table that compares each of the features mean, std, etc in both samples - the one our model flags compared to baseline
+    - Global.html - most important signals in that propensity model . Describe which features our model uses more/different than baseline
+    - single_features - a directory with butwhy analysis of each important feature in that model
+    - compare_rep.txt - a text table that compares each of the features mean, std, etc in both samples - the one our model flags compared to baseline
 - $WORK_DIR/compare_to_baseline/baseline_coverage_by_mes_$BASELINE_COMPARE_TOP.html - How much intersection/coverage of baseline flagged individuals are covered by our model in different cutoffs
 - $WORK_DIR/compare_to_baseline/compare_Age_top_flagged.html - comparing flagged age by both models

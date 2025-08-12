@@ -7,6 +7,7 @@ The `PidDynamicRec` class provides advanced access to signal data, allowing both
 When running a RepProcessor and modifying a signal at timepoint T, data from future timepoints (t > T) might inadvertently influence the change, leading to data leakage during model training and testing. For example, if testing at T_test (where T_test ≥ T) and using data from t > T_test, future information contaminates the test.
 
 The complexity increases when testing at multiple timepoints for a patient (e.g., T_test1 and T_test2, with T_test2 > T_test1). The allowed "horizon" for each test is:
+
 - For T_test1: t ≤ T_test1
 - For T_test2: t ≤ T_test2
 

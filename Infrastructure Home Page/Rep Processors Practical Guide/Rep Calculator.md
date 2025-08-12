@@ -5,6 +5,7 @@ examples/rep_processor_calc.json
 Full parameter list: [https://Medial-EarlySign.github.io/MR_LIBS/classRepCalcSimpleSignals.html](https://Medial-EarlySign.github.io/MR_LIBS/classRepCalcSimpleSignals)
  
 The input signals is given with comma separated string in "signals" parameter - for example: ""
+
 - calculator - the calculator type, list of types can be found in next section
 - output_signal_type - string type of output signal. For example "T(i),V(f)" to generate signal with 1 time channel of type int and 1 value channel of type float. This is the default
 - max_time_search_range  -integer that specify what is the maximal time gap to construct the virtual signal based on all signals. The date of the new signal will be the latest date. 
@@ -15,27 +16,28 @@ The input signals is given with comma separated string in "signals" parameter - 
 - calculator_init_params - additional arguments string based on "calculator" parameter. since it's can be multiple arguments, you need to escape the string with "{}" and put arguments inside of brackets as in the examples.
  
 ## Calculator type - "calculator" parameters
-All "calculator" parameter options can be found in here [https://Medial-EarlySign.github.io/MR_LIBS/classSimpleCalculator.html#a59f4f7b81964e46c0360a8b750d64046](https://Medial-EarlySign.github.io/MR_LIBS/classSimpleCalculator.html#a59f4f7b81964e46c0360a8b750d64046):
+All "calculator" parameter options can be found in here [https://Medial-EarlySign.github.io/MR_LIBS/classSimpleCalculator.html](https://Medial-EarlySign.github.io/MR_LIBS/classSimpleCalculator.html):
+
 - sum - linear combination of multiple signals    res := b0 + sum_sigma(i=1..N){ factor[i] * input[i]},    where b0 is a bias
-  - calculator_init_params - can receive "b0" - to specify constant bias argument + "factors" which is comma separated numbers that correspond each input signal (default is list of ones)
+    - calculator_init_params - can receive "b0" - to specify constant bias argument + "factors" which is comma separated numbers that correspond each input signal (default is list of ones)
 - log - calculates log on signal
 - ratio - divides signals, accepts "factor" as final factor after dividing (default 1),.  res := factor * V1^power_mone / V2^power_base
-  -  calculator_init_params -  "power_mone", "power_base" which default value is 1, and "factor" which the default is also 1
+    -  calculator_init_params -  "power_mone", "power_base" which default value is 1, and "factor" which the default is also 1
 - multiply -multiply of signals. res := b0 * pie_multiply(i=1..N) {input[i]^powers[i]} 
-  -  calculator_init_params "b0" and "powers" which is comma separated numbers that correspond each input signal (default is list of ones)
+    -  calculator_init_params "b0" and "powers" which is comma separated numbers that correspond each input signal (default is list of ones)
 - kfre -  Implements calculation of 3,4 or 8-variable Kidney Failure Risk Equations (KFRE).
            The code can be found under
                  Libs/Internal/MedProcessTools/MedProcessTools/RepProcess.h
                  Libs/Internal/MedProcessTools/MedProcessTools/RepProcess.cpp
 - empty - dummy virtual signal to create empty signal
 - exists - res := in_range_val if signal exists otherwise out_range_val
-  - calculator_init_params   - "out_range_val", "in_range_val"
+    - calculator_init_params   - "out_range_val", "in_range_val"
 - range - A simple Range check that return "in_range_val" if within range and returns "out_range_val" if outside range. Accepts also "min_range", "max_range"
-  - calculator_init_params - "in_range_val", "out_range_val", "min_range", "max-range"
+    - calculator_init_params - "in_range_val", "out_range_val", "min_range", "max-range"
 - set -  res := "in_range_val" if is in set otherwise "out_range_val"
-  - calculator_init_params   - "out_range_val", "in_range_val", "sets" or "sets_file" to specify list of codes of file path to read codes. 
+    - calculator_init_params   - "out_range_val", "in_range_val", "sets" or "sets_file" to specify list of codes of file path to read codes. 
 - eGFR - calculates eGFR from Creatinine, Gender, Age, based on CKD_EPI or MDRD equations. 
-  - calculator_init_params  - You can pass "mdrd" to control if to use MDRD or CKD_EPI equation. You can also pass "ethnicity". 0 -for white, "1" for black
+    - calculator_init_params  - You can pass "mdrd" to control if to use MDRD or CKD_EPI equation. You can also pass "ethnicity". 0 -for white, "1" for black
  
 ## Examples:
 ```json

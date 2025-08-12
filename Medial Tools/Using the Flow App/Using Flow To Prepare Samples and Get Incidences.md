@@ -5,14 +5,15 @@ At the moment these are written and verified for the date case... and should be 
 ## Cohort Files
 Cohort files contain one line per pid , and define the time the patient entered the cohort, the time it left it, and if it has an outcome also the the oucome time and its value. This is a full definition of all the patients we want to use for training and testing and the times they are eligible for using.
 The format of a cohort file is:
+
 - tab delimited
 - lines starting with '#' are comments
 - the following 5 fields in each line:
-  - pid : (only one like per pid is supported at the moment)
-  - entry date to cohort
-  - end date in cohort
-  - outcome date : in binary cases for 0 outcomes (controls) it will be the same as end date, and for 1 outcomes it will be the actual event date which must be <= the end date.
-  - outcome : typically a 0/1 control/case outcome, but can be also a regression value, or a multicategory value, but currently only a single value (should be generalized to an outcome vector in the future).
+    - pid : (only one like per pid is supported at the moment)
+    - entry date to cohort
+    - end date in cohort
+    - outcome date : in binary cases for 0 outcomes (controls) it will be the same as end date, and for 1 outcomes it will be the actual event date which must be <= the end date.
+    - outcome : typically a 0/1 control/case outcome, but can be also a regression value, or a multicategory value, but currently only a single value (should be generalized to an outcome vector in the future).
 Example for a few lines of a cohort file:
 **Cohort file example**
 ```
@@ -39,6 +40,7 @@ The Flow line to use is:
 Flow --rep <repository> --seed <random seed> --cohort_fname <cohort file> --cohort_sampling <cohort sampling parameters> --out_samples <output samples file>
 All parameters are self explanatory except cohort_sampling , which we explain below:
 cohort_sampling contains a rich list of parameters to decide how to create samples (for control and cases) using the cohort: which dates to sample, continous or on-test, frequency of sampling, time window relative to end date and/or outcome date, and more. Follows is a description of the options and their defaults
+
 - min_control_years : (0) : minimal number of years for sampling before outcome for controls , controls are always those for which outcome == 0 , can be a float number (0.5 year etc)
 - max_control_years : (10) : maximal number of years for sampling before outcome for controls
 - min_case_years : (0) : minimal number of years for sampling before outcome for cases , cases are always those for which outcome != 0
@@ -81,18 +83,19 @@ This run will run first the filtering (if given), and then the matching (if give
 Again : all params are obvious besides filter and match params, explained below:
 ### Filter params
 Filtering options allow for taking samples only within a defined dates range, and also filter using ranges of signals in a window before the time point (say take only time points with Creatinine values below 1.1 in the 2 years before the time point, etc...)
+
 - min_sample_time : (0) :minimal allowed time (should always be given in the samples' time-unit, in our case typically date)
 - max_sample_time : ((1<<30)) : maximal allowed time (should always be given in the samples' time-unit : in our case typically date)
 - win_time_unit: ("Days") :  ///< time unit to be used in bfilter windows
 - bfilter : : a filter that checks conditions on a signal. Several filters can be defined. Parameters for filters (',' separated rather than ';') are:
-  - sig_name : : Name of signal to filter by
-  - win_from : (0) : Time window for deciding on filtering - start (relative to sample time, and going backwards)
-  - win_to : ((1<<30)) : Time window for deciding on filtering - end
-  - min_val : (-1e10) : Allowed values range for signal - minimum
-  - max_val : (1e10) : Allowed values range for signal - maximum
-  - min_Nvals (1) : Required number of instances of signal within time window
-  - time_channel (0) :  signal time-channel to consider
-  - val_channel (0) : signal value channel to consider
+    - sig_name : : Name of signal to filter by
+    - win_from : (0) : Time window for deciding on filtering - start (relative to sample time, and going backwards)
+    - win_to : ((1<<30)) : Time window for deciding on filtering - end
+    - min_val : (-1e10) : Allowed values range for signal - minimum
+    - max_val : (1e10) : Allowed values range for signal - maximum
+    - min_Nvals (1) : Required number of instances of signal within time window
+    - time_channel (0) :  signal time-channel to consider
+    - val_channel (0) : signal value channel to consider
 - min_bfilter : how many bfilters need to pass in order to take sample (default : all) , this allows for example to define a choice of one out of several signals to be before the sample and not all of them.
  
 **Filter params examples**
@@ -114,18 +117,19 @@ FILTER4="min_sample_time=20070101;max_sample_time=20101201;bfilter=sig,Creatinin
 ### Matching params
 The matching option allows to take a MedSamples , and apply matching methods that make sure that the ratio between case and control is kept in various stratas. For example: one could match for years, which means that in each calendar year we will seek to have the same ratio of cases to controls, this when given as a training samples file will make the predictor "blind" to the calendar year, and learn features not correlated with it. Another example : we could match for Gender, or Age, or a value of some signal , or a combination of those, which will define stratification bins, and we will seek to find a subset of the input samples that has the same ratio od cases vs controls in all those bins.
 The algorithm used is trying to find an optimal solution in the sense of leaving the maximal number of samples possible after the match. However it does so in a weighted manner between cases and controls, we can give a weight W signaling that we are willing to seek the best solution under the assumption that we allow to throw W controls instead of a single case. This helps keeping the cases in the matched samples when we have a low proportion of cases.
+
 - priceRatio : (100.0) : the weight ratio: how many controls are we willing to lose for each case (good guess for this number would be at the order of n_controls/n_cases in the input samples)
 - maxRatio : (10.0) : if the optimal ratio found by the matching algorithm is larger than maxRatio, we will sample less (enriching cases vs. control even more)
 - verbose: (0) : get more prints from algorithm (recommended...)
 - match_to_prior - specify the target prior directly
 - strata : : add stratification criterias (':' delimited between ), strata parameters (',' delimited) are:
-  - type: one of time , age , gender , signal
-  - signalName : 
-    - for time type: year , month, days , etc
-    - for age : none
-    - for gender : none
-    - for signal : the signal name (Creatinine, Glucose, etc)
-  - resolution : size of bin to stratify with
+    - type: one of time , age , gender , signal
+    - signalName : 
+        - for time type: year , month, days , etc
+        - for age : none
+        - for gender : none
+        - for signal : the signal name (Creatinine, Glucose, etc)
+    - resolution : size of bin to stratify with
 **Match params examples**
 ```bash
 # change price and max ratio, run verbose
@@ -177,6 +181,7 @@ INC_PARAMS="train_mask=1;age_bin=5;start_date=602;incidence_years_window=1;from_
 ```
  
 Control  Sampling Args directly by  providing "–sampler_params":
+
 - start_year,end_year or start_time,end_time as full time/date
 - prediction_month_day as prediction date
 - time_jump/day_jump - jump between prediction dates

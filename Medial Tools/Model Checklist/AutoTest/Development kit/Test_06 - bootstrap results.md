@@ -12,4 +12,4 @@ Tests that the model performance with bootstrap.
 - BT_COHORT - bootstrap cohort definitions
 
 ## Output
-$WORK_DIR}/bootstrap - bt.pivot_txt is the bootstrap output file
+${WORK_DIR}/bootstrap - bt.pivot_txt is the bootstrap output file

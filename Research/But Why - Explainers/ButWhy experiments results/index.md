@@ -1,8 +1,8 @@
 # ButWhy experiments results
 - [Expirement models](#ButWhyexperimentsresults-Expirementmodels)
-  - [NWP_Flu ](#ButWhyexperimentsresults-NWP_Flu)
-  - [CRC](#ButWhyexperimentsresults-CRC)
-  - [Pre2D](#ButWhyexperimentsresults-Pre2D)
+    - [NWP_Flu ](#ButWhyexperimentsresults-NWP_Flu)
+    - [CRC](#ButWhyexperimentsresults-CRC)
+    - [Pre2D](#ButWhyexperimentsresults-Pre2D)
 - [Conclusions](#ButWhyexperimentsresults-Conclusions)
 - [Appendix - Gibbs in Flu NWP ](#ButWhyexperimentsresults-Appendix-GibbsinFluNWP)
 ## **Expirement models**
@@ -108,6 +108,7 @@ Summary - in the simple case of 22 features Tree_with_Covariance preforms the be
 Not far behind SHAP_Gibbs_LightGBM and missing_shap which preforms similarly.
  
 Reference to expirement results:
+
 - [compare_blinded.tsv](/attachments/11207363/11207379.tsv) - the blinded experiment - for each sample random shuffle of explainers outputs. and in xlsx format: [compare_blinded.xlsx](/attachments/11207363/11207385.xlsx)
 - [map.ids.tsv](/attachments/11207363/11207380.tsv) - the order of each explainer
 - [summary.tsv](/attachments/11207363/11207381.tsv) - results for each sample - with explainers aligned (not blinded) - after joining map.ids.tsv with compare_blinded.tvs
@@ -203,9 +204,11 @@ Reference to expirement results:
 </tr>
 </tbody></table>
 Reference to expirement results:
+
 - [compare_blinded.tsv](/attachments/11207363/11207379.tsv) - the blinded experiment - for each sample random shuffle of explainers outputs. and in xlsx format: [compare_blinded_CRC.xlsx](/attachments/11207363/11207414.xlsx)
 - [map.ids.tsv](/attachments/11207363/11207380.tsv) -  the order of each explainer
 - [summary.sum.tsv](/attachments/11207363/11207415.tsv) - results for each sample - with explainers aligned (not blinded) - after joining map.ids.tsv with compare_blinded.tvs
+
 ### Pre2D
 <table><tbody>
 <tr>
@@ -298,9 +301,11 @@ Reference to expirement results:
 </tr>
 </tbody></table>
 Reference to expirement results:
+
 - [compare_blinded.tsv](/attachments/11207363/11207379.tsv) - the blinded experiment - for each sample random shuffle of explainers outputs. and in xlsx format: 
 - [map.ids.tsv](/attachments/11207363/11207380.tsv) - the order of each explainer
 - [summary.tsv](/attachments/11207363/11207381.tsv) - results for each sample - with explainers aligned (not blinded) - after joining map.ids.tsv with compare_blinded.tvs
+
 ## **Conclusions**
 Summary Table all expirements:
 <table><tbody>
@@ -404,17 +409,19 @@ Summary Table all expirements:
 <td>1.501907</td>
 </tr>
 </tbody></table>
+
 - The tree algorithm works the best in gerneal when the predictor is tree based. the covariance fix also improves it slightly.
 - The LIME\SHAP are pretty similar. The LIME is slightly better and faster so it's preferable over SHAP. They are also model agnostic, but hareder to train. Gibbs might imporve the results (but be much slower) and might be usefull if we use it on not too many features/groups of features.
 - The missing_shap - very simple and fast model (also model agnostic). It preforms good in some problems, but has some train parameters the are important to tune. In previous experiments in Pre2D it was much better (used different train parameters that made it worse comapre to the previous run). After runing with better params, I see it's even better than Shapley,LIME methods..BUG found in paramters in missing_shap that had disabled the grouping and cause problem - need to run again (Can't run with Grouping and "group_by_sum=1", should use the grouping mechanisim in missing_shap)...Bug found when training with wrong weights in missing_shap when using groups!
 - KNN - should be used without threshold. For now, it haven't prove itself enougth to be used.
 - If we use Trees predictors without groups - the shapley values should do the job without covariance fix. It's a unique solution that preserve fairness. 
+
 ## Appendix - Gibbs in Flu NWP 
 The Gibbs shows seperation of 0.6 between the generated samples and the real ones (when using random mask with probability 0.5 for each feature) and seperation of 0.719 when generating all features.
 This is high quality generation of matrix. For example GAN show seperation of 0.99 when generating all features and 0.74 when choosing random masks.
 **Test gibbs script**
- Expand source
-```
+
+```bash
 $MR_ROOT/Projects/Shared/But_Why/Linux/Release/TestGibbs --rep /home/Repositories/KPNW/kpnw_jun19/kpnw.repository --train_samples /server/Work/Users/Alon/But_Why/outputs/explainers_samples/flu_nwp/train.samples --test_samples /server/Work/Users/Alon/But_Why/outputs/explainers_samples/flu_nwp/validation_full.samples --model_path /server/Work/Users/Alon/But_Why/outputs/explainers/flu_nwp/base_model.bin --run_feat_processors 1 --save_gibbs /server/Work/Users/Alon/But_Why/outputs/explainers/flu_nwp/gibbs_tests/test_gibbs.bin --save_graphs_dir /server/Work/Users/Alon/But_Why/outputs/explainers/flu_nwp/gibbs_tests/gibbs_graphs --gibbs_params "kmeans=0;select_with_repeats=0;max_iters=0;predictor_type=lightgbm;predictor_args={objective=multiclass;metric=multi_logloss;verbose=0;num_threads=0;num_trees=80;learning_rate=0.05;lambda_l2=0;metric_freq=50;is_training_metric=false;max_bin=255;min_data_in_leaf=30;feature_fraction=0.8;bagging_fraction=0.25;bagging_freq=4;is_unbalance=true;num_leaves=80};num_class_setup=num_class;calibration_string={calibration_type=isotonic_regression;verbose=0};calibration_save_ratio=0.2;bin_settings={split_method=iterative_merge;min_bin_count=200;binCnt=150};selection_ratio=1.0" --predictor_type xgb --predictor_args "tree_method=auto;booster=gbtree;objective=binary:logistic;eta=0.1;alpha=0;lambda=0.1;gamma=0.1;max_depth=4;colsample_bytree=1;colsample_bylevel=0.8;min_child_weight=10;num_round=100;subsample=0.7" --gibbs_random_range 1 --gibbs_sampling_params "burn_in_count=500;jump_between_samples=20;samples_count=50000;find_real_value_bin=1"   --test_random_masks 0 
 ```
  

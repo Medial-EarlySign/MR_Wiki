@@ -7,8 +7,7 @@ Rows without edits will be kept "as is", no unit conversion and in most cases th
 - count - how common this signal
 - unit - the unit with this signal
 - unitcount - How common is the signal+unit combination. If single unit, it will be equal to count. Will sum up to count when taking all rows for the same signal
-- 
-to_signal -  when "to_signal" is empty will keep the same name as "signal"
+- to_signal -  when "to_signal" is empty will keep the same name as "signal"
 - to_unit - was taken from global+local signals file definitions configuration (just for convenient, not in use). Each signal definition has units
 - multiple_by, additive_b0 - the linear transformation. Default is 1 for multiple_by and 0 for additive_b0 if not given (dioing nothing be default to multiple by 1 and add 0)
 - value_0 - example values

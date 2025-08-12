@@ -15,6 +15,6 @@ We will test each signal in a group that the signal exists, otherwise important 
 Test_06 -  predictions file results
 
 ## Output
-$WORK_DIR}/ButWhy/feature_importance.sorted_final.tsv - file with sorted signals importance.
+${WORK_DIR}/ButWhy/feature_importance.sorted_final.tsv - file with sorted signals importance.
 For each signal - how many of the samples has this signal (feature are not missing values) and how important is it (impact on AUC if you don't pass it to the model).
  

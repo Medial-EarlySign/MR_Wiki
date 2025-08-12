@@ -7,6 +7,7 @@ At each combination size, the model runs over different combination sets. For ea
 The number of possible combinations at combination size *k* is generally* number of signals* over *k. *Since this number grows very fast, we limit ourselves with a parameter provided by the user *max_num_tests_per_iter, *and we search only over *n *signals, where *n *is the largest integer so that *n *over *k *is smaller than *max_num_tests_per_iter. *The *n chosen signals *are the best *n *signals from the previous stage.
  
 **Parameters:**
+
 - **Input parameters **
   - model_file::  *.model file.
   - samples_file:: samples file.
