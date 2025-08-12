@@ -1,6 +1,6 @@
 # Boston MLHC (ML in HealthCare) 2017
 
-[<img src="/rest/documentConversion/latest/conversion/thumbnail/8388615/1"/>](/download/attachments/8388616/MLHC%202017.pptx?version=1&modificationDate=1505297990350&api=v2)
+[Boston MLHC](/attachments/8388616/8388615.pptx)
 
  
 

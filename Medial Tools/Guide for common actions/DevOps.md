@@ -10,7 +10,7 @@ Compile python:
 ```bash
 build_py_wrapper.sh
 ```
-If there are issues: [Build the python extention](/Python/Medial's%20C++%20API%20in%20Python/Build%20the%20python%20extention.md)
+If there are issues: [Build the python extention](/Python/Medial's%20C++%20API%20in%20Python/Build%20the%20python%20extention.html)
 3. 
 Pack all tools to external environment:
 ```bash

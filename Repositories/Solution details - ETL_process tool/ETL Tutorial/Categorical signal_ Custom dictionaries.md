@@ -1,6 +1,6 @@
 # Categorical signal/ Custom dictionaries
 # Use case 1 - Known/Uses signals that we have known ontologies
-When you are going to use a "known" categorical signal from [ETL_INFRA_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/ETL_INFRA_DIR.md)/rep_signals/general.signals like "DIAGNOSIS" or "Drug" or "PROCEDURE", you will want to use known "ontologies" and mapping between codes.
+When you are going to use a "known" categorical signal from [ETL_INFRA_DIR](../High%20level%20-%20important%20paths/ETL_INFRA_DIR.md)/rep_signals/general.signals like "DIAGNOSIS" or "Drug" or "PROCEDURE", you will want to use known "ontologies" and mapping between codes.
 For example RX_CODES to ATC.
 The only thing you need to do in "prepare_final_signals" in the Drug signal is to create the values of the Drug signal with the right prefix. The ETL code will identify for example that you are using RX_CODE in Drug signal and will pull the RX_Code dictionary and the ATC codes dictionary and the mapping between RX_CODE to ATC. No need to do anything beside keeping the values with the right prefix. The call to "finish_prepare_load" will take care of that.
  
@@ -9,7 +9,7 @@ Here is a table of "Known" ontologies and their prefix:
 # Use case 2 - new signal received from client, list of values
 In this use case, we received list of values from client and there is no "known" ontology to be used, we didn't receive a mapping dictionary from client.  
 For example "Cancer_Type" with "Adenocarcinoma", "Small_Cells", etc extracted from cancer patients./
-We don't need to anything, we have defined a new categorical signal in [CODE_DIR](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/CODE_DIR.md)/configs/rep.signals and "finish_prepare_load" will identify those signals and will create the dictionary for us.
+We don't need to anything, we have defined a new categorical signal in [CODE_DIR](../High%20level%20-%20important%20paths/CODE_DIR.md)/configs/rep.signals and "finish_prepare_load" will identify those signals and will create the dictionary for us.
 # Use case 3 - new/known signal, but with additional mapping information from client
 In this use case we received a signal that might be "known" like DIAGNOSIS or new signal, and the client had provided us with external "dictionary".
 For example - diagnosis codes are documented in "client's internal" coding system and we received a 2 dictionary :

@@ -71,6 +71,6 @@ The ETL process is divided into three main parts:
 
 ## More Information
 
-- [High level - important paths/structure](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths_structure)
+- [High level - important paths/structure](../High%20level%20-%20important%20paths)
 - [ETL_infra.pptx (external slide deck)](https://medial.sharepoint.com/:p:/r/sites/algoteam/Shared%20Documents/General/genericETL/ETL_infra.pptx?d=wd53c98071ab841049d0472b1178fcb6c&csf=1&web=1&e=yREHdL)
 

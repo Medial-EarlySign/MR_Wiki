@@ -1,8 +1,8 @@
 # High level - important paths/structure
 ## The ETL file structure:
-- [ETL_INFRA_DIR ](ETL_INFRA_DIR.md)- directory containing the ETL infrastructure, currently located at "$MR_ROOT\Tools\RepoLoadUtils\common\ETL_Infra". It can be copied to a remote machine and is standalone, meaning no other files are required to utilize the infrastructure.  
-- [CODE_DIR ](CODE_DIR.md)-  directory designated for writing a specific ETL code
-- [WORK_DIR ](WORK_DIR.md)- output directory
+- [ETL_INFRA_DIR](ETL_INFRA_DIR.md)- directory containing the ETL infrastructure, currently located at "$MR_ROOT\Tools\RepoLoadUtils\common\ETL_Infra". It can be copied to a remote machine and is standalone, meaning no other files are required to utilize the infrastructure.  
+- [CODE_DIR](CODE_DIR.md)-  directory designated for writing a specific ETL code
+- [WORK_DIR](WORK_DIR.md)- output directory
 Click on each part to understand its structure, important files, and more details.
 ## What happens in the ETL:
 1. 

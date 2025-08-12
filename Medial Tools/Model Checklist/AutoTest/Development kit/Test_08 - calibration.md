@@ -2,7 +2,7 @@
 
 ## Overview
 Tests that the model calibration performance if applicable.
-For calibration information please refer to [Calibrate model, and calibration test](/Medial%20Tools/Guide%20for%20common%20actions/Calibrate%20model,%20and%20calibration%20test.md)
+For calibration information please refer to [Calibrate model, and calibration test](../../../Guide%20for%20common%20actions/Calibrate%20model,%20and%20calibration%20test.md)
 
 ## Input
 - WORK_DIR - output work directory

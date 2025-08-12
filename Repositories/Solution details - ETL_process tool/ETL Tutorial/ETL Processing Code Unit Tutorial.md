@@ -97,5 +97,5 @@ CODE_DIR/
 
 ---
 
-For more details, refer to the [global signal definitions](/Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/structure/ETL_INFRA_DIR.md).
+For more details, refer to the [global signal definitions](../High%20level%20-%20important%20paths/ETL_INFRA_DIR.md).
 

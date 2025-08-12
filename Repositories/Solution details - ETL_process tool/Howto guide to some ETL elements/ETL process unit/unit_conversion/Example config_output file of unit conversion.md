@@ -41,4 +41,4 @@ Ca	35375	mg/dl	26		mg/dL			[9.6, 10.9, 9.8, 10.3, 9.9]
  
 Full file:
  
-[<img src="/download/resources/com.atlassian.confluence.plugins.confluence-view-file-macro:view-file-macro-resources/images/placeholder-medium-file.png"/>map_units_stats.cfg](/download/attachments/13403029/map_units_stats.cfg?version=1&modificationDate=1685964613790&api=v2)
+[map_units_stats.cfg](/attachments/13403029/13403028.cfg)

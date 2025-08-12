@@ -10,6 +10,7 @@ pointer_to_page = dict()
 crawled_pages = dict()
 max_crawled_pages = 500
 
+
 def get_page_re(url: str, retries: int = 3) -> str | None:
     """Fetch a page with retries for common HTTP and system errors."""
     for attempt in range(retries):
@@ -18,7 +19,7 @@ def get_page_re(url: str, retries: int = 3) -> str | None:
             response.raise_for_status()  # Raise an error for bad responses
             return response.text
         except Exception as e:
-            #print(f"Attempt {attempt + 1} failed for {url}, error: {str(e)}")
+            # print(f"Attempt {attempt + 1} failed for {url}, error: {str(e)}")
             if attempt < retries - 1:
                 time.sleep(1)
             else:
@@ -32,12 +33,19 @@ async def get_page(url: str, retries: int = 3) -> str | None:
         try:
             async with httpx.AsyncClient(timeout=20) as client:
                 response = await client.get(url)
+                if response.text == "":
+                    raise httpx.HTTPStatusError(
+                        f"Empty response for {url}",
+                        request=response.request,
+                        response=response,
+                    )
                 if response.status_code == 200 or response.status_code == 301:
                     return response.text
                 else:
                     print(f"Non-200 status code {response.status_code} for {url}")
         except (httpx.RequestError, httpx.HTTPStatusError) as e:
-            print(f"Attempt {attempt + 1} failed for {url}: {e}")
+            if attempt >= retries - 1:
+                print(f"Attempt {attempt + 1} failed for {url}: {e}")
         await asyncio.sleep(1)  # Backoff between retries
     return None
 
@@ -55,8 +63,8 @@ async def crawl_page(url: str, limiter: asyncio.Semaphore) -> None:
     # scrape the url
     crawled_pages[url] = None
     print(f"crawling: {url}")
-    #html_content = await get_page(url)
-    html_content = get_page_re(url)
+    html_content = await get_page(url)
+    # html_content = get_page_re(url)
     if not html_content:
         crawled_pages[url] = 0
         return
@@ -69,7 +77,7 @@ async def crawl_page(url: str, limiter: asyncio.Semaphore) -> None:
     base_domain = urlparse(url).netloc
     urls = []
     for link in soup.find_all("a", href=True):
-        href: str = link["href"] # type: ignore
+        href: str = link["href"]  # type: ignore
         absolute_url = urljoin(url, href)
         absolute_url = absolute_url.split("#")[0]  # remove fragment
         if absolute_url in crawled_pages:
@@ -107,5 +115,4 @@ if __name__ == "__main__":
     )
     df = df.join(df_sources)
     df.reset_index(inplace=True)
-    print(df[df['status']==0])
-    breakpoint()
+    print(df[df["status"] == 0])
