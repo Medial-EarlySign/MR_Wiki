@@ -7,9 +7,10 @@ Uses example:
 
 - Estimate model performance/transferability on different repository
 - Test model on different years and the differences in different year. You can pass train_rep==test_rep and just change the samples to test for differences
- 
+
 Part of Tools git repository. Can be found under AllTools solution.
-**Mode 1 - Comparing the model when the 2 repositories are available in the same network:**
+
+## **Mode 1 - Comparing the model when the 2 repositories are available in the same network:**
 
 - model_path - Must be given in any mode. The path to the binary MedModel that we want to test for.
 - rep_test - repository for testing and comparing with. In the propensity model it will be labeled as 1.
