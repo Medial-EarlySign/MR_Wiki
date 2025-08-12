@@ -13,7 +13,7 @@ feature selectio, model selection,training and boostrap analysis. with ability
 - [Using the Flow App](Using%20the%20Flow%20App) -  Our app to create repository and do a lot of things with our data/model/repository
     - [Feature Importance with shapley values analysis](Using%20the%20Flow%20App/Feature%20Importance%20with%20shapley%20values%20analysis.md)
     - [Fit MedModel to Repository](Using%20the%20Flow%20App/Fit%20MedModel%20to%20Repository.md)
-    - [Load new repository](/Repositories/Load%20new%20repository.md)
+    - [Load new repository](../Repositories/Load%20new%20repository.md)
     - [Outcomes files](Using%20the%20Flow%20App/Outcomes%20files.md)
     - [Split Files](Using%20the%20Flow%20App/Split%20Files.md)
     - [train_test mode](Using%20the%20Flow%20App/train_test%20mode.md)

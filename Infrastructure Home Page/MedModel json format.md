@@ -19,9 +19,9 @@ You can use these prefixes for referencing files relative to the JSON:
 - `comma_rel:`: References a file, extracts content line by line into a comma-separated string (`"line1,line2,..."`).
 - `json:`: References another file, adds its content to this JSON as-is.
 
-The parameters in the model can be later changed using [adjust_model](/Medial%20Tools/adjust_model.md)or [change_model](/Medial%20Tools/change_model).
+The parameters in the model can be later changed using [adjust_model](/Medial%20Tools/adjust_model.html)or [change_model](/Medial%20Tools/change_model).
 For example, if you are implementing running an existing model in lower memory computer, you might want to lower down `max_data_in_mem`.
-[Howto limit memory](/Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict.md)
+[Howto limit memory](/Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict.html)
 
 ## Main Model Pipeline
 
