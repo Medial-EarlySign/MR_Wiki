@@ -1,12 +1,12 @@
 # Python
 In the following sub-pages you will find information about Python utilization in Medial.
- 
+
 - [Medial's C++ API in Python](Medial's%20C++%20API%20in%20Python)
-  - [Build the python extention](/Python/Build%20the%20python%20extention)
-  - [Examples](/Python/Examples)
-  - [Extend and Develop](/Python/Extend%20and%20Develop)
-  - [Python AlgoMarker API Wrapper](/Python/Python%20AlgoMarker%20API%20Wrapper)
-  - [Usage](/Python/Usage)
+  - [Build the python extention](Medial's%20C++%20API%20in%20Python/Build%20the%20python%20extention.md)
+  - [Examples](Medial's%20C++%20API%20in%20Python/Examples.md)
+  - [Extend and Develop](Medial's%20C++%20API%20in%20Python/Extend%20and%20Develop.md)
+  - [Python AlgoMarker API Wrapper](Medial's%20C++%20API%20in%20Python/Python%20AlgoMarker%20API%20Wrapper.md)
+  - [Usage](Medial's%20C++%20API%20in%20Python/Usage.md)
 - [Python binding Troubleshooting](Python%20binding%20Troubleshooting)
 
 ## Quick start (Usage Level)
