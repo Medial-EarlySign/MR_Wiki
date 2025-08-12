@@ -4,7 +4,7 @@
 The main goal of this 'test' is to understand the differences between the current dataset, and the dataset that was used to train the model. It would be important, at later phase, in estimating model performance with the new dataset.
 ****
 **Parameters (see env.sh)**
-All parameters are included in env.sh and described in [External Silent Run](/Models/Model%20Checklist/AutoTest/External%20Silent%20Run).
+All parameters are included in env.sh and described in [External Silent Run](../External%20Silent%20Run).
 In particular, this test uses:
 
 - REFERENCE_MATRIX=... full path to reference matrix (feature matrix from model train)
