@@ -1,6 +1,6 @@
 # How to Write a Feature Processor
 
-Feature Processors are components that operate on the feature matrix produced by the [Feature Generator](../Feature%20Generator%20Practical%20Guide). They take a matrix of features as input, process it (e.g., normalization, feature selection, PCA), and output a transformed feature matrix.
+Feature Processors are components that operate on the feature matrix produced by the [Feature Generator](../02.Feature%20Generator%20Practical%20Guide). They take a matrix of features as input, process it (e.g., normalization, feature selection, PCA), and output a transformed feature matrix.
 
 Feature Processors in MedModel follow a defined sequence of method calls. Here’s the typical lifecycle:
 

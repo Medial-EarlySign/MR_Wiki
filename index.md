@@ -2,7 +2,7 @@
 # Wikimedial 
 
 If you just want to use an existing model please refer to: 
-[Howto use AlgoMarker](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md#algomarker_usage_deployed)
+[Howto use AlgoMarker](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)
 
 * [Infrastructure Home Page](Infrastructure%20Home%20Page/index.md) - Information about the Infrastructure
     - [Howto use AlgoMarker](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md)

@@ -1,6 +1,6 @@
 # How to Write a PostProcessor
 
-A PostProcessor is a component that takes the feature matrix and prediction results, then applies additional post-processing steps. It is executed after the [MedPredictor](../MedPredictor%20practical%20guide) stage in the pipeline.
+A PostProcessor is a component that takes the feature matrix and prediction results, then applies additional post-processing steps. It is executed after the [MedPredictor](../04.MedAlgo%20Library/MedPredictor%20practical%20guide) stage in the pipeline.
 
 PostProcessors in MedModel follow a defined sequence of method calls. Here’s the typical lifecycle:
 

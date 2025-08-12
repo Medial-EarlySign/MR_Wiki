@@ -14,6 +14,8 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.instant
+    - navigation.path
+    - navigation.indexes
     - search
     - search.highlight
     - search.suggest
@@ -31,6 +33,7 @@ markdown_extensions:
   - sane_lists
   - tables
   - admonition
+  - pymdownx.tilde
 
 plugins:
   - search

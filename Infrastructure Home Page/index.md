@@ -35,16 +35,16 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
 ## Infrastructure Components
 1. **MedRepository: a high-performance EMR time-series store**
     * Fast retrieval of any patient’s full record or a specific signal across all patients.
-    * [Unified representation](InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors): each signal consists of zero or more time channels plus zero or more value channels, all tied to a patient ID.
+    * [Unified representation](00.InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors): each signal consists of zero or more time channels plus zero or more value channels, all tied to a patient ID.
         - Static example: "Birth year" → no time channels, one value channel.
         - Single-time example: "Hemoglobin" → one time channel (test date), one value channel (numeric result).
         - Interval example: "Hospitalization" → two time channels (admission and discharge dates).
     * **Hierarchical support for categorical medical ontologies** 
         - Enables seamless integration and translation between different systems when working with a frozen model or algorithm. 
         - Example: A query for ICD-10 codes starting with "J" (respiratory diseases) will also automatically map to corresponding categories in systems like Epic. When dictionary of mapping between ICD and Epic is added, no need to change the model. 
-        - Ontology mappings are managed by [MedDictionary](InfraMed%20Library%20page/MedDictionary), which supports many-to-many hierarchical relationships across coding systems.
+        - Ontology mappings are managed by [MedDictionary](00.InfraMed%20Library%20page/MedDictionary), which supports many-to-many hierarchical relationships across coding systems.
 2. **Modular processing pipeline (sklearn-style)**
-    * **[Rep Processors](Rep%20Processors%20Practical%20Guide/)**: Clean or derive "raw" virtual signals, while preventing leakage of future data
+    * **[Rep Processors](01.Rep%20Processors%20Practical%20Guide/)**: Clean or derive "raw" virtual signals, while preventing leakage of future data
         - Example: Outlier cleaner that omits values only when abnormality is detected by future readings (e.g., a hemoglobin value on 2023-Feb-04 flagged only by a 2023-May-21 test remains until after May 21).
         - Example: Virtual BMI signal computed from weight/height, or imputed when only two of three inputs exist
     * **[Feature Generators](MedProcessTools%20Library/FeatureGenerator/)**: Convert cleaned signals into predictive features.
@@ -52,9 +52,9 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
             * "Last hemoglobin in past 365 days"
             * "Hemoglobin slope over three years"
             * "COPD diagnosis code during any emergency admission in last three years"
-    * **[Feature Processors](Feature%20Generator%20Practical%20Guide/)**: Operate on the feature matrix—imputation, selection, PCA, etc. 
-    * **[Predictors/Classifiers](MedAlgo%20Library/)**: LightGBM, XGBoost, or custom algorithms.
-    * **[Post-processing](PostProcessors%20Practical%20Guide/)**: Score calibration, explainability layers, fairness adjustments, etc.
+    * **[Feature Processors](02.Feature%20Generator%20Practical%20Guide/)**: Operate on the feature matrix—imputation, selection, PCA, etc. 
+    * **[Predictors/Classifiers](04.MedAlgo%20Library/)**: LightGBM, XGBoost, or custom algorithms.
+    * **[Post-processing](05.PostProcessors%20Practical%20Guide/)**: Score calibration, explainability layers, fairness adjustments, etc.
 3. **JSON-driven pipeline configuration** - Define every processor, feature generator, and model step in a single JSON file. [Json Format](MedModel%20json%20format)
     Example json for training a model:
 
@@ -238,23 +238,23 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
 
 - MedModel learn and apply 
 - RepProcessors:
-    - [RepProcessors Practical Page](Rep%20Processors%20Practical%20Guide)
+    - [RepProcessors Practical Page](01.Rep%20Processors%20Practical%20Guide)
 - FeatureGenerators:
-    - [Feature Generator Practical Guide](Feature%20Generator%20Practical%20Guide)
+    - [Feature Generator Practical Guide](02.Feature%20Generator%20Practical%20Guide)
 - FeatureProcessors:
-    - [FeatureProcessor practical guide](FeatureProcessor%20practical%20guide)
+    - [FeatureProcessor practical guide](03.FeatureProcessor%20practical%20guide)
 - MedPredictors
-    - [MedPredictors practical guide](MedPredictor%20practical%20guide)
+    - [MedPredictors practical guide](04.MedAlgo%20Library/MedPredictor%20practical%20guide)
 - PostProcessors:
-    - [PostProcessors Practical Guide](PostProcessors%20Practical%20Guide)
+    - [PostProcessors Practical Guide](05.PostProcessors%20Practical%20Guide)
 
 ## Other links
 Home page for in depth pages explaining several different aspects in the infrastructure
 Some interesting pages:
 
 - How to Serialize : learn the [SerializableObject](MedProcessTools%20Library/SerializableObject) libarary secrets.
-- [PidDynamicRecs and versions](InfraMed%20Library%20page/PidDynamicRec)
-- [Virtual Signals](Rep%20Processors%20Practical%20Guide/Virtual%20Signals)
+- [PidDynamicRecs and versions](00.InfraMed%20Library%20page/PidDynamicRec)
+- [Virtual Signals](01.Rep%20Processors%20Practical%20Guide/Virtual%20Signals)
 
 
 ## Installations

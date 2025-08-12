@@ -109,7 +109,7 @@ The core logic is in the value getter function:
 
 - `MedConvert` now supports GSVs when creating new repositories.
 - `MedPyExport` can export GSVs to Python. **Exported field names are now `time0`, `time1`, ..., `val0`, `val1`, ...**
-- [Virtual signals](../Rep%20Processors%20Practical%20Guide/Virtual%20Signals.md) now support the new type specification strings.
+- [Virtual signals](../01.Rep%20Processors%20Practical%20Guide/Virtual%20Signals.md) now support the new type specification strings.
 
 ## Performance
 

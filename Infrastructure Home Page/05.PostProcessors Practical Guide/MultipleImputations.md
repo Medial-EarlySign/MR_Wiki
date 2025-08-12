@@ -30,7 +30,7 @@ Example config:
 - force_cancel_imputations - flag to indicate we need to find model original imputer and replace it (otherwise there will be no missing values, the imputer will impute them).
 - batch_size - how many samples in each batch before duplications
 - use_median - if true will replace pred_0 with median
-- feature_processor_type - the feature processor init type - pay attention to use something with stochastic properties, for example "predictor_imputer" - you can see more imputer options in [FeatureProcessor practical guide](/Infrastructure%20Home%20Page/FeatureProcessor%20practical%20guide)
+- feature_processor_type - the feature processor init type - pay attention to use something with stochastic properties, for example "predictor_imputer" - you can see more imputer options in [FeatureProcessor practical guide](/Infrastructure%20Home%20Page/03.FeatureProcessor%20practical%20guide)
 - feature_processor_args - arguments for the feature processors. You can see some explanations in the FeatureProcessor practical guide
 Run adjust model with this post processor to generate gibbs sampling on missing values in features tagged "labs_numeric":
 ```bash

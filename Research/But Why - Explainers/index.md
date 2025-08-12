@@ -48,7 +48,7 @@ All the models are on THIN, except CRC which is on MHS.
 **The Experiment:**
 Experiment will be performed on each model.
 We will try to explain the test samples (special samples were collected for each problem - for example low hemoglobin and high score in CRC and the opposite... several examples for each model) with different explainers.
-Explainers are [PostProcessor](/Infrastructure%20Home%20Page/PostProcessors%20Practical%20Guide) of [ModelExplainer](/Infrastructure%20Home%20Page/PostProcessors%20Practical%20Guide/Explainers%20(But%20Why)). We will try to explain the prediction with different configurations\method for each sample in the model.
+Explainers are [PostProcessor](/Infrastructure%20Home%20Page/05.PostProcessors%20Practical%20Guide) of [ModelExplainer](/Infrastructure%20Home%20Page/05.PostProcessors%20Practical%20Guide/Explainers%20(But%20Why)). We will try to explain the prediction with different configurations\method for each sample in the model.
 After collecting all the results we will go over the alternatives and Coby Metzger(someone else?) will score them by:
 
 - Good

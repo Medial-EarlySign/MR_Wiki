@@ -1,5 +1,5 @@
 # Data json file format
-```
+```json
 {
 	"patient_id": 1,
 	"signals": [
@@ -10,10 +10,9 @@
 }
 ```
  
-```
 SIGNAL_CODE_BLOCK structure:
-```
-```
+
+```json
 {
     "code": "SINGAL_NAME",
     "data": [
@@ -27,7 +26,7 @@ SIGNAL_CODE_BLOCK structure:
 ```
  
 Can also be encapsulated my "multiple" attribute for array of patients like
-```
+```json
 { 
 "multiple": [
 	{PATIENT BLOCK}

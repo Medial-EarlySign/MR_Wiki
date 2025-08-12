@@ -1,7 +1,7 @@
 # How to Write a MedPredictor
 
 MedPredictor is Classifier/Regressor that inputs the features matrix and output prediction/s. 
-It is being executed after [FeatureProcessors](../FeatureProcessor%20practical%20guide)
+It is being executed after [FeatureProcessors](../03.FeatureProcessor%20practical%20guide)
 
 MedPredictor in MedModel follow a defined sequence of method calls. Here’s the typical lifecycle:
 

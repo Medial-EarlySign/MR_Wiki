@@ -65,8 +65,6 @@ More details can be found [here](/Python/Medial's%20C++%20API%20in%20Python/Pyth
    execute this command `docker run -id algomarker_X --name algomarker_container_X -p 1234:1234` and expose port 1234 to 1234 in your local machine.
 
 ---
-<a id="algomarker_usage_deployed"></a>
-
 ## How to Use the Deployed AlgoMarker
 
 Once the server is running, it exposes two main API endpoints:
