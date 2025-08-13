@@ -10,7 +10,7 @@ This tutorial explains how to use our ETL library, which consists of five core f
 
 1. **Create a Project Directory:**  
    Start by creating an empty directory for your ETL code:  
-   [CODE_DIR](../High%20level%20-%20important%20paths/structure/CODE_DIR.md)
+   [CODE_DIR](../High%20level%20-%20important%20paths/CODE_DIR.md)
 
 2. **Directory Structure:**  
    Your final `CODE_DIR` will look like this:  

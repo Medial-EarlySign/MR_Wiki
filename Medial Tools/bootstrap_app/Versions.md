@@ -1,33 +1,14 @@
 # Versions
 ## Frozen Versions
 ### Frozen versions of the bootstrap app can be found here: **/server/Work/FrozenTools**
-<table><tbody>
-<tr>
-<th>Version</th>
-<th>Date</th>
-<th>Windows/Linux</th>
-<th>Git Branch Name</th>
-<th>Git Tag Name</th>
-<th>Changes</th>
-</tr>
-<tr>
-<td><span>bootstrap_app_1.0.2</span></td>
-<td><time class="date-past" datetime="2019-01-21">21 Jan 2019</time> </td>
-<td>Linux</td>
-<td>bootstrap_app_1.0</td>
-<td><span>bootstrap_app_1.0.2</span></td>
-<td><ul><li>bugfix in incidence calculation with kaplan-meier</li></ul></td>
-</tr>
-<tr>
-<td>bootstrap_app_1.0</td>
-<td><time class="date-past" datetime="2018-12-19">19 Dec 2018</time> </td>
-<td>Linux</td>
-<td><span>bootstrap_app_1.0</span></td>
-<td><p>191218_01</p></td>
-<td><ul><li>The MedRegistry format has changed, and the info is now passed by two inputs: registry and censor. See <a href="MedRegistry_9207878.html">MedRegistry</a> and <a href="MedSamplingStrategy_9765342.html">MedSamplingStrategy</a> for more info.</li></ul></td>
-</tr>
-</tbody></table>
- 
+
+
+| Version  | Date   | Windows/Linux | Git Branch Name     | Git Tag Name    | Changes                                              
+|----------|--------|---------------|---------------------|-----------------|----------|
+| bootstrap_app_1.0.2  | 21 Jan 2019   | Linux    | bootstrap_app_1.0   | bootstrap_app_1.0.2  | - bugfix in incidence calculation with kaplan-meier  |
+| bootstrap_app_1.0    | 19 Dec 2018   | Linux    | bootstrap_app_1.0   | 191218_01            | - The MedRegistry format has changed, and the info is now passed by two inputs: registry and censor. See [MedRegistry](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry) and [MedSamplingStrategy](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html) for more info. |
+
+
 ## Releasing a new version
 Before releasing a new version, the output of the new version should be compared to the outputs of the old one. Below is a benchmark test to compare to. If the outputs have changed, explain why.
 **Test:**
