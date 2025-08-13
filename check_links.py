@@ -100,6 +100,22 @@ def crawl_page(url: str, limiter: asyncio.Semaphore) -> None:
         if absolute_url in crawled_pages:
             continue
         if urlparse(absolute_url).netloc != base_domain:
+            # only test
+            _, html_cont = get_page_re(absolute_url)
+            if not html_cont:
+                crawled_pages[absolute_url] = 0
+            else:
+                crawled_pages[absolute_url] = 1
+            pointer_to_page[absolute_url] = url_final
+            continue
+        urls.append(absolute_url)
+        pointer_to_page[absolute_url] = url_final
+    for img in soup.find_all("img", src=True):
+        img_url: str = img["src"]  # type: ignore
+        absolute_url = urljoin(url_final, img_url)
+        if absolute_url in crawled_pages:
+            continue
+        if urlparse(absolute_url).netloc != base_domain:
             continue
         urls.append(absolute_url)
         pointer_to_page[absolute_url] = url_final

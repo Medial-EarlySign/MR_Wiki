@@ -15,7 +15,7 @@ which is suited to work with a large number  of extremely sparse features, and 
 ## Factorization machines
  
 Factorization Machines (FM) are generic supervised learning models that map arbitrary real-valued features into a low-dimensional latent factor space and can be applied naturally to a wide variety of prediction tasks including regression, classification, and ranking. FMs can estimate model parameters accurately under very sparse data and train with linear complexity, allowing them to scale to very large data sets. FMs are widely used for real-world recommendation problems.
-FM model is described in details in the [article](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf) by Steffen Rendle.
+FM model is described in details in the [article](https://sdcast.ksdaemon.ru/wp-content/uploads/2020/02/Rendle2010FM.pdf) by Steffen Rendle.
 ## libFM
  
 [libFM is a software implementation for factorization machines that features stochastic gradient descent (SGD) and alternating least squares (ALS) optimization as well as Bayesian inference using Markov Chain Monte Carlo (MCMC).](http://www.libfm.org/)
