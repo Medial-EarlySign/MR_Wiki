@@ -39,7 +39,7 @@ There are two methods for finding  the important signals:
 **Example of running line:**
 **Running Example**
 ```bash title="Running Example"
-yaron@node-02:/nas1/Work/Users/yaron/Examples/iterativeSelector$ /nas1/UsersData/yaron/MR/Tools/MedProcessUtils/Linux/Release//iterativeSelector --inSamples samples --inJson simple_model.json --out outReport --predictor qrf --predictor_params_file params_iterative_seletcor --nfolds 5 --folds "0,2,4" --mode top2bottom --verbose 1 --msr_params AUC --cohort_params "Age:0,200" --required "Age,Gender"
+/nas1/UsersData/yaron/MR/Tools/MedProcessUtils/Linux/Release//iterativeSelector --inSamples samples --inJson simple_model.json --out outReport --predictor qrf --predictor_params_file params_iterative_seletcor --nfolds 5 --folds "0,2,4" --mode top2bottom --verbose 1 --msr_params AUC --cohort_params "Age:0,200" --required "Age,Gender"
 ```
  
 **Example for predictor parmeters file:**
