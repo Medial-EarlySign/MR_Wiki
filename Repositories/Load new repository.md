@@ -1,5 +1,7 @@
 # Loading a New Repository
 
+A tool to support creation of all needed files can be found [here](Solution%20details%20-%20ETL_process%20tool/ETL%20Tutorial)
+
 ## Step 1: Prepare Load Files:
 In this step you will need to create ETL loading files
 
