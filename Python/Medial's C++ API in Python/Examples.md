@@ -2,7 +2,7 @@
  
 When using "get_sig" function, there is no need to call "read_all" before, "init" is enough. get_sig, loads the signal automatically from disk if needed and not loaded
  
-**Using Lookup table in python**
+## **Using Lookup table in python**
 ```python
 rep = med.PidRepository()
 rep.read_all(FLAGS.rep, readmissions.pid.values.astype('int32'), ['ADMISSION','DIAGNOSIS_IP','DIAGNOSIS_OP'])
@@ -20,8 +20,7 @@ op_diagnosis = rep.get_sig('DIAGNOSIS_OP',translate=False)
 op_diagnosis = op_diagnosis[(lut[op_diagnosis.val0]!=0)]
 ```
 
-<a id="iterate_signal"></a>
-**Iterating over a Signal**
+## **Iterating over a Signal**
 
 ```python
 ## This is not the proper way to work with Python, since Python loops are very slow, however, it's nice as a poc.
@@ -41,7 +40,7 @@ for pid in rep.pids[20:30]:
     for rec in usv:
       print("Patient {} had {}={:.2} at {}".format(pid, signame, rec.val(), rec.date()))
 ```
-**Setup**
+## **Setup**
 
 ```python
 # py2/py3 compatiblity
@@ -61,7 +60,7 @@ rep.read_all('/home/Repositories/THIN/thin_final/thin.repository',[],['WBC','Can
                                                                           'Albumin','BDATE'])
 print(med.cerr())
 ```
-**Useful functions to fix signal types**
+## **Useful functions to fix signal types**
 
 ```python
 def fix_ts_m1900(df, col):
@@ -71,8 +70,7 @@ def fix_type(df, col, newtype): df[[col]] = df[[col]].astype(newtype, copy=False
 def fix_date_ymd(df, col): df[col] = pd.to_datetime(df[col], format='%Y%m%d')
 def fix_name(df, old_col, new_col): df.rename(columns={old_col: new_col}, inplace=True)
 ```
-<a id="get_sig_pandas"></a>
-**Load some signals**
+## **Load some signals**
 
 ```python
 albumin = rep.get_sig('Albumin')
@@ -95,13 +93,13 @@ fix_date_ymd(mortality, 'val')
 fix_name(mortality,'val','MortDate')
  
 ```
-**Merge signals into one dataframe**
+## **Merge signals into one dataframe**
 
 ```python
 from functools import reduce
 data = reduce(lambda left,right: pd.merge(left, right, on='pid', how="left", sort=False),[albumin,gender,bdate,mortality])
 ```
-**Which Python med module am I using**
+## **Which Python med module am I using**
 
 ```python
 import med
@@ -109,7 +107,7 @@ print(med.__file__)
 if hasattr(med.Global, 'version_info'):
     print(med.Global.version_info)
 ```
-**Bootstrap analysis**
+## **Bootstrap analysis**
 
 ```python
 import pandas as pd
@@ -125,7 +123,7 @@ print('AUC: %2.3f [%2.3f - %2.3f]'%(res['AUC_Mean'], res['AUC_CI.Lower.95'], res
 res_df=res.to_df()
 res_df[res_df['Measurement'].str.startswith('AUC')]
 ```
-**Load MedModel and apply (predict) on sample**
+## **Load MedModel and apply (predict) on sample**
 
 ```python
 import med
@@ -159,8 +157,7 @@ samples.write_to_file('write_to_samples_file')
 #feature matrix exists in - model.features.to_df() . The "samples" object now has the scores
 ```
 
-<a id="train_model"></a>
-**Learn model from json to generate matrix**
+## **Learn model from json to generate matrix**
 
 ```python
 import med
@@ -190,7 +187,7 @@ rep.read_all(rep_path, ids, signalNamesSet) #read needed repository data
 model.learn(rep, samples)
 model.features.to_df().write_to_file('write_to_matrix_file')
 ```
-**Bootstrap analysis on samples**
+## **Bootstrap analysis on samples**
 
 ```python
 import med
@@ -204,7 +201,7 @@ res=bt.bootstrap_cohort(samples, REP_PATH,JSON_TO_FILTER, COHORT_FILE)
 res_df=res.to_df()
 res_df
 ```
-**print errors in medPython**
+## **print errors in medPython**
 
 ```python
 print(med.cerr())

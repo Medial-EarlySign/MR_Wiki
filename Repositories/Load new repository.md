@@ -1,9 +1,23 @@
 # Loading a New Repository
 
-A tool to support creation of all needed files can be found [here](Solution%20details%20-%20ETL_process%20tool/ETL%20Tutorial)
+## Best Practices
+
+* Load the signals with as little preprocessing as possible. Leave outlier handling and data cleaning for the model itself. This approach leads to a more robust model, simplifies implementation, and reduces ETL errors since the process is more straightforward. Outlier adjustments can also be made more effectively at later stages. It will also make future implementations easier - "no complicated processings in the ETL".
+* Ensure that all signals are in the correct units - each signal is expected to use the appropriate measurement unit.
+* It is recommended to separate your code into two parts:
+  - Code for fetching the data  
+  - Code for processing the data  
+
+  This makes the code easier to read and helps clarify what minimal processing was applied to each signal.
+
+You can use your own tools and methods to create “loading files” (described below), or use our ETL tool to both build the ETL process and test the results.  
+More details here: [ETL Tool](Solution%20details%20-%20ETL_process%20tool/ETL%20Tutorial)
+You can start from this [code example](https://github.com/Medial-EarlySign/MR_Tools/tree/main/RepoLoadUtils/common/ETL_Infra/examples/simple_test_pipeline) and change it for your own needs
+
+Steps to create loading files on your own:
 
 ## Step 1: Prepare Load Files:
-In this step you will need to create ETL loading files
+In this step you will need to create ETL loading files for each signal.
 
 ### Data File Format
 

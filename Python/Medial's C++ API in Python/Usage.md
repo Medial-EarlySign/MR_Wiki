@@ -531,7 +531,7 @@ help(med.PidRepository)
 ## Additional Examples
 
 - See `$MR_ROOT/Libs/Internal/MedPyExport/examples/MedProcUtils/` for more Python implementations.
-- [get_sig() example](Examples.md#get_sig_pandas): Read a signal, analyze Albumin values, and explore with Pandas/matplotlib.
-- [Model Test+Train example](Examples.md#train_model): Partial translation of Flow's TestTrain class to Python.
-- [Iterating over a Signal](Examples.md#iterate_signal): Demonstrates signal iteration (for proof of concept; Python loops are
+- [get_sig() example](Examples.md#load-some-signals): Read a signal, analyze Albumin values, and explore with Pandas/matplotlib.
+- [Model Test+Train example](Examples.md#learn-model-from-json-to-generate-matrix): Partial translation of Flow's TestTrain class to Python.
+- [Iterating over a Signal](Examples.md#iterating-over-a-signal): Demonstrates signal iteration (for proof of concept; Python loops are
 

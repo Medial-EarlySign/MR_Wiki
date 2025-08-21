@@ -10,19 +10,18 @@ This tutorial explains how to use our ETL library, which consists of five core f
 
 1. **Create a Project Directory:**  
    Start by creating an empty directory for your ETL code:  
-   [CODE_DIR](../High%20level%20-%20important%20paths/CODE_DIR.md)
-
-2. **Directory Structure:**  
-   Your final `CODE_DIR` will look like this:  
+   [CODE_DIR](../High%20level%20-%20important%20paths/CODE_DIR.md). Your final `CODE_DIR` will look like this:  
    [<img src="/attachments/14811356/14811417.png"/>](#)
 
-3. **Entry Point:**  
+2. **Entry Point:**  
    Use a single entry point for your ETL:  
    - Run `python load.py` to execute the full loading process.
    - **Do not** create multiple `load.py` files or use different names. This keeps the workflow simple and consistent.
 
-4. **Initial Setup:**  
+3. **Initial Setup:**  
    The `configs` and `signal_processing` folders can start empty. The ETL process will create them as needed.
+
+You can start from this [code example](https://github.com/Medial-EarlySign/MR_Tools/tree/main/RepoLoadUtils/common/ETL_Infra/examples/simple_test_pipeline) and change it for your own needs.
 
 ---
 
