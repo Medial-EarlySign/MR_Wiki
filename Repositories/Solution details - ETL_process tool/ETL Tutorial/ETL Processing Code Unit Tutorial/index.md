@@ -66,6 +66,8 @@ df.loc[df['value_0'] == 'female', 'value_0'] = 'Female'
 df = df[['pid', 'signal', 'value_0']].drop_duplicates().reset_index(drop=True)
 ```
 
+**You might want to use unit conversion functions, more details in [Unit Conversion](unit_conversion)**
+
 **Notes:**
 
 - The ETL infrastructure will validate the signal type. If something is missing, a test will fail and prompt you to fix it.

@@ -44,7 +44,7 @@ The ETL process is divided into three main parts:
 1. **[Data Fetching](Data%20Fetching%20step.md):**  
    Write code to read your raw data into a DataFrame. This step is specific to your ETL and should be simple (e.g., `pd.read_csv()` or database queries).
 
-2. **[Data Processing](ETL%20Processing%20Code%20Unit%20Tutorial.md):**  
+2. **[Data Processing](ETL%20Processing%20Code%20Unit%20Tutorial):**  
    Transform the raw DataFrame into the final signal structure. This code is also ETL-specific and may include column renaming, filtering, or unit conversion.
 
 3. **[Manager Script](ETL%20Manager%20Process.md):**  
