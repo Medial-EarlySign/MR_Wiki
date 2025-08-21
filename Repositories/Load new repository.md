@@ -5,8 +5,8 @@
 * Load the signals with as little preprocessing as possible. Leave outlier handling and data cleaning for the model itself. This approach leads to a more robust model, simplifies implementation, and reduces ETL errors since the process is more straightforward. Outlier adjustments can also be made more effectively at later stages. It will also make future implementations easier - "no complicated processings in the ETL".
 * Ensure that all signals are in the correct units - each signal is expected to use the appropriate measurement unit.
 * It is recommended to separate your code into two parts:
-  - Code for fetching the data  
-  - Code for processing the data  
+    - Code for fetching the data  
+    - Code for processing the data  
 
   This makes the code easier to read and helps clarify what minimal processing was applied to each signal.
 
