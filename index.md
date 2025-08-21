@@ -21,8 +21,8 @@ Available models:
 | [FluComplications](Models/FluComplications.md) | Predicts flu followed by complications such as pneumonia, hospitalization, or death | TBD |
 | [Pred2D](Models/Pred2D.md) | Predicts progression from prediabetes to diabetes | TBD |
 | [FastProgressors](Models/FastProgressors.md) | Predicts rapid decline in eGFR	 | TBD |
-| MortatlityCMS | Predicts mortality using CMS claims data | TBD |
-| COPDCMS | Predicts COPD hospitalization using CMS claims data | TBD |
+| [MortatlityCMS](Models/MortatlityCMS.md) | Predicts mortality using CMS claims data | TBD |
+| [COPDCMS](Models/COPDCMS.md) | Predicts COPD hospitalization using CMS claims data | TBD |
 
 Instructions for using an existing model can be found [here](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)
 

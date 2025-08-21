@@ -5,16 +5,32 @@
 
 The LGI/Colon-Flag model was developed to detect colon and rectal cancer using data from Maccabi Healthcare Services (MHS), the second largest HMO in Israel. First version published in 2015, with the final version completed in 2018. The model is currently deployed in:
 
+The model has undergone external validation at numerous sites across various regions. A partial list of related publications is provided [below](#list-of-publications).
+
+This model is effective at detecting gastric cancer, although our specialized [GastroFlag](GastroFlag.md) model offers superior performance in this area. It also performs well in identifying lower gastrointestinal (GI) disorders and pre-cancerous conditions.
+
+## Model Inputs
+
+The model uses the following signals:
+
+* Birth year (for age calculation)
+* Sex
+* CBC panel: Hemoglobin, Hematocrit, RBC, MCH, MCV, MCHC, Platelets, RDW, WBC, MPV, Lymphocytes (absolute and %), Monocytes (absolute and %), Eosinophils (absolute and %), Basophils (absolute and %), Neutrophils (absolute and %)
+
+## Deployments
+
+* partial list - there are more deployments
+
 - Maccabi Healthcare Services (since 2015)
 - Geisinger Health System (since 2018)
-
-The model has undergone external validation at numerous sites across various regions. A partial list of related publications is provided [below](#list-of-publications).
 
 ## Intended Usage
 
 - **Not for screening exclusion:** This tool is not intended to rule out patients from screening. Its sensitivity is insufficient for use as a primary screening tool.
 - **Purpose:** The model is designed to help increase compliance and improve the yield of colonoscopies among patients who are non-adherent to screening recommendations.
 - **Professional use only:** The tool is intended for interpretation and use by healthcare professionals, not patients.
+
+The model is designed to calculate a score when new CBC data is available. Requests to calculate a score without CBC data will be rejected. A score can still be generated even if some other input signals are missing.
 
 For further information, please see the "Contact Details for Usage" section and request the User Guide.
 
@@ -36,4 +52,4 @@ For further information, please see the "Contact Details for Usage" section and 
 
 ## Contact Details for Usage
 
-Roche Navify Algosuit - Details to be determined.
+Roche Navify Algosuit - Details to be announced.
