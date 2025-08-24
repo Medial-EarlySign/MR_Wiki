@@ -158,5 +158,3 @@ Finalizes preparation, generates signals, and loads the repository.
 
 ---
 
-For more details, see the [old documentation](#) below or reach out for help.
-

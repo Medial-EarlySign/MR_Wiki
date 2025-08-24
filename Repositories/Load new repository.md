@@ -2,7 +2,7 @@
 
 ## Best Practices
 
-* Load the signals with as little preprocessing as possible. Leave outlier handling and data cleaning for the model itself. This approach leads to a more robust model, simplifies implementation, and reduces ETL errors since the process is more straightforward. Outlier adjustments can also be made more effectively at later stages. It will also make future implementations easier - "no complicated processings in the ETL".
+* **Keep it Simple**: Load signals with minimal preprocessing. Handle outliers and clean data within the model itself, not during the ETL stage. This approach simplifies implementation, reduces ETL errors, and results in a more robust model. Future implementations will be easier with a straightforward ETL process.
 * Ensure that all signals are in the correct units - each signal is expected to use the appropriate measurement unit.
 * It is recommended to separate your code into two parts:
     - Code for fetching the data  

@@ -1,75 +1,39 @@
-# ETL Tutorial
+## 📄 ETL Workflow: The Recommended Tool
 
-## Overview
+Using our ETL tool streamlines data loading by providing a standardized, robust, and reproducible process. 
+While manual loading file creation is possible, our tool is highly recommended for its numerous benefits:
 
-This tutorial explains how to use our ETL library, which consists of five core functions and recommended best practices. While you can use the library flexibly, following this guide will help you write maintainable, standardized ETL code. If you have suggestions for improvements, please share them so we can refine our standard together.
+  * **Validation and Error Reporting:** The tool performs extensive checks to ensure correct data format, proper sorting, and valid lab values. It provides clear, informative error messages that help you quickly fix issues, saving significant time during the loading process.
 
----
+  * **Automated Configuration:** It eliminates the need for manual configuration by automatically generating all necessary files for the final loading process. This includes:
 
-## Getting Started
+      * **[Signals Config](../Repository%20Signals%20file%20format.md)** Defines signal types and units, allowing you to easily add new signals or override existing ones.
+      * **[Dictionary Files](../../Infrastructure%20Home%20Page/00.InfraMed%20Library%20page/MedDictionary.md)** Automatically creates conversion dictionaries for all categorical signals (e.g., converting strings to numerical values). It can even pull hierarchical data from known ontologies, such as ICD-10 codes, when a specific prefix is used.
+      * **[Conversion Config](../Load%20new%20repository.md)** A central configuration file that references all necessary dictionaries, signals, and data files for the load.
+      * **[Loading Script](../Load%20new%20repository.md#step-3-load-the-repository)** Generates a final script with a `Flow` to run the entire loading process in one go.
 
-1. **Create a Project Directory:**  
-   Start by creating an empty directory for your ETL code:  
-   [CODE_DIR](../High%20level%20-%20important%20paths/CODE_DIR.md). Your final `CODE_DIR` will look like this:  
-   [<img src="/attachments/14811356/14811417.png"/>](#)
+  * **Efficient Batch Processing:** The tool supports batch processing, which is crucial for handling large datasets efficiently and managing memory usage. If a loading process fails, it can resume from the last successful step, preventing the need to restart from the beginning.
 
-2. **Entry Point:**  
-   Use a single entry point for your ETL:  
-   - Run `python load.py` to execute the full loading process.
-   - **Do not** create multiple `load.py` files or use different names. This keeps the workflow simple and consistent.
+  * **Comprehensive Logging:** The tool logs all processing steps, test results, and creates distribution graphs for all signals, providing a clear overview of the data and the loading process.
 
-3. **Initial Setup:**  
-   The `configs` and `signal_processing` folders can start empty. The ETL process will create them as needed.
+  * **Code Reusability:** It reuses common data elements and testing procedures, drastically reducing the amount of code you need to write. Our scripts are typically **3-4 times shorter** than older, manual ETL scripts.
 
-You can start from this [code example](https://github.com/Medial-EarlySign/MR_Tools/tree/main/RepoLoadUtils/common/ETL_Infra/examples/simple_test_pipeline) and change it for your own needs.
+[ETL_infra.pptx (slide deck)](/SharePoint_Documents/General/genericETL/ETL_infra.pptx)
 
----
+The code for this infrastructure was written with less strict standards as it is not part of our main production environment. While using the infrastructure is designed to be comfortable, modifying it may be challenging due to this less rigorous policy. Bugs may also be present.
 
-## ETL Architecture
+-----
 
-Our goal is to automate and reuse as much as possible across different ETL loads. You only need to write the logic specific to your input data format.
+## Best Practices
 
-- **Note:**  
-  There is no standard input format. Your main task is to transform your unique input into our defined output format. Intermediate formats are not needed.
+**Keep it Simple**: Load signals with minimal preprocessing. Handle outliers and clean data within the model itself, not during the ETL stage. 
+This approach simplifies implementation, reduces ETL errors, and results in a more robust model. 
+Future implementations will be easier with a straightforward ETL process.
 
-- **Motivation:**  
-  The new ETL process reduces code size by ~4x compared to the old approach, eliminates manual steps, and adds automated testing.
+-----
 
----
+## 🚀 Getting Started
 
-## ETL Process Steps
+The first step is to create a module or script that fetches your data in batches. This approach is highly recommended for its efficiency and is preferred over a simple function that returns a single `DataFrame`.
 
-The ETL process is divided into three main parts:
-
-1. **[Data Fetching](Data%20Fetching%20step.md):**  
-   Write code to read your raw data into a DataFrame. This step is specific to your ETL and should be simple (e.g., `pd.read_csv()` or database queries).
-
-2. **[Data Processing](ETL%20Processing%20Code%20Unit%20Tutorial):**  
-   Transform the raw DataFrame into the final signal structure. This code is also ETL-specific and may include column renaming, filtering, or unit conversion.
-
-3. **[Manager Script](ETL%20Manager%20Process.md):**  
-   Write a short `load.py` script to orchestrate the data fetching and processing steps, and perform the loading. This script should be concise and readable.
-
----
-
-## Code Documentation
-
-- [Function documentation](http://node-01/ETL_Infra/) is generated using pydoc.
-- To build the documentation manually:
-  ```
-  pushd $ETL_LIB_PATH/docs && make html && popd
-  # The documentation will be at:
-  $ETL_LIB_PATH/docs/build/html/index.html
-  ```
-- **Note:**  
-  Documentation is updated automatically on each git push to the tools repository.
-
-<img src="/attachments/14811356/14811411.png"/>
-
----
-
-## More Information
-
-- [High level - important paths/structure](../High%20level%20-%20important%20paths)
-- [ETL_infra.pptx (slide deck)](/SharePoint_Documents/General/genericETL/ETL_infra.pptx)
-
+Follow the detailed instructions in the [Data Fetcher](ETL%20Tutorial/01.Data%20Fetching%20step.md) documentation to begin.
