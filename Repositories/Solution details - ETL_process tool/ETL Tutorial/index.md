@@ -36,4 +36,4 @@ Future implementations will be easier with a straightforward ETL process.
 
 The first step is to create a module or script that fetches your data in batches. This approach is highly recommended for its efficiency and is preferred over a simple function that returns a single `DataFrame`.
 
-Follow the detailed instructions in the [Data Fetcher](ETL%20Tutorial/01.Data%20Fetching%20step.md) documentation to begin.
+Follow the detailed instructions in the [Data Fetcher](01.Data%20Fetching%20step.md) documentation to begin.
