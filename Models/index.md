@@ -12,4 +12,4 @@ Available models:
 | [Mortatlity](MortatlityCMS.md) | Predicts mortality using CMS claims data | TBD |
 | [Unplanned COPD Admission Prediction Model](COPDCMS.md) | Predicts COPD hospitalization using CMS claims data | TBD |
 
-Instructions for using an existing model can be found [here](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)
+Instructions for using an existing model can be found [here](../Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)

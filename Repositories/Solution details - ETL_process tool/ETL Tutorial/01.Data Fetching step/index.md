@@ -178,4 +178,4 @@ def generic_big_files_fetcher(
 ## Next Step: Process Pipeline
 
 Once you have your data fetcher function, you can pass it as an argument to the next step: creating a process pipeline for each data type.
-Follow [this guide](02.Process%20Pipeline.md) to continue
+Follow [this guide](../02.Process%20Pipeline) to continue

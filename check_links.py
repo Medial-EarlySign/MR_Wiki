@@ -10,6 +10,7 @@ import time
 pointer_to_page = dict()
 crawled_pages = dict()
 max_crawled_pages = 5000
+allow_external_test = False
 
 
 def get_page_re(url: str, retries: int = 3) -> tuple[str, str | None]:
@@ -57,7 +58,7 @@ async def get_page(url: str, retries: int = 3) -> tuple[str, str | None]:
     return url, None
 
 
-def crawl_page(url: str, limiter: asyncio.Semaphore) -> None:
+def crawl_page(url: str, allow_external_test: bool, limiter: asyncio.Semaphore) -> None:
     """Crawl a page and extract all relative or same-domain URLs."""
     global crawled_pages
     global pointer_to_page
@@ -101,12 +102,13 @@ def crawl_page(url: str, limiter: asyncio.Semaphore) -> None:
             continue
         if urlparse(absolute_url).netloc != base_domain:
             # only test
-            _, html_cont = get_page_re(absolute_url)
-            if not html_cont:
-                crawled_pages[absolute_url] = 0
-            else:
-                crawled_pages[absolute_url] = 1
-            pointer_to_page[absolute_url] = url_final
+            if allow_external_test:
+                _, html_cont = get_page_re(absolute_url)
+                if not html_cont:
+                    crawled_pages[absolute_url] = 0
+                else:
+                    crawled_pages[absolute_url] = 1
+                pointer_to_page[absolute_url] = url_final
             continue
         urls.append(absolute_url)
         pointer_to_page[absolute_url] = url_final
@@ -127,16 +129,16 @@ def crawl_page(url: str, limiter: asyncio.Semaphore) -> None:
 
     # schedule more crawling concurrently
     for url in urls:
-        crawl_page(url, limiter=limiter)
+        crawl_page(url, allow_external_test, limiter=limiter)
     # async with limiter:
-    #    await asyncio.gather(*[crawl_page(url, limiter) for url in urls])
+    #    await asyncio.gather(*[crawl_page(url, allow_external_test, limiter) for url in urls])
 
 
 def main(start_url, concurrency=1):
     """Main function to control crawling."""
     limiter = asyncio.Semaphore(concurrency)
     try:
-        crawl_page(start_url, limiter=limiter)
+        crawl_page(start_url, allow_external_test, limiter=limiter)
     except asyncio.CancelledError:
         print("Crawling was interrupted")
 

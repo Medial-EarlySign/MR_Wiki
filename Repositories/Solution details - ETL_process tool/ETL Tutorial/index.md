@@ -28,7 +28,7 @@ The code for this infrastructure was written with less strict standards as it is
 
 **Keep it Simple**: Load signals with minimal preprocessing. Handle outliers and clean data within the model itself, not during the ETL stage. 
 This approach simplifies implementation, reduces ETL errors, and results in a more robust model. 
-Future implementations will be easier with a straightforward ETL process.
+Future implementations will be easier with a straightforward ETL process. The only thing to take care of in the ETL is formating and right units for labs - that's it.
 
 -----
 
@@ -36,4 +36,4 @@ Future implementations will be easier with a straightforward ETL process.
 
 The first step is to create a module or script that fetches your data in batches. This approach is highly recommended for its efficiency and is preferred over a simple function that returns a single `DataFrame`.
 
-Follow the detailed instructions in the [Data Fetcher](01.Data%20Fetching%20step.md) documentation to begin.
+Follow the detailed instructions in the [Data Fetcher](01.Data%20Fetching%20step) documentation to begin.

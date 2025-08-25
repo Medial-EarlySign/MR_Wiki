@@ -1,20 +1,18 @@
-# Full code example - LungFlag Taiwan labs
+# Full code example
  
 The scripts does:
+
 1. Renaming of columns
-2. date columns cinversion
+2. date columns conversion
 3. mapping of LABLOINC codes to signals using $CODE_DIR/configs/map.tsv file
-4. Removing rows without "numeric" results
-  
-1. Filtering null columns
-  
-2. removing "ignored" signal list that was mapped, but we don't need/want to load
-  
-3. Cleaning prefix for "value" columns suffix like "(Manual checked)"
-  
-4. numeric conversion of values - removal of non numeric values
-4. Transforming "unit" column and taking lowercase for unit
-5. Calling unit conversion functions: generate_labs_mapping_and_units_config, map_and_fix_units
+4. Removing rows without "numeric" results 
+5. Filtering null columns
+6. removing "ignored" signal list that was mapped, but we don't need/want to load 
+7. Cleaning prefix for "value" columns suffix like "(Manual checked)"
+8. numeric conversion of values - removal of non numeric values
+9. Transforming "unit" column and taking lowercase for unit
+10. Calling unit conversion functions: `generate_labs_mapping_and_units_config`, map_and_fix_units
+
 **$CODE_DIR/signal_processings/labs.py**
 ```python
  #You have dataframe called "df". Please process it to generare signal/s of class "labs"
