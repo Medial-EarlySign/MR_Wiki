@@ -14,7 +14,6 @@ The `CODE_DIR` is the primary location for all code specific to your ETL process
 -   **`signal_processings`**: This folder contains the custom logic for processing different signals and data types.
     -   **`XXXX.py`**: Each file here is a Python script with specific processing logic. For example, `labs.py` would process all signals tagged as "labs" (unless a more specific file exists). The system uses a hierarchical search: for a signal tagged "labs,cbc,Hemoglobin," it first looks for `Hemoglobin.py`, then `cbc.py`, then `labs.py`. This structure promotes code reuse.
     -   If no suitable logic was found, a template python file with signal name and instructions will be created automatically. The template shows you the expected input dataframe (`df`) and the required output format, guiding you to write the appropriate processing code. For example:
-
 ```python
 #You have dataframe called "df". Please process it to generare signal/s of class "smoking"
 #Example signal from this class might be Smoking_Status
@@ -31,4 +30,5 @@ The `CODE_DIR` is the primary location for all code specific to your ETL process
 #3  19921209  1003040000       Y          N       0                               137L.00   None    1
 #4  19930000  1001400086       Y                                                  537..00   None    1
 ```
+
 -   **`tests`**: An optional and rarely used folder for adding extra tests specific to your ETL process. It follows the same format as the `tests` folder in `ETL_INFRA_DIR`, and its contents are merged with the global tests during execution.
