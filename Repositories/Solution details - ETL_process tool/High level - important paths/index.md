@@ -1,65 +1,69 @@
-# High level - important paths/structure
-## The ETL file structure:
-- [ETL_INFRA_DIR](ETL_INFRA_DIR.md)- directory containing the ETL infrastructure, currently located at "$MR_ROOT\Tools\RepoLoadUtils\common\ETL_Infra". It can be copied to a remote machine and is standalone, meaning no other files are required to utilize the infrastructure.  
-- [CODE_DIR](CODE_DIR.md)-  directory designated for writing a specific ETL code
-- [WORK_DIR](WORK_DIR.md)- output directory
-Click on each part to understand its structure, important files, and more details.
-## What happens in the ETL:
-1. 
-The CODE_DIR must have load.py file to manage the loading process. This script runs several instances of the prepare_final_signals function (see [ETL Manager Process](../ETL%20Tutorial/03.Finalize%20Load)) - each initiates a "parser" to connect raw data to a "processing unit" (split into batches, when necessary).
-2. In general, prepare_final_signals checks the status of the required signal:
-  
-1. If override is specified in the call - load the signal from the start.
-  
-2. Else, if the signal is loaded - skip.
-  
-3. Else, load the signal from the start, or from the batch where the loading process was interrupted
-3. pid is a mandatory column in the raw data, and the parser dataframe output:
-  
-1. No pid => ERROR and STOP.
-  
-2. If the pid column is a string and not numeric, a mapping is generated from the strings to numeric values:
-    
-1. Mapping is done only with demographic signals (BDATE, GENDER). Thus, a pid in another signal file (say for instance DIAGNOSIS), that was not seen before in a demographic signal, would be excluded.
-    
-2. Therefore it is crucial to process the demographic signals first.
-1. Before processing a signal - we first check whether it is needed:
-  
-1. When the dataframe includes all the parameters the signal needs, i.e. the dataframe includes columns with signal name and columns as needed with the corresponding attributes defined in rep_signals/general.signals, and the data passes all the tests (see description below), then no further processing is needed. 
-  
-2. If no further processing is indeed not required, the data is sorted and the process of the signal is done.
-  
-3. Otherwise see next.
-3. Determining the right "processing unit":
-  
-1. When the parser output dataframe has a signal column:
-    
-1. Locate the signal in the general signal file (ETL_INFRA_DIR rep_signals/general.signals) or the additional signals added in CODE_DIR (does not exist => ERROR, please define the signal).
-    
-2. List by order signal_name and classifications (tags) as defined in the signal file.
-    
-3. Execute the most specific code for this signal.
-    
-4. For example, signal "BDATE" is classified as "demographic" and "singleton". The code would search for "BDATE.py", then "demographic.py", and finally "singleton.py". 
-  
-4. When the parser output dataframe has no signal column the code uses the parameter passed to the prepare_final_signals function, and follow the same phases.
-    
-1. Comment: it is even possible to pass more than one signal name, e.g. "BDATE,GENDER". In this case, the code would search for the most specific code for every signal.
-0. When no relevant "processing unit" is found:A new "processing unit" with the signal name is created with comments and instructions.When interactive mode turned on - A python environment is opened so one can process the dataframe, inspect it, and define the required logic. When no interactive mode - it will fail and wait for you to fill in the code of the processing unit.
-1. After the "processing unit" return the signal file:
-  
-1. A general test is performed on all signals - does it contains all the required time/value channels? Are values channel numeric? Is the date valid? Does the string contains illegal chars.
-  
-2. Next specific tests, per signal name and its classifications, are perfumed:
-    
-1. If the signal has more than one classification - tests associated with every tag are performed.
-    
-2. These tests can, for instance, compare signal distribution to references, count number of outliers etc.
-    
-3. More specific tests can be added globally under the [ETL infrastructure folder](ETL_INFRA_DIR.md) for all future ETLs or locally just in the [current ETL process](CODE_DIR.md)
-2. Once the signal passes the tests, the file is organized by arranging the columns in the correct order, sorting them, and storing them in the appropriate location. Statistics about values for categorical signals are collected for building and testing dictionaries more efficiently later on.
-3. The batch state or signal state is updated to indicate the successful completion of the current batch.
-If your data includes specific dictionaries, you can call "prepare_dicts" ([ETL Manager Process](../ETL%20Tutorial/03.Finalize%20Load)) to generate a corresponding dictionary.
-Some of the categorical features do not require special treatment, e.g. "Drug", "PROCEDURES" and "DIAGNOSIS. For every categorical signal, the code tests the values based on the categorical prefix. For example, if you have a new signal called "DIAGNOSIS_Inpatient" with values starting with "ICD10_CODE:*," the code automatically recognizes this, use the right ICD-10 ontology, add missing codes and map them back to known codes if possible (since ICD, ATC are hierarchal by truncating the string). For example, a new ICD10_CODE:J20.X that doesn't exists, will be added and set as a child of "ICD10_CODE:J20" that exists in our ontology. You only need to use the correct prefix in the "prepare_final_signals" function. Statistics regarding these steps will be collected and printed during the final step. The code also prioritizes the "ATC" coding system for example, so if your drugs include "RX_CODES," the corresponding dictionary mapping RX_CODES to ATC codes will be loaded as well.
-The finishing step involves calling the "finish_prepare_load" ([ETL Manager Process](../ETL%20Tutorial/03.Finalize%20Load)) - This step involves processing the dictionaries for all categorical signals, generating a merged "signals" file from global and local changes, creating a convert_config file, and preparing the Flow command to execute the loading process.
- 
+# High-Level Overview of the ETL Process
+
+This document outlines the high-level structure and flow of the ETL (Extract, Transform, Load) process. It covers the core file structure and the sequential steps involved in loading data.
+
+---
+
+## 📁 ETL File Structure
+
+The ETL process uses three main directories:
+
+* **[ETL_INFRA_DIR](ETL_INFRA_DIR.md)**: This directory, located at [MR_TOOLS](https://github.com/Medial-EarlySign/MR_Tools) git repo `RepoLoadUtils\common\ETL_Infra`, contains the standalone ETL infrastructure. It's portable and doesn't require other files to function.
+* **[CODE_DIR](CODE_DIR.md)**: This is where you write the code specific to your ETL task.
+* **[WORK_DIR](WORK_DIR.md)**: This directory serves as the output location for the ETL process.
+
+For more details on the contents of each directory, click the links above.
+
+---
+
+## ⚙️ The ETL Process Flow
+
+The ETL process is managed by a `load.py` script located in the **CODE_DIR**. This script orchestrates the loading process by calling the `prepare_final_signals` function, which in turn initiates a "parser" for each signal. `load.py` is a convention name, it is not necessarily needs to be like that.
+
+### Step 1: Handling Signals
+
+1.  **Status Check**: The `prepare_final_signals` function first checks the status of the required signal.
+    * If `override` is specified, the signal is loaded from the start.
+    * If the signal is already loaded, it's skipped.
+    * Otherwise, it resumes loading from the last interrupted batch or starts from the beginning.
+2.  **PID Validation**: The `pid` column is mandatory in the parser's output.
+    * If `pid` is missing, the process will **ERROR** and **STOP**.
+    * If `pid` is a string, it's mapped to a numeric value. **This mapping is only performed for demographic signals (e.g., BDATE, GENDER)**. A `pid` in another signal (e.g., DIAGNOSIS) that hasn't been seen in a demographic signal will be excluded. Therefore, **demographic signals must be processed first** with `prepare_final_signals`.
+3.  **Preliminary Check**: Before processing, the system checks if the signal data is already complete and valid.
+    * If the dataframe contains all necessary columns and attributes as defined in `rep_signals/general.signals` and passes all preliminary tests, no further processing is needed. The data is sorted, and the signal processing is marked as complete.
+    * Otherwise, the process continues to the next step.
+
+### Step 2: Determining the Processing Unit
+
+The system identifies the appropriate "processing unit" based on the data.
+
+1.  **When `signal` column exists**:
+    * The most specific code is executed based on the signal name and its classifications. For example, for the "BDATE" signal (classified as "demographic" and "singleton"), the system would search for `BDATE.py`, then `demographic.py`.
+    * The signals configuration file and their classifications is located in the `general.signals` file in [ETL_INFRA_DIR](ETL_INFRA_DIR.md) or in "configs/rep.signals" added to [CODE_DIR](CODE_DIR.md).
+2.  **Without a `signal` column**:
+    * The `prepare_final_signals` function's parameter is used to determine the signal. This also allows for multiple signals to be passed (e.g., "BDATE,GENDER"), and the most specific code is found for each.
+
+If no relevant processing unit is found, a new one is created with instructions. In interactive mode, a Python environment opens for real-time processing and inspection. In non-interactive mode, the process fails, waiting for the unit's code to be filled in.
+
+---
+
+### Step 3: Testing and Finalizing the Signal
+
+1.  **Post-Processing Tests**: After the processing unit returns the signal file, two types of tests are performed:
+    * **General Tests**: These check for valid time/value channels, numeric values, valid dates, and illegal characters.
+    * **Specific Tests**: These are associated with the signal name and its classifications, such as comparing signal distribution or counting outliers. These tests can be added globally in **ETL_INFRA_DIR** or locally in **CODE_DIR**.
+2.  **Post-Test Actions**: Once the signal passes all tests:
+    * Columns are sorted and organized.
+    * Statistics for categorical signals are collected to aid in dictionary creation.
+    * The batch or signal state is updated to reflect successful completion.
+
+### Step 4: Dictionaries and Final Load
+
+1.  **Dictionary Creation**: If your data requires specific dictionaries, you can call the `prepare_dicts` function.
+    * For categorical features like "Drug", "PROCEDURES", and "DIAGNOSIS" that have specific prefixes (e.g., `ICD10_CODE:*`), the system can automatically recognize and use the correct ontology.
+    * Statistics from these steps are collected for the final report.
+2.  **Finalization**: The final step is to call `finish_prepare_load`. This function:
+    * Processes all categorical signal dictionaries.
+    * Generates a merged "signals" file.
+    * Creates a `convert_config` file.
+    * Prepares the `Flow` command to execute the loading process.

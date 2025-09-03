@@ -34,6 +34,27 @@ Future implementations will be easier with a straightforward ETL process. The on
 
 ## 🚀 Getting Started
 
+To get started with the ETL infrastructure, you have two options after you've cloned the repository.
+
+1. **Clone the Repository**: First, you'll need to clone the [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) repository from GitHub.
+
+### Option 1: Update Your Environment Variable
+
+The simplest way to use the infrastructure is to add the "**RepoLoadUtils/common**" directory to your `PYTHONPATH` environment variable. This will allow you to import modules from the ETL infrastructure directly in any of your Python files.
+
+### Option 2: Modify Individual Python Files
+
+Alternatively, if you prefer not to change your environment settings, you can add a few lines of code to the beginning of each Python file that needs to access the ETL infrastructure. This code temporarily adds the necessary directory to the system path, making the modules available for import.
+
+```python
+import sys
+# Replace "ABSOLUTE PATH TO" with the actual path on your computer
+sys.path.insert(0, "ABSOLUTE PATH TO RepoLoadUtils/common") 
+# Now you can import the needed modules from ETL_Infra
+``` 
+
+## Next Step
+
 The first step is to create a module or script that fetches your data in batches. This approach is highly recommended for its efficiency and is preferred over a simple function that returns a single `DataFrame`.
 
 Follow the detailed instructions in the [Data Fetcher](01.Data%20Fetching%20step) documentation to begin.

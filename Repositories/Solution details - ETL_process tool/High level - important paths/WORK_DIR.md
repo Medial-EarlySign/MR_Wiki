@@ -1,18 +1,21 @@
-# WORK_DIR
-Folder that contains output files from the loading process **- IMPORTANT - NO NEED TO EDIT ANYTHING IN THIS FODLER. ALL IS CREATED AUTOMATICALLY**:
+# 📁 WORK_DIR: The Output Directory
 
-- FILE -** loading_status.state** - keeps track on the loading process:
-    - The file has 3 columns : signal, date+time (last date the signal was created), and status.
-    - Signals that are not in the file - would be processed. 
-    - Signals with "Completed" status would be skipped, unless override flag was passed. 
-        - Setting override for a processed signal is equal to manually erasing its row from the file.
-    - Signals with "In Process" status is this the name? - would be processed from the first unprocessed batch (see next).
-- FILE  - **loading_batch_status.state** - keeps track on the loading process up to the batch level. If something crashed, next run the ETL would continue from the first unprocessed batch. 
-- FOLDER - **FinalSignals** - the directory with the final signals for loading with Flow, may also contains ID2NR if conversions between patient ID to numeric is needed (ID2NR will not be loaded). 
-- FOLDER - **rep_configs** - directory with configurations for loading the repository. Will contains the signals file, convert_config and a script to run Flow to load the data. Will be created automatically.
-- FOLDER - **outputs** - a directory with reports and tests analysis for each signal:
-    - FOLDER - **$SIGNAL_NAME** - directory for each signal statistics. For example "Hemoglobin" directory - test for time, and values, compare to reference distribution, resolution, etc. It will also contain analysis for each batch (if you have batches) and all together.
-    - FILE - **test.$SIGNAL_NAME.log** - with results for tests on all batches together for this signal. results of test = the "prints" you call to the screen from each test. If test fails - crashed or returns False, you won't be able to proceed and it will ask you to fix the ETL to pass the test. Here you will see the outputs after passing the test. Each time you fix your code and rerun the code, this file is overwritten. To see results from all batched alone you will need to go into "test.labs.log" and see results of this processing batch by batch if you have and for all signals one after the other
-- FOLDER - **signal_processings_log** - directory with logging of the signal processing and the exploration/games you did with the data 
-    - FILE - **process_XXXX.log** - you will see "outputs/prints" from your processings. If you call "print" from labs.py it will appear here under "process_labs.log" for each batch one after the other
-    - FILE - **XXXX.log** - If you are using interactive mode - you will see the commands and outputs of those commands when you were inspecting the data - like "logging" of your process to identify the ETL.
+The `WORK_DIR` is where all output files from the ETL process are automatically generated. **You should not manually edit any files in this folder.** It serves as the single source of truth for the state of the ETL and holds all final outputs and logs.
+
+---
+
+### Core Files and Folders
+
+-   **`loading_status.state`**: A state file that tracks the loading status of each signal.
+    -   It has three columns: `signal`, `date+time` (last creation date), and `status`.
+    -   Signals with a "Completed" status are skipped unless the `override` flag is used. Overriding a signal is functionally equivalent to manually deleting its row from this file.
+    -   Signals with an "In Process" status will continue from the first unprocessed batch.
+-   **`loading_batch_status.state`**: Tracks the loading status at the batch level. If the process crashes, it will resume from the last unprocessed batch. Unless  `override` was set to true
+-   **`FinalSignals`**: This directory contains the final, processed signal files ready for loading with Flow. It may also include an `ID2NR` file for converting patient IDs to a numeric format.
+-   **`rep_configs`**: A directory that holds the necessary configuration files for the repository loading process, including the signals file, `convert_config`, and a script to run Flow. This is created automatically.
+-   **`outputs`**: Contains reports and detailed test analysis for each signal.
+    -   **`$SIGNAL_NAME`**: A dedicated folder for each signal (e.g., `Hemoglobin`). It holds test results, comparisons to reference distributions, and analysis for each batch and whole data combined in the end. HTML plots with distribution of values will be presented
+    -   **`test.$SIGNAL_NAME.log`**: A log file containing the results of all tests run on a signal. If a test fails, the process stops, and you must fix the issue before proceeding. This file is overwritten with each new run (override = true) or appended to previous logs and stored by batch and final test for all batches in the end.
+-   **`signal_processings_log`**: A directory for logging the signal processing steps.
+    -   **`process_XXXX.log`**: Captures all print statements from your processing scripts (e.g., `process_labs.log`). It shows the output for each batch sequentially.
+    -   **`XXXX.log`**: If you use interactive mode, this file logs the commands and outputs from your data inspection, serving as a record of your ETL development process.
