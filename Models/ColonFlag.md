@@ -3,7 +3,7 @@
 
 ## Overview
 
-The LGI/Colon-Flag model was developed to detect colon and rectal cancer using data from Maccabi Healthcare Services (MHS), the second largest HMO in Israel. First version published in 2015, with the final version completed in 2018. The model is currently deployed in:
+The LGI/Colon-Flag model was developed to detect colon and rectal cancer using data from Maccabi Healthcare Services (MHS), the second largest HMO in Israel. First version published in 2015, with the final version completed in 2018.
 
 The model has undergone external validation at numerous sites across various regions. A partial list of related publications is provided [below](#list-of-publications).
 
@@ -21,8 +21,9 @@ The model uses the following signals:
 
 * partial list - there are more deployments
 
-- Maccabi Healthcare Services (since 2015)
-- Geisinger Health System (since 2018)
+- Maccabi Healthcare Services - Israel (since 2015)
+- Geisinger Health System - US (since 2018)
+- List of more sites, like Vietnam, etc.
 
 ## Intended Usage
 
