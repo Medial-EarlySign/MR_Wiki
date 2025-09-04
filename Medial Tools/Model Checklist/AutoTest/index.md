@@ -22,10 +22,9 @@ There are 4 use cases:
 1. Create empty directory to hold your TestKit
 2. cd into the directory
 3. Execute: $AUTOTEST_LIB/generate_tests.sh
-  
-1. It will ask you which Kit to create: Development , External_retrospective , [External Silent Run](External%20Silent%20Run), External_validation_after_SR - please type in the desired TestKit
-1. Please configure "configs/env.sh" and other settings if needed in configs folder
-2. Execute ./run.sh to run all tests,. There is "run.specific.sh" - to run a specific test by number, if not providing an argument (number) the scripts output the name of all tests with their number that you can choose.
+4. It will ask you which Kit to create: Development , External_retrospective , [External Silent Run](External%20Silent%20Run), External_validation_after_SR - please type in the desired TestKit
+5. Please configure "configs/env.sh" and other settings if needed in configs folder
+6. Execute ./run.sh to run all tests,. There is "run.specific.sh" - to run a specific test by number, if not providing an argument (number) the scripts output the name of all tests with their number that you can choose.
 
 ## How each test is being executed/ How to write new test:
 Each test in Tests is given 3 arguments:
