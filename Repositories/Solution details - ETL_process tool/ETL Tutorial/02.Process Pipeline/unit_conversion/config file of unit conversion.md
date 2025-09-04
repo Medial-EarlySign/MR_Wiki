@@ -2,7 +2,7 @@
 Based on Taiwan Conversions (almost all signals has single unit). transformed all units to lowercase to merge same units before calling this function.
 The file was created Automatically and only the row "Ca" was edited => mmol/l.
 Rows without edits will be kept "as is", no unit conversion and in most cases that's OK.
- 
+
 - signal is the "source" signal in Taiwan - already did the mapping before with a different file. when "to_signal" is empty will keep the same name as "signal"
 - count - how common this signal
 - unit - the unit with this signal
@@ -11,7 +11,7 @@ Rows without edits will be kept "as is", no unit conversion and in most cases th
 - to_unit - was taken from global+local signals file definitions configuration (just for convenient, not in use). Each signal definition has units
 - multiple_by, additive_b0 - the linear transformation. Default is 1 for multiple_by and 0 for additive_b0 if not given (dioing nothing be default to multiple by 1 and add 0)
 - value_0 - example values
- 
+
 **Example of top 20 rows:**
 ```
 signal	count	unit	unitCount	to_signal	to_unit	multiple_by	additive_b0	value_0
