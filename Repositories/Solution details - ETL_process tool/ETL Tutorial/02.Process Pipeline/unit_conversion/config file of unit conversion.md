@@ -37,7 +37,8 @@ eGFR	90973	ml/min/1.73 m^2	90973					[108.8, 57.5, 130.8, 91.5, 106.7]
 Ca	35375	mmol/l	35349		mg/dL	4.01		[2.2, 2.13, 2.3, 1.84, 2.25]
 Ca	35375	mg/dl	26		mg/dL			[9.6, 10.9, 9.8, 10.3, 9.9]
 ```
- 
+
+In this example, the `Ca` signal with the `mmol/l` unit was given a conversion factor of `4.01`. This factor is used to transform the values from `mmol/l` to the target unit of `mg/dL`. You can see this in the example values: the original values are around 2, while data from `mg/dL` unit has values around 10. For all other signals in the example, the units were consistent and did not require any conversion, so the conversion fields were left blank.
  
 Full file:
  

@@ -27,7 +27,7 @@ The ETL process is managed by a `load.py` script located in the **CODE_DIR**. Th
     * If the signal is already loaded, it's skipped.
     * Otherwise, it resumes loading from the last interrupted batch or starts from the beginning.
 2.  **PID Validation**: The `pid` column is mandatory in the parser's output.
-    * If `pid` is missing, the process will **ERROR** and **STOP**.
+    * If `pid` column is missing, the process will **ERROR** and **STOP**.
     * If `pid` is a string, it's mapped to a numeric value. **This mapping is only performed for demographic signals (e.g., BDATE, GENDER)**. A `pid` in another signal (e.g., DIAGNOSIS) that hasn't been seen in a demographic signal will be excluded. Therefore, **demographic signals must be processed first** with `prepare_final_signals`.
 3.  **Preliminary Check**: Before processing, the system checks if the signal data is already complete and valid.
     * If the dataframe contains all necessary columns and attributes as defined in `rep_signals/general.signals` and passes all preliminary tests, no further processing is needed. The data is sorted, and the signal processing is marked as complete.

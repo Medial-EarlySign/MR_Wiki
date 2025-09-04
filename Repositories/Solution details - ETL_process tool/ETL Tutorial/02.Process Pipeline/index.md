@@ -39,6 +39,7 @@ prepare_final_signals(
 #### Important Notes:
 
 * You should repeat this process for each data type.
+* **Best Practice for PID Mapping**: Start by processing demographic signals like BDATE and GENDER. This is because if patient IDs (pid) are strings, the ETL will create a numeric-to-string mapping based on these demographic signals. This mapping is then used for all other signals, ensuring consistent pid values across the entire dataset. More details on the pipeline can be seen next [Higher-Level Pipeline Flow](#higher-level-pipeline-flow)
 * Use the `start_write_batch` parameter when multiple pipelines write to the same output signals. This ensures unique batch indices and prevents overwrites
 * A single fetcher can feed multiple pipelines by specifying comma-separated names. For example:
 ```python
