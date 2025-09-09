@@ -1,27 +1,45 @@
 # MedModel JSON Format
 
-Refer to `MedModel::init_from_json_file` for implementation details.
+Refer to `MedModel::init_from_json_file` for implementation details in C++.
+The model JSON defines the model architecture and the pipeline of components to be used.
+The JSON structure contains [general fields](#general-fields) and a [model_actions](#model-components) array to define the model pipeline.
+Each component can be one of the following:
+
+* [rep_processor](01.Rep%20Processors%20Practical%20Guide) - Pre-processes raw signals.
+* [feature_generator](02.Feature%20Generator%20Practical%20Guide) - Generates features from raw signals.
+* [feature_processors](03.FeatureProcessor%20practical%20guide) - Processes the feature matrix.
+
+After these steps, there is a [classifier](04.MedAlgo%20Library/MedPredictor%20practical%20guide/) and optional [post-processing](05.PostProcessors%20Practical%20Guide) steps at the end.
+
+Each component defined in the JSON initializes a corresponding object and passes all the parameters in the JSON to the initialization string of its component. For example:
+
+```json
+{
+  "property_a": "value_a",
+  "property_b": "value_b"
+}
+```
+
+This will generate an initialization call with `"property_a=value_a;property_b=value_b"` to the component. This approach allows us to define new components easily without needing to parse or configure the JSON structure for each new component.
 
 ## General Fields
 
-Use only the first field, `"model_json_version"`, the rest have default values so change them only if needed:
+Use only the first field, `"model_json_version"`. The rest have default values, so change them only if needed:
 
 - `"model_json_version"`: Specify `2`.
 - `"serialize_learning_set"`: Boolean (`0` or `1`). If enabled, stores learning samples in the model. Default: `0`.
 - `"generate_masks_for_features"`: Boolean (`0` or `1`). If enabled, stores for each feature whether the value was imputed (important for explainers and MASK predictor during calibration). Default: `0`.
-- `"max_data_in_mem"`: Maximum size of a vector the machine can hold (default: `MAX_INT`). Limits number of rows × number of features. Larger values split model apply into batches.
-- `"take_mean_pred"`: Boolean (`0` or `1`). If enabled, averages predictions; otherwise, uses median. Default: `1`. Currenly relevant only for [Multiple Imputations](05.PostProcessors%20Practical%20Guide/MultipleImputations.md) mode
+- `"max_data_in_mem"`: Maximum size of a vector the machine can hold (default: `MAX_INT`). Limits the number of rows × number of features. Larger values split model application into batches.
+- `"take_mean_pred"`: Boolean (`0` or `1`). If enabled, averages predictions; otherwise, uses the median. Default: `1`. Currently relevant only for [Multiple Imputations](05.PostProcessors%20Practical%20Guide/MultipleImputations.md) mode.
 
 You can use these prefixes for referencing files relative to the JSON:
 
-- `path_rel:`: References a file with a relative path, resolves to absolute path from JSON location.
-- `file_rel:`: References a file, extracts content line by line into a list of actions (`["line1", "line2", ...]`).
-- `comma_rel:`: References a file, extracts content line by line into a comma-separated string (`"line1,line2,..."`).
-- `json:`: References another file, adds its content to this JSON as-is.
+- `path_rel:`: References a file with a relative path, resolving to an absolute path from the JSON location.
+- `file_rel:`: References a file, extracting content line by line into a list of actions (`["line1", "line2", ...]`).
+- `comma_rel:`: References a file, extracting content line by line into a comma-separated string (`"line1,line2,..."`).
+- `json:`: References another file, adding its content to this JSON as-is.
 
-The parameters in the model can be later changed using [adjust_model](/Medial%20Tools/adjust_model.html)or [change_model](/Medial%20Tools/change_model).
-For example, if you are implementing running an existing model in lower memory computer, you might want to lower down `max_data_in_mem`.
-[Howto limit memory](/Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict.html)
+Some of the parameters in a trained model can later be changed using [adjust_model](/Medial%20Tools/adjust_model.html) or [change_model](/Medial%20Tools/change_model). For example, if you are running an existing model on a lower-memory computer, you might want to reduce `max_data_in_mem`. See [How to limit memory usage](/Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict.html).
 
 ## Main Model Pipeline
 
@@ -55,7 +73,7 @@ Is equivalent to:
 { "field_1": "A", "field_2": "val_3" }
 ```
 
-Multiple lists create a cartesian product of all options.
+Multiple lists create a Cartesian product of all options.
 
 ## Model Components
 
@@ -65,14 +83,14 @@ Each component has an `"action_type"` field (default: `"feat_generator"`). Place
 
 Available `action_type` options:
 
-- `rp_set`: Set of [rep_processors](01.Rep%20Processors%20Practical%20Guide) executed in parallel. Contains `"members"` (array of rep_processors, each with `"rp_type"` and parameters).
-- `fp_set`: Set of [feature_processors](03.FeatureProcessor%20practical%20guide) executed in parallel. Contains `"members"` (array of feature_processors).
-- `rep_processor`: Single rep_processor. See [Rep Processors Practical Guide](01.Rep%20Processors%20Practical%20Guide) or [RepProcessorTypes](https://Medial-EarlySign.github.io/MR_LIBS/RepProcess_8h.html#a2772b5cb2b32efafbbd8ba9440b9576a).
-- `feat_generator`: Feature generator. See [Feature Generator Practical Guide](03.FeatureProcessor%20practical%20guide) or [FeatureGeneratorTypes](https://Medial-EarlySign.github.io/MR_LIBS/FeatureGenerator_8h.html#a109794c7f375415720a0af5dd3132023).
-- `feat_processor`: Feature processor. See [Feature Processor Practical Guide](03.FeatureProcessor%20practical%20guide) or [FeatureProcessorTypes](https://Medial-EarlySign.github.io/MR_LIBS/FeatureProcess_8h.html#ae648a97312d7df5b3f5cf01b19887334). To apply on multiple features, add `"tag"` (value to search for features) and `"duplicate": "1"`. This creates a MultiFeatureProcessor that scans all features, generating child processors after filtering by tag.
-- `post_processor`: Feature processor. See [PostProcessors Practical Guide](05.PostProcessors%20Practical%20Guide) or [PostProcessorTypes](https://Medial-EarlySign.github.io/MR_LIBS/PostProcessor_8h.html#a1dab070b8206be89206ff19f321a1cfc).
+- `rp_set`: A set of [rep_processors](01.Rep%20Processors%20Practical%20Guide) executed in parallel. Contains `"members"` (an array of rep_processors, each with `"rp_type"` and parameters).
+- `fp_set`: A set of [feature_processors](03.FeatureProcessor%20practical%20guide) executed in parallel. Contains `"members"` (an array of feature_processors).
+- `rep_processor`: A single rep_processor. See [Rep Processors Practical Guide](01.Rep%20Processors%20Practical%20Guide) or [RepProcessorTypes](https://Medial-EarlySign.github.io/MR_LIBS/RepProcess_8h.html#a2772b5cb2b32efafbbd8ba9440b9576a).
+- `feat_generator`: A feature generator. See [Feature Generator Practical Guide](03.FeatureProcessor%20practical%20guide) or [FeatureGeneratorTypes](https://Medial-EarlySign.github.io/MR_LIBS/FeatureGenerator_8h.html#a109794c7f375415720a0af5dd3132023).
+- `feat_processor`: A feature processor. See [Feature Processor Practical Guide](03.FeatureProcessor%20practical%20guide) or [FeatureProcessorTypes](https://Medial-EarlySign.github.io/MR_LIBS/FeatureProcess_8h.html#ae648a97312d7df5b3f5cf01b19887334). To apply on multiple features, add `"tag"` (value to search for features) and `"duplicate": "1"`. This creates a MultiFeatureProcessor that scans all features, generating child processors after filtering by tag.
+- `post_processor`: A feature processor. See [PostProcessors Practical Guide](05.PostProcessors%20Practical%20Guide) or [PostProcessorTypes](https://Medial-EarlySign.github.io/MR_LIBS/PostProcessor_8h.html#a1dab070b8206be89206ff19f321a1cfc).
 
-Example of `"rp_set"` block (similar for `"fp_set"`):
+Example of an `"rp_set"` block (similar for `"fp_set"`):
 
 ```json
 {
@@ -87,177 +105,175 @@ Example of `"rp_set"` block (similar for `"fp_set"`):
 
 In the last part of the JSON, after `"model_actions"`:
 
-- `"predictor"`: Selects MedPredictor to train on the generated matrix. See [MedPredictor practical guide](04.MedAlgo%20Library/MedPredictor%20practical%20guide) and [List of options](https://Medial-EarlySign.github.io/MR_LIBS/MedAlgoh.html#ab3f9aacffd8e29e833677299133ac4f0). Examples: `"xgb"` for xgboost, `"lightgbm"` for LightGBM, `"lm"` for linear model, etc.
+- `"predictor"`: Selects MedPredictor to train on the generated matrix. See [MedPredictor practical guide](04.MedAlgo%20Library/MedPredictor%20practical%20guide) and [List of options](https://Medial-EarlySign.github.io/MR_LIBS/MedAlgoh.html#ab3f9aacffd8e29e833677299133ac4f0). Examples: `"xgb"` for XGBoost, `"lightgbm"` for LightGBM, `"lm"` for a linear model, etc.
 - `"predictor_params"`: Arguments to initialize the predictor, depending on the chosen predictor.
 
 ## Reference Lists
 
-- You can add lists of values at the end for reference in the model_actions. For example, `"diabetes_drugs": "ATC_A______,ATC_...."` can be referenced using `"ref:diabetes_drugs"` in the model_actions.
+You can add lists of values at the end for reference in the model_actions. For example, `"diabetes_drugs": "ATC_A______,ATC_...."` can be referenced using `"ref:diabetes_drugs"` in the model_actions.
 
-
-## Full example
+## Full Example
 
 <details>
-       <summary>Click to expend example json</summary>
-
+  <summary>Click to expand example JSON</summary>
 
 ```json title="example json"
-   {
-	"model_json_version": "2",
-	"serialize_learning_set": "0",
-	"model_actions": [
-		"json:full_rep_processors.json", // Import a json from current folder with other componenets - in this case, outlier cleaners, signal panel completers, etc.
+{
+  "model_json_version": "2",
+  "serialize_learning_set": "0",
+  "model_actions": [
+    "json:full_rep_processors.json", // Import a JSON from the current folder with other components - in this case, outlier cleaners, signal panel completers, etc.
     // Features
-		{
-			"action_type": "feat_generator",
-			"fg_type": "age"
-		},
-		{
-			"action_type": "feat_generator",
-			"fg_type": "gender"
-		},
-		{
-			"action_type": "feat_generator",
-			"fg_type": "unified_smoking",
-			"tags": "smoking",
-			"smoking_features": "Current_Smoker, Ex_Smoker, Unknown_Smoker, Never_Smoker, Passive_Smoker, Smok_Days_Since_Quitting , Smok_Pack_Years_Max, Smok_Pack_Years_Last,Smoking_Years,Smoking_Intensity"
-		},
-		// Cancers in Dx
-		{
-			"action_type": "feat_generator",
-			"fg_type": "basic",
-			"type": "category_set",
-			"window": [
-				"win_from=0;win_to=10950"
-			],
-			"time_unit": "Days",
-			"sets": [
-				"ICD9_CODE:140-149,ICD9_CODE:150-159,ICD9_CODE:160-165,ICD9_CODE:170,ICD9_CODE:171,ICD9_CODE:172,ICD9_CODE:174,ICD9_CODE:175,ICD9_CODE:176,ICD9_CODE:179-189,ICD9_CODE:200-208,ICD9_CODE:209.0,ICD9_CODE:209.1,ICD9_CODE:209.2,ICD9_CODE:290.3,ICD9_CODE:230-234"
-			],
-			"signal": "ICD9_Diagnosis",
-			"in_set_name": "Cancers"
-		},
-    // Statistical features - will take: last, average, min, max, etc. for each time window: 0-180, 0-365. 365-730, 0-1095 prior prediction day in days and for each signal: Hemoglobin, WBC...
+    {
+      "action_type": "feat_generator",
+      "fg_type": "age"
+    },
+    {
+      "action_type": "feat_generator",
+      "fg_type": "gender"
+    },
+    {
+      "action_type": "feat_generator",
+      "fg_type": "unified_smoking",
+      "tags": "smoking",
+      "smoking_features": "Current_Smoker, Ex_Smoker, Unknown_Smoker, Never_Smoker, Passive_Smoker, Smok_Days_Since_Quitting, Smok_Pack_Years_Max, Smok_Pack_Years_Last, Smoking_Years, Smoking_Intensity"
+    },
+    // Cancers in Dx
+    {
+      "action_type": "feat_generator",
+      "fg_type": "basic",
+      "type": "category_set",
+      "window": [
+        "win_from=0;win_to=10950"
+      ],
+      "time_unit": "Days",
+      "sets": [
+        "ICD9_CODE:140-149,ICD9_CODE:150-159,ICD9_CODE:160-165,ICD9_CODE:170,ICD9_CODE:171,ICD9_CODE:172,ICD9_CODE:174,ICD9_CODE:175,ICD9_CODE:176,ICD9_CODE:179-189,ICD9_CODE:200-208,ICD9_CODE:209.0,ICD9_CODE:209.1,ICD9_CODE:209.2,ICD9_CODE:290.3,ICD9_CODE:230-234"
+      ],
+      "signal": "ICD9_Diagnosis",
+      "in_set_name": "Cancers"
+    },
+    // Statistical features - will take: last, average, min, max, etc. for each time window: 0-180, 0-365, 365-730, 0-1095 prior prediction day in days and for each signal: Hemoglobin, WBC...
     // In total will create: 8*4*4 = 128 features
-		{
-			"action_type": "feat_generator",
-			"fg_type": "basic",
-			"type": [
-				"last",
-				"last_delta",
-				"avg",
-				"max",
-				"min",
-				"std",
-				"slope",
-				"range_width"
-			],
-			"window": [
-				"win_from=0;win_to=180",
-				"win_from=0;win_to=365",
-				"win_from=365;win_to=730",
-				"win_from=0;win_to=1095"
-			],
-			"time_unit": "Days",
-			"tags": "labs_and_measurements,need_imputer,need_norm",
-			"signal": [
-				"Hemoglobin",
-				"WBC",
-				"Platelets",
-				"Albumin"
-			]
-		},
-		{
-			"action_type": "feat_generator",
-			"fg_type": "basic",
-			"type": [
-				"last_time"
-			],
-			"window": [
-				"win_from=0;win_to=180",
-				"win_from=0;win_to=365",
-				"win_from=365;win_to=730",
-				"win_from=0;win_to=1095"
-			],
-			"time_unit": "Days",
-			"tags": "labs_and_measurements,need_imputer,need_norm",
-			//Take only panels - to remove repititions:
-			"signal": [
-				"BMI",
-				"Creatinine",
-				"WBC",
-				"Cholesterol",
-				"Glucose",
-				"Hemoglobin",
-				"Albumin"
-			]
-		},
-		{
-			"action_type": "feat_generator",
-			"fg_type": "category_depend",
-			"signal": "DIAGNOSIS",
-			"window": [
-				"win_from=0;win_to=10950;tags=numeric.win_0_10950",
-				"win_from=0;win_to=365;tags=numeric.win_0_365"
-			],
-			"time_unit_win": "Days",
-			"regex_filter": "ICD10_CODE:.*",
-			"min_age": "40",
-			"max_age": "90",
-			"age_bin": "5",
-			"min_code_cnt": "200",
-			"fdr": "0.01",
-			"lift_below": "0.7",
-			"lift_above": "1.3",
-			"stat_metric": "mcnemar",
-			"max_depth": "50",
-			"max_parents": "100",
-			"use_fixed_lift": "1",
-			"sort_by_chi": "1",
-			"verbose": "1",
-			"take_top": "50"
-		},
-		// Feature selector to remove features with 99.9% same value, there are other options, like lasso, by model importance, etc.
-		{
-			"action_type": "fp_set",
-			"members": [
-				{
-					"fp_type": "remove_deg",
-					"percentage": "0.999"
-				}
-			]
-		},
-		// Imputer - simple choise of choosing median value by stratifying to age, gender and smoking status - will commit for all features with "need_imputer" tag
-		{
-			"action_type": "fp_set",
-			"members": [
-				{
-					"fp_type": "imputer",
-					"strata": "Age,40,100,5:Gender,1,2,1:Current_Smoker,0,1,1:Ex_Smoker,0,1,1",
-					"moment_type": "median",
-					"tag": "need_imputer",
-					"duplicate": "1"
-				}
-			]
-		},
-		// Normalizer - will commit for all features with "need_imputer" tag
-		{
-			"action_type": "fp_set",
-			"members": [
-				{
-					"fp_type": "normalizer",
-					"resolution_only": "0",
-					"resolution": "5",
-					"tag": "need_norm",
-					"duplicate": "1"
-				}
-			]
-		}
-	],
-	"predictor": "xgb",
-	"predictor_params": "tree_method=auto;booster=gbtree;objective=binary:logistic;eta=0.050;alpha=0.000;lambda=0.010;gamma=0.010;max_depth=6;colsample_bytree=0.800;colsample_bylevel=1.000;min_child_weight=10;num_round=200;subsample=0.800" }
+    {
+      "action_type": "feat_generator",
+      "fg_type": "basic",
+      "type": [
+        "last",
+        "last_delta",
+        "avg",
+        "max",
+        "min",
+        "std",
+        "slope",
+        "range_width"
+      ],
+      "window": [
+        "win_from=0;win_to=180",
+        "win_from=0;win_to=365",
+        "win_from=365;win_to=730",
+        "win_from=0;win_to=1095"
+      ],
+      "time_unit": "Days",
+      "tags": "labs_and_measurements,need_imputer,need_norm",
+      "signal": [
+        "Hemoglobin",
+        "WBC",
+        "Platelets",
+        "Albumin"
+      ]
+    },
+    {
+      "action_type": "feat_generator",
+      "fg_type": "basic",
+      "type": [
+        "last_time"
+      ],
+      "window": [
+        "win_from=0;win_to=180",
+        "win_from=0;win_to=365",
+        "win_from=365;win_to=730",
+        "win_from=0;win_to=1095"
+      ],
+      "time_unit": "Days",
+      "tags": "labs_and_measurements,need_imputer,need_norm",
+      //Take only panels - to remove repititions:
+      "signal": [
+        "BMI",
+        "Creatinine",
+        "WBC",
+        "Cholesterol",
+        "Glucose",
+        "Hemoglobin",
+        "Albumin"
+      ]
+    },
+    {
+      "action_type": "feat_generator",
+      "fg_type": "category_depend",
+      "signal": "DIAGNOSIS",
+      "window": [
+        "win_from=0;win_to=10950;tags=numeric.win_0_10950",
+        "win_from=0;win_to=365;tags=numeric.win_0_365"
+      ],
+      "time_unit_win": "Days",
+      "regex_filter": "ICD10_CODE:.*",
+      "min_age": "40",
+      "max_age": "90",
+      "age_bin": "5",
+      "min_code_cnt": "200",
+      "fdr": "0.01",
+      "lift_below": "0.7",
+      "lift_above": "1.3",
+      "stat_metric": "mcnemar",
+      "max_depth": "50",
+      "max_parents": "100",
+      "use_fixed_lift": "1",
+      "sort_by_chi": "1",
+      "verbose": "1",
+      "take_top": "50"
+    },
+    // Feature selector to remove features with 99.9% same value, there are other options, like lasso, by model importance, etc.
+    {
+      "action_type": "fp_set",
+      "members": [
+        {
+          "fp_type": "remove_deg",
+          "percentage": "0.999"
+        }
+      ]
+    },
+    // Imputer - simple choise of choosing median value by stratifying to age, gender and smoking status - will commit for all features with "need_imputer" tag
+    {
+      "action_type": "fp_set",
+      "members": [
+        {
+          "fp_type": "imputer",
+          "strata": "Age,40,100,5:Gender,1,2,1:Current_Smoker,0,1,1:Ex_Smoker,0,1,1",
+          "moment_type": "median",
+          "tag": "need_imputer",
+          "duplicate": "1"
+        }
+      ]
+    },
+    // Normalizer - will commit for all features with "need_imputer" tag
+    {
+      "action_type": "fp_set",
+      "members": [
+        {
+          "fp_type": "normalizer",
+          "resolution_only": "0",
+          "resolution": "5",
+          "tag": "need_norm",
+          "duplicate": "1"
+        }
+      ]
+    }
+  ],
+  "predictor": "xgb",
+  "predictor_params": "tree_method=auto;booster=gbtree;objective=binary:logistic;eta=0.050;alpha=0.000;lambda=0.010;gamma=0.010;max_depth=6;colsample_bytree=0.800;colsample_bylevel=1.000;min_child_weight=10;num_round=200;subsample=0.800"
+}
 ```
-
 </details>
 
 

@@ -33,9 +33,9 @@ If you want to create a new model, please follow those steps:
 
 1. Set up your environment: Compile and clone the necessary tools - See the: [Infrastructure Installation](Infrastructure%20Home%20Page/index.md#installations)
 2. Create a data repository: Follow the [ETL guide](Repositories/Load%20new%20repository.md)
-3. Define your cohort: Prepare a list of patient IDs, prediction times, and outcome. See [MedSamples](Infrastructure%20Home%20Page/MedProcessTools%20Library/MedSamples.md) for details on labeling.
+3. Define your cohort: Prepare a list of patient IDs, prediction times, and outcome. See [MedSamples](Infrastructure%20Home%20Page/MedProcessTools%20Library/MedSamples.md) for details on labeling. In this step you will create a file where each patient has a timestamp for prediction and a label in a CSV format. 
 4. Specify the model architecture in JSON. Refer to: [Model Json Format](Infrastructure%20Home%20Page/MedModel%20json%20format.md), [infrastucture explaination](Infrastructure%20Home%20Page/index.md) 
-5. Run our tools - python or [Flow](Medial%20Tools/Guide%20for%20common%20actions#2-train-a-model-from-json), [Optimizer](Medial%20Tools/Optimizer.md) to train the model, or [python code](Python/Medial's%20C++%20API%20in%20Python/Examples.md#learn-model-from-json-to-generate-matrix)
+5. Run our tools to train the model with the model architecture, samples and data repository - python or [Flow](Medial%20Tools/Guide%20for%20common%20actions#2-train-a-model-from-json), [Optimizer](Medial%20Tools/Optimizer.md) to train the model, or [python code](Python/Medial's%20C++%20API%20in%20Python/Examples.md#learn-model-from-json-to-generate-matrix)
 6. Apply and test the model using [Flow](Medial%20Tools/Guide%20for%20common%20actions#3-calculate-model-score-on-samples) or [python code](Python/Medial's%20C++%20API%20in%20Python/Examples.md#load-medmodel-and-apply-predict-on-sample)
 7. Analyze model performance using [bootstrap](Medial%20Tools/bootstrap_app/) and [test kit/AutoTest](Medial%20Tools/Model%20Checklist/AutoTest/) or write your own tests
 8. Wrap the model for deployment - follow - [AlgoMarker Deployment](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md)
