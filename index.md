@@ -5,11 +5,7 @@
 
 This is an infrastructure developed by Medial EarlySign to streamline the creation of predictive models using EMR data for clinical applications. Existing tools often fall short for clinical use many Python libraries are not optimized for sparse time series analysis, leading to high memory consumption and, in some cases, performance that is 10–100 times slower than necessary.
 
-## Quick Start Guide
-
-Choose one of the following options to get started:
-
-### Using a Prebuilt Model
+## Using a Prebuilt Model
 Available models:
 
 | Model Name |  Model description | Contact Details for Usage |
@@ -24,14 +20,18 @@ Available models:
 | [MortatlityCMS](Models/MortatlityCMS.md) | Predicts mortality using CMS claims data | TBD |
 | [Unplanned COPD Admission Prediction Model](Models/COPDCMS.md) | Predicts COPD hospitalization using CMS claims data | TBD |
 
-Instructions for using an existing model can be found [here](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)
+There are two options for using a model:
+
+* The model is already depolyed and you just want to access it. What is the API? - please refer [How To Use Deployed AlgoMarker](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)
+* The model is available for download, but you need to deploy it first. Please refer to [AlgoMarker Deployment](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-deploy-algomarker)
 
 
-### Creating a new model
+## Creating a new model
 
 If you want to create a new model, please follow those steps:
 
-1. Set up your environment: Compile and clone the necessary tools - See the: [Infrastructure Installation](Infrastructure%20Home%20Page/index.md#installations)
+1. Set up your environment: Compile and clone the necessary tools
+    * Follow: [Infrastructure Installation](New%20employee%20landing%20page/index.md#setup)
 2. Create a data repository: Follow the [ETL guide](Repositories/Load%20new%20repository.md)
 3. Define your cohort: Prepare a list of patient IDs, prediction times, and outcome. See [MedSamples](Infrastructure%20Home%20Page/MedProcessTools%20Library/MedSamples.md) for details on labeling. In this step you will create a file where each patient has a timestamp for prediction and a label in a CSV format. 
 4. Specify the model architecture in JSON. Refer to: [Model Json Format](Infrastructure%20Home%20Page/MedModel%20json%20format.md), [infrastucture explaination](Infrastructure%20Home%20Page/index.md) 
@@ -40,7 +40,7 @@ If you want to create a new model, please follow those steps:
 7. Analyze model performance using [bootstrap](Medial%20Tools/bootstrap_app/) and [test kit/AutoTest](Medial%20Tools/Model%20Checklist/AutoTest/) or write your own tests
 8. Wrap the model for deployment - follow - [AlgoMarker Deployment](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md)
 
-### Other Documentation Pages
+## Other Documentation Pages
 
 * [Infrastructure Home Page](Infrastructure%20Home%20Page/index.md) - Information about the Infrastructure
     - [Howto use AlgoMarker](Infrastructure%20Home%20Page/AlgoMarkers/Howto%20Use%20AlgoMarker.md)
