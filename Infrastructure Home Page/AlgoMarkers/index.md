@@ -33,7 +33,7 @@ In order to write a new AlgoMarker one has to go through the following steps:
 > In most use cases(all till now), you won't need to do that and write a custom AlgoMarker. You can use TYPE = "MEDIAL_INFRA" and our existing implementation supports all what you need. So you can skip this step.
 
 ## Compile The AlgoMarker library
-- Follow the [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS) README to build the `libdyn_AlgoMarker.so` library, or use a pre-built version if available.
+- Follow the [AlgoMarker Library Setup](../../New%20employee%20landing%20page/index.md#1-algomarker-library) to build the `libdyn_AlgoMarker.so` library, or use a pre-built version if available.
 
 ## The MedialInfra AlgoMarker
  

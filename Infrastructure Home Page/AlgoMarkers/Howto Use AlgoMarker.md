@@ -5,15 +5,15 @@
 This guide explains how to set up AlgoMarker to run and expose a predictive model API.
 
 ### 1. **Obtain the Model**
-- For public models, simply download the directory containing the model and its configuration files.
+- For public models, simply download the directory containing the model and its configuration files. [Full List of Models](../../Models)
 - For your own model, you’ll need to create a configuration file.  
   See: [Setup a new AlgoMarker](Setup%20a%20new%20AlgoMarker.md)
 
 ### 2. **Build the AlgoMarker Library**
-- Follow the [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS) README to build the `libdyn_AlgoMarker.so` library, or use a pre-built version if available.
+- Follow the [AlgoMarker Library Setup](../../New%20employee%20landing%20page/index.md#1-algomarker-library) to build the `libdyn_AlgoMarker.so` library, or use a pre-built version if available.
 
 ### 3. **Build AlgoMarker_Server**
-- Follow the [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) README to build `AlgoMarker_Server`, or use an existing compiled binary.
+- Follow the [AlgoMarker_Server Setup](../../New%20employee%20landing%20page/index.md#2-algomarker-wrapper) to build `AlgoMarker_Server`, or use an existing compiled binary.
 
 ### 4. **Run the Server**
 You can run the server either locally or using Docker.
