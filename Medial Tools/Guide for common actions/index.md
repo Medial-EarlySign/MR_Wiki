@@ -99,7 +99,7 @@ FilterSamples --filter_train 0 --rep ${REP_PATH} --filter_by_bt_cohort "Time-Win
 ### 16. Check Model Compatibility with Repository / Suggest Adjustments
 
 When applying a model to a different repository, some modifications may be necessary.  
-For instance, MedModel strictly checks for the presence of required signals. If a signal is missing but not critical, you can explicitly mark it as acceptable by adding a rep processor for an ["empty" signal](/Infrastructure%20Home%20Page/01.Rep%20Processors%20Practical%20Guide/How%20to%20create%20an%20empty%20signal).  
+For instance, MedModel strictly checks for the presence of required signals. If a signal is missing but not critical, you can explicitly mark it as acceptable by adding a rep processor for an ["empty" signal](/Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/How%20to%20create%20an%20empty%20signal).  
 For further guidance, see [Flow fit_model_to_rep](../Using%20the%20Flow%20App/Fit%20MedModel%20to%20Repository.md).
 
 ---

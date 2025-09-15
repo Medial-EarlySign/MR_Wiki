@@ -12,5 +12,4 @@ Slides detailing the results are available upon request from the author.
 
 ## Contact Information
 
-The model may be made available as open source upon request.
 For inquiries, please contact: alon (dot) medial at gmail (dot) com

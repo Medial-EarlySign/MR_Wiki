@@ -10,13 +10,13 @@ This guide explains how to set up AlgoMarker to run and expose a predictive mode
   See: [Setup a new AlgoMarker](Setup%20a%20new%20AlgoMarker.md)
 
 ### 2. **Build the AlgoMarker Library**
-- Follow the [AlgoMarker Library Setup](../../New%20employee%20landing%20page/index.md#1-algomarker-library) to build the `libdyn_AlgoMarker.so` library, or use a pre-built version if available.
+- Follow the [AlgoMarker Library Setup](../../Installation/index.md#1-algomarker-library) to build the `libdyn_AlgoMarker.so` library, or use a pre-built version if available.
 
 ### 3. **Build AlgoMarker_Server**
-- Follow the [AlgoMarker_Server Setup](../../New%20employee%20landing%20page/index.md#2-algomarker-wrapper) to build `AlgoMarker_Server`, or use an existing compiled binary.
+- Follow the [AlgoMarker_Server Setup](../../Installation/index.md#2-algomarker-wrapper) to build `AlgoMarker_Server`, or use an existing compiled binary.
 
 ### 4. **Run the Server**
-You can run the server either locally or using Docker.
+You can run the server either locally or using Docker/Podman.
 
 #### Local Server
 Run the following command, adjusting the port as needed:
@@ -63,6 +63,8 @@ More details can be found [here](/Python/Medial's%20C++%20API%20in%20Python/Pyth
 
 4. **Run a Container**
    execute this command `docker run -id algomarker_X --name algomarker_container_X -p 1234:1234` and expose port 1234 to 1234 in your local machine.
+
+> [!NOTE] You can replace all the `docker` commands with `podman`, it is fully compatible.
 
 ---
 ## How to Use the Deployed AlgoMarker

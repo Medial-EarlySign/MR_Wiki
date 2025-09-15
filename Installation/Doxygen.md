@@ -3,28 +3,21 @@ Automatic HTML Documentation with C++.
 
 # **Creating Comments in Libs**
 
-- You can create local documentation for your code via:
+- You can create local documentation for your code for [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS/) by runnig this:
 
 ```bash
-$MR_ROOT/Libs/document_code_user.sh
+MR_LIBS/document_code_user.sh
 ```
 
-The documentation will be created in /home/$USER/html/libs/html, just open the index.html file
+The documentation will be created in /home/$USER/html/libs/html, please edit the script to change the desired location if needed. 
+To access, you can just open the index.html file or host the directory with `python -m http.server -d /home/$USER/html/libs/html 8000` on port 8000
 
+The build process of this repository is being executed by runnnig this script:
 ```bash
 $MR_ROOT/Libs/document_code_server.sh
 ```
-
 the documentation will be availabe in [https://Medial-EarlySign.github.io/MR_LIBS](https://Medial-EarlySign.github.io/MR_LIBS)
 
-if the node-04 apache server is down run and the page isn't loading, run:
-
-```bash
-sudo sed -i 's|charset=.*|charset=UTF-8|g' /etc/mini-httpd.conf
-# Edit /etc/mini-httpd.conf port to 81 in gitlab_server, data_dir
-sudo systemctl enable mini-httpd
-sudo systemctl start mini-httpd
-```
 
 # **General Use of Doxygen tool for other projects:**
 1. Create a Doxygen configuration file by running (on Linux) to create default config file:

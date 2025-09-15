@@ -22,7 +22,7 @@ Parameters:
     - bootstrap/bootstrap.json - a bootstrap json file to run bootstrap_app
 - BT_COHORT - bootstrap cohorts definition file for bootstrap analysis. It is reference by default to the current config folder /bootstrap/bt.params
     - bootstrap/bt.params - a bootstrap cohorts file for bootstrap_app
-- NOISER_JSON - a json that defines rep processors to "noise" the inputs and test model sensitivity to noise. It references a file in current folder named: noiser_base.json. Please refer to [Noiser](/Infrastructure%20Home%20Page/01.Rep%20Processors%20Practical%20Guide/Noiser.html) page for more details.
+- NOISER_JSON - a json that defines rep processors to "noise" the inputs and test model sensitivity to noise. It references a file in current folder named: noiser_base.json. Please refer to [Noiser](/Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/Noiser.html) page for more details.
 - TIME_NOISES - vector of values to control the noise in dates. The unit is days, so "30" means uniform randomly shifting dates between 0-30 days backward of all signals in NOISER_JSON.
 - VAL_NOISES - vector of values to control the noise in signal values. The unit is standard deviation multiply by 10 - so "1" means "0.1" * signal std. This will control normal random noise standard deviation based on signal std.
 - DROP_NOISES - vector of values to control the probability to "drop" tests/values. The unit is probability multiply by 10 - so "1" mean "0.1"/10% chances to drop a lab test value in certain date.

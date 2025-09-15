@@ -19,7 +19,7 @@ The setup script defines variables for the model, repository, reference matrix, 
     - Document the original model path and its MD5 checksum (recommended).
 
 3. **Build and Copy the Shared Library**
-    - Build the `libdyn_AlgoMarker.so` shared library as described in [AlgoMarker Library Setup](../../New%20employee%20landing%20page/index.md#1-algomarker-library).
+    - Build the `libdyn_AlgoMarker.so` shared library as described in [AlgoMarker Library Setup](../../Installation/index.md#1-algomarker-library).
     - Copy the compiled library to the AlgoMarker folder under "lib" folder.
 
 4. **Prepare the Repository Configuration**

@@ -33,5 +33,4 @@ The model is intended to increase flu shot adherence among populations at higher
 
 ## Contact Details for Usage
 
-The model may be released as open source upon request.
-please contact : alon (dot) medial at gmail (dot) com
+please contact : alon (dot) medial at gmail (dot) com for more details

@@ -6,7 +6,7 @@
 | Version  | Date   | Windows/Linux | Git Branch Name     | Git Tag Name    | Changes                                              
 |----------|--------|---------------|---------------------|-----------------|----------|
 | bootstrap_app_1.0.2  | 21 Jan 2019   | Linux    | bootstrap_app_1.0   | bootstrap_app_1.0.2  | - bugfix in incidence calculation with kaplan-meier  |
-| bootstrap_app_1.0    | 19 Dec 2018   | Linux    | bootstrap_app_1.0   | 191218_01            | - The MedRegistry format has changed, and the info is now passed by two inputs: registry and censor. See [MedRegistry](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry) and [MedSamplingStrategy](/Infrastructure%20Home%20Page/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html) for more info. |
+| bootstrap_app_1.0    | 19 Dec 2018   | Linux    | bootstrap_app_1.0   | 191218_01            | - The MedRegistry format has changed, and the info is now passed by two inputs: registry and censor. See [MedRegistry](/Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry) and [MedSamplingStrategy](/Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html) for more info. |
 
 
 ## Releasing a new version

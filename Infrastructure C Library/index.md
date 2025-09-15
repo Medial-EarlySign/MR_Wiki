@@ -252,7 +252,7 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
 Home page for in depth pages explaining several different aspects in the infrastructure
 Some interesting pages:
 
-- [Setup Environment](../New%20employee%20landing%20page/index.md#setup)
+- [Setup Environment](../Installation/index.md#setup)
 - How to Serialize : learn the [SerializableObject](MedProcessTools%20Library/SerializableObject.md) libarary secrets.
 - [PidDynamicRecs and versions](00.InfraMed%20Library%20page/PidDynamicRec.md)
 - [Virtual Signals](01.Rep%20Processors%20Practical%20Guide/Virtual%20Signals.md)

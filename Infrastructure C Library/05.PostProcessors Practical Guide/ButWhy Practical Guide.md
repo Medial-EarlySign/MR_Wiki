@@ -43,7 +43,7 @@ Two steps are needed in order to use ButWhy for single prediction.
 1. Add PostProcessor with explainer to the model. Can be done later with adjust_model
 2. Apply the model - Use Flow or special program to reformat the output called CreateExplainReport
 ### Add Explainer into a model:
-Example of how to train a model with explainer can be found here [PostProcessors Practical Guide](/Infrastructure%20Home%20Page/05.PostProcessors%20Practical%20Guide).
+Example of how to train a model with explainer can be found here [PostProcessors Practical Guide](/Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide).
 Here I'll show how to **add **explainer into existing model.
 Create post_processor for the json:
 ```json

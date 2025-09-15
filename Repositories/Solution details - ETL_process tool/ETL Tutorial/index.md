@@ -8,7 +8,7 @@ While manual loading file creation is possible, our tool is highly recommended f
   * **Automated Configuration:** It eliminates the need for manual configuration by automatically generating all necessary files for the final loading process. This includes:
 
       * **[Signals Config](../../Repository%20Signals%20file%20format.md)** Defines signal types and units, allowing you to easily add new signals or override existing ones.
-      * **[Dictionary Files](../../../Infrastructure%20Home%20Page/00.InfraMed%20Library%20page/MedDictionary.md)** Automatically creates conversion dictionaries for all categorical signals (e.g., converting strings to numerical values). It can even pull hierarchical data from known ontologies, such as ICD-10 codes, when a specific prefix is used.
+      * **[Dictionary Files](../../../Infrastructure%20C%20Library/00.InfraMed%20Library%20page/MedDictionary.md)** Automatically creates conversion dictionaries for all categorical signals (e.g., converting strings to numerical values). It can even pull hierarchical data from known ontologies, such as ICD-10 codes, when a specific prefix is used.
       * **[Conversion Config](../../Load%20new%20repository.md)** A central configuration file that references all necessary dictionaries, signals, and data files for the load. Will be used by `Flow` app to convert those raw data files into InfraMed Binary format.
       * **[Loading Script](../../Load%20new%20repository.md#step-3-load-the-repository)** Generates a final script with a `Flow` to run the entire loading process in one go.
 

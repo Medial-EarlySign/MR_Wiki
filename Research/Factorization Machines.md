@@ -6,7 +6,7 @@ Classifiers currently used in Medial make use of different types of features, in
 Due to a large number of RC and ATC codes, the total number of RC/ATC features can be very high (200K in CKD Fast Progressors project).
 In addition, these features are extremely sparse.
 It would be computationally prohibitive to handle all this features in XGBoost.
-In order to solve this problem, there exists a "[category_depend](/Infrastructure%20Home%20Page/02.Feature%20Generator%20Practical%20Guide)" mechanism, which reduces a number of RC/ATC features by keeping only features which are highly correlated to the outcome.
+In order to solve this problem, there exists a "[category_depend](/Infrastructure%20C%20Library/02.Feature%20Generator%20Practical%20Guide)" mechanism, which reduces a number of RC/ATC features by keeping only features which are highly correlated to the outcome.
 Therefore, information about some read codes or drugs is lost. 
  
 This project was undertaken in order to check whether it is possible to retain this information by means of  "Factorization Machines" method,
@@ -32,8 +32,8 @@ Where possible we compared results returned by libFM to those of XGBoost, traine
 1. Age, Gender columns only
 2. Age,Gender and all RC-related and ATC-related columns of type "category set" used in CKD Fast Progressors project (not including features generated via "category_depend" mechanism)
 3.  Age,Gender,RC-related and ATC-related columns of type "category set" and "category_depend" used in CKD Fast Progressors project 
-4. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20Home%20Page/03.FeatureProcessor%20practical%20guide/Embeddings) project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
-5. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20Home%20Page/03.FeatureProcessor%20practical%20guide/Embeddings) project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
+4. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20C%20Library/03.FeatureProcessor%20practical%20guide/Embeddings) project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
+5. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20C%20Library/03.FeatureProcessor%20practical%20guide/Embeddings) project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
 ## Results
 1. Age, Gender columns only
 2. 
@@ -60,8 +60,8 @@ Results produced by libFM are marginally better in this scenario
 </tbody></table>
 
 3.  Age,Gender,RC-related and ATC-related columns of type "category set" and "category_depend" used in CKD Fast Progressors project 
-4. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20Home%20Page/03.FeatureProcessor%20practical%20guide/Embeddings) project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
-5. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20Home%20Page/03.FeatureProcessor%20practical%20guide/Embeddings) project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
+4. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20C%20Library/03.FeatureProcessor%20practical%20guide/Embeddings) project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
+5. Age,Gender and a sparse matrix of RC and ATC-related features generated using [Embeddings](/Infrastructure%20C%20Library/03.FeatureProcessor%20practical%20guide/Embeddings) project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
  
  
  
