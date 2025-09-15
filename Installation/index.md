@@ -104,6 +104,7 @@ The AlgoMarker Wrapper provides a REST API for the AlgoMarker C++ Library. There
 #### Installation
 
 **C++ Native Wrapper**:
+
 1. [Set up Boost Libraries](#3-install-boost-libraries-ubuntu). No need to compile.
 2. Clone the repository:
    ```bash
@@ -119,20 +120,23 @@ The AlgoMarker Wrapper provides a REST API for the AlgoMarker C++ Library. There
    AlgoMarker_python_API/ServerHandler/compile.sh
    ```
 5. Execute the server:
-	```bash
-	AlgoMarker_python_API/ServerHandler/Linux/Release/AlgoMarker_Server --algomarker_path $AM_CONFIG --library_path $AM_LIB --port 1234
-	```
+   ```bash
+   AlgoMarker_python_API/ServerHandler/Linux/Release/AlgoMarker_Server --algomarker_path $AM_CONFIG --library_path $AM_LIB --port 1234
+   ```
 
-	`AM_CONFIG`: Path to the AlgoMarker configuration file.
-    `AM_LIB`: Path to the AlgoMarker shared library. Refer to [AlgoMarker Library](#1-algomarker-library) for compilation steps.
+	* `AM_CONFIG`: Path to the AlgoMarker configuration file.
+   * `AM_LIB`: Path to the AlgoMarker shared library. 
+      Refer to [AlgoMarker Library](#1-algomarker-library) for compilation steps.
 
 
 **Python Wrapper**:
+
 1. Clone the repository:
    ```bash
    git clone git@github.com:Medial-EarlySign/MR_Tools.git
    ```
 2. Edit `AlgoMarker_python_API/run_server.sh` and update the following:
+
    - `AM_CONFIG`: Path to the AlgoMarker configuration file.
    - `AM_LIB`: Path to the AlgoMarker shared library. Refer to [AlgoMarker Library](#1-algomarker-library) for compilation steps.
    - If using the old ColonFlag, follow the steps in the ColonFlag setup page to compile the ICU library. Add the ICU library path to `LD_LIBRARY_PATH` in the script before calling `uvicorn`.
