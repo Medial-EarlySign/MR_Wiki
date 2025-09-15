@@ -8088,7 +8088,7 @@
 <p>A MedModel JSON file describes:
 - The pipeline of data processing and machine learning components (like data cleaning, feature generation, modeling, etc.)
 - The order and configuration of each processing step
-- The parameters for each component (as key-value pairs). This will call the component <a href="SerializableObject.md#init-from-string">"init" function</a> with the key value pairs to initialize the component. This allows a simpler way to add components and pass arguments to them from the json.
+- The parameters for each component (as key-value pairs). This will call the component <a href="MedProcessTools%20Library/SerializableObject.html#init-from-string">"init" function</a> with the key value pairs to initialize the component. This allows a simpler way to add components and pass arguments to them from the json.
 - How to reference additional configuration files or value lists</p>
 <p>This enables flexible, versioned, and shareable model definitions—ideal for both research and production.</p>
 <h2 id="how-to-write-a-medmodel-json-step-by-step">How to Write a MedModel JSON: Step-by-Step</h2>
@@ -8250,15 +8250,17 @@
 <a id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="w">  </span><span class="nt">&quot;predictor_params&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tree_method=auto;booster=gbtree;objective=binary:logistic;...&quot;</span>
 <a id="__codelineno-1-64" name="__codelineno-1-64"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p><strong>How it works:</strong>
-1. The pipeline loads additional processors from a separate JSON file (for modularity).
-2. It generates demographic and behavioral features.
-3. It creates diagnosis-based categorical features.
-4. It computes statistical features over defined time windows.
-5. It removes features with little variation.
-6. It imputes missing values using well-defined rules.
-7. It normalizes certain features.
-8. It trains the model using XGBoost, with custom parameters.</p>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>The pipeline loads additional processors from a separate JSON file (for modularity).</li>
+<li>It generates demographic and behavioral features.</li>
+<li>It creates diagnosis-based categorical features.</li>
+<li>It computes statistical features over defined time windows.</li>
+<li>It removes features with little variation.</li>
+<li>It imputes missing values using well-defined rules.</li>
+<li>It normalizes certain features.</li>
+<li>It trains the model using XGBoost, with custom parameters.</li>
+</ol>
 <p>This example uses an additional file "full_rep_processors.json" next to it. Here is the content inside</p>
 <details>
        <summary>full_rep_processors.json</summary>
