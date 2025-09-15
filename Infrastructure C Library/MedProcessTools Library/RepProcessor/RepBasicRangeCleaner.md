@@ -19,5 +19,5 @@ output_type - the signal type of the output signal, should be the same as the in
 },
 ```
  
-<img src="/attachments/9765548/9765547.png"/>
+<img src="../../../attachments/9765548/9765547.png"/>
 (Code that tests this rep processor: U:\ReutF\MR\Projects\Shared\check_medication_period_rep_processor)

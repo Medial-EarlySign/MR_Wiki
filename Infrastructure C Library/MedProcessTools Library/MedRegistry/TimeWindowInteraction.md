@@ -8,7 +8,7 @@ the object is being initialized by [medial::sampling::init_time_window_mode](htt
 ### the initialization string format
 the init strings define the Rules for interaction between sample time window and the registry time window.
 this is abstraction of the time windows definitions:
-<img src="/attachments/9765361/9765367.png"/>
+<img src="../../../attachments/9765361/9765367.png"/>
  
 The init string has format of “label_value:Interaction_string|label_value:Interaction_string;…”
 Can also use label_value for all labels by specifying “all” or just the numeric value: "0" for controls and "1" for cases.

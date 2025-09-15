@@ -22,7 +22,7 @@ times - a vector of times before the sample for which the prediction should be g
 	"model_train_samples": "$PATH_TO_TRAIN_SAMPLES_IF_DIFFERENT_FROM_CURRENT"
 }
 ```
-<img src="/attachments/9765619/9765623.png"/>
+<img src="../../../attachments/9765619/9765623.png"/>
  
  
 override_predictions cane be used to copy predictions into our feature matrix without running the model (if we have the predictions from a previous run). There is no way to do this using the json file

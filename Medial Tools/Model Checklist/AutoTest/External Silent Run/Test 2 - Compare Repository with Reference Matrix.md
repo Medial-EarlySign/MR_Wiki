@@ -51,13 +51,13 @@ t22 = pd.read_csv(f, skiprows=cut+1, sep='\t')
 ```
 The first dataframe, t21, should be ignored.
 t21 shows moments, range and missing values count, for every feature, comparing the reference to the tested dataset. A general status is calculated - however, logic is unclear and need debug.
-<img src="/attachments/13926455/13926475.png"/>
+<img src="../../../../attachments/13926455/13926475.png"/>
 The second dataframe, t22, shows the same information (without range), plus Mann Whitney test result.
 
 - _1 is for the new dataset
 - _2 is for the reference
 - The Mann-Whitney U Test assesses whether two sampled groups are likely to derive from the same population, but note test limitations - if median and shape are the same for both samples, P_value would be high even for different std/scale. 
-<img src="/attachments/13926455/13926476.png"/>
+<img src="../../../../attachments/13926455/13926476.png"/>
 In table t22:
 
 - We need to make sure we don't see low P_value for any important feature to the model, or proxy for such features, i.e.. we may list MCH.min.win_0_180 as important feature, and we don't want it or MCH.min.win_0_360 to have low P-value.
@@ -85,7 +85,7 @@ Good separation, no matter what feature/features were used, would hurt the accur
  
 **Example**
 AUC_Mean is 0.98 - very high. However no significant different seen in compare_rep.txt Mann Whitney test. In shapely_report one feature has very high importance. Next we look at the difference dataset-reference for this feature - comparing controls to controls.
-<img src="/attachments/13926455/13926485.png"/>
+<img src="../../../../attachments/13926455/13926485.png"/>
 We see that the reference has several dominant values - probably due to imputations.
 So how come the feature was important for the model?
 

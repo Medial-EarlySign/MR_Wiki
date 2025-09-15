@@ -9,9 +9,9 @@ The tool receives a model file and a samples file (an additional model for filte
  
 The final document consists 4 plots:
 
-1. **Importance of single features:**<img src="/attachments/11207150/11207121.png"/>****
-2. **Mean of absolute SHAP values for most important ******<img src="/attachments/11207150/11207122.png"/>
-3. ****<img src="/attachments/11207150/11207123.png"/>
+1. **Importance of single features:**<img src="../attachments/11207150/11207121.png"/>****
+2. **Mean of absolute SHAP values for most important ******<img src="../attachments/11207150/11207122.png"/>
+3. ****<img src="../attachments/11207150/11207123.png"/>
 4. **Importance of signals - grouped by type******In this figure, signals are aggregated together (SHAP values are summed) with their feature type - for numerical features, feaures are aggregated according to the following feature groups:'value' ('last','avg',',min','max'), 'trend' ('slope', 'win_delta','last_delta','max_diff'), 'time' : 'last_time', 'std': 'std'} .  ********
  
  

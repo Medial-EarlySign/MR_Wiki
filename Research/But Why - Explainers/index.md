@@ -130,7 +130,7 @@ $MR_ROOT/Projects/Shared/Projects/scripts/But_Why/test_explainers.diabetes.sh KN
 ```
 Now look at /server/Work/Users/Alon/But_Why/outputs/explainers/diabetes/compare_blinded.tsv
 Example from diabetes blinded report:
-<img src="/attachments/11207203/11207296.png"/>
+<img src="../../attachments/11207203/11207296.png"/>
 As you may see after each sample of patient+time there is a line with “SCORES” to score each explainer - wrote for example "Good" for the first explainer.
 Each explainer ranks the top 10 groups of features to explain the prediction score pred_0.
 Example for line 1 in explainer_1: Glucose:=-1.30226(36.29%) {Glucose.avg.win_0_3650:=100.31133} – which means the contribution of Glucose group of signals is -1.30 (pay attention to the minus sign) which means Glucose levels reduce the score.
@@ -140,7 +140,7 @@ In the brackets you may see the normalized contribution of the signal in percent
  
 the explainer's names for each line (patient+ prediction time) is recorded in the file map.ids.tsv 
 Example of map.ids.tsv for each record:
-<img src="/attachments/11207203/11207297.png"/>
+<img src="../../attachments/11207203/11207297.png"/>
 In each line we can see the order of explainers
 **Macro Analysis of explainers:**
 Analyze each explainer results: how many Good, Fair, Bad for each model and all together.

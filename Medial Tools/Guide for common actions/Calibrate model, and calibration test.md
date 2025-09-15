@@ -73,5 +73,5 @@ tot_diff(L2)=0.001983 prior=0.002349 prior_loss(L2)=0.003845 R2=0.484125 Num_Bin
 ```
  
 And a graph
-<img src="/attachments/13403040/13403057.png"/>
+<img src="../../attachments/13403040/13403057.png"/>
  

@@ -183,7 +183,7 @@ When the old THIN smoking feature generator was used in a simple LR model for lu
 See original and modified mapping in the table below. 
 [smoking_readcodes_combined.csv](../../../../attachments/11206807/11206827.csv)
  
-<img src="/attachments/11206807/11206834.png"/>
+<img src="../../../../attachments/11206807/11206834.png"/>
 **Figure 1 - Logic for setting the smoking status.**
 The code that generates the smoking vectors in THIN:
 http://bitbucket:7990/projects/MED/repos/gensmoking/browse

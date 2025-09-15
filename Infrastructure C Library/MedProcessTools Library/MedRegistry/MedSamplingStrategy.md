@@ -1,7 +1,7 @@
 # MedSamplingStrategy
 A Class that controls how to create [MedSamples](../MedSamples.md)from [MedRegistry](../../MedProcessTools%20Library/MedRegistry)by sampling methods.
 it has several subclasses, each has it's own parameters and logic to sample the samples form registry:
-<img src="/attachments/9765342/10911920.png"/>
+<img src="../../../attachments/9765342/10911920.png"/>
 Code is documented [here](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingStrategy).
 do_sample aruments in MedSamplingRegistry:
 

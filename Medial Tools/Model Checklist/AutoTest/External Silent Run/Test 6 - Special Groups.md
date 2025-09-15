@@ -25,6 +25,6 @@ Next, for every positive rate 1, 3, 5, 10% (numbers below are example for 3%):
 Conclusions:
 - Difference looks significant. Note that the large difference in the the 'lift per cutoff value' is influenced by the difference in incidence rate, but the differences between the tested dataset and the reference are evident from any aspect.
 - If the model flag less from this cohort, then, from what cohort it flags more? more investigation is needed before we can come up with applicable lesson.
-<img src="/attachments/13926516/13926518.png"/>
+<img src="../../../../attachments/13926516/13926518.png"/>
 ****
  

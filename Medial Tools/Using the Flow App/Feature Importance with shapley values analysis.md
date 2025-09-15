@@ -337,4 +337,4 @@ To print graph for specific feature influence - pass on feature_name argument - 
 num_format - is format string for the numbers
  
 Example of HTML graph:
-<img src="/attachments/11207088/11207102.png"/>
+<img src="../../attachments/11207088/11207102.png"/>

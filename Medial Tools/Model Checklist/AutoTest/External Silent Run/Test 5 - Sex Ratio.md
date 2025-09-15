@@ -21,4 +21,4 @@ For each score cutoff in range, we see:
     - Male ratio going down when cutoff goes up, both for reference and test.
     - However, the values are higher for the tested dataset, probably because of overall bigger share for males (need to verify).
 - Positivity rate, same as we saw in Test 3.
-<img src="/attachments/13926532/13926530.png"/>
+<img src="../../../../attachments/13926532/13926530.png"/>
