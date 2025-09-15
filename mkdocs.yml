@@ -1,0 +1,41 @@
+site_name: Medial EarlySign Documentation
+repo_url: https://github.com/Medial-EarlySign/MR_WIki
+site_author: Medial EarlySign
+site_description: Documentation for Medial EarlySign's projects and tools.
+site_url: https://medial-earlysign.github.io/MR_Wiki/
+repo_name: 'GitHub'
+edit_uri: 'edit/main/'
+theme:
+  name: material
+  font:
+    text: "Segoe UI"
+    code: "Consolas, 'Courier New', monospace"
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.instant
+    - navigation.path
+    - navigation.indexes
+    - search
+    - search.highlight
+    - search.suggest
+    - content.code.copy 
+    - content.action.edit
+    - content.action.view
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true     
+  - pymdownx.inlinehilite
+  - pymdownx.snippets    
+  - pymdownx.superfences 
+  - sane_lists
+  - tables
+  - admonition
+  - pymdownx.tilde
+
+plugins:
+  - search
+
+use_directory_urls: false
