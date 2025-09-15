@@ -7,7 +7,7 @@ This guide explains the structure and usage of the MedModel JSON format for defi
 A MedModel JSON file describes:
 - The pipeline of data processing and machine learning components (like data cleaning, feature generation, modeling, etc.)
 - The order and configuration of each processing step
-- The parameters for each component (as key-value pairs). This will call the component ["init" function](SerializableObject.md#init-from-string) with the key value pairs to initialize the component. This allows a simpler way to add components and pass arguments to them from the json.
+- The parameters for each component (as key-value pairs). This will call the component ["init" function](MedProcessTools%20Library/SerializableObject.md#init-from-string) with the key value pairs to initialize the component. This allows a simpler way to add components and pass arguments to them from the json.
 - How to reference additional configuration files or value lists
 
 This enables flexible, versioned, and shareable model definitions—ideal for both research and production.
@@ -117,6 +117,7 @@ Let’s walk through an example and explain each major step:
 ```
 
 **How it works:**
+
 1. The pipeline loads additional processors from a separate JSON file (for modularity).
 2. It generates demographic and behavioral features.
 3. It creates diagnosis-based categorical features.
