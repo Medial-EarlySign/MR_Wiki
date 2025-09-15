@@ -23,6 +23,7 @@ echo "To Test Locally:"
 echo  "python -m http.server -d ${OUTPUT_DIR}/site 8000"
 
 if [ ${RUN_SERVER} -gt 0 ]; then
+    sleep 10 && xdg-open http:://localhost:8000 &
 	python -m http.server -d ${OUTPUT_DIR}/site 8000
 fi
 

@@ -8,7 +8,7 @@ A valid request to AlgoMarker should include the following fields:
 
 - **type**: Set to `"request"`.
 - **request_id**: A unique string identifier for the request.
-- **export**: Specifies the desired output. For standard predictions, use `"prediction": "pred_0"` to request the model prediction and store it in the `"prediction"` field of the response.
+- **export**: Specifies the desired output. For standard predictions, use `"prediction": "pred_0"` to request the model prediction and store it in the `"prediction"` field of the response. You can also specify request to recieve explainabiltiy output if applicable for example by specifiying `"explainability_output_field_name_for_your_control": "json_attr Tree_iterative_covariance"`.
 - **load**: Set to `1` to indicate that patient data is included in the request.
 - **flag_threshold** (optional): If your model supports configurable thresholds, specify the threshold name here.
 - **requests**: An array of patient requests, each containing:
