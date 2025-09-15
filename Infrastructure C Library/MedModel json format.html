@@ -8085,11 +8085,13 @@
 <h1 id="medmodel-json-format">MedModel JSON Format</h1>
 <p>This guide explains the structure and usage of the MedModel JSON format for defining machine learning pipelines within the Medial infrastructure. The JSON file orchestrates all model steps, from raw data processing to prediction and post-processing, making your workflow modular, reproducible, and easy to configure.</p>
 <h2 id="what-is-a-medmodel-json">What is a MedModel JSON?</h2>
-<p>A MedModel JSON file describes:
-- The pipeline of data processing and machine learning components (like data cleaning, feature generation, modeling, etc.)
-- The order and configuration of each processing step
-- The parameters for each component (as key-value pairs). This will call the component <a href="MedProcessTools%20Library/SerializableObject.html#init-from-string">"init" function</a> with the key value pairs to initialize the component. This allows a simpler way to add components and pass arguments to them from the json.
-- How to reference additional configuration files or value lists</p>
+<p>A MedModel JSON file describes:</p>
+<ul>
+<li>The pipeline of data processing and machine learning components (like data cleaning, feature generation, modeling, etc.)</li>
+<li>The order and configuration of each processing step</li>
+<li>The parameters for each component (as key-value pairs). This will call the component <a href="MedProcessTools%20Library/SerializableObject.html#init-from-string">"init" function</a> with the key value pairs to initialize the component. This allows a simpler way to add components and pass arguments to them from the json.</li>
+<li>How to reference additional configuration files or value lists</li>
+</ul>
 <p>This enables flexible, versioned, and shareable model definitions—ideal for both research and production.</p>
 <h2 id="how-to-write-a-medmodel-json-step-by-step">How to Write a MedModel JSON: Step-by-Step</h2>
 <p>Let’s walk through building a JSON model file, explaining each section.</p>
@@ -8111,15 +8113,19 @@
 </code></pre></div></td></tr></table></div>
 <p><strong>Tip:</strong> Only <code>model_json_version</code> is required for most users. The rest can typically be left out.</p>
 <h3 id="2-the-pipeline-model_actions">2. The Pipeline: <code>model_actions</code></h3>
-<p>This is the heart of the model definition—a list of components executed in order. Each component is an object specifying:
-- <code>action_type</code>: What kind of step this is (data cleaning, feature generation, etc.)
-- Other keys: Parameters specific to the step</p>
-<p><strong>Component types:</strong>
-- <code>rep_processor</code> or <code>rp_set</code>: Cleans or derives raw signals
-- <code>feat_generator</code>: Creates features from cleaned signals
-- <code>fp_set</code>: Post-processes the feature matrix (imputation, selection, normalization)
-- <code>predictor</code>: The machine learning algorithm
-- <code>post_processor</code>: Final calibration or adjustment</p>
+<p>This is the heart of the model definition—a list of components executed in order. Each component is an object specifying:</p>
+<ul>
+<li><code>action_type</code>: What kind of step this is (data cleaning, feature generation, etc.)</li>
+<li>Other keys: Parameters specific to the step</li>
+</ul>
+<p><strong>Component types:</strong></p>
+<ul>
+<li><code>rep_processor</code> or <code>rp_set</code>: Cleans or derives raw signals</li>
+<li><code>feat_generator</code>: Creates features from cleaned signals</li>
+<li><code>fp_set</code>: Post-processes the feature matrix (imputation, selection, normalization)</li>
+<li><code>predictor</code>: The machine learning algorithm</li>
+<li><code>post_processor</code>: Final calibration or adjustment</li>
+</ul>
 <h4 id="example-walkthrough">Example Walkthrough</h4>
 <p>Let’s walk through an example and explain each major step:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
@@ -8474,12 +8480,14 @@ This generates steps for each type × window combination.</p>
 Reference these in your pipeline using <code>"ref:diabetes_drugs"</code>.</p>
 <hr />
 <h2 id="ready-to-write-your-own">Ready to Write Your Own?</h2>
-<p>By following this walkthrough, you can confidently define new model JSON files:
-- Start with the general fields
-- List your pipeline steps in <code>model_actions</code>
-- Modularize and reuse with references
-- Expand lists for coverage
-- Define your predictor and parameters</p>
+<p>By following this walkthrough, you can confidently define new model JSON files:</p>
+<ul>
+<li>Start with the general fields</li>
+<li>List your pipeline steps in <code>model_actions</code></li>
+<li>Modularize and reuse with references</li>
+<li>Expand lists for coverage</li>
+<li>Define your predictor and parameters</li>
+</ul>
 <p><strong>Tip:</strong> For a new project, copy and adapt the example above to fit your own signals, features, and model goals.</p>
 <h2 id="further-reading">Further Reading</h2>
 <ul>
