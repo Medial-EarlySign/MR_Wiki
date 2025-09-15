@@ -8053,7 +8053,7 @@ Each component can be one of the following:</p>
 <li><code>comma_rel:</code>: References a file, extracting content line by line into a comma-separated string (<code>"line1,line2,..."</code>).</li>
 <li><code>json:</code>: References another file, adding its content to this JSON as-is.</li>
 </ul>
-<p>Some of the parameters in a trained model can later be changed using <a href="/Medial%20Tools/adjust_model.html">adjust_model</a> or <a href="/Medial%20Tools/change_model">change_model</a>. For example, if you are running an existing model on a lower-memory computer, you might want to reduce <code>max_data_in_mem</code>. See <a href="/Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict.html">How to limit memory usage</a>.</p>
+<p>Some of the parameters in a trained model can later be changed using <a href="../Medial%20Tools/adjust_model.html">adjust_model</a> or <a href="../Medial%20Tools/change_model">change_model</a>. For example, if you are running an existing model on a lower-memory computer, you might want to reduce <code>max_data_in_mem</code>. See <a href="../Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict.html">How to limit memory usage</a>.</p>
 <h2 id="main-model-pipeline">Main Model Pipeline</h2>
 <p>Model pipeline instructions are listed under <code>"model_actions"</code> (an array of model components):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
@@ -8114,7 +8114,7 @@ Each component can be one of the following:</p>
 <h2 id="predictor">Predictor</h2>
 <p>In the last part of the JSON, after <code>"model_actions"</code>:</p>
 <ul>
-<li><code>"predictor"</code>: Selects MedPredictor to train on the generated matrix. See <a href="04.MedAlgo%20Library/MedPredictor%20practical%20guide">MedPredictor practical guide</a> and <a href="https://Medial-EarlySign.github.io/MR_LIBS/MedAlgoh.html#ab3f9aacffd8e29e833677299133ac4f0">List of options</a>. Examples: <code>"xgb"</code> for XGBoost, <code>"lightgbm"</code> for LightGBM, <code>"lm"</code> for a linear model, etc.</li>
+<li><code>"predictor"</code>: Selects MedPredictor to train on the generated matrix. See <a href="04.MedAlgo%20Library/MedPredictor%20practical%20guide">MedPredictor practical guide</a> and <a href="https://Medial-EarlySign.github.io/MR_LIBS/MedAlgo_8h.html#ab3f9aacffd8e29e833677299133ac4f0">List of options</a>. Examples: <code>"xgb"</code> for XGBoost, <code>"lightgbm"</code> for LightGBM, <code>"lm"</code> for a linear model, etc.</li>
 <li><code>"predictor_params"</code>: Arguments to initialize the predictor, depending on the chosen predictor.</li>
 </ul>
 <h2 id="reference-lists">Reference Lists</h2>

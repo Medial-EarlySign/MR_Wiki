@@ -7886,7 +7886,7 @@ Parameters:</p>
 <li>bootstrap/bt.params - a bootstrap cohorts file for bootstrap_app</li>
 </ul>
 </li>
-<li>NOISER_JSON - a json that defines rep processors to "noise" the inputs and test model sensitivity to noise. It references a file in current folder named: noiser_base.json. Please refer to <a href="/Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/Noiser.html">Noiser</a> page for more details.</li>
+<li>NOISER_JSON - a json that defines rep processors to "noise" the inputs and test model sensitivity to noise. It references a file in current folder named: noiser_base.json. Please refer to <a href="../../../../Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/Noiser.html">Noiser</a> page for more details.</li>
 <li>TIME_NOISES - vector of values to control the noise in dates. The unit is days, so "30" means uniform randomly shifting dates between 0-30 days backward of all signals in NOISER_JSON.</li>
 <li>VAL_NOISES - vector of values to control the noise in signal values. The unit is standard deviation multiply by 10 - so "1" means "0.1" * signal std. This will control normal random noise standard deviation based on signal std.</li>
 <li>DROP_NOISES - vector of values to control the probability to "drop" tests/values. The unit is probability multiply by 10 - so "1" mean "0.1"/10% chances to drop a lab test value in certain date.</li>
@@ -7895,7 +7895,7 @@ Parameters:</p>
 <li>EXPLAIN_JSON - bootstrap json to control explainability cohorts if they are different than regular cohorts. By default it is the same as regular bootstrap: EXPLAIN_JSON=${BT_JSON}</li>
 <li>EXPLAIN_COHORT - bootstrap cohort definitions for explainability. By default it is the same as regular bootstrap</li>
 <li>BT_JSON_FAIRNESS - bootstrap json to control fairness cohorts if they are different than regular cohorts. By default it is the same as regular bootstrap: BT_JSON_FAIRNESS=${BT_JSON}</li>
-<li>FAIRNESS_BT_PREFIX - A single cohort to filter samples to test fairness. The syntax is the same as bootstrap cohort. <a href="/Medial%20Tools/bootstrap_app">bootstrap_app</a><ul>
+<li>FAIRNESS_BT_PREFIX - A single cohort to filter samples to test fairness. The syntax is the same as bootstrap cohort. <a href="../../../bootstrap_app">bootstrap_app</a><ul>
 <li>"configs/fairness_groups.cfg" - more info in <a href="Test_12%20-%20fairness.html">Test_12 - fairness</a></li>
 </ul>
 </li>
