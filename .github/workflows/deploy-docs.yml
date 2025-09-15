@@ -27,6 +27,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Build docs
       run: |
+        ln -sf "$(realpath mkdocs.yml)" .
+        ln -sf "$(realpath .)" "./docs"
         mkdocs build
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
