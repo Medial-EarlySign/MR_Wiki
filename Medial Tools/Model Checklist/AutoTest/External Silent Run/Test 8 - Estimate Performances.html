@@ -7861,7 +7861,7 @@ Sample the reference cohort based on the distribution of the important features 
  
 <strong>Test Results Review</strong>
 compare.no_overfitting/summary_table.estimated_performance.tsv gives the bottom line, for example:
-<img src="/attachments/13926552/13926554.png"/>
+<img src="../../../../attachments/13926552/13926554.png"/>
 Detailed bootstrap analysis can be found in compare.no_overfitting/bt_reference.estimated.pivot_txt
 <strong><em>*</em>*How to read the results?</strong>
 In the example above, we estimate expected drop in AUC, and maybe more significant, larger confidence interval for the tested data set (column D). To decrease the confidence interval we could decrease the number of important features. That would yield better separation in Test 3 and smaller confidence interval here. However, it is just number games. In the example here, the important features covers ~80% of feature importance in the original model. We don't have yet thumb rule for the right number though.

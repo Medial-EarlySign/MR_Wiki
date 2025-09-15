@@ -7870,7 +7870,7 @@ Basic evaluation - in the graph, number of cases in the Top N, one sample for pa
 </li>
 <li>if we take just patients with smoking intensity information (1964 patients eligible on average)</li>
 <li>if we take just patients with WBC in the last 6 months (1438 eligible on average)
-<img src="/attachments/13402413/13402479.png"/>A few notes:</li>
+<img src="../attachments/13402413/13402479.png"/>A few notes:</li>
 <li>Results are for Ex or Current smokers - if we included never smokers results would have been a bit better ...</li>
 <li>
 <p>I got similar results when we take all samples per patient 
@@ -7921,7 +7921,7 @@ Furthermore, as you can see in the research summary of the LEAN model, Smok_Day
 <hr />
 <p><strong>MAIN RESULT - no significant change in performance</strong> ....
 Example from 1 run:
-<img src="/attachments/13402413/13402511.png"/></p>
+<img src="../attachments/13402413/13402511.png"/></p>
 <ul>
 <li>axis x - N</li>
 <li>axis y- cancer detected</li>
@@ -7934,15 +7934,15 @@ Example from 1 run:
 <li>Priority for impute - pred_0 + std by GIBBS
  
 Statistics over 10 datasets, each with 3 run (imputation has random):
-<img src="/attachments/13402413/13402515.png"/>
+<img src="../attachments/13402413/13402515.png"/>
 Side notes</li>
 </ul>
 </li>
 </ul>
 <ol>
-<li>The 'hope for success' was in the data completion procedure, as we complete missing values conditioned on the actual status (case/control). Indeed, for patients with data completion, the average score for cases increased more than for controls, but apparently not more enough. See example in the following table - change of score for M=5000<img src="/attachments/13402413/13402534.png"/></li>
+<li>The 'hope for success' was in the data completion procedure, as we complete missing values conditioned on the actual status (case/control). Indeed, for patients with data completion, the average score for cases increased more than for controls, but apparently not more enough. See example in the following table - change of score for M=5000<img src="../attachments/13402413/13402534.png"/></li>
 <li>The data completion increases the cutoff score for Top N. It makes sense, as the standard imputation impute to the mean, and we sample from the distribution, hence have more extreme results.</li>
-<li>Is the data completion by closest friends OK? Other then exploring some examples, we compare the std in score calculated in GIBBS, and the actual std we get (among patients with expected similar std). See the result in the graph - axis x is GIBBS and axis y is what we get. Trend is similar but we higher variability, could be because GIBBS calculate the std on an over fitted model (trained over all the data)<img src="/attachments/13402413/13402512.png"/></li>
+<li>Is the data completion by closest friends OK? Other then exploring some examples, we compare the std in score calculated in GIBBS, and the actual std we get (among patients with expected similar std). See the result in the graph - axis x is GIBBS and axis y is what we get. Trend is similar but we higher variability, could be because GIBBS calculate the std on an over fitted model (trained over all the data)<img src="../attachments/13402413/13402512.png"/></li>
 </ol>
 
 
