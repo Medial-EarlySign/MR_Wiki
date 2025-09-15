@@ -26,7 +26,7 @@ void run_bootstrap_on_samples(const string &samples_path, map<string, map<string
 }
 ```
 Example Code for MedBootstrap (you may look at $MR_ROOT/Projects/Shared/UnitTestingInfra for the testing process)
-There is an application which uses this libray - [bootstrap_app](/Medial%20Tools/bootstrap_app)
+There is an application which uses this libray - [bootstrap_app](../../Medial%20Tools/bootstrap_app)
  
 How to run bootstrap on a custom measurement function:
 ```c++

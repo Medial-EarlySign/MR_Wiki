@@ -28,5 +28,5 @@ The rep processor is defined as such:
 ```
  
 We are currently using this processor in two capacities.
-The first is to take a trained model and apply it on noised data, to see how much the model is sensitive to noise at prediction. This is much cheaper (adjust_model), and is incorporated into the autotests as 15.test_noise_sensitivity_analysis.py (see [Development kit](/Medial%20Tools/Model%20Checklist/AutoTest/Development%20kit)).
+The first is to take a trained model and apply it on noised data, to see how much the model is sensitive to noise at prediction. This is much cheaper (adjust_model), and is incorporated into the autotests as 15.test_noise_sensitivity_analysis.py (see [Development kit](../../Medial%20Tools/Model%20Checklist/AutoTest/Development%20kit)).
 The second is to noise a model at training time, to see how much the model is sensitive to noise at training. For this purpose, see U:\Itamar\MR\Projects\Shared\test_noiser\train_experiment\example_experiment. The file create_preds_train.py is a python script calling shell commands, to test crc_model.json in same directory. The trained models and preds subdirectories contain outputs of the test, including analysis for noising just time, just value, or just drop probability. 

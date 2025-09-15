@@ -22,7 +22,7 @@ Parameters:
     - bootstrap/bootstrap.json - a bootstrap json file to run bootstrap_app
 - BT_COHORT - bootstrap cohorts definition file for bootstrap analysis. It is reference by default to the current config folder /bootstrap/bt.params
     - bootstrap/bt.params - a bootstrap cohorts file for bootstrap_app
-- NOISER_JSON - a json that defines rep processors to "noise" the inputs and test model sensitivity to noise. It references a file in current folder named: noiser_base.json. Please refer to [Noiser](/Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/Noiser.html) page for more details.
+- NOISER_JSON - a json that defines rep processors to "noise" the inputs and test model sensitivity to noise. It references a file in current folder named: noiser_base.json. Please refer to [Noiser](../../../../Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/Noiser.md) page for more details.
 - TIME_NOISES - vector of values to control the noise in dates. The unit is days, so "30" means uniform randomly shifting dates between 0-30 days backward of all signals in NOISER_JSON.
 - VAL_NOISES - vector of values to control the noise in signal values. The unit is standard deviation multiply by 10 - so "1" means "0.1" * signal std. This will control normal random noise standard deviation based on signal std.
 - DROP_NOISES - vector of values to control the probability to "drop" tests/values. The unit is probability multiply by 10 - so "1" mean "0.1"/10% chances to drop a lab test value in certain date.
@@ -31,7 +31,7 @@ Parameters:
 - EXPLAIN_JSON - bootstrap json to control explainability cohorts if they are different than regular cohorts. By default it is the same as regular bootstrap: EXPLAIN_JSON=${BT_JSON}
 - EXPLAIN_COHORT - bootstrap cohort definitions for explainability. By default it is the same as regular bootstrap
 - BT_JSON_FAIRNESS - bootstrap json to control fairness cohorts if they are different than regular cohorts. By default it is the same as regular bootstrap: BT_JSON_FAIRNESS=${BT_JSON}
-- FAIRNESS_BT_PREFIX - A single cohort to filter samples to test fairness. The syntax is the same as bootstrap cohort. [bootstrap_app](/Medial%20Tools/bootstrap_app)
+- FAIRNESS_BT_PREFIX - A single cohort to filter samples to test fairness. The syntax is the same as bootstrap cohort. [bootstrap_app](../../../bootstrap_app)
     - "configs/fairness_groups.cfg" - more info in [Test_12 - fairness](Test_12%20-%20fairness.md)
 - FAIRNESS_MATCHING_PARAMS - Control How to do matching between groups if fairness isn't met. The default is to do the matching by age - 10 years bin.
 - BASELINE_MODEL_PATH - A path to baseline model to compare with

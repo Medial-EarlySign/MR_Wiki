@@ -19,11 +19,11 @@ The model uses the following signals:
 
 ## Deployments
 
-* partial list - there are more deployments
-
 - Maccabi Healthcare Services - Israel (since 2015)
 - Geisinger Health System - US (since 2018)
-- List of more sites, like Vietnam, etc.
+- List of more sites...
+
+> **Note:** partial list - there are more deployments
 
 ## Intended Usage
 
@@ -44,7 +44,7 @@ For further information, please see the "Contact Details for Usage" section and 
 | [Development and validation of a predictive model for detection of colorectal cancer in primary care by analysis of complete blood counts: a binational retrospective study](https://pmc.ncbi.nlm.nih.gov/articles/PMC4997037/) | MHS Israel, THIN - UK | 2016 | Old ColonFlag | Retrospective, Outcomes were retrieved after scoring + External validation | MES |
 | [Performance analysis of a machine learning flagging system used to identify a group of individuals at a high risk for colorectal cancer](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0171759) | MHS Israel | 2017 | Old ColonFlag | Prospective Observational | MES |
 | [Evaluation of a prediction model for colorectal cancer: retrospective analysis of 2.5 million patient records](https://pmc.ncbi.nlm.nih.gov/articles/PMC5633543/) | UK - CPRD | 2017 | Old ColonFlag | Retrospective, External Validation | Oxford |
-| [Early Colorectal Cancer Detected by Machine Learning Model Using Gender, Age, and Complete Blood Count Data](https://link.springer.com/article/10.1007/s10620-017-4722-8) | US - Kaiser Permanente North West | 2017 | Old ColonFlag ??? | Retrospective, External Validation | MES |
+| [Early Colorectal Cancer Detected by Machine Learning Model Using Gender, Age, and Complete Blood Count Data](https://link.springer.com/article/10.1007/s10620-017-4722-8) | US - Kaiser Permanente North West | 2017 | ColonFlag ??? | Retrospective, External Validation | MES |
 |[Computer-Assisted Flagging of Individuals at High Risk of Colorectal Cancer in a Large Health Maintenance Organization Using the ColonFlag Test](https://ascopubs.org/doi/full/10.1200/CCI.17.00130)| MHS Israel | 2018 | Old ColonFlag | Prospective Interventional | MHS |
 | [Prediction of findings at screening colonoscopy using a machine learning algorithm based on complete blood counts (ColonFlag)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0207848) | Canada | 2018 | ColonFlag | Retrospective, External Validation | MES |
 | [Potential roles of artificial intelligence learning and faecal immunochemical testing for prioritisation of colonoscopy in anaemia](https://onlinelibrary.wiley.com/doi/10.1111/bjh.15776) | UK - gastroenterology clinic in Plymouth, Royal London Hospital | 2019 | ColonFlag | Prospective Observational | Barts | 

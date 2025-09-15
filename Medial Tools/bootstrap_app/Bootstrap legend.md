@@ -1,7 +1,7 @@
 # Bootstrap legend
 The bootstrap result file is tab delimited file with 3 columns:
 
-1. Cohort - The name of the "filter" used to select and defined the cohort which the results are reffered to. For example "All" - means no filters, "Males" - only males, "Age:45-80", etc.. The name is configured in bootstrap cohort configuration file (--cohort_file argument) that maps name of cohort to set of filter rules, as described under: [bootstrap_app](/Medial%20Tools/bootstrap_app)
+1. Cohort - The name of the "filter" used to select and defined the cohort which the results are reffered to. For example "All" - means no filters, "Males" - only males, "Age:45-80", etc.. The name is configured in bootstrap cohort configuration file (--cohort_file argument) that maps name of cohort to set of filter rules, as described under: [bootstrap_app](../bootstrap_app)
 2. Measurement - The name of the measurement. For example "AUC_Mean" - which is the mean value of the AUC measured in the bootstrap analysis process.The name is divided into 2 sections - The metric that was measured in each bootstrap experiment and the statistical calculation over this measure from all experiments. For each metric we extract the following statistical values which appears in the suffix:
 
 - _Mean - mean value of the metric from all bootstrap experiments

@@ -39,7 +39,7 @@ You can use these prefixes for referencing files relative to the JSON:
 - `comma_rel:`: References a file, extracting content line by line into a comma-separated string (`"line1,line2,..."`).
 - `json:`: References another file, adding its content to this JSON as-is.
 
-Some of the parameters in a trained model can later be changed using [adjust_model](/Medial%20Tools/adjust_model.html) or [change_model](/Medial%20Tools/change_model). For example, if you are running an existing model on a lower-memory computer, you might want to reduce `max_data_in_mem`. See [How to limit memory usage](/Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict.html).
+Some of the parameters in a trained model can later be changed using [adjust_model](../Medial%20Tools/adjust_model.md) or [change_model](../Medial%20Tools/change_model). For example, if you are running an existing model on a lower-memory computer, you might want to reduce `max_data_in_mem`. See [How to limit memory usage](../Medial%20Tools/change_model/How%20to%20limit%20memory%20usage%20in%20predict.md).
 
 ## Main Model Pipeline
 
@@ -105,7 +105,7 @@ Example of an `"rp_set"` block (similar for `"fp_set"`):
 
 In the last part of the JSON, after `"model_actions"`:
 
-- `"predictor"`: Selects MedPredictor to train on the generated matrix. See [MedPredictor practical guide](04.MedAlgo%20Library/MedPredictor%20practical%20guide) and [List of options](https://Medial-EarlySign.github.io/MR_LIBS/MedAlgoh.html#ab3f9aacffd8e29e833677299133ac4f0). Examples: `"xgb"` for XGBoost, `"lightgbm"` for LightGBM, `"lm"` for a linear model, etc.
+- `"predictor"`: Selects MedPredictor to train on the generated matrix. See [MedPredictor practical guide](04.MedAlgo%20Library/MedPredictor%20practical%20guide) and [List of options](https://Medial-EarlySign.github.io/MR_LIBS/MedAlgo_8h.html#ab3f9aacffd8e29e833677299133ac4f0). Examples: `"xgb"` for XGBoost, `"lightgbm"` for LightGBM, `"lm"` for a linear model, etc.
 - `"predictor_params"`: Arguments to initialize the predictor, depending on the chosen predictor.
 
 ## Reference Lists

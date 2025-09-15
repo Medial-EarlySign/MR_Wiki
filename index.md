@@ -5,6 +5,8 @@
 
 This is an infrastructure developed by Medial EarlySign to streamline the creation of predictive models using EMR data for clinical applications. Existing tools often fall short for clinical use many Python libraries are not optimized for sparse time series analysis, leading to high memory consumption and, in some cases, performance that is 10–100 times slower than necessary.
 
+Medial Infrastructure is designed to turn the Electronic Medical Record (EMR)-a complex, semi-structured time-series dataset, into a machine-learning-ready resource. Unlike images or free text, EMR data can be stored in countless formats, and its "labels" (the outcomes or targets you want to predict) aren’t always obvious. We address this by standardizing both the storage and the processing of time-series signals. We can think about this infrastructure as "TensorFlow" of medical data machine learning.
+
 ## Using a Prebuilt Model
 Available models:
 
@@ -15,8 +17,8 @@ Available models:
 | [GastroFlag](Models/GastroFlag.md) | Detects gastric cancer using age, sex, and common blood tests | [Roche](https://navifyportal.roche.com/us/en-us/about) |
 | [AAA](Models/AAA.md) | Predicts AAA events | Geisinger/TBD |
 | [FluComplications](Models/FluComplications.md) | Predicts flu followed by complications such as pneumonia, hospitalization, or death | TBD |
-| [Pred2D](Models/Pred2D.md) | Predicts progression from prediabetes to diabetes | Planned to be open sources |
-| [FastProgressors](Models/FastProgressors.md) | Predicts rapid decline in eGFR	 | Planned to be open sources |
+| [Pred2D](Models/Pred2D.md) | Predicts progression from prediabetes to diabetes | Planned to be open source |
+| [FastProgressors](Models/FastProgressors.md) | Predicts rapid decline in eGFR	 | Planned to be open source |
 | [MortatlityCMS](Models/MortatlityCMS.md) | Predicts mortality using CMS claims data | TBD |
 | [Unplanned COPD Admission Prediction Model](Models/COPDCMS.md) | Predicts COPD hospitalization using CMS claims data | TBD |
 

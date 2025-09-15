@@ -30,7 +30,7 @@ Example config:
 - force_cancel_imputations - flag to indicate we need to find model original imputer and replace it (otherwise there will be no missing values, the imputer will impute them).
 - batch_size - how many samples in each batch before duplications
 - use_median - if true will replace pred_0 with median
-- feature_processor_type - the feature processor init type - pay attention to use something with stochastic properties, for example "predictor_imputer" - you can see more imputer options in [FeatureProcessor practical guide](/Infrastructure%20C%20Library/03.FeatureProcessor%20practical%20guide)
+- feature_processor_type - the feature processor init type - pay attention to use something with stochastic properties, for example "predictor_imputer" - you can see more imputer options in [FeatureProcessor practical guide](../03.FeatureProcessor%20practical%20guide)
 - feature_processor_args - arguments for the feature processors. You can see some explanations in the FeatureProcessor practical guide
 Run adjust model with this post processor to generate gibbs sampling on missing values in features tagged "labs_numeric":
 ```bash
@@ -43,6 +43,6 @@ Flow --get_model_preds --print_attr 1 --rep /home/Repositories/THIN/thin_jun2017
  
 
 Example output for pred2d model output:
-[Excel Results](/attachments/13402388/13402394.xlsx)
+[Excel Results](../../attachments/13402388/13402394.xlsx)
 There are additional columns: attr_pred.ci_lower,attr_pred.ci_upper,attr_pred.mean,attr_pred.median,attr_pred.std
  

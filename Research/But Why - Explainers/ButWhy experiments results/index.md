@@ -109,9 +109,9 @@ Not far behind SHAP_Gibbs_LightGBM and missing_shap which preforms similarly.
  
 Reference to expirement results:
 
-- [compare_blinded.tsv](/attachments/11207363/11207379.tsv) - the blinded experiment - for each sample random shuffle of explainers outputs. and in xlsx format: [compare_blinded.xlsx](/attachments/11207363/11207385.xlsx)
-- [map.ids.tsv](/attachments/11207363/11207380.tsv) - the order of each explainer
-- [summary.tsv](/attachments/11207363/11207381.tsv) - results for each sample - with explainers aligned (not blinded) - after joining map.ids.tsv with compare_blinded.tvs
+- [compare_blinded.tsv](../../../attachments/11207363/11207379.tsv) - the blinded experiment - for each sample random shuffle of explainers outputs. and in xlsx format: [compare_blinded.xlsx](../../../attachments/11207363/11207385.xlsx)
+- [map.ids.tsv](../../../attachments/11207363/11207380.tsv) - the order of each explainer
+- [summary.tsv](../../../attachments/11207363/11207381.tsv) - results for each sample - with explainers aligned (not blinded) - after joining map.ids.tsv with compare_blinded.tvs
 ### CRC
 <table><tbody>
 <tr>
@@ -205,9 +205,9 @@ Reference to expirement results:
 </tbody></table>
 Reference to expirement results:
 
-- [compare_blinded.tsv](/attachments/11207363/11207379.tsv) - the blinded experiment - for each sample random shuffle of explainers outputs. and in xlsx format: [compare_blinded_CRC.xlsx](/attachments/11207363/11207414.xlsx)
-- [map.ids.tsv](/attachments/11207363/11207380.tsv) -  the order of each explainer
-- [summary.sum.tsv](/attachments/11207363/11207415.tsv) - results for each sample - with explainers aligned (not blinded) - after joining map.ids.tsv with compare_blinded.tvs
+- [compare_blinded.tsv](../../../attachments/11207363/11207379.tsv) - the blinded experiment - for each sample random shuffle of explainers outputs. and in xlsx format: [compare_blinded_CRC.xlsx](../../../attachments/11207363/11207414.xlsx)
+- [map.ids.tsv](../../../attachments/11207363/11207380.tsv) -  the order of each explainer
+- [summary.sum.tsv](../../../attachments/11207363/11207415.tsv) - results for each sample - with explainers aligned (not blinded) - after joining map.ids.tsv with compare_blinded.tvs
 
 ### Pre2D
 <table><tbody>
@@ -302,9 +302,9 @@ Reference to expirement results:
 </tbody></table>
 Reference to expirement results:
 
-- [compare_blinded.tsv](/attachments/11207363/11207379.tsv) - the blinded experiment - for each sample random shuffle of explainers outputs. and in xlsx format: 
-- [map.ids.tsv](/attachments/11207363/11207380.tsv) - the order of each explainer
-- [summary.tsv](/attachments/11207363/11207381.tsv) - results for each sample - with explainers aligned (not blinded) - after joining map.ids.tsv with compare_blinded.tvs
+- [compare_blinded.tsv](../../../attachments/11207363/11207379.tsv) - the blinded experiment - for each sample random shuffle of explainers outputs. and in xlsx format: 
+- [map.ids.tsv](../../../attachments/11207363/11207380.tsv) - the order of each explainer
+- [summary.tsv](../../../attachments/11207363/11207381.tsv) - results for each sample - with explainers aligned (not blinded) - after joining map.ids.tsv with compare_blinded.tvs
 
 ## **Conclusions**
 Summary Table all expirements:

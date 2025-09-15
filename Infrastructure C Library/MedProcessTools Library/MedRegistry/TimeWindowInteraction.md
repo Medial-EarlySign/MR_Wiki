@@ -4,7 +4,7 @@ This class defines how two time windows interact (boolean result - Yes or No).
 
 - How to label samples based on registry - given outcome registry time range and prediction time range. return True/False if we should label the sample based on the registry record outcome value.
 - Whether or not to censor the sample - given outcome registry time range and prediction time range. return True/False if we should censor the sample
-the object is being initialized by [ medial::sampling::init_time_window_mode](https://Medial-EarlySign.github.io/MR_LIBS/namespacemedial_1sampling.html#a964913fff8a3d1352a55f0f40d6d6f12) function.
+the object is being initialized by [medial::sampling::init_time_window_mode](https://medial-earlysign.github.io/MR_LIBS/namespacemedial_1_1sampling.html#a964913fff8a3d1352a55f0f40d6d6f12) function.
 ### the initialization string format
 the init strings define the Rules for interaction between sample time window and the registry time window.
 this is abstraction of the time windows definitions:

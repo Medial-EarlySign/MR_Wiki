@@ -7,8 +7,8 @@ Available models:
 | [GastroFlag](GastroFlag.md) | Detects gastric cancer using age, sex, and common blood tests | [Roche](https://navifyportal.roche.com/us/en-us/about) |
 | [AAA](AAA.md) | Predicts AAA events | Geisinger/TBD |
 | [FluComplications](FluComplications.md) | Predicts flu followed by complications such as pneumonia, hospitalization, or death | TBD |
-| [Pred2D](Pred2D.md) | Predicts progression from prediabetes to diabetes | Planned to be open sources |
-| [FastProgressors](FastProgressors.md) | Predicts rapid decline in eGFR	 | Planned to be open sources |
+| [Pred2D](Pred2D.md) | Predicts progression from prediabetes to diabetes | Planned to be open source |
+| [FastProgressors](FastProgressors.md) | Predicts rapid decline in eGFR	 | Planned to be open source |
 | [Mortatlity](MortatlityCMS.md) | Predicts mortality using CMS claims data | TBD |
 | [Unplanned COPD Admission Prediction Model](COPDCMS.md) | Predicts COPD hospitalization using CMS claims data | TBD |
 

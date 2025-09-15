@@ -1,6 +1,6 @@
 # Boston MLHC (ML in HealthCare) 2017
 
-[Boston MLHC](/attachments/8388616/8388615.pptx)
+[Boston MLHC](../../attachments/8388616/8388615.pptx)
 
  
 

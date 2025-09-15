@@ -1,7 +1,7 @@
 # bootstrap_app
 *This is a user manual page. For list of frozen versions and updates see *
 **
-this is a bootstrap application for running bootstrap (which uses [MedBootstrap](/Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.html) Library). The code is availbe under: $MR_ROOT/Tools/bootstrap_app
+this is a bootstrap application for running bootstrap (which uses [MedBootstrap](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.md) Library). The code is availbe under: $MR_ROOT/Tools/bootstrap_app
 **I have also created alias for the bootstrap_app named "bootstrap" so you can simply type "bootstrap --help" or run bootstrap without providing the full path in linux**
  
 ```bash
@@ -94,7 +94,7 @@ cohorts_file = /server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/bootst
 ##This line will create all the options for time windows: 0-30,30-180,180-365 with ages 40-60,60-80,40-80 for both male,females
 #MULTI Time-Window:0,30;Time-Window:30,180;Time-Window:180,365 Age:40,60;Age:60,80;Age:40,80 Gender:1,1;Gender:2,2
 ```
-For exact format of cohorts_file please reffer to [MedBootstrap](/Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.html) wiki page or [doxygen](https://Medial-EarlySign.github.io/MR_LIBS/classMedBootstrap.html#a719ddf45e236146cd0020b0f587b78a1).
+For exact format of cohorts_file please reffer to [MedBootstrap](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.md) wiki page or [doxygen](https://Medial-EarlySign.github.io/MR_LIBS/classMedBootstrap.html#a719ddf45e236146cd0020b0f587b78a1).
  
 ## Fixing incidence with incidence file
 It calculates the average incidence in your cohort based on sex, age group and count of patients in this group. Then to calculate ppv: it multiplies the sensitivity by the incidence - sensitivity* average incidence. it divides it with sensitivity* average incidence + fpr * (1 - average incidence). Equivalent to give this weight for cases: average incidence * total cohort / total casesWeight for control as (1- average incidence)*total cohort / total controls . Sanity test: if model is random, results in sensitivity = fpr, results in ppv = incidenceThe bootstrap program also assesses what would happen to the incidence by other filters of the bootstrap cohort besides (sex, age). For example, taking anemic patients would cause bias toward cases and increase the incidence driven from global population SEER. It assumes that the effect on stratified outcome,age,sex within input samples and the SEER samples(Or generated samples yearly) is the similar - by measuring lift in odds ratio between after applying the bootstrap filters and before the filters.
@@ -116,5 +116,5 @@ STATS_ROW       FEMALE  21      0.0     94758
 STATS_ROW       MALE    24      1.0     5338
 ```
  
-the registry_path is a text format of [MedRegistry](/Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry). look for the code documentation for more info in the write_text_file method.
+the registry_path is a text format of [MedRegistry](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry). look for the code documentation for more info in the write_text_file method.
  

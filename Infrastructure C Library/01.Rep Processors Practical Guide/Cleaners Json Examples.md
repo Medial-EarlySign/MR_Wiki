@@ -1,5 +1,5 @@
 # Cleaners Json Examples
-Examples for creating Jsons with default cleaner. An Example of cleaner can be found in git: [https://github.com/Medial-EarlySign/AM_Lung/blob/main/configs/training/full_rep_processors.json](https://github.com/Medial-EarlySign/AM_Lung/blob/main/configs/training/full_rep_processors.json)
+Examples for creating Jsons with default cleaner. An Example of cleaner can be found in git: [full_rep_processors.json](../MedModel%20json%20format.md#full-example)
  
 full_cleaners is based on:
 

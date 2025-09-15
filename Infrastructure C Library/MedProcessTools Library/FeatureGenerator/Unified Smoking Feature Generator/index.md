@@ -181,7 +181,7 @@ I have noticed that there are a lot of "collisions" in the smoking status vector
 After removing non-conclusive  Read codes - this was reduced to ~0.5%.
 When the old THIN smoking feature generator was used in a simple LR model for lung cancer AUC was improved in 1 point.
 See original and modified mapping in the table below. 
-[smoking_readcodes_combined.csv](/attachments/11206807/11206827.csv)
+[smoking_readcodes_combined.csv](../../../../attachments/11206807/11206827.csv)
  
 <img src="/attachments/11206807/11206834.png"/>
 **Figure 1 - Logic for setting the smoking status.**

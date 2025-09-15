@@ -6,7 +6,7 @@ The InfraMed Library is a non-sql data structure tailored to hold medical record
 The main goal is to provide an efficient way to get a vector of time signals (date/time, value) for a pair of patient and signal type (pid , sid).
 Main toolsets available in the library:
 
-- Converting a data set to the InfraMed Repository format. (see [here](/Repositories/Load%20new%20repository.html))
+- Converting a data set to the InfraMed Repository format. (see [here](../../Repositories/Load%20new%20repository.md))
 - Adding a signal to the data set, fixing a signal
 - Reading a data set or a part of it to memory
 - Get the vector of signals for (pid, sid) , date/time sorted

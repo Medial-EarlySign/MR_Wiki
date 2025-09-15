@@ -9,7 +9,7 @@
     - `GENERIC_SIGNAL_TYPE`: Marks the line as a signal type definition.
     - `type_alias`: A short name for the signal type.
     - `GSV_string_spec`: The type specification. List time channels first (if any), then value channels.  
-      - Time channels use `T(X)`, where `X` is a comma-separated list of basic types (see [Generic (Universal) Signal Vectors](/Infrastructure%20C%20Library/00.InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors.html)).  
+      - Time channels use `T(X)`, where `X` is a comma-separated list of basic types (see [Generic (Universal) Signal Vectors](../Infrastructure%20C%20Library/00.InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors.md)).  
       - Example: `T(i)` means one integer time channel; `T(i,i)` means two integer time channels (can also be written as `T(i),T(i)`).  
       - Value channels follow after time channels.
   - **A Signal Definition**  

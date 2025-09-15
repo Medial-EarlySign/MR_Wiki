@@ -20,7 +20,7 @@ The equation for mutual information is KLD between the joint features distributi
 The following file has 4 methods to compare (covariance or mutual information and equation 1 or equation 2) W:\Users\Alon\But_Why\outputs\Stage_B\explainers\crc\reports\compare_new_cov_fix\compare_all.xlsx.
 I did it for CRC which is the most challenging problems since we have many features and similar once.
 ## Results
-Alon Results [compare_all.Alon.xlsx](/attachments/11207625/11207623.xlsx)
+Alon Results [compare_all.Alon.xlsx](../../attachments/11207625/11207623.xlsx)
 <table><tbody>
 <tr>
 <th>Method/score</th>
@@ -73,7 +73,7 @@ Alon Results [compare_all.Alon.xlsx](/attachments/11207625/11207623.xlsx)
 <td>1.979125614</td>
 </tr>
 </tbody></table>
-Coby results [compare_all - Coby.xlsx](/attachments/11207625/11207634.xlsx):
+Coby results [compare_all - Coby.xlsx](../../attachments/11207625/11207634.xlsx):
 <table><tbody>
 <tr>
 <th>Method/score</th>

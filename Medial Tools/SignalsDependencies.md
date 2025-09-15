@@ -1,5 +1,5 @@
 # SignalsDependencies
-The Code exists in: **$MR_ROOT/Tools/SignalsDependencies **and is basically using library functions in [MedRegistry ](/Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry)object - method called "calc_signal_stats" after loading the registry.
+The Code exists in: **$MR_ROOT/Tools/SignalsDependencies **and is basically using library functions in [MedRegistry ](../Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry)object - method called "calc_signal_stats" after loading the registry.
 This tool will allow you to discover relevant categorical signals (for example: readcodes or drugs) that has statstical connection to you outcome within a defined time-window.
 The tool will create MedSamples based on the signal time points and than label those samples based on the registry and "labeling_params" parameter which defines the rules for the labeling - either case, control or excluded (if can't determine for example).
 It will create contingency table from samples within time-window for each gender and age group:
@@ -15,9 +15,9 @@ The registry format is tab-delimited:
 [PID, Start_Date, End_Date, RegistryValue] 
 Start_date - is the outcome registry start time for the outcome to be labeled (in cancer it's the first time the patient got cancer)
 End_date - is the outcome registry finish time (where after it the outcome value isn't valid anymore) - for example it may be censoring date. for control it's the last time we know it's still control
-for more details reffer to [MedRegistry ](/Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry)
+for more details reffer to [MedRegistry ](../Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry)
  
-Explain on labeling_params and inc_labeling_params can be given in [TimeWindowInteraction](/Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry/TimeWindowInteraction.html). Those arguments are LabelParams objet that defines how to label sampels.
+Explain on labeling_params and inc_labeling_params can be given in [TimeWindowInteraction](../Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry/TimeWindowInteraction.md). Those arguments are LabelParams objet that defines how to label sampels.
  
 **Important parameters for the tool (that most be supplied, don't use default ones unless you know what you are doing):**
 

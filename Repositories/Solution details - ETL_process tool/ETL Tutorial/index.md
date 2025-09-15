@@ -18,7 +18,7 @@ While manual loading file creation is possible, our tool is highly recommended f
 
   * **Code Reusability:** It reuses common data elements and testing procedures, drastically reducing the amount of code you need to write. Our scripts are typically **3-4 times shorter** than older, manual ETL scripts.
 
-[ETL_infra.pptx (slide deck)](/SharePoint_Documents/General/genericETL/ETL_infra.pptx)
+[ETL_infra.pptx (slide deck)](../../../SharePoint_Documents/General/genericETL/ETL_infra.pptx)
 
 The code for this infrastructure was written with less strict standards as it is not part of our main production environment. While using the infrastructure is designed to be comfortable, modifying it may be challenging due to this less rigorous policy. Bugs may also be present.
 

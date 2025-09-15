@@ -1,6 +1,6 @@
 ## AlgoMarker Request Format
 
-For complete details, see the [AlgoMarker Spec](/SharePoint_Documents/General/AlgoMarker/RDG-04-11-33%20AM%20Library%20SW%20Version%201.1%20Software%20Design%20Document%20-%20Rev%20D.docx).
+For complete details, see the [AlgoMarker Spec](../../SharePoint_Documents/General/AlgoMarker/RDG-04-11-33%20AM%20Library%20SW%20Version%201.1%20Software%20Design%20Document%20-%20Rev%20D.docx).
 
 ### Required Fields
 

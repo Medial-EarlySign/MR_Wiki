@@ -35,4 +35,4 @@ Z - score: 4.470422572292469, p-value: 3.903260102799955e-06
  
  
  
-[Comparing_Two_ROC_Curves-Paired_Design.pdf](/attachments/11207107/11207109.pdf)
+[Comparing_Two_ROC_Curves-Paired_Design.pdf](../attachments/11207107/11207109.pdf)

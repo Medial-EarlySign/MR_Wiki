@@ -224,13 +224,13 @@ Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20Algo
 
 
 4. Comprehensive evaluation toolkit
-    * [Bootstrap-based](/Medial%20Tools/bootstrap_app/) cohort analysis allows batch testing across thousands of user-defined subgroups (e.g., age 50–80, males only, prediction window of 365 days, COPD patients).
+    * [Bootstrap-based](../Medial%20Tools/bootstrap_app/) cohort analysis allows batch testing across thousands of user-defined subgroups (e.g., age 50–80, males only, prediction window of 365 days, COPD patients).
     * Automatically extracts AUC, ROC points at each 1% FPR increment, odds ratios, PPV/NPV, and applies incidence-rate adjustments or KPI weights
     * Includes explainability and fairness audits
 5. **Unified API wrapper for production deployment**
     * Ready for productization out of the box, no need to reinvent integration or design a new interface each time. See [AlgoMarker](AlgoMarkers/)
     * Packages the entire end-to-end pipeline (raw time-series ingestion through inference) into a single, stable SDK.
-    * Core infrastructure implemented in C++ for performance and portability, with a lightweight [Python wrapper](/Python) for seamless integration.
+    * Core infrastructure implemented in C++ for performance and portability, with a lightweight [Python wrapper](../Python) for seamless integration.
     * Although powered by C++, the team mainly uses and maintains workflows via the Python SDK, ensuring rapid development and minimal friction. Experienced user might use the C++ API more often, since the python interface is more limited. 
 
 
