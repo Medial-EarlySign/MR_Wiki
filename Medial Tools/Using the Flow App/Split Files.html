@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://medial-earlysign.github.io/MR_Wiki/Medial%20Tools/Using%20the%20Flow%20App/Split%20Files.html">
       
       
-        <link rel="prev" href="Outcomes%20files.html">
+        <link rel="prev" href="Fit%20MedModel%20to%20Repository.html">
       
       
         <link rel="next" href="Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.html">
@@ -5002,12 +5002,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -5058,58 +5052,12 @@
   
   
     <li class="md-nav__item">
-      <a href="Feature%20Importance%20with%20shapley%20values%20analysis.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Feature Importance with shapley values analysis
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="Fit%20MedModel%20to%20Repository.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Fitting a MedModel to a Repository
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Outcomes%20files.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Outcomes files
     
   </span>
   
@@ -5194,6 +5142,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#create-random-splits-for-patients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Random Splits for Patients
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5239,29 +5196,6 @@
   
   <span class="md-ellipsis">
     Using Pre Processors
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="train_test%20mode.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    train_test mode
     
   </span>
   
@@ -7768,6 +7702,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#create-random-splits-for-patients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Random Splits for Patients
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -7814,6 +7757,15 @@ Followed by tupples:
  </p>
 <h2 id="the-medsplit-class">The MedSplit Class</h2>
 <p>Defined in MedFeat/MedOutcome.h , this class contains the basic tools to create splits, and read/write them to files.</p>
+<h2 id="create-random-splits-for-patients">Create Random Splits for Patients</h2>
+<p>Inputs:</p>
+<ul>
+<li>REPOSITORY_PATH - you will need data to retreive all patients</li>
+<li>SPLIT_NUMBER - fill in the nubmer of splits you want to create</li>
+<li>OUTPUT_PATH - output file to store the output split file in format <pid> <split></li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Flow<span class="w"> </span>--create_splits<span class="w"> </span><span class="s2">&quot;nsplits=</span><span class="nv">$SPLIT_NUMBER</span><span class="s2">&quot;</span><span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--f_split<span class="w"> </span><span class="nv">$OUTPUT_PATH</span>
+</code></pre></div></td></tr></table></div>
 
 
 

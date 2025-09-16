@@ -5002,12 +5002,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -5058,58 +5052,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../Using%20the%20Flow%20App/Feature%20Importance%20with%20shapley%20values%20analysis.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Feature Importance with shapley values analysis
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Using%20the%20Flow%20App/Fit%20MedModel%20to%20Repository.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Fitting a MedModel to a Repository
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Using%20the%20Flow%20App/Outcomes%20files.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Outcomes files
     
   </span>
   
@@ -5179,29 +5127,6 @@
   
   <span class="md-ellipsis">
     Using Pre Processors
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Using%20the%20Flow%20App/train_test%20mode.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    train_test mode
     
   </span>
   
@@ -7691,15 +7616,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      General Notes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#common-actions" class="md-nav__link">
     <span class="md-ellipsis">
       Common Actions
@@ -7900,37 +7816,15 @@
 
 
 <h1 id="guide-for-common-actions">Guide for Common Actions</h1>
-<h2 id="general-notes">General Notes</h2>
-<ol>
-<li>To search within a program's help documentation, use:<br />
-<code>app --help_ $SEARCH_KEYWORDS</code><br />
-   Example: <code>Flow --help_ match</code> lists all arguments matching "match".</li>
-<li>The Flow app uses "switches" to select its mode. Specify only one switch per command.<br />
-   Example: <code>Flow --simple_train</code> activates simple training mode.</li>
-</ol>
 <h2 id="common-actions">Common Actions</h2>
 <h3 id="1-match-medsamples-by-year-or-criteria">1. Match MedSamples by Year or Criteria</h3>
 <p>See: <a href="../Using%20the%20Flow%20App/Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.html">Using Flow To Prepare Samples and Get Incidences</a></p>
 <h3 id="2-train-a-model-from-json">2. Train a Model from JSON</h3>
-<p><strong>Simple Training:</strong><br />
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Flow<span class="w"> </span>--simple_train<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--f_samples<span class="w"> </span><span class="nv">$PATH_TO_TRAIN_SAMPLES</span><span class="w"> </span>--f_json<span class="w"> </span><span class="nv">$PATH_TO_JSON_WITH_MODEL_INSTRUCTIONS</span><span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$PATH_TO_OUTPUT_TO_STORE_MODEL</span>
-</code></pre></div></td></tr></table></div>
-<strong>Cross-validation:</strong><br />
-See: <a href="../Using%20the%20Flow%20App/train_test%20mode.html">train_test mode</a></p>
-<p><strong>Optimizer for Best Parameters:</strong><br />
-See: <a href="../Optimizer.html">Optimizer</a><br />
-Can be compiled in AllTools.</p>
+<p>refer to <a href="../Using%20the%20Flow%20App/index.html#training-a-model">Flow</a></p>
 <h3 id="3-calculate-model-score-on-samples">3. Calculate Model Score on Samples</h3>
-<p><strong>Get Model Predictions:</strong><br />
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Flow<span class="w"> </span>--get_model_preds<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--f_samples<span class="w"> </span><span class="nv">$PATH_TO_TRAIN_SAMPLES</span><span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$PATH_TO_TRAINED_MODEL_BINARY_FILE</span><span class="w"> </span>--f_preds<span class="w"> </span><span class="nv">$OUTPUT_PATH_TO_STORE_SAMPLES</span>
-</code></pre></div></td></tr></table></div></p>
+<p>refer to <a href="../Using%20the%20Flow%20App/index.html#predictingapplying-a-model">Flow</a></p>
 <h3 id="4-create-feature-matrix-for-samples">4. Create Feature Matrix for Samples</h3>
-<p><strong>From Model:</strong><br />
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Flow<span class="w"> </span>--get_mat<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--f_samples<span class="w"> </span><span class="nv">$PATH_TO_TRAIN_SAMPLES</span><span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$PATH_TO_TRAINED_MODEL_BINARY_FILE</span><span class="w"> </span>--f_matrix<span class="w"> </span><span class="nv">$OUTPUT_PATH_TO_STORE_MATRIX</span>
-</code></pre></div></td></tr></table></div>
-<strong>Directly from JSON:</strong><br />
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>Flow<span class="w"> </span>--get_json_mat<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--f_samples<span class="w"> </span><span class="nv">$PATH_TO_TRAIN_SAMPLES</span><span class="w"> </span>--f_json<span class="w"> </span><span class="nv">$PATH_TO_JSON_WITH_MODEL_INSTRUCTIONS</span><span class="w"> </span>--f_matrix<span class="w"> </span><span class="nv">$OUTPUT_PATH_TO_STORE_MATRIX</span>
-</code></pre></div></td></tr></table></div></p>
+<p>refer to <a href="../Using%20the%20Flow%20App/index.html#creating-a-feature-matrix-for-samples">Flow</a></p>
 <h3 id="5-adjust-model">5. Adjust Model</h3>
 <p>Add or retrain rep_processor or post_processor components. Useful for calibration or explainability.<br />
 See: <a href="../adjust_model.html">adjust_model</a><br />
@@ -7945,7 +7839,7 @@ See: <a href="../Iterative%20Feature%20Selector.html">Iterative Feature Selector
 Can be compiled in AllTools.</p>
 <h3 id="8-analyze-feature-importance-model-behavior">8. Analyze Feature Importance &amp; Model Behavior</h3>
 <p>"But Why" graphs for feature validation.<br />
-See: <a href="../Using%20the%20Flow%20App/Feature%20Importance%20with%20shapley%20values%20analysis.html">Feature Importance</a></p>
+See: <a href="../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.html">Feature Importance</a></p>
 <h3 id="9-bootstrap-performance-analysis">9. Bootstrap Performance Analysis</h3>
 <p>See: <a href="../bootstrap_app">bootstrap_app</a></p>
 <h3 id="10-compareestimate-model-performance-on-different-repository">10. Compare/Estimate Model Performance on Different Repository</h3>
@@ -7955,10 +7849,9 @@ Can be compiled in AllTools.</p>
 <h3 id="11-create-and-load-repository-from-files">11. Create and Load Repository from Files</h3>
 <p>See: <a href="../../Repositories/Load%20new%20repository.html">Load new repository</a></p>
 <h3 id="12-create-random-splits-for-traintestall-patients">12. Create Random Splits for Train/Test/All Patients</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Flow<span class="w"> </span>--create_splits<span class="w"> </span><span class="s2">&quot;nsplits=</span><span class="nv">$SPLIT_NUMBER</span><span class="s2">&quot;</span><span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--f_split<span class="w"> </span><span class="nv">$OUTPUT_PATH</span>
-</code></pre></div></td></tr></table></div>
+<p>Please refer <a href="../Using%20the%20Flow%20App/Split%20Files.html#create-random-splits-for-patients">Using Splits</a></p>
 <h3 id="13-filter-traintest-by-train-signal">13. Filter Train/Test by TRAIN Signal</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>FilterSamples<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--samples<span class="w"> </span><span class="nv">$INPUT_SAMPLES_PATH</span><span class="w"> </span>--output<span class="w"> </span><span class="nv">$OUTPUT_SAMPLES_PATH</span><span class="w"> </span>--filter_train<span class="w"> </span><span class="nv">$FILTER_TRAIN_VAL</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>FilterSamples<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--samples<span class="w"> </span><span class="nv">$INPUT_SAMPLES_PATH</span><span class="w"> </span>--output<span class="w"> </span><span class="nv">$OUTPUT_SAMPLES_PATH</span><span class="w"> </span>--filter_train<span class="w"> </span><span class="nv">$FILTER_TRAIN_VAL</span>
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>TRAIN == 1: Training set (70%)</li>
@@ -7966,12 +7859,10 @@ Can be compiled in AllTools.</p>
 <li>TRAIN == 3: Validation set (10%)</li>
 </ul>
 <h3 id="14-print-model-info">14. Print Model Info</h3>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>Flow<span class="w"> </span>--print_model_info<span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$MODEL</span><span class="w"> </span>...
-</code></pre></div></td></tr></table></div>
-Inspect trained model details.</p>
+<p>Please refer to <a href="../Using%20the%20Flow%20App/index.html#print-trained-model-information">Flow Model Info</a></p>
 <h3 id="15-filter-samples-by-bt-cohort">15. Filter Samples by BT Cohort</h3>
 <p>Include <code>json_mat</code> even if not required by definition.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>FilterSamples<span class="w"> </span>--filter_train<span class="w"> </span><span class="m">0</span><span class="w"> </span>--rep<span class="w"> </span><span class="si">${</span><span class="nv">REP_PATH</span><span class="si">}</span><span class="w"> </span>--filter_by_bt_cohort<span class="w"> </span><span class="s2">&quot;Time-Window:90,730;Age:50,80;Suspected:0,0;Ex_or_Current:1,1&quot;</span><span class="w"> </span>--samples<span class="w"> </span><span class="si">${</span><span class="nv">INPUT</span><span class="si">}</span><span class="w"> </span>--output<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT</span><span class="si">}</span><span class="w"> </span>--json_mat<span class="w"> </span><span class="si">${</span><span class="nv">JSON</span><span class="si">}</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>FilterSamples<span class="w"> </span>--filter_train<span class="w"> </span><span class="m">0</span><span class="w"> </span>--rep<span class="w"> </span><span class="si">${</span><span class="nv">REP_PATH</span><span class="si">}</span><span class="w"> </span>--filter_by_bt_cohort<span class="w"> </span><span class="s2">&quot;Time-Window:90,730;Age:50,80;Suspected:0,0;Ex_or_Current:1,1&quot;</span><span class="w"> </span>--samples<span class="w"> </span><span class="si">${</span><span class="nv">INPUT</span><span class="si">}</span><span class="w"> </span>--output<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT</span><span class="si">}</span><span class="w"> </span>--json_mat<span class="w"> </span><span class="si">${</span><span class="nv">JSON</span><span class="si">}</span>
 </code></pre></div></td></tr></table></div></p>
 <h3 id="16-check-model-compatibility-with-repository-suggest-adjustments">16. Check Model Compatibility with Repository / Suggest Adjustments</h3>
 <p>When applying a model to a different repository, some modifications may be necessary.<br />
@@ -7981,7 +7872,7 @@ For further guidance, see <a href="../Using%20the%20Flow%20App/Fit%20MedModel%20
 <h2 id="fixing-missing-dictionary-definitions">Fixing Missing Dictionary Definitions</h2>
 <p>When training on one repository and testing on another, missing diagnoses may occur.<br />
 To find missing codes:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>Flow<span class="w"> </span>--print_model_signals<span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$MODEL_NAME</span><span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REP</span><span class="w"> </span>--transform_rep<span class="w"> </span><span class="m">1</span><span class="w"> </span>--output_dict_path<span class="w"> </span><span class="nv">$PATH</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Flow<span class="w"> </span>--print_model_signals<span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$MODEL_NAME</span><span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REP</span><span class="w"> </span>--transform_rep<span class="w"> </span><span class="m">1</span><span class="w"> </span>--output_dict_path<span class="w"> </span><span class="nv">$PATH</span>
 </code></pre></div></td></tr></table></div>
 To resolve:</p>
 <ul>

@@ -18,7 +18,7 @@
         <link rel="prev" href="Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.html">
       
       
-        <link rel="next" href="train_test%20mode.html">
+        <link rel="next" href="../bootstrap_app/index.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -5002,12 +5002,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -5058,58 +5052,12 @@
   
   
     <li class="md-nav__item">
-      <a href="Feature%20Importance%20with%20shapley%20values%20analysis.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Feature Importance with shapley values analysis
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="Fit%20MedModel%20to%20Repository.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Fitting a MedModel to a Repository
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Outcomes%20files.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Outcomes files
     
   </span>
   
@@ -5194,29 +5142,6 @@
 
       </a>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="train_test%20mode.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    train_test mode
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -7725,8 +7650,8 @@
 
 
 <h1 id="using-pre-processors">Using Pre Processors</h1>
-<p>Given a trained model , one may need to apply some additional rep processors before the model is applied. </p>
-<p>A classical example is : the model was trained without history limits on the signals, and one needs to test the results when limiting the signals (or some of them) to say only 1 year of history.</p>
+<p>Given a trained model , one may need to apply some additional rep processors before the model is applied. 
+A classical example is : the model was trained without history limits on the signals, and one needs to test the results when limiting the signals (or some of them) to say only 1 year of history.</p>
 <p>The way to do that is add a pre processor at apply time to the model.</p>
 <p>This can be done using the Flow --get_model_preds option and adding the pre processors using the --f_pre_json parameter</p>
 <p>Example:</p>
