@@ -22,9 +22,9 @@ Flow --shap_val_request --f_model $MODEL_PATH --rep $REPOSITORY --f_samples $SAM
 This creates a report at the path specified by `--f_output`. Key arguments:
 
 - **group_signals**: Leave empty to report for each feature. Use:
-  - `BY_SIGNAL_CATEG_TREND`: group by signals, separating value and trend features
-  - `BY_SIGNAL_CATEG`: group by signals, combining value and trend features
-  - Or provide a tab-delimited file mapping features to groups
+    - `BY_SIGNAL_CATEG_TREND`: group by signals, separating value and trend features
+    - `BY_SIGNAL_CATEG`: group by signals, combining value and trend features
+    - Or provide a tab-delimited file mapping features to groups
 - **bin_method**: Controls how features are binned. The recommended value is `split_method=iterative_merge;binCnt=50;min_bin_count=100;min_res_value=0.1`, which creates up to 50 bins with at least 100 samples per bin and a minimum value resolution of 0.1. Bins are merged greedily to ensure minimum counts in each bin.
 - **cohort_filter**: Optionally filter samples using a bootstrap cohort file or a cohort string (e.g., `Age:40,60;Time-Window:0,365`). For filters beyond Age, Gender, or Time-window, specify `f_json` to define filter features.
 - **keep_imputers**: If true, model imputers are used to fill missing values during SHAP analysis. By default, imputers are skipped and missing values are binned separately.
@@ -33,6 +33,7 @@ This creates a report at the path specified by `--f_output`. Key arguments:
 
 
 **Advanced flags (usually not needed):**
+
 - `normalize`: Normalize SHAP values to percentages (default: 1)
 - `normalize_after`: If 1, normalizes after summing global importance; if 0, normalizes per prediction (default: 1; only applies if `normalize` is on)
 - `remove_b0`: Remove the baseline/prior score (default: 1). If 0, keeps and prints the baseline (b0), which is the constant added to all predictions.
@@ -74,6 +75,7 @@ This produces a table like:
 | ... | ... | ... | ... | ... |
 
 **Example (Age column):**
+
 - *Importance*: About 5.3% of the average XGBoost raw score (before sigmoid/calibration)
 - *SHAP::Low_Mean*: 15.4 - average contribution for the "Low" age group (positive)
 - *FEAT_VAL::Low_Prctile0*: 0 - lowest value in "Low" bin; *FEAT_VAL::Low_Prctile100*: 9 - highest value (so "Low" = 0-9 years, average 5.27)
