@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://medial-earlysign.github.io/MR_Wiki/Python/Python%20binding%20Troubleshooting.html">
       
       
-        <link rel="prev" href="index.html">
+        <link rel="prev" href="Python%20AlgoMarker%20API%20Wrapper.html">
       
       
-        <link rel="next" href="Medial%27s%20C%2B%2B%20API%20in%20Python/index.html">
+        <link rel="next" href="../Repositories/index.html">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -5935,6 +5935,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -5979,6 +5983,75 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Extend%20and%20Develop.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Extending and Developing the Medial C++ API for Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Python%20AlgoMarker%20API%20Wrapper.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python AlgoMarker API Wrapper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -6038,28 +6111,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem-import-med-does-not-work" class="md-nav__link">
+  <a href="#problem-1-import-med-does-not-work" class="md-nav__link">
     <span class="md-ellipsis">
-      Problem: "import med" does not work
+      Problem 1: "import med" does not work
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Problem: &#34;import med&#34; does not work">
+    <nav class="md-nav" aria-label="Problem 1: &#34;import med&#34; does not work">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#possible-cause-1-incorrect-python-version" class="md-nav__link">
+  <a href="#possible-cause-medpython-is-not-in-path" class="md-nav__link">
     <span class="md-ellipsis">
-      Possible Cause 1: Incorrect Python Version
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#possible-cause-2-binding-not-compiled-or-wrong-python-headers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Possible Cause 2: Binding Not Compiled or Wrong Python Headers
+      Possible Cause: MedPython is not in path
     </span>
   </a>
   
@@ -6070,198 +6134,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#problem-2-medpython-fails-to-compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem 2: MedPython fails to compile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-3-stderr-in-jupyter-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem 3: stderr in Jupyter Notebooks
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/index.html" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Medial's C++ API in Python
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3">
-            <span class="md-nav__icon md-icon"></span>
-            Medial's C++ API in Python
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Build%20the%20python%20extention.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Building the Python Extension
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Examples.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Examples
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Extend%20and%20Develop.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Extending and Developing the Medial C++ API for Python
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Python%20AlgoMarker%20API%20Wrapper.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Python AlgoMarker API Wrapper
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Usage.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Usage
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -7880,28 +7773,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem-import-med-does-not-work" class="md-nav__link">
+  <a href="#problem-1-import-med-does-not-work" class="md-nav__link">
     <span class="md-ellipsis">
-      Problem: "import med" does not work
+      Problem 1: "import med" does not work
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Problem: &#34;import med&#34; does not work">
+    <nav class="md-nav" aria-label="Problem 1: &#34;import med&#34; does not work">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#possible-cause-1-incorrect-python-version" class="md-nav__link">
+  <a href="#possible-cause-medpython-is-not-in-path" class="md-nav__link">
     <span class="md-ellipsis">
-      Possible Cause 1: Incorrect Python Version
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#possible-cause-2-binding-not-compiled-or-wrong-python-headers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Possible Cause 2: Binding Not Compiled or Wrong Python Headers
+      Possible Cause: MedPython is not in path
     </span>
   </a>
   
@@ -7909,6 +7793,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-2-medpython-fails-to-compile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem 2: MedPython fails to compile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-3-stderr-in-jupyter-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem 3: stderr in Jupyter Notebooks
+    </span>
+  </a>
   
 </li>
       
@@ -7945,23 +7847,39 @@
 
 
 <h1 id="python-binding-troubleshooting">Python Binding Troubleshooting</h1>
-<h2 id="problem-import-med-does-not-work">Problem: <code>"import med"</code> does not work</h2>
-<h3 id="possible-cause-1-incorrect-python-version">Possible Cause 1: Incorrect Python Version</h3>
-<ul>
-<li><strong>Check:</strong> If this happens in the command line, verify your Python interpreter path:
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>which<span class="w"> </span>python
-</code></pre></div></td></tr></table></div></li>
-<li><strong>Solution:</strong> Activate the correct Python environment:
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">source</span><span class="w"> </span>/nas1/Work/python-env/python312/bin/activate
+<h2 id="problem-1-import-med-does-not-work">Problem 1: <code>"import med"</code> does not work</h2>
+<h3 id="possible-cause-medpython-is-not-in-path">Possible Cause: MedPython is not in path</h3>
+<p>Please make sure and print our PYTHONPATH environment variable:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$PYTHONPATH</span>
 </code></pre></div></td></tr></table></div>
-  Then try importing again.</li>
-</ul>
-<hr />
-<h3 id="possible-cause-2-binding-not-compiled-or-wrong-python-headers">Possible Cause 2: Binding Not Compiled or Wrong Python Headers</h3>
-<ul>
-<li><strong>Check:</strong> The binding may not be compiled, or was compiled with incorrect Python headers.</li>
-<li><strong>Solution:</strong> <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Build%20the%20python%20extention.html">Recompile the Python binding</a> using the correct environment</li>
-</ul>
+and make sure it points out to a folder that contains <code>med.py</code> file. If not, please follow <a href="index.html#setup">Setup</a></p>
+<h2 id="problem-2-medpython-fails-to-compile">Problem 2: MedPython fails to compile</h2>
+<p>If you encounter errors like the following:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>[ 27%] Swig compile medpython.i for python
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>:1: Error: Unable to find &#39;swig.swg&#39;
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>:3: Error: Unable to find &#39;python.swg&#39;
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>/nas1/UsersData/git/MR/Libs/Internal/MedPyExport/generate_binding/MedPython/medpython.i:8: Error: Unable to find &#39;exception.i&#39;
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>/nas1/UsersData/git/MR/Libs/Internal/MedPyExport/generate_binding/MedPython/medpython.i:9: Error: Unable to find &#39;typemaps.i&#39;
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>/nas1/UsersData/git/MR/Libs/Internal/MedPyExport/generate_binding/MedPython/medpython.i:10: Error: Unable to find &#39;std_string.i&#39;
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>/nas1/UsersData/git/MR/Libs/Internal/MedPyExport/generate_binding/MedPython/medpython.i:11: Error: Unable to find &#39;std_vector.i&#39;
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>/nas1/UsersData/git/MR/Libs/Internal/MedPyExport/generate_binding/MedPython/medial-numpy.i:3295: Error: Unable to find &#39;std_complex.i&#39;
+</code></pre></div></td></tr></table></div>
+<p>This is likely due to an outdated <code>CMakeCache.txt</code> file containing old SWIG settings.<br />
+To resolve this, delete the <code>CMakeCache.txt</code> file using the following command (Change MR_LIBS to the folder you clones MR_LIBS into):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>rm<span class="w"> </span><span class="nv">$MR_LIBS</span>/Internal/MedPyExport/generate_binding/CMakeBuild/Linux/Release/CMakeCache.txt
+</code></pre></div></td></tr></table></div>
+<h2 id="problem-3-stderr-in-jupyter-notebooks">Problem 3: stderr in Jupyter Notebooks</h2>
+<p>Some API messages are printed to stderr and may not appear in Jupyter notebooks.<br />
+To display these messages, use the <code>cerr()</code> utility:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">med</span><span class="o">.</span><span class="n">cerr</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
 
 
 

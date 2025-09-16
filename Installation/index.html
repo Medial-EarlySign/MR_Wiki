@@ -5938,6 +5938,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -5988,119 +5992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Python/Python%20binding%20Troubleshooting.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Python Binding Troubleshooting
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../Python/Medial%27s%20C%2B%2B%20API%20in%20Python/index.html" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Medial's C++ API in Python
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3">
-            <span class="md-nav__icon md-icon"></span>
-            Medial's C++ API in Python
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Python/Medial%27s%20C%2B%2B%20API%20in%20Python/Build%20the%20python%20extention.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Building the Python Extension
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Python/Medial%27s%20C%2B%2B%20API%20in%20Python/Examples.html" class="md-nav__link">
+      <a href="../Python/Examples.html" class="md-nav__link">
         
   
   
@@ -6123,7 +6015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Python/Medial%27s%20C%2B%2B%20API%20in%20Python/Extend%20and%20Develop.html" class="md-nav__link">
+      <a href="../Python/Extend%20and%20Develop.html" class="md-nav__link">
         
   
   
@@ -6146,7 +6038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Python/Medial%27s%20C%2B%2B%20API%20in%20Python/Python%20AlgoMarker%20API%20Wrapper.html" class="md-nav__link">
+      <a href="../Python/Python%20AlgoMarker%20API%20Wrapper.html" class="md-nav__link">
         
   
   
@@ -6169,25 +6061,17 @@
   
   
     <li class="md-nav__item">
-      <a href="../Python/Medial%27s%20C%2B%2B%20API%20in%20Python/Usage.html" class="md-nav__link">
+      <a href="../Python/Python%20binding%20Troubleshooting.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Usage
+    Python Binding Troubleshooting
     
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -8151,34 +8035,44 @@
 <li><strong>Python Wrapper</strong>: Built with FastAPI, more flexible for changes, and supports the old AlgoMarker API. It is slower and has more dependencies but is friendlier for testing.</li>
 </ol>
 <h4 id="installation_2">Installation</h4>
-<p><strong>C++ Native Wrapper</strong>:
-1. <a href="#3-install-boost-libraries-ubuntu">Set up Boost Libraries</a>. No need to compile.
-2. Clone the repository:
+<p><strong>C++ Native Wrapper</strong>:</p>
+<ol>
+<li><a href="#3-install-boost-libraries-ubuntu">Set up Boost Libraries</a>. No need to compile.</li>
+<li>Clone the repository:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:Medial-EarlySign/MR_Tools.git
-</code></pre></div></td></tr></table></div>
-3. If you compiled the Boost library, edit <code>AlgoMarker_python_API/ServerHandler/CMakeLists.txt</code> to include the following line:
+</code></pre></div></td></tr></table></div></li>
+<li>If you compiled the Boost library, edit <code>AlgoMarker_python_API/ServerHandler/CMakeLists.txt</code> to include the following line:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">set</span><span class="p">(</span><span class="s">BOOST_ROOT</span><span class="w"> </span><span class="s2">&quot;$ENV{HOME}/boost-pic-install&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-   This should point to your Boost compiled home directory (<code>WORK_BUILD_FOLDER</code>) from the compilation step. Ensure the compiled libraries are in <code>/libs</code> and the headers are in <code>/include</code>.
-4. Compile the wrapper:
+   This should point to your Boost compiled home directory (<code>WORK_BUILD_FOLDER</code>) from the compilation step. Ensure the compiled libraries are in <code>/libs</code> and the headers are in <code>/include</code>.</li>
+<li>Compile the wrapper:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>AlgoMarker_python_API/ServerHandler/compile.sh
-</code></pre></div></td></tr></table></div>
-5. Execute the server:
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>AlgoMarker_python_API/ServerHandler/Linux/Release/AlgoMarker_Server<span class="w"> </span>--algomarker_path<span class="w"> </span><span class="nv">$AM_CONFIG</span><span class="w"> </span>--library_path<span class="w"> </span><span class="nv">$AM_LIB</span><span class="w"> </span>--port<span class="w"> </span><span class="m">1234</span>
+</code></pre></div></td></tr></table></div></li>
+<li>
+<p>Execute the server:
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>AlgoMarker_python_API/ServerHandler/Linux/Release/AlgoMarker_Server<span class="w"> </span>--algomarker_path<span class="w"> </span><span class="nv">$AM_CONFIG</span><span class="w"> </span>--library_path<span class="w"> </span><span class="nv">$AM_LIB</span><span class="w"> </span>--port<span class="w"> </span><span class="m">1234</span>
 </code></pre></div></td></tr></table></div></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>`AM_CONFIG`: Path to the AlgoMarker configuration file.
-`AM_LIB`: Path to the AlgoMarker shared library. Refer to [AlgoMarker Library](#1-algomarker-library) for compilation steps.
-</code></pre></div></td></tr></table></div>
-<p><strong>Python Wrapper</strong>:
-1. Clone the repository:
+<ul>
+<li><code>AM_CONFIG</code>: Path to the AlgoMarker configuration file.</li>
+<li><code>AM_LIB</code>: Path to the AlgoMarker shared library. 
+  Refer to <a href="#1-algomarker-library">AlgoMarker Library</a> for compilation steps.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Python Wrapper</strong>:</p>
+<ol>
+<li>Clone the repository:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:Medial-EarlySign/MR_Tools.git
-</code></pre></div></td></tr></table></div>
-2. Edit <code>AlgoMarker_python_API/run_server.sh</code> and update the following:
-   - <code>AM_CONFIG</code>: Path to the AlgoMarker configuration file.
-   - <code>AM_LIB</code>: Path to the AlgoMarker shared library. Refer to <a href="#1-algomarker-library">AlgoMarker Library</a> for compilation steps.
-   - If using the old ColonFlag, follow the steps in the ColonFlag setup page to compile the ICU library. Add the ICU library path to <code>LD_LIBRARY_PATH</code> in the script before calling <code>uvicorn</code>.
-3. Run the Server <code>AlgoMarker_python_API/run_server.sh</code></p>
+</code></pre></div></td></tr></table></div></li>
+<li>Edit <code>AlgoMarker_python_API/run_server.sh</code> and update the following:</li>
+</ol>
+<ul>
+<li><code>AM_CONFIG</code>: Path to the AlgoMarker configuration file.</li>
+<li><code>AM_LIB</code>: Path to the AlgoMarker shared library. Refer to <a href="#1-algomarker-library">AlgoMarker Library</a> for compilation steps.</li>
+<li>If using the old ColonFlag, follow the steps in the ColonFlag setup page to compile the ICU library. Add the ICU library path to <code>LD_LIBRARY_PATH</code> in the script before calling <code>uvicorn</code>.
+3. Run the Server <code>AlgoMarker_python_API/run_server.sh</code></li>
+</ul>
+<p>For more details follow: <a href="../Python/Python%20AlgoMarker%20API%20Wrapper.html">Python AlgoMarker API Wrapper</a></p>
 <h3 id="3-mes-tools-to-train-and-test-models">3. MES Tools to Train and Test Models</h3>
 <h4 id="description_2">Description</h4>
 <p>Executables for training and testing models, along with other tools developed by MES for command-line use.</p>

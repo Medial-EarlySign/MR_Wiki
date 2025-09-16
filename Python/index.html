@@ -18,7 +18,7 @@
         <link rel="prev" href="../Models/Pred2D.html">
       
       
-        <link rel="next" href="Python%20binding%20Troubleshooting.html">
+        <link rel="next" href="Examples.html">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -5935,6 +5935,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -5988,119 +5992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Python%20binding%20Troubleshooting.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Python Binding Troubleshooting
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/index.html" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Medial's C++ API in Python
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3">
-            <span class="md-nav__icon md-icon"></span>
-            Medial's C++ API in Python
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Build%20the%20python%20extention.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Building the Python Extension
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Examples.html" class="md-nav__link">
+      <a href="Examples.html" class="md-nav__link">
         
   
   
@@ -6123,7 +6015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Extend%20and%20Develop.html" class="md-nav__link">
+      <a href="Extend%20and%20Develop.html" class="md-nav__link">
         
   
   
@@ -6146,7 +6038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Python%20AlgoMarker%20API%20Wrapper.html" class="md-nav__link">
+      <a href="Python%20AlgoMarker%20API%20Wrapper.html" class="md-nav__link">
         
   
   
@@ -6169,25 +6061,17 @@
   
   
     <li class="md-nav__item">
-      <a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Usage.html" class="md-nav__link">
+      <a href="Python%20binding%20Troubleshooting.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Usage
+    Python Binding Troubleshooting
     
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -7805,11 +7689,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-start-usage-level" class="md-nav__link">
+  <a href="#quick-start" class="md-nav__link">
     <span class="md-ellipsis">
-      Quick start (Usage Level)
+      Quick Start
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -7846,34 +7754,42 @@
 
 
 <h1 id="python">Python</h1>
-<p>In the following sub-pages you will find information about Python utilization in Medial.</p>
+<h2 id="quick-start">Quick Start</h2>
+<p>We provide three libraries for use:</p>
+<ol>
+<li><strong>MedPython</strong>: A Python library that integrates with our C library.</li>
+<li><strong>ETL Library</strong>: A pure Python utility designed to assist in creating Data Repositories.</li>
+<li><strong>AlgoMarker API Wrapper</strong>: A pure Python wrapper for utilizing the AlgoMarker library (limited to predict/apply for implementation setting. Much lighter as opposed to MedPython).</li>
+</ol>
+<blockquote>
+<p><strong>Note</strong>: These libraries are not currently available as PyPi packages. To use them, you need to set the <code>PYTHONPATH</code> environment variable to their installation paths. For more information: <a href="#setup">Setup</a></p>
+</blockquote>
+<h2 id="pages">Pages</h2>
 <ul>
-<li><a href="Medial's%20C++%20API%20in%20Python">Medial's C++ API in Python</a></li>
-<li><a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Build%20the%20python%20extention.html">Build the python extention</a></li>
-<li><a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Examples.html">Examples</a></li>
-<li><a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Extend%20and%20Develop.html">Extend and Develop</a></li>
-<li><a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Python%20AlgoMarker%20API%20Wrapper.html">Python AlgoMarker API Wrapper</a></li>
-<li><a href="Medial%27s%20C%2B%2B%20API%20in%20Python/Usage.html">Usage</a></li>
-<li><a href="Python%20binding%20Troubleshooting.html">Python binding Troubleshooting</a></li>
+<li><strong>MedPython</strong><ul>
+<li><a href="Examples.html">Examples</a>: Usage examples for MedPython.</li>
+<li><a href="Python%20binding%20Troubleshooting.html">Python Binding Troubleshooting</a>: Guidance for troubleshooting Python bindings in MedPython.</li>
+<li><a href="Extend%20and%20Develop.html">Extend and Develop</a>: Instructions for exposing additional C++ APIs to Python.</li>
 </ul>
-<h2 id="quick-start-usage-level">Quick start (Usage Level)</h2>
-<p>We compiled our own Python distribtion - 3.12 and also have 3.10
-The Medial Distribution tree resides at nas storage (That we will have the same copy/environment for all nodes) /nas1/Work/python-env/python312.
-System users should still be able to use the local python shiped with the OS, just run deactivate in terminal (The default is to use the shared python environment).</p>
-<p>To use the distribution you should execute the following command:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>.<span class="w"> </span>/nas1/Work/python-env/python312/bin/activate
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="c1"># to return to systems python</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>deactivate
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># Already set in system level for all users to use this python</span>
-</code></pre></div></td></tr></table></div></p>
-<p>You may want to put this line in your ~/.bashrc and ~/.bash_profile , to load that python envirnment every time you log on:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source /nas1/Work/python-env/python312/bin/activate&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source /nas1/Work/python-env/python312/bin/activate&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
-</code></pre></div></td></tr></table></div></p>
+</li>
+<li><strong>ETL Library</strong>: Refer to the <a href="../Repositories/Solution%20details%20-%20ETL_process%20tool/ETL%20Tutorial">ETL Tutorial</a> for more details.</li>
+<li><strong><a href="Python%20AlgoMarker%20API%20Wrapper.html">Python AlgoMarker API Wrapper</a></strong>: Documentation for the pure Python wrapper of the AlgoMarker library.</li>
+</ul>
+<h3 id="setup">Setup</h3>
+<ol>
+<li><strong>Clone the Git Repositories</strong>:<ul>
+<li><a href="https://github.com/Medial-EarlySign/MR_LIBS">MR_LIBS</a></li>
+<li><a href="https://github.com/Medial-EarlySign/MR_Tools">MR_Tools</a></li>
+</ul>
+</li>
+<li><strong>Set Up MedPython</strong>:
+   Follow the instructions in <a href="../Installation/index.html#4-python-wrapperpython-api-for-mes-infrastructure">Setup MedPython</a>.</li>
+<li><strong>Configure Environment Variables</strong>:
+   Ensure Python recognizes the libraries by setting the <code>PYTHONPATH</code> environment variable. Replace <code>${MR_LIBS}</code> with the path to the cloned <code>MR_LIBS</code> repository and <code>${MR_TOOLS}</code> with the path to the cloned <code>MR_Tools</code> repository.</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python312:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/RepoLoadUtils/common
+</code></pre></div></td></tr></table></div>
+<p>The Python AlgoMarker API Wrapper does not require installation. Simply run the script directly when needed.</p>
 
 
 
