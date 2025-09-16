@@ -142,6 +142,8 @@ The AlgoMarker Wrapper provides a REST API for the AlgoMarker C++ Library. There
    - If using the old ColonFlag, follow the steps in the ColonFlag setup page to compile the ICU library. Add the ICU library path to `LD_LIBRARY_PATH` in the script before calling `uvicorn`.
 3. Run the Server `AlgoMarker_python_API/run_server.sh`
 
+For more details follow: [Python AlgoMarker API Wrapper](../Python/Python%20AlgoMarker%20API%20Wrapper.md)
+
 ### 3. MES Tools to Train and Test Models
 
 #### Description

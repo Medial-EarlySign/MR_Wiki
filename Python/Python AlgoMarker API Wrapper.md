@@ -4,11 +4,7 @@ This project provides a Python wrapper for the AlgoMarker C library (`libdyn_Alg
 
 ## Location
 
-You can find the Python library and a tool for querying AlgoMarkers in the [tools repository](https://github.com/Medial-EarlySign/MR_Tools) at:
-
-```
-$MR_ROOT/Tools/AlgoMarker_python_API
-```
+You can find the Python library and a tool for querying AlgoMarkers in the [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) at this folder `$MR_Tools/AlgoMarker_python_API`
 
 ## Files
 

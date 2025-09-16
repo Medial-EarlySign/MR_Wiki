@@ -1,30 +1,36 @@
 # Python
-In the following sub-pages you will find information about Python utilization in Medial.
 
-- [Medial's C++ API in Python](Medial's%20C++%20API%20in%20Python)
-  - [Build the python extention](Medial's%20C++%20API%20in%20Python/Build%20the%20python%20extention.md)
-  - [Examples](Medial's%20C++%20API%20in%20Python/Examples.md)
-  - [Extend and Develop](Medial's%20C++%20API%20in%20Python/Extend%20and%20Develop.md)
-  - [Python AlgoMarker API Wrapper](Medial's%20C++%20API%20in%20Python/Python%20AlgoMarker%20API%20Wrapper.md)
-  - [Usage](Medial's%20C++%20API%20in%20Python/Usage.md)
-- [Python binding Troubleshooting](Python%20binding%20Troubleshooting.md)
+## Quick Start
 
-## Quick start (Usage Level)
+We provide three libraries for use:
 
-We compiled our own Python distribtion - 3.12 and also have 3.10
-The Medial Distribution tree resides at nas storage (That we will have the same copy/environment for all nodes) /nas1/Work/python-env/python312.
-System users should still be able to use the local python shiped with the OS, just run deactivate in terminal (The default is to use the shared python environment).
+1. **MedPython**: A Python library that integrates with our C library.
+2. **ETL Library**: A pure Python utility designed to assist in creating Data Repositories.
+3. **AlgoMarker API Wrapper**: A pure Python wrapper for utilizing the AlgoMarker library (limited to predict/apply for implementation setting. Much lighter as opposed to MedPython).
 
-To use the distribution you should execute the following command:
-```bash
-. /nas1/Work/python-env/python312/bin/activate
-# to return to systems python
-deactivate
-# Already set in system level for all users to use this python
-```
+> **Note**: These libraries are not currently available as PyPi packages. To use them, you need to set the `PYTHONPATH` environment variable to their installation paths. For more information: [Setup](#setup)
 
-You may want to put this line in your ~/.bashrc and ~/.bash_profile , to load that python envirnment every time you log on:
-```bash
-echo "source /nas1/Work/python-env/python312/bin/activate" >> ~/.bashrc
-echo "source /nas1/Work/python-env/python312/bin/activate" >> ~/.bash_profile
-```
+## Pages
+
+* **MedPython**
+    - [Examples](Examples.md): Usage examples for MedPython.
+    - [Python Binding Troubleshooting](Python%20binding%20Troubleshooting.md): Guidance for troubleshooting Python bindings in MedPython.
+    - [Extend and Develop](Extend%20and%20Develop.md): Instructions for exposing additional C++ APIs to Python.
+* **ETL Library**: Refer to the [ETL Tutorial](../Repositories/Solution%20details%20-%20ETL_process%20tool/ETL%20Tutorial) for more details.
+* **[Python AlgoMarker API Wrapper](Python%20AlgoMarker%20API%20Wrapper.md)**: Documentation for the pure Python wrapper of the AlgoMarker library.
+
+### Setup
+
+1. **Clone the Git Repositories**:
+    * [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS)
+    * [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools)
+2. **Set Up MedPython**:
+   Follow the instructions in [Setup MedPython](../Installation/index.md#4-python-wrapperpython-api-for-mes-infrastructure).
+3. **Configure Environment Variables**:
+   Ensure Python recognizes the libraries by setting the `PYTHONPATH` environment variable. Replace `${MR_LIBS}` with the path to the cloned `MR_LIBS` repository and `${MR_TOOLS}` with the path to the cloned `MR_Tools` repository.
+
+   ```bash
+   export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python312:${MR_TOOLS}/RepoLoadUtils/common
+   ```
+
+The Python AlgoMarker API Wrapper does not require installation. Simply run the script directly when needed.

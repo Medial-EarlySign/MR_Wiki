@@ -1,7 +1,33 @@
 # Examples
  
 When using "get_sig" function, there is no need to call "read_all" before, "init" is enough. get_sig, loads the signal automatically from disk if needed and not loaded
- 
+
+## Import Medial's API in Python**  
+   ```python
+   import med
+   ```
+
+## Inspect Available Functions
+
+Documentation is a work in progress.  
+To inspect available methods:
+
+```python
+help(med)
+help(med.PidRepository)
+```
+
+## Load a Repository
+
+```python
+rep = med.PidRepository()
+rep.read_all(
+    '/nas1/Work/CancerData/Repositories/THIN/thin_2021/thin.repository',
+    [],
+    ['GENDER', 'DEATH', 'BDATE', 'Albumin']
+)
+print(med.cerr())
+``` 
 ## **Using Lookup table in python**
 ```python
 rep = med.PidRepository()
@@ -207,14 +233,6 @@ res_df
 print(med.cerr())
 ```
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+## Additional Examples
+
+- See `$MR_LIBS/Internal/MedPyExport/examples/MedProcUtils/` for more Python implementations. [MR_LIBS](https://github.com/Medial-EarlySign/MR_libs) is git repository

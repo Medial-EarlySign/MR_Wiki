@@ -1,18 +1,7 @@
 # DevOps
-1. 
-Compile all tools, from anywhere:
-```bash
-compile_all.sh
-```
-The executables can be found here: $MR_ROOT/Tools/AllTools/Linux/Release
-2. 
-Compile python:
-```bash
-build_py_wrapper.sh
-```
-If there are issues: [Build the python extention](../../Python/Medial's%20C++%20API%20in%20Python/Build%20the%20python%20extention.md)
-3. 
-Pack all tools to external environment:
+1. [Compile all tools](../../Installation/index.md#3-mes-tools-to-train-and-test-models)
+2. Compile python: [Build the python extention](../../Installation/index.md#4-python-wrapperpython-api-for-mes-infrastructure)
+3. Pack all tools to external environment (Please Clone MR_Scripts git repository and see script under Bash-scripts):
 ```bash
 full_pack_all.sh
 ```
