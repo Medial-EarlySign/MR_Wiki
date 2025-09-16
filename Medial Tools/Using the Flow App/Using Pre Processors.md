@@ -1,7 +1,6 @@
 # Using Pre Processors
 
 Given a trained model , one may need to apply some additional rep processors before the model is applied. 
-
 A classical example is : the model was trained without history limits on the signals, and one needs to test the results when limiting the signals (or some of them) to say only 1 year of history.
 
 The way to do that is add a pre processor at apply time to the model.

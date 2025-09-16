@@ -49,7 +49,7 @@ Flow --fit_model_to_rep \
 
 ## Sample Output
 
-```
+```text
 Signal BUN, median value is 34.200001 in repository
 write_to_file [/tmp/1.mdl] with crc32 [273944850]
 read_binary_data_alloc [/tmp/1.mdl] with crc32 [273944850]

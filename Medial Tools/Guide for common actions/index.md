@@ -1,44 +1,18 @@
 # Guide for Common Actions
 
-## General Notes
-1. To search within a program's help documentation, use:  
-   `app --help_ $SEARCH_KEYWORDS`  
-   Example: `Flow --help_ match` lists all arguments matching "match".
-2. The Flow app uses "switches" to select its mode. Specify only one switch per command.  
-   Example: `Flow --simple_train` activates simple training mode.
-
 ## Common Actions
 
 ### 1. Match MedSamples by Year or Criteria
 See: [Using Flow To Prepare Samples and Get Incidences](../Using%20the%20Flow%20App/Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.md)
 
 ### 2. Train a Model from JSON
-**Simple Training:**  
-```bash
-Flow --simple_train --rep $REPOSITORY_PATH --f_samples $PATH_TO_TRAIN_SAMPLES --f_json $PATH_TO_JSON_WITH_MODEL_INSTRUCTIONS --f_model $PATH_TO_OUTPUT_TO_STORE_MODEL
-```
-**Cross-validation:**  
-See: [train_test mode](../Using%20the%20Flow%20App/train_test%20mode.md)
-
-**Optimizer for Best Parameters:**  
-See: [Optimizer](../Optimizer.md)  
-Can be compiled in AllTools.
+refer to [Flow](../Using%20the%20Flow%20App/index.md#training-a-model)
 
 ### 3. Calculate Model Score on Samples
-**Get Model Predictions:**  
-```bash
-Flow --get_model_preds --rep $REPOSITORY_PATH --f_samples $PATH_TO_TRAIN_SAMPLES --f_model $PATH_TO_TRAINED_MODEL_BINARY_FILE --f_preds $OUTPUT_PATH_TO_STORE_SAMPLES
-```
+refer to [Flow](../Using%20the%20Flow%20App/index.md#predictingapplying-a-model)
 
 ### 4. Create Feature Matrix for Samples
-**From Model:**  
-```bash
-Flow --get_mat --rep $REPOSITORY_PATH --f_samples $PATH_TO_TRAIN_SAMPLES --f_model $PATH_TO_TRAINED_MODEL_BINARY_FILE --f_matrix $OUTPUT_PATH_TO_STORE_MATRIX
-```
-**Directly from JSON:**  
-```bash
-Flow --get_json_mat --rep $REPOSITORY_PATH --f_samples $PATH_TO_TRAIN_SAMPLES --f_json $PATH_TO_JSON_WITH_MODEL_INSTRUCTIONS --f_matrix $OUTPUT_PATH_TO_STORE_MATRIX
-```
+refer to [Flow](../Using%20the%20Flow%20App/index.md#creating-a-feature-matrix-for-samples)
 
 ### 5. Adjust Model
 Add or retrain rep_processor or post_processor components. Useful for calibration or explainability.  
@@ -57,7 +31,7 @@ Can be compiled in AllTools.
 
 ### 8. Analyze Feature Importance & Model Behavior
 "But Why" graphs for feature validation.  
-See: [Feature Importance](../Using%20the%20Flow%20App/Feature%20Importance%20with%20shapley%20values%20analysis.md)
+See: [Feature Importance](../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md)
 
 ### 9. Bootstrap Performance Analysis
 See: [bootstrap_app](../bootstrap_app)
@@ -71,9 +45,7 @@ Can be compiled in AllTools.
 See: [Load new repository](../../Repositories/Load%20new%20repository.md)
 
 ### 12. Create Random Splits for Train/Test/All Patients
-```bash
-Flow --create_splits "nsplits=$SPLIT_NUMBER" --rep $REPOSITORY_PATH --f_split $OUTPUT_PATH
-```
+Please refer [Using Splits](../Using%20the%20Flow%20App/Split%20Files.md#create-random-splits-for-patients)
 
 ### 13. Filter Train/Test by TRAIN Signal
 ```bash
@@ -85,10 +57,8 @@ FilterSamples --rep $REPOSITORY_PATH --samples $INPUT_SAMPLES_PATH --output $OUT
 - TRAIN == 3: Validation set (10%)
 
 ### 14. Print Model Info
-```bash
-Flow --print_model_info --f_model $MODEL ...
-```
-Inspect trained model details.
+
+Please refer to [Flow Model Info](../Using%20the%20Flow%20App/index.md#print-trained-model-information)
 
 ### 15. Filter Samples by BT Cohort
 Include `json_mat` even if not required by definition.

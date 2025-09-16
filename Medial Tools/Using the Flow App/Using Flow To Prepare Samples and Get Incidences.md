@@ -2,6 +2,7 @@
 The Flow app contains useful tools to choose samples for a problem given a cohort, to filter the samples, and to match them (say for calendar year). These are powerful and useful tools needed to be done before preparing samples files for training/validation , or when needing to match populations on some parameters.
 It also contains options to estimate incidences and get incidence files that can be used later for bootstrap analysis.
 At the moment these are written and verified for the date case... and should be generalized and tested for in patient modes and other time scales.
+
 ## Cohort Files
 Cohort files contain one line per pid , and define the time the patient entered the cohort, the time it left it, and if it has an outcome also the the oucome time and its value. This is a full definition of all the patients we want to use for training and testing and the times they are eligible for using.
 The format of a cohort file is:
