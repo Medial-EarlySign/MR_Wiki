@@ -7,7 +7,7 @@ The model is especially sensitive to severe complications such as hospitalizatio
 
 The model was compared to a linear model based on the World Health Organization (WHO) list of approximately 10 risk factors (e.g., asthma, immunosuppression, pregnancy, age, etc.). Our model outperforms the WHO-based model and also incorporates hospitalization/admission history, medications, and other diagnosis codes. Some variants included blood and spirometry tests, but these were ultimately excluded from the final public model for simplicity, as they are less common or less impactful.
 
-The model assumes good vaccine efficacy. While ideally the model would target "who will benefit most from a flu shot," this is difficult to determine due to varying vaccine efficacy from year to year. Instead, the model focuses on predicting who is likely to get sick and experience complications, highlighting those for whom vaccination would be especially important.
+The model assumes good vaccine efficacy. While ideally the model would target "who will benefit most from a flu shot," this is difficult to determine due to varying vaccine efficacy from year to year. Instead, the model focuses on predicting who is likely to get sick **and** experience complications, highlighting those for whom vaccination would be especially important.
 
 ## Model Inputs
 
