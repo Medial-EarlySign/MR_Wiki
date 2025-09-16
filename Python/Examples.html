@@ -6044,7 +6044,16 @@
         <li class="md-nav__item">
   <a href="#import-medials-api-in-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Import Medial's API in Python**
+      Import Medial's API in Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-medpython-module-am-i-using" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which MedPython module am I using
     </span>
   </a>
   
@@ -6078,15 +6087,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#useful-functions-to-fix-signal-types" class="md-nav__link">
     <span class="md-ellipsis">
       Useful functions to fix signal types
@@ -6105,27 +6105,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#merge-signals-into-one-dataframe" class="md-nav__link">
+  <a href="#using-lookup-table-in-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Merge signals into one dataframe
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#which-python-med-module-am-i-using" class="md-nav__link">
-    <span class="md-ellipsis">
-      Which Python med module am I using
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bootstrap-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bootstrap analysis
+      Using Lookup table in python
     </span>
   </a>
   
@@ -6144,6 +6126,15 @@
   <a href="#learn-model-from-json-to-generate-matrix" class="md-nav__link">
     <span class="md-ellipsis">
       Learn model from json to generate matrix
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bootstrap-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bootstrap analysis
     </span>
   </a>
   
@@ -7868,7 +7859,16 @@
         <li class="md-nav__item">
   <a href="#import-medials-api-in-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Import Medial's API in Python**
+      Import Medial's API in Python
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-medpython-module-am-i-using" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which MedPython module am I using
     </span>
   </a>
   
@@ -7902,15 +7902,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#useful-functions-to-fix-signal-types" class="md-nav__link">
     <span class="md-ellipsis">
       Useful functions to fix signal types
@@ -7929,27 +7920,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#merge-signals-into-one-dataframe" class="md-nav__link">
+  <a href="#using-lookup-table-in-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Merge signals into one dataframe
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#which-python-med-module-am-i-using" class="md-nav__link">
-    <span class="md-ellipsis">
-      Which Python med module am I using
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bootstrap-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bootstrap analysis
+      Using Lookup table in python
     </span>
   </a>
   
@@ -7968,6 +7941,15 @@
   <a href="#learn-model-from-json-to-generate-matrix" class="md-nav__link">
     <span class="md-ellipsis">
       Learn model from json to generate matrix
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bootstrap-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bootstrap analysis
     </span>
   </a>
   
@@ -8033,100 +8015,43 @@
 
 
 <h1 id="examples">Examples</h1>
-<p>When using "get_sig" function, there is no need to call "read_all" before, "init" is enough. get_sig, loads the signal automatically from disk if needed and not loaded</p>
-<h2 id="import-medials-api-in-python">Import Medial's API in Python**</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
+<h2 id="import-medials-api-in-python">Import Medial's API in Python</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="c1"># Optional set to use stdout, usually I&#39;m not running this:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">med</span><span class="o">.</span><span class="n">logger_use_stdout</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="which-medpython-module-am-i-using">Which MedPython module am I using</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span> <span class="c1"># Shows file path</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">Global</span><span class="p">,</span> <span class="s1">&#39;version_info&#39;</span><span class="p">):</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">Global</span><span class="o">.</span><span class="n">version_info</span><span class="p">)</span> <span class="c1"># Shows compilation date and git commit hash when compliled &quot;version&quot;</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="inspect-available-functions">Inspect Available Functions</h2>
 <p>Documentation is a work in progress.<br />
 To inspect available methods:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">help</span><span class="p">(</span><span class="n">med</span><span class="p">)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">help</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">help</span><span class="p">(</span><span class="n">med</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">help</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="load-a-repository">Load a Repository</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="s1">&#39;/nas1/Work/CancerData/Repositories/THIN/thin_2021/thin.repository&#39;</span><span class="p">,</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="p">[],</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="p">[</span><span class="s1">&#39;GENDER&#39;</span><span class="p">,</span> <span class="s1">&#39;DEATH&#39;</span><span class="p">,</span> <span class="s1">&#39;BDATE&#39;</span><span class="p">,</span> <span class="s1">&#39;Albumin&#39;</span><span class="p">]</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">)</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">cerr</span><span class="p">())</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="err">```</span> 
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1">## **Using Lookup table in python**</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="err">```</span><span class="n">python</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">rep</span><span class="p">,</span> <span class="n">readmissions</span><span class="o">.</span><span class="n">pid</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int32&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;ADMISSION&#39;</span><span class="p">,</span><span class="s1">&#39;DIAGNOSIS_IP&#39;</span><span class="p">,</span><span class="s1">&#39;DIAGNOSIS_OP&#39;</span><span class="p">])</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="n">admissions</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;ADMISSION&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;time0&#39;</span><span class="p">:</span><span class="s1">&#39;outcomeTime&#39;</span><span class="p">})</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="n">readmissions</span> <span class="o">=</span> <span class="n">readmissions</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">admissions</span><span class="p">,</span><span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pid&#39;</span><span class="p">,</span><span class="s1">&#39;outcomeTime&#39;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="c1"># Handle missing admissions</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="n">readmissions</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">3</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">time1</span><span class="o">.</span><span class="n">isna</span><span class="p">()),</span><span class="s1">&#39;time1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">readmissions</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">3</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">time1</span><span class="o">.</span><span class="n">isna</span><span class="p">()),</span><span class="s1">&#39;outcomeTime&#39;</span><span class="p">]</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="c1"># Read Relevant Codes</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="n">icd9</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">icd9</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">values</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="c1"># Add Adverse Events</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="n">lut</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">prep_sets_lookup_table</span><span class="p">(</span><span class="n">rep</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">section_id</span><span class="p">(</span><span class="s1">&#39;DIAGNOSIS_IP&#39;</span><span class="p">),[</span><span class="s1">&#39;ICD9_CODE:&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">icd9</span><span class="p">])</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="n">ip_diagnosis</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;DIAGNOSIS_IP&#39;</span><span class="p">,</span><span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="n">ip_diagnosis</span> <span class="o">=</span> <span class="n">ip_diagnosis</span><span class="p">[(</span><span class="n">lut</span><span class="p">[</span><span class="n">ip_diagnosis</span><span class="o">.</span><span class="n">val0</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">)]</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="n">op_diagnosis</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;DIAGNOSIS_OP&#39;</span><span class="p">,</span><span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="n">op_diagnosis</span> <span class="o">=</span> <span class="n">op_diagnosis</span><span class="p">[(</span><span class="n">lut</span><span class="p">[</span><span class="n">op_diagnosis</span><span class="o">.</span><span class="n">val0</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">)]</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="s1">&#39;/nas1/Work/CancerData/Repositories/THIN/thin_2021/thin.repository&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="p">[],</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>    <span class="p">[</span><span class="s1">&#39;GENDER&#39;</span><span class="p">,</span> <span class="s1">&#39;DEATH&#39;</span><span class="p">,</span> <span class="s1">&#39;BDATE&#39;</span><span class="p">,</span> <span class="s1">&#39;Albumin&#39;</span><span class="p">]</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">cerr</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="iterating-over-a-signal"><strong>Iterating over a Signal</strong></h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span>
-<span class="normal"><a href="#__codelineno-3-13">13</a></span>
-<span class="normal"><a href="#__codelineno-3-14">14</a></span>
-<span class="normal"><a href="#__codelineno-3-15">15</a></span>
-<span class="normal"><a href="#__codelineno-3-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">## This is not the proper way to work with Python, since Python loops are very slow, however, it&#39;s nice as a poc.</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c1">## Doan&#39;t do this, using python loops is slow</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a> 
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1">#sys.path.insert(0,&#39;/nas1/UsersData/shlomi/MR/Libs/Internal/MedPyExport/generate_binding/CMakeBuild/Linux/Release/MedPython&#39;)</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">medpython</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">med</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="n">signame</span> <span class="o">=</span> <span class="s1">&#39;Albumin&#39;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="s1">&#39;/home/Repositories/THIN/thin_jun2017/thin.repository&#39;</span><span class="p">,[],[</span><span class="n">signame</span><span class="p">])</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">cerr</span><span class="p">())</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="k">for</span> <span class="n">pid</span> <span class="ow">in</span> <span class="n">rep</span><span class="o">.</span><span class="n">pids</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">30</span><span class="p">]:</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a>  <span class="n">usv</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">uget</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">rep</span><span class="o">.</span><span class="n">sig_id</span><span class="p">(</span><span class="n">signame</span><span class="p">))</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a>  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">usv</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a>    <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="n">usv</span><span class="p">:</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16"></a>      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Patient </span><span class="si">{}</span><span class="s2"> had </span><span class="si">{}</span><span class="s2">=</span><span class="si">{:.2}</span><span class="s2"> at </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">signame</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">val</span><span class="p">(),</span> <span class="n">rec</span><span class="o">.</span><span class="n">date</span><span class="p">()))</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="setup"><strong>Setup</strong></h2>
+<h2 id="iterating-over-a-signal">Iterating over a Signal</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -8139,40 +8064,31 @@ To inspect available methods:</p>
 <span class="normal"><a href="#__codelineno-4-10">10</a></span>
 <span class="normal"><a href="#__codelineno-4-11">11</a></span>
 <span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># py2/py3 compatiblity</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_function</span> 
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1"># Not Needed anymore, but use it if you need to override</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="c1">#import sys</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c1">#sys.path.insert(0,&#39;/nas1/UsersData/USER/MR/Libs/Internal/MedPyExport/generate_binding/Release/medial-python36&#39;)</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="n">med</span><span class="o">.</span><span class="n">logger_use_stdout</span><span class="p">()</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="s1">&#39;/home/Repositories/THIN/thin_final/thin.repository&#39;</span><span class="p">,[],[</span><span class="s1">&#39;WBC&#39;</span><span class="p">,</span><span class="s1">&#39;Cancer_Location&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a>                                                                          <span class="s1">&#39;GENDER&#39;</span><span class="p">,</span><span class="s1">&#39;BYEAR&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a>                                                                          <span class="s1">&#39;Cancer_Location&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a>                                                                          <span class="s1">&#39;DEATH&#39;</span><span class="p">,</span><span class="s1">&#39;ENDDATE&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a>                                                                          <span class="s1">&#39;Albumin&#39;</span><span class="p">,</span><span class="s1">&#39;BDATE&#39;</span><span class="p">])</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">cerr</span><span class="p">())</span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">## This is not the proper way to work with Python, since Python loops are very slow, however, it&#39;s nice as a poc.</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="c1">## Don&#39;t do this, using python loops is slow - use get_sig to retrieve dataframe</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="n">signame</span> <span class="o">=</span> <span class="s1">&#39;Albumin&#39;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="s1">&#39;/home/Repositories/THIN/thin_jun2017/thin.repository&#39;</span><span class="p">,[],[</span><span class="n">signame</span><span class="p">])</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">cerr</span><span class="p">())</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="k">for</span> <span class="n">pid</span> <span class="ow">in</span> <span class="n">rep</span><span class="o">.</span><span class="n">pids</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">30</span><span class="p">]:</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>  <span class="n">usv</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">uget</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">rep</span><span class="o">.</span><span class="n">sig_id</span><span class="p">(</span><span class="n">signame</span><span class="p">))</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">usv</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="n">usv</span><span class="p">:</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Patient </span><span class="si">{}</span><span class="s2"> had </span><span class="si">{}</span><span class="s2">=</span><span class="si">{:.2}</span><span class="s2"> at </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">signame</span><span class="p">,</span> <span class="n">rec</span><span class="o">.</span><span class="n">val</span><span class="p">(),</span> <span class="n">rec</span><span class="o">.</span><span class="n">date</span><span class="p">()))</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="useful-functions-to-fix-signal-types"><strong>Useful functions to fix signal types</strong></h2>
+<h2 id="useful-functions-to-fix-signal-types">Useful functions to fix signal types</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span>
-<span class="normal"><a href="#__codelineno-5-5">5</a></span>
-<span class="normal"><a href="#__codelineno-5-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_ts_m1900</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_ts_m1900</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3"></a>    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">pd</span><span class="o">.</span><span class="n">TimedeltaIndex</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_type</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">newtype</span><span class="p">):</span> <span class="n">df</span><span class="p">[[</span><span class="n">col</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">col</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">newtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_date_ymd</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_name</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">old_col</span><span class="p">,</span> <span class="n">new_col</span><span class="p">):</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">old_col</span><span class="p">:</span> <span class="n">new_col</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">fix_date_ymd</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="load-some-signals"><strong>Load some signals</strong></h2>
+<h2 id="load-some-signals">Load some signals</h2>
+<p>When using "get_sig" function, there is no need to call "read_all" before, "init" is enough. get_sig, loads the signal automatically from disk if needed and not loaded</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
@@ -8188,44 +8104,121 @@ To inspect available methods:</p>
 <span class="normal"><a href="#__codelineno-6-13">13</a></span>
 <span class="normal"><a href="#__codelineno-6-14">14</a></span>
 <span class="normal"><a href="#__codelineno-6-15">15</a></span>
-<span class="normal"><a href="#__codelineno-6-16">16</a></span>
-<span class="normal"><a href="#__codelineno-6-17">17</a></span>
-<span class="normal"><a href="#__codelineno-6-18">18</a></span>
-<span class="normal"><a href="#__codelineno-6-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">albumin</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;Albumin&#39;</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">albumin</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;Albumin&#39;</span><span class="p">)</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">albumin</span> <span class="o">=</span> <span class="n">albumin</span><span class="p">[</span><span class="n">albumin</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="n">fix_name</span><span class="p">(</span><span class="n">albumin</span><span class="p">,</span><span class="s1">&#39;val&#39;</span><span class="p">,</span><span class="s1">&#39;Albumin&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="n">albumin</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;val&#39;</span><span class="p">:</span> <span class="s1">&#39;Albumin&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="n">fix_date_ymd</span><span class="p">(</span><span class="n">albumin</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">)</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="n">gender</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;GENDER&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="n">fix_type</span><span class="p">(</span><span class="n">gender</span><span class="p">,</span><span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="n">fix_name</span><span class="p">(</span><span class="n">gender</span><span class="p">,</span><span class="s1">&#39;val&#39;</span><span class="p">,</span><span class="s1">&#39;Gender&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="n">bdate</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;BDATE&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="n">fix_type</span><span class="p">(</span><span class="n">bdate</span><span class="p">,</span><span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="n">bdate</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bdate</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="n">fix_date_ymd</span><span class="p">(</span><span class="n">bdate</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="n">fix_name</span><span class="p">(</span><span class="n">bdate</span><span class="p">,</span><span class="s1">&#39;val&#39;</span><span class="p">,</span><span class="s1">&#39;BDate&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13"></a> 
-<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="n">mortality</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;DEATH&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="n">fix_type</span><span class="p">(</span><span class="n">mortality</span><span class="p">,</span><span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="n">mortality</span> <span class="o">=</span> <span class="n">mortality</span><span class="p">[(</span><span class="n">mortality</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">&lt;=</span> <span class="mi">31</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mortality</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="n">fix_date_ymd</span><span class="p">(</span><span class="n">mortality</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="n">fix_name</span><span class="p">(</span><span class="n">mortality</span><span class="p">,</span><span class="s1">&#39;val&#39;</span><span class="p">,</span><span class="s1">&#39;MortDate&#39;</span><span class="p">)</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19"></a> 
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="n">gender</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;val&#39;</span><span class="p">:</span> <span class="s1">&#39;Gender&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="n">bdate</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;BDATE&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="n">bdate</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bdate</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="n">fix_date_ymd</span><span class="p">(</span><span class="n">bdate</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="n">bdate</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;val&#39;</span><span class="p">:</span> <span class="s1">&#39;BDate&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a> 
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="n">mortality</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;DEATH&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="n">mortality</span> <span class="o">=</span> <span class="n">mortality</span><span class="p">[(</span><span class="n">mortality</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">&lt;=</span> <span class="mi">31</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mortality</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="n">fix_date_ymd</span><span class="p">(</span><span class="n">mortality</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="n">mortality</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;val&#39;</span><span class="p">:</span> <span class="s1">&#39;MortDate&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a> 
 </code></pre></div></td></tr></table></div>
-<h2 id="merge-signals-into-one-dataframe"><strong>Merge signals into one dataframe</strong></h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">data</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;pid&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">),[</span><span class="n">albumin</span><span class="p">,</span><span class="n">gender</span><span class="p">,</span><span class="n">bdate</span><span class="p">,</span><span class="n">mortality</span><span class="p">])</span>
+<h2 id="using-lookup-table-in-python">Using Lookup table in python</h2>
+<ul>
+<li>When using "get_sig" function, there is no need to call "read_all" before, "init" is enough. get_sig, loads the signal automatically from disk if needed and not loaded.</li>
+<li>We can use dictionaries to query specific categorical codes and their hierarchies. <ul>
+<li>For example, by defining "ICD10_CODE:J00-J99", we'll capture all codes within this group based on the dictionary's definition of ICD10. </li>
+<li>This method relies on predefined parent-child pairs for hierarchy and does not use regular expressions. </li>
+<li>It is not limited to ICD10, ICD9 or specific known code system, but you will need to define the dictionaries correctly and their hierarchies.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># readmissions is data frame with readmitted patients</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">rep</span><span class="p">,</span> <span class="n">readmissions</span><span class="o">.</span><span class="n">pid</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int32&#39;</span><span class="p">),</span> <span class="p">[</span><span class="s1">&#39;ADMISSION&#39;</span><span class="p">,</span><span class="s1">&#39;DIAGNOSIS_IP&#39;</span><span class="p">,</span><span class="s1">&#39;DIAGNOSIS_OP&#39;</span><span class="p">])</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="n">admissions</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;ADMISSION&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;time0&#39;</span><span class="p">:</span><span class="s1">&#39;outcomeTime&#39;</span><span class="p">})</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="n">readmissions</span> <span class="o">=</span> <span class="n">readmissions</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">admissions</span><span class="p">,</span><span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pid&#39;</span><span class="p">,</span><span class="s1">&#39;outcomeTime&#39;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="c1"># Handle missing admissions</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="n">readmissions</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">3</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">time1</span><span class="o">.</span><span class="n">isna</span><span class="p">()),</span><span class="s1">&#39;time1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">readmissions</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">outcome</span><span class="o">==</span><span class="mi">3</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">readmissions</span><span class="o">.</span><span class="n">time1</span><span class="o">.</span><span class="n">isna</span><span class="p">()),</span><span class="s1">&#39;outcomeTime&#39;</span><span class="p">]</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="c1"># Read Relevant Codes</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="n">icd9</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">icd9</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">values</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="c1"># Add Adverse Events for each ICD9 code in icd9 dataframe. It also uses hierarchy defined in the dictionary, for example using &quot;487&quot; includes: 487.0, 487.1, 487.8, etc.</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="n">lut</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">prep_sets_lookup_table</span><span class="p">(</span><span class="n">rep</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">section_id</span><span class="p">(</span><span class="s1">&#39;DIAGNOSIS_IP&#39;</span><span class="p">),[</span><span class="s1">&#39;ICD9_CODE:&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">icd9</span><span class="p">])</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="n">ip_diagnosis</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;DIAGNOSIS_IP&#39;</span><span class="p">,</span><span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="n">ip_diagnosis</span> <span class="o">=</span> <span class="n">ip_diagnosis</span><span class="p">[(</span><span class="n">lut</span><span class="p">[</span><span class="n">ip_diagnosis</span><span class="o">.</span><span class="n">val0</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">)]</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="n">op_diagnosis</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;DIAGNOSIS_OP&#39;</span><span class="p">,</span><span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="n">op_diagnosis</span> <span class="o">=</span> <span class="n">op_diagnosis</span><span class="p">[(</span><span class="n">lut</span><span class="p">[</span><span class="n">op_diagnosis</span><span class="o">.</span><span class="n">val0</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">)]</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="which-python-med-module-am-i-using"><strong>Which Python med module am I using</strong></h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span>
-<span class="normal"><a href="#__codelineno-8-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">Global</span><span class="p">,</span> <span class="s1">&#39;version_info&#39;</span><span class="p">):</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">Global</span><span class="o">.</span><span class="n">version_info</span><span class="p">)</span>
+<h2 id="load-medmodel-and-apply-predict-on-sample">Load MedModel and apply (predict) on sample</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">rep_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="c1">#Path of repositroy</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">model_file</span> <span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="c1">#Path of MedModel</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">samples_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#path of samples or load samples from DataFrame using: samples.from_df(dataframe_object with the right columns)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading basic Repository structure for fitting model&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="n">rep</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">rep_path</span><span class="p">)</span> <span class="c1">#init model for first proccesing of &quot;model.fit_for_repository&quot;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a> 
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Model&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="n">model</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="n">model</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="n">model</span><span class="o">.</span><span class="n">fit_for_repository</span><span class="p">(</span><span class="n">rep</span><span class="p">)</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="n">signalNamesSet</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_required_signal_names</span><span class="p">()</span> <span class="c1">#Get list of relevant signals the model needed to fetch from repository</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a> 
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Samples&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Samples</span><span class="p">()</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="n">samples</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="n">samples_file</span><span class="p">)</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="n">ids</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">get_ids</span><span class="p">()</span> <span class="c1">#Fetch relevant ids from samples to read from repository</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a> 
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Repository&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="n">rep_path</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">signalNamesSet</span><span class="p">)</span> <span class="c1">#read needed repository data</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a> 
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="c1">#Apply model:</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">rep</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a><span class="n">df</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;output_file&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a><span class="n">samples</span><span class="o">.</span><span class="n">write_to_file</span><span class="p">(</span><span class="s1">&#39;write_to_samples_file&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a> 
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a><span class="c1">#feature matrix exists in - model.features.to_df() . The &quot;samples&quot; object now has the scores</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="bootstrap-analysis"><strong>Bootstrap analysis</strong></h2>
+<h2 id="learn-model-from-json-to-generate-matrix">Learn model from json to generate matrix</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
@@ -8237,20 +8230,46 @@ To inspect available methods:</p>
 <span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-9-10">10</a></span>
 <span class="normal"><a href="#__codelineno-9-11">11</a></span>
-<span class="normal"><a href="#__codelineno-9-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="s1">&#39;/nas1/Work/Users/Ilya/Mayo/Feathers/predictions_073.feather&#39;</span><span class="p">)</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;true_V&#39;</span><span class="p">,</span> <span class="s1">&#39;prob_V&#39;</span><span class="p">]]</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="c1">#Example of Analyzing df with bootstrap</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="n">bt</span><span class="o">=</span><span class="n">med</span><span class="o">.</span><span class="n">Bootstrap</span><span class="p">()</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="n">res</span><span class="o">=</span><span class="n">bt</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;prob_V&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;true_V&#39;</span><span class="p">])</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="n">all_measurment_names</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;AUC: </span><span class="si">%2.3f</span><span class="s1"> [</span><span class="si">%2.3f</span><span class="s1"> - </span><span class="si">%2.3f</span><span class="s1">]&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;AUC_Mean&#39;</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;AUC_CI.Lower.95&#39;</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;AUC_CI.Upper.95&#39;</span><span class="p">]))</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="c1">#Can convert to dataframe with Measurement and Value columns:</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="n">res_df</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="n">res_df</span><span class="p">[</span><span class="n">res_df</span><span class="p">[</span><span class="s1">&#39;Measurement&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;AUC&#39;</span><span class="p">)]</span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">rep_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="c1">#Path of repositroy</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="n">json_model</span> <span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="c1">#Path of json</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">samples_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#path of samples or load samples from DataFrame using: samples.from_df(dataframe_object with the right columns)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading basic Repository structure for fitting model&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="n">rep</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">rep_path</span><span class="p">)</span> <span class="c1">#init model for first proccesing of &quot;model.fit_for_repository&quot;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Model&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="n">model</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="n">model</span><span class="o">.</span><span class="n">init_from_json_file</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="n">model</span><span class="o">.</span><span class="n">fit_for_repository</span><span class="p">(</span><span class="n">rep</span><span class="p">)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="n">signalNamesSet</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_required_signal_names</span><span class="p">()</span> <span class="c1">#Get list of relevant signals the model needed to fetch from repository</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Samples&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Samples</span><span class="p">()</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="n">samples</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="n">samples_file</span><span class="p">)</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="n">ids</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">get_ids</span><span class="p">()</span> <span class="c1">#Fetch relevant ids from samples to read from repository</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a>
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Repository&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="n">rep_path</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">signalNamesSet</span><span class="p">)</span> <span class="c1">#read needed repository data</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a>
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="c1">#Learn model:</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a><span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">rep</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a><span class="n">model</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">write_to_file</span><span class="p">(</span><span class="s1">&#39;write_to_matrix_file&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="load-medmodel-and-apply-predict-on-sample"><strong>Load MedModel and apply (predict) on sample</strong></h2>
+<h2 id="bootstrap-analysis">Bootstrap analysis</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
@@ -8261,130 +8280,39 @@ To inspect available methods:</p>
 <span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-10-10">10</a></span>
-<span class="normal"><a href="#__codelineno-10-11">11</a></span>
-<span class="normal"><a href="#__codelineno-10-12">12</a></span>
-<span class="normal"><a href="#__codelineno-10-13">13</a></span>
-<span class="normal"><a href="#__codelineno-10-14">14</a></span>
-<span class="normal"><a href="#__codelineno-10-15">15</a></span>
-<span class="normal"><a href="#__codelineno-10-16">16</a></span>
-<span class="normal"><a href="#__codelineno-10-17">17</a></span>
-<span class="normal"><a href="#__codelineno-10-18">18</a></span>
-<span class="normal"><a href="#__codelineno-10-19">19</a></span>
-<span class="normal"><a href="#__codelineno-10-20">20</a></span>
-<span class="normal"><a href="#__codelineno-10-21">21</a></span>
-<span class="normal"><a href="#__codelineno-10-22">22</a></span>
-<span class="normal"><a href="#__codelineno-10-23">23</a></span>
-<span class="normal"><a href="#__codelineno-10-24">24</a></span>
-<span class="normal"><a href="#__codelineno-10-25">25</a></span>
-<span class="normal"><a href="#__codelineno-10-26">26</a></span>
-<span class="normal"><a href="#__codelineno-10-27">27</a></span>
-<span class="normal"><a href="#__codelineno-10-28">28</a></span>
-<span class="normal"><a href="#__codelineno-10-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="n">rep_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="c1">#Path of repositroy</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">model_file</span> <span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="c1">#Path of MedModel</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="n">samples_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#path of samples or load samples from DataFrame using: samples.from_df(dataframe_object with the right columns)</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading basic Repository structure for fitting model&quot;</span><span class="p">)</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="n">rep</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">rep_path</span><span class="p">)</span> <span class="c1">#init model for first proccesing of &quot;model.fit_for_repository&quot;</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8"></a> 
-<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Model&quot;</span><span class="p">)</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="n">model</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="n">model</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="n">model</span><span class="o">.</span><span class="n">fit_for_repository</span><span class="p">(</span><span class="n">rep</span><span class="p">)</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="n">signalNamesSet</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_required_signal_names</span><span class="p">()</span> <span class="c1">#Get list of relevant signals the model needed to fetch from repository</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14"></a> 
-<a id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Samples&quot;</span><span class="p">)</span>
-<a id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Samples</span><span class="p">()</span>
-<a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="n">samples</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="n">samples_file</span><span class="p">)</span>
-<a id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="n">ids</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">get_ids</span><span class="p">()</span> <span class="c1">#Fetch relevant ids from samples to read from repository</span>
-<a id="__codelineno-10-19" name="__codelineno-10-19"></a> 
-<a id="__codelineno-10-20" name="__codelineno-10-20"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Repository&quot;</span><span class="p">)</span>
-<a id="__codelineno-10-21" name="__codelineno-10-21"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="n">rep_path</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">signalNamesSet</span><span class="p">)</span> <span class="c1">#read needed repository data</span>
-<a id="__codelineno-10-22" name="__codelineno-10-22"></a> 
-<a id="__codelineno-10-23" name="__codelineno-10-23"></a><span class="c1">#Apply model:</span>
-<a id="__codelineno-10-24" name="__codelineno-10-24"></a><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">rep</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
-<a id="__codelineno-10-25" name="__codelineno-10-25"></a><span class="n">df</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
-<a id="__codelineno-10-26" name="__codelineno-10-26"></a><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;output_file&#39;</span><span class="p">)</span>
-<a id="__codelineno-10-27" name="__codelineno-10-27"></a><span class="n">samples</span><span class="o">.</span><span class="n">write_to_file</span><span class="p">(</span><span class="s1">&#39;write_to_samples_file&#39;</span><span class="p">)</span>
-<a id="__codelineno-10-28" name="__codelineno-10-28"></a> 
-<a id="__codelineno-10-29" name="__codelineno-10-29"></a><span class="c1">#feature matrix exists in - model.features.to_df() . The &quot;samples&quot; object now has the scores</span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="s1">&#39;/nas1/Work/Users/Ilya/Mayo/Feathers/predictions_073.feather&#39;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;true_V&#39;</span><span class="p">,</span> <span class="s1">&#39;prob_V&#39;</span><span class="p">]]</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="c1">#Example of Analyzing df with bootstrap</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="n">bt</span><span class="o">=</span><span class="n">med</span><span class="o">.</span><span class="n">Bootstrap</span><span class="p">()</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="n">res</span><span class="o">=</span><span class="n">bt</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;prob_V&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;true_V&#39;</span><span class="p">])</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="n">all_measurment_names</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;AUC: </span><span class="si">%2.3f</span><span class="s1"> [</span><span class="si">%2.3f</span><span class="s1"> - </span><span class="si">%2.3f</span><span class="s1">]&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;AUC_Mean&#39;</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;AUC_CI.Lower.95&#39;</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;AUC_CI.Upper.95&#39;</span><span class="p">]))</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="c1">#Can convert to dataframe with Measurement and Value columns:</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="n">res_df</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="n">res_df</span><span class="p">[</span><span class="n">res_df</span><span class="p">[</span><span class="s1">&#39;Measurement&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;AUC&#39;</span><span class="p">)]</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="learn-model-from-json-to-generate-matrix"><strong>Learn model from json to generate matrix</strong></h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-11-10">10</a></span>
-<span class="normal"><a href="#__codelineno-11-11">11</a></span>
-<span class="normal"><a href="#__codelineno-11-12">12</a></span>
-<span class="normal"><a href="#__codelineno-11-13">13</a></span>
-<span class="normal"><a href="#__codelineno-11-14">14</a></span>
-<span class="normal"><a href="#__codelineno-11-15">15</a></span>
-<span class="normal"><a href="#__codelineno-11-16">16</a></span>
-<span class="normal"><a href="#__codelineno-11-17">17</a></span>
-<span class="normal"><a href="#__codelineno-11-18">18</a></span>
-<span class="normal"><a href="#__codelineno-11-19">19</a></span>
-<span class="normal"><a href="#__codelineno-11-20">20</a></span>
-<span class="normal"><a href="#__codelineno-11-21">21</a></span>
-<span class="normal"><a href="#__codelineno-11-22">22</a></span>
-<span class="normal"><a href="#__codelineno-11-23">23</a></span>
-<span class="normal"><a href="#__codelineno-11-24">24</a></span>
-<span class="normal"><a href="#__codelineno-11-25">25</a></span>
-<span class="normal"><a href="#__codelineno-11-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">rep_path</span><span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="c1">#Path of repositroy</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="n">json_model</span> <span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="c1">#Path of json</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="n">samples_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="c1">#path of samples or load samples from DataFrame using: samples.from_df(dataframe_object with the right columns)</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5"></a>
-<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading basic Repository structure for fitting model&quot;</span><span class="p">)</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="n">rep</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">rep_path</span><span class="p">)</span> <span class="c1">#init model for first proccesing of &quot;model.fit_for_repository&quot;</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9"></a>
-<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Model&quot;</span><span class="p">)</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="n">model</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="n">model</span><span class="o">.</span><span class="n">init_from_json_file</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="n">model</span><span class="o">.</span><span class="n">fit_for_repository</span><span class="p">(</span><span class="n">rep</span><span class="p">)</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="n">signalNamesSet</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_required_signal_names</span><span class="p">()</span> <span class="c1">#Get list of relevant signals the model needed to fetch from repository</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15"></a>
-<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Samples&quot;</span><span class="p">)</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Samples</span><span class="p">()</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="n">samples</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="n">samples_file</span><span class="p">)</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="n">ids</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">get_ids</span><span class="p">()</span> <span class="c1">#Fetch relevant ids from samples to read from repository</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20"></a>
-<a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading Repository&quot;</span><span class="p">)</span>
-<a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="n">rep_path</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">signalNamesSet</span><span class="p">)</span> <span class="c1">#read needed repository data</span>
-<a id="__codelineno-11-23" name="__codelineno-11-23"></a>
-<a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="c1">#Learn model:</span>
-<a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">rep</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
-<a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="n">model</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span><span class="o">.</span><span class="n">write_to_file</span><span class="p">(</span><span class="s1">&#39;write_to_matrix_file&#39;</span><span class="p">)</span>
+<h2 id="bootstrap-analysis-on-samples">Bootstrap analysis on samples</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span>
+<span class="normal"><a href="#__codelineno-11-7">7</a></span>
+<span class="normal"><a href="#__codelineno-11-8">8</a></span>
+<span class="normal"><a href="#__codelineno-11-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">samples</span><span class="o">=</span><span class="n">med</span><span class="o">.</span><span class="n">Samples</span><span class="p">()</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">samples</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="s1">&#39;/nas1/Work/AlgoMarkers/Pre2D/pre2d_1_041219/Performance_no_drugs/OnTest/Partial_All_on_OnTest_2_no_drugs_filtered.preds&#39;</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="n">REP_PATH</span><span class="o">=</span><span class="s1">&#39;/nas1/Work/CancerData/Repositories/THIN/thin_jun2017/thin.repository&#39;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="n">JSON_TO_FILTER</span><span class="o">=</span><span class="s1">&#39;/server/UsersData/alon/MR/Projects/Shared/Projects/configs/Diabetes/configs/bt_features.json&#39;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="n">COHORT_FILE</span><span class="o">=</span><span class="s1">&#39;/server/UsersData/alon/MR/Projects/Shared/Projects/configs/Diabetes/configs/bt_params&#39;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="n">bt</span><span class="o">=</span><span class="n">med</span><span class="o">.</span><span class="n">Bootstrap</span><span class="p">()</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="n">res</span><span class="o">=</span><span class="n">bt</span><span class="o">.</span><span class="n">bootstrap_cohort</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">REP_PATH</span><span class="p">,</span><span class="n">JSON_TO_FILTER</span><span class="p">,</span> <span class="n">COHORT_FILE</span><span class="p">)</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="n">res_df</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="n">res_df</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="bootstrap-analysis-on-samples"><strong>Bootstrap analysis on samples</strong></h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-12-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="n">samples</span><span class="o">=</span><span class="n">med</span><span class="o">.</span><span class="n">Samples</span><span class="p">()</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="n">samples</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="s1">&#39;/nas1/Work/AlgoMarkers/Pre2D/pre2d_1_041219/Performance_no_drugs/OnTest/Partial_All_on_OnTest_2_no_drugs_filtered.preds&#39;</span><span class="p">)</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="n">REP_PATH</span><span class="o">=</span><span class="s1">&#39;/nas1/Work/CancerData/Repositories/THIN/thin_jun2017/thin.repository&#39;</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="n">JSON_TO_FILTER</span><span class="o">=</span><span class="s1">&#39;/server/UsersData/alon/MR/Projects/Shared/Projects/configs/Diabetes/configs/bt_features.json&#39;</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="n">COHORT_FILE</span><span class="o">=</span><span class="s1">&#39;/server/UsersData/alon/MR/Projects/Shared/Projects/configs/Diabetes/configs/bt_params&#39;</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="n">bt</span><span class="o">=</span><span class="n">med</span><span class="o">.</span><span class="n">Bootstrap</span><span class="p">()</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="n">res</span><span class="o">=</span><span class="n">bt</span><span class="o">.</span><span class="n">bootstrap_cohort</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">REP_PATH</span><span class="p">,</span><span class="n">JSON_TO_FILTER</span><span class="p">,</span> <span class="n">COHORT_FILE</span><span class="p">)</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="n">res_df</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="n">res_df</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="print-errors-in-medpython"><strong>print errors in medPython</strong></h2>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">cerr</span><span class="p">())</span>
+<h2 id="print-errors-in-medpython">print errors in medPython</h2>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">med</span><span class="o">.</span><span class="n">cerr</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
  </p>
 <h2 id="additional-examples">Additional Examples</h2>
