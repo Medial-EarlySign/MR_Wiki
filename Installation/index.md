@@ -3,6 +3,14 @@
 ## Overview
 
 There are four components that can be installed. You may install all of them or just the ones you need, depending on your requirements.
+Those components will allow you to use/depoly an [existing model that is published](../Models) or build your own models with: [MES Tools](#3-mes-tools-to-train-and-test-models) or with the [Python API](#4-python-api-for-mes-infrastructure)
+
+### Releases
+A prebuilt package (excluding [MES Tools](#3-mes-tools-to-train-and-test-models)) is available for [direct download of the latest version](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0), eliminating the need to compile from source.
+The binaries are built on **Ubuntu 24.04**, and will run on any Linux distribution with **glibc ≥ 2.39**.
+You will also need to install [OpenMP](#2-install-openmp-support-ubuntu)
+
+
 
 ### Preliminary Steps to Build the Tools
 
