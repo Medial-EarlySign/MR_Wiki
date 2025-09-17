@@ -1,6 +1,6 @@
 # DevOps
 1. [Compile all tools](../../Installation/index.md#3-mes-tools-to-train-and-test-models)
-2. Compile python: [Build the python extention](../../Installation/index.md#4-python-wrapperpython-api-for-mes-infrastructure)
+2. Compile python: [Build the python extention](../../Installation/index.md#4-python-api-for-mes-infrastructure)
 3. Pack all tools to external environment (Please Clone MR_Scripts git repository and see script under Bash-scripts):
 ```bash
 full_pack_all.sh

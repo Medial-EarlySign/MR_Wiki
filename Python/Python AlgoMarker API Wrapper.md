@@ -64,8 +64,14 @@ print('All Done')
 
 You can also run the wrapper as a FastAPI server.
 This will wrapper `AlgoMarker.py`
+You will need to setup fastapi package with:
+```bash
+python -m pip install fastapi
+```
 
 To configure, edit [`run_server.sh`](https://github.com/Medial-EarlySign/MR_Tools/blob/main/AlgoMarker_python_API/run_server.sh):
 
 - Set `AM_CONFIG` to the path of your AlgoMarker `.amconfig` file.
 - Set `AM_LIB` to the path of your compiled library (default is `/lib/libdyn_AlgoMarker.so` in the same directory as the amconfig file).
+
+After editing, you can run the script.

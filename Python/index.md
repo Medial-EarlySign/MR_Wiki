@@ -25,7 +25,7 @@ We provide three libraries for use:
     * [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS)
     * [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools)
 2. **Set Up MedPython**:
-   Follow the instructions in [Setup MedPython](../Installation/index.md#4-python-wrapperpython-api-for-mes-infrastructure).
+   Follow the instructions in [Setup MedPython](../Installation/index.md#4-python-api-for-mes-infrastructure).
 3. **Configure Environment Variables**:
    Ensure Python recognizes the libraries by setting the `PYTHONPATH` environment variable. Replace `${MR_LIBS}` with the path to the cloned `MR_LIBS` repository and `${MR_TOOLS}` with the path to the cloned `MR_Tools` repository.
 

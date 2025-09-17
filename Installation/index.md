@@ -140,7 +140,11 @@ The AlgoMarker Wrapper provides a REST API for the AlgoMarker C++ Library. There
    - `AM_CONFIG`: Path to the AlgoMarker configuration file.
    - `AM_LIB`: Path to the AlgoMarker shared library. Refer to [AlgoMarker Library](#1-algomarker-library) for compilation steps.
    - If using the old ColonFlag, follow the steps in the ColonFlag setup page to compile the ICU library. Add the ICU library path to `LD_LIBRARY_PATH` in the script before calling `uvicorn`.
-3. Run the Server `AlgoMarker_python_API/run_server.sh`
+3. Make sure you have all python depenencies installed (The AlgoMarker.py itself has no dependencies if you want to use it directly with FastAPI):
+   ```bash
+   python -m pip install fastapi
+   ```
+4. Run the Server `AlgoMarker_python_API/run_server.sh`
 
 For more details follow: [Python AlgoMarker API Wrapper](../Python/Python%20AlgoMarker%20API%20Wrapper.md)
 
@@ -167,12 +171,13 @@ Executables for training and testing models, along with other tools developed by
    └── MR_Tools
    ```
    With this structure, no edits are needed.
+   If you chose to compile Boost Libraries, don't forget to set `BOOST_ROOT` in the CMakeList.txt file
 5. Execute:
    ```bash
    AllTools/full_build.sh
    ```
 
-### 4. Python Wrapper/Python API for MES Infrastructure
+### 4. Python API for MES Infrastructure
 
 #### Description
 A Python API Wrapper for the MES Infrastructure.
@@ -188,7 +193,12 @@ A Python API Wrapper for the MES Infrastructure.
    set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
    ```
    This should point to your Boost compiled home directory (`WORK_BUILD_FOLDER`) from the compilation step. Ensure the compiled libraries are in `/libs` and the headers are in `/include`.
-4. Execute:
+4. Make sure you have NumPy installed: 
+   ```bash
+   python -m pip install numpy
+   ```
+   This library is compatible with both NumPy 1.x and 2.x. For the broadest compatibility, you should compile with NumPy 2.x, as this will also work for clients who have NumPy 1.x. However, compiling with NumPy 1.x will not be compatible with clients using 2.x.
+5. Execute:
    ```bash
    Internal/MedPyExport/generate_binding/make-simple.sh
    ```
