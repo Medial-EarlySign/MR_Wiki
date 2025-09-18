@@ -3,7 +3,11 @@
 ## Common Actions
 
 ### 1. Match MedSamples by Year or Criteria
-See: [Using Flow To Prepare Samples and Get Incidences](../Using%20the%20Flow%20App/Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.md)
+This process allows you to subsample your data by matching medical samples based on a specific year or other defined criteria. A primary application is to eliminate the influence of temporal information from your dataset. This ensures that your model does not learn to exploit the time a sample was collected for prediction, and instead, relies on features independent of a given year.
+
+This technique is also useful for evaluating a model's performance when you remove a specific signal information gain. For example, you can match samples by age to see how your model performs when it can't directly use age as a predictor. The model will still see age, but conditioning on its value will result equal probability to be a case, so the model will not be able to use age directly to gain performance benefit.
+
+See: [Using Flow To Prepare Samples and Get Incidences](../Using%20the%20Flow%20App/Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.md#matching-פarameters)
 
 ### 2. Train a Model from JSON
 refer to [Flow](../Using%20the%20Flow%20App/index.md#training-a-model)
@@ -15,19 +19,16 @@ refer to [Flow](../Using%20the%20Flow%20App/index.md#predictingapplying-a-model)
 refer to [Flow](../Using%20the%20Flow%20App/index.md#creating-a-feature-matrix-for-samples)
 
 ### 5. Adjust Model
-Add or retrain rep_processor or post_processor components. Useful for calibration or explainability.  
+Add or retrain rep_processor or post_processor components. Useful for calibration or explainability or adding/adjusting existing model.
 See: [adjust_model](../adjust_model.md)  
-Can be compiled in AllTools.
 
 ### 6. Change Model
-Remove or modify model components (e.g., enable debug logs, test normalization).  
+Remove or modify model components (e.g., enable debug logs, limit memory usage of the model by defining smaller batch sizes).  
 See: [change_model](../change_model)  
-Can be compiled in AllTools.
 
 ### 7. Simplify Model / Remove Signals
 Iteratively add or remove signals to simplify the model.  
 See: [Iterative Feature Selector](../Iterative%20Feature%20Selector.md)  
-Can be compiled in AllTools.
 
 ### 8. Analyze Feature Importance & Model Behavior
 "But Why" graphs for feature validation.  

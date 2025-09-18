@@ -1,36 +1,80 @@
 # change_model
-In some cases we need to manipulate Existing MedModel without need for relearn.
-For example:
 
-- In production models with use special flags in the BasicCleaner to store in the MedSamples information about the cleaning process
-- Normalization, Imputation - we might want to turn it off for some use cases to create matrixes
-- ButWhy - we might want to turn it off or change some arguments for the apply without realearn - change grouping arguments for example...
-A new app in Tools repository called **change_model** can handle all of those in a very simple manner.
-Example for use-case #1 - how to disable the attributes storage in existing model:
+This tool allows you to **modify components within an existing MedModel** without the need to retrain the entire model. It's an efficient way to make targeted adjustments to a model's pipeline, especially for production, testing, or debugging purposes.
+This tool, is part of the [AllTools compilation](../Installation/index.md#3-mes-tools-to-train-and-test-models)
+
+Common use cases include:
+
+* **Modifying Production Settings**: nable special flags in components like `RepBasicOutlierCleaner` to store outlier information. This process is typically slower and more memory-intensive, so you might only want to activate it in production.
+* **Controlling Pre-processing**: Temporarily disable or adjust pre-processing steps like normalization or imputation for specific testing or data matrix creation.
+* **Adjusting `ButWhy` Explanations**: Change arguments for the explainability component, such as the number of contributors to output, without re-learning the model.
+
+`change_model `supports both **interactive** and **non-interactive** command-line interfaces for controlling and modifying model objects.
+ This documentation focuses on the non-interactive use case, which is most common for scripting and automation.
+
+## Arguments
+
+There are two primary methods for using change_model in non-interactive mode: 
+a simple one-liner for a single change or a JSON file for multiple, more complex changes.
+
+### Method 1: Single Change via Command Line
+
+For a single, quick modification, use the `--search_object_name` and `--object_command` flags.
+
+#### Example: Disabling Outlier Attribute Storage
+
+This command finds all `RepBasicOutlierCleaner` objects and clears the attributes used for storing outlier information, effectively disabling that feature to improve performance.
+
 ```bash
-change_model --model_path /server/Work/Users/Alon/But_Why/outputs/Stage_B/explainers/crc/base_model.bin --output_path $NEW_CHANGE_MODEL_PATH --interactive_change 0 --search_object_name RepBasicOutlierCleaner --object_command "nrem_attr=;nrem_suff=;ntrim_attr=;ntrim_suff="
-read_binary_data_alloc [/server/Work/Users/Alon/But_Why/outputs/Stage_B/explainers/crc/base_model.bin] with crc32 [1219618941]
-read_from_file [/server/Work/Users/Alon/But_Why/outputs/Stage_B/explainers/crc/base_model.bin] with crc32 [1219618941] and size [5131504]
-Found object as RepProcessor
-Found object as RepProcessor - touched 20 objects - succesed in 20
+change_model --model_path <model_path> --output_path <output_model_path> --interactive_change 0 --search_object_name RepBasicOutlierCleaner --object_command "nrem_attr=;nrem_suff=;ntrim_attr=;ntrim_suff="
 ```
-The above command opens the MedModel in model_path argument, looks for "RepBasicOutlierCleaner" object and passes into all objects the init string command that changes those objects and than stores it in the NEW_CHANGE_MODEL_PATH location.
-You can also passed "DELETE" in the object_command to delete a certain objects or interactively navigate trough MedModel object to change/delete certain elements by index numbers.
-Be carefull to change only things that won't require relearn!!!
- 
-## JSON examples of ChangeModelInfo to pass as json
-General template:
+
+* `--model_path`: Path to your existing model file.
+* `--output_path`: Path where the modified model will be saved.
+* `--interactive_change`: `0` Activates non-interactive mode. Default is `1`
+* `--search_object_name`: The name of the object to find and modify. In this case, `RepBasicOutlierCleaner`.
+* `--object_command`: A string of semicolon-separated `key=value` pairs to set new parameters. To **delete** an object, use `"DELETE"`.
+
+### Method 2: Multiple Changes via JSON File
+
+For complex or multiple modifications, you can provide a JSON file containing all your change instructions using the `--change_model_file` argument. This file will be used to initiate a `ChangeModelInfo` object, which then executes the requested changes.
+
+#### JSON Change Block Structure
+
+The JSON file contains an array of "change blocks," where each block defines a specific modification.
+
 ```json
 { 
   "changes": [
-       //Write your change block in here
+       // Define your change blocks here
   ]
 }
 ```
-All templates can be seen here: /server/Work/Users/Alon/UnitTesting/examples/ChangeModelInfo/ (symbolic link to git repository /server/UsersData/alon/MR/Projects/Shared/Projects/configs/UnitTesting/examples/ChangeModelInfo)
-The json_query_whitelist and json_query_blacklist are lists of conditions to filter the json by regex. If multiple items are presented it does AND condition.
- 
-Remove Normalizers and Imputers. Remove Only Age+Gender Normalizers and not all of them.
+
+Each block has the following parameters:
+
+```json
+{
+    "change_name": "<name_for_logging>",
+    "object_type_name": "<The object we seek to change>",
+    "json_query_whitelist": [ "<string list of regex items>" ],
+    "json_query_blacklist": [ "<string list of regex items>" ],
+    "change_command": "<command string>",
+    "verbose_level": "<verbosity level for this action (optional)>"
+}
+```
+
+* `json_query_whitelist`: A list of regular expressions. A component will only be selected if its string representation matches **all** regex strings in this array (AND condition).
+* `json_query_blacklist`: A list of regular expressions. A component will be **filtered out** if its string representation matches **any** regex string in this array.
+
+> **Warning!**: Be extremely cautious when modifying a model. Only change things that do not require re-training. For instance, do not remove features that are essential for the classifier to function correctly.
+
+### JSON Examples
+
+#### Example 1: Remove Normalizers and Imputers
+
+This example shows how to selectively remove specific normalizers and all imputers. The first block uses `json_query_whitelist` to target only the `FeatureNormalizer` objects for `Age` and `Gender` while leaving others untouched. The second block removes all `FeatureImputer` objects.
+
 ```json
 { 
   "changes": [
@@ -53,7 +97,14 @@ Remove Normalizers and Imputers. Remove Only Age+Gender Normalizers and not all 
   ]
 }
 ```
-Remove attributes from cleaners, remove attribute check and change max_data in memory that used to split model apply into blocks
+### Example 2: Multiple Modifications in One File
+
+This example demonstrates how to perform several changes in a single operation: 
+
+* Removing outlier attributes - that reports on outliers. makes think slower and consume more memory.
+* Deleting RepCheckReq objects - that checks eligibility criteria. makes think slower and consume more memory.
+* adjusting the `max_data_in_mem` parameter for the `MedModel` object itself, to adjusts the model's memory limit to process larger prediction batches.
+
 ```json
 { 
   "changes": [
