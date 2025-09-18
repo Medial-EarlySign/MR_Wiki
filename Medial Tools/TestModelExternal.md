@@ -1,5 +1,5 @@
 # TestModelExternal
- A tool to test difference between repositories when applying a model.
+A tool to test difference between repositories when applying a model.
 It builds a propensity model to discriminate between repositories to reveal differences and do simplr compare of the feature matrices.
 The goal is to discover that the model is transferable and can well behave on the second repository.
  

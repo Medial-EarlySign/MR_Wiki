@@ -31,8 +31,9 @@ Iteratively add or remove signals to simplify the model.
 See: [Iterative Feature Selector](../Iterative%20Feature%20Selector.md)  
 
 ### 8. Analyze Feature Importance & Model Behavior
-"But Why" graphs for feature validation.  
+Analyze Global feature importance and also features interaction and effect on model output of each important feature/signal.
 See: [Feature Importance](../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md)
+There is also automatic test that uses those tools in model development: [Feature Importance Test](../Model%20Checklist/AutoTest/Development%20kit/Test_05%20-%20But%20why.md))
 
 ### 9. Bootstrap Performance Analysis
 See: [bootstrap_app](../bootstrap_app)
@@ -66,6 +67,7 @@ Include `json_mat` even if not required by definition.
 ```bash
 FilterSamples --filter_train 0 --rep ${REP_PATH} --filter_by_bt_cohort "Time-Window:90,730;Age:50,80;Suspected:0,0;Ex_or_Current:1,1" --samples ${INPUT} --output ${OUTPUT} --json_mat ${JSON}
 ```
+Please refer to [bootstrap_app](../bootstrap_app/index.md) to learn more on the `--filter_by_bt_cohort` syntax of filtering
 
 ### 16. Check Model Compatibility with Repository / Suggest Adjustments
 
