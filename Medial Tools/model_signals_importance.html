@@ -3818,9 +3818,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#goal" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Goal
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output
     </span>
   </a>
   
@@ -7660,9 +7696,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#goal" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Goal
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output
     </span>
   </a>
   
@@ -7701,19 +7773,46 @@
 
 
 <h1 id="model_signals_importance">model_signals_importance</h1>
-<h2 id="goal">Goal</h2>
-<p>Compare model performance with\without passing group os signals to input the model.</p>
+<h2 id="overview">Overview</h2>
+<p>The <code>model_signals_importance</code> tool systematically evaluates how specific groups of signals contribute to your model’s performance. It does this by comparing the model’s results with and without selected signals, without retraining the model. The model remains fixed; the tool simply tests the effect of removing signals from the input.</p>
+<p>This analysis is useful for:</p>
 <ul>
-<li>--skip_list  comma deliimited list that contorls which signals to skip - mainly passed Age,Gender. We always have those values and don't/can't check those</li>
-<li>--no_filtering_of_existence - If passed, will not filter each cohort to a one that we have the signal exists in certain time window controlled by --time_windows</li>
-<li>--features_groups - 2 columns tab delimeted or ButWhy grouping format like "BY_SIGNAL". It mapps feature to a group name/signal</li>
-<li>--group2signal - can map the "groups" of features_groups into list of signals to exclude when handling this group. Tab delimeted, 2 columns: group name as in features_groups and list of signal, comma delimited</li>
+<li><strong>Model Interpretability</strong>: Quantifies the impact of each signal or group.</li>
+<li><strong>Feature Selection</strong>: Identifies redundant or low-impact signals that can be removed, simplifying the model and reducing data requirements.</li>
+<li><strong>Performance Benchmarking</strong>: Shows the expected performance drop if a signal becomes unavailable.</li>
 </ul>
+<hr />
+<h2 id="command-line-parameters">Command Line Parameters</h2>
+<ul>
+<li><code>--skip_list &lt;comma-delimited list&gt;</code>: Signals to exclude from the analysis (e.g., <code>Age,Gender</code>). Use for signals always present in the data and not under test.</li>
+<li><code>--no_filtering_of_existence</code>: Disables the default filtering that ensures the signal under analysis exists in the time window. By default, the tool only compares samples where the signal is present; this flag tests the impact regardless of existence.</li>
+<li><code>--features_groups &lt;path&gt;</code>: Path to a tab-delimited file (or "ButWhy" grouping file) mapping features to logical group names (e.g., all CBC-related features grouped as <code>CBC</code>). Can be also keyword like <code>BY_SIGNAL_CATEG</code> to group features by their originating source signal.</li>
+<li><code>--group2signal &lt;path&gt;</code>: (Optional) Path to a tab-delimited file with two columns: group name (from <code>features_groups</code>) and a comma-separated list of signals. This remaps groups to the actual signals to exclude during testing.</li>
+<li><code>--measure_regex &lt;string&gt;</code>: Controls the measurements we want to extract in the report. For example: "AUC|SENS@FPR_03"</li>
+</ul>
+<p>You can also specify filtering arguments with <code>--bt_filter</code> arguments like we do in <a href="Guide%20for%20common%20actions/index.html#15-filter-samples-by-bt-cohort">FilterSamples</a></p>
+<h2 id="how-it-works">How It Works</h2>
+<p>The tool uses a flexible two-step mapping to decide which signals to remove for each test:</p>
 <ol>
-<li>features_groups - Taking but why group names and maping feature to names, just to count how many features are effected, but we are going to use only the "group names" of this </li>
-<li>if name matches in group2signal =&gt; take the mapped value, list of signals to use, otherwise it assume the name of the group is already a valid signal name
-So groups are determined by features_groups values.  group2signal, help to remap those groups to lists of signals.</li>
+<li><strong>Feature-to-Group Mapping</strong>: Reads the <code>--features_groups</code> file to map each feature to a group.</li>
+<li><strong>Group-to-Signal Mapping</strong>: Uses the <code>--group2signal</code> file to determine which signals to exclude for each group:
+   - If a group name is found in <code>--group2signal</code>, the tool uses the listed signals.
+   - If not, the group name itself is used as the signal for testing.</li>
 </ol>
+<p>This lets you test individual groups or combine multiple groups into a single signal for analysis.</p>
+<h2 id="example-usage">Example Usage</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>model_signals_importance<span class="w"> </span>--model_path<span class="w"> </span>my_model.bin<span class="w"> </span>--features_groups<span class="w"> </span>feature_groups.tsv<span class="w"> </span>--group2signal<span class="w"> </span>group_mapping.tsv<span class="w"> </span>--skip_list<span class="w"> </span>Age,Gender<span class="w"> </span>--no_filtering_of_existence<span class="w"> </span>--time_windows<span class="w"> </span><span class="m">0</span>,365
+</code></pre></div></td></tr></table></div>
+<p>In this example:</p>
+<ul>
+<li>The base model is <code>my_model.bin</code>.</li>
+<li><code>feature_groups.tsv</code> maps features to groups.</li>
+<li><code>group_mapping.tsv</code> defines which signals to test for each group.</li>
+<li><code>Age</code> and <code>Gender</code> are skipped.</li>
+<li>Signals are tested without filtering for their existence in the <code>0,365</code> day window. The report will show how many samples have each signal, but performance is measured on all data, not just those with the signal present. If <code>--no_filtering_of_existence</code> was not given, the performance was assess only with the cohort where the signal presents.</li>
+</ul>
+<h2 id="output">Output</h2>
+<p>The tool outputs a report comparing model performance on the full dataset versus performance with each signal group removed. The report typically includes a metric (e.g., AUC) and the performance drop, giving a clear, quantitative measure of each signal’s importance.</p>
 
 
 

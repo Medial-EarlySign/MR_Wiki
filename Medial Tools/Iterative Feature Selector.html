@@ -3616,6 +3616,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Iterative Feature Selector
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="Iterative%20Feature%20Selector.html" class="md-nav__link md-nav__link--active">
         
   
@@ -3627,6 +3640,112 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Arguments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Command Line Arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selector-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selector Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Evaluation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-predictor-parameters-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Predictor Parameters File
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Example
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -7612,6 +7731,101 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Arguments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Command Line Arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selector-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selector Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Evaluation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-predictor-parameters-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Predictor Parameters File
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Example
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -7643,88 +7857,102 @@
 
 
 <h1 id="iterative-feature-selector">Iterative Feature Selector</h1>
-<p>Iterative Selector is a tool for finding important signals (or features), by building predictors iteratielvy (by a greedy bottom up approach or vice versa).
-The tool can be found in <strong>$MR_ROOT/Tools/MedProcessUtils/IterativeSelector. </strong>This is an envelope for running the FeatureProcessor iterativeFeatureSelector.
-For brevity we will refer to signals or features as signals.
-There are two methods for finding  the important signals:
-1. Bottom up - Start with a low number of signals (some required signals, or none). In each iteration run on the remaining signals, and add those who improve the selected metric the most (i.e., AUC).
-2. Top down - Start with all the signals. In each iteration run on the remaining signals, and remove those who least decrease the selected metric.
- 
-<strong>Parameters:</strong></p>
+<p>The <strong>Iterative Feature Selector</strong> is a powerful tool designed to identify the most impactful signals (or features) within your data. It does this by building a predictive model incrementally, either from the ground up or by eliminating less important signals.
+This tool is a standalone wrapper for the <code>iterativeFeatureSelector</code> FeatureProcessor, allowing for a more focused and verbose exploration of the feature selection process than is available within a full model pipeline.</p>
+<h3 id="core-concepts">Core Concepts</h3>
+<p>The tool operates by adding or removing signals based on how they affect a chosen performance metric, such as AUC. 
+It defines a <strong>signal</strong> as a collection of related features, which can be selected or removed as a group. 
+If you prefer to work on individual features, you can use the <code>--work_on_ftrs</code> flag.</p>
+<p>There are two main iterative methods:</p>
+<ol>
+<li><strong>Bottom-Up:</strong> Starts with a small set of signals (or none). In each iteration, it tests the remaining signals and adds the one that provides the greatest improvement to the selected metric.</li>
+<li><strong>Top-Down:</strong> Starts with all available signals. In each iteration, it tests the remaining signals and removes the one that causes the least decrease in the selected metric.</li>
+</ol>
+<h3 id="command-line-arguments">Command Line Arguments</h3>
+<p>The following parameters control the tool's behavior.</p>
+<h4 id="input-data">Input Data</h4>
+<p>You must provide data using one of the following methods:</p>
 <ul>
-<li>Input parameters (either inCsv, inBin or inSamples+inModel+config should be given):<ul>
-<li>inCsv: input matrix as csv file.</li>
-<li>inBin: input matrix as bin file.</li>
-<li>inSamples: input samples for generating matrix</li>
-<li>inModel: Bin model file for generating matrix from samples</li>
-<li>inJson: Json model file for generating matrix from samples (either inModel or inJson should be given with inSamples)</li>
-<li>rep: Repository config file</li>
-<li>inpatient: :indicate that relevant data is in-patient data.</li>
+<li><code>--inCsv &lt;path&gt;</code>: A single CSV file containing your data matrix.</li>
+<li><code>--inSamples &lt;path&gt;</code> + <code>--inModel &lt;path&gt;</code>/<code>--inJson &lt;path&gt;</code>: The tool will generate the data matrix from raw samples using an existing model file.</li>
+<li><code>--rep &lt;path&gt;</code>: The configuration file for the data repository for generating the matrix from inSamples</li>
 </ul>
-</li>
-<li>Output parameters<ul>
-<li>out: : output file.</li>
+<h4 id="output">Output</h4>
+<ul>
+<li><code>--progress_file_path</code>: Path for progress output file log that you can track and see performance not only in terminal and wait for program to finish.</li>
+<li><code>--out &lt;path&gt;</code>: The path for the output file, which will contain the selection report.</li>
 </ul>
-</li>
-<li>Selector parameters:<ul>
-<li>predictor: : predictor type (i.e, qrf)</li>
-<li>predictor_params: : default predictor parameters. in the form of  "param1=value1;param2=value2 " .There is an option to provide a file with "number of features" ranges, and a predictor parameters  string (will be explained later). If the current number of features is not covered in the file (or the file doesn't exist), then this value is used.</li>
-<li>predictor_params_file:"":input predictor parameters file - if exists, overrides predictor parameters. The file  has one line per number or features range. each line's fomat is "min_number_of_features  max_number_of_features predictors parameter string". Tab  delimited. see example below.</li>
-<li>nfolds: : if given, replace given splits with id-index%nfolds</li>
-<li>folds: :comma-separated list of folds to actually take for test. If not given - take all.</li>
-<li>mode: top2bottom : directions of selection (top2bottom/bottom2top).</li>
-<li>rate:"50:1,100:2,500:5,5000:10": instruction on rate of selection - comma separated pairs : #-bound:step. Determines how many signals to add or to drop. For example, in the default setting, when working with bottom up, when number of signals is between 1 to 50, the program adds 1 signal each iteration. When number of signals is 51 to100, the program adds 2 signals each iterations, etc. It works symmetrically in top2bottome.</li>
-<li>univariate_nfeatures: : number of features (not signals!) to select in an initial univariate selector stage.</li>
-<li>univariate_params:"method=mi": univariate selector parameters.</li>
-<li>required: comma-separated list of required features.</li>
-<li>work_on_ftrs:false:if true - work on features, if false, work on signals.</li>
-<li>verbose: Verbosity flag</li>
-<li>Performance evealuation is done by MedBootstrap with nbootstrap=0 (written as "loopcnt:0"), looking at the observed measurement:<ul>
-<li>bootstrap_params: Parameters for bootstrap. e.g. sample_per_id=1 ('/' separated)</li>
-<li>cohort_params: Parameters for defining the booststrap cohort. e.g. Age:50,75/Time-Window:0,365</li>
-<li>msr_params: Define the performance measurement. e.g. AUC or SENS,FPR,0.2 for Sensitivity at FPR=20%</li>
+<h4 id="selector-parameters">Selector Parameters</h4>
+<ul>
+<li><code>--mode &lt;top2bottom | bottom2top&gt;</code>: The direction of the selection process. Default is <code>bottom2top</code>.</li>
+<li><code>--predictor &lt;type&gt;</code>: The type of predictor to use in the selection loop (e.g., <code>xgb</code>).</li>
+<li><code>--predictor_params "&lt;key1=value1;...&gt;"</code>: A semicolon-separated string of default parameters for your predictor.</li>
+<li><code>--predictor_params_file &lt;path&gt;</code>: A file that specifies predictor parameters based on the number of features. Each line should be tab-delimited with the format: <code>min_features max_features predictor_param_string</code>. This file overrides <code>--predictor_params</code>.</li>
+<li><code>--rate "&lt;rate_string&gt;"</code>: Defines the number of signals to add or remove in each iteration. The format is a comma-separated list of <code>bound:step</code> pairs. For example, <code>"50:1,100:2"</code> means add/remove 1 signal when the count is between 1-50, and 2 when it's between 51-100.</li>
+<li><code>--required &lt;signal1,signal2,...&gt;</code>: A comma-separated list of signals that must be included in the model from the start.</li>
+<li><code>--work_on_ftrs &lt;boolean&gt;</code>: If <code>true</code>, the selector operates on individual features instead of entire signals. Default is <code>false</code>.</li>
+<li><code>--group_mode</code>: Controls the features grouping. Can be a file path with feature to group name for full control or keyword like <code>BY_SIGNAL_CATEG</code> that aggregates features by their originating source signal</li>
+<li><code>--numToSelect</code>: stop criteria when to stop. The default is 0. Continue till the end.</li>
 </ul>
-</li>
-<li>selector_params: iterativeFeatureSelection initialization string (semicolon-separated. Json files format) that replaces all the above parameters
-<strong>Example of running line:</strong>
-<strong>Running Example</strong>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Running Example</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>/nas1/UsersData/yaron/MR/Tools/MedProcessUtils/Linux/Release//iterativeSelector<span class="w"> </span>--inSamples<span class="w"> </span>samples<span class="w"> </span>--inJson<span class="w"> </span>simple_model.json<span class="w"> </span>--out<span class="w"> </span>outReport<span class="w"> </span>--predictor<span class="w"> </span>qrf<span class="w"> </span>--predictor_params_file<span class="w"> </span>params_iterative_seletcor<span class="w"> </span>--nfolds<span class="w"> </span><span class="m">5</span><span class="w"> </span>--folds<span class="w"> </span><span class="s2">&quot;0,2,4&quot;</span><span class="w"> </span>--mode<span class="w"> </span>top2bottom<span class="w"> </span>--verbose<span class="w"> </span><span class="m">1</span><span class="w"> </span>--msr_params<span class="w"> </span>AUC<span class="w"> </span>--cohort_params<span class="w"> </span><span class="s2">&quot;Age:0,200&quot;</span><span class="w"> </span>--required<span class="w"> </span><span class="s2">&quot;Age,Gender&quot;</span>
+<h4 id="performance-evaluation">Performance Evaluation</h4>
+<p>The tool uses a bootstrap method for performance evaluation.</p>
+<ul>
+<li><code>--msr_params &lt;param_string&gt;</code>: Defines the performance metric. For example, <code>AUC</code> or <code>SENS,FPR,0.2</code>.</li>
+<li><code>--nfolds &lt;number&gt;</code>: Replaces existing data splits with new folds for cross-validation.</li>
+<li><code>--folds &lt;0,2,4&gt;</code>: A comma-separated list of folds to use for evaluation. If not provided, all folds are used.</li>
+<li><code>--verbose &lt;level&gt;</code>: Controls the level of detail printed to the console.</li>
+<li><code>--bootstrap_params &lt;param_string&gt;</code>: Parameters for bootstrap. e.g. sample_per_id=1 ('/' separated, key value is separated by ":"). example: "loopcnt:500/sample_per_id:1"</li>
+<li><code>--cohort_params &lt;param_string&gt;</code>: Parameters for defining the booststrap cohort. e.g. "Age:50,75/Time-Window:0,365" for filtering the samples</li>
+</ul>
+<h3 id="running-example">Running Example</h3>
+<p>This command runs a top-down iterative selection process, removing signals that have the least impact on AUC.
+Age,Gender are required and forced to remain in the model</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Running Example</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>iterativeSelector<span class="w"> </span>--inSamples<span class="w"> </span>samples<span class="w"> </span>--inJson<span class="w"> </span>simple_model.json<span class="w"> </span>--out<span class="w"> </span>outReport<span class="w"> </span>--predictor<span class="w"> </span>qrf<span class="w"> </span>--predictor_params_file<span class="w"> </span>params_iterative_seletcor<span class="w"> </span>--nfolds<span class="w"> </span><span class="m">5</span><span class="w"> </span>--folds<span class="w"> </span><span class="s2">&quot;0,2,4&quot;</span><span class="w"> </span>--mode<span class="w"> </span>top2bottom<span class="w"> </span>--verbose<span class="w"> </span><span class="m">1</span><span class="w"> </span>--msr_params<span class="w"> </span>AUC<span class="w"> </span>--required<span class="w"> </span><span class="s2">&quot;Age,Gender&quot;</span>
 </code></pre></div></td></tr></table></div>
- 
-<strong>Example for predictor parmeters file:</strong>
-(Can be found at /nas1/Work/Users/yaron/Examples/iterativeSelector/params_iterative_seletcor).
-0 50 ntrees = 200 ; min_node = 300
-51 150 ntrees = 200 ; min_node = 200
-151 200 ntrees = 200 ; min_node = 100
-201 100000 ntrees = 200 ; min_node = 50
- 
-<strong>Output Example:</strong>
-File can be found at /nas1/Work/Users/yaron/Examples/iterativeSelector/outReport</li>
+<ul>
+<li><code>--predictor</code>: Uses a <code>qrf</code> (Quantile Random Forest) predictor.</li>
+<li><code>--predictor_params_file</code>: Loads specific predictor parameters from a file based on the number of features.</li>
+<li><code>--nfolds</code> and <code>--folds</code>: Specifies that the evaluation should use 5 folds, but only folds 0, 2, and 4 will be used for testing.</li>
+<li><code>--mode top2bottom</code>: Starts with all signals and removes them one by one.</li>
+<li><code>--required</code>: Ensures Age and Gender are never removed from the model.
+ </li>
 </ul>
-</li>
-</ul>
-<p><strong>Output example</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Removing family RBC with AUC_Obs = 0.747491
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>Removing family RDW with AUC_Obs = 0.747476
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>Removing family INR with AUC_Obs = 0.749214
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>Removing family PDW with AUC_Obs = 0.751048
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>Removing family MCV with AUC_Obs = 0.750944
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>Removing family Hematocrit with AUC_Obs = 0.751496
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>Removing family WBC with AUC_Obs = 0.751073
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>Removing family MCHC-M with AUC_Obs = 0.750825
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>Removing family Hemoglobin with AUC_Obs = 0.752080
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>Removing family Platelets with AUC_Obs = 0.741643
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a>Removing family MCH with AUC_Obs = 0.688449
+<h3 id="example-predictor-parameters-file">Example: Predictor Parameters File</h3>
+<p>The <code>predictor_params_file</code> allows you to change predictor parameters as the number of features changes. Each line is tab-delimited.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>0 50 ntrees = 200 ; min_node = 300
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>51 150 ntrees = 200 ; min_node = 200
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>151 200 ntrees = 200 ; min_node = 100
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>201 100000 ntrees = 200 ; min_node = 50
+</code></pre></div></td></tr></table></div>
+<h3 id="output-example">Output Example</h3>
+<p>The tool provides a verbose output, detailing the changes at each step. 
+In this Top-Down example, the tool is showing which signal it is removing and the corresponding AUC of the model after the removal.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Removing family RBC with AUC_Obs = 0.747491
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>Removing family RDW with AUC_Obs = 0.747476
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>Removing family INR with AUC_Obs = 0.749214
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>Removing family PDW with AUC_Obs = 0.751048
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>Removing family MCV with AUC_Obs = 0.750944
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>Removing family Hematocrit with AUC_Obs = 0.751496
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>Removing family WBC with AUC_Obs = 0.751073
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>...
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>Removing family MCHC-M with AUC_Obs = 0.750825
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>Removing family Hemoglobin with AUC_Obs = 0.752080
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>Removing family Platelets with AUC_Obs = 0.741643
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>Removing family MCH with AUC_Obs = 0.688449
 </code></pre></div></td></tr></table></div>
 
 

@@ -7832,8 +7832,9 @@ See: <a href="../change_model">change_model</a>  </p>
 <p>Iteratively add or remove signals to simplify the model.<br />
 See: <a href="../Iterative%20Feature%20Selector.html">Iterative Feature Selector</a>  </p>
 <h3 id="8-analyze-feature-importance-model-behavior">8. Analyze Feature Importance &amp; Model Behavior</h3>
-<p>"But Why" graphs for feature validation.<br />
-See: <a href="../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.html">Feature Importance</a></p>
+<p>Analyze Global feature importance and also features interaction and effect on model output of each important feature/signal.
+See: <a href="../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.html">Feature Importance</a>
+There is also automatic test that uses those tools in model development: <a href="../Model%20Checklist/AutoTest/Development%20kit/Test_05%20-%20But%20why.html">Feature Importance Test</a>)</p>
 <h3 id="9-bootstrap-performance-analysis">9. Bootstrap Performance Analysis</h3>
 <p>See: <a href="../bootstrap_app">bootstrap_app</a></p>
 <h3 id="10-compareestimate-model-performance-on-different-repository">10. Compare/Estimate Model Performance on Different Repository</h3>
@@ -7857,7 +7858,8 @@ Can be compiled in AllTools.</p>
 <h3 id="15-filter-samples-by-bt-cohort">15. Filter Samples by BT Cohort</h3>
 <p>Include <code>json_mat</code> even if not required by definition.
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>FilterSamples<span class="w"> </span>--filter_train<span class="w"> </span><span class="m">0</span><span class="w"> </span>--rep<span class="w"> </span><span class="si">${</span><span class="nv">REP_PATH</span><span class="si">}</span><span class="w"> </span>--filter_by_bt_cohort<span class="w"> </span><span class="s2">&quot;Time-Window:90,730;Age:50,80;Suspected:0,0;Ex_or_Current:1,1&quot;</span><span class="w"> </span>--samples<span class="w"> </span><span class="si">${</span><span class="nv">INPUT</span><span class="si">}</span><span class="w"> </span>--output<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT</span><span class="si">}</span><span class="w"> </span>--json_mat<span class="w"> </span><span class="si">${</span><span class="nv">JSON</span><span class="si">}</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div>
+Please refer to <a href="../bootstrap_app/index.html">bootstrap_app</a> to learn more on the <code>--filter_by_bt_cohort</code> syntax of filtering</p>
 <h3 id="16-check-model-compatibility-with-repository-suggest-adjustments">16. Check Model Compatibility with Repository / Suggest Adjustments</h3>
 <p>When applying a model to a different repository, some modifications may be necessary.<br />
 For instance, MedModel strictly checks for the presence of required signals. If a signal is missing but not critical, you can explicitly mark it as acceptable by adding a rep processor for an <a href="../../Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/How%20to%20create%20an%20empty%20signal">"empty" signal</a>.<br />
