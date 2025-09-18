@@ -5098,7 +5098,7 @@
   
   
   <span class="md-ellipsis">
-    Using Flow To Prepare Samples and Get Incidences
+    Using Flow to Prepare Samples and Calculate Incidences
     
   </span>
   
@@ -5440,7 +5440,7 @@
   
   
   <span class="md-ellipsis">
-    How to limit memory usage in predict
+    Limiting Memory Usage in predict
     
   </span>
   
@@ -7813,7 +7813,9 @@
 <h1 id="guide-for-common-actions">Guide for Common Actions</h1>
 <h2 id="common-actions">Common Actions</h2>
 <h3 id="1-match-medsamples-by-year-or-criteria">1. Match MedSamples by Year or Criteria</h3>
-<p>See: <a href="../Using%20the%20Flow%20App/Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.html">Using Flow To Prepare Samples and Get Incidences</a></p>
+<p>This process allows you to subsample your data by matching medical samples based on a specific year or other defined criteria. A primary application is to eliminate the influence of temporal information from your dataset. This ensures that your model does not learn to exploit the time a sample was collected for prediction, and instead, relies on features independent of a given year.</p>
+<p>This technique is also useful for evaluating a model's performance when you remove a specific signal information gain. For example, you can match samples by age to see how your model performs when it can't directly use age as a predictor. The model will still see age, but conditioning on its value will result equal probability to be a case, so the model will not be able to use age directly to gain performance benefit.</p>
+<p>See: <a href="../Using%20the%20Flow%20App/Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.html#matching-פarameters">Using Flow To Prepare Samples and Get Incidences</a></p>
 <h3 id="2-train-a-model-from-json">2. Train a Model from JSON</h3>
 <p>refer to <a href="../Using%20the%20Flow%20App/index.html#training-a-model">Flow</a></p>
 <h3 id="3-calculate-model-score-on-samples">3. Calculate Model Score on Samples</h3>
@@ -7821,17 +7823,14 @@
 <h3 id="4-create-feature-matrix-for-samples">4. Create Feature Matrix for Samples</h3>
 <p>refer to <a href="../Using%20the%20Flow%20App/index.html#creating-a-feature-matrix-for-samples">Flow</a></p>
 <h3 id="5-adjust-model">5. Adjust Model</h3>
-<p>Add or retrain rep_processor or post_processor components. Useful for calibration or explainability.<br />
-See: <a href="../adjust_model.html">adjust_model</a><br />
-Can be compiled in AllTools.</p>
+<p>Add or retrain rep_processor or post_processor components. Useful for calibration or explainability or adding/adjusting existing model.
+See: <a href="../adjust_model.html">adjust_model</a>  </p>
 <h3 id="6-change-model">6. Change Model</h3>
-<p>Remove or modify model components (e.g., enable debug logs, test normalization).<br />
-See: <a href="../change_model">change_model</a><br />
-Can be compiled in AllTools.</p>
+<p>Remove or modify model components (e.g., enable debug logs, limit memory usage of the model by defining smaller batch sizes).<br />
+See: <a href="../change_model">change_model</a>  </p>
 <h3 id="7-simplify-model-remove-signals">7. Simplify Model / Remove Signals</h3>
 <p>Iteratively add or remove signals to simplify the model.<br />
-See: <a href="../Iterative%20Feature%20Selector.html">Iterative Feature Selector</a><br />
-Can be compiled in AllTools.</p>
+See: <a href="../Iterative%20Feature%20Selector.html">Iterative Feature Selector</a>  </p>
 <h3 id="8-analyze-feature-importance-model-behavior">8. Analyze Feature Importance &amp; Model Behavior</h3>
 <p>"But Why" graphs for feature validation.<br />
 See: <a href="../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.html">Feature Importance</a></p>

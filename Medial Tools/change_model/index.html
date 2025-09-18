@@ -5096,7 +5096,7 @@
   
   
   <span class="md-ellipsis">
-    Using Flow To Prepare Samples and Get Incidences
+    Using Flow to Prepare Samples and Calculate Incidences
     
   </span>
   
@@ -5440,7 +5440,7 @@
   
   
   <span class="md-ellipsis">
-    How to limit memory usage in predict
+    Limiting Memory Usage in predict
     
   </span>
   
@@ -7611,11 +7611,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#json-examples-of-changemodelinfo-to-pass-as-json" class="md-nav__link">
+  <a href="#arguments" class="md-nav__link">
     <span class="md-ellipsis">
-      JSON examples of ChangeModelInfo to pass as json
+      Arguments
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-1-single-change-via-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 1: Single Change via Command Line
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method 1: Single Change via Command Line">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-disabling-outlier-attribute-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Disabling Outlier Attribute Storage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-2-multiple-changes-via-json-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 2: Multiple Changes via JSON File
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method 2: Multiple Changes via JSON File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-change-block-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Change Block Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-remove-normalizers-and-imputers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Remove Normalizers and Imputers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-multiple-modifications-in-one-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2: Multiple Modifications in One File
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -7652,86 +7739,73 @@
 
 
 <h1 id="change_model">change_model</h1>
-<p>In some cases we need to manipulate Existing MedModel without need for relearn.
-For example:</p>
+<p>This tool allows you to <strong>modify components within an existing MedModel</strong> without the need to retrain the entire model. It's an efficient way to make targeted adjustments to a model's pipeline, especially for production, testing, or debugging purposes.
+This tool, is part of the <a href="../Installation/index.md#3-mes-tools-to-train-and-test-models">AllTools compilation</a></p>
+<p>Common use cases include:</p>
 <ul>
-<li>In production models with use special flags in the BasicCleaner to store in the MedSamples information about the cleaning process</li>
-<li>Normalization, Imputation - we might want to turn it off for some use cases to create matrixes</li>
-<li>ButWhy - we might want to turn it off or change some arguments for the apply without realearn - change grouping arguments for example...
-A new app in Tools repository called <strong>change_model</strong> can handle all of those in a very simple manner.
-Example for use-case #1 - how to disable the attributes storage in existing model:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>change_model<span class="w"> </span>--model_path<span class="w"> </span>/server/Work/Users/Alon/But_Why/outputs/Stage_B/explainers/crc/base_model.bin<span class="w"> </span>--output_path<span class="w"> </span><span class="nv">$NEW_CHANGE_MODEL_PATH</span><span class="w"> </span>--interactive_change<span class="w"> </span><span class="m">0</span><span class="w"> </span>--search_object_name<span class="w"> </span>RepBasicOutlierCleaner<span class="w"> </span>--object_command<span class="w"> </span><span class="s2">&quot;nrem_attr=;nrem_suff=;ntrim_attr=;ntrim_suff=&quot;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>read_binary_data_alloc<span class="w"> </span><span class="o">[</span>/server/Work/Users/Alon/But_Why/outputs/Stage_B/explainers/crc/base_model.bin<span class="o">]</span><span class="w"> </span>with<span class="w"> </span>crc32<span class="w"> </span><span class="o">[</span><span class="m">1219618941</span><span class="o">]</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>read_from_file<span class="w"> </span><span class="o">[</span>/server/Work/Users/Alon/But_Why/outputs/Stage_B/explainers/crc/base_model.bin<span class="o">]</span><span class="w"> </span>with<span class="w"> </span>crc32<span class="w"> </span><span class="o">[</span><span class="m">1219618941</span><span class="o">]</span><span class="w"> </span>and<span class="w"> </span>size<span class="w"> </span><span class="o">[</span><span class="m">5131504</span><span class="o">]</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>Found<span class="w"> </span>object<span class="w"> </span>as<span class="w"> </span>RepProcessor
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>Found<span class="w"> </span>object<span class="w"> </span>as<span class="w"> </span>RepProcessor<span class="w"> </span>-<span class="w"> </span>touched<span class="w"> </span><span class="m">20</span><span class="w"> </span>objects<span class="w"> </span>-<span class="w"> </span>succesed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">20</span>
-</code></pre></div></td></tr></table></div>
-The above command opens the MedModel in model_path argument, looks for "RepBasicOutlierCleaner" object and passes into all objects the init string command that changes those objects and than stores it in the NEW_CHANGE_MODEL_PATH location.
-You can also passed "DELETE" in the object_command to delete a certain objects or interactively navigate trough MedModel object to change/delete certain elements by index numbers.
-Be carefull to change only things that won't require relearn!!!
- </li>
+<li><strong>Modifying Production Settings</strong>: nable special flags in components like <code>RepBasicOutlierCleaner</code> to store outlier information. This process is typically slower and more memory-intensive, so you might only want to activate it in production.</li>
+<li><strong>Controlling Pre-processing</strong>: Temporarily disable or adjust pre-processing steps like normalization or imputation for specific testing or data matrix creation.</li>
+<li><strong>Adjusting <code>ButWhy</code> Explanations</strong>: Change arguments for the explainability component, such as the number of contributors to output, without re-learning the model.</li>
 </ul>
-<h2 id="json-examples-of-changemodelinfo-to-pass-as-json">JSON examples of ChangeModelInfo to pass as json</h2>
-<p>General template:
+<p><code>change_model</code>supports both <strong>interactive</strong> and <strong>non-interactive</strong> command-line interfaces for controlling and modifying model objects.
+ This documentation focuses on the non-interactive use case, which is most common for scripting and automation.</p>
+<h2 id="arguments">Arguments</h2>
+<p>There are two primary methods for using change_model in non-interactive mode: 
+a simple one-liner for a single change or a JSON file for multiple, more complex changes.</p>
+<h3 id="method-1-single-change-via-command-line">Method 1: Single Change via Command Line</h3>
+<p>For a single, quick modification, use the <code>--search_object_name</code> and <code>--object_command</code> flags.</p>
+<h4 id="example-disabling-outlier-attribute-storage">Example: Disabling Outlier Attribute Storage</h4>
+<p>This command finds all <code>RepBasicOutlierCleaner</code> objects and clears the attributes used for storing outlier information, effectively disabling that feature to improve performance.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>change_model<span class="w"> </span>--model_path<span class="w"> </span>&lt;model_path&gt;<span class="w"> </span>--output_path<span class="w"> </span>&lt;output_model_path&gt;<span class="w"> </span>--interactive_change<span class="w"> </span><span class="m">0</span><span class="w"> </span>--search_object_name<span class="w"> </span>RepBasicOutlierCleaner<span class="w"> </span>--object_command<span class="w"> </span><span class="s2">&quot;nrem_attr=;nrem_suff=;ntrim_attr=;ntrim_suff=&quot;</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><code>--model_path</code>: Path to your existing model file.</li>
+<li><code>--output_path</code>: Path where the modified model will be saved.</li>
+<li><code>--interactive_change</code>: <code>0</code> Activates non-interactive mode. Default is <code>1</code></li>
+<li><code>--search_object_name</code>: The name of the object to find and modify. In this case, <code>RepBasicOutlierCleaner</code>.</li>
+<li><code>--object_command</code>: A string of semicolon-separated <code>key=value</code> pairs to set new parameters. To <strong>delete</strong> an object, use <code>"DELETE"</code>.</li>
+</ul>
+<h3 id="method-2-multiple-changes-via-json-file">Method 2: Multiple Changes via JSON File</h3>
+<p>For complex or multiple modifications, you can provide a JSON file containing all your change instructions using the <code>--change_model_file</code> argument. This file will be used to initiate a <code>ChangeModelInfo</code> object, which then executes the requested changes.</p>
+<h4 id="json-change-block-structure">JSON Change Block Structure</h4>
+<p>The JSON file contains an array of "change blocks," where each block defines a specific modification.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
 <span class="normal"><a href="#__codelineno-1-4">4</a></span>
 <span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;changes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">       </span><span class="c1">//Write your change block in here</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">       </span><span class="c1">// Define your change blocks here</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span><span class="p">]</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-All templates can be seen here: /server/Work/Users/Alon/UnitTesting/examples/ChangeModelInfo/ (symbolic link to git repository /server/UsersData/alon/MR/Projects/Shared/Projects/configs/UnitTesting/examples/ChangeModelInfo)
-The json_query_whitelist and json_query_blacklist are lists of conditions to filter the json by regex. If multiple items are presented it does AND condition.
- 
-Remove Normalizers and Imputers. Remove Only Age+Gender Normalizers and not all of them.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span><span class="w"> </span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;changes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">       </span><span class="p">{</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;Remove Normalizers&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;FeatureNormalizer&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">            </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;Age|Gender&quot;</span><span class="w"> </span><span class="p">],</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">            </span><span class="nt">&quot;json_query_blacklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">            </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">       </span><span class="p">},</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">       </span><span class="p">{</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;Remove Imputers&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;FeatureImputer&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">            </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">            </span><span class="nt">&quot;json_query_blacklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">            </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">       </span><span class="p">}</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">  </span><span class="p">]</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="p">}</span>
+<p>Each block has the following parameters:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;name_for_logging&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;The object we seek to change&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;&lt;string list of regex items&gt;&quot;</span><span class="w"> </span><span class="p">],</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="nt">&quot;json_query_blacklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;&lt;string list of regex items&gt;&quot;</span><span class="w"> </span><span class="p">],</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;command string&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;verbosity level for this action (optional)&gt;&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-Remove attributes from cleaners, remove attribute check and change max_data in memory that used to split model apply into blocks
+<ul>
+<li><code>json_query_whitelist</code>: A list of regular expressions. A component will only be selected if its string representation matches <strong>all</strong> regex strings in this array (AND condition).</li>
+<li><code>json_query_blacklist</code>: A list of regular expressions. A component will be <strong>filtered out</strong> if its string representation matches <strong>any</strong> regex string in this array.</li>
+</ul>
+<blockquote>
+<p><strong>Warning!</strong>: Be extremely cautious when modifying a model. Only change things that do not require re-training. For instance, do not remove features that are essential for the classifier to function correctly.</p>
+</blockquote>
+<h3 id="json-examples">JSON Examples</h3>
+<h4 id="example-1-remove-normalizers-and-imputers">Example 1: Remove Normalizers and Imputers</h4>
+<p>This example shows how to selectively remove specific normalizers and all imputers. The first block uses <code>json_query_whitelist</code> to target only the <code>FeatureNormalizer</code> objects for <code>Age</code> and <code>Gender</code> while leaving others untouched. The second block removes all <code>FeatureImputer</code> objects.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -7751,43 +7825,90 @@ Remove attributes from cleaners, remove attribute check and change max_data in m
 <span class="normal"><a href="#__codelineno-3-17">17</a></span>
 <span class="normal"><a href="#__codelineno-3-18">18</a></span>
 <span class="normal"><a href="#__codelineno-3-19">19</a></span>
-<span class="normal"><a href="#__codelineno-3-20">20</a></span>
-<span class="normal"><a href="#__codelineno-3-21">21</a></span>
-<span class="normal"><a href="#__codelineno-3-22">22</a></span>
-<span class="normal"><a href="#__codelineno-3-23">23</a></span>
-<span class="normal"><a href="#__codelineno-3-24">24</a></span>
-<span class="normal"><a href="#__codelineno-3-25">25</a></span>
-<span class="normal"><a href="#__codelineno-3-26">26</a></span>
-<span class="normal"><a href="#__codelineno-3-27">27</a></span>
-<span class="normal"><a href="#__codelineno-3-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span><span class="w"> </span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span><span class="w"> </span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;changes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">       </span><span class="p">{</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;Remove attributes from cleaners&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;RepBasicOutlierCleaner&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">            </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;Remove Normalizers&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;FeatureNormalizer&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">            </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;Age|Gender&quot;</span><span class="w"> </span><span class="p">],</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">            </span><span class="nt">&quot;json_query_blacklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">            </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nrem_attr=;ntrim_attr=;nrem_suff=;ntrim_suff=&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">            </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">       </span><span class="p">},</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">       </span><span class="p">{</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;Remove attributes Req&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;RepCheckReq&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;Remove Imputers&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;FeatureImputer&quot;</span><span class="p">,</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">            </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">            </span><span class="nt">&quot;json_query_blacklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">            </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">       </span><span class="p">},</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">       </span><span class="p">{</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;MedeModel Memory&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;MedModel&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">            </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">            </span><span class="nt">&quot;json_query_blacklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">            </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;max_data_in_mem=0&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">       </span><span class="p">}</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">  </span><span class="p">]</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;2&quot;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">       </span><span class="p">}</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="example-2-multiple-modifications-in-one-file">Example 2: Multiple Modifications in One File</h3>
+<p>This example demonstrates how to perform several changes in a single operation: </p>
+<ul>
+<li>Removing outlier attributes - that reports on outliers. makes think slower and consume more memory.</li>
+<li>Deleting RepCheckReq objects - that checks eligibility criteria. makes think slower and consume more memory.</li>
+<li>adjusting the <code>max_data_in_mem</code> parameter for the <code>MedModel</code> object itself, to adjusts the model's memory limit to process larger prediction batches.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span>
+<span class="normal"><a href="#__codelineno-4-26">26</a></span>
+<span class="normal"><a href="#__codelineno-4-27">27</a></span>
+<span class="normal"><a href="#__codelineno-4-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;changes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">       </span><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;Remove attributes from cleaners&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;RepBasicOutlierCleaner&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">            </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">            </span><span class="nt">&quot;json_query_blacklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">            </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nrem_attr=;ntrim_attr=;nrem_suff=;ntrim_suff=&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">       </span><span class="p">},</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">       </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;Remove attributes Req&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;RepCheckReq&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">            </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">            </span><span class="nt">&quot;json_query_blacklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">            </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">       </span><span class="p">},</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">       </span><span class="p">{</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">            </span><span class="nt">&quot;change_name&quot;</span><span class="p">:</span><span class="s2">&quot;MedeModel Memory&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">            </span><span class="nt">&quot;object_type_name&quot;</span><span class="p">:</span><span class="s2">&quot;MedModel&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">            </span><span class="nt">&quot;json_query_whitelist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">            </span><span class="nt">&quot;json_query_blacklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">            </span><span class="nt">&quot;change_command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;max_data_in_mem=0&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">            </span><span class="nt">&quot;verbose_level&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">       </span><span class="p">}</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
 
 
 

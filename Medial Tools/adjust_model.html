@@ -3795,18 +3795,75 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#adding-rep_processors-json-template" class="md-nav__link">
+  <a href="#command-line-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      adding rep_processors json template
+      Command Line Interface:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Command Line Interface:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arguments
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Flags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#json-for-adding-post_processors" class="md-nav__link">
+  <a href="#json-templates-and-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Json for adding post_processors
+      JSON Templates and Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON Templates and Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-pre-processors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Pre-Processors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-post-processors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Post-Processors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-change-existing-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to change existing components
     </span>
   </a>
   
@@ -5156,7 +5213,7 @@
   
   
   <span class="md-ellipsis">
-    Using Flow To Prepare Samples and Get Incidences
+    Using Flow to Prepare Samples and Calculate Incidences
     
   </span>
   
@@ -5498,7 +5555,7 @@
   
   
   <span class="md-ellipsis">
-    How to limit memory usage in predict
+    Limiting Memory Usage in predict
     
   </span>
   
@@ -7669,18 +7726,75 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#adding-rep_processors-json-template" class="md-nav__link">
+  <a href="#command-line-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      adding rep_processors json template
+      Command Line Interface:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Command Line Interface:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arguments
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Flags
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#json-for-adding-post_processors" class="md-nav__link">
+  <a href="#json-templates-and-examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Json for adding post_processors
+      JSON Templates and Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JSON Templates and Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-pre-processors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Pre-Processors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-post-processors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Post-Processors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-change-existing-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to change existing components
     </span>
   </a>
   
@@ -7719,38 +7833,80 @@
 
 
 <h1 id="adjust_model">adjust_model</h1>
-<p>Template for adding pre processors json:</p>
-<h2 id="adding-rep_processors-json-template"><strong>adding rep_processors json template</strong></h2>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span>
-<span class="normal"><a href="#__codelineno-0-7">7</a></span>
-<span class="normal"><a href="#__codelineno-0-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;pre_processors&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="s2">&quot;rp_set&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;members&quot;</span><span class="p">:[</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">      </span><span class="err"> </span><span class="c1">// Add your blocks in here</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="p">]</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<p>This tool, part of the <a href="../Installation/index.html#3-mes-tools-to-train-and-test-models">AllTools compilation</a>, is designed to modify and enhance existing models by adding new components to their processing pipelines. It's especially useful for integrating new functionalities without rebuilding the entire model from scratch.</p>
+<p>Common use cases include:</p>
+<ul>
+<li>Adding <strong>Post-Calibration</strong>: You can add a post-calibration component to an existing model to fine-tune its outputs.</li>
+<li><strong>Adding Explainability</strong>: Easily integrate new modules for model explainability.</li>
+</ul>
+<h2 id="command-line-interface">Command Line Interface:</h2>
+<p>The primary command for using adjust_model is:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>adjust_model<span class="w"> </span>--rep<span class="w"> </span>&lt;repository_path&gt;<span class="w"> </span>--inModel<span class="w"> </span>&lt;current_model_path&gt;<span class="w"> </span>--out<span class="w"> </span>&lt;out_model_path&gt;<span class="w"> </span>--samples<span class="w"> </span>&lt;path_to_samples_for_training_new_components&gt;<span class="w"> </span>--preProcessors<span class="w"> </span>&lt;pre_processor_addition_json&gt;<span class="w"> </span>--postProcessors<span class="w"> </span>&lt;post_processor_addition_json&gt;<span class="w"> </span>
 </code></pre></div></td></tr></table></div>
-<strong>Caution</strong>:
-When adding "pre_processros" with "rp_set" - all the rep processors are added in the END of the existing model rep proceossors. 
-When using single "rep_processor" in action type, the single rep_processor is added in the begining.
- 
-Template for adding post processors json:</p>
-<h2 id="json-for-adding-post_processors"><strong>Json for adding post_processors</strong></h2>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;post_processors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">         </span><span class="c1">// Add your blocks in here</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<h3 id="arguments">Arguments</h3>
+<ul>
+<li><code>--rep &lt;repository_path&gt;</code>: The path to the data repository. Required unless you use --inCsv.</li>
+<li><code>--inModel &lt;current_model_path&gt;</code>: The path to the existing model file you want to modify.</li>
+<li><code>--out &lt;out_model_path&gt;</code>: The path where the new, adjusted model will be saved.</li>
+<li><code>--samples &lt;path_to_samples_for_training_new_components&gt;</code>: The path to the samples used for training the new components. Required if <code>--learn_rep_proc</code> is enabled or if <code>--skip_model_apply</code> is disabled.</li>
+<li><code>--preProcessors &lt;pre_processor_addition_json&gt;</code>: A JSON string or file containing a list of pre-model processors to add to the pipeline. </li>
+<li><code>--postProcessors &lt;post_processor_addition_json&gt;</code>: A JSON string or file containing a list of post-model processors to add to the pipeline.</li>
+</ul>
+<h3 id="optional-flags">Optional Flags</h3>
+<ul>
+<li><code>--inCsv</code>: Provide your feature matrix directly in CSV format. This is an alternative to using a repository and samples.</li>
+<li><code>--learn_rep_proc</code>: When set to <code>1</code>, this flag triggers the <code>learn</code> function for the new pre-processors. This is essential for components that require training. <strong>Note:</strong> If you use this flag, you must also provide <code>--rep</code> and <code>--samples</code>. (Default: 0)</li>
+<li><code>--insert_rep_proc_first</code>: When this flag is enabled, new pre-processors are added at the <strong>beginning</strong> of the existing pipeline. By default, they are appended to the end. (Default: 0)</li>
+<li><code>--skip_model_apply</code>: If <code>1</code>, the model's pipeline won't be run to generate a feature matrix and samples. This can be useful for specific operations and can significantly speed up the process. (Default: <code>0</code>)</li>
+<li><code>--model_changes</code>: This allows you to include instructions for modifying existing components within the model's pipeline. This can save you from having to use a separate <a href="change_model">change_model</a> tool.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> You can use either <code>--preProcessors</code> or <code>--postProcessors</code>, or both.</p>
+</blockquote>
+<h2 id="json-templates-and-examples">JSON Templates and Examples</h2>
+<p>To add new components, you'll provide a JSON object defining the new processors. 
+A "block" within this JSON corresponds to a specific processor. 
+For example, a block might be a <a href="Guide%20for%20common%20actions/Calibrate%20model%2C%20and%20calibration%20test.html">Calibrator</a> processor.</p>
+<h3 id="adding-pre-processors">Adding Pre-Processors</h3>
+<p>Here is a template for the <code>--preProcessors</code> argument. The <code>"members"</code> array is where you'll define each processor block.</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;pre_processors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">      </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rp_set&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">      </span><span class="nt">&quot;members&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="c1">// Your processor blocks go here</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">      </span><span class="p">]</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">  </span><span class="p">]</span><span class="w"> </span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
- 
-change_model_info examples can be shown in <a href="change_model">change_model</a></p>
+ </p>
+<h3 id="adding-post-processors">Adding Post-Processors</h3>
+<p>Here is a template for the <code>--postProcessors</code> argument.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;post_processors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="c1">// Your processor blocks go here</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><a href="Guide%20for%20common%20actions/Calibrate%20model%2C%20and%20calibration%20test.html">Full example of adding calibration</a></li>
+</ul>
+<h2 id="how-to-change-existing-components">How to change existing components</h2>
+<p>If you want to change and not add new components, please refere to <a href="change_model">change_model</a></p>
 
 
 
