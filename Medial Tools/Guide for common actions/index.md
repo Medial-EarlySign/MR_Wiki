@@ -35,6 +35,9 @@ Analyze Global feature importance and also features interaction and effect on mo
 See: [Feature Importance](../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md)
 There is also automatic test that uses those tools in model development: [Feature Importance Test](../Model%20Checklist/AutoTest/Development%20kit/Test_05%20-%20But%20why.md))
 
+You can also use [model_signal_importance](../model_signals_importance.md). This tools keeps the model fix. No retraining of removing/adding signals, but the
+evaluation is for providing/removing specific signals from the input. Usefull when the model is freezed and you want to check impacts of signals existence.
+
 ### 9. Bootstrap Performance Analysis
 See: [bootstrap_app](../bootstrap_app)
 
