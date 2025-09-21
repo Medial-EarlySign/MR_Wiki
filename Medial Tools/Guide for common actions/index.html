@@ -7611,19 +7611,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#common-actions" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Common Actions
+      Overview
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Common Actions">
+    <nav class="md-nav" aria-label="Overview">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-match-medsamples-by-year-or-criteria" class="md-nav__link">
+  <a href="#1-match-medsamples-by-year-or-other-criteria" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Match MedSamples by Year or Criteria
+      1. Match MedSamples by Year or Other Criteria
     </span>
   </a>
   
@@ -7702,9 +7702,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#10-compareestimate-model-performance-on-different-repository" class="md-nav__link">
+  <a href="#10-compare-or-estimate-model-performance-on-a-different-repository-comparre-samples" class="md-nav__link">
     <span class="md-ellipsis">
-      10. Compare/Estimate Model Performance on Different Repository
+      10. Compare or Estimate Model Performance on a Different Repository, Comparre samples
     </span>
   </a>
   
@@ -7811,74 +7811,76 @@
 
 
 <h1 id="guide-for-common-actions">Guide for Common Actions</h1>
-<h2 id="common-actions">Common Actions</h2>
-<h3 id="1-match-medsamples-by-year-or-criteria">1. Match MedSamples by Year or Criteria</h3>
-<p>This process allows you to subsample your data by matching medical samples based on a specific year or other defined criteria. A primary application is to eliminate the influence of temporal information from your dataset. This ensures that your model does not learn to exploit the time a sample was collected for prediction, and instead, relies on features independent of a given year.</p>
-<p>This technique is also useful for evaluating a model's performance when you remove a specific signal information gain. For example, you can match samples by age to see how your model performs when it can't directly use age as a predictor. The model will still see age, but conditioning on its value will result equal probability to be a case, so the model will not be able to use age directly to gain performance benefit.</p>
+<h2 id="overview">Overview</h2>
+<p>This guide summarizes frequent tasks and workflows for working with MedSamples, models, and repositories. Each section provides a brief description and links to detailed instructions or related tools.</p>
+<hr />
+<h3 id="1-match-medsamples-by-year-or-other-criteria">1. Match MedSamples by Year or Other Criteria</h3>
+<p>Subsample your data by matching medical samples based on year or other criteria. This helps remove temporal bias, ensuring your model does not learn from the sample collection time, but instead relies on independent features.</p>
+<p>This approach is also useful for evaluating model performance when removing the information gain of a specific signal. For example, matching by age allows you to test model performance when age cannot be directly exploited as a predictor. The model still sees age, but conditioning on its value equalizes the probability of being a case, so age cannot be used for performance gain.</p>
 <p>See: <a href="../Using%20the%20Flow%20App/Using%20Flow%20To%20Prepare%20Samples%20and%20Get%20Incidences.html#matching-פarameters">Using Flow To Prepare Samples and Get Incidences</a></p>
 <h3 id="2-train-a-model-from-json">2. Train a Model from JSON</h3>
-<p>refer to <a href="../Using%20the%20Flow%20App/index.html#training-a-model">Flow</a></p>
+<p>See: <a href="../Using%20the%20Flow%20App/index.html#training-a-model">Flow</a></p>
 <h3 id="3-calculate-model-score-on-samples">3. Calculate Model Score on Samples</h3>
-<p>refer to <a href="../Using%20the%20Flow%20App/index.html#predictingapplying-a-model">Flow</a></p>
+<p>See: <a href="../Using%20the%20Flow%20App/index.html#predictingapplying-a-model">Flow</a></p>
 <h3 id="4-create-feature-matrix-for-samples">4. Create Feature Matrix for Samples</h3>
-<p>refer to <a href="../Using%20the%20Flow%20App/index.html#creating-a-feature-matrix-for-samples">Flow</a></p>
+<p>See: <a href="../Using%20the%20Flow%20App/index.html#creating-a-feature-matrix-for-samples">Flow</a></p>
 <h3 id="5-adjust-model">5. Adjust Model</h3>
-<p>Add or retrain rep_processor or post_processor components. Useful for calibration or explainability or adding/adjusting existing model.
-See: <a href="../adjust_model.html">adjust_model</a>  </p>
+<p>Add or retrain <code>rep_processor</code> or <code>post_processor</code> components for calibration, explainability, or to modify an existing model.
+See: <a href="../adjust_model.html">adjust_model</a></p>
 <h3 id="6-change-model">6. Change Model</h3>
-<p>Remove or modify model components (e.g., enable debug logs, limit memory usage of the model by defining smaller batch sizes).<br />
-See: <a href="../change_model">change_model</a>  </p>
+<p>Remove or modify model components (e.g., enable debug logs, limit memory usage by setting smaller batch sizes).
+See: <a href="../change_model">change_model</a></p>
 <h3 id="7-simplify-model-remove-signals">7. Simplify Model / Remove Signals</h3>
-<p>Iteratively add or remove signals to simplify the model.<br />
-See: <a href="../Iterative%20Feature%20Selector.html">Iterative Feature Selector</a>  </p>
+<p>Iteratively add or remove signals to simplify the model.
+See: <a href="../Iterative%20Feature%20Selector.html">Iterative Feature Selector</a></p>
 <h3 id="8-analyze-feature-importance-model-behavior">8. Analyze Feature Importance &amp; Model Behavior</h3>
-<p>Analyze Global feature importance and also features interaction and effect on model output of each important feature/signal.
-See: <a href="../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.html">Feature Importance</a>
-There is also automatic test that uses those tools in model development: <a href="../Model%20Checklist/AutoTest/Development%20kit/Test_05%20-%20But%20why.html">Feature Importance Test</a>)</p>
+<p>Analyze global feature importance, feature interactions, and the effect of each important feature or signal on model output.
+See: <a href="../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.html">Feature Importance</a></p>
+<p>Automated tests for feature importance are available: <a href="../Model%20Checklist/AutoTest/Development%20kit/Test_05%20-%20But%20why.html">Feature Importance Test</a></p>
+<p>You can also use <a href="../model_signals_importance.html">model_signal_importance</a>. This tool keeps the model fixed (no retraining or signal changes), but evaluates the effect of providing or removing specific signals from the input. This is useful for frozen models to assess the impact of signal availability (e.g., if a client can or cannot provide certain inputs).</p>
 <h3 id="9-bootstrap-performance-analysis">9. Bootstrap Performance Analysis</h3>
 <p>See: <a href="../bootstrap_app">bootstrap_app</a></p>
-<h3 id="10-compareestimate-model-performance-on-different-repository">10. Compare/Estimate Model Performance on Different Repository</h3>
-<p>Test model on external repository.<br />
-See: <a href="../TestModelExternal.html">TestModelExternal</a><br />
-Can be compiled in AllTools.</p>
+<h3 id="10-compare-or-estimate-model-performance-on-a-different-repository-comparre-samples">10. Compare or Estimate Model Performance on a Different Repository, Comparre samples</h3>
+<p>TestModelExternal is a tool designed to compare differences between repositories or sample sets when applying a model. It builds a propensity model to distinguish between repositories or samples, revealing differences and enabling straightforward comparison of feature matrices. The main goal is to identify complex patterns when comparing data.
+See: <a href="../TestModelExternal.html">TestModelExternal</a></p>
 <h3 id="11-create-and-load-repository-from-files">11. Create and Load Repository from Files</h3>
 <p>See: <a href="../../Repositories/Load%20new%20repository.html">Load new repository</a></p>
 <h3 id="12-create-random-splits-for-traintestall-patients">12. Create Random Splits for Train/Test/All Patients</h3>
-<p>Please refer <a href="../Using%20the%20Flow%20App/Split%20Files.html#create-random-splits-for-patients">Using Splits</a></p>
+<p>See: <a href="../Using%20the%20Flow%20App/Split%20Files.html#create-random-splits-for-patients">Using Splits</a></p>
 <h3 id="13-filter-traintest-by-train-signal">13. Filter Train/Test by TRAIN Signal</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>FilterSamples<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--samples<span class="w"> </span><span class="nv">$INPUT_SAMPLES_PATH</span><span class="w"> </span>--output<span class="w"> </span><span class="nv">$OUTPUT_SAMPLES_PATH</span><span class="w"> </span>--filter_train<span class="w"> </span><span class="nv">$FILTER_TRAIN_VAL</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>TRAIN == 1: Training set (70%)</li>
-<li>TRAIN == 2: Test set (20%)</li>
-<li>TRAIN == 3: Validation set (10%)</li>
+<li><code>TRAIN == 1</code>: Training set (70%)</li>
+<li><code>TRAIN == 2</code>: Test set (20%)</li>
+<li><code>TRAIN == 3</code>: Validation set (10%)</li>
 </ul>
 <h3 id="14-print-model-info">14. Print Model Info</h3>
-<p>Please refer to <a href="../Using%20the%20Flow%20App/index.html#print-trained-model-information">Flow Model Info</a></p>
+<p>See: <a href="../Using%20the%20Flow%20App/index.html#print-trained-model-information">Flow Model Info</a></p>
 <h3 id="15-filter-samples-by-bt-cohort">15. Filter Samples by BT Cohort</h3>
 <p>Include <code>json_mat</code> even if not required by definition.
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>FilterSamples<span class="w"> </span>--filter_train<span class="w"> </span><span class="m">0</span><span class="w"> </span>--rep<span class="w"> </span><span class="si">${</span><span class="nv">REP_PATH</span><span class="si">}</span><span class="w"> </span>--filter_by_bt_cohort<span class="w"> </span><span class="s2">&quot;Time-Window:90,730;Age:50,80;Suspected:0,0;Ex_or_Current:1,1&quot;</span><span class="w"> </span>--samples<span class="w"> </span><span class="si">${</span><span class="nv">INPUT</span><span class="si">}</span><span class="w"> </span>--output<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT</span><span class="si">}</span><span class="w"> </span>--json_mat<span class="w"> </span><span class="si">${</span><span class="nv">JSON</span><span class="si">}</span>
 </code></pre></div></td></tr></table></div>
-Please refer to <a href="../bootstrap_app/index.html">bootstrap_app</a> to learn more on the <code>--filter_by_bt_cohort</code> syntax of filtering</p>
+See: <a href="../bootstrap_app/index.html">bootstrap_app</a> for details on the <code>--filter_by_bt_cohort</code> syntax.</p>
 <h3 id="16-check-model-compatibility-with-repository-suggest-adjustments">16. Check Model Compatibility with Repository / Suggest Adjustments</h3>
-<p>When applying a model to a different repository, some modifications may be necessary.<br />
-For instance, MedModel strictly checks for the presence of required signals. If a signal is missing but not critical, you can explicitly mark it as acceptable by adding a rep processor for an <a href="../../Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/How%20to%20create%20an%20empty%20signal">"empty" signal</a>.<br />
-For further guidance, see <a href="../Using%20the%20Flow%20App/Fit%20MedModel%20to%20Repository.html">Flow fit_model_to_rep</a>.</p>
+<p>When applying a model to a different repository, some adjustments may be needed.</p>
+<p>For example, MedModel strictly checks for required signals. If a signal is missing but not critical, you can mark it as acceptable by adding a rep processor for an <a href="../../Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/How%20to%20create%20an%20empty%20signal">"empty" signal</a>.
+For more information, see <a href="../Using%20the%20Flow%20App/Fit%20MedModel%20to%20Repository.html">Flow fit_model_to_rep</a>.</p>
 <hr />
 <h2 id="fixing-missing-dictionary-definitions">Fixing Missing Dictionary Definitions</h2>
-<p>When training on one repository and testing on another, missing diagnoses may occur.<br />
-To find missing codes:
+<p>When training on one repository and testing on another, you may encounter missing diagnoses.</p>
+<p>To find missing codes:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Flow<span class="w"> </span>--print_model_signals<span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$MODEL_NAME</span><span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REP</span><span class="w"> </span>--transform_rep<span class="w"> </span><span class="m">1</span><span class="w"> </span>--output_dict_path<span class="w"> </span><span class="nv">$PATH</span>
-</code></pre></div></td></tr></table></div>
-To resolve:</p>
+</code></pre></div></td></tr></table></div></p>
+<p>To resolve:</p>
 <ul>
 <li>Add missing codes to the target dictionary, matching SECTION codes as needed.</li>
 <li>For example:</li>
 <li>Add <code>ICD9_CODE:786.09</code> if missing.</li>
 <li>Add <code>ICD9_CODE:420-429.99</code> for range codes.</li>
-<li>For named codes (e.g., <code>MALIGNANT_NEOPLASM_OF_LIP_ORAL_CAVITY_AND_PHARYNX</code>), find the equivalent numeric code (e.g., <code>140-149</code>) and add accordingly.</li>
+<li>For named codes (e.g., <code>MALIGNANT_NEOPLASM_OF_LIP_ORAL_CAVITY_AND_PHARYNX</code>), find the equivalent numeric code (e.g., <code>140-149</code>) and add it.</li>
 </ul>
-<p>Can be compiled in AllTools</p>
+<p>Can be compiled in AllTools.</p>
 
 
 

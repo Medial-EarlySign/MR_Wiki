@@ -4903,6 +4903,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Test 8 - Estimate Performances
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="Test%208%20-%20Estimate%20Performances.html" class="md-nav__link md-nav__link--active">
         
   
@@ -4914,6 +4927,76 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters-see-envsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters (see env.sh)**
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-actually-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is actually done?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-results-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Results Review
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Results Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-read-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to read the results?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -7618,6 +7701,65 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters-see-envsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters (see env.sh)**
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-actually-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is actually done?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-results-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Results Review
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Results Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-read-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to read the results?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -7649,26 +7791,25 @@
 
 
 <h1 id="test-8-estimate-performances">Test 8 - Estimate Performances</h1>
-<h1 id="overview"><strong>Overview</strong></h1>
+<h2 id="overview">Overview</h2>
 <p>Estimate performance on tested dataset based on matching important factors.
- 
-<strong>Parameters (see env.sh)</strong>
-All parameters are included in env.sh and described in <a href="../External%20Silent%20Run">External Silent Run</a>.
+ </p>
+<h2 id="parameters-see-envsh">Parameters (see env.sh)**</h2>
+<p>All parameters are included in env.sh and described in <a href="../External%20Silent%20Run">External Silent Run</a>.
 In particular, this test uses:</p>
 <ul>
 <li>REFERENCE_MATRIX=... reference matrix to compare with</li>
 <li>CMP_FEATURE_RES=... list of important features</li>
 </ul>
-<hr />
-<p><strong>What is actually done?</strong>
-Sample the reference cohort based on the distribution of the important features in the tested dataset, and calculate predicted AUC. Bootstrap the matched reference to estimate accuracy.
- 
-<strong>Test Results Review</strong>
-compare.no_overfitting/summary_table.estimated_performance.tsv gives the bottom line, for example:
+<h2 id="what-is-actually-done">What is actually done?</h2>
+<p>Sample the reference cohort based on the distribution of the important features in the tested dataset, and calculate predicted AUC. Bootstrap the matched reference to estimate accuracy.
+ </p>
+<h2 id="test-results-review">Test Results Review</h2>
+<p>compare.no_overfitting/summary_table.estimated_performance.tsv gives the bottom line, for example:
 <img src="../../../../attachments/13926552/13926554.png"/>
-Detailed bootstrap analysis can be found in compare.no_overfitting/bt_reference.estimated.pivot_txt
-<strong><em>*</em>*How to read the results?</strong>
-In the example above, we estimate expected drop in AUC, and maybe more significant, larger confidence interval for the tested data set (column D). To decrease the confidence interval we could decrease the number of important features. That would yield better separation in Test 3 and smaller confidence interval here. However, it is just number games. In the example here, the important features covers ~80% of feature importance in the original model. We don't have yet thumb rule for the right number though.
+Detailed bootstrap analysis can be found in compare.no_overfitting/bt_reference.estimated.pivot_txt</p>
+<h3 id="how-to-read-the-results">How to read the results?</h3>
+<p>In the example above, we estimate expected drop in AUC, and maybe more significant, larger confidence interval for the tested data set (column D). To decrease the confidence interval we could decrease the number of important features. That would yield better separation in Test 3 and smaller confidence interval here. However, it is just number games. In the example here, the important features covers ~80% of feature importance in the original model. We don't have yet thumb rule for the right number though.
 More work regarding model performance is needed ...
  </p>
 

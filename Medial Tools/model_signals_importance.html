@@ -3860,6 +3860,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -7738,6 +7753,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -7784,22 +7814,32 @@
 <hr />
 <h2 id="command-line-parameters">Command Line Parameters</h2>
 <ul>
-<li><code>--skip_list &lt;comma-delimited list&gt;</code>: Signals to exclude from the analysis (e.g., <code>Age,Gender</code>). Use for signals always present in the data and not under test.</li>
-<li><code>--no_filtering_of_existence</code>: Disables the default filtering that ensures the signal under analysis exists in the time window. By default, the tool only compares samples where the signal is present; this flag tests the impact regardless of existence.</li>
-<li><code>--features_groups &lt;path&gt;</code>: Path to a tab-delimited file (or "ButWhy" grouping file) mapping features to logical group names (e.g., all CBC-related features grouped as <code>CBC</code>). Can be also keyword like <code>BY_SIGNAL_CATEG</code> to group features by their originating source signal.</li>
-<li><code>--group2signal &lt;path&gt;</code>: (Optional) Path to a tab-delimited file with two columns: group name (from <code>features_groups</code>) and a comma-separated list of signals. This remaps groups to the actual signals to exclude during testing.</li>
-<li><code>--measure_regex &lt;string&gt;</code>: Controls the measurements we want to extract in the report. For example: "AUC|SENS@FPR_03"</li>
+<li><code>--rep</code>: Path to the data repository.</li>
+<li><code>--samples</code>: Path to the raw data samples.</li>
+<li><code>--model_path</code>: Path to the pre-trained model.</li>
+<li><code>--output</code>: Path to save the output report.</li>
+<li><code>--skip_list &lt;comma-delimited list&gt;</code>: A comma-separated list of signals to exclude from the analysis, such as Age,Gender. These are typically signals that are always present and not under evaluation.</li>
+<li><code>--no_filtering_of_existence</code>: Disables the default behavior of filtering the test cohort to include only samples where the signal exists. When this flag is used, performance is measured on all samples, regardless of the signal's presence.</li>
+<li><code>--features_groups &lt;path&gt;</code>: A file mapping features to logical group names (e.g., all CBC features to the CBC group). This can be a tab-delimited file or a keyword like BY_SIGNAL_CATEG to group features by their originating source.</li>
+<li><code>--group2signal &lt;path&gt;</code>: (Optional) Path to a tab-delimited file with two columns: group name (from <code>features_groups</code>) and a comma-separated list of signals. This remaps groups to the actual signals to exclude during testing. Can help when the "features_groups" defined for ButWhy are not input signals and you want to map them to input signals.</li>
+<li><code>--measure_regex &lt;string&gt;</code>: A regular expression string (e.g., <code>"AUC|SENS@FPR_03"</code>) that specifies which performance metrics to include in the output report.</li>
 </ul>
 <p>You can also specify filtering arguments with <code>--bt_filter</code> arguments like we do in <a href="Guide%20for%20common%20actions/index.html#15-filter-samples-by-bt-cohort">FilterSamples</a></p>
 <h2 id="how-it-works">How It Works</h2>
-<p>The tool uses a flexible two-step mapping to decide which signals to remove for each test:</p>
+<p>The tool uses a flexible two-step process to define which signals to test for importance:</p>
 <ol>
-<li><strong>Feature-to-Group Mapping</strong>: Reads the <code>--features_groups</code> file to map each feature to a group.</li>
-<li><strong>Group-to-Signal Mapping</strong>: Uses the <code>--group2signal</code> file to determine which signals to exclude for each group:
-   - If a group name is found in <code>--group2signal</code>, the tool uses the listed signals.
-   - If not, the group name itself is used as the signal for testing.</li>
+<li><strong>Feature-to-Group Mapping</strong>: Reads the <code>--features_groups</code> file to map each feature to a group. Like happens in ButWhy analysis</li>
+<li><strong>Group-to-Signal Mapping</strong>: Uses the <code>--group2signal</code> file to determine the final signals to exclude for each test. If a group name from the <code>features_groups</code> file is found in <code>group2signal</code>, the listed signals are used; otherwise, the group name itself is treated as the signal to test.</li>
 </ol>
-<p>This lets you test individual groups or combine multiple groups into a single signal for analysis.</p>
+<p>This process allows for testing the importance of either individual groups or multiple combined groups at once.</p>
+<p>For each group defined by this process, the tool performs the following steps:</p>
+<ol>
+<li><strong>Cohort Identification</strong>: Determines the cohort of samples where the input signal is present within the specified time window. When <code>--no_filtering_of_existence</code> it will just calculate the cohort size and will not filter the samples to that cohort.</li>
+<li><strong>Performance with Signals</strong>: Measures the model's performance on this cohort with all signals included. The result is labeled with a <code>:with_signals</code> suffix.</li>
+<li><strong>Performance Without Signals</strong>: Measures the model's performance on the same cohort after omitting the input signal. This result is labeled with a <code>:no_signals</code> suffix.</li>
+<li><strong>Difference Calculation</strong>: Calculates the performance difference, labeled with a <code>:difference</code> suffix, which quantifies the signal's impact.</li>
+</ol>
+<p>All results are stored in a final output table.</p>
 <h2 id="example-usage">Example Usage</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>model_signals_importance<span class="w"> </span>--model_path<span class="w"> </span>my_model.bin<span class="w"> </span>--features_groups<span class="w"> </span>feature_groups.tsv<span class="w"> </span>--group2signal<span class="w"> </span>group_mapping.tsv<span class="w"> </span>--skip_list<span class="w"> </span>Age,Gender<span class="w"> </span>--no_filtering_of_existence<span class="w"> </span>--time_windows<span class="w"> </span><span class="m">0</span>,365
 </code></pre></div></td></tr></table></div>
@@ -7813,6 +7853,66 @@
 </ul>
 <h2 id="output">Output</h2>
 <p>The tool outputs a report comparing model performance on the full dataset versus performance with each signal group removed. The report typically includes a metric (e.g., AUC) and the performance drop, giving a clear, quantitative measure of each signal’s importance.</p>
+<h3 id="example-output">Example output</h3>
+<table>
+<thead>
+<tr>
+<th>Test Description</th>
+<th>#samples</th>
+<th>#Unique_patients</th>
+<th>#controls</th>
+<th>#cases</th>
+<th>AUC_Mean</th>
+<th>AUC_Lower</th>
+<th>ACU_Upper</th>
+<th>SENS@FPR_03_Mean</th>
+<th>SENS@FPR_03_lower</th>
+<th>SENS@FPR_03_upper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Group:CBC:time_window:365:with_signals</td>
+<td>1000000</td>
+<td>710053</td>
+<td>997015</td>
+<td>2985</td>
+<td>0.824535</td>
+<td>0.817392</td>
+<td>0.832693</td>
+<td>36.8828</td>
+<td>34.9927</td>
+<td>38.8223</td>
+</tr>
+<tr>
+<td>Group:CBC:time_window:365:no_signals</td>
+<td>1000000</td>
+<td>710053</td>
+<td>997015</td>
+<td>2985</td>
+<td>0.743143</td>
+<td>0.735234</td>
+<td>0.751862</td>
+<td>14.5724</td>
+<td>13.219</td>
+<td>15.9436</td>
+</tr>
+<tr>
+<td>Group:CBC:time_window:365:difference</td>
+<td>1000000</td>
+<td>710053</td>
+<td>997015</td>
+<td>2985</td>
+<td>0.0813916</td>
+<td>EMPTY</td>
+<td>EMPTY</td>
+<td>22.3104</td>
+<td>EMPTY</td>
+<td>EMPTY</td>
+</tr>
+</tbody>
+</table>
+<p>For instance, in the example table, removing the CBC signal group resulted in a <strong>0.08 point drop in AUC</strong>, highlighting its importance.</p>
 
 
 
