@@ -1,53 +1,74 @@
+
 # TestModelExternal
-A tool to test difference between repositories when applying a model.
-It builds a propensity model to discriminate between repositories to reveal differences and do simplr compare of the feature matrices.
-The goal is to discover that the model is transferable and can well behave on the second repository.
- 
-Uses example:
 
-- Estimate model performance/transferability on different repository
-- Test model on different years and the differences in different year. You can pass train_rep==test_rep and just change the samples to test for differences
+TestModelExternal is a tool designed to compare differences between repositories or sample sets when applying a model. It builds a propensity model to distinguish between repositories or samples, revealing differences and enabling straightforward comparison of feature matrices. The main goal is to identify complex patterns when comparing data.
 
-Part of Tools git repository. Can be found under AllTools solution.
+You can use this tool to:
 
-## **Mode 1 - Comparing the model when the 2 repositories are available in the same network:**
+- **Compare feature matrices from different repositories** to check model transferability and detect issues in new repositories, such as:
+    - Bugs in data handling, eligibility, or client data extraction
+    - Estimating expected model performance in a new repository, even without labels, using the propensity model
+- **Compare samples within the same repository**, for example, to analyze data from different years and identify feature differences.
 
-- model_path - Must be given in any mode. The path to the binary MedModel that we want to test for.
-- rep_test - repository for testing and comparing with. In the propensity model it will be labeled as 1.
-- samples_test - path to MedSamples to be applied in the test repository
-- output - direcotry to output files
-- rep_trained - repository path of the trained model (or just the reference repository to test with)
-- samples_train - path to similar way (same logic of creation as test_samples) created MedSample on the training repository
-- predictor_type, predictor_args - parameters for the propensity model to discriminate difference of repositories by the model view
-- calibration_init_str - calibration args. Will be used in the propensity model as Post Processor
- 
-Less important (optional)
+TestModelExternal is part of the [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) repository and can be compiled under [AllTools](../Installation/index.md#3-mes-tools-to-train-and-test-models).
 
-- smaller_model_feat_size  - if given > 0, will create additional smaller propensity model based on top X group of features. X=smaller_model_feat_size. 
-- additional_importance_to_rank - path fo shaply report created by "Flow --shap_val_request" to rank the difference combained with the importance of each feature to the model
-- features_subset_file - file to filter features from the MedModel
-- fix_train_res - if >0, will also set the feature resulotion in the train to match the test.
-- sub_sample_train - sub sampling on train samples. Integer number to limit the maximal number of samples to sub sample to. 0 -no subsampling.
-- sub_sample_test - sub sampling on test samples. Integer number to limit the maximal number of samples to sub sample to.0 -no subsampling.
-- train_ratio - the train/test ratio - the test are used to report propensity model performance
-- bt_params - bootstrap parameters for the propensity model
-- binning_shap_params - for the shapley report analysis on the propensity model
-- group_shap_params - grouping args for the shapley on the propensity model
-- shap_auc_threshold - if the AUC is smaller than that, will skip shapley analysis to save time
-- print_mat - if > 0 will print propensity matrix. 0 - labels are for train samples, 1 - labels are for test samples,
+## Mode 1: Compare When Both Repositories Are Available
 
-## **Mode 2 - Compare when the repositories are in different networks**
-To use this mode, rep_trained and/or samples_train should be empty.
+Required arguments:
 
-- model_path - Must be given in any mode. The path to the binary MedModel that we want to test for.
-- rep_test - repository for testing and comparing with. In the propensity model it will be labeled as 1.
-- samples_test - path to MedSamples to be applied in the test repository
-- output - direcotry to output files
-- strata_json_model - json to be used for creating strats and collecting stats
-- strata_settings - the strata setting for collecting stats
-When comparing to different repository.
-Add this argument:
-- strata_train_features_moments - will create the file for the current test_samples and compare it to the file path in this path
-Less important (optional):
-- features_subset_file - file to filter features from the MedModel
-- sub_sample_test - sub sampling on test samples. Integer number to limit the maximal number of samples to sub sample to.0 -no subsampling.
+- `model_path`: Path to the binary MedModel to test (required in all modes)
+- `rep_test`: Repository for testing and comparison. In the propensity model, data from this repository is labeled as 1.
+- `samples_test`: Path to MedSamples for the test repository
+- `output`: Directory for output files
+- `rep_trained`: Path to the trained model's repository (or reference repository)
+- `samples_train`: Path to MedSamples from the training repository (ensure the same method/eligibility rules are used in both datasets)
+- `predictor_type`, `predictor_args`: Parameters for the propensity model to distinguish between repositories
+- `calibration_init_str`: Calibration arguments for the propensity model's post-processor
+
+Optional arguments:
+
+- `smaller_model_feat_size`: If > 0, creates an additional smaller propensity model using the top X features
+- `additional_importance_to_rank`: Path to a SHAP report (from "Flow --shap_val_request") to rank differences combined with [feature importance](../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md)
+- `features_subset_file`: File to filter features from the MedModel
+- `fix_train_res`: If > 0, sets feature resolution in training to match the test set
+- `sub_sample_train`: Integer to limit the maximum number of training samples (0 = no subsampling)
+- `sub_sample_test`: Integer to limit the maximum number of test samples (0 = no subsampling)
+- `train_ratio`: Train/test split ratio (test set is used to report propensity model performance)
+- `bt_params`: Bootstrap parameters for the propensity model
+- `binning_shap_params`: Parameters for SHAP report analysis on the propensity model
+- `group_shap_params`: Grouping arguments for SHAP analysis
+- `shap_auc_threshold`: If AUC is below this value, SHAP analysis is skipped to save time
+- `print_mat`: If > 0, prints the propensity matrix (0 = labels for train samples, 1 = labels for test samples)
+
+## Mode 2: Compare When Repositories Are Not on the Same Machine
+
+In this mode, leave `rep_trained` and/or `samples_train` empty.
+
+Required arguments:
+
+- `model_path`: Path to the binary MedModel to test (required in all modes)
+- `rep_test`: Repository for testing and comparison (labeled as 1 in the propensity model)
+- `samples_test`: Path to MedSamples for the test repository
+- `output`: Directory for output files
+- `strata_json_model`: JSON file for creating strata and collecting statistics
+- `strata_settings`: Strata settings for collecting statistics
+
+When comparing to a different repository on another machine, also provide:
+
+- `strata_train_features_moments`: File for the current test samples to compare with the specified path
+
+
+## Mode 3: Compare Different Samples Within the Same Repository
+
+Provide different `samples_train` and `samples_test` paths, and use the same values for `rep_train` and `rep_test` to indicate the same repository.
+
+## Example Output
+
+The tool creates a propensity model and generates a SHAP report for this model. It also produces a `compare_rep.txt` file, which compares feature averages and standard deviations.
+
+You can use the resulting propensity model to assess expected performance when controlling for changes in your variables of interest.
+
+See examples usages:
+- [AutoTest - Test Matrix Over Years](Model%20Checklist/AutoTest/Development%20kit/Test_11%20-%20test%20matrix%20over%20years.md)
+- [AutoTest - Compare Flags of Baseline Model vs MES Model](Model%20Checklist/AutoTest/Development%20kit/Test_15%20-%20compare%20to%20baseline%20model.md)
+- [AutoTest - Estimate Performance from Propensity Model](Model%20Checklist/AutoTest/External%20Silent%20Run/Test%208%20-%20Estimate%20Performances.md)

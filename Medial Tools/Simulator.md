@@ -2,6 +2,11 @@
 
 The simulator code is located in the [Tools](https://github.com/Medial-EarlySign/MR_Tools) git repository, specifically under the MR_TOOLS repo at: `AlgoMarker_python_API/PopulationAnalyzer`.
 
+Slides:
+
+* [Brief Slides](../SharePoint_Documents/Research/Performance_Simulator/Performance_Simulator.pptx)
+* [Simulator](../SharePoint_Documents/Research/Performance_Simulator/performance_simulator_20241229.pptx)
+
 ### Running the Server
 
 To start the server, execute `./ui.py` from this directory, or use the full path to `ui.py`. The server default port is 3764.
