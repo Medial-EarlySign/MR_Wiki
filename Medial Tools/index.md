@@ -16,7 +16,6 @@ This section provides a list of applications, tools, and executables built on th
     - [Extending Bootstrap](bootstrap_app/Extending%20bootstrap):
         - [Using Harrell C Statistics](bootstrap_app/Extending%20bootstrap/Using%20Harrell%20C%20Statistics.md).
     - [Utility Tools for Processing Bootstrap Results](bootstrap_app/Utility%20tools%20to%20process%20bootstrap%20results.md).
-    - [Versions](bootstrap_app/Versions.md).
 - [Optimizer](Optimizer.md): A tool for hyperparameter optimization.
 - [TestModelExternal](TestModelExternal.md): Compares repositories or samples by building a propensity model to identify differences.
 - [Change Model](change_model): Modifies a model without retraining, such as enabling verbose mode for outliers or limiting memory batch size.

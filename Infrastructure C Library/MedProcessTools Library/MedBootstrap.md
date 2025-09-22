@@ -66,8 +66,9 @@ b.write_results_to_text_file("/tmp/results.csv");
 - add support for more complicated conditions in MedBootstrap itself - for example and,or conditions on the ranges
 - add support for calculating bootstrap on multiple predictions on the same samples - it can shortened the running time significantly when comparing/running on same samples with diffrent models\scores. now you need to call bootstrap in a loop for each score and each call will randomize again the bootstrap cohort and samples
  
-#### **Cohorts file format:**
+#### Cohorts file format
  The file format may be in 2 options:
+
 1. COHORT_NAME[TAB]PARAMETERS_DEF - cohort name is string representing cohort name. PARAMETER_DEF is in format: "PARAMETER_NAME:MIN_RANGE,MAX_RANGE;..." the format can repeat itself with ";" between each parameter. the cohort will consist of intersection between all parameters ranges with "and" condition. there is single tab betwwen the name and the defenition. Example Line: 1 year back & age 40-80 Time-Window:0,365;Age:40,80 will create cohort called "1 year back & age 40-80" and will filter out records with (Time-Window>=0 and Time-Window<=365) and (Age>=40 and Age<=80) 
 2. MULTI[TAB]PARAMETERS_DEF[TAB]...PARAMETERS_DEF[TAB] - this definition with line starting with MULTI keyword will create all the cartesain options for each parameter definition with the each parameter definition in the next TABs. PARAMETERS_DEF - is same as option 1 format. Example Line: MULTI Time-Window:0,30;Time-Window:30,180 Age:40,60;Age:60,80;Age:40,80 Gender:1,1;Gender:2,2 will create 2*3*2=12 cohorts for each Time-Window, Age, and Gender option 
  
