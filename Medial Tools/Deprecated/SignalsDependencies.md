@@ -144,7 +144,7 @@ global_stats_path = /server/Work/Users/Alon/Models/outputs/dicts/preg_rc_before.
 #registry args:
 #each line in registry format looks like: [PID, Start_Date, End_Date, RegistryValue]
 #registry can be create on the fly by specifying "registry_init_cmd" or with command:
-#created by $MR_ROOT/Tools/MedProcessUtils/Linux/Release/create_registry --rep $rep_thin --registry_type binary --registry_censor_init "max_repo_date=20170101;start_buffer_duration=365;end_buffer_duration=365;duration=1095;signal_list=RC" --conflicts_method none --registry_init "max_repo_date=20170101;start_buffer_duration=365;end_buffer_duration=365;config_signals_rules=/server/Work/Users/Alon/Models/configs/registry.pregnancy.cfg"  --registry_save /server/Work/Users/Alon/Models/registry/pregnancy.reg
+#created by create_registry --rep $rep_thin --registry_type binary --registry_censor_init "max_repo_date=20170101;start_buffer_duration=365;end_buffer_duration=365;duration=1095;signal_list=RC" --conflicts_method none --registry_init "max_repo_date=20170101;start_buffer_duration=365;end_buffer_duration=365;config_signals_rules=/server/Work/Users/Alon/Models/configs/registry.pregnancy.cfg"  --registry_save /server/Work/Users/Alon/Models/registry/pregnancy.reg
 registry_path = /server/Work/Users/Alon/Models/registry/pregnancy.new.reg
 #,Hemoglobin,Glucose,LDL,ALT,Creatinine
 censoring_registry_args = max_repo_date=20170101;start_buffer_duration=365;end_buffer_duration=365;duration=1095;signal_list=RC

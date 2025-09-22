@@ -23,8 +23,6 @@ This section provides a list of applications, tools, and executables built on th
     - [How to Limit Memory Usage in Predict](change_model/How%20to%20limit%20memory%20usage%20in%20predict.md).
 - [Adjust Model](adjust_model.md): Adds components like rep_processors or post_processors to a model. Some components may require training with MedSamples and a repository.
 - [Iterative Feature Selector](Iterative%20Feature%20Selector.md): Iteratively selects features or groups of features in a top-down or bottom-up manner and generates a report.
-- [GANs for Imputing Matrices](GANs%20for%20imputing%20matrices):
-    - [Training Masked GAN](GANs%20for%20imputing%20matrices/TrainingMaskedGAN.md).
 - [Fairness Extraction](Fairness%20extraction.md): Calculates fairness metrics.
 - [Model Signals Importance](model_signals_importance.md): Evaluates the importance of signals in an existing model and measures the impact of including or excluding them on performance.
 - [Simulator](Simulator.md): Simulates performance by controlling variables such as target population age distribution and key covariates. It also evaluates the impact of signal availability and existence.
@@ -39,10 +37,10 @@ To learn how to create your own applications, clone the [MR_Tools](https://githu
 
 ## Retired Applications
 
-- [Action Outcome Effect](action_outcome_effect.md): A tool for estimating the average treatment or action effect on outcomes. It also supported feature selection, model selection, training, and bootstrap analysis with recovery and step-skipping capabilities.
-- [Signals Dependencies](SignalsDependencies.md): Identifies statistical dependencies between registry and signal values within a time window. Useful for selecting categorical signals.
-- [Create Registry](create_registry):
-    - [Create Membership Registry Example Command](create_registry/Create%20Membership%20registry%20example%20command.md).
-- [Find Required Signals](Find%20Required%20Signals.md).
+- [Action Outcome Effect](Deprecated/action_outcome_effect.md): A tool for estimating the average treatment or action effect on outcomes. It also supported feature selection, model selection, training, and bootstrap analysis with recovery and step-skipping capabilities.
+- [Signals Dependencies](Deprecated/SignalsDependencies.md): Identifies statistical dependencies between registry and signal values within a time window. Useful for selecting categorical signals.
+- [Create Registry](Deprecated/create_registry):
+- [Find Required Signals](Deprecated/Find%20Required%20Signals.md).
 - [Compare AUCs](Compare%20AUC's.md).
+- [GANs for Imputing Matrices](Deprecated/GANs%20for%20imputing%20matrices):
 

@@ -53,10 +53,12 @@ Required arguments:
 - `strata_json_model`: JSON file for creating strata and collecting statistics
 - `strata_settings`: Strata settings for collecting statistics
 
-When comparing to a different repository on another machine, also provide:
+When comparing to a different repository on another machine, also provide either:
 
-- `strata_train_features_moments`: File for the current test samples to compare with the specified path
+- `train_matrix_csv`: A CSV matrix from the reference to compare with
+- `strata_train_features_moments`: File for the reference statistics to compare with the specified path. Created in "train" repository and controled with `strata_json_model`, `strata_settings`
 
+The `train_matrix_csv` can be created in the reference by [generating a feature matrix](Using%20the%20Flow%20App/index.md#creating-a-feature-matrix-for-samples) and is the prefered way when possible
 
 ## Mode 3: Compare Different Samples Within the Same Repository
 
