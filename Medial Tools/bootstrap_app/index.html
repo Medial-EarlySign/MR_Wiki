@@ -5552,7 +5552,7 @@
   
   
   <span class="md-ellipsis">
-    Bootstrap legend
+    Bootstrap Result File: Column Legend
     
   </span>
   
@@ -5575,7 +5575,7 @@
   
   
   <span class="md-ellipsis">
-    Utility tools to process bootstrap results
+    Utility Tools for Processing Bootstrap Results
     
   </span>
   
@@ -7835,31 +7835,40 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#getting-started-your-first-run" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      Getting Started: Your First Run
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#program-overview" class="md-nav__link">
+  <a href="#core-features-at-a-glance" class="md-nav__link">
     <span class="md-ellipsis">
-      Program Overview
+      Core Features at a Glance
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#program-options" class="md-nav__link">
+  <a href="#how-it-works-program-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Program Options
+      How it Works: Program Overview
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Program Options">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command-Line Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Command-Line Options">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7949,29 +7958,59 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-run" class="md-nav__link">
+  <a href="#example-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Run
+      Example Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explanation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjusting-incidence-with-an-incidence-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjusting Incidence with an Incidence File
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#fixing-incidence-with-an-incidence-file" class="md-nav__link">
+  <a href="#understanding-the-results-output" class="md-nav__link">
     <span class="md-ellipsis">
-      Fixing Incidence with an Incidence File
+      Understanding the Results Output
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Results Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-result-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Result Format
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#results-output-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Results Output File
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -8017,25 +8056,46 @@
 
 
 <h1 id="bootstrap_app">bootstrap_app</h1>
-<p><code>bootstrap_app</code> is a high-performance tool for evaluating model performance using bootstrap analysis. It outputs confidence intervals, standard deviations, and other statistics for each metric.</p>
-<p>The tool operates by first randomly selecting a patient from the dataset, then either randomly choosing a prediction date/sample for that patient or selecting all their samples. This method ensures that patients with more samples have a proportionate impact on performance metrics. In medical model assessment, it is best practice to randomize by patient ID first, then select all or a random subset of their prediction dates.</p>
-<h2 id="key-features">Key Features</h2>
-<ul>
-<li>Highly efficient: computes performance metrics on millions of predictions in seconds.</li>
-<li>Supports sample weights for metric calculation.</li>
-<li>Handles regression, categorical, and custom performance measures.</li>
-<li>Easily assesses performance across multiple cohorts (e.g., age, sex, time windows, disease stage) using a simple API or config file scalable to thousands of cohort definitions.</li>
-</ul>
-<p>The application is a standalone executable built on a fast C++ library. You can also use the <a href="../../Python/Examples.html#bootstrap-analysis-on-samples">Python API</a> for dataframe-based workflows that uses the same library.</p>
-<p>Source code is available in the <a href="https://github.com/Medial-EarlySign/MR_Tools">MR_Tools</a> repository (<code>bootstrap_app</code> folder), and it is compiled as part of <a href="../../Installation/index.html#3-mes-tools-to-train-and-test-models">AllTools</a>.</p>
-<h2 id="program-overview">Program Overview</h2>
-<p>The simplest use case is to read a <code>MedSamples</code> TSV file containing outcome and prediction columns (e.g., <code>outcome</code>, <code>pred_0</code>) and assess model performance. However, the main strength of <code>bootstrap_app</code> is its ability to define and analyze complex cohorts.</p>
-<p>You can generate a feature matrix using a <a href="../../Infrastructure%20C%20Library/MedModel%20json%20format.html">MedModel JSON</a> and a repository. Once you have a feature matrix, you can filter rows using simple rules, similar to pandas filtering in Python.</p>
-<p>Cohorts are defined in a plain-text file, where each filter is written as <code>FEATURE_NAME:MIN_VALUE,MAX_VALUE</code>. Multiple conditions are combined with AND logic. This format is easy to read and sufficient for most use cases, even if less expressive than pandas, and keeps everything within the C++ ecosystem.</p>
-<h2 id="program-options">Program Options</h2>
-<p>To see all available options, run:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>./bootstrap_app<span class="w"> </span>--help
+<p><code>bootstrap_app</code> is a powerful and highly efficient command-line tool designed for <strong>evaluating model performance using bootstrap analysis</strong>. It provides key statistical metrics such as confidence intervals and standard deviations for a wide range of performance measures.</p>
+<p>The tool uses a patient-level bootstrap sampling method. It first randomly selects a patient from the dataset, then either a random sample or all samples associated with that patient. This ensures that the analysis properly accounts for patients with multiple data points, which is a best practice in medical model assessment.</p>
+<p>The source code can be found in the <code>bootstrap_app</code> folder of the <a href="https://github.com/Medial-EarlySign/MR_Tools">MR_Tools</a> repository.
+It is compiled as part of <a href="../../Installation/index.html#3-mes-tools-to-train-and-test-models">AllTools</a>.</p>
+<h2 id="getting-started-your-first-run">Getting Started: Your First Run</h2>
+<p>The easiest way to use <code>bootstrap_app</code> is from command line:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>bootstrap_app<span class="w"> </span>--input<span class="w"> </span>/path/to/my_data.tsv<span class="w"> </span>--output<span class="w"> </span>/tmp/bootstrap_results
 </code></pre></div></td></tr></table></div>
+<p><strong>Mandatory Parameters</strong>
+Only two parameters are mandatory for any run:</p>
+<ul>
+<li><code>--input</code>: The file containing your model's predictions and the true outcomes. It must be a tab-separated TSV with a header row, including the columns <code>pid</code> (patient ID), <code>outcome</code>, and <code>pred_0</code> (the prediction score). Full File Format <a href="../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedSamples.html">MedSamples</a></li>
+<li><code>--output</code>: The path to the output file where <code>bootstrap_app</code> will write the results of the analysis.</li>
+</ul>
+<h2 id="core-features-at-a-glance">Core Features at a Glance</h2>
+<ul>
+<li><strong>Highly efficient</strong>: Quickly computes performance metrics on millions of predictions, making it suitable for large-scale datasets result files.</li>
+<li><strong>Flexible Inputs</strong>: Supports various input types and allows for sample weighting.</li>
+<li><strong>Comprehensive Metrics</strong>: Handles regression, categorical, and custom performance measures, including specialized metrics for binary classification.</li>
+<li><strong>Powerful Cohort Analysis</strong>: Easily assesses model performance across thousands of defined cohorts (e.g., age groups, sex, time windows) using a simple configuration file.</li>
+<li><strong>Standalone &amp; Integrated</strong>: Available as a standalone executable built on a fast C++ library, with a <a href="../../Python/Examples.html#bootstrap-analysis-on-samples">Python API</a> available for integration into dataframe-based workflows.</li>
+</ul>
+<h2 id="how-it-works-program-overview">How it Works: Program Overview</h2>
+<p>The primary use case for <code>bootstrap_app</code> is to analyze a <code>MedSamples</code> TSV file containing patient id, outcome and prediction data. However, its main strength lies in its ability to analyze complex cohorts.</p>
+<p>The workflow for cohort analysis involves:</p>
+<ol>
+<li><strong>Defining Cohorts</strong>: You define cohorts using a plain-text file where each filter is a simple <code>FEATURE_NAME:MIN_VALUE,MAX_VALUE</code> pair. Multiple conditions on the same line are combined with <code>AND</code> logic.</li>
+<li><strong>Generating a Feature Matrix</strong>: The tool can generate a feature matrix from a <a href="../../Infrastructure%20C%20Library/MedModel%20json%20format.html">MedModel JSON</a> file and a data repository or given a matrix CSV directly in the input</li>
+<li><strong>Applying Filters</strong>: The tool then uses simple filtering rules, similar to pandas (even though less expressive, it is suffecient for most usecases), to create and analyze performance for each defined cohort.</li>
+</ol>
+<p>This approach keeps everything within the fast C++ ecosystem, providing an efficient way to analyze performance across many sub-populations.</p>
+<p>A single line in the <code>cohorts_file</code> can generate multiple combinations of cohorts. For instance, this example will generate 6 distinct cohorts by combining every <code>Age</code> filter with every <code>Time-Window</code> filter:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>MULTI   Age:40,89;Age:50,75;Age:45,75   Time-Window:0,365;Time-Window:180,365
+</code></pre></div></td></tr></table></div>
+<p>For more information on the <code>cohorts_file</code> format, refer to the <a href="../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.html#cohorts-file-format">MedBootstrap</a> wiki page.</p>
+<h2 id="command-line-options">Command-Line Options</h2>
+<p>You can view all available options by running:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>./bootstrap_app<span class="w"> </span>--help
+</code></pre></div></td></tr></table></div>
+<p>The options are organized into several logical groups:</p>
 <h3 id="general-options">General Options</h3>
 <ul>
 <li><code>--sample_seed arg (=0)</code>: Seed for bootstrap sampling</li>
@@ -8115,38 +8175,11 @@
 - <code>--labeling_params arg (=conflict_method=max;label_interaction_mode=0:within,all|1:before_start,after_start;censor_interaction_mode=all:within,all)</code>: How to label from registry (see <code>LabelParams</code> type)
 - <code>--incidence_sampling_args arg (=start_time=20070101;end_time=20140101;time_jump=1;time_jump_unit=Year;time_range_unit=Date)</code>: Initialization string for <code>MedSamplingYearly</code>
 - <code>--do_kaplan_meir arg (=1)</code>: Use Kaplan-Meier calculation for incidence by registry (recommended, especially for large time windows)</p>
-<h2 id="example-run">Example Run</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>bootstrap_app<span class="w"> </span>--base_config<span class="w"> </span>/nas1/Work/Users/Alon/UnitTesting/examples/bootstrap_app/bootstrap_example.cfg
+<h2 id="example-usage">Example Usage</h2>
+<p>The easiest way to use <code>bootstrap_app</code> is with a configuration (<code>.cfg</code>) file, which is an INI-style plain-text file instead of supplying all arguments in command line.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>bootstrap_app<span class="w"> </span>--base_config<span class="w"> </span>/path/to/bootstrap_example.cfg
 </code></pre></div></td></tr></table></div>
-<p>The <code>bootstrap_example.cfg</code> file contains all program arguments in INI format (<code>parameter_name = parameter_value</code>). You can use this file or override parameters with command-line arguments.</p>
-<p>Example <code>bootstrap_example.cfg</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># Repository path:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="na">rep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/home/Repositories/THIN/thin_jun2017/thin.repository</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1"># MedSamples input (or use `input_type` for other types)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="na">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/validation_samples.preds</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1"># Output path:</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="na">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/tmp/bootstrap_test</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1"># JSON model for additional features for cohort filtering</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="na">json_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/model_stats.json</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1"># Cohorts definition file:</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="na">cohorts_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/bootstrap_new.params</span>
-</code></pre></div></td></tr></table></div>
-<p>For the exact format of <code>cohorts_file</code>, see the <a href="../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.html#cohorts-file-format">MedBootstrap</a> wiki page or the <a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedBootstrap.html#a719ddf45e236146cd0020b0f587b78a1">doxygen documentation</a>.</p>
-<h2 id="fixing-incidence-with-an-incidence-file">Fixing Incidence with an Incidence File</h2>
-<p>The tool estimates average incidence in your cohort based on sex, age group, and patient counts. For positive predictive value (PPV), it multiplies sensitivity by incidence, then divides by <code>sensitivity * incidence + FPR * (1 - incidence)</code>. This is equivalent to weighting cases as <code>average incidence * total cohort / total cases</code> and controls as <code>(1 - average incidence) * total cohort / total controls</code>.</p>
-<p>If the model is random (sensitivity = FPR), then PPV equals incidence. The bootstrap program also evaluates how additional cohort filters (beyond sex and age) affect incidence. For example, selecting anemic patients may bias toward cases and increase incidence compared to the global population (e.g., SEER data). The tool assumes the effect on stratified outcome, age, and sex is similar between your input samples and the reference population, and measures the lift in odds ratio before and after applying bootstrap filters. This is an adjustment for incidence-sensitive metrics, not an exact calculation.</p>
-<p>Example incidence file (can be created via Flow App):</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>head<span class="w"> </span>/nas1/Work/Users/Alon/UnitTesting/examples/bootstrap_app/pre2d_incidence_thin.new_format
-</code></pre></div></td></tr></table></div>
+<p>Here's an example of what a <code>bootstrap_example.cfg</code> file might look like:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -8156,23 +8189,84 @@
 <span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>AGE_BIN 3
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>AGE_MIN 21
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>AGE_MAX 90
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>OUTCOME_VALUE   0.0
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>OUTCOME_VALUE   1.0
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a>STATS_ROW       MALE    21      1.0     5242
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a>STATS_ROW       MALE    21      0.0     94758
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a>STATS_ROW       FEMALE  21      1.0     5242
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a>STATS_ROW       FEMALE  21      0.0     94758
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a>STATS_ROW       MALE    24      1.0     5338
+<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># Repository path:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="na">rep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/home/Repositories/THIN/thin_jun2017/thin.repository</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1"># MedSamples input (or use `input_type` for other types)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="na">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/validation_samples.preds</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1"># Output path:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="na">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/tmp/bootstrap_test</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c1"># JSON model for additional features for cohort filtering</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="na">json_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/model_stats.json</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="c1"># Cohorts definition file:</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="na">cohorts_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/bootstrap_new.params</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="explanation">Explanation</h3>
+<p>While <code>bootstrap_app</code> has many options, only two are mandatory for a basic run: <code>input</code> and <code>output</code>. The <strong>input file</strong> is a tab-separated TSV file that must contain columns for <code>pid</code> (patient ID), <code>outcome</code>, and <code>pred_0</code> (prediction score). For more details on this format, see the <a href="../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedSamples.html">MedSamples</a> documentation.</p>
+<p>The other parameters you see in the example, such as <code>rep</code>, <code>json_model</code>, and <code>cohorts_file</code>, are <strong>optional</strong> and used for advanced cohort analysis. The tool can automatically generate a feature matrix from a <code>json_model</code> and a data repository. Alternatively, you can directly provide a feature matrix as a CSV file by setting <code>input_type</code> to <code>features_csv</code> in this case, you don't need to specify <code>rep</code> or <code>json_model</code>.</p>
+<h2 id="adjusting-incidence-with-an-incidence-file">Adjusting Incidence with an Incidence File</h2>
+<p>The tool estimates average incidence in your cohort based on sex, age group, and patient counts. For positive predictive value (PPV), it multiplies sensitivity by incidence, then divides by <code>sensitivity * incidence + FPR * (1 - incidence)</code>. This is equivalent to weighting cases as <code>average incidence * total cohort / total cases</code> and controls as <code>(1 - average incidence) * total cohort / total controls</code>.</p>
+<p>If the model is random (sensitivity = FPR), then PPV equals incidence. The bootstrap program also evaluates how additional cohort filters (beyond sex and age) affect incidence. For example, selecting anemic patients may bias toward cases and increase incidence compared to the global population (e.g., SEER data). The tool assumes the effect on stratified outcome, age, and sex is similar between your input samples and the reference population, and measures the lift in odds ratio before and after applying bootstrap filters. This is an adjustment for incidence-sensitive metrics, not an exact calculation.</p>
+<p>Example incidence file (can be created via Flow App):</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>head<span class="w"> </span>/nas1/Work/Users/Alon/UnitTesting/examples/bootstrap_app/pre2d_incidence_thin.new_format
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>AGE_BIN 3
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>AGE_MIN 21
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>AGE_MAX 90
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>OUTCOME_VALUE   0.0
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>OUTCOME_VALUE   1.0
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>STATS_ROW       MALE    21      1.0     5242
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>STATS_ROW       MALE    21      0.0     94758
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>STATS_ROW       FEMALE  21      1.0     5242
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>STATS_ROW       FEMALE  21      0.0     94758
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>STATS_ROW       MALE    24      1.0     5338
 </code></pre></div></td></tr></table></div></p>
 <p>The <code>registry_path</code> is a text format of <a href="../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry">MedRegistry</a>. See the code documentation for more details (e.g., <code>write_text_file</code> method).</p>
-<h2 id="results-output-file">Results Output File</h2>
+<h2 id="understanding-the-results-output">Understanding the Results Output</h2>
+<p>The output is a TSV file with three columns: <code>Cohort</code>, <code>Measurement</code>, and <code>Value</code>.</p>
 <ul>
-<li>See <a href="Bootstrap%20legend.html">Bootstrap legend</a> for details on output metrics.</li>
+<li><strong>Cohort</strong>: The name of the cohort being analyzed.</li>
+<li><strong>Measurement</strong>: The performance metric (e.g., AUC_Mean, SENS@FPR_03).</li>
+<li><strong>Value</strong>: The calculated value for that metric.</li>
+</ul>
+<p>For each metric, the tool outputs several statistics:</p>
+<ul>
+<li><code>_Mean</code>: The average value across all bootstrap iterations.</li>
+<li><code>_Obs</code>: The value from the original, non-bootstrapped data.</li>
+<li><code>_Std</code>: The standard deviation across iterations.</li>
+<li>
+<p><code>_CI.Lower.95</code> and <code>_CI.Upper.95</code>: The lower and upper bounds of the 95% confidence interval.</p>
+</li>
+<li>
+<p>See <a href="Bootstrap%20legend.html">Bootstrap legend</a> for more details on output metrics.</p>
+</li>
 <li>Use the <a href="Utility%20tools%20to%20process%20bootstrap%20results.html">utility tool to process bootstrap result files</a> to generate tables or plots (e.g., ROC curves) from one or more bootstrap files.</li>
 </ul>
+<h3 id="example-result-format">Example Result Format</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span>
+<span class="normal"><a href="#__codelineno-7-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>Cohort  Measurement Value
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>Age:40-89,Time-Window:0,365 AUC_CI.Lower.95 0.555556
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>Age:40-89,Time-Window:0,365 AUC_CI.Upper.95 1
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>Age:40-89,Time-Window:0,365 AUC_Mean    0.867092
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>Age:40-89,Time-Window:0,365 AUC_Obs 0.875
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>Age:40-89,Time-Window:0,365 AUC_Std 0.129476
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>...
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>Age:40-89,Time-Window:0,365 SENS@FPR_03 10.34565
+</code></pre></div></td></tr></table></div>
 <h2 id="implementation-and-advanced-library-usage">Implementation and Advanced Library Usage</h2>
 <p>You can use <code>bootstrap</code> in C++ code at three levels (main code in <a href="https://github.com/Medial-EarlySign/MR_LIBS/">MR_Libs</a>):</p>
 <ol>

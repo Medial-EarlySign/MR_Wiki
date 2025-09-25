@@ -26,7 +26,7 @@
     
     
       
-        <title>Utility tools to process bootstrap results - Medial EarlySign Documentation</title>
+        <title>Utility Tools for Processing Bootstrap Results - Medial EarlySign Documentation</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#utility-tools-to-process-bootstrap-results" class="md-skip">
+        <a href="#utility-tools-for-processing-bootstrap-results" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Utility tools to process bootstrap results
+              Utility Tools for Processing Bootstrap Results
             
           </span>
         </div>
@@ -5552,7 +5552,7 @@
   
   
   <span class="md-ellipsis">
-    Bootstrap legend
+    Bootstrap Result File: Column Legend
     
   </span>
   
@@ -5579,17 +5579,67 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Utility Tools for Processing Bootstrap Results
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="Utility%20tools%20to%20process%20bootstrap%20results.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Utility tools to process bootstrap results
+    Utility Tools for Processing Bootstrap Results
     
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#formatting-bootstrap-results-as-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting Bootstrap Results as Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-graphs-from-bootstrap-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plotting Graphs from Bootstrap Results
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -7838,6 +7888,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#formatting-bootstrap-results-as-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting Bootstrap Results as Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-graphs-from-bootstrap-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plotting Graphs from Bootstrap Results
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -7868,100 +7944,87 @@
   
 
 
-<h1 id="utility-tools-to-process-bootstrap-results">Utility tools to process bootstrap results</h1>
-<h1 id="process-bootstrap-result-to-create-text-table-excel-like">Process bootstrap result to create text table (Excel like):</h1>
-<p>You can use bootstrap_format.py to process the results into nice table.
-The script is under "<a href="https://github.com/Medial-EarlySign/MR_Scripts">MR_SCRIPTS</a>" git repo and suppose to be in your PATH under $MR_ROOT/Projects/Scripts/Python-scripts, so you can just call it.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span>
-<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>bootstrap_format.py<span class="w"> </span>--report_path<span class="w"> </span><span class="nv">$BT_REPORT_PATH_1</span><span class="w"> </span><span class="nv">$BT_REPORT_PATH_2</span><span class="w"> </span><span class="nv">$BT_REPORT_PATH_3</span><span class="w"> </span>...<span class="w"> </span><span class="nv">$BT_REPORT_PATH_N</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span>--report_name<span class="w"> </span><span class="nv">$NAME_FOR_1</span><span class="w"> </span><span class="nv">$NAME_FOR_2</span><span class="w"> </span><span class="nv">$NAME_FOR_3</span><span class="w"> </span>...<span class="w"> </span><span class="nv">$NAME_FOR_N</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span>--cohorts_list<span class="w"> </span><span class="nv">$REGEX_TO_FILTER_COHORTS_FORM_BOOTSTRAP</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span>--measure_regex<span class="w"> </span><span class="nv">$REGEX_TO_FILTER_MEASUREMENTS</span>
+<h1 id="utility-tools-for-processing-bootstrap-results">Utility Tools for Processing Bootstrap Results</h1>
+<p>The bootstrap output file can contain <strong>a lot of numbers</strong> and be scatter across different files. 
+We need a tool to visualize, compare and rearrange the results in a desired format. 
+Sometimes we want to visulize it as a graph.</p>
+<h2 id="formatting-bootstrap-results-as-tables">Formatting Bootstrap Results as Tables</h2>
+<p>You can use the <code>bootstrap_format.py</code> script to convert bootstrap result files into well-formatted tables (Excel-like). This script is available in the <a href="https://github.com/Medial-EarlySign/MR_Scripts">MR_SCRIPTS</a> repository and should be accessible in your <code>PATH</code> under the <code>Python-scripts</code> directory of MR_Scripts.</p>
+<p><strong>Basic usage:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>bootstrap_format.py<span class="w"> </span>--report_path<span class="w"> </span><span class="nv">$BT_REPORT_PATH_1</span><span class="w"> </span><span class="nv">$BT_REPORT_PATH_2</span><span class="w"> </span>...<span class="w"> </span><span class="nv">$BT_REPORT_PATH_N</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span>--report_name<span class="w"> </span><span class="nv">$NAME_FOR_1</span><span class="w"> </span><span class="nv">$NAME_FOR_2</span><span class="w"> </span>...<span class="w"> </span><span class="nv">$NAME_FOR_N</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span>--cohorts_list<span class="w"> </span><span class="nv">$REGEX_TO_FILTER_COHORTS</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span>--measure_regex<span class="w"> </span><span class="nv">$REGEX_TO_FILTER_MEASUREMENTS</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">  </span>--table_format<span class="w"> </span><span class="nv">$TABLE_FORMAT</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="c1">#Full example:</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>bootstrap_format.py<span class="w"> </span>--report_path<span class="w"> </span>/tmp/bt_baseline.pivot_txt<span class="w"> </span>/tmp/bt_full.pivot_txt<span class="w"> </span>--report_name<span class="w"> </span>baseline<span class="w"> </span>MES_Full<span class="w"> </span>--cohorts_list<span class="w"> </span>.<span class="w"> </span>--measure_regex<span class="w"> </span><span class="s2">&quot;AUC|OR@PR&quot;</span><span class="w"> </span>--table_format<span class="w"> </span><span class="s2">&quot;cm,r&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="c1"># Example of processing 2 files for previous mode and a current model:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>bootstrap_format.py<span class="w"> </span>--report_path<span class="w"> </span>/tmp/bt_previous.pivot_txt<span class="w"> </span>/tmp/bt_current.pivot_txt<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span>--report_name<span class="w"> </span>OLD<span class="w"> </span>NEW<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span>--cohorts_list<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span>--measure_regex<span class="w"> </span><span class="s2">&quot;AUC|OR@PR&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">  </span>--table_format<span class="w"> </span><span class="s2">&quot;cm,r&quot;</span>
 </code></pre></div></td></tr></table></div></p>
+<p><strong>Key options:</strong></p>
 <ul>
-<li>You can specify 1 or multiple bootstrap file results and give each file a name.</li>
-<li>You can filter the cohorts using regex "–cohorts_list" argument or pass "–cohorts_list ." to keep all cohorts (. will match all characters in regex)</li>
-<li>You can specify which measurements to extract with "–measure_regex". For example "AUC|SENS@FPR" - to extract both AUC and SENS@FPR</li>
-<li>
-<p>The final output is a table and you can control the rows/columns with "table_format" argument. There are 3 dimensions that are being projected into 2D table. Here are the letters that describe each one of them</p>
-<ul>
-<li>r - "report". The bootstrap report file. In the example it's either baseline or MES_Full </li>
-<li>c - "cohort". The bootstrap files can contain multiple cohorts</li>
-<li>m - "measurement" - The bootstrap results is based on multiple measurements, like "AUC", "SENS@FPR_05", etc.
-In order to control how to project those 3 dimensions into row/cols (2D), you need to specify those 3 characters and put "," to separate rows and cols. The first token will control "rows" of the table and the second token will controls the "columns".As you can see, one of the tokens will have 2 characters - it will expend all possible combinations of those values (Cartesian multiplier) and use a delimiter of "$" between the 2 tokens. In the example, The rows will be based on "cohort" X "Measurement" and the columns will be the 2 reports - so we will see side by side the baseline VS MES_Full in this example
-Additional arguments:</li>
+<li>Specify one or more bootstrap result files and assign each a name.</li>
+<li>Filter cohorts using the <code>--cohorts_list</code> regex (use <code>.</code> to include all).</li>
+<li>Select which measurements to extract with <code>--measure_regex</code> (e.g., <code>AUC|SENS@FPR</code>).</li>
+<li>Control table layout with <code>--table_format</code>. There are three dimensions:<ul>
+<li><code>r</code>: report (the result file, e.g., baseline or MES_Full)</li>
+<li><code>c</code>: cohort (multiple cohorts per file)</li>
+<li><code>m</code>: measurement (e.g., AUC, SENS@FPR_05)
+Specify the three characters, separated by a comma, to map dimensions to rows and columns. One token will have two characters, expanding all combinations (Cartesian product) and using <code>$</code> as a delimiter. For example, <code>cm,r</code> means rows are cohort × measurement, columns are reports.</li>
 </ul>
 </li>
-<li>
-<p>--break_cols "breaks" Cohort filters into columns by comma - each filter condition is separated by comma.</p>
-</li>
-<li>--break_mes "breaks" measurement values (e.g. 8.4[7.8 - 9.2]) to 3 columns - Mean, Min and Max</li>
-<li>--output_path to save the results in csv
-Full output example without "--break_cols":</li>
 </ul>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<p><strong>Additional arguments:</strong></p>
+<ul>
+<li><code>--break_cols</code>: Splits cohort filters into separate columns (default behavior).</li>
+<li><code>--break_mes</code>: Splits measurement values (e.g., <code>8.4[7.8 - 9.2]</code>) into three columns: Mean, Min, Max.</li>
+<li><code>--output_path</code>: Save the results as a CSV file.</li>
+</ul>
+<p><strong>Example output (without <code>--break_cols</code>):</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span>
-<span class="normal"><a href="#__codelineno-1-7">7</a></span>
-<span class="normal"><a href="#__codelineno-1-8">8</a></span>
-<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Cohort$Measurements     baseline        MES_Full
+<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Cohort$Measurements     OLD        NEW
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-0.000,Ex_or_Current:1.000-1.000$AUC        0.807[0.801 - 0.814]    0.816[0.809 - 0.822]
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-0.000,Ex_or_Current:1.000-1.000$OR@PR_3    8.4[7.8 - 9.2]  9.5[8.7 - 10.3]
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-0.000,Ex_or_Current:1.000-1.000$OR@PR_5    8.1[7.6 - 8.7]  8.8[8.2 - 9.4]
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-0.000,Ex_or_Current:1.000-1.000$OR@PR_10   7.6[7.2 - 8.2]  8.3[7.7 - 8.8]
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-1.000,Ex_or_Current:1.000-1.000$AUC        0.812[0.805 - 0.818]    0.821[0.815 - 0.827]
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-1.000,Ex_or_Current:1.000-1.000$OR@PR_3    9.2[8.5 - 9.9]  10.1[9.4 - 11.0]
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-1.000,Ex_or_Current:1.000-1.000$OR@PR_5    8.4[7.8 - 9.0]  9.4[8.7 - 10.1]
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-1.000,Ex_or_Current:1.000-1.000$OR@PR_10   8.0[7.5 - 8.6]  8.7[8.1 - 9.2]
-</code></pre></div></td></tr></table></div>
-With "–break_cols" (which is the default):</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>... (truncated)
+</code></pre></div></td></tr></table></div></p>
+<p><strong>With <code>--break_cols</code> (default):</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span>
-<span class="normal"><a href="#__codelineno-2-6">6</a></span>
-<span class="normal"><a href="#__codelineno-2-7">7</a></span>
-<span class="normal"><a href="#__codelineno-2-8">8</a></span>
-<span class="normal"><a href="#__codelineno-2-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Cohort  Age     Ex_or_Current   Suspected       Time-Window     Measurements    baseline        MES_Full
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-0.000,Ex_or_Current:1.000-1.000    50-80   1       0       90-360  AUC     0.807[0.801 - 0.814]    0.816[0.809 - 0.822]
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-0.000,Ex_or_Current:1.000-1.000    50-80   1       0       90-360  OR@PR_3 8.4[7.8 - 9.2]  9.5[8.7 - 10.3]
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-0.000,Ex_or_Current:1.000-1.000    50-80   1       0       90-360  OR@PR_5 8.1[7.6 - 8.7]  8.8[8.2 - 9.4]
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-0.000,Ex_or_Current:1.000-1.000    50-80   1       0       90-360  OR@PR_10        7.6[7.2 - 8.2]  8.3[7.7 - 8.8]
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-1.000,Ex_or_Current:1.000-1.000    50-80   1       0-1     90-360  AUC     0.812[0.805 - 0.818]    0.821[0.815 - 0.827]
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-1.000,Ex_or_Current:1.000-1.000    50-80   1       0-1     90-360  OR@PR_3 9.2[8.5 - 9.9]  10.1[9.4 - 11.0]
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-1.000,Ex_or_Current:1.000-1.000    50-80   1       0-1     90-360  OR@PR_5 8.4[7.8 - 9.0]  9.4[8.7 - 10.1]
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>Time-Window:90.000-360.000,Age:50.000-80.000,Suspected:0.000-1.000,Ex_or_Current:1.000-1.000    50-80   1       0-1     90-360  OR@PR_10        8.0[7.5 - 8.6]  8.7[8.1 - 9.2]
-</code></pre></div></td></tr></table></div>
- 
-How to generate graphs like ROC from bootstrap results file:
-Please use plt_bt.py in scripts.
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Cohort  Age     Ex_or_Current   Suspected       Time-Window     Measurements    OLD        NEW
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>Time-Window:90.000-360.000,Age:50.000-80.000,...   50-80   1   0   90-360  AUC     0.807[0.801 - 0.814]    0.816[0.809 - 0.822]
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>... (truncated)
+</code></pre></div></td></tr></table></div></p>
+<h2 id="plotting-graphs-from-bootstrap-results">Plotting Graphs from Bootstrap Results</h2>
+<p>To generate graphs (such as ROC curves) from bootstrap result files, use the <code>plt_bt.py</code> script:</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
 <span class="normal"><a href="#__codelineno-3-4">4</a></span>
 <span class="normal"><a href="#__codelineno-3-5">5</a></span>
 <span class="normal"><a href="#__codelineno-3-6">6</a></span>
-<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>plt_bt.py<span class="w"> </span>--input<span class="w"> </span><span class="nv">$BT_REPORT_PATH_2</span><span class="w"> </span><span class="nv">$BT_REPORT_PATH_3</span><span class="w"> </span>...<span class="w"> </span><span class="nv">$BT_REPORT_PATH_N</span><span class="w"> </span><span class="se">\ </span><span class="w">       </span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span>--names<span class="w"> </span>NAMES<span class="w">  </span><span class="nv">$NAME_FOR_1</span><span class="w"> </span><span class="nv">$NAME_FOR_2</span><span class="w"> </span><span class="nv">$NAME_FOR_3</span><span class="w"> </span>...<span class="w"> </span><span class="nv">$NAME_FOR_N</span><span class="w"> </span><span class="se">\ </span><span class="w">    </span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>plt_bt.py<span class="w"> </span>--input<span class="w"> </span><span class="nv">$BT_REPORT_PATH_1</span><span class="w"> </span><span class="nv">$BT_REPORT_PATH_2</span><span class="w"> </span>...<span class="w"> </span><span class="nv">$BT_REPORT_PATH_N</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span>--names<span class="w"> </span><span class="nv">$NAME_FOR_1</span><span class="w"> </span><span class="nv">$NAME_FOR_2</span><span class="w"> </span>...<span class="w"> </span><span class="nv">$NAME_FOR_N</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span>--output<span class="w"> </span><span class="nv">$OUTPUT_PATH</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span>--measure<span class="w"> </span><span class="nv">$MEASURE</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">  </span>--filter_cohorts<span class="w"> </span><span class="nv">$REGEX_TO_FILTER_COHORTS_FORM_BOOTSTRAP</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">  </span>--show_ci<span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">  </span>--add_y_eq_x<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="c1">#If true will add y=x graph</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span>--measure<span class="w"> </span><span class="nv">$MEASURE</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">  </span>--filter_cohorts<span class="w"> </span><span class="nv">$REGEX_TO_FILTER_COHORTS</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">  </span>--show_ci<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">  </span>--add_y_eq_x<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="c1"># Adds y=x reference line</span>
 </code></pre></div></td></tr></table></div>
-measure for ROC for example is SENS@FPR</p>
+For ROC, use <code>SENS@FPR</code> as the measure.</p>
 
 
 

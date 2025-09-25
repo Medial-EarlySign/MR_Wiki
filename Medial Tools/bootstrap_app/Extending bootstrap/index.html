@@ -26,7 +26,7 @@
     
     
       
-        <title>Extending bootstrap - Medial EarlySign Documentation</title>
+        <title>Extending Bootstrap - Medial EarlySign Documentation</title>
       
     
     
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extending bootstrap
+              Extending Bootstrap
             
           </span>
         </div>
@@ -5552,7 +5552,7 @@
   
   
   <span class="md-ellipsis">
-    Bootstrap legend
+    Bootstrap Result File: Column Legend
     
   </span>
   
@@ -5575,7 +5575,7 @@
   
   
   <span class="md-ellipsis">
-    Utility tools to process bootstrap results
+    Utility Tools for Processing Bootstrap Results
     
   </span>
   
@@ -7837,36 +7837,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#function-input-you-just-need-to-keep-that-signature-and-cant-change-that" class="md-nav__link">
+  <a href="#function-signature" class="md-nav__link">
     <span class="md-ellipsis">
-      Function input - you just need to keep that signature and can't change that.
+      Function Signature
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Function Signature">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-iterator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Iterator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#function-output" class="md-nav__link">
     <span class="md-ellipsis">
-      Function output
+      Function Output
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function Output">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-counting-cases-and-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Counting Cases and Controls
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#here-is-a-simple-example-of-function-that-counts-how-many-cases-and-how-many-controls-exists" class="md-nav__link">
-    <span class="md-ellipsis">
-      Here is a simple example of function that counts how many cases and how many controls exists:
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-the-custom-function" class="md-nav__link">
+  <a href="#using-your-custom-function" class="md-nav__link">
     <span class="md-ellipsis">
-      How to use the custom function?
+      Using Your Custom Function
     </span>
   </a>
   
@@ -7904,56 +7925,51 @@
   
 
 
-<h1 id="extending-bootstrap">Extending bootstrap</h1>
-<p>The main idea of the bootstrap infrastructure is the ability to extend it to measure some statistical measurement in bootstrap analysis process (repeated experiment with replacement)  - to assest the confidence interval, std, etc.
-In order to do that, you need to write function that calculates that measurement/s.</p>
-<h3 id="function-input-you-just-need-to-keep-that-signature-and-cant-change-that">Function input - you just need to keep that signature and can't change that.</h3>
+<h1 id="extending-bootstrap">Extending Bootstrap</h1>
+<p>The bootstrap infrastructure is designed to be extensible, allowing you to add custom statistical measurements to the bootstrap analysis process (i.e., repeated experiments with replacement) to estimate confidence intervals, standard deviations, and more.</p>
+<p>To do this, you simply write a function that computes your desired measurement(s).</p>
+<h2 id="function-signature">Function Signature</h2>
+<p>Your measurement function must use the following signature:</p>
 <ul>
-<li>Lazy_Iterator *iterator - this is iterator that allows you to "fetch" the data for calculating the measurements. (It's lazy iterator to allow it to be efficient without allocating memory for each bootstrap experiment, but with doing the randomization process on the fly)</li>
-<li>int thread_num - the thread num for parallelism - will be used by the "Lazy_Iterator"</li>
-<li>Measurement_Params <em>function_params - optional pointer to function parameters (can be null if not given). You can pass parameters to your function in this way
- 
-</em><em>How to use the iterator?</em>*
-You need to call "fetch_next" with thread_num, y, pred, w. IT will return true if you didn't reached to end of input. 
-If you want to use if outside of "bootstrap.cpp" in the infrastructure, you will need to use "fetch_next_external" instead. The difference is that "fetch_next" is optimized and not exists outside of bootstrap.cpp, so you can't referred to it (The optimization is just slightly speedup).
-You can also pass "ret_preds_order" to fetch_next when you have multiple predictions and your measurement function is more complicated (for example in multi label outcomes).
-Arguments meanings:
-y - it's the label/outcome
-pred - the prediction/score
-w - weight, if no weights than it's "-1". If your measurment doesn't support weights, please check that "w==-1" and throw error if you received weights
- 
-function_params - if the function has parameters, please check it is not "null" (if null please use default parameters), cast this object to your parameter object.
-Measurement_Params is simple class that you need to extend if you want to specify parameters. For example class "ROC_Params". Example peace of used code in "calc_roc_measures_with_inc":
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calc_roc_measures_with_inc</span><span class="p">(</span><span class="n">Lazy_Iterator</span><span class="w"> </span><span class="o">*</span><span class="n">iterator</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">thread_num</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*</span><span class="n">function_params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="p">....</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="n">ROC_Params</span><span class="w"> </span><span class="n">default_params</span><span class="p">;</span><span class="w"> </span><span class="c1">//default ctor</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="n">ROC_Params</span><span class="w"> </span><span class="o">*</span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">default_params</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">function_params</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ROC_Params</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">function_params</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="c1">//Now use &quot;params&quot;</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="c1">//Example usage of fetching &quot;max_diff_working_point&quot; parameters into max_diff_in_wp</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">max_diff_in_wp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">-&gt;</span><span class="n">max_diff_working_point</span><span class="p">;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="p">....</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
- </li>
+<li><code>Lazy_Iterator *iterator</code>: Used to fetch data for measurement calculation. This iterator is efficient, performing randomization on the fly without allocating memory for each bootstrap experiment.</li>
+<li><code>int thread_num</code>: The thread number for parallel execution, used by the iterator.</li>
+<li><code>Measurement_Params *function_params</code>: Optional pointer to function parameters (can be <code>nullptr</code>). Use this to pass custom parameters to your function.</li>
 </ul>
-<h3 id="function-output">Function output</h3>
-<p>The function returns "map" from string to float. the key of the map is the name of the measurement and the float is the corresponding value. In that way, you can calculate multiple measurements in a single function and give them names. 
-When used, the infrastructure will append suffix for each measurement: "_Mean", "_Std", "_CI.Lower.95", "_CI.Upper.95", "_Obs" as in this page: <a href="../Bootstrap%20legend.html">Bootstrap legend</a></p>
-<h3 id="here-is-a-simple-example-of-function-that-counts-how-many-cases-and-how-many-controls-exists">Here is a simple example of function that counts how many cases and how many controls exists:</h3>
+<h3 id="using-the-iterator">Using the Iterator</h3>
+<p>Call <code>fetch_next(thread_num, y, pred, w)</code> to iterate through the data. It returns <code>true</code> until the end of input is reached.</p>
+<p>If you are using your function outside of <code>bootstrap.cpp</code>, use <code>fetch_next_external</code> instead (the only difference is a minor optimization in <code>fetch_next</code>).</p>
+<p>For more complex cases (e.g., multi-label outcomes), you can pass <code>ret_preds_order</code> to <code>fetch_next</code> when you have multiple predictions.</p>
+<p><strong>Argument meanings:</strong></p>
+<ul>
+<li><code>y</code>: Label/outcome</li>
+<li><code>pred</code>: Prediction/score</li>
+<li><code>w</code>: Weight (<code>-1</code> if not used). If your measurement does not support weights, check that <code>w == -1</code> and throw an error if weights are present.</li>
+</ul>
+<p><strong>function_params:</strong>
+If your function uses parameters, check that <code>function_params</code> is not <code>nullptr</code> (otherwise use defaults), and cast it to your parameter type. <code>Measurement_Params</code> is a simple class you can extend (e.g., <code>ROC_Params</code>).</p>
+<p><strong>Example:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calc_roc_measures_with_inc</span><span class="p">(</span><span class="n">Lazy_Iterator</span><span class="w"> </span><span class="o">*</span><span class="n">iterator</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">thread_num</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*</span><span class="n">function_params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="n">ROC_Params</span><span class="w"> </span><span class="n">default_params</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="n">ROC_Params</span><span class="w"> </span><span class="o">*</span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">default_params</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">function_params</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ROC_Params</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">function_params</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="c1">// Use params as needed</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">max_diff_in_wp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="o">-&gt;</span><span class="n">max_diff_working_point</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="c1">// ...</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div></p>
+<h2 id="function-output">Function Output</h2>
+<p>Your function should return a <code>map&lt;string, float&gt;</code>, where each key is the name of a measurement and the value is the result. This allows you to compute multiple measurements in a single function.</p>
+<p>The infrastructure will automatically append suffixes to each measurement: <code>_Mean</code>, <code>_Std</code>, <code>_CI.Lower.95</code>, <code>_CI.Upper.95</code>, <code>_Obs</code>. See: <a href="../Bootstrap%20legend.html">Bootstrap legend</a></p>
+<h3 id="example-counting-cases-and-controls">Example: Counting Cases and Controls</h3>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -7974,11 +7990,8 @@ When used, the infrastructure will append suffix for each measurement: "_Mean", 
 <a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-This function iterates through the data and "counts" how many of each outcome we see in the data and stores it in "cnt" variable. It also supports weights.
- </p>
-<h2 id="how-to-use-the-custom-function">How to use the custom function?</h2>
-<hr />
-<p>Expand source
+This function counts the number of positive and negative outcomes in the data, supporting weights if present.</p>
+<h2 id="using-your-custom-function">Using Your Custom Function</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -8068,24 +8081,23 @@ This function iterates through the data and "counts" how many of each outcome we
 <span class="normal"><a href="#__codelineno-2-87">87</a></span>
 <span class="normal"><a href="#__codelineno-2-88">88</a></span>
 <span class="normal"><a href="#__codelineno-2-89">89</a></span>
-<span class="normal"><a href="#__codelineno-2-90">90</a></span>
-<span class="normal"><a href="#__codelineno-2-91">91</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MedStat/MedStat/MedBootstrap.h&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w"> </span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1">//Let&#39;s assume that you wrote custom function like calc_npos_nneg and you called it: &quot;MY_CUSTOMIZED_MEASURMENT_FUNCTION&quot;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MY_CUSTOMIZED_MEASURMENT_FUNCTION</span><span class="p">(</span><span class="n">Lazy_Iterator</span><span class="w"> </span><span class="o">*</span><span class="n">iterator</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">thread_num</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*</span><span class="n">function_params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">....</span>
+<span class="normal"><a href="#__codelineno-2-90">90</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;MedStat/MedStat/MedBootstrap.h&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1">// Example custom measurement function</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MY_CUSTOMIZED_MEASUREMENT_FUNCTION</span><span class="p">(</span><span class="n">Lazy_Iterator</span><span class="w"> </span><span class="o">*</span><span class="n">iterator</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">thread_num</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*</span><span class="n">function_params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="c1">// ...</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">}</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w"> </span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">//Let&#39;s assume you have &quot;arguments&quot; for you function in class Custom_Measurement_Parameters: </span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">// Example custom parameter class</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="k">class</span><span class="w"> </span><span class="nc">Custom_Measurement_Parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="k">public</span><span class="o">:</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">min_bin_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">cases_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">controls_weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="p">};</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="c1">//Helper function to generate matrix for filtering... Will be only used/needed if you want to generate cohorts and do filtering with bootstrap </span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="kt">void</span><span class="w"> </span><span class="nf">get_mat</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">json_model</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rep_path</span><span class="p">,</span><span class="w"> </span><span class="n">MedSamples</span><span class="w"> </span><span class="o">&amp;</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">MedModel</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mdl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="c1">// Helper function to generate matrix for filtering (needed if generating cohorts and filtering with bootstrap)</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="kt">void</span><span class="w"> </span><span class="nf">get_mat</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">json_model</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rep_path</span><span class="p">,</span><span class="w"> </span><span class="n">MedSamples</span><span class="w"> </span><span class="o">&amp;</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">MedModel</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mdl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">json_model</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">        </span><span class="n">mdl</span><span class="p">.</span><span class="n">init_from_json_file</span><span class="p">(</span><span class="n">json_model</span><span class="p">);</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span><span class="k">else</span>
@@ -8103,67 +8115,64 @@ This function iterates through the data and "counts" how many of each outcome we
 <a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">        </span><span class="n">mdl</span><span class="p">.</span><span class="n">add_gender</span><span class="p">();</span>
 <a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pids_to_take</span><span class="p">;</span>
 <a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="w">    </span><span class="n">samples</span><span class="p">.</span><span class="n">get_ids</span><span class="p">(</span><span class="n">pids_to_take</span><span class="p">);</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="w"> </span>
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a>
 <a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="w">    </span><span class="n">MedPidRepository</span><span class="w"> </span><span class="n">rep</span><span class="p">;</span>
 <a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="w">    </span><span class="n">mdl</span><span class="p">.</span><span class="n">load_repository</span><span class="p">(</span><span class="n">rep_path</span><span class="p">,</span><span class="w"> </span><span class="n">pids_to_take</span><span class="p">,</span><span class="w"> </span><span class="n">rep</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 <a id="__codelineno-2-38" name="__codelineno-2-38"></a>
 <a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mdl</span><span class="p">.</span><span class="n">learn</span><span class="p">(</span><span class="n">rep</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">MedModelStage</span><span class="o">::</span><span class="n">MED_MDL_LEARN_REP_PROCESSORS</span><span class="p">,</span>
-<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="w">        </span><span class="n">MedModelStage</span><span class="o">::</span><span class="n">MED_MDL_APPLY_FTR_PROCESSORS</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="w">                  </span><span class="n">MedModelStage</span><span class="o">::</span><span class="n">MED_MDL_APPLY_FTR_PROCESSORS</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="w">        </span><span class="n">MTHROW_AND_ERR</span><span class="p">(</span><span class="s">&quot;Error creating features for filtering</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 <a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="p">}</span>
-<a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="w"> </span>
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a>
 <a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="w">    </span><span class="c1">//String argument for controlling bootstrap parameters, as in the example. To see full parameters, refer to &quot;MedBootstrap::init&quot;.</span>
-<a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="w">    </span><span class="c1">// It has default - so you can keep that empty, skip the call for &quot;bt.bootstrap_params.init_from_string&quot; if you want the default. </span>
-<a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="w">    </span><span class="c1">//You can also change the parameters programically by accessing them: &quot;bt.bootstrap_params.loopCnt=500;&quot;</span>
-<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">bt_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;loopcnt=500;sample_per_pid=1&quot;</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="w">    </span><span class="n">MedBootstrapResult</span><span class="w"> </span><span class="n">bt</span><span class="p">;</span>
-<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="w">    </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">init_from_string</span><span class="p">(</span><span class="n">bt_params</span><span class="p">);</span>
-<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="w"> </span>
-<a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="w">    </span><span class="c1">//Your custom mearument parameters:</span>
-<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">    </span><span class="n">Custom_Measurement_Parameters</span><span class="w"> </span><span class="n">custom_args</span><span class="p">;</span>
-<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="w"> </span>
-<a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">json_model</span><span class="p">;</span><span class="w"> </span><span class="c1">//optional argument to generate features for filtering cohorts in the bootstrap</span>
-<a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">cohorts_file</span><span class="p">;</span><span class="w"> </span><span class="c1">// path to bootstrap cohorts definitions. If not specify (no need for json_model, rep_path), will not filter the samples and will create &quot;All&quot; cohort with all samples and no filtering.</span>
-<a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">rep_path</span><span class="p">;</span><span class="w"> </span><span class="c1">// path to repository in case you need to filter and you specified &quot;cohorts_file&quot; that is not just &quot;Time-Window&quot;.</span>
-<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="w"> </span>
-<a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="w">    </span><span class="n">MedSamples</span><span class="w">  </span><span class="n">preds</span><span class="p">;</span><span class="w"> </span><span class="c1">// Your MedSamples with predictions</span>
-<a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">    </span><span class="n">preds</span><span class="p">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="s">&quot;YOUR_SAMPLES_PATH&quot;</span><span class="p">);</span>
-<a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="w"> </span>
-<a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cohorts_file</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
-<a id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="w">        </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">parse_cohort_file</span><span class="p">(</span><span class="n">cohorts_file</span><span class="p">);</span>
-<a id="__codelineno-2-64" name="__codelineno-2-64"></a><span class="w">    </span><span class="c1">// The measurement functions. The default is vector with single element of &quot;calc_roc_measures_with_inc&quot;</span>
-<a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">MeasurementFunctions</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*&gt;&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cl_m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">measurements_with_params</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="w">    </span><span class="n">cl_m</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"> </span><span class="c1">//clear and remove the default</span>
-<a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="w">    </span><span class="n">cl_m</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">MeasurementFunctions</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">MY_CUSTOMIZED_MEASURMENT_FUNCTION</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">custom_args</span><span class="p">));</span><span class="w"> </span><span class="c1">// Add your function and arguments</span>
-<a id="__codelineno-2-68" name="__codelineno-2-68"></a>
-<a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="w">    </span><span class="c1">//create matrix for json, and rep</span>
-<a id="__codelineno-2-70" name="__codelineno-2-70"></a><span class="w">    </span><span class="n">MedModel</span><span class="w"> </span><span class="n">mdl</span><span class="p">;</span>
-<a id="__codelineno-2-71" name="__codelineno-2-71"></a><span class="w">    </span><span class="n">get_mat</span><span class="p">(</span><span class="n">json_model</span><span class="p">,</span><span class="w"> </span><span class="n">rep_path</span><span class="p">,</span><span class="w"> </span><span class="n">smps_preds</span><span class="p">,</span><span class="w"> </span><span class="n">mdl</span><span class="p">);</span>
-<a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="w">    </span><span class="n">MedFeatures</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bt_features_matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mdl</span><span class="p">.</span><span class="n">features</span><span class="p">;</span>
-<a id="__codelineno-2-73" name="__codelineno-2-73"></a>
-<a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="w">    </span><span class="c1">//Prepare and arrange the features for bootstrap analysis</span>
-<a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">preds_v</span><span class="p">,</span><span class="w"> </span><span class="n">labelsOrig</span><span class="p">;</span>
-<a id="__codelineno-2-76" name="__codelineno-2-76"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pidsOrig</span><span class="p">,</span><span class="w"> </span><span class="n">preds_order</span><span class="p">;</span>
-<a id="__codelineno-2-77" name="__codelineno-2-77"></a><span class="w">    </span><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">bt_data</span><span class="p">;</span>
-<a id="__codelineno-2-78" name="__codelineno-2-78"></a><span class="w">    </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">prepare_bootstrap</span><span class="p">(</span><span class="n">bt_features_matrix</span><span class="p">,</span><span class="w"> </span><span class="n">preds_v</span><span class="p">,</span><span class="w"> </span><span class="n">labelsOrig</span><span class="p">,</span><span class="w"> </span><span class="n">pidsOrig</span><span class="p">,</span><span class="w"> </span><span class="n">bt_data</span><span class="p">,</span><span class="w"> </span><span class="n">preds_order</span><span class="p">);</span>
-<a id="__codelineno-2-79" name="__codelineno-2-79"></a><span class="w">    </span><span class="c1">//run the bootstrap analysis</span>
-<a id="__codelineno-2-80" name="__codelineno-2-80"></a><span class="w">    </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span><span class="w"> </span><span class="n">bt_data</span><span class="p">);</span>
-<a id="__codelineno-2-81" name="__codelineno-2-81"></a>
-<a id="__codelineno-2-82" name="__codelineno-2-82"></a><span class="w">    </span><span class="c1">//Now you can access results in bt.bootstrap_results. It&#39;s map of map. The first index is the &quot;cohort name&quot;, second index is &quot;measurement name&quot; and the value is the value</span>
-<a id="__codelineno-2-83" name="__codelineno-2-83"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">it_cohort</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_results</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-84" name="__codelineno-2-84"></a><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cohort_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it_cohort</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
-<a id="__codelineno-2-85" name="__codelineno-2-85"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">it_measurment</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">it_cohort</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-86" name="__codelineno-2-86"></a><span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">measurement_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it_measurment</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
-<a id="__codelineno-2-87" name="__codelineno-2-87"></a><span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it_measurment</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
-<a id="__codelineno-2-88" name="__codelineno-2-88"></a><span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s %s %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cohort_name</span><span class="w"> </span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">measurement_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
-<a id="__codelineno-2-89" name="__codelineno-2-89"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-2-90" name="__codelineno-2-90"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-91" name="__codelineno-2-91"></a><span class="p">}</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="w">    </span><span class="c1">// Set bootstrap parameters (see MedBootstrap::init for all options)</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">bt_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;loopcnt=500;sample_per_pid=1&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="w">    </span><span class="n">MedBootstrapResult</span><span class="w"> </span><span class="n">bt</span><span class="p">;</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="w">    </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">init_from_string</span><span class="p">(</span><span class="n">bt_params</span><span class="p">);</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a>
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="w">    </span><span class="c1">// Custom measurement parameters</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="w">    </span><span class="n">Custom_Measurement_Parameters</span><span class="w"> </span><span class="n">custom_args</span><span class="p">;</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a>
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">json_model</span><span class="p">;</span><span class="w">    </span><span class="c1">// Optional: for generating features for cohort filtering</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">cohorts_file</span><span class="p">;</span><span class="w">  </span><span class="c1">// Path to cohort definitions. If not specified, all samples are used as a single cohort.</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">rep_path</span><span class="p">;</span><span class="w">      </span><span class="c1">// Path to repository (needed if filtering by more than Time-Window)</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56"></a>
+<a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="w">    </span><span class="n">MedSamples</span><span class="w"> </span><span class="n">preds</span><span class="p">;</span><span class="w">     </span><span class="c1">// Your MedSamples with predictions</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="w">    </span><span class="n">preds</span><span class="p">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="s">&quot;YOUR_SAMPLES_PATH&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59"></a>
+<a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cohorts_file</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="w">        </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">parse_cohort_file</span><span class="p">(</span><span class="n">cohorts_file</span><span class="p">);</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62"></a>
+<a id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="w">    </span><span class="c1">// Set measurement functions (default is calc_roc_measures_with_inc)</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">MeasurementFunctions</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*&gt;&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cl_m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">measurements_with_params</span><span class="p">;</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="w">    </span><span class="n">cl_m</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="w">    </span><span class="n">cl_m</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">MeasurementFunctions</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">MY_CUSTOMIZED_MEASUREMENT_FUNCTION</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">custom_args</span><span class="p">));</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67"></a>
+<a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="w">    </span><span class="c1">// Create matrix for json and repository</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="w">    </span><span class="n">MedModel</span><span class="w"> </span><span class="n">mdl</span><span class="p">;</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70"></a><span class="w">    </span><span class="n">get_mat</span><span class="p">(</span><span class="n">json_model</span><span class="p">,</span><span class="w"> </span><span class="n">rep_path</span><span class="p">,</span><span class="w"> </span><span class="n">smps_preds</span><span class="p">,</span><span class="w"> </span><span class="n">mdl</span><span class="p">);</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71"></a><span class="w">    </span><span class="n">MedFeatures</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bt_features_matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mdl</span><span class="p">.</span><span class="n">features</span><span class="p">;</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72"></a>
+<a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="w">    </span><span class="c1">// Prepare features for bootstrap analysis</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">preds_v</span><span class="p">,</span><span class="w"> </span><span class="n">labelsOrig</span><span class="p">;</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75"></a><span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pidsOrig</span><span class="p">,</span><span class="w"> </span><span class="n">preds_order</span><span class="p">;</span>
+<a id="__codelineno-2-76" name="__codelineno-2-76"></a><span class="w">    </span><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">bt_data</span><span class="p">;</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77"></a><span class="w">    </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">prepare_bootstrap</span><span class="p">(</span><span class="n">bt_features_matrix</span><span class="p">,</span><span class="w"> </span><span class="n">preds_v</span><span class="p">,</span><span class="w"> </span><span class="n">labelsOrig</span><span class="p">,</span><span class="w"> </span><span class="n">pidsOrig</span><span class="p">,</span><span class="w"> </span><span class="n">bt_data</span><span class="p">,</span><span class="w"> </span><span class="n">preds_order</span><span class="p">);</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78"></a><span class="w">    </span><span class="c1">// Run bootstrap analysis</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79"></a><span class="w">    </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span><span class="w"> </span><span class="n">bt_data</span><span class="p">);</span>
+<a id="__codelineno-2-80" name="__codelineno-2-80"></a>
+<a id="__codelineno-2-81" name="__codelineno-2-81"></a><span class="w">    </span><span class="c1">// Access results: bt.bootstrap_results is a map of maps (cohort name -&gt; measurement name -&gt; value)</span>
+<a id="__codelineno-2-82" name="__codelineno-2-82"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">it_cohort</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">bt</span><span class="p">.</span><span class="n">bootstrap_results</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-83" name="__codelineno-2-83"></a><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cohort_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it_cohort</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">it_measurement</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">it_cohort</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-85" name="__codelineno-2-85"></a><span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">measurement_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it_measurement</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<a id="__codelineno-2-86" name="__codelineno-2-86"></a><span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it_measurement</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+<a id="__codelineno-2-87" name="__codelineno-2-87"></a><span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s %s %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cohort_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">measurement_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<a id="__codelineno-2-88" name="__codelineno-2-88"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-89" name="__codelineno-2-89"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-90" name="__codelineno-2-90"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
- 
- 
-When executing bootstrap, you can append multiple measurement functions and the bootstrap process will be applied on all functions.</p>
+<p>You can append multiple measurement functions; the bootstrap process will apply all of them.</p>
 
 
 

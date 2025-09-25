@@ -2264,26 +2264,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#improvment-ideas" class="md-nav__link">
+  <a href="#example-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      Improvment Ideas:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Improvment Ideas:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cohorts-file-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cohorts file format
+      Example Usage
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#running-bootstrap-with-a-custom-measurement-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Bootstrap with a Custom Measurement Function
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cohorts-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cohorts File Format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improvement-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improvement Ideas
+    </span>
+  </a>
   
 </li>
       
@@ -5618,7 +5630,7 @@
   
   
   <span class="md-ellipsis">
-    Bootstrap legend
+    Bootstrap Result File: Column Legend
     
   </span>
   
@@ -5641,7 +5653,7 @@
   
   
   <span class="md-ellipsis">
-    Utility tools to process bootstrap results
+    Utility Tools for Processing Bootstrap Results
     
   </span>
   
@@ -7901,26 +7913,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#improvment-ideas" class="md-nav__link">
+  <a href="#example-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      Improvment Ideas:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Improvment Ideas:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cohorts-file-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cohorts file format
+      Example Usage
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#running-bootstrap-with-a-custom-measurement-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Bootstrap with a Custom Measurement Function
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cohorts-file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cohorts File Format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improvement-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improvement Ideas
+    </span>
+  </a>
   
 </li>
       
@@ -7957,7 +7981,8 @@
 
 
 <h1 id="medbootstrap">MedBootstrap</h1>
-<p><strong>Example Use Function</strong>
+<h2 id="example-usage">Example Usage</h2>
+<p>Usage example of <code>MedBootstrap</code> within C++ code</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -7980,34 +8005,34 @@
 <span class="normal"><a href="#__codelineno-0-20">20</a></span>
 <span class="normal"><a href="#__codelineno-0-21">21</a></span>
 <span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#define TEMP_PATH &quot;/tmp/&quot;</span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#define TEMP_PATH &quot;/tmp/&quot;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kt">void</span><span class="w"> </span><span class="n">run_bootstrap_on_samples</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">samples_path</span><span class="p">,</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inc_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="n">MedSamples</span><span class="w"> </span><span class="n">smp</span><span class="p">;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">smp</span><span class="p">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="n">samples_path</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="n">MTHROW_AND_ERR</span><span class="p">(</span><span class="s">&quot;Couldn&#39;t read file %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">samples_path</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="c1">//Example for creating configuraiton file for cohorts</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="c1">// Example: create configuration file for cohorts</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="n">ofstream</span><span class="w"> </span><span class="n">fw</span><span class="p">(</span><span class="n">TEMP_PATH</span><span class="w"> </span><span class="s">&quot;bootstrap_new.params&quot;</span><span class="p">);</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="c1">// COHORT_NAME TAB CHOROT_DEFINITION</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="c1">// CHOROT_DEFINITION - is list of paramters with min,max range. each param is seprated by ;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="c1">// Format: COHORT_NAME&lt;TAB&gt;COHORT_DEFINITION</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="c1">// COHORT_DEFINITION is a list of parameters with min,max range, separated by &#39;;&#39;</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="n">fw</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Time_Window:0-365&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Time-Window:0,365&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="n">fw</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Time_Window:0-365,Age:40-80&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Time-Window:0,365;Age:40,80&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="n">fw</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">additional_info</span><span class="p">;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="n">MedBootstrap</span><span class="w"> </span><span class="n">boot</span><span class="p">(</span><span class="s">&quot;sample_ratio=1.0;sample_per_pid=1;loopCnt=500;&quot;</span><span class="w"> </span><span class="s">&quot;filter_cohort=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TEMP_PATH</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;bootstrap_new.params&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="n">MedBootstrap</span><span class="w"> </span><span class="n">boot</span><span class="p">(</span><span class="s">&quot;sample_ratio=1.0;sample_per_pid=1;loopCnt=500;filter_cohort=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TEMP_PATH</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;bootstrap_new.params&quot;</span><span class="p">);</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">addition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">inc_file</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">        </span><span class="n">addition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;inc_stats_text=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">inc_file</span><span class="p">;</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="n">boot</span><span class="p">.</span><span class="n">roc_Params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROC_Params</span><span class="p">(</span><span class="s">&quot;working_point_FPR=0.1,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,10;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;working_point_SENS=5,10,20,30,40,50,60,70,80,90;score_resolution=0.0001;score_bins=0&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">addition</span><span class="p">);</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">addition</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">        </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">.</span><span class="n">booststrap</span><span class="p">(</span><span class="n">smp</span><span class="p">,</span><span class="w"> </span><span class="n">additional_info</span><span class="p">);</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">    </span><span class="k">else</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">        </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">.</span><span class="n">booststrap</span><span class="p">(</span><span class="n">smp</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/Repositories/THIN/thin_mar2017/thin.repository&quot;</span><span class="p">);</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="p">}</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="n">boot</span><span class="p">.</span><span class="n">roc_Params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROC_Params</span><span class="p">(</span><span class="s">&quot;working_point_FPR=0.1,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,10;&quot;</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">        </span><span class="s">&quot;working_point_SENS=5,10,20,30,40,50,60,70,80,90;score_resolution=0.0001;score_bins=0&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">addition</span><span class="p">);</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">addition</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">        </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">.</span><span class="n">booststrap</span><span class="p">(</span><span class="n">smp</span><span class="p">,</span><span class="w"> </span><span class="n">additional_info</span><span class="p">);</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">        </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boot</span><span class="p">.</span><span class="n">booststrap</span><span class="p">(</span><span class="n">smp</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/Repositories/THIN/thin_mar2017/thin.repository&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-Example Code for MedBootstrap (you may look at $MR_ROOT/Projects/Shared/UnitTestingInfra for the testing process)
-There is an application which uses this libray - <a href="../../Medial%20Tools/bootstrap_app">bootstrap_app</a>
- 
-How to run bootstrap on a custom measurement function:
+<p>An application using <code>MedBootstrap</code> is available here: <a href="../../Medial%20Tools/bootstrap_app">bootstrap_app</a></p>
+<h2 id="running-bootstrap-with-a-custom-measurement-function">Running Bootstrap with a Custom Measurement Function</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -8036,14 +8061,13 @@ How to run bootstrap on a custom measurement function:
 <span class="normal"><a href="#__codelineno-1-26">26</a></span>
 <span class="normal"><a href="#__codelineno-1-27">27</a></span>
 <span class="normal"><a href="#__codelineno-1-28">28</a></span>
-<span class="normal"><a href="#__codelineno-1-29">29</a></span>
-<span class="normal"><a href="#__codelineno-1-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">//string bootstrap_params - is the init string for bootstrap parameters</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1">//string cohort_file - the file with cohorts definitions</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1">//final_feats - the MedFeature matrix to use in bootstrap, can be also MedSamples (than you can only filter Age,Gender,TimeWindow) in cohorts</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w"> </span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="c1">//the measurement function - has Lazy_Iterator to iterate over label,pred,weight in bootstrap loop</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="c1">// can also get additional arguments for the function in &quot;params&quot; - can be working points in ROC for example</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="c1">//the function returns the measurements</span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">// bootstrap_params: initialization string for bootstrap parameters</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1">// cohort_file: file containing cohort definitions</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1">// final_feats: MedFeature matrix or MedSamples (if only filtering Age, Gender, TimeWindow)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="c1">// The measurement function uses Lazy_Iterator to iterate over label, pred, weight in the bootstrap loop.</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="c1">// Additional arguments can be passed in &quot;params&quot; (e.g., ROC working points).</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="c1">// The function returns the measurements.</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calc_acc</span><span class="p">(</span><span class="n">Lazy_Iterator</span><span class="w"> </span><span class="o">*</span><span class="n">iterator</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">thread_num</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*</span><span class="n">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pred_val</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">weight</span><span class="p">;</span>
@@ -8051,38 +8075,57 @@ How to run bootstrap on a custom measurement function:
 <a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">fetch_next_external</span><span class="p">(</span><span class="n">thread_num</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">pred_val</span><span class="p">,</span><span class="w"> </span><span class="n">weight</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">        </span><span class="n">total_cnt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">        </span><span class="n">sum_prd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">pred_val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">weight</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">        </span><span class="c1">//sum_lbls += label;</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="n">total_cnt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="n">sum_prd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">pred_val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">weight</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">    </span><span class="n">sum_prd</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">total_cnt</span><span class="p">;</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="n">res</span><span class="p">[</span><span class="s">&quot;ACCURACY&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum_prd</span><span class="p">;</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="p">}</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w"> </span>
-<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="n">MedBootstrapResult</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="n">b</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">init_from_string</span><span class="p">(</span><span class="n">bootstrap_params</span><span class="p">);</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="n">b</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">parse_cohort_file</span><span class="p">(</span><span class="n">cohort_file</span><span class="p">);</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="n">MeasurementFunctions</span><span class="w"> </span><span class="n">boot_function</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_acc</span><span class="p">;</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="n">b</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">measurements_with_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pair</span><span class="o">&lt;</span><span class="n">MeasurementFunctions</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">calc_acc</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">//calc_auc doesn&#39;t have additional parameters so I passed NULL</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="n">b</span><span class="p">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">final_feats</span><span class="p">);</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="n">b</span><span class="p">.</span><span class="n">write_results_to_text_file</span><span class="p">(</span><span class="s">&quot;/tmp/results.csv&quot;</span><span class="p">);</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="n">total_cnt</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="n">sum_prd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">pred_val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">weight</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="n">sum_prd</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">total_cnt</span><span class="p">;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">    </span><span class="n">res</span><span class="p">[</span><span class="s">&quot;ACCURACY&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum_prd</span><span class="p">;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="n">MedBootstrapResult</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="n">b</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">init_from_string</span><span class="p">(</span><span class="n">bootstrap_params</span><span class="p">);</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="n">b</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">parse_cohort_file</span><span class="p">(</span><span class="n">cohort_file</span><span class="p">);</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="n">MeasurementFunctions</span><span class="w"> </span><span class="n">boot_function</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc_acc</span><span class="p">;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="n">b</span><span class="p">.</span><span class="n">bootstrap_params</span><span class="p">.</span><span class="n">measurements_with_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pair</span><span class="o">&lt;</span><span class="n">MeasurementFunctions</span><span class="p">,</span><span class="w"> </span><span class="n">Measurement_Params</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">calc_acc</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// Pass NULL if no extra parameters</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="n">b</span><span class="p">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">final_feats</span><span class="p">);</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="n">b</span><span class="p">.</span><span class="n">write_results_to_text_file</span><span class="p">(</span><span class="s">&quot;/tmp/results.csv&quot;</span><span class="p">);</span>
 </code></pre></div></td></tr></table></div>
- </p>
-<h3 id="improvment-ideas">Improvment Ideas:</h3>
+<h2 id="cohorts-file-format">Cohorts File Format</h2>
+<p>The cohorts file can be defined in two ways:</p>
+<ol>
+<li>
+<p><strong>Single Cohort per Line</strong></p>
 <ul>
-<li>add support for more complicated conditions in MedBootstrap itself - for example and,or conditions on the ranges</li>
-<li>add support for calculating bootstrap on multiple predictions on the same samples - it can shortened the running time significantly when comparing/running on same samples with diffrent models\scores. now you need to call bootstrap in a loop for each score and each call will randomize again the bootstrap cohort and samples
+<li>Format: <code>COHORT_NAME&lt;TAB&gt;PARAMETERS_DEF</code></li>
+<li><code>COHORT_NAME</code> is a string for the cohort name.</li>
+<li><code>PARAMETERS_DEF</code> is: <code>PARAMETER_NAME:MIN_RANGE,MAX_RANGE;...</code> (parameters separated by <code>;</code>).</li>
+<li>The cohort is the intersection (AND) of all parameter ranges. There is a single tab between the name and the definition.</li>
+<li><strong>Example:</strong>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>1 year back &amp; age 40-80    Time-Window:0,365;Age:40,80
+</code></pre></div></td></tr></table></div>
+    This creates a cohort called "1 year back &amp; age 40-80" and filters records with (Time-Window &gt;= 0 and &lt;= 365) and (Age &gt;= 40 and &lt;= 80).</li>
+</ul>
+</li>
+<li>
+<p><strong>Multiple Cohorts (Cartesian Product)</strong></p>
+<ul>
+<li>Format: <code>MULTI&lt;TAB&gt;PARAMETERS_DEF&lt;TAB&gt;...PARAMETERS_DEF&lt;TAB&gt;</code></li>
+<li>A line starting with <code>MULTI</code> creates all Cartesian combinations for each parameter definition (each in the next tab).</li>
+<li><code>PARAMETERS_DEF</code> is as above.</li>
+<li><strong>Example:</strong>
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>MULTI   Time-Window:0,30;Time-Window:30,180   Age:40,60;Age:60,80;Age:40,80   Gender:1,1;Gender:2,2
+</code></pre></div></td></tr></table></div>
+    This creates 2×3×2=12 cohorts for each combination of Time-Window, Age, and Gender options.
  </li>
 </ul>
-<h4 id="cohorts-file-format">Cohorts file format</h4>
-<p>The file format may be in 2 options:</p>
-<ol>
-<li>COHORT_NAME[TAB]PARAMETERS_DEF - cohort name is string representing cohort name. PARAMETER_DEF is in format: "PARAMETER_NAME:MIN_RANGE,MAX_RANGE;..." the format can repeat itself with ";" between each parameter. the cohort will consist of intersection between all parameters ranges with "and" condition. there is single tab betwwen the name and the defenition. Example Line: 1 year back &amp; age 40-80 Time-Window:0,365;Age:40,80 will create cohort called "1 year back &amp; age 40-80" and will filter out records with (Time-Window&gt;=0 and Time-Window&lt;=365) and (Age&gt;=40 and Age&lt;=80) </li>
-<li>MULTI[TAB]PARAMETERS_DEF[TAB]...PARAMETERS_DEF[TAB] - this definition with line starting with MULTI keyword will create all the cartesain options for each parameter definition with the each parameter definition in the next TABs. PARAMETERS_DEF - is same as option 1 format. Example Line: MULTI Time-Window:0,30;Time-Window:30,180 Age:40,60;Age:60,80;Age:40,80 Gender:1,1;Gender:2,2 will create 2<em>3</em>2=12 cohorts for each Time-Window, Age, and Gender option 
- 
- </li>
+</li>
 </ol>
+<h2 id="improvement-ideas">Improvement Ideas</h2>
+<ul>
+<li>Add support for more complex conditions in MedBootstrap (e.g., AND/OR logic on parameter ranges).</li>
+<li>Enable bootstrap calculation on multiple predictions for the same samples. This would reduce runtime when comparing different models or scores, as currently each call randomizes the bootstrap cohort and samples.</li>
+</ul>
 
 
 

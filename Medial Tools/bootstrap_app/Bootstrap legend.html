@@ -26,7 +26,7 @@
     
     
       
-        <title>Bootstrap legend - Medial EarlySign Documentation</title>
+        <title>Bootstrap Result File: Column Legend - Medial EarlySign Documentation</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bootstrap-legend" class="md-skip">
+        <a href="#bootstrap-result-file-column-legend" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bootstrap legend
+              Bootstrap Result File: Column Legend
             
           </span>
         </div>
@@ -5561,7 +5561,7 @@
   
   
   <span class="md-ellipsis">
-    Bootstrap legend
+    Bootstrap Result File: Column Legend
     
   </span>
   
@@ -5585,7 +5585,7 @@
   
   
   <span class="md-ellipsis">
-    Utility tools to process bootstrap results
+    Utility Tools for Processing Bootstrap Results
     
   </span>
   
@@ -7868,36 +7868,62 @@
   
 
 
-<h1 id="bootstrap-legend">Bootstrap legend</h1>
-<p>The bootstrap result file is tab delimited file with 3 columns:</p>
+<h1 id="bootstrap-result-file-column-legend">Bootstrap Result File: Column Legend</h1>
+<p>The bootstrap result file is a tab-delimited file with three columns:</p>
 <ol>
-<li>Cohort - The name of the "filter" used to select and defined the cohort which the results are reffered to. For example "All" - means no filters, "Males" - only males, "Age:45-80", etc.. The name is configured in bootstrap cohort configuration file (--cohort_file argument) that maps name of cohort to set of filter rules, as described under: <a href="../bootstrap_app">bootstrap_app</a></li>
-<li>Measurement - The name of the measurement. For example "AUC_Mean" - which is the mean value of the AUC measured in the bootstrap analysis process.The name is divided into 2 sections - The metric that was measured in each bootstrap experiment and the statistical calculation over this measure from all experiments. For each metric we extract the following statistical values which appears in the suffix:</li>
-</ol>
+<li>
+<p><strong>Cohort</strong></p>
 <ul>
-<li>_Mean - mean value of the metric from all bootstrap experiments</li>
-<li>_Std - Standard Deviation of the metric from all bootstrap experiments</li>
-<li>_CI.Lower.95 - The lower confidence interval of the metric from all bootstrap experiments. lowest 2.5% percentile. </li>
-<li>_CI.Upper.95 - The higher confidence interval of the metric from all bootstrap experiments. highest 2.5% percentile.</li>
-<li>_Obs - The observed metric value when there is no bootstrap randomization - the calculated metric on the all data where each record is taken exactly once
-The metrics are sometimes simple as "AUC", "RMSE", but in some cases have more complicated names that can be divided into 2 parts by "@" delimeter. For example "SENS@FPR_10.000"- The first token is the measured metric and the second part is the cutoff defined by the second metric. The second metric can be "SCORE" to define cutoff by score, "FPR" to define cutoff by False Positive rate, "SENS" - by sensitivity and "PR" - positive rate.</li>
-<li>The First token can be one of the following: <ul>
-<li>SENS - Sensitivity/Recall/True Positive Rate (Y axis in the ROC curve)</li>
-<li>FPR - False Positive Rate (X axis in the ROC curve)</li>
-<li>PR - Positive Rate</li>
-<li>PPV - Positive Predictive Values / Precision</li>
-<li>SCORE - the score of the model</li>
-<li>LIFT - the lift</li>
-<li>OR - Odds Ratio</li>
-<li>RR - Relative Risk</li>
-<li>NPV - Negative Predictive Value</li>
-<li>SPEC = Specificity := 1 - FPR
-Additional Measures: NNEG - number of negatives (controls in the cohort), NPOS - number of positive/cases in the cohort</li>
+<li>The name of the filter used to define the cohort for which the results are reported. Examples: <code>All</code> (no filters), <code>Males</code> (only males), <code>Age:45-80</code>, etc.</li>
+<li>Cohort names are set in the bootstrap cohort configuration file (see the <code>--cohort_file</code> argument), which maps each cohort name to a set of filter rules. For more details, see: <a href="../bootstrap_app">bootstrap_app</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Measurement</strong></p>
+<ul>
+<li>The name of the measured metric. For example, <code>AUC_Mean</code> is the mean value of the AUC metric across bootstrap runs.</li>
+<li>Measurement names have two parts: the metric measured in each bootstrap experiment, and the statistical summary calculated over all experiments. The suffix indicates the summary statistic:<ul>
+<li><code>_Mean</code>: Mean value across all bootstrap experiments</li>
+<li><code>_Std</code>: Standard deviation across all bootstrap experiments</li>
+<li><code>_CI.Lower.95</code>: Lower 95% confidence interval (2.5th percentile)</li>
+<li><code>_CI.Upper.95</code>: Upper 95% confidence interval (97.5th percentile)</li>
+<li><code>_Obs</code>: Observed value (calculated on the full data, without bootstrap randomization)</li>
+</ul>
+</li>
+<li>Metrics can be simple (e.g., <code>AUC</code>, <code>RMSE</code>) or compound, separated by <code>@</code>. For example, <code>SENS@FPR_10.000</code> means Sensitivity at a False Positive Rate cutoff of 10.000. The second part after <code>@</code> can be:<ul>
+<li><code>SCORE</code>: Cutoff by score</li>
+<li><code>FPR</code>: Cutoff by False Positive Rate</li>
+<li><code>SENS</code>: Cutoff by Sensitivity</li>
+<li><code>PR</code>: Cutoff by Positive Rate</li>
+</ul>
+</li>
+<li>The first token (metric) can be:<ul>
+<li><code>SENS</code>: Sensitivity / Recall / True Positive Rate (Y-axis in ROC)</li>
+<li><code>FPR</code>: False Positive Rate (X-axis in ROC)</li>
+<li><code>PR</code>: Positive Rate</li>
+<li><code>PPV</code>: Positive Predictive Value / Precision</li>
+<li><code>SCORE</code>: Model score</li>
+<li><code>LIFT</code>: Lift</li>
+<li><code>OR</code>: Odds Ratio</li>
+<li><code>RR</code>: Relative Risk</li>
+<li><code>NPV</code>: Negative Predictive Value</li>
+<li><code>SPEC</code>: Specificity (1 - FPR)</li>
+</ul>
+</li>
+<li>Additional measures:<ul>
+<li><code>NNEG</code>: Number of negatives (controls) in the cohort</li>
+<li><code>NPOS</code>: Number of positives (cases) in the cohort</li>
+<li><code>checksum</code>: A unique hash for the population pid,time combination without randomization to identify and compare executions were performed on the same cohort. It has no <code>_Mean</code>, <code>_Std</code> or other suffixes.</li>
 </ul>
 </li>
 </ul>
-<ol start="3">
-<li>Value - The numeric value that relates to the cohort and measurement</li>
+</li>
+<li>
+<p><strong>Value</strong></p>
+<ul>
+<li>The numeric value corresponding to the cohort and measurement.</li>
+</ul>
+</li>
 </ol>
 
 
