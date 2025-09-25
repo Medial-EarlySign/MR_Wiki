@@ -78,7 +78,7 @@ sudo apt install libboost-system1.83-dev libboost-filesystem1.83-dev libboost-re
 > 
 > **Important:** This method does **not** work for the AlgoMarker library or the Python API. For those, you must compile Boost from source.
 
-## Optional Components
+## Available Components
 
 You can install any of the following five components:
 

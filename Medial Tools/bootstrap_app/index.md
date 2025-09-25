@@ -2,43 +2,65 @@
 
 # bootstrap_app
 
-`bootstrap_app` is a high-performance tool for evaluating model performance using bootstrap analysis. It outputs confidence intervals, standard deviations, and other statistics for each metric.
+`bootstrap_app` is a powerful and highly efficient command-line tool designed for **evaluating model performance using bootstrap analysis**. It provides key statistical metrics such as confidence intervals and standard deviations for a wide range of performance measures.
 
-The tool operates by first randomly selecting a patient from the dataset, then either randomly choosing a prediction date/sample for that patient or selecting all their samples. This method ensures that patients with more samples have a proportionate impact on performance metrics. In medical model assessment, it is best practice to randomize by patient ID first, then select all or a random subset of their prediction dates.
+The tool uses a patient-level bootstrap sampling method. It first randomly selects a patient from the dataset, then either a random sample or all samples associated with that patient. This ensures that the analysis properly accounts for patients with multiple data points, which is a best practice in medical model assessment.
+
+The source code can be found in the `bootstrap_app` folder of the [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) repository.
+It is compiled as part of [AllTools](../../Installation/index.md#3-mes-tools-to-train-and-test-models).
+
+## Getting Started: Your First Run
+
+The easiest way to use `bootstrap_app` is from command line:
+
+```bash
+bootstrap_app --input /path/to/my_data.tsv --output /tmp/bootstrap_results
+```
+
+**Mandatory Parameters**
+Only two parameters are mandatory for any run:
+
+* `--input`: The file containing your model's predictions and the true outcomes. It must be a tab-separated TSV with a header row, including the columns `pid` (patient ID), `outcome`, and `pred_0` (the prediction score). Full File Format [MedSamples](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedSamples.md)
+* `--output`: The path to the output file where `bootstrap_app` will write the results of the analysis.
+
+## Core Features at a Glance
+
+- **Highly efficient**: Quickly computes performance metrics on millions of predictions, making it suitable for large-scale datasets result files.
+- **Flexible Inputs**: Supports various input types and allows for sample weighting.
+- **Comprehensive Metrics**: Handles regression, categorical, and custom performance measures, including specialized metrics for binary classification.
+- **Powerful Cohort Analysis**: Easily assesses model performance across thousands of defined cohorts (e.g., age groups, sex, time windows) using a simple configuration file.
+- **Standalone & Integrated**: Available as a standalone executable built on a fast C++ library, with a [Python API](../../Python/Examples.md#bootstrap-analysis-on-samples) available for integration into dataframe-based workflows.
 
 
+## How it Works: Program Overview
 
-## Key Features
+The primary use case for `bootstrap_app` is to analyze a `MedSamples` TSV file containing patient id, outcome and prediction data. However, its main strength lies in its ability to analyze complex cohorts.
 
-- Highly efficient: computes performance metrics on millions of predictions in seconds.
-- Supports sample weights for metric calculation.
-- Handles regression, categorical, and custom performance measures.
-- Easily assesses performance across multiple cohorts (e.g., age, sex, time windows, disease stage) using a simple API or config file scalable to thousands of cohort definitions.
+The workflow for cohort analysis involves:
 
-The application is a standalone executable built on a fast C++ library. You can also use the [Python API](../../Python/Examples.md#bootstrap-analysis-on-samples) for dataframe-based workflows that uses the same library.
+1. **Defining Cohorts**: You define cohorts using a plain-text file where each filter is a simple `FEATURE_NAME:MIN_VALUE,MAX_VALUE` pair. Multiple conditions on the same line are combined with `AND` logic.
+2. **Generating a Feature Matrix**: The tool can generate a feature matrix from a [MedModel JSON](../../Infrastructure%20C%20Library/MedModel%20json%20format.md) file and a data repository or given a matrix CSV directly in the input
+3. **Applying Filters**: The tool then uses simple filtering rules, similar to pandas (even though less expressive, it is suffecient for most usecases), to create and analyze performance for each defined cohort.
 
-Source code is available in the [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) repository (`bootstrap_app` folder), and it is compiled as part of [AllTools](../../Installation/index.md#3-mes-tools-to-train-and-test-models).
+This approach keeps everything within the fast C++ ecosystem, providing an efficient way to analyze performance across many sub-populations.
 
+A single line in the `cohorts_file` can generate multiple combinations of cohorts. For instance, this example will generate 6 distinct cohorts by combining every `Age` filter with every `Time-Window` filter:
 
+```tsv
+MULTI	Age:40,89;Age:50,75;Age:45,75	Time-Window:0,365;Time-Window:180,365
+```
 
-## Program Overview
+For more information on the `cohorts_file` format, refer to the [MedBootstrap](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format) wiki page.
 
-The simplest use case is to read a `MedSamples` TSV file containing outcome and prediction columns (e.g., `outcome`, `pred_0`) and assess model performance. However, the main strength of `bootstrap_app` is its ability to define and analyze complex cohorts.
+## Command-Line Options
 
-You can generate a feature matrix using a [MedModel JSON](../../Infrastructure%20C%20Library/MedModel%20json%20format.md) and a repository. Once you have a feature matrix, you can filter rows using simple rules, similar to pandas filtering in Python.
-
-Cohorts are defined in a plain-text file, where each filter is written as `FEATURE_NAME:MIN_VALUE,MAX_VALUE`. Multiple conditions are combined with AND logic. This format is easy to read and sufficient for most use cases, even if less expressive than pandas, and keeps everything within the C++ ecosystem.
-
-
-## Program Options
-
-To see all available options, run:
+You can view all available options by running:
 
 ```bash
 ./bootstrap_app --help
 ```
 
-
+The options are organized into several logical groups:
 
 ### General Options
 - `--sample_seed arg (=0)`: Seed for bootstrap sampling
@@ -46,8 +68,6 @@ To see all available options, run:
 - `--run_id arg (=run_id_not_set)`: Run ID to store in the result file
 - `--debug`: Enable verbose debugging
 - `--output_raw`: Output bootstrap filtering of label and prediction (for inspection)
-
-
 
 
 ### Input/Output Options
@@ -130,15 +150,16 @@ See [Fixing incidence](#fixing-incidence-with-incidence-file) for more details.
 - `--do_kaplan_meir arg (=1)`: Use Kaplan-Meier calculation for incidence by registry (recommended, especially for large time windows)
 
 
-## Example Run
+## Example Usage
+
+The easiest way to use `bootstrap_app` is with a configuration (`.cfg`) file, which is an INI-style plain-text file instead of supplying all arguments in command line.
 
 ```bash
-bootstrap_app --base_config /nas1/Work/Users/Alon/UnitTesting/examples/bootstrap_app/bootstrap_example.cfg
+bootstrap_app --base_config /path/to/bootstrap_example.cfg
 ```
 
-The `bootstrap_example.cfg` file contains all program arguments in INI format (`parameter_name = parameter_value`). You can use this file or override parameters with command-line arguments.
 
-Example `bootstrap_example.cfg`:
+Here's an example of what a `bootstrap_example.cfg` file might look like:
 
 ```ini
 # Repository path:
@@ -153,10 +174,14 @@ json_model = /server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/model_st
 cohorts_file = /server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/bootstrap_new.params
 ```
 
-For the exact format of `cohorts_file`, see the [MedBootstrap](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format) wiki page or the [doxygen documentation](https://Medial-EarlySign.github.io/MR_LIBS/classMedBootstrap.html#a719ddf45e236146cd0020b0f587b78a1).
+### Explanation
+
+While `bootstrap_app` has many options, only two are mandatory for a basic run: `input` and `output`. The **input file** is a tab-separated TSV file that must contain columns for `pid` (patient ID), `outcome`, and `pred_0` (prediction score). For more details on this format, see the [MedSamples](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedSamples.md) documentation.
+
+The other parameters you see in the example, such as `rep`, `json_model`, and `cohorts_file`, are **optional** and used for advanced cohort analysis. The tool can automatically generate a feature matrix from a `json_model` and a data repository. Alternatively, you can directly provide a feature matrix as a CSV file by setting `input_type` to `features_csv` in this case, you don't need to specify `rep` or `json_model`.
 
 
-## Fixing Incidence with an Incidence File
+## Adjusting Incidence with an Incidence File
 
 The tool estimates average incidence in your cohort based on sex, age group, and patient counts. For positive predictive value (PPV), it multiplies sensitivity by incidence, then divides by `sensitivity * incidence + FPR * (1 - incidence)`. This is equivalent to weighting cases as `average incidence * total cohort / total cases` and controls as `(1 - average incidence) * total cohort / total controls`.
 
@@ -183,11 +208,36 @@ STATS_ROW       MALE    24      1.0     5338
 The `registry_path` is a text format of [MedRegistry](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry). See the code documentation for more details (e.g., `write_text_file` method).
 
 
-## Results Output File
+## Understanding the Results Output
 
-- See [Bootstrap legend](Bootstrap%20legend.md) for details on output metrics.
+The output is a TSV file with three columns: `Cohort`, `Measurement`, and `Value`.
+
+* **Cohort**: The name of the cohort being analyzed.
+* **Measurement**: The performance metric (e.g., AUC_Mean, SENS@FPR_03).
+* **Value**: The calculated value for that metric.
+
+For each metric, the tool outputs several statistics:
+
+* `_Mean`: The average value across all bootstrap iterations.
+* `_Obs`: The value from the original, non-bootstrapped data.
+* `_Std`: The standard deviation across iterations.
+* `_CI.Lower.95` and `_CI.Upper.95`: The lower and upper bounds of the 95% confidence interval.
+
+- See [Bootstrap legend](Bootstrap%20legend.md) for more details on output metrics.
 - Use the [utility tool to process bootstrap result files](Utility%20tools%20to%20process%20bootstrap%20results.md) to generate tables or plots (e.g., ROC curves) from one or more bootstrap files.
 
+### Example Result Format
+
+```tsv
+Cohort	Measurement	Value
+Age:40-89,Time-Window:0,365	AUC_CI.Lower.95	0.555556
+Age:40-89,Time-Window:0,365	AUC_CI.Upper.95	1
+Age:40-89,Time-Window:0,365	AUC_Mean	0.867092
+Age:40-89,Time-Window:0,365	AUC_Obs	0.875
+Age:40-89,Time-Window:0,365	AUC_Std	0.129476
+...
+Age:40-89,Time-Window:0,365	SENS@FPR_03	10.34565
+```
 
 ## Implementation and Advanced Library Usage
 

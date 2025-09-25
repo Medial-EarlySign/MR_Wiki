@@ -10,7 +10,7 @@ he MedSamples object is designed to store key fields such as "label", "patient i
 * `split`: Optional field for specifying patient split. Typically, splits are assigned based on patient id in a separate file, so please specify "-1" 
 * `pred_0` - optional prediction result
 
-Example file
+## Example file
 ```
 EVENT_FIELDS	id	time	outcome	outcomeTime	split
 SAMPLE	1	20250101	0	20250820	-1
