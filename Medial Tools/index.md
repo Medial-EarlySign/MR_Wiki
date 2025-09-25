@@ -25,6 +25,7 @@ This section provides a list of applications, tools, and executables built on th
 - [Fairness Extraction](Fairness%20extraction.md): Calculates fairness metrics.
 - [Model Signals Importance](model_signals_importance.md): Evaluates the importance of signals in an existing model and measures the impact of including or excluding them on performance.
 - [Simulator](Simulator.md): Simulates performance by controlling variables such as target population age distribution and key covariates. It also evaluates the impact of signal availability and existence.
+- [AutoTest](Model%20Checklist/AutoTest) - Pipeline scripts to run common tests for model development, validation. This is mainly shell, python scripts that utilize above tools.
 
 ## Examples of Simple Applications
 
