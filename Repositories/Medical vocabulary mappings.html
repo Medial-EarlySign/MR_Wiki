@@ -7871,15 +7871,15 @@
 We have several tools for generating dictionaries for those vocabularies.
  </p>
 <h1 id="updating-medical-vocabulary">Updating Medical Vocabulary</h1>
-<p>We have several scripts under TOOLS git repository - $MR_ROOT/Tools/DictUtils:
+<p>We have several scripts under TOOLS git repository - MR_Tools/DictUtils:
 Steps to update medications:</p>
 <ol>
 <li>Download update vocabulary from: <a href="https://athena.ohdsi.org/search-terms/start">https://athena.ohdsi.org/search-terms/start</a></li>
 <li>Select for example Drugs, Rx Norm + ATC</li>
 <li>Copy and extract the files into: /nas1/Work/Data/Mapping/Medications - Or to equivalent folder for Diagnosis or Procedures, etc</li>
-<li>Run the script to extract those files into our dicts format with mapping from RX Norm to ATC - $MR_ROOT/Tools/DictUtils/ontologies_scripts/RX_to_ATC.new.py </li>
-<li>generate_rx_codes() - generates definitions for RX Norm + ATC from "CONCEPT.csv" to $MR_ROOT/Tools/DictUtils/Ontologies/RX/dicts, $MR_ROOT/Tools/DictUtils/Ontologies/ATC/dicts: </li>
-<li>generate_rx_maps() - generate mapping from RX Norm to ATC in $MR_ROOT/Tools/DictUtils/Ontologies/RX/dicts</li>
+<li>Run the script to extract those files into our dicts format with mapping from RX Norm to ATC - MR_Tools/DictUtils/ontologies_scripts/RX_to_ATC.new.py </li>
+<li>generate_rx_codes() - generates definitions for RX Norm + ATC from "CONCEPT.csv" to MR_Tools/DictUtils/Ontologies/RX/dicts, MR_Tools/DictUtils/Ontologies/ATC/dicts: </li>
+<li>generate_rx_maps() - generate mapping from RX Norm to ATC in MR_Tools/DictUtils/Ontologies/RX/dicts</li>
 <li>add_atc_hir() - Creates the hierarchy for ATC codes</li>
 <li>create_atc_syn() - generate synonm dicts for ATC to include codes in old format of ATC_ABB_CDD instead of ATC:ABBCDD
 Jupyter notebook with some test on the raw files of OHDSI: <a href="http://node-02:9000/notebooks/alon-internal/Medications_mapping.ipynb">http://node-02:9000/notebooks/alon-internal/Medications_mapping.ipynb</a>
@@ -7888,19 +7888,19 @@ Jupyter notebook with some test on the raw files of OHDSI: <a href="http://node
 </ol>
 <h2 id="todos">TODOs:</h2>
 <ul>
-<li>Need to complete code for NDC - current code: $MR_ROOT/Tools/DictUtils/ontologies_scripts/NDC_to_ATC.py</li>
-<li>SNOMED - $MR_ROOT/Tools/DictUtils/ontologies_scripts/get_snomed.py - but it's based on different data, that requires registration and to send reports+regulations... Need to switch to OHDSI </li>
-<li>ICD10, ICD9 - $MR_ROOT/Tools/DictUtils/ontologies_scripts/icd*  scripts
+<li>Need to complete code for NDC - current code: MR_Tools/DictUtils/ontologies_scripts/NDC_to_ATC.py</li>
+<li>SNOMED - MR_Tools/DictUtils/ontologies_scripts/get_snomed.py - but it's based on different data, that requires registration and to send reports+regulations... Need to switch to OHDSI </li>
+<li>ICD10, ICD9 - MR_Tools/DictUtils/ontologies_scripts/icd*  scripts
  </li>
 </ul>
 <h2 id="loading-categorical-signals-with-those-dictionaries">Loading categorical signals with those dictionaries:</h2>
 <p>After having base dictionaries with mappings, when loading new signal we can use those dictionaries and - search for missing codes, define them, use internal dictionary codes.
-The library is located in: $MR_ROOT/Tools/RepoLoadUtils/common/dicts_utils.py
+The library is located in: MR_Tools/RepoLoadUtils/common/dicts_utils.py
  
 You can use create_dict_generic to "merge" your signal codes with existing known ontology (for example ICD10) - it will define the missing codes for you and print how many are they? They are also stored in a different dictionary, so they will be easily located, what codes are missing. If it's too much, you can consider updating the ontology dictionaries.
 Function inputs:</p>
 <ul>
-<li>cfg - Configuration object with "work_dir" that points to workdir path + "dict_folder" that points to path with the Generic medial vocabularies - for example "$MR_ROOT/Tools/DictUtils/Ontologies/RX/dicts"<ul>
+<li>cfg - Configuration object with "work_dir" that points to workdir path + "dict_folder" that points to path with the Generic medial vocabularies - for example "MR_Tools/DictUtils/Ontologies/RX/dicts"<ul>
 <li>work_dir points to path that includes those subfolders:<ul>
 <li>FinalSignals - With Prepared signals to load - input path for reading the signals</li>
 <li>rep_configs/dicts - where we are going to store dictionaries for loading process. The output path of this function</li>

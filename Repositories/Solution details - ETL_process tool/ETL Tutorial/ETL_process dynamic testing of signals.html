@@ -8072,11 +8072,11 @@ Local tests can override global tests if they share the same name in the local p
 <hr />
 <h2 id="test-locations">Test Locations</h2>
 <ul>
-<li><strong>Global tests:</strong> <code>$MR_ROOT/Tools/RepoLoadUtils/common/ETL_Infra/tests</code></li>
+<li><strong>Global tests:</strong> <code>MR_Tools/RepoLoadUtils/common/ETL_Infra/tests</code></li>
 <li><strong>Local tests:</strong> <code>$CODE_DIR/tests</code></li>
 </ul>
 <p>The code is executed from<br />
-<code>$MR_ROOT/Tools/RepoLoadUtils/common/ETL_Infra</code>.<br />
+<code>MR_Tools/RepoLoadUtils/common/ETL_Infra</code>.<br />
 This means you can use <strong>relative paths</strong> to access config files, dictionaries, etc.</p>
 <hr />
 <h2 id="test-organization">Test Organization</h2>
@@ -8112,7 +8112,7 @@ This means you can use <strong>relative paths</strong> to access config files, d
 </ul>
 <h2 id="example-test">Example Test</h2>
 <p>Path:
-<code>$MR_ROOT/Tools/RepoLoadUtils/common/tests/labs/test_non_nulls.py</code></p>
+<code>MR_Tools/RepoLoadUtils/common/tests/labs/test_non_nulls.py</code></p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -8197,7 +8197,7 @@ You can copy it into a local directory and adjust thresholds as needed.</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>python<span class="w"> </span><span class="nv">$MR_ROOT</span>/Tools/RepoLoadUtils/common/ETL_Infra/run_test_on_sig.py<span class="w"> </span><span class="se">\</span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>python<span class="w"> </span>MR_Tools/RepoLoadUtils/common/ETL_Infra/run_test_on_sig.py<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span>--workdir<span class="w"> </span><span class="nv">$WORKDIR</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span>--codedir<span class="w"> </span><span class="nv">$CODEDIR</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span>--signal<span class="w"> </span><span class="nv">$SIGNAL</span>

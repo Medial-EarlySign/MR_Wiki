@@ -26,7 +26,7 @@
     
     
       
-        <title>Model Checklist - Medial EarlySign Documentation</title>
+        <title>Model Validation Checklist - Medial EarlySign Documentation</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#model-checklist" class="md-skip">
+        <a href="#model-validation-checklist" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Model Checklist
+              Model Validation Checklist
             
           </span>
         </div>
@@ -7835,9 +7835,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#test-kit-for-validation-of-models-under-some-stage-development-external-with-labels-silent_run" class="md-nav__link">
+  <a href="#data-distribution-and-performance" class="md-nav__link">
     <span class="md-ellipsis">
-      Test Kit for validation of models Under some stage: Development, External with labels, Silent_Run:
+      Data Distribution and Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fairness-and-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fairness and Bias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-and-baseline-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      External and Baseline Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensitivity-and-robustness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensitivity and Robustness
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-to-new-datasets-without-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying to New Datasets Without Labels
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-kit-for-model-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Kit for Model Validation
     </span>
   </a>
   
@@ -7875,59 +7929,69 @@
   
 
 
-<h1 id="model-checklist">Model Checklist</h1>
+<h1 id="model-validation-checklist">Model Validation Checklist</h1>
+<h2 id="data-distribution-and-performance">Data Distribution and Performance</h2>
 <ul>
-<li>Samples distribution over time - #controls, #cases for each year, each month</li>
-<li>Bootstrap on validation set (AND prefered future time set). On future time set also asset performance on same patients<ul>
-<li>Performance in different years, months - AUC and other measurements</li>
-<li>Performance in different time windows</li>
-<li>Performance on different age groups, sex, important comorbidities (diabetes, COPD, CVD)</li>
-<li>Minimal membership period, with\without important lab tests if relevant</li>
+<li>Analyze sample distribution over time: count controls and cases by year and month.</li>
+<li>Perform bootstrapping on the validation set (and preferably on a future time set). For the future set, also assess performance on the same patients.<ul>
+<li>Evaluate performance (AUC and other metrics) across years, months, and time windows.</li>
+<li>Assess results by age group, sex, and key comorbidities (e.g., diabetes, COPD, CVD).</li>
+<li>Check minimal membership period and presence/absence of key lab tests, if relevant.</li>
 </ul>
 </li>
-<li>Calibration assesment - on same samples as bootstrap</li>
-<li>ButWhy analysis<ul>
-<li>Global feature importance with\without grouping of signals</li>
-<li>Single features contribution analysis - for the important features, mean score, outcome, and shapley value contribution for each feature value bin</li>
+<li>Assess calibration on the same samples used for bootstrapping.</li>
 </ul>
-</li>
-<li>Coverage/Lift on risk groups in different PR cutoffs. For examle how many COPD patients with hospital admission we have (prevalence), and how much out of them are captured in top x,y,z PR cutoffs (coverage)</li>
-<li>Print matrix - mean feature value and CI/STD for each feature - look for outliers and unreasonable numbers - can be done on large test/train matrtix</li>
-<li>Matrix differences over the years - take several years and compare<ul>
-<li>Check score distribution on several years</li>
-<li>Build propensity model to differentite between different years and see which features changes </li>
-</ul>
-</li>
-<li>Fairness /Bias analysis<ul>
-<li>wihtout matching:different sex, age groups, insurance, race, socio-demographic info?</li>
-<li>with matching of important features "clinical", or accepted for explanations</li>
-</ul>
-</li>
-<li>External Validation on different datasets</li>
-<li>Compare to simple baseline model - compare not only performance, but also the flagged patients to understand who the model flags - ButWhy on the population differences </li>
-<li>
-<p>Sensitivity analysis to noise:</p>
+<h2 id="model-analysis">Model Analysis</h2>
 <ul>
-<li>Noise in lab values</li>
-<li>Shifting of dates</li>
-<li>Missing values - removing lab values
- 
-<strong>Check the model has cleaners on all signals</strong>
- 
-Applying on new dataset without labels for validation:</li>
+<li>Conduct ButWhy analysis:<ul>
+<li>Examine global feature importance, with and without grouping signals.</li>
+<li>Analyze contributions of individual features: for important features, report mean score, outcome, and Shapley value for each value bin.</li>
 </ul>
 </li>
-<li>
-<p>Test matrix difference from training repository matrix - compare feature moments with <a href="../TestModelExternal.html">TestModelExternal</a> and\or try to train propensity model.</p>
-</li>
-<li>Also compare score distribution + score distribution after matching important factors.</li>
-<li>Test ButWhy importance on the test set - compare with training repo</li>
-<li>Stats of outliers from cleaners
- </li>
+<li>Evaluate coverage and lift for risk groups at various PR cutoffs. For example, determine the prevalence of COPD patients with hospital admissions and the proportion captured in top x, y, z PR cutoffs.</li>
+<li>Print feature matrix: report mean and CI/STD for each feature to identify outliers or unreasonable values (can be done on large test/train matrices).</li>
+<li>Compare matrices across years:<ul>
+<li>Analyze score distributions over multiple years.</li>
+<li>Build a propensity model to differentiate between years and identify changing features.</li>
 </ul>
-<h2 id="test-kit-for-validation-of-models-under-some-stage-development-external-with-labels-silent_run">Test Kit for validation of models Under some stage: Development, External with labels, Silent_Run:</h2>
-<p>In this Tools git repository: <a href="https://github.com/Medial-EarlySign/MR_Tools">https://github.com/Medial-EarlySign/MR_Tools</a> under for example: $MR_ROOT/Tools/AutoValidation. In Windows: U:\Alon\MR\Tools\AutoValidation
- </p>
+</li>
+</ul>
+<h2 id="fairness-and-bias">Fairness and Bias</h2>
+<ul>
+<li>Assess fairness and bias:<ul>
+<li>Without matching: compare across sex, age groups, insurance, race, and socio-demographic factors.</li>
+<li>With matching: control for important clinical or explanatory features.</li>
+</ul>
+</li>
+</ul>
+<h2 id="external-and-baseline-validation">External and Baseline Validation</h2>
+<ul>
+<li>Validate externally on different datasets.</li>
+<li>Compare to a simple baseline model: assess not only performance but also which patients are flagged. Use ButWhy analysis to understand population differences.</li>
+</ul>
+<h2 id="sensitivity-and-robustness">Sensitivity and Robustness</h2>
+<ul>
+<li>Perform sensitivity analysis:<ul>
+<li>Add noise to lab values.</li>
+<li>Shift dates.</li>
+<li>Remove lab values to simulate missing data.</li>
+</ul>
+</li>
+<li>Ensure the model applies cleaning procedures to all signals.</li>
+</ul>
+<hr />
+<h2 id="applying-to-new-datasets-without-labels">Applying to New Datasets Without Labels</h2>
+<ul>
+<li>Compare test matrix to training repository matrix: check feature moments using <a href="../TestModelExternal.html">TestModelExternal</a> or train a propensity model.<ul>
+<li>Also compare score distributions, both raw and after matching on key factors.</li>
+</ul>
+</li>
+<li>Run ButWhy importance analysis on the test set and compare with the training repository.</li>
+<li>Report statistics on outliers detected by cleaning procedures.</li>
+</ul>
+<hr />
+<h2 id="test-kit-for-model-validation">Test Kit for Model Validation</h2>
+<p>For models in development, external validation with labels, or silent run, see the tools in this repository: <a href="https://github.com/Medial-EarlySign/MR_Tools">https://github.com/Medial-EarlySign/MR_Tools</a>, for example under <code>MR_Tools/AutoValidation</code>.</p>
 
 
 

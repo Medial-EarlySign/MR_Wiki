@@ -8238,7 +8238,7 @@
 </ul>
 <h3 id="our-implementation-medpyexport">Our Implementation: "MedPyExport"</h3>
 <ul>
-<li>Located in <code>$MR_ROOT/Libs/Internal/MedPyExport</code>.</li>
+<li>Located in <code>MR_LIBS/Internal/MedPyExport</code>.</li>
 <li>Wraps classes and exports only necessary functions for Python.</li>
 <li>Minimal learning curve for contributors familiar with C++.</li>
 <li>SWIG interface files (<code>.i</code>) are auto-generated during build.</li>
@@ -8262,12 +8262,14 @@
 <li>Uses a specialized CMake file for SWIG integration.</li>
 </ul>
 <h2 id="directory-structure">Directory Structure</h2>
-<p>Located in <code>$MR_ROOT/Libs/Internal/MedPyExport</code>:</p>
+<p>Located in <code>MR_LIBS/Internal/MedPyExport</code>:</p>
 <ul>
 <li><code>MedPyExport</code>: Source files.</li>
-<li><code>generate_binding</code>: CMake and binding generation files.</li>
+<li><code>generate_binding</code>: CMake and binding generation files.<ul>
 <li><code>MedPython</code>: SWIG interface files.<ul>
 <li><code>scripts</code>: Helper scripts for compilation.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
