@@ -1,238 +1,117 @@
-# Installation
 
-## Overview
+# Installation Guide
 
-There are four components that can be installed. You may install all of them or just the ones you need, depending on your requirements.
-Those components will allow you to use/depoly an [existing model that is published](../Models) or build your own models with: [MES Tools](#3-mes-tools-to-train-and-test-models) or with the [Python API](#4-python-api-for-mes-infrastructure)
+## Introduction
 
-### Releases
-A prebuilt package (excluding [MES Tools](#3-mes-tools-to-train-and-test-models)) is available for [direct download of the latest version](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0), eliminating the need to compile from source.
-The binaries are built on **Ubuntu 24.04**, and will run on any Linux distribution with **glibc ≥ 2.39**.
-You will also need to install [OpenMP](#2-install-openmp-support-ubuntu)
+This guide describes how to install and set up the MES Infrastructure and its components. You can choose to install all or only the components you need, depending on your use case. These tools allow you to use [published models](../Models), train new models with [MES Tools](MES%20Tools%20to%20Train%20and%20Test%20Models.md), or work with the [Python API](Python%20API%20for%20MES%20Infrastructure.md).
 
+## Prebuilt Releases
 
+A prebuilt package (excluding [MES Tools](MES%20Tools%20to%20Train%20and%20Test%20Models.md)) is available for [direct download](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0). This eliminates the need for manual compilation. The binaries are built on **Ubuntu 24.04** and are compatible with any Linux distribution using **glibc ≥ 2.39**. You must also install [OpenMP support](#2-install-openmp-support-ubuntu).
 
-### Preliminary Steps to Build the Tools
+## Prerequisites
 
-These are the preliminary installation steps required:
+Before building the tools, complete the following steps:
 
-#### 1. Install Compiler and Build Tools (Ubuntu)
-To install the essential compiler and build tools, run:
+### 1. Install Compiler and Build Tools (Ubuntu)
+
+Install the required compiler and build tools:
 
 ```bash
 sudo apt install binutils gcc g++ cmake make -y
 ```
 
-#### 2. Install OpenMP Support (Ubuntu)
-To enable OpenMP (used for parallel processing), install the following package:
+### 2. Install OpenMP Support (Ubuntu)
+
+Install OpenMP for parallel processing:
 
 ```bash
 sudo apt install libgomp1 -y
 ```
 
-> **_NOTE:_** This is required step.
+> **Note:** This step is required even if you don't plan to compile the tools. It is required for runtime.
 
-#### 3. Install Boost Libraries (Ubuntu)
-To install the required Boost components, on Ubuntu 24.04, use:
+### 3. Install Boost Libraries (Ubuntu)
+
+#### Compiling Boost from Source
+
+You can [download Boost](https://www.boost.org/users/download/) and compile it manually. Example steps for version 1.85.0:
+
+```bash title="Boost Compilation"
+# Install tools for download and extraction
+sudo apt install bzip2 wget -y
+
+# Download Boost
+wget https://archives.boost.io/release/1.85.0/source/boost_1_85_0.tar.bz2
+
+# Extract files
+tar -xjf boost_1_85_0.tar.bz2
+rm -f boost_1_85_0.tar.bz2
+
+# Set up Boost install directory
+WORK_BUILD_FOLDER=$(realpath .)
+cd boost_1_85_0
+
+# Configure and clean
+./bootstrap.sh
+./b2 --clean
+
+# Build static libraries
+./b2 cxxflags="-march=x86-64" link=static variant=release linkflags=-static-libstdc++ -j8 cxxflags="-fPIC" --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options --with-system --with-regex --with-filesystem
+
+mkdir -p ${WORK_BUILD_FOLDER}/Boost/include
+
+# Link headers to Boost/include
+ln -sf ${WORK_BUILD_FOLDER}/boost_1_85_0/boost  ${WORK_BUILD_FOLDER}/Boost/include
+
+# Build shared libraries (not needed for AlgoMarker, but needed for MES tools if you choose to compile)
+./b2 cxxflags="-march=x86-64" link=shared variant=release linkflags=-static-libstdc++ -j8 cxxflags="-fPIC" --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options --with-system --with-regex --with-filesystem
+```
+
+#### Installing Boost via Package Manager
 
 ```bash
 sudo apt install libboost-system1.83-dev libboost-filesystem1.83-dev libboost-regex1.83-dev libboost-program-options1.83-dev -y
 ```
 
-> **Note**: On Ubuntu 22.04, Boost version 1.74 is available and is also compatible.
+> **Note:** On Ubuntu 22.04, Boost version 1.74 is available and compatible.
+> 
+> **Important:** This method does **not** work for the AlgoMarker library or the Python API. For those, you must compile Boost from source.
 
-If you want to compile the **AlgoMarker library** or compile it against a different Boost library, please [download and compile Boost manually](https://www.boost.org/users/download/) and follow the [Boost Compilation Steps](#boost-compilation-steps). This project has been tested with Boost versions 1.67 through 1.85 and should work with other versions as well.
+## Optional Components
 
-#### Boost Compilation Steps
+You can install any of the following five components:
 
-Example installation steps for version 1.85.0:
+1. [AlgoMarker Shared Library](AlgoMarker_Library.md): A shared Linux C library for accessing the AlgoMarker API and generating predictions/outputs from a model. Designed for production use, it supports only the essential "predict" and related APIs.
+2. [AlgoMarker Wrapper](AlgoMarker%20Wrapper): A REST API wrapper for the AlgoMarker Shared Library.
+3. [MES Tools to Train and Test Models](MES%20Tools%20to%20Train%20and%20Test%20Models.md): Command-line executables for training, testing, and manipulating models using the MR_LIBS infrastructure. Required for training new models. Alternatively, you can use the Python API.
+4. [Python API for MES Infrastructure](Python%20API%20for%20MES%20Infrastructure.md): Python API for MR_LIBS, enabling model training, testing, and manipulation from Python. Some features may only be available via MES Tools or by [extending the Python API](../Python/Extend%20and%20Develop.md).
+5. [MR_Scripts]: Useful Python and Bash scripts. Clone the repository with `git clone git@github.com:Medial-EarlySign/MR_Scripts.git`.
 
-```bash title="Boost Compilation"
-# Ensure you have wget to download the file and bzip2 to extract the "bz2" file. Setup in Ubuntu:
-sudo apt install bzip2 wget -y
+## Environment Setup Script
 
-# Download the Boost Library
-wget https://archives.boost.io/release/1.85.0/source/boost_1_85_0.tar.bz2
-
-# Extract
-tar -xjf boost_1_85_0.tar.bz2
-rm -f boost_1_85_0.tar.bz2
-
-# Setup Boost Install directory to current directory
-WORK_BUILD_FOLDER=$(realpath .)
-cd boost_1_85_0
-
-# Configure to current system
-./bootstrap.sh 
-./b2 --clean
-
-# Generate static libs
-./b2 cxxflags="-march=x86-64" link=static variant=release linkflags=-static-libstdc++ -j8 cxxflags="-fPIC" --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options --with-system --with-regex --with-filesystem
-
-mkdir -p ${WORK_BUILD_FOLDER}/Boost/include
-
-# Generate symbolic link to headers inside Boost/include path
-ln -sf ${WORK_BUILD_FOLDER}/boost_1_85_0/boost  ${WORK_BUILD_FOLDER}/Boost/include
-
-# Generate shared/dynamic libs for tools, not needed for AlgoMarker
-./b2 cxxflags="-march=x86-64" link=shared variant=release linkflags=-static-libstdc++ -j8 cxxflags="-fPIC" --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options --with-system --with-regex --with-filesystem
-```
-
-### 1. AlgoMarker Library
-
-#### Description
-The AlgoMarker shared library is used for deploying the AlgoMarker model. This library works with your final binary model output to access the model, apply it, and retrieve results. It provides a C-level API.
-
-The Git repository is available at [MR_LIBS Git Repository](https://github.com/Medial-EarlySign/MR_LIBS).
-
-#### Installation
-1. Clone the Git repository:
-   ```bash
-   git clone git@github.com:Medial-EarlySign/MR_LIBS.git
-   ```
-2. Compile the Boost library. Refer to [Install Boost Libraries](#boost-compilation-steps). You must compile the Boost library since the `-fPIC` flag is needed, and it is not included in Ubuntu packages.
-3. Edit `Internal/AlgoMarker/CMakeLists.txt` to include the following line:
-   ```cmake
-   set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
-   ```
-   This should point to your Boost compiled home directory (`WORK_BUILD_FOLDER`) from the compilation step. Ensure the compiled libraries are in `/libs` and the headers are in `/include`.
-4. Execute:
-   ```bash
-   Internal/AlgoMarker/full_build.sh
-   ```
-
-### 2. AlgoMarker Wrapper
-
-#### Description
-The AlgoMarker Wrapper provides a REST API for the AlgoMarker C++ Library. There are two wrappers available:
-
-1. **C++ Native Wrapper**: Minimal dependencies, very fast, and efficient. Uses Boost Beast. Can be installed in a minimal Ubuntu Chiselled Docker image with just glibc.
-2. **Python Wrapper**: Built with FastAPI, more flexible for changes, and supports the old AlgoMarker API. It is slower and has more dependencies but is friendlier for testing.
-
-#### Installation
-
-**C++ Native Wrapper**:
-
-1. [Set up Boost Libraries](#3-install-boost-libraries-ubuntu). No need to compile.
-2. Clone the repository:
-   ```bash
-   git clone git@github.com:Medial-EarlySign/MR_Tools.git
-   ```
-3. If you compiled the Boost library, edit `AlgoMarker_python_API/ServerHandler/CMakeLists.txt` to include the following line:
-   ```cmake
-   set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
-   ```
-   This should point to your Boost compiled home directory (`WORK_BUILD_FOLDER`) from the compilation step. Ensure the compiled libraries are in `/libs` and the headers are in `/include`.
-4. Compile the wrapper:
-   ```bash
-   AlgoMarker_python_API/ServerHandler/compile.sh
-   ```
-5. Execute the server:
-   ```bash
-   AlgoMarker_python_API/ServerHandler/Linux/Release/AlgoMarker_Server --algomarker_path $AM_CONFIG --library_path $AM_LIB --port 1234
-   ```
-
-	* `AM_CONFIG`: Path to the AlgoMarker configuration file.
-   * `AM_LIB`: Path to the AlgoMarker shared library. 
-      Refer to [AlgoMarker Library](#1-algomarker-library) for compilation steps.
-
-
-**Python Wrapper**:
-
-1. Clone the repository:
-   ```bash
-   git clone git@github.com:Medial-EarlySign/MR_Tools.git
-   ```
-2. Edit `AlgoMarker_python_API/run_server.sh` and update the following:
-
-   - `AM_CONFIG`: Path to the AlgoMarker configuration file.
-   - `AM_LIB`: Path to the AlgoMarker shared library. Refer to [AlgoMarker Library](#1-algomarker-library) for compilation steps.
-   - If using the old ColonFlag, follow the steps in the ColonFlag setup page to compile the ICU library. Add the ICU library path to `LD_LIBRARY_PATH` in the script before calling `uvicorn`.
-3. Make sure you have all python depenencies installed (The AlgoMarker.py itself has no dependencies if you want to use it directly with FastAPI):
-   ```bash
-   python -m pip install fastapi
-   ```
-4. Run the Server `AlgoMarker_python_API/run_server.sh`
-
-For more details follow: [Python AlgoMarker API Wrapper](../Python/Python%20AlgoMarker%20API%20Wrapper.md)
-
-### 3. MES Tools to Train and Test Models
-
-#### Description
-Executables for training and testing models, along with other tools developed by MES for command-line use.
-
-#### Installation
-1. [Set up Boost Libraries](#3-install-boost-libraries-ubuntu). No need to compile.
-2. Clone the repositories:
-   ```bash
-   git clone git@github.com:Medial-EarlySign/MR_Tools.git
-   git clone git@github.com:Medial-EarlySign/MR_LIBS.git
-   ```
-3. Navigate to the `MR_Tools` directory:
-   ```bash
-   cd MR_Tools
-   ```
-4. Edit `All_Tools/CMakeLists.txt` to set `LIBS_PATH` to the MR_LIBS cloned directory. The default structure is:
-   ```
-   Root Directory
-   ├── MR_LIBS
-   └── MR_Tools
-   ```
-   With this structure, no edits are needed.
-   If you chose to compile Boost Libraries, don't forget to set `BOOST_ROOT` in the CMakeList.txt file
-5. Execute:
-   ```bash
-   AllTools/full_build.sh
-   ```
-
-### 4. Python API for MES Infrastructure
-
-#### Description
-A Python API Wrapper for the MES Infrastructure.
-
-#### Installation
-1. Install the required libraries:
-   ```bash
-   sudo apt install python3-dev swig -y
-   ```
-2. [Compile the Boost library](#boost-compilation-steps).
-3. Edit `Internal/MedPyExport/generate_binding/CMakeLists.txt` to include the following line:
-   ```cmake
-   set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
-   ```
-   This should point to your Boost compiled home directory (`WORK_BUILD_FOLDER`) from the compilation step. Ensure the compiled libraries are in `/libs` and the headers are in `/include`.
-4. Make sure you have NumPy installed: 
-   ```bash
-   python -m pip install numpy
-   ```
-   This library is compatible with both NumPy 1.x and 2.x. For the broadest compatibility, you should compile with NumPy 2.x, as this will also work for clients who have NumPy 1.x. However, compiling with NumPy 1.x will not be compatible with clients using 2.x.
-5. Execute:
-   ```bash
-   Internal/MedPyExport/generate_binding/make-simple.sh
-   ```
-
-## Code to Load All Tools into the Environment
+After installing the required components, use the following script to configure your shell environment for all tools and scripts:
 
 ```bash title="Start-Up Script"
 #!/bin/bash
 
-# Path to Boost library
+# Path to Boost Library (If you compiled the boost library)
 LD_PATH=${HOME}/Documents/MES/Boost/lib
-# Path to Git Repo clones
+# Path to Git repository clones - here in the example, we clones all repositories under ${HOME}/Documents/MES
 MR_LIBS=${HOME}/Documents/MES/MR_LIBS
 MR_TOOLS=${HOME}/Documents/MES/MR_Tools
 MR_SCRIPTS=${HOME}/Documents/MES/MR_Scripts
 
 export PATH=$PATH:${MR_TOOLS}/AllTools/Linux/Release:${MR_SCRIPTS}/Python-scripts:${MR_SCRIPTS}/Bash-Scripts:${MR_SCRIPTS}/Perl-scripts
 if [ ! -z "$LD_LIBRARY_PATH" ]; then
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${LD_PATH}
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${LD_PATH}
 else
-	export LD_LIBRARY_PATH=${LD_PATH}
+    export LD_LIBRARY_PATH=${LD_PATH}
 fi
 export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python312:${MR_TOOLS}/RepoLoadUtils/common
 ```
 
-Please edit `LD_PATH`, `MR_LIBS`, `MR_TOOLS`, and `MR_SCRIPTS` paths as needed.
+> **Tip:** Adjust the `LD_PATH`, `MR_LIBS`, `MR_TOOLS`, and `MR_SCRIPTS` variables as needed for your system.
 
 
 
