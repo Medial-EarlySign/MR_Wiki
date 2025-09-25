@@ -18,7 +18,7 @@ You can find the Python library and a tool for querying AlgoMarkers in the [MR_T
 Run the utility tool with:
 
 ```bash
-python $MR_ROOT/Tools/AlgoMarker_python_API/test_algomarker_lib.py \
+python MR_Tools/AlgoMarker_python_API/test_algomarker_lib.py \
   --amconfig /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/lungflag.amconfig \
   --output /tmp/results.txt \
   --add_data_json_path /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/examples/data.single.json \
@@ -30,7 +30,7 @@ python $MR_ROOT/Tools/AlgoMarker_python_API/test_algomarker_lib.py \
 - If your request JSON includes `"data"`, you can run:
 
 ```bash
-python $MR_ROOT/Tools/AlgoMarker_python_API/test_algomarker_lib.py \
+python MR_Tools/AlgoMarker_python_API/test_algomarker_lib.py \
   --amconfig /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/lungflag.amconfig \
   --output /tmp/results.txt \
   --request_json_path /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/examples/req.full.json

@@ -3,33 +3,33 @@ There are several domains of medical knowledge/onthologies that is getting updat
 We have several tools for generating dictionaries for those vocabularies.
  
 # Updating Medical Vocabulary
-We have several scripts under TOOLS git repository - $MR_ROOT/Tools/DictUtils:
+We have several scripts under TOOLS git repository - MR_Tools/DictUtils:
 Steps to update medications:
 
 1. Download update vocabulary from: [https://athena.ohdsi.org/search-terms/start](https://athena.ohdsi.org/search-terms/start)
 2. Select for example Drugs, Rx Norm + ATC
 3. Copy and extract the files into: /nas1/Work/Data/Mapping/Medications - Or to equivalent folder for Diagnosis or Procedures, etc
-4.  Run the script to extract those files into our dicts format with mapping from RX Norm to ATC - $MR_ROOT/Tools/DictUtils/ontologies_scripts/RX_to_ATC.new.py 
-5. generate_rx_codes() - generates definitions for RX Norm + ATC from "CONCEPT.csv" to $MR_ROOT/Tools/DictUtils/Ontologies/RX/dicts, $MR_ROOT/Tools/DictUtils/Ontologies/ATC/dicts: 
-6. generate_rx_maps() - generate mapping from RX Norm to ATC in $MR_ROOT/Tools/DictUtils/Ontologies/RX/dicts
+4.  Run the script to extract those files into our dicts format with mapping from RX Norm to ATC - MR_Tools/DictUtils/ontologies_scripts/RX_to_ATC.new.py 
+5. generate_rx_codes() - generates definitions for RX Norm + ATC from "CONCEPT.csv" to MR_Tools/DictUtils/Ontologies/RX/dicts, MR_Tools/DictUtils/Ontologies/ATC/dicts: 
+6. generate_rx_maps() - generate mapping from RX Norm to ATC in MR_Tools/DictUtils/Ontologies/RX/dicts
 7. add_atc_hir() - Creates the hierarchy for ATC codes
 8. create_atc_syn() - generate synonm dicts for ATC to include codes in old format of ATC_ABB_CDD instead of ATC:ABBCDD
 Jupyter notebook with some test on the raw files of OHDSI: [http://node-02:9000/notebooks/alon-internal/Medications_mapping.ipynb](http://node-02:9000/notebooks/alon-internal/Medications_mapping.ipynb)
  
 (get_rxnorm_dicts.py - is old script of different data source + RX_to_ATC.py)
 ## TODOs:
-- Need to complete code for NDC - current code: $MR_ROOT/Tools/DictUtils/ontologies_scripts/NDC_to_ATC.py
-- SNOMED - $MR_ROOT/Tools/DictUtils/ontologies_scripts/get_snomed.py - but it's based on different data, that requires registration and to send reports+regulations... Need to switch to OHDSI 
-- ICD10, ICD9 - $MR_ROOT/Tools/DictUtils/ontologies_scripts/icd*  scripts
+- Need to complete code for NDC - current code: MR_Tools/DictUtils/ontologies_scripts/NDC_to_ATC.py
+- SNOMED - MR_Tools/DictUtils/ontologies_scripts/get_snomed.py - but it's based on different data, that requires registration and to send reports+regulations... Need to switch to OHDSI 
+- ICD10, ICD9 - MR_Tools/DictUtils/ontologies_scripts/icd*  scripts
  
 ## Loading categorical signals with those dictionaries:
 After having base dictionaries with mappings, when loading new signal we can use those dictionaries and - search for missing codes, define them, use internal dictionary codes.
-The library is located in: $MR_ROOT/Tools/RepoLoadUtils/common/dicts_utils.py
+The library is located in: MR_Tools/RepoLoadUtils/common/dicts_utils.py
  
 You can use create_dict_generic to "merge" your signal codes with existing known ontology (for example ICD10) - it will define the missing codes for you and print how many are they? They are also stored in a different dictionary, so they will be easily located, what codes are missing. If it's too much, you can consider updating the ontology dictionaries.
 Function inputs:
 
-- cfg - Configuration object with "work_dir" that points to workdir path + "dict_folder" that points to path with the Generic medial vocabularies - for example "$MR_ROOT/Tools/DictUtils/Ontologies/RX/dicts"
+- cfg - Configuration object with "work_dir" that points to workdir path + "dict_folder" that points to path with the Generic medial vocabularies - for example "MR_Tools/DictUtils/Ontologies/RX/dicts"
     - work_dir points to path that includes those subfolders:
         - FinalSignals - With Prepared signals to load - input path for reading the signals
         - rep_configs/dicts - where we are going to store dictionaries for loading process. The output path of this function

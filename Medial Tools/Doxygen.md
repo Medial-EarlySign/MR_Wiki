@@ -14,7 +14,7 @@ To access, you can just open the index.html file or host the directory with `pyt
 
 The build process of this repository is being executed by runnnig this script:
 ```bash
-$MR_ROOT/Libs/document_code_server.sh
+MR_LIBS/document_code_server.sh
 ```
 the documentation will be availabe in [https://Medial-EarlySign.github.io/MR_LIBS](https://Medial-EarlySign.github.io/MR_LIBS)
 

@@ -28,7 +28,7 @@ For maintainability, **SWIG** is chosen as the binding solution. Other options c
 
 ### Our Implementation: "MedPyExport"
 
-- Located in `$MR_ROOT/Libs/Internal/MedPyExport`.
+- Located in `MR_LIBS/Internal/MedPyExport`.
 - Wraps classes and exports only necessary functions for Python.
 - Minimal learning curve for contributors familiar with C++.
 - SWIG interface files (`.i`) are auto-generated during build.
@@ -53,12 +53,12 @@ For maintainability, **SWIG** is chosen as the binding solution. Other options c
 
 ## Directory Structure
 
-Located in `$MR_ROOT/Libs/Internal/MedPyExport`:
+Located in `MR_LIBS/Internal/MedPyExport`:
 
 - `MedPyExport`: Source files.
 - `generate_binding`: CMake and binding generation files.
-  - `MedPython`: SWIG interface files.
-    - `scripts`: Helper scripts for compilation.
+    - `MedPython`: SWIG interface files.
+        - `scripts`: Helper scripts for compilation.
 
 ## Key Files
 

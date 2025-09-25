@@ -7,8 +7,7 @@ Second thing we achieve is standardize way to validate/document a new model. Sup
 
 ## Location
 Under tools repository: [https://github.com/Medial-EarlySign/MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) 
-In Linux: $MR_ROOT/Tools/AutoValidation\kits.
-In Windows: %MR_ROOT%\Tools\AutoValidation (for example U:\Alon\MR\Tools\AutoValidation\kits)
+In Linux: MR_Tools/AutoValidation\kits.
 Or environment variable: "$AUTOTEST_LIB"
 
 ## Use cases
@@ -61,5 +60,5 @@ We have in each Template a row with definition of required arguments from "env.s
 
 ## Testing the TestKit
 There is also test unit to run the TestKit for LGI on "Development", "External_Silent_Run" and "External_validation_after_SR" to test the TestKit.
-Please refer to $MR_ROOT/Tools/AutoValidation/test_kit and run the test of the desired TestKit.
+Please refer to `MR_Tools/AutoValidation/test_kit` and run the test of the desired TestKit.
  

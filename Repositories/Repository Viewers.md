@@ -23,7 +23,7 @@ Repository viewers provide a simple graphical interface for viewing patient sign
 
 ## Configuration File
 
-- Example and definitions: `$MR_ROOT/Libs/Internal/MedPlotly/MedPlotly/BasicConfig.txt`
+- Example and definitions: `MR_LIBS/Internal/MedPlotly/MedPlotly/BasicConfig.txt`
 - Contains default parameters and panel definitions.
 - Panels become plots and can contain multiple signals.
 

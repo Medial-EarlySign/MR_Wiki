@@ -1,5 +1,5 @@
 # action_outcome_effect
-The tool can be found at **$MR_ROOT/Tools/action_outcome_effect**
+The tool can be found at **MR_Tools/action_outcome_effect**
 The tool check treatment/action effect on outcome.
 the main input is MedSamples+json to create matrix or MedFeatures(the matrix itself) with list of confounders.
 
@@ -23,7 +23,7 @@ We are not testing for direct treatment effect only
 **get help from the app**
 
 ```bash
-$> $MR_ROOT/Tools/action_outcome_effect/Linux/Release/action_outcome_effect --h
+$> action_outcome_effect --h
 ##     ## ######## ########  ####    ###    ##
 ###   ### ##       ##     ##  ##    ## ##   ##
 #### #### ##       ##     ##  ##   ##   ##  ##

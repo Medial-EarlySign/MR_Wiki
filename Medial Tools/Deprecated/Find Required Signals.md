@@ -1,6 +1,6 @@
 # Find Required Signals
 Find Required Signals is a tool for finding minimal requirement signals. The idea is to find combinations of signals that for a given model achieve a certain performance requirement.
-The tool can be found in **$MR_ROOT/Tools/MedProcessUtils/findRequiredSignals**.
+The tool can be found in **MR_Tools/MedProcessUtils/findRequiredSignals** and compiled as part as [AllTools](../../Installation/MES%20Tools%20to%20Train%20and%20Test%20Models.md)
  
 **Algorithm Overview:** 
 The algorithm runs over combinations of signals of growing sizes, starting from combinations of size one.
@@ -33,7 +33,7 @@ The number of possible combinations at combination size *k* is generally* num
 ## **Example: Running Example**
 
 ```bash title="Running Example"
-$MR_ROOT/Tools/MedProcessUtils/Linux/Release/findRequiredSignals --model_file example_model.model --samples_file example_samples.samples --rep_file /server/Work/CancerData/Repositories/KP/kp.repository --out_file required_sigs_out.txt --msr_params AUC --max_num_tests_per_iter 1000 --required_ratio 0.95 --evaluations_to_print 0 --num_iterations_to_continue 2 --cohort_params Age:45,80/Time-Window:120,365
+findRequiredSignals --model_file example_model.model --samples_file example_samples.samples --rep_file /server/Work/CancerData/Repositories/KP/kp.repository --out_file required_sigs_out.txt --msr_params AUC --max_num_tests_per_iter 1000 --required_ratio 0.95 --evaluations_to_print 0 --num_iterations_to_continue 2 --cohort_params Age:45,80/Time-Window:120,365
 ```
  
 **Output example:**

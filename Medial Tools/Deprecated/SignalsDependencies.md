@@ -1,5 +1,5 @@
 # SignalsDependencies
-The Code exists in: **$MR_ROOT/Tools/SignalsDependencies **and is basically using library functions in [MedRegistry ](../Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry)object - method called "calc_signal_stats" after loading the registry.
+The Code exists in: **MR_Tools/SignalsDependencies** and is basically using library functions in [MedRegistry](../Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry) object - method called "calc_signal_stats" after loading the registry.
 This tool will allow you to discover relevant categorical signals (for example: readcodes or drugs) that has statstical connection to you outcome within a defined time-window.
 The tool will create MedSamples based on the signal time points and than label those samples based on the registry and "labeling_params" parameter which defines the rules for the labeling - either case, control or excluded (if can't determine for example).
 It will create contingency table from samples within time-window for each gender and age group:

@@ -6,11 +6,11 @@ Local tests can override global tests if they share the same name in the local p
 ---
 
 ## Test Locations
-- **Global tests:** `$MR_ROOT/Tools/RepoLoadUtils/common/ETL_Infra/tests`
+- **Global tests:** `MR_Tools/RepoLoadUtils/common/ETL_Infra/tests`
 - **Local tests:** `$CODE_DIR/tests`
 
 The code is executed from  
-`$MR_ROOT/Tools/RepoLoadUtils/common/ETL_Infra`.  
+`MR_Tools/RepoLoadUtils/common/ETL_Infra`.  
 This means you can use **relative paths** to access config files, dictionaries, etc.
 
 ---
@@ -45,7 +45,7 @@ def Test(df: pd.DataFrame, si, codedir: str, workdir: str) -> bool:
 
 ## Example Test
 Path:
-`$MR_ROOT/Tools/RepoLoadUtils/common/tests/labs/test_non_nulls.py`
+`MR_Tools/RepoLoadUtils/common/tests/labs/test_non_nulls.py`
 
 ```python
 import pandas as pd
@@ -100,7 +100,7 @@ from ETL_Infra.plot_graph import plot_graph
 You can run or rerun tests with:
 
 ```bash
-python $MR_ROOT/Tools/RepoLoadUtils/common/ETL_Infra/run_test_on_sig.py \
+python MR_Tools/RepoLoadUtils/common/ETL_Infra/run_test_on_sig.py \
   --workdir $WORKDIR \
   --codedir $CODEDIR \
   --signal $SIGNAL

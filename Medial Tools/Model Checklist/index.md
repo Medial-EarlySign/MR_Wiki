@@ -1,38 +1,48 @@
-# Model Checklist
-- Samples distribution over time - #controls, #cases for each year, each month
-- Bootstrap on validation set (AND prefered future time set). On future time set also asset performance on same patients
-    - Performance in different years, months - AUC and other measurements
-    - Performance in different time windows
-    - Performance on different age groups, sex, important comorbidities (diabetes, COPD, CVD)
-    - Minimal membership period, with\without important lab tests if relevant
-- Calibration assesment - on same samples as bootstrap
-- ButWhy analysis
-    - Global feature importance with\without grouping of signals
-    - Single features contribution analysis - for the important features, mean score, outcome, and shapley value contribution for each feature value bin
-- Coverage/Lift on risk groups in different PR cutoffs. For examle how many COPD patients with hospital admission we have (prevalence), and how much out of them are captured in top x,y,z PR cutoffs (coverage)
-- Print matrix - mean feature value and CI/STD for each feature - look for outliers and unreasonable numbers - can be done on large test/train matrtix
-- Matrix differences over the years - take several years and compare
-    - Check score distribution on several years
-    - Build propensity model to differentite between different years and see which features changes 
-- Fairness /Bias analysis
-    - wihtout matching:different sex, age groups, insurance, race, socio-demographic info?
-    - with matching of important features "clinical", or accepted for explanations
-- External Validation on different datasets
-- Compare to simple baseline model - compare not only performance, but also the flagged patients to understand who the model flags - ButWhy on the population differences 
-- Sensitivity analysis to noise:
-    - Noise in lab values
-    - Shifting of dates
-    - Missing values - removing lab values
- 
-**Check the model has cleaners on all signals**
- 
-Applying on new dataset without labels for validation:
+# Model Validation Checklist
 
-- Test matrix difference from training repository matrix - compare feature moments with [TestModelExternal](../TestModelExternal.md) and\or try to train propensity model.
-  - Also compare score distribution + score distribution after matching important factors.
-- Test ButWhy importance on the test set - compare with training repo
-- Stats of outliers from cleaners
- 
-## Test Kit for validation of models Under some stage: Development, External with labels, Silent_Run:
-In this Tools git repository: [https://github.com/Medial-EarlySign/MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) under for example: $MR_ROOT/Tools/AutoValidation. In Windows: U:\Alon\MR\Tools\AutoValidation
- 
+## Data Distribution and Performance
+- Analyze sample distribution over time: count controls and cases by year and month.
+- Perform bootstrapping on the validation set (and preferably on a future time set). For the future set, also assess performance on the same patients.
+    - Evaluate performance (AUC and other metrics) across years, months, and time windows.
+    - Assess results by age group, sex, and key comorbidities (e.g., diabetes, COPD, CVD).
+    - Check minimal membership period and presence/absence of key lab tests, if relevant.
+- Assess calibration on the same samples used for bootstrapping.
+
+## Model Analysis
+- Conduct ButWhy analysis:
+    - Examine global feature importance, with and without grouping signals.
+    - Analyze contributions of individual features: for important features, report mean score, outcome, and Shapley value for each value bin.
+- Evaluate coverage and lift for risk groups at various PR cutoffs. For example, determine the prevalence of COPD patients with hospital admissions and the proportion captured in top x, y, z PR cutoffs.
+- Print feature matrix: report mean and CI/STD for each feature to identify outliers or unreasonable values (can be done on large test/train matrices).
+- Compare matrices across years:
+    - Analyze score distributions over multiple years.
+    - Build a propensity model to differentiate between years and identify changing features.
+
+## Fairness and Bias
+- Assess fairness and bias:
+    - Without matching: compare across sex, age groups, insurance, race, and socio-demographic factors.
+    - With matching: control for important clinical or explanatory features.
+
+## External and Baseline Validation
+- Validate externally on different datasets.
+- Compare to a simple baseline model: assess not only performance but also which patients are flagged. Use ButWhy analysis to understand population differences.
+
+## Sensitivity and Robustness
+- Perform sensitivity analysis:
+    - Add noise to lab values.
+    - Shift dates.
+    - Remove lab values to simulate missing data.
+- Ensure the model applies cleaning procedures to all signals.
+
+---
+
+## Applying to New Datasets Without Labels
+- Compare test matrix to training repository matrix: check feature moments using [TestModelExternal](../TestModelExternal.md) or train a propensity model.
+    - Also compare score distributions, both raw and after matching on key factors.
+- Run ButWhy importance analysis on the test set and compare with the training repository.
+- Report statistics on outliers detected by cleaning procedures.
+
+---
+
+## Test Kit for Model Validation
+For models in development, external validation with labels, or silent run, see the tools in this repository: [https://github.com/Medial-EarlySign/MR_Tools](https://github.com/Medial-EarlySign/MR_Tools), for example under `MR_Tools/AutoValidation`.

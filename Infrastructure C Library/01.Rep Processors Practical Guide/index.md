@@ -191,7 +191,7 @@ Json Examples:
 //
 // creating a hyper tension registry
 // It is important to clean and handle simultanous values beforehand
-// note that default lists of codes are in $MR_ROOT/Tools/Registries/Lists/
+// note that default lists of codes are in MR_Tools/Registries/Lists/
 //
 {"action_type":"rep_processor","rp_type":"basic_outlier_cleaner","range_min":"0.001","range_max":"100000","val_channel":"0","signal":"BP"},
 {"action_type":"rep_processor","rp_type":"basic_outlier_cleaner","range_min":"0.001","range_max":"100000","val_channel":"1","signal":"BP"},
