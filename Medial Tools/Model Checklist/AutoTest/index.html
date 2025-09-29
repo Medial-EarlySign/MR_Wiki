@@ -7857,25 +7857,25 @@
         <li class="md-nav__item">
   <a href="#use-cases" class="md-nav__link">
     <span class="md-ellipsis">
-      Use cases
+      Use Cases
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-create-a-new-testkit-for-you-algomarker" class="md-nav__link">
+  <a href="#creating-a-new-testkit-for-your-model" class="md-nav__link">
     <span class="md-ellipsis">
-      How to create a new TestKit for you AlgoMarker
+      Creating a New TestKit for Your Model
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-each-test-is-being-executed-how-to-write-new-test" class="md-nav__link">
+  <a href="#writing-and-executing-tests" class="md-nav__link">
     <span class="md-ellipsis">
-      How each test is being executed/ How to write new test:
+      Writing and Executing Tests
     </span>
   </a>
   
@@ -7884,7 +7884,7 @@
         <li class="md-nav__item">
   <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      configuration
+      Configuration
     </span>
   </a>
   
@@ -7942,65 +7942,59 @@
 
 <h1 id="autotest">AutoTest</h1>
 <h2 id="motivation">Motivation</h2>
-<p>The goal is to execute generic tests collected from our group as common knowledge on certain use cases 
-For example, we have knowledge on how we should test a new model, for example - run feature importance, make sure we have all cleaners for all features etc.
-Second thing we achieve is standardize way to validate/document a new model. Suppose to be faster to move from one project to another when needed.</p>
+<p>AutoTest aims to standardize and accelerate model validation by providing generic tests and documentation practices. It helps ensure consistent quality and makes it easier to transition between projects by applying common knowledge and best practices for model testing (e.g., feature importance checks, verifying feature cleaners).</p>
 <h2 id="location">Location</h2>
-<p>Under tools repository: <a href="https://github.com/Medial-EarlySign/MR_Tools">https://github.com/Medial-EarlySign/MR_Tools</a> 
-In Linux: MR_Tools/AutoValidation\kits.
-Or environment variable: "$AUTOTEST_LIB"</p>
-<h2 id="use-cases">Use cases</h2>
-<p>There are 4 use cases:</p>
 <ul>
-<li><a href="Development%20kit">Development</a> - testing of new model</li>
-<li><a href="External%20Silent%20Run">External Silent Run</a> - auto tests for existin model on dataset WITHOUT labeling</li>
-<li>External_validation_after_SR - autotest for dataset after "External_Silent_Run" when we received the labeling.</li>
+<li>Repository: <a href="https://github.com/Medial-EarlySign/MR_Tools">MR_Tools</a></li>
+<li>Path: <code>AutoValidation/kits</code></li>
+<li>Alternatively, set the environment variable: <code>$AUTOTEST_LIB</code></li>
 </ul>
-<h2 id="how-to-create-a-new-testkit-for-you-algomarker">How to create a new TestKit for you AlgoMarker</h2>
-<ol>
-<li>Create empty directory to hold your TestKit</li>
-<li>cd into the directory</li>
-<li>Execute: $AUTOTEST_LIB/generate_tests.sh</li>
-<li>It will ask you which Kit to create: Development , External_retrospective , <a href="External%20Silent%20Run">External Silent Run</a>, External_validation_after_SR - please type in the desired TestKit</li>
-<li>Please configure "configs/env.sh" and other settings if needed in configs folder</li>
-<li>Execute ./run.sh to run all tests,. There is "run.specific.sh" - to run a specific test by number, if not providing an argument (number) the scripts output the name of all tests with their number that you can choose.</li>
-</ol>
-<h2 id="how-each-test-is-being-executed-how-to-write-new-test">How each test is being executed/ How to write new test:</h2>
-<p>Each test in Tests is given 3 arguments:</p>
-<ol>
-<li>CFG_PATH_OF_CURRENT_KIT - path to config folder of current kit</li>
-<li>SCRIPT_DIR_OF_INFRA - path of AutoTest infrastructure</li>
-<li>OVERRIDE - binary 0/1 if to override previous results
-You need to respect those arguments when writing a new test
- 
-The tests are being executed one after another, there is a unified log of all tests and a specific log for each test.
-Output of each test has to be manually <strong>verified</strong> (one should make sure that test results make sense)
-There is also a file that show the status of all the Tests called "tests_status.log". Each test has status:</li>
-</ol>
+<h2 id="use-cases">Use Cases</h2>
+<p>AutoTest supports three main scenarios:</p>
 <ul>
-<li>FINISHED_NEED_VERIFY - test was ended successfully without errors. Please go over output and approve/disapprove the test. </li>
-<li>FINISHED_FAILED - Test ended successfully without errors, but failed. The outputs seems wrong or raised a problem. need to rerun. When you want to rerun, erase this status row for the test</li>
-<li>FINISHED_VERIFIED - If test ended correctly and verified</li>
-<li>STOPPED_NEED_VERIFY - test crashed, has errors. please verify if that's OK or not. It can be OK for example, if you want to skip the test</li>
-<li>STOPPED_FAILED - test crashed, has errors. You marked this test as failure, Needs to rerun. When you want to rerun, erase this status row for the test</li>
-<li>STOPPED_VERIFIED - test crashed, has errors. You marked this test as OK. 
-After test finished for the first time, If has "*_NEED_VERIFY" status. In next time you run run.sh, it will ask you to decide on the status: Approved, Not approved, Rerun test, Skip decision for now.</li>
+<li><a href="Development%20kit">Development</a> - Test new models during development.</li>
+<li><a href="External%20Silent%20Run">External Silent Run</a> - Run auto tests on datasets without labels/outcomes.</li>
+<li>External_validation_after_SR - Test datasets with labels/outcomes, extending the silent run with additional analyses and sanity checks.</li>
 </ul>
-<h2 id="configuration">configuration</h2>
-<p>Configuration through parameters exposed in "config" folder. The main parameters are supposed to be defined under configs/env.sh.
-All The test are suppose to use/reuse arguments defined in env.sh. When we need external files, like bootstrap json. 
-It's good practice to put those files in config folder and reuse the same files in all scripts when needed. </p>
+<h2 id="creating-a-new-testkit-for-your-model">Creating a New TestKit for Your Model</h2>
+<ol>
+<li>Create an empty directory for your TestKit.</li>
+<li>Navigate into the directory.</li>
+<li>Execute: <code>$AUTOTEST_LIB/generate_tests.sh</code></li>
+<li>Select the desired TestKit type: <a href="Development%20kit">Development</a>, <a href="External%20Silent%20Run">External Silent Run</a>, or External_validation_after_SR.</li>
+<li>Configure <code>configs/env.sh</code> and other settings as needed in configs folder</li>
+<li>Run all tests with <code>./run.sh</code>. To run a specific test, use <code>run.specific.sh</code>. Without arguments, it lists all available tests and their numbers.</li>
+</ol>
+<h2 id="writing-and-executing-tests">Writing and Executing Tests</h2>
+<p>Each test in the <code>Tests</code> directory receives three arguments:</p>
+<ol>
+<li><code>CFG_PATH_OF_CURRENT_KIT</code>: Path to the current kit’s config folder.</li>
+<li><code>SCRIPT_DIR_OF_INFRA</code>: Path to the AutoTest infrastructure.</li>
+<li><code>OVERRIDE</code>: Binary flag (0/1) to override previous results.</li>
+</ol>
+<p>Tests run sequentially, with unified and per-test logs. After execution, manually verify the output to ensure results are meaningful.</p>
+<p>Test statuses are tracked in <code>tests_status.log</code>:</p>
+<ul>
+<li><code>FINISHED_NEED_VERIFY</code>: Test completed successfully; review and approve/disapprove.the test. </li>
+<li><code>FINISHED_FAILED</code>: Test completed but failed; rerun after clearing the status.</li>
+<li><code>FINISHED_VERIFIED</code>: Test completed and verified.</li>
+<li><code>STOPPED_NEED_VERIFY</code>: Test crashed; review for acceptability.</li>
+<li><code>STOPPED_FAILED</code>: Test crashed and marked as failed; rerun after clearing the status.</li>
+<li><code>STOPPED_VERIFIED</code>: Test crashed but marked as OK.</li>
+</ul>
+<p>If a test has a <code>*_NEED_VERIFY</code> status, the next run of <code>run.sh</code> will prompt you to approve, disapprove, rerun, or skip the decision.</p>
+<h2 id="configuration">Configuration</h2>
+<p>Main parameters are defined in <code>configs/env.sh</code>. All tests should use/reuse these arguments. Place external files (e.g., bootstrap JSON) in the config folder for consistency.
+Easier to reuse same parameters over all tests in that way.</p>
 <h2 id="extension">Extension</h2>
-<p>In some cases we want to add more tests, override exiting test. 
-We can do that be coping the desires test template from Test/Templates - Either "TEMPLATE_TEST.sh" for shell scripts or "TEMPATE_TEST.py" for python scripts.
-The tests are going to be execute based on the base template folder, for example: $AUTOTEST_LIB/kits/<strong>Development</strong>/Tests for Development.
-To override existing test in our use case, we can put a new test in our "Tests" folder with the same numeric prefix of the test we want to replace/override in the base template folder.
-Base Template:
-We have in each Template a row with definition of required arguments from "env.sh", pay attention to that. Make use of existing parameters and add new ones to env.sh as you wish/need.</p>
+<p>To add or override tests:</p>
+<ul>
+<li>Copy the desired template from <code>Test/Templates</code> (<code>TEMPLATE_TEST.sh</code> for shell, <code>TEMPATE_TEST.py</code> for Python).</li>
+<li>Place new or overridden tests in your <code>Tests</code> folder, using the same numeric prefix as the base template to override.</li>
+<li>Templates specify required arguments from <code>env.sh</code>; reuse and extend as needed.</li>
+</ul>
 <h2 id="testing-the-testkit">Testing the TestKit</h2>
-<p>There is also test unit to run the TestKit for LGI on "Development", "External_Silent_Run" and "External_validation_after_SR" to test the TestKit.
-Please refer to <code>MR_Tools/AutoValidation/test_kit</code> and run the test of the desired TestKit.
- </p>
+<p>Unit tests for the TestKit are available for LGI in "Development", "External_Silent_Run", and "External_validation_after_SR". See <code>MR_Tools/AutoValidation/test_kit</code> to run the desired TestKit tests.</p>
 
 
 
