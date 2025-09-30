@@ -101,6 +101,7 @@ LD_PATH=${HOME}/Documents/MES/Boost/lib
 MR_LIBS=${HOME}/Documents/MES/MR_LIBS
 MR_TOOLS=${HOME}/Documents/MES/MR_Tools
 MR_SCRIPTS=${HOME}/Documents/MES/MR_Scripts
+PY_VERSION=$(python -c "import platform; print(''.join(platform.python_version().split('.')[:2]))")
 
 export PATH=$PATH:${MR_TOOLS}/AllTools/Linux/Release:${MR_SCRIPTS}/Python-scripts:${MR_SCRIPTS}/Bash-Scripts:${MR_SCRIPTS}/Perl-scripts
 if [ ! -z "$LD_LIBRARY_PATH" ]; then
@@ -108,7 +109,7 @@ if [ ! -z "$LD_LIBRARY_PATH" ]; then
 else
     export LD_LIBRARY_PATH=${LD_PATH}
 fi
-export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python312:${MR_TOOLS}/RepoLoadUtils/common
+export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python${PY_VERSION}:${MR_TOOLS}/RepoLoadUtils/common
 ```
 
 > **Tip:** Adjust the `LD_PATH`, `MR_LIBS`, `MR_TOOLS`, and `MR_SCRIPTS` variables as needed for your system.
