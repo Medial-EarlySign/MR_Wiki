@@ -1,32 +1,49 @@
-# Test_12 - fairness
 
-## Overview
-Compare sensitive groups in the same cutoff and check that the performance is similar. \
-A common definition is to have similar sensitivity for the same cutoff. In other words: no matter if you are a case from this group or that group (black/white male/female) - you will have similar probability to be captured by the model - which is the sensitivity
+# Test 12: Fairness
 
-## Input
-- WORK_DIR - output work directory
-- MODEL_PATH - path for model
-- REPOSITORY_PATH - repository path
-- TEST_SAMPLES - test samples
-- BT_JSON_FAIRNESS - bootstrap json features to filter the cohort for testing
-- FAIRNESS_BT_PREFIX - bootstrap cohort definition to define the cohort for testing for fairness
-- config/fairness_groups.cfg - defines the group that we want to compare:
-Each line defines 2 or more groups to compare one with each other.
-Each line consist of 2 tokens tab delimited. First token is bootstrap filter definition for each group separated by "|". 
-The second token is the "pretty" names to give each of the filters separated by "|".
-For example:
+## Purpose
+Assess model fairness by comparing performance (e.g., sensitivity) across sensitive groups at the same score cutoff. The goal is to ensure similar probability of being flagged by the model when you are a case, regardless of group (e.g., gender, ethnicity).
+
+## Required Inputs
+From `configs/env.sh`:
+
+- `WORK_DIR`: Output directory for results
+- `MODEL_PATH`: Path to the model
+- `REPOSITORY_PATH`: Path to the data repository
+- `TEST_SAMPLES`: Path to the test samples
+- `BT_JSON_FAIRNESS`: Bootstrap JSON for filtering cohorts
+- `FAIRNESS_BT_PREFIX`: Bootstrap cohort definition for fairness testing
+- `config/fairness_groups.cfg`: Defines the groups to compare
+	- Each line: two or more group definitions ([bootstrap cohort filter format](../../../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format), separated by `|`), tab-delimited with display names (also separated by `|`)
+	- Example:
+		```tsv
+		Gender:1,1|Gender:2,2	Males|Females
+		```
+
+## How to Run
+From your TestKit folder, execute:
+```bash
+./run.specific.sh 12
 ```
-Gender:1,1|Gender:2,2  [TAB]   Males|Females
+Or include as part of the full suite:
+```bash
+./run.sh
 ```
 
-## Output
-$WORK_DIR/fairness
+## What This Test Does
+- Uses cohort definitions from `fairness_groups.cfg` to compare model performance across groups
+- Calculates AUC, sensitivity and specificity, at common cutoffs (5%, 10%)
+- Performs statistical tests (chi-square) to assess significance of differences
+- If unfairness is detected, applies matching (e.g., by age) and re-evaluates fairness
 
-- fairness_report.tsv - a summary table that compare sensitivity/ specificity AUC in the same cutoff 5%,10%
-- fairness_report.* - result that compare statistical chi square between the groups to see if the different in sensitivity is statistically significant. There are 2 files. 1 for 5% PR cutoff and 1 for 10% PR cutoff
-- Graph_fairness - plots the sensitivity as function of score threshold in the different groups (with confidence intervals) that we can compare not just 5,10%
-- graph_matched - If the model is not "fair" we tried to do matching by strata (The default in the config is age). Here we have graphs results after matching
- 
-What to look for?
-please search for low chi square in fairness report and similar sensitivity. Have a look on the graph Graph_fairness. If needed see the matched resutls.
+## Output Location
+- `$WORK_DIR/fairness/`
+	- `fairness_report.tsv`: Summary table comparing sensitivity, specificity, and AUC at 5% and 10% cutoffs
+	- `fairness_report.*`: Statistical chi-square results for sensitivity differences (one file for each cutoff)
+	- `Graph_fairness`: Plots sensitivity vs. score threshold for each group (with confidence intervals)
+	- `graph_matched`: Plots after matching (e.g., by age) if fairness is not met
+
+## How to Interpret Results
+- Look for low chi-square values and similar sensitivity across groups in `fairness_report.tsv`
+- Use `Graph_fairness` to visually compare sensitivity curves
+- If needed, review matched results in `graph_matched` to see if fairness improves

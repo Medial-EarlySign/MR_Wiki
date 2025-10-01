@@ -38,3 +38,16 @@ The bootstrap result file is a tab-delimited file with three columns:
 
 3. **Value**
      - The numeric value corresponding to the cohort and measurement.
+
+### Example Result Format
+
+```tsv
+Cohort	Measurement	Value
+Age:40-89,Time-Window:0,365	AUC_CI.Lower.95	0.555556
+Age:40-89,Time-Window:0,365	AUC_CI.Upper.95	1
+Age:40-89,Time-Window:0,365	AUC_Mean	0.867092
+Age:40-89,Time-Window:0,365	AUC_Obs	0.875
+Age:40-89,Time-Window:0,365	AUC_Std	0.129476
+...
+Age:40-89,Time-Window:0,365	SENS@FPR_03	10.34565
+```

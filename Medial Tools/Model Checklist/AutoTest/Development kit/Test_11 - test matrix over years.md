@@ -1,21 +1,41 @@
-# Test_11 - test matrix over years
 
-## Overview
-Tests of model features over the years. What changes in the features between different years?
-We want to make sure there are no biases or something important that is time sensitive.
-It takes the test samples and compares the most recent prediction date samples to the least recent prediction date samples and creates propensity model that tries to differentiate between samples.
+# Test 11: Matrix Over Years
 
-## Input
-- WORK_DIR - output work directory
-- MODEL_PATH - path for model
-- REPOSITORY_PATH - repository path
-- TEST_SAMPLES - test samples
+## Purpose
+Analyze how model features change over time, comparing samples from the most recent and least recent prediction dates. This helps detect temporal biases, shifts, or time-sensitive patterns in the data and model.
 
-## Output
-- $WORK_DIR/compare_years
-    - Global.html - the most important features in the propensity model that are different between the years
-    - features_diff - A directory that compares each of the important features in the propensity model - least recent to most recent on the same graph.
-    - single_features - But why single feature analysis directory for each of the important features in the propensity model analysis
-    - compare_rep.txt - text file that compare the average value of each feature
-    - test_propensity.bootstrap.pivot_txt - the propensity model performance
-Please go over on the most important different features and decide if that's OK
+## Required Inputs
+From `configs/env.sh`:
+
+- `WORK_DIR`: Output directory for results
+- `MODEL_PATH`: Path to the model
+- `REPOSITORY_PATH`: Path to the data repository
+- `TEST_SAMPLES`: Path to the test samples
+
+## How to Run
+From your TestKit folder, execute:
+```bash
+./run.specific.sh 11
+```
+Or include as part of the full suite:
+```bash
+./run.sh
+```
+
+## What This Test Does
+- Compares feature matrices from the most recent and least recent prediction dates
+- Builds a propensity model to differentiate between samples from different years. Uses [TestModelExternal](../../../TestModelExternal.md) tool for more details.
+- Highlights features that change over time and may introduce bias
+
+## Output Location
+- `$WORK_DIR/compare_years/`
+    - `Global.html`: Most important features in the propensity model (differences between years)
+    - `features_diff/`: Graphs comparing each important feature (least recent vs. most recent)
+    - `single_features/`: But Why analysis for each important feature in the propensity model
+    - `compare_rep.txt`: Text file comparing average values of each feature
+    - `test_propensity.bootstrap.pivot_txt`: Propensity model performance metrics
+
+## How to Interpret Results
+- Review the most important features that differ between years
+- Inspect feature comparison graphs for trends, shifts, or anomalies
+- Use findings to identify and address potential temporal biases in your model
