@@ -13,6 +13,11 @@ The Development Kit validates newly developed models before integration with Alg
 ## How to Use
 
 Please refere to [Creating a New TestKit for Your Model](../index.md#creating-a-new-testkit-for-your-model)
+To run all tests, execute from the created TestKit folder:
+```bash
+./run.sh
+```
+Or use `run.specific.sh` to execute a specific test
 
 Review results in your configured output directory.
 
