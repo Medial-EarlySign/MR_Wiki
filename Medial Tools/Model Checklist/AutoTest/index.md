@@ -24,7 +24,7 @@ AutoTest supports three main scenarios:
 
 - [Development](Development%20kit): Test new models during development.
 - [External Silent Run](External%20Silent%20Run): Run auto tests on datasets without labels/outcomes.
-- **External_validation_after_SR**: Test datasets with labels/outcomes, extending the silent run with additional analyses and sanity checks.
+- [External_validation_after_SR](External_validation_after_SR): Test datasets with labels/outcomes, extending the silent run with additional analyses and sanity checks.
 
 ## Creating a New TestKit for Your Model
 
