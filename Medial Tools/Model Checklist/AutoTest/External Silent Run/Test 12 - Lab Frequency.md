@@ -1,4 +1,4 @@
-# Test 9 - Lab Frequency
+# Test 12 - Lab Frequency
 
 **Overview**
 One of the major difference between dataset, and health systems, is rate of lab samples. Here we explore lab frequency for the signal behind the important features.

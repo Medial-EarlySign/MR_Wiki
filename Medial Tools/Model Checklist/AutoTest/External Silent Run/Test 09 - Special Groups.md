@@ -1,4 +1,4 @@
-# Test 6 - Special Groups
+# Test 09 - Special Groups
 
 **Overview**
 Here we compare score distribution over special groups checking model ability to highlight high risk populations  
