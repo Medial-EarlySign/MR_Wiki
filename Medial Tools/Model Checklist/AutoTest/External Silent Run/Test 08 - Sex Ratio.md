@@ -1,4 +1,4 @@
-# Test 5 - Sex Ratio
+# Test 08 - Sex Ratio
 
 **Overview**
 Here we compare score distribution to check sex fairness, and similarity to reference  

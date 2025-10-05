@@ -1,4 +1,4 @@
-# Test 3 & 4 - Compare Score Distribution
+# Test 06-07 - Compare Score Distribution
 
 **Overview**
 One more test comparing the reference and the new dataset, this time from score distribution aspect. 

@@ -33,9 +33,11 @@ Review results in your configured output directory.
 ## Available Tests and Tools
 
 - [Test 01 - Generate Repository](Test%2001%20-%20Generate%20Repository.md)
-- [Test 3 & 4 - Compare Score Distribution](Test%203%20%26%204%20-%20Compare%20Score%20Distribution.md)
-- [Test 5 - Sex Ratio](Test%205%20-%20Sex%20Ratio.md)
+- [Test 02 - Fit Model to Repository](Test%2002%20-%20Fit%20Model%20to%20Repository.md)
+- [Test 03 - Create Samples](Test%2003%20-%20Create%20Samples.md)
 - [Test 05 - Compare Repository with Reference Matrix](Test%2005%20-%20Compare%20Repository%20with%20Reference%20Matrix.md)
+- [Test 06 & 07 - Compare Score Distribution](Test%2006%20&%2007%20-%20Compare%20Score%20Distribution.md)
+- [Test 08 - Sex Ratio](Test%2008%20-%20Sex%20Ratio.md)
 - [Test 6 - Special Groups](Test%206%20-%20Special%20Groups.md)
 - [Test 7 - Compare Important Feature](Test%207%20-%20Compare%20Important%20Feature.md)
 - [Test 8 - Estimate Performances](Test%208%20-%20Estimate%20Performances.md)

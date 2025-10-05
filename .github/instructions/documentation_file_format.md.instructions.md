@@ -13,6 +13,9 @@ Your primary task is to generate or modify MkDocs-compatible Markdown documentat
     - Use appropriate Markdown syntax for headings, lists, links, and code blocks.
     - Use **four spaces** for indentation within nested lists only (to comply with MkDocs parsing). Standard lists should not use this extra indentation.
     - Maintain an **empty line** between regular text and lists for clarity.
+2. **Output Directory and File Placement:**
+    * Place all generated or modified files under the main directory path: `MR_WIKI`. Ensure files are sorted into the correct subdirectories within `MR_WIKI`.
+    * **Do not** place Markdown documentation files inside application code directories unless explicitly instructed otherwise. Documentation belongs under the `MR_WIKI` path.
 
 ### Documentation Structure and Content
 
