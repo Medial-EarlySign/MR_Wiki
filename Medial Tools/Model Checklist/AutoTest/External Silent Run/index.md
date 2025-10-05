@@ -39,18 +39,16 @@ Review results in your configured output directory.
 - [Test 06 - Compare Score Distribution](Test%2006%20-%20Compare%20Score%20Distribution.md)
 - [Test 07 - Calc Score KLD](Test%2007%20-%20Calc%20Score%20KLD.md)
 - [Test 08 - Sex Ratio](Test%2008%20-%20Sex%20Ratio.md)
-- [Test 09 - Special Groups](Test%2009%20-%20Special%20Groups.md)
+- [Test 09 - Coverage Special Groups](Test%2009%20-%20Coverage%20Special%20Groups.md)
 - [Test 10 - Compare Important Feature](Test%2010%20-%20Compare%20Important%20Feature.md)
 - [Test 11 - Estimate Performances](Test%2011%20-%20Estimate%20Performances.md)
 - [Test 12 - Lab Frequency](Test%2012%20-%20Lab%20Frequency.md)
 - [Test 13 - test_but_why]()
 - [Test 14 - 14.test_model_explainability]()
-- [Test 16 - Sample Dates](Test%2016%20-%20Sample%20Dates.md)
+- [Test 16 - Sample Dates]()
 - [Test 17 - Estimate Performance from Calibration]()
 - [Test 18 - Analyze Messages]()
 - [Test 19 - Search Missing mappings]()
-- [Tips and Scripts](Tips%20and%20Scripts.md)
-- [TODO](TODO.md)
 
 ## Configuration
 
