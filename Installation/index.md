@@ -42,15 +42,17 @@ You can [download Boost](https://www.boost.org/users/download/) and compile it m
 sudo apt install bzip2 wget -y
 
 # Download Boost
-wget https://archives.boost.io/release/1.85.0/source/boost_1_85_0.tar.bz2
+VERSION=1.85.0
+VERSION_2=$(echo ${VERSION} | awk -F. '{print $1 "_" $2 "_" $3}')
+wget https://archives.boost.io/release/${VESRION}/source/boost_${VERSION_2}.tar.bz2
 
 # Extract files
-tar -xjf boost_1_85_0.tar.bz2
-rm -f boost_1_85_0.tar.bz2
+tar -xjf boost_${VERSION_2}.tar.bz2
+rm -f boost_${VERSION_2}.tar.bz2
 
 # Set up Boost install directory
 WORK_BUILD_FOLDER=$(realpath .)
-cd boost_1_85_0
+cd boost_${VERSION_2}
 
 # Configure and clean
 ./bootstrap.sh
@@ -62,7 +64,7 @@ cd boost_1_85_0
 mkdir -p ${WORK_BUILD_FOLDER}/Boost/include
 
 # Link headers to Boost/include
-ln -sf ${WORK_BUILD_FOLDER}/boost_1_85_0/boost  ${WORK_BUILD_FOLDER}/Boost/include
+ln -sf ${WORK_BUILD_FOLDER}/boost_${VERSION_2}/boost  ${WORK_BUILD_FOLDER}/Boost/include
 
 # Build shared libraries (not needed for AlgoMarker, but needed for MES tools if you choose to compile)
 ./b2 cxxflags="-march=x86-64" link=shared variant=release linkflags=-static-libstdc++ -j8 cxxflags="-fPIC" --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options --with-system --with-regex --with-filesystem
