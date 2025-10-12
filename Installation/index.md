@@ -111,6 +111,7 @@ if [ ! -z "$LD_LIBRARY_PATH" ]; then
 else
     export LD_LIBRARY_PATH=${LD_PATH}
 fi
+export AUTOTEST_LIB=${MR_TOOLS}/AutoValidation/kits
 export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python${PY_VERSION}:${MR_TOOLS}/RepoLoadUtils/common
 ```
 

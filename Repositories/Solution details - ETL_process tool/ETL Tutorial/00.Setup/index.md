@@ -9,6 +9,11 @@ Start by cloning the [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) re
 
 ## Configure Python to Recognize the Library
 
+Install required python packages:
+```bash
+pip install numpy pandas plotly sqlalchemy ipython
+```
+
 ### Option 1: Update Your Environment Variable
 
 The easiest way to use the infrastructure is by adding the "**RepoLoadUtils/common**" directory to your `PYTHONPATH` environment variable. This allows you to directly import modules from the ETL infrastructure in any Python file.

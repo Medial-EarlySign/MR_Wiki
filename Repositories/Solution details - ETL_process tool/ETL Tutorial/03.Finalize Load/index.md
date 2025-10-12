@@ -100,3 +100,7 @@ Finalizes preparation, generates signals, and loads the repository.
 ### Extending and Testing
 
 For guidance on extending the process and adding automated tests, see [Test Extention](../ETL_process%20dynamic%20testing%20of%20signals.md)
+
+## Final Step: Validate Results
+
+Follow [this guide](../04.Read%20Results/)
