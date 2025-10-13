@@ -76,7 +76,7 @@ ln -sf ${WORK_BUILD_FOLDER}/boost_${VERSION_2}/boost  ${WORK_BUILD_FOLDER}/Boost
 sudo apt install libboost-system1.83-dev libboost-filesystem1.83-dev libboost-regex1.83-dev libboost-program-options1.83-dev -y
 ```
 
-> **Note:** On Ubuntu 22.04, Boost version 1.74 is available and compatible.
+> **Note:** On Ubuntu 22.04, Boost version 1.74 is available and compatible. It was also tested with newest Boost version 1.89.0(2025-August-14) as today
 > 
 > **Important:** This method does **not** work for the AlgoMarker library or the Python API. For those, you must compile Boost from source.
 

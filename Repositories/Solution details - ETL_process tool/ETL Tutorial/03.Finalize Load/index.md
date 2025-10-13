@@ -1,6 +1,6 @@
 # Finalizing the Load Process
 
-his step **completes the ETL pipeline** and prepares the repository for use.
+This step **completes the ETL pipeline** and prepares the repository for use.
 
 ## Recap of earlier steps
 * **Prepare signals**: Run `prepare_final_signals` for each data type (see [previous step](../02.Process%20Pipeline))
@@ -62,6 +62,15 @@ prepare_dicts(WORK_DIR, 'DIAGNOSIS', def_dict, set_dict)
 finish_prepare_load(WORK_DIR, '/nas1/Work/CancerData/THIN/thin_20XX', 'thin')
 ```
 
+## Final Script to Create the Data Repository
+Look for a message on your screen similar to the last two lines below, which provide the full path to the script that runs `Flow` and generates the repository:
+
+```text
+Full script to execute :
+.../rep_configs/load_with_flow.sh
+```
+This script is located at `WORK_DIR`/rep_configs/load_with_flow.sh. Run this script and confirm that it completes successfully with a success message at the end.
+
 ---
 
 ## Function Reference
@@ -101,6 +110,6 @@ Finalizes preparation, generates signals, and loads the repository.
 
 For guidance on extending the process and adding automated tests, see [Test Extention](../ETL_process%20dynamic%20testing%20of%20signals.md)
 
-## Final Step: Validate Results
+## Validating The ETL Outputs and Tests
 
 Follow [this guide](../04.Read%20Results/)
