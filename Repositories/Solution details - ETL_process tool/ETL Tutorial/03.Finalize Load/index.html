@@ -8318,6 +8318,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#final-script-to-create-the-data-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Script to Create the Data Repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#function-reference" class="md-nav__link">
     <span class="md-ellipsis">
       Function Reference
@@ -8342,9 +8351,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#final-step-validate-results" class="md-nav__link">
+  <a href="#validating-the-etl-outputs-and-tests" class="md-nav__link">
     <span class="md-ellipsis">
-      Final Step: Validate Results
+      Validating The ETL Outputs and Tests
     </span>
   </a>
   
@@ -8383,7 +8392,7 @@
 
 
 <h1 id="finalizing-the-load-process">Finalizing the Load Process</h1>
-<p>his step <strong>completes the ETL pipeline</strong> and prepares the repository for use.</p>
+<p>This step <strong>completes the ETL pipeline</strong> and prepares the repository for use.</p>
 <h2 id="recap-of-earlier-steps">Recap of earlier steps</h2>
 <ul>
 <li><strong>Prepare signals</strong>: Run <code>prepare_final_signals</code> for each data type (see <a href="../02.Process%20Pipeline">previous step</a>)</li>
@@ -8460,6 +8469,13 @@
 <a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="c1"># Step 3: Finalize and load</span>
 <a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="n">finish_prepare_load</span><span class="p">(</span><span class="n">WORK_DIR</span><span class="p">,</span> <span class="s1">&#39;/nas1/Work/CancerData/THIN/thin_20XX&#39;</span><span class="p">,</span> <span class="s1">&#39;thin&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<h2 id="final-script-to-create-the-data-repository">Final Script to Create the Data Repository</h2>
+<p>Look for a message on your screen similar to the last two lines below, which provide the full path to the script that runs <code>Flow</code> and generates the repository:</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Full script to execute :
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>.../rep_configs/load_with_flow.sh
+</code></pre></div></td></tr></table></div>
+This script is located at <code>WORK_DIR</code>/rep_configs/load_with_flow.sh. Run this script and confirm that it completes successfully with a success message at the end.</p>
 <hr />
 <h2 id="function-reference">Function Reference</h2>
 <p><strong>1. <code>prepare_final_signals</code></strong><br />
@@ -8494,7 +8510,7 @@ Finalizes preparation, generates signals, and loads the repository.</p>
 <hr />
 <h3 id="extending-and-testing">Extending and Testing</h3>
 <p>For guidance on extending the process and adding automated tests, see <a href="../ETL_process%20dynamic%20testing%20of%20signals.html">Test Extention</a></p>
-<h2 id="final-step-validate-results">Final Step: Validate Results</h2>
+<h2 id="validating-the-etl-outputs-and-tests">Validating The ETL Outputs and Tests</h2>
 <p>Follow <a href="../04.Read%20Results/">this guide</a></p>
 
 
