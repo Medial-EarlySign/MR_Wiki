@@ -37,14 +37,30 @@ Flow --fit_model_to_rep \
   --log_action_file_path /tmp/actions.log \
   --log_missing_categories_path /tmp/categ.log \
   --cleaner_verbose -1 \
+  --remove_explainability 1 \
   --allow_virtual_rep 0
 ```
+
+### Using Production model for Testing
+When testing a model sourced from AlgoMarker Production, you'll often want to disable components that are only enabled for production-specific monitoring. The Production model includes features like verbose outlier cleaning and explainability (when applicable).
+
+While these features don't affect the model's prediction score, they significantly slow down the testing process. To disable them for quicker testing, use the following command:
+
+```bash
+Flow --fit_model_to_rep --rep <REPOSITORY_PATH_TO_TEST_THE_MODEL> --f_model <PATH_TO_AM_MODEL> --f_output <OUTPUT_PATH_FOR_CHANGED_MODEL> --cleaner_verbose -1 --remove_explainability 1
+```
+
+**Key flags used:**
+
+* `--cleaner_verbose -1`: Disables verbose output for outlier cleaning.
+* `--remove_explainability 1`: Disables the explainability component.
 
 ### Argument Descriptions
 
 - `log_action_file_path`: Logs all changes made to the model. If not provided, output is printed to the screen.
 - `log_missing_categories_path`: Logs all missing codes for signals. If not provided, output is printed to the screen.
 - `cleaner_verbose`: Controls verbosity of outlier reporting. Use `1` for production (verbose), `-1` for validation (no verbose, faster).
+- `remove_explainability`: Controls if to remove the explainability module from the model. Faster in testing of just the scores
 - `allow_virtual_rep`: Allows use only a repository definition without data (like we have in AlgoMAkrer) for testing model fitting. Some adjustments may be limited, because we don't use actual data.
 
 ## Sample Output
