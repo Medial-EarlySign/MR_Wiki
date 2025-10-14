@@ -1,13 +1,26 @@
 ## Reviewing ETL loading results
 
-All the outputs of the ETL are stored in [WORK_DIR](../../High%20level%20-%20important%20paths/WORK_DIR.md)
-You should explore outputs only in `signal_processings_log` and `outputs`
+## Purpose
 
-### Test results for signal
+This page explains how to inspect and interpret the ETL outputs after running the ETL process. It tells you where to find logs and visualizations, what the most important checks are, and how to spot common issues such as unit mismatches or unexpected value distributions.
 
-You should explore all `outputs/tests.*log` which contains test result for each processing pipeline/signal.
+Where outputs are stored
 
-Example output  of `outputs/tests.labs.log`:
+All ETL outputs are written under the repository `WORK_DIR`. See the high-level path: [WORK_DIR](../../High%20level%20-%20important%20paths/WORK_DIR.md).
+
+Key folders to review:
+
+- `signal_processings_log/` - per-signal processing logs and diagnostics.
+- `outputs/` - summary test logs (named `tests.*log`) produced by the validation checks. Directory for each signal and its distribution values.
+
+## How-to: quick checklist
+
+1. Open `outputs/tests.*log` (for example `outputs/tests.labs.log`) to read automated validation results.
+2. If the test log reports anomalies, inspect the per-signal directory under `outputs/$SIGNAL/` for plots/visualizations and batch-level reports to help confirm unit consistency and distribution shapes.
+
+## Example — reading a test log
+
+Here is a representative excerpt from `outputs/tests.labs.log` (Hemoglobin checks):
 
 ```text
 Done testing nulls in signal Hemoglobin
@@ -29,37 +42,52 @@ There are issues with high range, please have a look (more than factor 3)
 Done testing values of signal Hemoglobin
 ```
 
-In this example, Hemoglobin data comes from four sources, but only two are large enough for analysis. The first source uses unit `g/L`, the second `g/l`. A small KLD value (<< 1) means the source's value distribution is similar to the overall Hemoglobin distribution. You can verify this by reviewing graphs in `${WORK_DIR}/ETL/outputs/Hemoglobin`, but if the numbers are very small, further review may not be necessary.
+## Mechanism — what this output tells you
 
-Lines starting with "There are issues with" and the following tables highlight discrepancies:
+- KLD (Kullback–Leibler divergence) per source indicates how similar that source's value distribution is to the overall signal distribution. Small KLD (<< 1) means similar.
+- The sections labelled "There are issues with ..." flag quantile-level discrepancies between the current dataset and a reference distribution. These point to potential unit mismatches, data-entry issues or population differences.
 
-- `q`: Quantile being compared
-- `value_0`: Quantile in current dataset
-- `reference`: Quantile in reference dataset
+### Columns in the discrepancy tables
+
+- `q`: quantile being compared (for example 0.001, 0.5, 0.999)
+- `value_0`: quantile value in the current dataset
+- `reference`: quantile value in the reference dataset
 - `ratio1`: value_0 / reference
 - `ratio2`: 1 / ratio1
-- `ratio`: max(ratio1, ratio2)
+- `ratio`: max(ratio1, ratio2) — used to highlight large deviations
 
-Large ratios (e.g., factor of 10) may indicate mismatched units. The log may suggest how to fix units, such as converting from `g/L` or `g/l` to the expected `g/dL` (as described in the AlgoMarker), and recommend multiplying by 10.
+### Interpreting large ratios
+
+Large ratios (for example ~10) often indicate unit mismatches. A common case for Hemoglobin is `g/L` vs `g/dL` (multiply `g/dL` by 10 to get `g/L`). If you see a consistent factor across quantiles, consider converting units or normalizing the source before further processing.
 
 > [!IMPORTANT]
->  If there are mismatches in the input, loading will not fail. Warnings will appear in the log, and it is **your responsibility** to review and ensure the data is correct.
+> If there are mismatches in the input, loading does not fail by default. Warnings will appear in the logs. It is your responsibility to review and correct data issues where needed.
 
-#### Deep dive into important features
+## Deep-dive: log locations and visual aids
 
-- Specific test log might appear: `ETL/outputs/test.$SIGNAL.log`
-- Processing logs (e.g., dropped lines, any print statement in your processing pipeline is clooected into this log): `ETL/signal_processings_log/$SIGNAL.log`
-- Distribution of day, month, year, and value: `ETL/signal_processings_log/$SIGNAL/batches/`
-    * If there are multiple batches or just a single batch, an aggregated report appears in `ETL/signal_processings_log/$SIGNAL`
+- Signal specific test log: `ETL/outputs/test.$SIGNAL.log`
+- Signal processing log (runtime messages, dropped lines): `ETL/signal_processings_log/$SIGNAL.log`
+- Batch-level charts and aggregated reports: `ETL/signal_processings_log/$SIGNAL/batches/` and `ETL/signal_processings_log/$SIGNAL`
 
-It is recommended to manually check logs and charts for all important features. For example:
+## Practical checks and recommended workflow
 
-* Example 1: Monthly distribution of Hemoglobin samples from a dataset prepared in mid-2023. Monthly samples may look suspicious, but the yearly graph shows samples are only from the last year, so more samples in early months are expected.
+1. Scan `outputs/tests.*log` for flagged issues.
+2. For flagged signals, open `signal_processings_log/$SIGNAL/` and inspect per-signal log for dropped records and warnings.
+3. Use the charts in `ETL/outputs/$SIGNAL` to confirm whether a discrepancy comes from unit differences, data entry errors, or genuine population shifts.
+4. If a unit mismatch is found, apply a unit conversion and re-run the pipeline for that signal.
+
+## Visual examples
+
+### Example 1 — monthly vs yearly distribution (Hemoglobin)
+
+Monthly charts can look noisy when most data come from a single year. In that case, check both monthly and yearly views to avoid false alarms.
 
 <img src="../../../../attachments/13926413/13926420.png"/>
 <img src="../../../../attachments/13926413/13926421.png"/>
 
-* Example 2: On the right, a normal distribution of a lab measurement. On the left, unclear 'vibrations'. This may not affect the model, but you should check with the dataset owner to ensure it does not hide a larger issue.
+### Example 2 — distribution shape check
+
+On the right is a smooth (expected) distribution. On the left are unexplained "vibrations"; they may indicate data-quality issues or batch artifacts. Discuss with the dataset owner to confirm.
 
 <img src="../../../../attachments/13926413/13926422.png"/>
 <img src="../../../../attachments/13926413/13926423.png"/>
