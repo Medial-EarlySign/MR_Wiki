@@ -1,8 +1,8 @@
 ---
 mode: agent
 ---
-Please rephrase and edit the current documentation markdown and make sure all those things are covered:
+Revise the existing markdown documentation to create a complete and user-friendly guide. Ensure the final document clearly covers these three essential sections:
 
-1. Specify the goal of the tool/library provided/explained in the document
-2. Specify how to use it, some examples
-3. Specify explaination on the tool and how it does what it does
+1. **Purpose**: Define the goals and intended outcome of this system or tool.
+2. **How-To**: Provide clear usage instructions, including practical, annotated examples.
+3. **Mechanism**: Explain how the tool/system functions and the role of its various components.
