@@ -8295,23 +8295,58 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Reviewing ETL loading results">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#test-results-for-signal" class="md-nav__link">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
     <span class="md-ellipsis">
-      Test results for signal
+      Purpose
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Test results for signal">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-quick-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      How-to: quick checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-reading-a-test-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example — reading a test log
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mechanism-what-this-output-tells-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mechanism — what this output tells you
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mechanism — what this output tells you">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deep-dive-into-important-features" class="md-nav__link">
+  <a href="#columns-in-the-discrepancy-tables" class="md-nav__link">
     <span class="md-ellipsis">
-      Deep dive into important features
+      Columns in the discrepancy tables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpreting-large-ratios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpreting large ratios
     </span>
   </a>
   
@@ -8319,6 +8354,52 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-dive-log-locations-and-visual-aids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep-dive: log locations and visual aids
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-checks-and-recommended-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical checks and recommended workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-monthly-vs-yearly-distribution-hemoglobin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1 — monthly vs yearly distribution (Hemoglobin)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-distribution-shape-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2 — distribution shape check
+    </span>
+  </a>
   
 </li>
         
@@ -8362,11 +8443,22 @@
   <h1>Index</h1>
 
 <h2 id="reviewing-etl-loading-results">Reviewing ETL loading results</h2>
-<p>All the outputs of the ETL are stored in <a href="../../High%20level%20-%20important%20paths/WORK_DIR.html">WORK_DIR</a>
-You should explore outputs only in <code>signal_processings_log</code> and <code>outputs</code></p>
-<h3 id="test-results-for-signal">Test results for signal</h3>
-<p>You should explore all <code>outputs/tests.*log</code> which contains test result for each processing pipeline/signal.</p>
-<p>Example output  of <code>outputs/tests.labs.log</code>:</p>
+<h2 id="purpose">Purpose</h2>
+<p>This page explains how to inspect and interpret the ETL outputs after running the ETL process. It tells you where to find logs and visualizations, what the most important checks are, and how to spot common issues such as unit mismatches or unexpected value distributions.</p>
+<p>Where outputs are stored</p>
+<p>All ETL outputs are written under the repository <code>WORK_DIR</code>. See the high-level path: <a href="../../High%20level%20-%20important%20paths/WORK_DIR.html">WORK_DIR</a>.</p>
+<p>Key folders to review:</p>
+<ul>
+<li><code>signal_processings_log/</code> - per-signal processing logs and diagnostics.</li>
+<li><code>outputs/</code> - summary test logs (named <code>tests.*log</code>) produced by the validation checks. Directory for each signal and its distribution values.</li>
+</ul>
+<h2 id="how-to-quick-checklist">How-to: quick checklist</h2>
+<ol>
+<li>Open <code>outputs/tests.*log</code> (for example <code>outputs/tests.labs.log</code>) to read automated validation results.</li>
+<li>If the test log reports anomalies, inspect the per-signal directory under <code>outputs/$SIGNAL/</code> for plots/visualizations and batch-level reports to help confirm unit consistency and distribution shapes.</li>
+</ol>
+<h2 id="example-reading-a-test-log">Example — reading a test log</h2>
+<p>Here is a representative excerpt from <code>outputs/tests.labs.log</code> (Hemoglobin checks):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -8401,39 +8493,46 @@ You should explore outputs only in <code>signal_processings_log</code> and <code
 <a id="__codelineno-0-16" name="__codelineno-0-16"></a>6  0.999    189.0  17.900000  10.558659  0.094709  10.558659
 <a id="__codelineno-0-17" name="__codelineno-0-17"></a>Done testing values of signal Hemoglobin
 </code></pre></div></td></tr></table></div>
-<p>In this example, Hemoglobin data comes from four sources, but only two are large enough for analysis. The first source uses unit <code>g/L</code>, the second <code>g/l</code>. A small KLD value (&lt;&lt; 1) means the source's value distribution is similar to the overall Hemoglobin distribution. You can verify this by reviewing graphs in <code>${WORK_DIR}/ETL/outputs/Hemoglobin</code>, but if the numbers are very small, further review may not be necessary.</p>
-<p>Lines starting with "There are issues with" and the following tables highlight discrepancies:</p>
+<h2 id="mechanism-what-this-output-tells-you">Mechanism — what this output tells you</h2>
 <ul>
-<li><code>q</code>: Quantile being compared</li>
-<li><code>value_0</code>: Quantile in current dataset</li>
-<li><code>reference</code>: Quantile in reference dataset</li>
+<li>KLD (Kullback–Leibler divergence) per source indicates how similar that source's value distribution is to the overall signal distribution. Small KLD (&lt;&lt; 1) means similar.</li>
+<li>The sections labelled "There are issues with ..." flag quantile-level discrepancies between the current dataset and a reference distribution. These point to potential unit mismatches, data-entry issues or population differences.</li>
+</ul>
+<h3 id="columns-in-the-discrepancy-tables">Columns in the discrepancy tables</h3>
+<ul>
+<li><code>q</code>: quantile being compared (for example 0.001, 0.5, 0.999)</li>
+<li><code>value_0</code>: quantile value in the current dataset</li>
+<li><code>reference</code>: quantile value in the reference dataset</li>
 <li><code>ratio1</code>: value_0 / reference</li>
 <li><code>ratio2</code>: 1 / ratio1</li>
-<li><code>ratio</code>: max(ratio1, ratio2)</li>
+<li><code>ratio</code>: max(ratio1, ratio2) — used to highlight large deviations</li>
 </ul>
-<p>Large ratios (e.g., factor of 10) may indicate mismatched units. The log may suggest how to fix units, such as converting from <code>g/L</code> or <code>g/l</code> to the expected <code>g/dL</code> (as described in the AlgoMarker), and recommend multiplying by 10.</p>
+<h3 id="interpreting-large-ratios">Interpreting large ratios</h3>
+<p>Large ratios (for example ~10) often indicate unit mismatches. A common case for Hemoglobin is <code>g/L</code> vs <code>g/dL</code> (multiply <code>g/dL</code> by 10 to get <code>g/L</code>). If you see a consistent factor across quantiles, consider converting units or normalizing the source before further processing.</p>
 <blockquote>
 <p>[!IMPORTANT]
- If there are mismatches in the input, loading will not fail. Warnings will appear in the log, and it is <strong>your responsibility</strong> to review and ensure the data is correct.</p>
+If there are mismatches in the input, loading does not fail by default. Warnings will appear in the logs. It is your responsibility to review and correct data issues where needed.</p>
 </blockquote>
-<h4 id="deep-dive-into-important-features">Deep dive into important features</h4>
+<h2 id="deep-dive-log-locations-and-visual-aids">Deep-dive: log locations and visual aids</h2>
 <ul>
-<li>Specific test log might appear: <code>ETL/outputs/test.$SIGNAL.log</code></li>
-<li>Processing logs (e.g., dropped lines, any print statement in your processing pipeline is clooected into this log): <code>ETL/signal_processings_log/$SIGNAL.log</code></li>
-<li>Distribution of day, month, year, and value: <code>ETL/signal_processings_log/$SIGNAL/batches/</code><ul>
-<li>If there are multiple batches or just a single batch, an aggregated report appears in <code>ETL/signal_processings_log/$SIGNAL</code></li>
+<li>Signal specific test log: <code>ETL/outputs/test.$SIGNAL.log</code></li>
+<li>Signal processing log (runtime messages, dropped lines): <code>ETL/signal_processings_log/$SIGNAL.log</code></li>
+<li>Batch-level charts and aggregated reports: <code>ETL/signal_processings_log/$SIGNAL/batches/</code> and <code>ETL/signal_processings_log/$SIGNAL</code></li>
 </ul>
-</li>
-</ul>
-<p>It is recommended to manually check logs and charts for all important features. For example:</p>
-<ul>
-<li>Example 1: Monthly distribution of Hemoglobin samples from a dataset prepared in mid-2023. Monthly samples may look suspicious, but the yearly graph shows samples are only from the last year, so more samples in early months are expected.</li>
-</ul>
+<h2 id="practical-checks-and-recommended-workflow">Practical checks and recommended workflow</h2>
+<ol>
+<li>Scan <code>outputs/tests.*log</code> for flagged issues.</li>
+<li>For flagged signals, open <code>signal_processings_log/$SIGNAL/</code> and inspect per-signal log for dropped records and warnings.</li>
+<li>Use the charts in <code>ETL/outputs/$SIGNAL</code> to confirm whether a discrepancy comes from unit differences, data entry errors, or genuine population shifts.</li>
+<li>If a unit mismatch is found, apply a unit conversion and re-run the pipeline for that signal.</li>
+</ol>
+<h2 id="visual-examples">Visual examples</h2>
+<h3 id="example-1-monthly-vs-yearly-distribution-hemoglobin">Example 1 — monthly vs yearly distribution (Hemoglobin)</h3>
+<p>Monthly charts can look noisy when most data come from a single year. In that case, check both monthly and yearly views to avoid false alarms.</p>
 <p><img src="../../../../attachments/13926413/13926420.png"/>
 <img src="../../../../attachments/13926413/13926421.png"/></p>
-<ul>
-<li>Example 2: On the right, a normal distribution of a lab measurement. On the left, unclear 'vibrations'. This may not affect the model, but you should check with the dataset owner to ensure it does not hide a larger issue.</li>
-</ul>
+<h3 id="example-2-distribution-shape-check">Example 2 — distribution shape check</h3>
+<p>On the right is a smooth (expected) distribution. On the left are unexplained "vibrations"; they may indicate data-quality issues or batch artifacts. Discuss with the dataset owner to confirm.</p>
 <p><img src="../../../../attachments/13926413/13926422.png"/>
 <img src="../../../../attachments/13926413/13926423.png"/></p>
 
