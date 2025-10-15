@@ -8591,14 +8591,15 @@ More details can be found <a href="../../Python/Python%20AlgoMarker%20API%20Wrap
 </li>
 </ol>
 <p>Build the image with:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>algomarker_X<span class="w"> </span>--no-cache<span class="w"> </span>.
-</code></pre></div></td></tr></table></div></p>
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>podman<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>algomarker_X<span class="w"> </span>--no-cache<span class="w"> </span>.
+</code></pre></div></td></tr></table></div>
+   You can also use <code>create_image.sh</code> <a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/AlgoMarker_Server">helper script</a> to generate the AlgoMarker</p>
 <ol start="4">
 <li><strong>Run a Container</strong>
-   execute this command <code>docker run -id algomarker_X --name algomarker_container_X -p 1234:1234</code> and expose port 1234 to 1234 in your local machine.</li>
+   execute this command <code>podman run -id algomarker_X --name algomarker_container_X -p 1234:1234</code> and expose port 1234 to 1234 in your local machine.</li>
 </ol>
 <blockquote>
-<p>[!NOTE] You can replace all the <code>docker</code> commands with <code>podman</code>, it is fully compatible.</p>
+<p>[!NOTE] You can replace all the <code>podman</code> commands with <code>docker</code>, it is fully compatible.</p>
 </blockquote>
 <hr />
 <h2 id="how-to-use-the-deployed-algomarker">How to Use the Deployed AlgoMarker</h2>
