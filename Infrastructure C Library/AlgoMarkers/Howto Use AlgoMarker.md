@@ -58,13 +58,14 @@ More details can be found [here](../../Python/Python%20AlgoMarker%20API%20Wrappe
 
    Build the image with:
    ```bash
-   docker build -t algomarker_X --no-cache .
+   podman build -t algomarker_X --no-cache .
    ```
+   You can also use `create_image.sh` [helper script](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/AlgoMarker_Server) to generate the AlgoMarker
 
 4. **Run a Container**
-   execute this command `docker run -id algomarker_X --name algomarker_container_X -p 1234:1234` and expose port 1234 to 1234 in your local machine.
+   execute this command `podman run -id algomarker_X --name algomarker_container_X -p 1234:1234` and expose port 1234 to 1234 in your local machine.
 
-> [!NOTE] You can replace all the `docker` commands with `podman`, it is fully compatible.
+> [!NOTE] You can replace all the `podman` commands with `docker`, it is fully compatible.
 
 ---
 ## How to Use the Deployed AlgoMarker
