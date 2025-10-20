@@ -51,3 +51,7 @@ If you want to create a new model, please follow those steps:
 * [Python](Python/index.md) - A documentation of python wrapper of our infrastructure
 * [Research](Research/index.md) - A documentation of some research topics
 * [Installation](Installation/index.md) - Other documentation
+* [MR_LIBS](https://github.com/Medial-EarlySign/MR_Libs) - Github page to Medial EarlySign infrastructure libraries
+* [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) - Github page to Medial EarlySign tools that uses MR_LIBS
+* [MR_Scripts](https://github.com/Medial-EarlySign/MR_Scripts) - Github page to Medial EarlySign complementry scripts and tools
+
