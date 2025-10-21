@@ -8,6 +8,7 @@ This guide describes how to install and set up the MES Infrastructure and its co
 ## Prebuilt Releases
 
 A prebuilt package (excluding [MES Tools](MES%20Tools%20to%20Train%20and%20Test%20Models.md)) is available for [direct download](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0). This eliminates the need for manual compilation. The binaries are built on **Ubuntu 24.04** and are compatible with any Linux distribution using **glibc ≥ 2.39**. You must also install [OpenMP support](#2-install-openmp-support-ubuntu).
+A prebuild for `MES Tools` can be found in here: [MES Tools](https://github.com/Medial-EarlySign/MR_Tools/releases/tag/V1.0)
 
 ## Prerequisites
 

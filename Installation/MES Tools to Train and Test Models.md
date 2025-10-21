@@ -5,6 +5,8 @@
 
 These are command-line executables for training, testing, and manipulating models, as well as other utilities developed by MES.
 
+You can download a prebuilt release from the [Release page](https://github.com/Medial-EarlySign/MR_Tools/releases/tag/V1.0). The release is built with glibc 2.35 and will work out of the box on systems with **glibc ≥ 2.35** (e.g., **Ubuntu 22.04**). If you need to build from source, follow the instructions below.
+
 ### Installation Steps
 
 1. [Install Boost Libraries](index.md#3-install-boost-libraries-ubuntu). Compilation is not required, you might install from pacakge manager.
