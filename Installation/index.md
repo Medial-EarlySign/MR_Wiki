@@ -44,7 +44,7 @@ sudo apt install bzip2 wget -y
 # Download Boost
 VERSION=1.85.0
 VERSION_2=$(echo ${VERSION} | awk -F. '{print $1 "_" $2 "_" $3}')
-wget https://archives.boost.io/release/${VESRION}/source/boost_${VERSION_2}.tar.bz2
+wget https://archives.boost.io/release/${VERSION}/source/boost_${VERSION_2}.tar.bz2
 
 # Extract files
 tar -xjf boost_${VERSION_2}.tar.bz2
