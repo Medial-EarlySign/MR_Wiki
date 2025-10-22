@@ -20,11 +20,15 @@ The call to `finish_prepare_load` takes care of the rest. No need to do anything
 
 |Coding system prefix | description|
 |---------------------------------|------------------| 
-|ICD10_CODE:| Diagnosis or procedure with ICD10 codes. For PROCEDURE signal, uses procedure ontology |
-|ICD9_CODE| Diagnosis or procedure with ICD9 codes. For PROCEDURE signal, uses procedure ontology |
-| ATC_CODE: | Medication prescriptions in ATC codes |
-| RX_CODE: | Medications prescriptions in RX norm|
-| NDC_CODE:| Medications in NDC codes|
+| ICD10_CODE: | Diagnosis or procedure with ICD10 codes. For PROCEDURE signal, uses procedure ontology |
+| ICD9_CODE:  | Diagnosis or procedure with ICD9 codes. For PROCEDURE signal, uses procedure ontology  |
+| ATC_CODE:   | Medication prescriptions in ATC codes                                                  |
+| RX_CODE:    | Medications prescriptions in RX norm                                                   |
+| NDC_CODE:   | Medications in NDC codes                                                               |
+
+Notes:
+
+1. Please strip "." from ICD10/ICD9 codes
 
 ## Use Case 2 – New Signals from Client (List of Values)
 
