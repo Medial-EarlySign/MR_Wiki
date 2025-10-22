@@ -8673,7 +8673,7 @@ The call to <code>finish_prepare_load</code> takes care of the rest. No need to 
 <td>Diagnosis or procedure with ICD10 codes. For PROCEDURE signal, uses procedure ontology</td>
 </tr>
 <tr>
-<td>ICD9_CODE</td>
+<td>ICD9_CODE:</td>
 <td>Diagnosis or procedure with ICD9 codes. For PROCEDURE signal, uses procedure ontology</td>
 </tr>
 <tr>
@@ -8690,6 +8690,10 @@ The call to <code>finish_prepare_load</code> takes care of the rest. No need to 
 </tr>
 </tbody>
 </table>
+<p>Notes:</p>
+<ol>
+<li>Please strip "." from ICD10/ICD9 codes</li>
+</ol>
 <h2 id="use-case-2-new-signals-from-client-list-of-values">Use Case 2 – New Signals from Client (List of Values)</h2>
 <p>Sometimes we receive a signal that is not part of a known ontology and comes only as a list of values from the client.</p>
 <h3 id="example_1">Example:</h3>
