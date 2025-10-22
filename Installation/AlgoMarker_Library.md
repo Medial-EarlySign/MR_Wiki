@@ -25,7 +25,7 @@ You can download a prebuilt release from the [Release page](https://github.com/M
    Internal/AlgoMarker/full_build.sh
    ```
 
-A full docker image for compilation can be found under this link:
+A full docker image for compilation steps can be found under this link:
 
 * [01.basic_boost](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost) A base docker image with Boost
 * [03.algomarker](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/03.algomarker) A build with algomarker library

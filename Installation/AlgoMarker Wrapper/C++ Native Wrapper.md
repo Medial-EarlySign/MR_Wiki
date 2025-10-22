@@ -27,3 +27,8 @@ A prebuilt release is available on the [Release page](https://github.com/Medial-
     * `AM_CONFIG`: Path to the AlgoMarker configuration file.
    * `AM_LIB`: Path to the AlgoMarker shared library. 
       Refer to [AlgoMarker Library](../AlgoMarker_Library.md)) for compilation steps.
+
+A full docker image for compilation steps can be found under this link:
+
+* [01.basic_boost](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost) A base docker image with Boost
+* [05.algomarker_wrapper](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/05.algomarker_wrapper) A build with algomarker wrapper
