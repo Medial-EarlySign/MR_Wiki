@@ -102,7 +102,9 @@ def crawl_page(
         absolute_url = absolute_url.split("#")[0]  # remove fragment
         if absolute_url in crawled_pages:
             continue
-        if urlparse(absolute_url).netloc != base_domain or not(absolute_url.startswith(start_url)):
+        if urlparse(absolute_url).netloc != base_domain or not (
+            absolute_url.startswith(start_url)
+        ):
             # only test
             if allow_external_test:
                 _, html_cont = get_page_re(absolute_url)
@@ -119,7 +121,9 @@ def crawl_page(
         absolute_url = urljoin(url_final, img_url)
         if absolute_url in crawled_pages:
             continue
-        if urlparse(absolute_url).netloc != base_domain or not(absolute_url.startswith(start_url)):
+        if urlparse(absolute_url).netloc != base_domain or not (
+            absolute_url.startswith(start_url)
+        ):
             continue
         urls.append(absolute_url)
         pointer_to_page[absolute_url] = url_final
@@ -147,8 +151,10 @@ def main(start_url, concurrency=1):
 
 if __name__ == "__main__":
     # start_url = "http://localhost:8000"
-    start_url = "https://medial-earlysign.github.io/MR_WIKI"  # Change this to your starting URL
-    
+    start_url = (
+        "https://medial-earlysign.github.io/MR_WIKI"  # Change this to your starting URL
+    )
+
     # asyncio.run(main(start_url))
     main(start_url)
     df = pd.DataFrame.from_dict(crawled_pages, orient="index", columns=["status"])
@@ -159,4 +165,22 @@ if __name__ == "__main__":
     df.reset_index(inplace=True)
     print(df[df["status"] == 0])
     df[df["status"] == 0].to_csv("~/res.csv", index=False)
+    df.to_csv("~/res_full.csv", index=False)
+    # Generate sitemap:
+    df2 = (
+        df[(df["source"].notna()) & (df["source"].str.startswith(start_url))][
+            ["source"]
+        ]
+        .drop_duplicates(ignore_index=True)
+        .sort_values(["source"], ignore_index=True)
+    )
+    with open("~/sitemap.xml", "w") as fw:
+        fw.write(
+            '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        )
+        fw.write(
+            "\n".join(map(lambda x: f"<url><loc>{x}</loc></url>", df["source"].values))
+        )
+        fw.write("</urlset>")
+
     # breakpoint()
