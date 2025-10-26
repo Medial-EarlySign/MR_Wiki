@@ -1,7 +1,7 @@
 # change_model
 
 This tool allows you to **modify components within an existing MedModel** without the need to retrain the entire model. It's an efficient way to make targeted adjustments to a model's pipeline, especially for production, testing, or debugging purposes.
-This tool, is part of the [AllTools compilation](../Installation/index.md#3-mes-tools-to-train-and-test-models)
+This tool, is part of the [AllTools compilation](../../Installation/index.md#3-mes-tools-to-train-and-test-models)
 
 Common use cases include:
 
