@@ -16,45 +16,48 @@ import time
 import os
 
 
-def get_pages() -> list[str]:
-    resp = requests.get("https://medial-earlysign.github.io/MR_WIKI/sitemap")
+def get_pages(site: str) -> list[str]:
+    resp = requests.get(f"{site}/sitemap")
     data = resp.content
     xml = ET.parse(BytesIO(data))
     all_res = xml.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
-    all_urls = list(map(lambda x: x.text.replace("/MR_Wiki/", "/MR_WIKI/"), all_res))
+    # .replace("/MR_Wiki/", "/MR_WIKI/")
+    all_urls = list(map(lambda x: x.text, all_res))
     return all_urls
 
 
-def index_page(driver: webdriver.Chrome, index_url: str, REINDEX: bool) -> bool:
-    driver.get("https://search.google.com/search-console")
+def index_page(
+    driver: webdriver.Chrome, base_site: str, index_url: str, REINDEX: bool
+) -> bool:
+    base_site = base_site.strip("/")
+    driver.get(f"https://search.google.com/search-console?resource_id={base_site}")
 
     wait = WebDriverWait(driver, 30)
 
     element_locator = (
         By.CSS_SELECTOR,
-        "input[aria-label='Inspect any URL in https://medial-earlysign.github.io/MR_WIKI/']",
+        f"input[aria-label='Inspect any URL in {base_site}/']",
     )
     search_box = wait.until(EC.visibility_of_element_located(element_locator))
 
     search_box.send_keys(index_url + "\n")
     time.sleep(1)
 
-    #live index: 'Test live URL'
+    # live index: 'Test live URL'
     element_locator_live = (
         By.XPATH,
         "//span[text() = 'Test live URL']",
     )
-    live_search = wait.until(
-        EC.visibility_of_element_located(element_locator_live)
-    )
+    live_search = wait.until(EC.visibility_of_element_located(element_locator_live))
     live_search.click()
+    time.sleep(30)
 
     element_locator_req_index = (
         By.XPATH,
         "//span[text() = 'Request indexing']",
     )
     index_button = wait.until(
-        EC.visibility_of_element_located(element_locator_req_index)
+        EC.visibility_of_any_elements_located(element_locator_req_index)
     )
 
     # Check if URL is in google first: 'Page is indexed'
@@ -63,12 +66,14 @@ def index_page(driver: webdriver.Chrome, index_url: str, REINDEX: bool) -> bool:
     )
 
     if not (is_indexed) or REINDEX:
-        index_button.click()
+        if len(index_button) > 0:
+            index_button[0].click()
+    time.sleep(5)
     return is_indexed
 
 
-def index_all(reindex: bool) -> dict[str, bool]:
-    all_urls = get_pages()
+def index_all(base_site: str, reindex: bool) -> dict[str, bool]:
+    all_urls = get_pages(base_site)
     options = Options()
     hm_folder = os.environ["HOME"]
     options.add_argument(rf"--user-data-dir={hm_folder}/snap/chromium/common/chromium")
@@ -77,7 +82,7 @@ def index_all(reindex: bool) -> dict[str, bool]:
     all_pages = {}
     for url in tqdm(all_urls):
         try:
-            was_indexed = index_page(driver, url, reindex)
+            was_indexed = index_page(driver, base_site, url, reindex)
             all_pages[url] = was_indexed
         except:
             traceback.print_exc()
@@ -86,9 +91,11 @@ def index_all(reindex: bool) -> dict[str, bool]:
     return all_pages
 
 
-all_pages = index_all(False)
-all_pages = pd.DataFrame.from_dict(
-    all_pages, orient="index", columns=["was_indexed"]
-).reset_index()
-all_pages.rename(columns={"index": "url"}, inplace=True)
-all_pages.to_csv("~/google.csv", index=False)
+if __name__ == "__main__":
+    SITE = "https://medial-earlysign.github.io/MR_Wiki"
+    all_pages = index_all(SITE, False)
+    all_pages = pd.DataFrame.from_dict(
+        all_pages, orient="index", columns=["was_indexed"]
+    ).reset_index()
+    all_pages.rename(columns={"index": "url"}, inplace=True)
+    all_pages.to_csv("~/google.csv", index=False)
