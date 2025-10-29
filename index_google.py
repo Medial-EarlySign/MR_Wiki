@@ -28,7 +28,7 @@ def get_pages(site: str) -> list[str]:
 
 def index_page(
     driver: webdriver.Chrome, base_site: str, index_url: str, REINDEX: bool
-) -> bool:
+) -> tuple[bool, bool]:
     base_site = base_site.strip("/")
     driver.get(f"https://search.google.com/search-console?resource_id={base_site}")
 
@@ -41,7 +41,12 @@ def index_page(
     search_box = wait.until(EC.visibility_of_element_located(element_locator))
 
     search_box.send_keys(index_url + "\n")
-    time.sleep(1)
+    time.sleep(3)
+    is_indexed = (
+        len(driver.find_elements(By.XPATH, "//div[text() = 'Page is indexed']")) > 0
+    )
+    if is_indexed and not (REINDEX):
+        return is_indexed, False
 
     # live index: 'Test live URL'
     element_locator_live = (
@@ -69,11 +74,21 @@ def index_page(
         if len(index_button) > 0:
             index_button[0].click()
     time.sleep(5)
-    return is_indexed
+    # Search for <span>Quota Exceeded</span>
+    quata_limit = (
+        len(driver.find_elements(By.XPATH, "//span[text() = 'Quota Exceeded']")) > 0
+    )
+    return is_indexed, quata_limit
 
 
-def index_all(base_site: str, reindex: bool) -> dict[str, bool]:
+def index_all(base_site: str, reindex: bool, file_index_path: str) -> dict[str, bool]:
     all_urls = get_pages(base_site)
+    read_urls = set()
+    if os.path.exists(file_index_path):
+        with open(file_index_path, "r") as fr:
+            read_urls = fr.readlines()
+        read_urls = list(map(lambda x: x.strip(), read_urls))
+        read_urls = set(list(filter(lambda x: len(x) > 0, read_urls)))
     options = Options()
     hm_folder = os.environ["HOME"]
     options.add_argument(rf"--user-data-dir={hm_folder}/snap/chromium/common/chromium")
@@ -82,8 +97,18 @@ def index_all(base_site: str, reindex: bool) -> dict[str, bool]:
     all_pages = {}
     for url in tqdm(all_urls):
         try:
-            was_indexed = index_page(driver, base_site, url, reindex)
+            if url in read_urls:
+                print(f"Skip url {url}")
+                continue
+            was_indexed, quata_limit = index_page(driver, base_site, url, reindex)
             all_pages[url] = was_indexed
+            if not (quata_limit):
+                with open(file_index_path, "a") as fw:
+                    fw.write(url + "\n")
+                read_urls.add(url)
+            else:
+                print("Quata Limit Reached!")
+                break
         except:
             traceback.print_exc()
             all_pages[url] = None
@@ -93,7 +118,8 @@ def index_all(base_site: str, reindex: bool) -> dict[str, bool]:
 
 if __name__ == "__main__":
     SITE = "https://medial-earlysign.github.io/MR_Wiki"
-    all_pages = index_all(SITE, False)
+    store_indexed = os.path.join(os.environ["HOME"], "google_index.csv")
+    all_pages = index_all(SITE, False, store_indexed)
     all_pages = pd.DataFrame.from_dict(
         all_pages, orient="index", columns=["was_indexed"]
     ).reset_index()
