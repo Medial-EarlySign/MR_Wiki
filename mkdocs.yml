@@ -38,4 +38,9 @@ markdown_extensions:
 plugins:
   - search
 
+extra:
+  analytics:
+    provider: google
+    property: G-Y86BQ68W8H
+
 use_directory_urls: false
