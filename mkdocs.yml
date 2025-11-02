@@ -8,6 +8,7 @@ edit_uri: 'edit/main/'
 theme:
   name: material
   logo: 'images/icons/faveicon.svg'
+  favicon: 'images/icons/faveicon.svg'
   custom_dir: docs/custom_theme_files
   font:
     text: "Segoe UI"
