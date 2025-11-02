@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+    {{ super() }}
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Medial EarlySign Documentation",
+      "url": "https://medial-earlysign.github.io/"
+    }
+    </script>
+{% endblock %}
