@@ -1,8 +1,8 @@
-## Building the ETL Processing Pipeline
+# Building the ETL Processing Pipeline
 
 This section explains how to construct a processing pipeline in the ETL workflow using the `prepare_final_signals` function. This function applies your custom processing logic to data fetched in the previous step.
 
-### Step-by-Step Guide
+## Step-by-Step Guide
 1. **Import Necessary Functions**: 
 Start by importing the `prepare_final_signals` function and your custom data_fetcher.
 
@@ -36,7 +36,7 @@ prepare_final_signals(
 * All files are read in a single batch (`batch_size=0`)`.
 * `override="n"` prevents re-running an already completed process.
 
-#### Important Notes:
+### Important Notes:
 
 * You should repeat this process for each data type.
 * **Best Practice for PID Mapping**: Start by processing demographic signals like BDATE and GENDER. This is because if patient IDs (pid) are strings, the ETL will create a numeric-to-string mapping based on these demographic signals. This mapping is then used for all other signals, ensuring consistent pid values across the entire dataset. More details on the pipeline can be seen next [Higher-Level Pipeline Flow](#higher-level-pipeline-flow)
@@ -49,12 +49,12 @@ This sends demographic data to both gender.py and byear.py.
 
 --------
 
-### Defining Processing Logic
+## Defining Processing Logic
 
 Each pipeline automatically looks for a processing script named after the pipeline (e.g., `demographic.py`).
 This script must be located in the `signal_processings` folder alongside your main code.
 
-### Inside the Script
+## Inside the Script
 
 * Input: A `DataFrame df` from the fetcher.
     - You can also use `workdir` as [WORKDIR](../../High%20level%20-%20important%20paths/WORK_DIR.md) folder path and `sig_types` and object with signal type definitions. A usefull function is to retrived other processed signal, in that example `BDATE` with `df_bdate = load_final_sig(workdir, sig_types, "BDATE")`
@@ -82,7 +82,7 @@ Link to [File Definition of All Signals](https://github.com/Medial-EarlySign/MR_
 **Debugging**
 To debug, add `breakpoint()` in your script. No changes to ETL infrastructure code are required.
 
-### Required Output Format
+## Required Output Format
 
 The final DataFrame **must include**:
 
@@ -100,7 +100,7 @@ The final DataFrame **must include**:
 * For categorical signals, see [Categorical Signals](Categorical%20signal_%20Custom%20dictionaries.md)
 * For signals that needs unit conversion, this guide can be helpful: [Unit Conversion](unit_conversion)
 
-### Example Processing Code
+## Example Processing Code
 
 Here's an example of the code you would write inside the `demographic.py` file to process a DataFrame and create a `GENDER` signal.
 
@@ -129,7 +129,7 @@ df = df[['pid', 'signal', 'value_0']].drop_duplicates().reset_index(drop=True)
 # The 'df' is now ready for the next stage of the pipeline
 ```
 
-### Higher-Level Pipeline Flow
+## Higher-Level Pipeline Flow
 
 Every pipeline includes the following stages:
 

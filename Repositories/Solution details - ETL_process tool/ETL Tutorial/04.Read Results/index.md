@@ -1,4 +1,4 @@
-## Reviewing ETL loading results
+# Reviewing ETL loading results
 
 ## Purpose
 

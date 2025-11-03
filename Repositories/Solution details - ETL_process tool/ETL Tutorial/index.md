@@ -1,4 +1,4 @@
-## 📄 ETL Workflow: The Recommended Tool
+# 📄 ETL Workflow: The Recommended Tool
 
 Using our ETL tool streamlines data loading by providing a standardized, robust, and reproducible process. 
 While manual loading file creation is possible, our tool is highly recommended for its numerous benefits:

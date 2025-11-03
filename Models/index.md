@@ -1,4 +1,4 @@
-Available models:
+# Available Models
 
 | Model Name |  Model description | Contact Details for Usage |
 |------------|--------------------|-----------|

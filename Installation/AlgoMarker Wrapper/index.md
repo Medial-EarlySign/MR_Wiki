@@ -1,6 +1,6 @@
-## AlgoMarker Wrapper
+# AlgoMarker Wrapper
 
-### Description
+## Description
 The AlgoMarker Wrapper provides a REST API for the AlgoMarker C++ Library. There are two wrappers available:
 
 1. [C++ Native Wrapper](C++%20Native%20Wrapper.md): Minimal dependencies, very fast and efficient. Uses Boost Beast. Can be installed in a minimal Ubuntu Chiselled Docker image with just glibc.
