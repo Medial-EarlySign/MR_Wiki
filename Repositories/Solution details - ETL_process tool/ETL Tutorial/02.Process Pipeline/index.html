@@ -26,7 +26,7 @@
     
     
       
-        <title>Index - Medial EarlySign Documentation</title>
+        <title>Building the ETL Processing Pipeline - Medial EarlySign Documentation</title>
       
     
     
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Building the ETL Processing Pipeline
             
           </span>
         </div>
@@ -8300,6 +8300,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -8308,16 +8310,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#building-the-etl-processing-pipeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      Building the ETL Processing Pipeline
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Building the ETL Processing Pipeline">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#step-by-step-guide" class="md-nav__link">
     <span class="md-ellipsis">
       Step-by-Step Guide
@@ -8340,8 +8332,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#defining-processing-logic" class="md-nav__link">
     <span class="md-ellipsis">
       Defining Processing Logic
@@ -8349,8 +8341,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#inside-the-script" class="md-nav__link">
     <span class="md-ellipsis">
       Inside the Script
@@ -8358,8 +8350,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#required-output-format" class="md-nav__link">
     <span class="md-ellipsis">
       Required Output Format
@@ -8367,8 +8359,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#example-processing-code" class="md-nav__link">
     <span class="md-ellipsis">
       Example Processing Code
@@ -8376,18 +8368,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#higher-level-pipeline-flow" class="md-nav__link">
     <span class="md-ellipsis">
       Higher-Level Pipeline Flow
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -8432,11 +8419,9 @@
   
 
 
-  <h1>Index</h1>
-
-<h2 id="building-the-etl-processing-pipeline">Building the ETL Processing Pipeline</h2>
+<h1 id="building-the-etl-processing-pipeline">Building the ETL Processing Pipeline</h1>
 <p>This section explains how to construct a processing pipeline in the ETL workflow using the <code>prepare_final_signals</code> function. This function applies your custom processing logic to data fetched in the previous step.</p>
-<h3 id="step-by-step-guide">Step-by-Step Guide</h3>
+<h2 id="step-by-step-guide">Step-by-Step Guide</h2>
 <ol>
 <li><strong>Import Necessary Functions</strong>: 
 Start by importing the <code>prepare_final_signals</code> function and your custom data_fetcher.</li>
@@ -8473,7 +8458,7 @@ Execute the pipeline with the following call:</li>
 <li>All files are read in a single batch (<code>batch_size=0</code>)`.</li>
 <li><code>override="n"</code> prevents re-running an already completed process.</li>
 </ul>
-<h4 id="important-notes">Important Notes:</h4>
+<h3 id="important-notes">Important Notes:</h3>
 <ul>
 <li>You should repeat this process for each data type.</li>
 <li><strong>Best Practice for PID Mapping</strong>: Start by processing demographic signals like BDATE and GENDER. This is because if patient IDs (pid) are strings, the ETL will create a numeric-to-string mapping based on these demographic signals. This mapping is then used for all other signals, ensuring consistent pid values across the entire dataset. More details on the pipeline can be seen next <a href="#higher-level-pipeline-flow">Higher-Level Pipeline Flow</a></li>
@@ -8484,10 +8469,10 @@ Execute the pipeline with the following call:</li>
 This sends demographic data to both gender.py and byear.py.</li>
 </ul>
 <hr />
-<h3 id="defining-processing-logic">Defining Processing Logic</h3>
+<h2 id="defining-processing-logic">Defining Processing Logic</h2>
 <p>Each pipeline automatically looks for a processing script named after the pipeline (e.g., <code>demographic.py</code>).
 This script must be located in the <code>signal_processings</code> folder alongside your main code.</p>
-<h3 id="inside-the-script">Inside the Script</h3>
+<h2 id="inside-the-script">Inside the Script</h2>
 <ul>
 <li>Input: A <code>DataFrame df</code> from the fetcher.<ul>
 <li>You can also use <code>workdir</code> as <a href="../../High%20level%20-%20important%20paths/WORK_DIR.html">WORKDIR</a> folder path and <code>sig_types</code> and object with signal type definitions. A usefull function is to retrived other processed signal, in that example <code>BDATE</code> with <code>df_bdate = load_final_sig(workdir, sig_types, "BDATE")</code></li>
@@ -8514,7 +8499,7 @@ Otherwise, the system looks from the most specific to least specific tag (e.g., 
 <p>Link to <a href="https://github.com/Medial-EarlySign/MR_Tools/blob/main/RepoLoadUtils/common/ETL_Infra/rep_signals/general.signals">File Definition of All Signals</a></p>
 <p><strong>Debugging</strong>
 To debug, add <code>breakpoint()</code> in your script. No changes to ETL infrastructure code are required.</p>
-<h3 id="required-output-format">Required Output Format</h3>
+<h2 id="required-output-format">Required Output Format</h2>
 <p>The final DataFrame <strong>must include</strong>:</p>
 <ul>
 <li><code>pid</code>: Patient identifier (already required in fetching step)</li>
@@ -8529,7 +8514,7 @@ To debug, add <code>breakpoint()</code> in your script. No changes to ETL infras
 <li>For categorical signals, see <a href="Categorical%20signal_%20Custom%20dictionaries.html">Categorical Signals</a></li>
 <li>For signals that needs unit conversion, this guide can be helpful: <a href="unit_conversion">Unit Conversion</a></li>
 </ul>
-<h3 id="example-processing-code">Example Processing Code</h3>
+<h2 id="example-processing-code">Example Processing Code</h2>
 <p>Here's an example of the code you would write inside the <code>demographic.py</code> file to process a DataFrame and create a <code>GENDER</code> signal.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
@@ -8575,7 +8560,7 @@ To debug, add <code>breakpoint()</code> in your script. No changes to ETL infras
 <a id="__codelineno-5-21" name="__codelineno-5-21"></a>
 <a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="c1"># The &#39;df&#39; is now ready for the next stage of the pipeline</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="higher-level-pipeline-flow">Higher-Level Pipeline Flow</h3>
+<h2 id="higher-level-pipeline-flow">Higher-Level Pipeline Flow</h2>
 <p>Every pipeline includes the following stages:</p>
 <ol>
 <li>
