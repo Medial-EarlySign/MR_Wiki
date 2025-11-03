@@ -3522,6 +3522,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -8405,6 +8414,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -8471,6 +8489,21 @@
 <li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost">01.basic_boost</a> A base docker image with Boost</li>
 <li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/02.build_tools">02.build_tools</a> A build with tools prepared for usage</li>
 </ul>
+<h2 id="common-issues">Common Issues</h2>
+<ol>
+<li>Running an executable may fail with:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>$&gt;<span class="w"> </span>Flow<span class="w"> </span>...
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>Flow:<span class="w"> </span>error<span class="w"> </span><span class="k">while</span><span class="w"> </span>loading<span class="w"> </span>shared<span class="w"> </span>libraries:<span class="w"> </span>libboost_regex.so.1.85.0:<span class="w"> </span>cannot<span class="w"> </span>open<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span>file:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+</code></pre></div></td></tr></table></div>
+This indicates the Boost shared libraries are not found at runtime. Set <code>LD_LIBRARY_PATH</code> to point to your Boost lib directory. Add to your ~/.bashrc or run once per session:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/path/to/BOOST_ROOT/lib
+</code></pre></div></td></tr></table></div>
+If Boost was installed via the system packages (Ubuntu 22.04 uses 1.74, 24.04 uses 1.83), install the appropriate dev packages instead of adjusting <code>LD_LIBRARY_PATH</code>:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libboost-system1.83-dev<span class="w"> </span>libboost-filesystem1.83-dev<span class="w"> </span>libboost-regex1.83-dev<span class="w"> </span>libboost-program-options1.83-dev<span class="w"> </span>-y
+</code></pre></div></td></tr></table></div>
+Replace 1.83 with 1.74 on Ubuntu 22.04 when needed.</li>
+</ol>
 
 
 
