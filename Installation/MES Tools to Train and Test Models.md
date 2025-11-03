@@ -38,7 +38,11 @@ A full docker image for compilation steps can be found under this link:
 
 ## Common Issues
 
-1. Running an executable may fail with:
+1. Can't find Boost libray errors in compilation - Please delete the "./build" folder to recreate all Makefiles again. It holds some bad settings of Boost in cache.
+
+2. Can't find `boost_atomic.so` in runtime. Please add `atomic` in CMkaeLists.txt under `BOOST_LIBS` and recompile
+
+3. Running an executable may fail with:
 ```bash
 $> Flow ...
 Flow: error while loading shared libraries: libboost_regex.so.1.85.0: cannot open shared object file: No such file or directory
