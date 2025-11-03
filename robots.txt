@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://medial-earlysign.github.io/MR_WIKI/sitemap
+Sitemap: https://medial-earlysign.github.io/MR_Wiki/sitemap
