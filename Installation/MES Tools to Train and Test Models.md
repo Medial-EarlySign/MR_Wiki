@@ -35,3 +35,20 @@ A full docker image for compilation steps can be found under this link:
 
 * [01.basic_boost](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost) A base docker image with Boost
 * [02.build_tools](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/02.build_tools) A build with tools prepared for usage
+
+## Common Issues
+
+1. Running an executable may fail with:
+```bash
+$> Flow ...
+Flow: error while loading shared libraries: libboost_regex.so.1.85.0: cannot open shared object file: No such file or directory
+```
+This indicates the Boost shared libraries are not found at runtime. Set `LD_LIBRARY_PATH` to point to your Boost lib directory. Add to your ~/.bashrc or run once per session:
+```bash
+export LD_LIBRARY_PATH=/path/to/BOOST_ROOT/lib
+```
+If Boost was installed via the system packages (Ubuntu 22.04 uses 1.74, 24.04 uses 1.83), install the appropriate dev packages instead of adjusting `LD_LIBRARY_PATH`:
+```bash
+sudo apt install libboost-system1.83-dev libboost-filesystem1.83-dev libboost-regex1.83-dev libboost-program-options1.83-dev -y
+```
+Replace 1.83 with 1.74 on Ubuntu 22.04 when needed.
