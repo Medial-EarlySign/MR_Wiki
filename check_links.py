@@ -152,7 +152,7 @@ def main(start_url, concurrency=1):
 if __name__ == "__main__":
     # start_url = "http://localhost:8000"
     start_url = (
-        "https://medial-earlysign.github.io/MR_WIKI"  # Change this to your starting URL
+        "https://medial-earlysign.github.io/MR_Wiki"  # Change this to your starting URL
     )
 
     # asyncio.run(main(start_url))

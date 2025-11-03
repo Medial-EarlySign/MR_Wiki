@@ -16,6 +16,27 @@ import time
 import os
 
 
+def sort_page_key(url: str):
+    if url.find("/MR_Wiki/index.html") > 0:
+        return 0
+    elif url.find("/Models/") > 0:
+        return 1
+    elif url.find("/Installation/") > 0:
+        return 2
+    elif url.find("/Repositories/") > 0:
+        return 3
+    elif url.find("/Medial%20Tools/") > 0:
+        return 4
+    elif url.find("/Infrastructure%20C%20Library/") > 0:
+        return 5
+    elif url.find("/Python/") > 0:
+        return 6
+    elif url.find("/Research/") > 0:
+        return 7
+    else:
+        return 8
+
+
 def get_pages(site: str) -> list[str]:
     resp = requests.get(f"{site}/sitemap")
     data = resp.content
@@ -23,6 +44,8 @@ def get_pages(site: str) -> list[str]:
     all_res = xml.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
     # .replace("/MR_Wiki/", "/MR_WIKI/")
     all_urls = list(map(lambda x: x.text, all_res))
+    all_urls = sorted(all_urls, key=sort_page_key)
+
     return all_urls
 
 
@@ -73,7 +96,7 @@ def index_page(
     if not (is_indexed) or REINDEX:
         if len(index_button) > 0:
             index_button[0].click()
-    time.sleep(5)
+    time.sleep(10)
     # Search for <span>Quota Exceeded</span>
     quata_limit = (
         len(driver.find_elements(By.XPATH, "//span[text() = 'Quota Exceeded']")) > 0
@@ -118,8 +141,9 @@ def index_all(base_site: str, reindex: bool, file_index_path: str) -> dict[str, 
 
 if __name__ == "__main__":
     SITE = "https://medial-earlysign.github.io/MR_Wiki"
+    REINDEX = False
     store_indexed = os.path.join(os.environ["HOME"], "google_index.csv")
-    all_pages = index_all(SITE, False, store_indexed)
+    all_pages = index_all(SITE, REINDEX, store_indexed)
     all_pages = pd.DataFrame.from_dict(
         all_pages, orient="index", columns=["was_indexed"]
     ).reset_index()
