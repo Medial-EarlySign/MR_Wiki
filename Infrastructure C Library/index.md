@@ -4,6 +4,8 @@
 Medial Infrastructure is designed to turn the Electronic Medical Record (EMR)-a complex, semi-structured time-series dataset, into a machine-learning-ready resource. Unlike images or free text, EMR data can be stored in countless formats, and its "labels" (the outcomes or targets you want to predict) aren’t always obvious. We address this by standardizing both the storage and the processing of time-series signals.
 We can think about this infrastructure as "TensorFlow" of medical data machine learning. 
 
+This award-winning framework used in production across multiple sites and recognized in the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge) offers an end-to-end solution for high-stakes medical AI.
+
 ### Howto Use this
 Suppose you're a potential user or client interested in using a specific model.
 You're not concerned with how the model was built or which tools were used, you simply want to deploy and use it.

@@ -1,7 +1,7 @@
 # Infrastructure Application Version
 If using medial::io::ProgramArgs_base wrapper class instead of ProgramArgs of boost you get several things:
 You get "help", option to load all arguments form file using --base_config and more..
-Running our apps with** --debug** will print the app version and **--version** will just output the application version and exit.
+Running our apps with **--debug** will print the app version and **--version** will just output the application version and exit.
 
 - To compile all our tools with version info use [MES compile AllTools](../Installation/MES%20Tools%20to%20Train%20and%20Test%20Models.md)
 - Another option is to compile with
@@ -11,7 +11,7 @@ smake_rel.sh "Version\ comment\ string\ each\ space\ is\ escaped"
 ```
 will compile our program with this comment in version\debug
 
-- example of version output running: bootstrap --version with full_build.sh
+- example of version output running: `bootstrap --version`
 ```text
 Version Info:
 Build on 14-01-2019_17:42:20
