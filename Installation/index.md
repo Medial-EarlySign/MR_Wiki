@@ -115,6 +115,7 @@ else
 fi
 export AUTOTEST_LIB=${MR_TOOLS}/AutoValidation/kits
 export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python${PY_VERSION}:${MR_TOOLS}/RepoLoadUtils/common
+export BOOST_ROOT
 ```
 
 > **Tip:** Adjust the `LD_PATH`, `MR_LIBS`, `MR_TOOLS`, and `MR_SCRIPTS` variables as needed for your system.
