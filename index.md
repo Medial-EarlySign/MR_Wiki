@@ -3,11 +3,21 @@
 
 ## Overview
 
-This is an infrastructure developed by Medial EarlySign to streamline the creation of predictive models using EMR data for clinical applications. Existing tools often fall short for clinical use many Python libraries are not optimized for sparse time series analysis, leading to high memory consumption and, in some cases, performance that is 10–100 times slower than necessary.
+This is an infrastructure developed by Medial EarlySign to streamline the creation of predictive models using EMR data for clinical applications. Existing tools often fall short for clinical use many Python libraries are not optimized for sparse time series analysis, leading to high memory consumption and, in some cases, performance that is 10-100 times slower than necessary.
 
 Medial Infrastructure is designed to turn the Electronic Medical Record (EMR)-a complex, semi-structured time-series dataset, into a machine-learning-ready resource. Unlike images or free text, EMR data can be stored in countless formats, and its "labels" (the outcomes or targets you want to predict) aren’t always obvious. We address this by standardizing both the storage and the processing of time-series signals. We can think about this infrastructure as "TensorFlow" of medical data machine learning.
 
 This award-winning framework used in production across multiple sites and recognized in the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge) offers an end-to-end solution for high-stakes medical AI.
+
+## What is this?
+An infrastrucutre library with tools and extention in python to access the library. 
+The library has internal data format repository for storing the EMR in efficeint format for fast and low memory access. 
+We used this infrastructure to process millions of patients with dozens of signals with low memory footprint of 10-20GB of RAM, VS pandas that loading a single diagnosis signal resulted in out of memory on 256GB RAM machine. 
+The Infrastrucutre is build upon:
+
+* Data Repository Layer - [MedRepository](Infrastructure%20C%20Library/00.InfraMed%20Library%20page)
+* MedModel - A pipeline for a full machine learning model to handle data from MedRepository or json input files of EMR to generate prediction/explainability output. It has the ability to train a new model or use an existing one
+* Tools to evaluate MedModel performance using bootstrap analysis, fairness, explainability results. A script for testing utilizing most of those evaluations is accessible in [AutoTest](Medial%20Tools/Model%20Checklist/AutoTest)
 
 ## Using a Prebuilt Model
 Available models:

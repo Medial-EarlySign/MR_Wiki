@@ -99,13 +99,14 @@ After installing the required components, use the following script to configure 
 #!/bin/bash
 
 # Path to Boost Library (If you compiled the boost library)
-LD_PATH=${HOME}/Documents/MES/Boost/lib
+BOOST_ROOT=${HOME}/Documents/MES/Boost
 # Path to Git repository clones - here in the example, we clones all repositories under ${HOME}/Documents/MES
 MR_LIBS=${HOME}/Documents/MES/MR_LIBS
 MR_TOOLS=${HOME}/Documents/MES/MR_Tools
 MR_SCRIPTS=${HOME}/Documents/MES/MR_Scripts
 PY_VERSION=$(python -c "import platform; print(''.join(platform.python_version().split('.')[:2]))")
 
+LD_PATH=${BOOST_ROOT}/lib
 export PATH=$PATH:${MR_TOOLS}/AllTools/Linux/Release:${MR_SCRIPTS}/Python-scripts:${MR_SCRIPTS}/Bash-Scripts:${MR_SCRIPTS}/Perl-scripts
 if [ ! -z "$LD_LIBRARY_PATH" ]; then
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${LD_PATH}

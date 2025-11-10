@@ -15,6 +15,7 @@ A prebuilt release is available on the [Release page](https://github.com/Medial-
    set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
    ```
    This should point to your Boost compiled home directory (`WORK_BUILD_FOLDER` from step 2) from the compilation step. Ensure the compiled libraries are in `/libs` and the headers are in `/include`.
+   Alternatively you can just set your environment variable `BOOST_ROOT` to reference the Boost build directory. 
 5. Compile the wrapper:
    ```bash
    AlgoMarker_python_API/ServerHandler/compile.sh

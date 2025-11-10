@@ -26,7 +26,13 @@ You can download a prebuilt release from the [Release page](https://github.com/M
    └── MR_Tools
    ```
    then no changes are needed. If you compiled Boost, also set `BOOST_ROOT` in the CMakeLists.txt file.
-5. Build the tools:
+5. Edit `All_Tools/CMakeLists.txt` and add/edit line:
+   ```cmake
+   set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
+   ```
+   Set this path to your Boost build directory (`WORK_BUILD_FOLDER` from step 2). Make sure the compiled libraries are in `/libs` and headers in `/include`.
+   Alternatively you can just set your environment variable `BOOST_ROOT` to reference the Boost build directory. 
+6. Build the tools:
    ```bash
    AllTools/full_build.sh
    ```
@@ -40,7 +46,7 @@ A full docker image for compilation steps can be found under this link:
 
 1. Can't find Boost libray errors in compilation - Please delete the "./build" folder to recreate all Makefiles again. It holds some bad settings of Boost in cache.
 
-2. Can't find `boost_atomic.so` in runtime. Please add `atomic` in CMkaeLists.txt under `BOOST_LIBS` and recompile
+2. Can't find `boost_atomic.so` in runtime. Please add `atomic` in CMakeLists.txt under `BOOST_LIBS` and recompile
 
 3. Running an executable may fail with:
 ```bash

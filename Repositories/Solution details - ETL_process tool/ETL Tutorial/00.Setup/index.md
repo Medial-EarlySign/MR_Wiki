@@ -38,6 +38,11 @@ python -c 'import ETL_Infra'
 
 Alternatively, if using Option 2, wrap the snippet in a script and add `import ETL_Infra` at the end to verify it works.
 
+## Notes:
+The `ETL_Infra` directory that we imported, is refered as [ETL_INFRA_DIR](../../High%20level%20-%20important%20paths/ETL_INFRA_DIR.md) in this guide.
+You don't need to touch it, unless you want to extend the infrastrucutre, fix bugs for all ETLs, add tests for all ETLs. 
+
+
 ## Next Steps
 
 The first step in the ETL process is to create a module or script that fetches data in batches. This method is highly efficient and preferred over returning a single `DataFrame` from a simple function.

@@ -15,11 +15,12 @@ You can download a prebuilt release from the [Release page](https://github.com/M
    ```bash
    git clone git@github.com:Medial-EarlySign/MR_LIBS.git
    ```
-4. Edit `Internal/AlgoMarker/CMakeLists.txt` and add:
+4. Edit `Internal/AlgoMarker/CMakeLists.txt` and add/edit line:
    ```cmake
    set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
    ```
    Set this path to your Boost build directory (`WORK_BUILD_FOLDER` from step 2). Ensure the compiled libraries are in `/libs` and headers in `/include`.
+   Alternatively you can just set your environment variable `BOOST_ROOT` to reference the Boost build directory. 
 5. Build the library:
    ```bash
    Internal/AlgoMarker/full_build.sh

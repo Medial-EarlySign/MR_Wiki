@@ -15,11 +15,12 @@ A prebuilt release is available on the [Release page](https://github.com/Medial-
    sudo apt install python3-dev swig -y
    ```
 2. [Compile the Boost library](index.md#compiling-boost-from-source) from source.
-3. Edit `Internal/MedPyExport/generate_binding/CMakeLists.txt` and add:
+3. Edit `Internal/MedPyExport/generate_binding/CMakeLists.txt` and add/edit line:
    ```cmake
    set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
    ```
    Set this path to your Boost build directory (`WORK_BUILD_FOLDER` from step 2). Make sure the compiled libraries are in `/libs` and headers in `/include`.
+   Alternatively you can just set your environment variable `BOOST_ROOT` to reference the Boost build directory. 
 4. Ensure NumPy is installed:
    ```bash
    python -m pip install numpy
