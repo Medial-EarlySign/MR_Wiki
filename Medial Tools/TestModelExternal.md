@@ -28,7 +28,7 @@ Required arguments:
 Optional arguments:
 
 - `smaller_model_feat_size`: If > 0, creates an additional smaller propensity model using the top X features
-- `additional_importance_to_rank`: Path to a SHAP report (from "Flow --shap_val_request") to rank differences combined with [feature importance](../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md)
+- `additional_importance_to_rank`: Path to a SHAP report (from "Flow --shap_val_request") to rank differences combined with [feature importance](../Infrastructure%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md)
 - `features_subset_file`: File to filter features from the MedModel
 - `fix_train_res`: If > 0, sets feature resolution in training to match the test set
 - `sub_sample_train`: Integer to limit the maximum number of training samples (0 = no subsampling)

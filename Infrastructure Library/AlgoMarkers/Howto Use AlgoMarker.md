@@ -29,7 +29,7 @@ Alternatively, you can use the Python wrapper with FastAPI to expose the AlgoMar
 **Note:** The Python wrapper is slower, requires a larger setup, and depends on Python and its libraries. In contrast, `AlgoMarker_Server` only needs glibc and can run in a minimal (distroless) image. However, the Python wrapper allows for easier code modifications and supports legacy ColonFlag models.
 
 To use the Python wrapper, run [`run_server.sh`](https://github.com/Medial-EarlySign/MR_Tools/blob/main/AlgoMarker_python_API/run_server.sh) after setting `AM_CONFIG` and `AM_LIB` in the script. Clone the repository containing `run_server.sh` if needed.
-More details can be found [here](../../Python/Python%20AlgoMarker%20API%20Wrapper.md)
+More details can be found [here](../../Medial%20Tools/Python/Python%20AlgoMarker%20API%20Wrapper.md)
 
 #### Using Docker
 

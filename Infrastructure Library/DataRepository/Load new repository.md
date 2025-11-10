@@ -11,7 +11,7 @@
   This makes the code easier to read and helps clarify what minimal processing was applied to each signal.
 
 You can use your own tools and methods to create “loading files” (described below), or use our ETL tool to both build the ETL process and test the results.  
-More details here: [ETL Tool](Solution%20details%20-%20ETL_process%20tool/ETL%20Tutorial)
+More details here: [ETL Tool](ETL%20Tutorial)
 You can start from this [code example](https://github.com/Medial-EarlySign/MR_Tools/tree/main/RepoLoadUtils/common/ETL_Infra/examples/simple_test_pipeline) and change it for your own needs
 
 Steps to create loading files on your own:

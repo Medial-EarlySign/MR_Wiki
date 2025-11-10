@@ -16,7 +16,7 @@ We provide three libraries for use:
     - [Examples](Examples.md): Usage examples for MedPython.
     - [Python Binding Troubleshooting](Python%20binding%20Troubleshooting.md): Guidance for troubleshooting Python bindings in MedPython.
     - [Extend and Develop](Extend%20and%20Develop.md): Instructions for exposing additional C++ APIs to Python.
-* **ETL Library**: Refer to the [ETL Tutorial](../Repositories/Solution%20details%20-%20ETL_process%20tool/ETL%20Tutorial) for more details.
+* **ETL Library**: Refer to the [ETL Tutorial](../../Infrastructure%20Library/DataRepository/ETL%20Tutorial) for more details.
 * **[Python AlgoMarker API Wrapper](Python%20AlgoMarker%20API%20Wrapper.md)**: Documentation for the pure Python wrapper of the AlgoMarker library.
 
 ### Setup
@@ -25,7 +25,7 @@ We provide three libraries for use:
     * [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS)
     * [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools)
 2. **Set Up MedPython**:
-   Follow the instructions in [Setup MedPython](../Installation/index.md#4-python-api-for-mes-infrastructure).
+   Follow the instructions in [Setup MedPython](../../Installation/index.md#4-python-api-for-mes-infrastructure).
 3. **Configure Environment Variables**:
    Ensure Python recognizes the libraries by setting the `PYTHONPATH` environment variable. Replace `${MR_LIBS}` with the path to the cloned `MR_LIBS` repository and `${MR_TOOLS}` with the path to the cloned `MR_Tools` repository.
 

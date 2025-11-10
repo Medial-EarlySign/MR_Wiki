@@ -33,7 +33,7 @@ This script loads the new dataset into a structured repository, checks data inte
 
 ## How to Interpret Results
 
-ETL test results are found in `${WORK_DIR}/ETL`. For more details, see [ETL_WORK_DIR](../../../../Repositories/Solution%20details%20-%20ETL_process%20tool/High%20level%20-%20important%20paths/WORK_DIR.md).
+ETL test results are found in `${WORK_DIR}/ETL`. For more details, see [ETL_WORK_DIR](../../../../Infrastructure%20Library/DataRepository/ETL%20Tutorial/High%20level%20-%20important%20paths/WORK_DIR.md).
 
 ### Test Results Review
 

@@ -23,18 +23,16 @@ def sort_page_key(url: str):
         return 1
     elif url.find("/Installation/") > 0:
         return 2
-    elif url.find("/Repositories/") > 0:
+    elif url.find("/DataRepository/") > 0:
         return 3
     elif url.find("/Medial%20Tools/") > 0:
         return 4
-    elif url.find("/Infrastructure%20C%20Library/") > 0:
+    elif url.find("/Infrastructure%20Library/") > 0:
         return 5
-    elif url.find("/Python/") > 0:
-        return 6
     elif url.find("/Research/") > 0:
-        return 7
+        return 6
     else:
-        return 8
+        return 7
 
 
 def get_pages(site: str) -> list[str]:

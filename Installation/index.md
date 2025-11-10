@@ -88,7 +88,7 @@ You can install any of the following five components:
 1. [AlgoMarker Shared Library](AlgoMarker_Library.md): A shared Linux C library for accessing the AlgoMarker API and generating predictions/outputs from a model. Designed for production use, it supports only the essential "predict" and related APIs.
 2. [AlgoMarker Wrapper](AlgoMarker%20Wrapper): A REST API wrapper for the AlgoMarker Shared Library.
 3. [MES Tools to Train and Test Models](MES%20Tools%20to%20Train%20and%20Test%20Models.md): Command-line executables for training, testing, and manipulating models using the MR_LIBS infrastructure. Required for training new models. Alternatively, you can use the Python API.
-4. [Python API for MES Infrastructure](Python%20API%20for%20MES%20Infrastructure.md): Python API for MR_LIBS, enabling model training, testing, and manipulation from Python. Some features may only be available via MES Tools or by [extending the Python API](../Python/Extend%20and%20Develop.md).
+4. [Python API for MES Infrastructure](Python%20API%20for%20MES%20Infrastructure.md): Python API for MR_LIBS, enabling model training, testing, and manipulation from Python. Some features may only be available via MES Tools or by [extending the Python API](../Medial%20Tools/Python/Extend%20and%20Develop.md).
 5. [MR_Scripts]: Useful Python and Bash scripts. Clone the repository with `git clone git@github.com:Medial-EarlySign/MR_Scripts.git`.
 
 ## Environment Setup Script

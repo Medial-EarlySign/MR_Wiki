@@ -20,7 +20,7 @@ bootstrap_app --input /path/to/my_data.tsv --output /tmp/bootstrap_results
 **Mandatory Parameters**
 Only two parameters are mandatory for any run:
 
-* `--input`: The file containing your model's predictions and the true outcomes. It must be a tab-separated TSV with a header row, including the columns `pid` (patient ID), `outcome`, and `pred_0` (the prediction score). Full File Format [MedSamples](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedSamples.md)
+* `--input`: The file containing your model's predictions and the true outcomes. It must be a tab-separated TSV with a header row, including the columns `pid` (patient ID), `outcome`, and `pred_0` (the prediction score). Full File Format [MedSamples](../../Infrastructure%20Library/MedProcessTools%20Library/MedSamples.md)
 * `--output`: The path to the output file where `bootstrap_app` will write the results of the analysis.
 
 ## Core Features at a Glance
@@ -29,7 +29,7 @@ Only two parameters are mandatory for any run:
 - **Flexible Inputs**: Supports various input types and allows for sample weighting.
 - **Comprehensive Metrics**: Handles regression, categorical, and custom performance measures, including specialized metrics for binary classification.
 - **Powerful Cohort Analysis**: Easily assesses model performance across thousands of defined cohorts (e.g., age groups, sex, time windows) using a simple configuration file.
-- **Standalone & Integrated**: Available as a standalone executable built on a fast C++ library, with a [Python API](../../Python/Examples.md#bootstrap-analysis-on-samples) available for integration into dataframe-based workflows.
+- **Standalone & Integrated**: Available as a standalone executable built on a fast C++ library, with a [Python API](../../Medial%20Tools/Python/Examples.md#bootstrap-analysis-on-samples) available for integration into dataframe-based workflows.
 
 
 ## How it Works: Program Overview
@@ -39,7 +39,7 @@ The primary use case for `bootstrap_app` is to analyze a `MedSamples` TSV file c
 The workflow for cohort analysis involves:
 
 1. **Defining Cohorts**: You define cohorts using a plain-text file where each filter is a simple `FEATURE_NAME:MIN_VALUE,MAX_VALUE` pair. Multiple conditions on the same line are combined with `AND` logic.
-2. **Generating a Feature Matrix**: The tool can generate a feature matrix from a [MedModel JSON](../../Infrastructure%20C%20Library/MedModel%20json%20format.md) file and a data repository or given a matrix CSV directly in the input
+2. **Generating a Feature Matrix**: The tool can generate a feature matrix from a [MedModel JSON](../../Infrastructure%20Library/MedModel%20json%20format.md) file and a data repository or given a matrix CSV directly in the input
 3. **Applying Filters**: The tool then uses simple filtering rules, similar to pandas (even though less expressive, it is suffecient for most usecases), to create and analyze performance for each defined cohort.
 
 This approach keeps everything within the fast C++ ecosystem, providing an efficient way to analyze performance across many sub-populations.
@@ -50,7 +50,7 @@ A single line in the `cohorts_file` can generate multiple combinations of cohort
 MULTI	Age:40,89;Age:50,75;Age:45,75	Time-Window:0,365;Time-Window:180,365
 ```
 
-For more information on the `cohorts_file` format, refer to the [MedBootstrap](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format) wiki page.
+For more information on the `cohorts_file` format, refer to the [MedBootstrap](../../Infrastructure%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format) wiki page.
 
 ## Command-Line Options
 
@@ -76,7 +76,7 @@ The options are organized into several logical groups:
 - `--input arg`: Input file location
 - `--weights_file arg`: File with sample weights (same order as input), or use `attr:` prefix to extract attribute from samples
 - `--control_weight arg (=-1)`: If >0, use this value to weight controls (simple alternative to `weights_file`)
-- `--cohorts_file arg`: Cohort definition file ([format details](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format))
+- `--cohorts_file arg`: Cohort definition file ([format details](../../Infrastructure%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format))
 - `--cohort arg`: Analyze a single cohort by providing a string (e.g., `Time-Window:0,365;Age:40,80`); overrides `--cohorts_file`
 - `--json_model arg`: JSON model for creating features for cohort filtering (input for `cohorts_file`)
 - `--output arg`: Output file location for bootstrap results
@@ -176,7 +176,7 @@ cohorts_file = /server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/bootst
 
 ### Explanation
 
-While `bootstrap_app` has many options, only two are mandatory for a basic run: `input` and `output`. The **input file** is a tab-separated TSV file that must contain columns for `pid` (patient ID), `outcome`, and `pred_0` (prediction score). For more details on this format, see the [MedSamples](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedSamples.md) documentation.
+While `bootstrap_app` has many options, only two are mandatory for a basic run: `input` and `output`. The **input file** is a tab-separated TSV file that must contain columns for `pid` (patient ID), `outcome`, and `pred_0` (prediction score). For more details on this format, see the [MedSamples](../../Infrastructure%20Library/MedProcessTools%20Library/MedSamples.md) documentation.
 
 The other parameters you see in the example, such as `rep`, `json_model`, and `cohorts_file`, are **optional** and used for advanced cohort analysis. The tool can automatically generate a feature matrix from a `json_model` and a data repository. Alternatively, you can directly provide a feature matrix as a CSV file by setting `input_type` to `features_csv` in this case, you don't need to specify `rep` or `json_model`.
 
@@ -205,7 +205,7 @@ STATS_ROW       FEMALE  21      0.0     94758
 STATS_ROW       MALE    24      1.0     5338
 ```
 
-The `registry_path` is a text format of [MedRegistry](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedRegistry). See the code documentation for more details (e.g., `write_text_file` method).
+The `registry_path` is a text format of [MedRegistry](../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry). See the code documentation for more details (e.g., `write_text_file` method).
 
 
 ## Understanding the Results Output
@@ -245,6 +245,6 @@ You can use `bootstrap` in C++ code at three levels (main code in [MR_Libs](http
 
 1. `bootstrap.cpp`, `bootstrap.h` (in `Internal/MedStat/MedStat`): Basic bootstrap analysis API using standard C++ objects (e.g., vector, map). Main function: `booststrap_analyze`.
 2. `MedBootstrap.cpp`, `MedBootstrap.h` (in `Internal/MedStat/MedStat`): Builds on the base API, providing a friendlier interface using MES C++ objects like `MedSamples` and `MedFeatures`.
-3. `bootstrap_app`: The application itself, which receives arguments and uses the API from the [MedBootstrap](../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.md) library.
+3. `bootstrap_app`: The application itself, which receives arguments and uses the API from the [MedBootstrap](../../Infrastructure%20Library/MedProcessTools%20Library/MedBootstrap.md) library.
 
 For details on implementing custom metrics and extending bootstrap, see [Extending bootstrap](Extending%20bootstrap/).

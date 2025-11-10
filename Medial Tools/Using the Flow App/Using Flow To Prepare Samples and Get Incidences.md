@@ -139,7 +139,7 @@ MATCH4="priceRatio=10;maxRatio=4.5;verbose=1;strata=age,5:time,year,1:gender"
 # Match by Glucose (bin=10) and HbA1C (bin=1.0)
 MATCH5="priceRatio=10;maxRatio=4.5;verbose=1;strata=signal,Glucose,10:signal,HbA1C,1.0"
 ```
-For more details, see: [MatchingSampleFilter](../../Infrastructure%20C%20Library/MedProcessTools%20Library/SampleFilter/MatchingSampleFilter.md)
+For more details, see: [MatchingSampleFilter](../../Infrastructure%20Library/MedProcessTools%20Library/SampleFilter/MatchingSampleFilter.md)
 
 ## Calculating Incidence for a Cohort
 

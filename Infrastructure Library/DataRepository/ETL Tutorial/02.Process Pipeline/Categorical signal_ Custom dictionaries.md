@@ -4,7 +4,7 @@ This page explains how categorical signals are handled in the ETL process, with 
 
 ## Use Case 1 – Known Signals with Standard Ontologies
 
-When using a known categorical signal from [ETL_INFRA_DIR](../../High%20level%20-%20important%20paths/ETL_INFRA_DIR.md)/rep_signals/general.signals (e.g., **DIAGNOSIS**, **Drug**, **PROCEDURE**), the ETL automatically applies existing **ontologies** and **mappings** between codes.
+When using a known categorical signal from [ETL_INFRA_DIR](../../ETL%20Tutorial/High%20level%20-%20important%20paths/ETL_INFRA_DIR.md)/rep_signals/general.signals (e.g., **DIAGNOSIS**, **Drug**, **PROCEDURE**), the ETL automatically applies existing **ontologies** and **mappings** between codes.
 
 ### Example:
 For the Drug signal, if you create values with the `RX_CODE` prefix, the ETL will detect this and automatically pull:
@@ -43,7 +43,7 @@ A signal like Cancer_Type with values such as:
 
 ### What to do:
 
-* Define the new categorical signal in [CODE_DIR](../../High%20level%20-%20important%20paths/CODE_DIR.md)/configs/rep.signals
+* Define the new categorical signal in [CODE_DIR](../../ETL%20Tutorial/High%20level%20-%20important%20paths/CODE_DIR.md)/configs/rep.signals
 ➡️ No manual mapping is needed. It will processed in the end as part of `finish_prepare_load` call later
 
 ## Use Case 3 – New or Known Signals with Additional Client Dictionaries

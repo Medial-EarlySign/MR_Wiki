@@ -16,5 +16,5 @@ The `ETL_INFRA_DIR` contains the standalone ETL infrastructure, available in the
     -   **`signals_prctile.cfg`**: Contains quantile information for each signal listed in `general.signals`. This data is used to test lab signals.
     -   **`lab_zero_value_allowed.txt`**: A list of signals where a value of `0` is permitted. An error will be raised if a zero value is found for a signal not on this list and the rate is above a defined threshold.
 -   **`tests`**: Holds additional, specific tests for signals. The ETL process always performs basic structural checks (e.g., correct channels, data types).
-    -   **`TAG_NAME`** (e.g., "labs"): Each file within this folder represents a different test that will be executed for every signal with that specific tag. To add additional tests see [ETL_process dynamic testing of signals](../ETL%20Tutorial/ETL_process%20dynamic%20testing%20of%20signals.md)
+    -   **`TAG_NAME`** (e.g., "labs"): Each file within this folder represents a different test that will be executed for every signal with that specific tag. To add additional tests see [ETL_process dynamic testing of signals](../ETL_process%20dynamic%20testing%20of%20signals.md)
 -   **`data_fetcher`**: A library with helper functions for the parsing phase, which fetches data from databases or files. For example, it includes functions for batching large files.

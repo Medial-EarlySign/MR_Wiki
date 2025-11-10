@@ -21,7 +21,7 @@ Or run as part of the suite:
 
 ## What This Test Does
 
-- Requests SHAP values from [Flow](../../../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md) twice: grouped by signal category and ungrouped (full features). Outputs are written to `${WORK_DIR}/ButWhy/shapley_grouped.report` and `${WORK_DIR}/ButWhy/shapley.report`.
+- Requests SHAP values from [Flow](../../../../Infrastructure%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md) twice: grouped by signal category and ungrouped (full features). Outputs are written to `${WORK_DIR}/ButWhy/shapley_grouped.report` and `${WORK_DIR}/ButWhy/shapley.report`.
 - Uses `feature_importance_printer.py` to generate global HTML reports:
     - `${WORK_DIR}/ButWhy/Global.html` (grouped)
     - `${WORK_DIR}/ButWhy/Global.ungrouped.html`

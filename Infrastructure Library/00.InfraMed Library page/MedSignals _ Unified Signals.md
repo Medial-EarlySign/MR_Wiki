@@ -114,5 +114,5 @@ rec.uget(sid, usv);
 
 ### Signals Config File
 
-For details on the [signals file](../../Repositories/Repository%20Signals%20file%20format.md)
+For details on the [signals file](../../Infrastructure%20Library/DataRepository/Repository%20Signals%20file%20format.md)
 

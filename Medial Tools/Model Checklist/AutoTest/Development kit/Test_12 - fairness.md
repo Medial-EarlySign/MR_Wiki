@@ -14,7 +14,7 @@ From `configs/env.sh`:
 - `BT_JSON_FAIRNESS`: Bootstrap JSON for filtering cohorts
 - `FAIRNESS_BT_PREFIX`: Bootstrap cohort definition for fairness testing
 - `config/fairness_groups.cfg`: Defines the groups to compare
-	- Each line: two or more group definitions ([bootstrap cohort filter format](../../../../Infrastructure%20C%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format), separated by `|`), tab-delimited with display names (also separated by `|`)
+	- Each line: two or more group definitions ([bootstrap cohort filter format](../../../../Infrastructure%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format), separated by `|`), tab-delimited with display names (also separated by `|`)
 	- Example:
 		```tsv
 		Gender:1,1|Gender:2,2	Males|Females

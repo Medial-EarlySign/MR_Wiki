@@ -6,7 +6,7 @@ This page explains how to inspect and interpret the ETL outputs after running th
 
 Where outputs are stored
 
-All ETL outputs are written under the repository `WORK_DIR`. See the high-level path: [WORK_DIR](../../High%20level%20-%20important%20paths/WORK_DIR.md).
+All ETL outputs are written under the repository `WORK_DIR`. See the high-level path: [WORK_DIR](../../ETL%20Tutorial/High%20level%20-%20important%20paths/WORK_DIR.md).
 
 Key folders to review:
 

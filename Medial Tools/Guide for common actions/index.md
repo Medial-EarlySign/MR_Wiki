@@ -37,7 +37,7 @@ See: [Iterative Feature Selector](../Iterative%20Feature%20Selector.md)
 
 ### 8. Analyze Feature Importance & Model Behavior
 Analyze global feature importance, feature interactions, and the effect of each important feature or signal on model output.
-See: [Feature Importance](../../Infrastructure%20C%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md)
+See: [Feature Importance](../../Infrastructure%20Library/05.PostProcessors%20Practical%20Guide/ButWhy%20Practical%20Guide.md)
 
 Automated tests for feature importance are available: [Feature Importance Test](../Model%20Checklist/AutoTest/Development%20kit/Test_05%20-%20But%20why.md)
 
@@ -51,7 +51,7 @@ TestModelExternal is a tool designed to compare differences between repositories
 See: [TestModelExternal](../TestModelExternal.md)
 
 ### 11. Create and Load Repository from Files
-See: [Load new repository](../../Repositories/Load%20new%20repository.md)
+See: [Load new repository](../../Infrastructure%20Library/DataRepository/Load%20new%20repository.md)
 
 ### 12. Create Random Splits for Train/Test/All Patients
 See: [Using Splits](../Using%20the%20Flow%20App/Split%20Files.md#create-random-splits-for-patients)
@@ -78,7 +78,7 @@ See: [bootstrap_app](../bootstrap_app/index.md) for details on the `--filter_by_
 ### 16. Check Model Compatibility with Repository / Suggest Adjustments
 When applying a model to a different repository, some adjustments may be needed.
 
-For example, MedModel strictly checks for required signals. If a signal is missing but not critical, you can mark it as acceptable by adding a rep processor for an ["empty" signal](../../Infrastructure%20C%20Library/01.Rep%20Processors%20Practical%20Guide/How%20to%20create%20an%20empty%20signal).
+For example, MedModel strictly checks for required signals. If a signal is missing but not critical, you can mark it as acceptable by adding a rep processor for an ["empty" signal](../../Infrastructure%20Library/01.Rep%20Processors%20Practical%20Guide/How%20to%20create%20an%20empty%20signal).
 For more information, see [Flow fit_model_to_rep](../Using%20the%20Flow%20App/Fit%20MedModel%20to%20Repository.md).
 
 ---

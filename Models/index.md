@@ -1,5 +1,7 @@
 # Available Models
 
+Some of them are available for download and deployment, some through other partners.
+
 | Model Name |  Model description | Contact Details for Usage |
 |------------|--------------------|-----------|
 | [LGI/Colon-Flag](ColonFlag.md) | Detects colon cancer using age, sex, and CBCs | [Roche](https://navify.roche.com/marketplace/products/algorithms/navify-algorithms-colonflag-by-medial-earlysign) | 
@@ -12,4 +14,4 @@
 | [Mortatlity](MortatlityCMS.md) | Predicts mortality using CMS claims data | TBD |
 | [Unplanned COPD Admission Prediction Model](COPDCMS.md) | Predicts COPD hospitalization using CMS claims data | TBD |
 
-Instructions for using an existing model can be found [here](../Infrastructure%20C%20Library/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)
+Instructions for using an existing model can be found [here](../Infrastructure%20Library/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)

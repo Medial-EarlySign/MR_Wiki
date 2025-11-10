@@ -15,4 +15,4 @@
    ```
 4. Run the Server `AlgoMarker_python_API/run_server.sh`
 
-For more details follow: [Python AlgoMarker API Wrapper](../../Python/Python%20AlgoMarker%20API%20Wrapper.md)
+For more details follow: [Python AlgoMarker API Wrapper](../../Medial%20Tools/Python/Python%20AlgoMarker%20API%20Wrapper.md)

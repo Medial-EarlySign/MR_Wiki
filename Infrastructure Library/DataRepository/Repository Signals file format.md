@@ -63,4 +63,4 @@ SIGNAL  RC          2309    16:CategoricalT1V1       Med All ReadCodes ^[0-9A-HJ
 SIGNAL  Drug        2400    16:Date2Val_i_f       Drugs: date, drug code, duration in days, use proper    10    days
 ```
 
-A full list of [deprecated signal types](../Infrastructure%20C%20Library/00.InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors.md) by numeric code
+A full list of [deprecated signal types](../00.InfraMed%20Library%20page/Generic%20(Universal)%20Signal%20Vectors.md) by numeric code

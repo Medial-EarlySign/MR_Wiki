@@ -57,7 +57,7 @@ This script must be located in the `signal_processings` folder alongside your ma
 ## Inside the Script
 
 * Input: A `DataFrame df` from the fetcher.
-    - You can also use `workdir` as [WORKDIR](../../High%20level%20-%20important%20paths/WORK_DIR.md) folder path and `sig_types` and object with signal type definitions. A usefull function is to retrived other processed signal, in that example `BDATE` with `df_bdate = load_final_sig(workdir, sig_types, "BDATE")`
+    - You can also use `workdir` as [WORKDIR](../../ETL%20Tutorial/High%20level%20-%20important%20paths/WORK_DIR.md) folder path and `sig_types` and object with signal type definitions. A usefull function is to retrived other processed signal, in that example `BDATE` with `df_bdate = load_final_sig(workdir, sig_types, "BDATE")`
 * Output: A transformed DataFrame in the required format, still called `df`.
 * Any `print` statements will be captured in a log file.
 
