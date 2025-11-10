@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import asyncio
 import traceback
 import httpx
@@ -174,13 +175,13 @@ if __name__ == "__main__":
         .drop_duplicates(ignore_index=True)
         .sort_values(["source"], ignore_index=True)
     )
-    with open("~/sitemap.xml", "w") as fw:
-        fw.write(
-            '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-        )
-        fw.write(
-            "\n".join(map(lambda x: f"<url><loc>{x}</loc></url>", df["source"].values))
-        )
-        fw.write("</urlset>")
+    # with open("~/sitemap.xml", "w") as fw:
+    #     fw.write(
+    #         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+    #     )
+    #     fw.write(
+    #         "\n".join(map(lambda x: f"<url><loc>{x}</loc></url>", df["source"].values))
+    #     )
+    #     fw.write("</urlset>")
 
     # breakpoint()
