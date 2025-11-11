@@ -1,9 +1,9 @@
 
-# Guide for Common Actions
+# Actions Index
 
 ## Overview
 
-This guide summarizes frequent tasks and workflows for working with MedSamples, models, and repositories. Each section provides a brief description and links to detailed instructions or related tools.
+This guide summarizes some tasks and workflows for working with MedSamples, models, and repositories. Each section provides a brief description and links to detailed instructions or related tools.
 
 ---
 

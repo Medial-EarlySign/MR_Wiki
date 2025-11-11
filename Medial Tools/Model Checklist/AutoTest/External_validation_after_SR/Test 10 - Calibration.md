@@ -56,7 +56,7 @@ Check `${WORK_DIR}/calibration` for calibration outputs and graphs.
 
 ## Example output snippets
 
-[TestCalibration tool outputs](../../../Guide%20for%20common%20actions/Calibrate%20model,%20and%20calibration%20test.md)
+[TestCalibration tool outputs](../../../Calibrate%20model,%20and%20calibration%20test.md)
 
 ## Notes and Implementation Details
 

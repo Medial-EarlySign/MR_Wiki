@@ -82,6 +82,8 @@ To add or override tests:
 - Place new or overridden tests in your `Tests` folder, using the same numeric prefix as the base template to override.
 - Templates specify required arguments from `env.sh`; reuse and extend as needed.
 
+Guide for writing/adding a new test: [Add a new AutoTest](Add_a_new_AutoTest.md)
+
 ## Testing the TestKit
 
 Unit tests for the TestKit are available for LGI in "Development", "External_Silent_Run", and "External_validation_after_SR". See `MR_Tools/AutoValidation/test_kit` to run the desired TestKit tests.

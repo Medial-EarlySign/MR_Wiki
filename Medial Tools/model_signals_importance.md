@@ -25,7 +25,7 @@ This analysis is useful for:
 - `--group2signal <path>`: (Optional) Path to a tab-delimited file with two columns: group name (from `features_groups`) and a comma-separated list of signals. This remaps groups to the actual signals to exclude during testing. Can help when the "features_groups" defined for ButWhy are not input signals and you want to map them to input signals.
 - `--measure_regex <string>`: A regular expression string (e.g., `"AUC|SENS@FPR_03"`) that specifies which performance metrics to include in the output report.
 
-You can also specify filtering arguments with `--bt_filter` arguments like we do in [FilterSamples](Guide%20for%20common%20actions/index.md#15-filter-samples-by-bt-cohort)
+You can also specify filtering arguments with `--bt_filter` arguments like we do in [FilterSamples](FilterSamples.md)
 
 ## How It Works
 

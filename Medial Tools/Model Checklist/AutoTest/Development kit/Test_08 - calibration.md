@@ -3,7 +3,7 @@
 ## Purpose
 This test evaluates the calibration performance of a predictive model. Calibration measures how well the predicted probabilities reflect actual outcomes, ensuring the model's probability estimates are reliable and actionable.
 
-more about calibration information please refer to [Calibrate model, and calibration test](../../../Guide%20for%20common%20actions/Calibrate%20model,%20and%20calibration%20test.md)
+more about calibration information please refer to [Calibrate model, and calibration test](../../../Calibrate%20model,%20and%20calibration%20test.md)
 
 
 ## Required Inputs

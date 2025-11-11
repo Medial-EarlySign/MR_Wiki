@@ -1,4 +1,4 @@
-# AlgoMarker common actions
+# AlgoMarker inspection
 How to list all Rules outliers
 ```bash
 Flow --print_model_info --f_model $MODEL_PATH 2>&1  | egrep "RepRuleBasedOutlierCleaner|BasicOutlierCleaner"

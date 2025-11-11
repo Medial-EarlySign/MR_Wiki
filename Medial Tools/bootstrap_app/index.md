@@ -50,7 +50,7 @@ A single line in the `cohorts_file` can generate multiple combinations of cohort
 MULTI	Age:40,89;Age:50,75;Age:45,75	Time-Window:0,365;Time-Window:180,365
 ```
 
-For more information on the `cohorts_file` format, refer to the [MedBootstrap](../../Infrastructure%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format) wiki page.
+For more information on the `cohorts_file` format/bootstrap query language, refer to the [MedBootstrap](../../Infrastructure%20Library/MedProcessTools%20Library/MedBootstrap.md#cohorts-file-format) wiki page.
 
 ## Command-Line Options
 

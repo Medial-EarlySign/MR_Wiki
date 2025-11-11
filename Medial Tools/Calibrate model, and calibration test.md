@@ -1,7 +1,6 @@
 # Calibrate model, and calibration test
-****: Calibrate a model on one repository, and check calibration on another repository.
-****
-****
+Calibrate a model on one repository, and check calibration on another repository.
+
 ```bash
 FilterSamples --filter_train 0 --rep $REP --filter_by_cohort "Time-Window:0,365" --samples $SAMPLES --output $OUTPUT --json_mat $JSON
 ```
@@ -9,15 +8,13 @@ Comments:
 
 - Time Window should be 0 to horizon. Thus, 0,365 means calibrated risk for outcome within 1 year. And 0,730 would mean calibrated risk for outcome within 2 years.
 - json_mat is required even though it has no effect (to be removed)
-- filter_train default is 1 => take just train. As we set '0' - all samples are taken.
-****
-****
+- filter_train default is 1 => take just train. As we set `0` - all samples are taken.
+
 Standard predict for the samples generated previously.
 ```bash
 Flow --get_model_preds --rep $REP --f_samples $INPUT --f_model $MODEL --f_preds $PREDS_FOR_CALIBRATION 
 ```
  
-****
 ```bash
 adjust_model --postProcessors $JSON --rep $REP --samples $PREDS_FOR_CALIBRATION --inModel $MODEL --skip_model_apply 1 --out $OUTPUT 
 ```
@@ -51,14 +48,12 @@ The required JSON is:
 } 
 ```
  
-****
 Run the program:
 ```bash
 TestCalibration --rep ${REP} --tests_file ${TEST} --output ${OUT_PATH}
 ```
 The test file has 3 TAB tokens in each line: samples_path, optional model_path to apply on samples and optional split to filter from samples.
  
-****
 File with expected risk and actual in validation, for each bin of the calibrated model, e.g., plus some KPIs:
 ```
 probabilty_of_model 	Validation_probabilty  	 cases 	 total_observations 	Diff

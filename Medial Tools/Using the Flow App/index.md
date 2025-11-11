@@ -108,6 +108,7 @@ Flow --get_model_preds --rep $REPOSITORY_PATH --f_samples $PATH_TO_TRAIN_SAMPLES
 
 **Pre-processors** can be added to the beginning of the model pipeline to manipulate raw signals before they are fed into the model. This allows you to perform operations that don't require training or storage in the model itself, such as simulating the removal or limitation of a specific signal. For more details, see [Using Pre Processors](Using%20Pre%20Processors.md)
 
+To output the feature matrix, please use `--get_mat` switch in Flow instead of `--get_model_preds`, the output argument is `--f_matrix` and not `--f_preds`
 
 ### Creating a Feature Matrix for Samples
 

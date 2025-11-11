@@ -38,7 +38,7 @@ adjust_model --rep <repository_path> --inModel <current_model_path> --out <out_m
 
 To add new components, you'll provide a JSON object defining the new processors. 
 A "block" within this JSON corresponds to a specific processor. 
-For example, a block might be a [Calibrator](Guide%20for%20common%20actions/Calibrate%20model,%20and%20calibration%20test.md) processor.
+For example, a block might be a [Calibrator](Calibrate%20model,%20and%20calibration%20test.md) processor.
 
 
 ### Adding Pre-Processors
@@ -68,7 +68,7 @@ Here is a template for the `--postProcessors` argument.
 }
 ```
 
-* [Full example of adding calibration](Guide%20for%20common%20actions/Calibrate%20model,%20and%20calibration%20test.md)
+* [Full example of adding calibration](Calibrate%20model,%20and%20calibration%20test.md)
 
 ## How to change existing components
 
