@@ -32,22 +32,7 @@ The infrastructure is built upon:
     - The model is deployed already? - [How To Use Deployed AlgoMarker](Infrastructure%20Library/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)
     - The model is available, but you need to deploy it first. Please refer to [AlgoMarker Deployment](Infrastructure%20Library/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-deploy-algomarker)
     - List of [Models](Models)
-* You want to build a new model please follow [Creating a new model](#creating-a-new-model)
-
-
-## Creating a new model
-
-If you want to create a new model, please follow those steps:
-
-1. Set up your environment: Compile and clone the necessary tools
-    * Follow: [Installation](Installation/index.md#setup)
-2. Create a data repository with your EMR data: Follow the [ETL guide](Infrastructure%20Library/DataRepository/Load%20new%20repository.md)
-3. Define your cohort: Prepare a list of patient IDs, prediction times, and outcome. See [MedSamples](Infrastructure%20Library/MedProcessTools%20Library/MedSamples.md) for details on labeling. In this step you will create a file where each patient has a timestamp for prediction and a label in a CSV format. 
-4. Specify the model architecture in JSON. Refer to: [Model Json Format](Infrastructure%20Library/MedModel%20json%20format.md), [infrastucture explanation](Infrastructure%20Library/index.md) 
-5. Run our tools to train the model with the model architecture, samples and data repository - python or [Flow](Medial%20Tools/Using%20the%20Flow%20App/index.md#training-a-model), [Optimizer](Medial%20Tools/Optimizer.md) to train the model, or [python code](Medial%20Tools/Python/Examples.md#learn-model-from-json-to-generate-matrix)
-6. Apply and test the model using [Flow](Medial%20Tools/Using%20the%20Flow%20App/index.md#predictingapplying-a-model) or [python code](Medial%20Tools/Python/Examples.md#load-medmodel-and-apply-predict-on-sample)
-7. Analyze model performance using [bootstrap](Medial%20Tools/bootstrap_app/) and [test kit/AutoTest](Medial%20Tools/Model%20Checklist/AutoTest/) or write your own tests
-8. Wrap the model for deployment - follow - [AlgoMarker Deployment](Infrastructure%20Library/AlgoMarkers/Howto%20Use%20AlgoMarker.md)
+* You want to build a new model please follow [Medial Tools](Medial%20Tools)
 
 ## Github pages
 

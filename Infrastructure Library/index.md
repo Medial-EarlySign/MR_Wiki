@@ -7,9 +7,14 @@ We can think about this infrastructure as "TensorFlow" of medical data machine l
 This award-winning framework used in production across multiple sites and recognized in the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge) offers an end-to-end solution for high-stakes medical AI.
 
 ### Howto Use this
-Suppose you're a potential user or client interested in using a specific model.
-You're not concerned with how the model was built or which tools were used, you simply want to deploy and use it.
-Please refer to this page: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20AlgoMarker.md)
+* Use en existing model: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20AlgoMarker.md)
+* Build your own model - [Medial Tools](../Medial%20Tools)
+
+This page only covers:
+* Explaination about the infrastructure, the components
+* How to extend the infrastructure and write application that uses it
+
+For usage, please refer to [Medial Tools](../Medial%20Tools)
 
 ### Main contributers from recent years:
 - [Avi Shoshan](https://www.linkedin.com/in/avi-shoshan-a684933b/)
