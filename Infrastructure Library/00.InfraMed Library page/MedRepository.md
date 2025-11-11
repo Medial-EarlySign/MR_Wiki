@@ -66,7 +66,7 @@ int sid = rep.sigs.sid(sig);
 // Output variable for length
 int len;
 
-// Access DateVal signal with old API - Don't use it (and almost not exists anymore) 
+// Access DateVal signal with deprecated Data Repository format. avoid using.
 SDateVal *sdv = (SDateVal *)rep.get(pid, sig, len);
 // Access Generic signal with variable time and values channels
 UniversalSigVec usv;

@@ -1,10 +1,17 @@
 # Infrastructure Home Page
 
 ## Overview of Medial Infrastructure
-Medial Infrastructure is designed to turn the Electronic Medical Record (EMR)-a complex, semi-structured time-series dataset, into a machine-learning-ready resource. Unlike images or free text, EMR data can be stored in countless formats, and its "labels" (the outcomes or targets you want to predict) aren’t always obvious. We address this by standardizing both the storage and the processing of time-series signals.
-We can think about this infrastructure as "TensorFlow" of medical data machine learning. 
+Medial EarlySign provides an infrastructure to convert **Electronic Medical Records (EMR)** - a complex, semi-structured time-series dataset into **machine-learning-ready** data and reproducible model pipelines. The library is optimized for sparse time-series EMR data and is designed for low memory usage and fast processing at scale.
+Unlike images or free text, EMR data can be stored in complex format. The infrastructure standardize both the storage and the processing of time-series signals. We can think about this infrastructure as "TensorFlow" of medical data machine learning.
 
-This award-winning framework used in production across multiple sites and recognized in the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge) offers an end-to-end solution for high-stakes medical AI.
+Key benefits at a glance:
+
+- **Fast and memory-efficient processing** for large-scale EMR sparse time series where general-purpose libraries (e.g., pandas) are often impractical.
+- Shareable, tested pipelines and methods that save engineering time and reduce duplicated effort.
+- Built-in safeguards to reduce **data leakage** and time-series-specific overfitting.
+- **Production-ready**: easily deployable in Docker or minimal Linux images.
+
+This framework is deployed in production across multiple healthcare sites and played a key role in our award-winning submission to the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge).
 
 ### Howto Use this
 * Use en existing model: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20AlgoMarker.md)
