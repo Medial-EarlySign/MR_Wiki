@@ -1,7 +1,7 @@
 # Available Models
 
 This is a partial list of model developed bt Medial EarlySign (MES).
-Each model has a crad with explanation about the model, how to access it, relevant publication, etc.
+Each model has a card with explanation about the model, how to access it, relevant publication, etc.
 
 | Model Name |  Model description | Contact Details for Usage |
 |------------|--------------------|-----------|
