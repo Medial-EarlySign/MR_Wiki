@@ -495,17 +495,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-new-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a new model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#github-pages" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -9735,17 +9724,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-new-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a new model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#github-pages" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -9827,23 +9805,8 @@ The infrastructure is built upon:</p>
 <li>List of <a href="Models">Models</a></li>
 </ul>
 </li>
-<li>You want to build a new model please follow <a href="#creating-a-new-model">Creating a new model</a></li>
+<li>You want to build a new model please follow <a href="Medial%20Tools">Medial Tools</a></li>
 </ul>
-<h2 id="creating-a-new-model">Creating a new model</h2>
-<p>If you want to create a new model, please follow those steps:</p>
-<ol>
-<li>Set up your environment: Compile and clone the necessary tools<ul>
-<li>Follow: <a href="Installation/index.html#setup">Installation</a></li>
-</ul>
-</li>
-<li>Create a data repository with your EMR data: Follow the <a href="Infrastructure%20Library/DataRepository/Load%20new%20repository.html">ETL guide</a></li>
-<li>Define your cohort: Prepare a list of patient IDs, prediction times, and outcome. See <a href="Infrastructure%20Library/MedProcessTools%20Library/MedSamples.html">MedSamples</a> for details on labeling. In this step you will create a file where each patient has a timestamp for prediction and a label in a CSV format. </li>
-<li>Specify the model architecture in JSON. Refer to: <a href="Infrastructure%20Library/MedModel%20json%20format.html">Model Json Format</a>, <a href="Infrastructure%20Library/index.html">infrastucture explanation</a> </li>
-<li>Run our tools to train the model with the model architecture, samples and data repository - python or <a href="Medial%20Tools/Using%20the%20Flow%20App/index.html#training-a-model">Flow</a>, <a href="Medial%20Tools/Optimizer.html">Optimizer</a> to train the model, or <a href="Medial%20Tools/Python/Examples.html#learn-model-from-json-to-generate-matrix">python code</a></li>
-<li>Apply and test the model using <a href="Medial%20Tools/Using%20the%20Flow%20App/index.html#predictingapplying-a-model">Flow</a> or <a href="Medial%20Tools/Python/Examples.html#load-medmodel-and-apply-predict-on-sample">python code</a></li>
-<li>Analyze model performance using <a href="Medial%20Tools/bootstrap_app/">bootstrap</a> and <a href="Medial%20Tools/Model%20Checklist/AutoTest/">test kit/AutoTest</a> or write your own tests</li>
-<li>Wrap the model for deployment - follow - <a href="Infrastructure%20Library/AlgoMarkers/Howto%20Use%20AlgoMarker.html">AlgoMarker Deployment</a></li>
-</ol>
 <h2 id="github-pages">Github pages</h2>
 <ul>
 <li><a href="https://github.com/Medial-EarlySign/MR_Libs">MR_LIBS</a> - Github repository for Medial EarlySign infrastructure libraries</li>
