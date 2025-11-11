@@ -11,7 +11,7 @@ import time
 pointer_to_page = dict()
 crawled_pages = dict()
 max_crawled_pages = 5000
-allow_external_test = True
+allow_external_test = False
 
 
 def get_page_re(url: str, retries: int = 3) -> tuple[str, str | None]:
@@ -151,10 +151,10 @@ def main(start_url, concurrency=1):
 
 
 if __name__ == "__main__":
-    # start_url = "http://localhost:8000"
-    start_url = (
-        "https://medial-earlysign.github.io/MR_Wiki"  # Change this to your starting URL
-    )
+    start_url = "http://localhost:8000"
+    # start_url = (
+    #     "https://medial-earlysign.github.io/MR_Wiki"  # Change this to your starting URL
+    # )
 
     # asyncio.run(main(start_url))
     main(start_url)
