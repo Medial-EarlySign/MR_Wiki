@@ -13,7 +13,7 @@ When a model is deployed via AlgoMarker, only a small runtime API and shared lib
 
 ## Setup requirements
 
-1. Use the Python integration where possible - see the [Python](Python) section. Note that the Python package does not expose every feature. Some capabilities are still only available as executables, but [extension](Python/Extend%20and%20Develop.md) of the python library is possible. Follow the Python setup instructions: [Python API for MES Infrastructure](../Installation/Python%20API%20for%20MES%20Infrastructure.md).
+1. Use the Python integration where possible - see the [Python](Python) section. Note that the Python package does not expose every feature. Some capabilities are still only available as executables, but [extension](Python/Extend%20and%20Develop.md) of the python library is possible. Follow the [Python setup instructions](../Installation/Python%20API%20for%20MES%20Infrastructure.md).
 
 2. If you need the command-line tools, follow the installation guide: [MES Tools to Train and Test Models](../Installation/MES%20Tools%20to%20Train%20and%20Test%20Models.md). Each tool includes a `--help` flag that lists its arguments and options and `--version` flag to output git version it was complied with. Common tools are covered also within this Wiki.
 

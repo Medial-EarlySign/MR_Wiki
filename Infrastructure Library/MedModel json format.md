@@ -42,11 +42,39 @@ This is the heart of the model definition—a list of components executed in ord
 
 **Component types:**
 
-- `rep_processor` or `rp_set`: Cleans or derives raw signals
+- `rep_processor` or `rp_set`: Process raw signals
+    * List of available rep_processor: [Rep Processors Practical Guide](01.Rep%20Processors%20Practical%20Guide). You should select and sepecify a the type name in `rp_type` field. For example:
+    ```json
+    {
+      "rp_type": "$SELECT_TYPE",
+      ... Specific Component arguments that will be passed as dictionary key and value to "init" function of the component
+    }
+    ```
 - `feat_generator`: Creates features from cleaned signals
+    * List of available feat_generator: [Feature Generator Practical Guide](02.Feature%20Generator%20Practical%20Guide). You should select and sepecify a the type name in `fg_type` field. For example:
+    ```json
+    {
+      "fg_type": "$SELECT_TYPE",
+      ... Specific Component arguments that will be passed as dictionary key and value to "init" function of the component
+    }
+    ```
 - `fp_set`: Post-processes the feature matrix (imputation, selection, normalization)
-- `predictor`: The machine learning algorithm
-- `post_processor`: Final calibration or adjustment
+    * List of available feature processors: [FeatureProcessor practical guide](03.FeatureProcessor%20practical%20guide). You should select and sepecify a the type name in `fp_type` field. For example:
+    ```json
+    {
+      "fp_type": "$SELECT_TYPE",
+      ... Specific Component arguments that will be passed as dictionary key and value to "init" function of the component
+    }
+    ```
+- `predictor`: The machine learning algorithm. List of available predictors: [MedPredictor practical guide](04.MedAlgo%20Library/MedPredictor%20practical%20guide). you should specify the selected predictor as `predictor` and it parameters as `predictor_params`
+- `post_processor`: Final calibration or adjustment.
+    * List of available post processors: [PostProcessors Practical Guide](05.PostProcessors%20Practical%20Guide) and specify the type in `post_processor`. Example:
+    ```json
+    {
+      "fp_post_processortype": "$SELECT_TYPE",
+      ... Specific Component arguments that will be passed as dictionary key and value to "init" function of the component
+    }
+    ```
 
 #### Example Walkthrough
 

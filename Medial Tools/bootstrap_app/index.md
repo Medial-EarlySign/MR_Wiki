@@ -178,7 +178,7 @@ cohorts_file = /server/Work/Users/Alon/UnitTesting/examples/bootstrap_app/bootst
 
 While `bootstrap_app` has many options, only two are mandatory for a basic run: `input` and `output`. The **input file** is a tab-separated TSV file that must contain columns for `pid` (patient ID), `outcome`, and `pred_0` (prediction score). For more details on this format, see the [MedSamples](../../Infrastructure%20Library/MedProcessTools%20Library/MedSamples.md) documentation.
 
-The other parameters you see in the example, such as `rep`, `json_model`, and `cohorts_file`, are **optional** and used for advanced cohort analysis. The tool can automatically generate a feature matrix from a `json_model` and a data repository. Alternatively, you can directly provide a feature matrix as a CSV file by setting `input_type` to `features_csv` in this case, you don't need to specify `rep` or `json_model`.
+The other parameters you see in the example, such as `rep`, `json_model`, and `cohorts_file`, are **optional** and used for advanced cohort analysis/filtering of sub population. The tool can automatically generate a feature matrix from a `json_model` and a data repository. Alternatively, you can directly provide a feature matrix as a CSV file by setting `input_type` to `features_csv` in this case, you don't need to specify `rep` or `json_model`.
 
 
 ## Adjusting Incidence with an Incidence File

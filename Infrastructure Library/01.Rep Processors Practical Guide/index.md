@@ -1,23 +1,28 @@
 # Rep Processors Practical Guide
 This page intends to list current RepProcessors with explanations on parameters and a json line example.
+Available components for selection in `rp_type`:
 
-- basic_cln : Basic outlier cleaner : learn ditribution and throw extreme values
-- nbrs_outlier_cleaner : Neighborhood outlier cleaner
-- [configured_outlier_cleaner](Cleaners%20Json%20Examples.md): Configured outlier cleaner - Wrapper for basic_cln  with fixed bounderies for each signal
+- `basic_cln` : Basic outlier cleaner : learn ditribution and throw extreme values
+- `nbrs_outlier_cleaner` : Neighborhood outlier cleaner
+- [configured_outlier_cleaner](Cleaners%20Json%20Examples.md): Configured outlier cleaner - Wrapper for basic_cln with fixed bounderies for each signal
 - [rulebased_outlier_cleaner](Cleaners%20Json%20Examples.md): Rule Based outlier cleaner - Rules based on panels (for example BMI) to remove mismatched values in panels
 - [calculator](Rep%20Calculator.md): virtual signals calculator - Virtual signals calculator - linear sum, log, and more..
 - [complete](Full%20Rep%20Processor.md): panel completer - Completes signals using panels calculations. searches for signals in exact same time that are relate to calculate (TODO: time window support). for example BMI = Weight/Height^2
-- req : check requirement processor
-- sim_val : sim val processor  - When signal has more than one value in same time - which one to choose
-- signal_rate : signal rate processor - divide signal value by time diff in 2 time channels that describe the signal period
-- combine : combine signals processor - combines 2 signals to 1 signal with same name
-- split : split signal processor - splits signal by rule for 2 different signals (to apply different rules for example on each split)
-- aggregation_period : create periods signal of categorical signals
-- basic_range_cleaner : range cleaner
-- aggregate : get signals in or out of a given period signal
+- `req` : check requirement processor
+- `sim_val` : sim val processor - When signal has more than one value in same time - which one to choose
+- `signal_rate` : signal rate processor - divide signal value by time diff in 2 time channels that describe the signal period
+- `combine` : combine signals processor - combines 2 signals to 1 signal with same name
+- `split` : split signal processor - splits signal by rule for 2 different signals (to apply different rules for example on each split)
+- `aggregation_period` : create periods signal of categorical signals
+- `basic_range_cleaner` : range cleaner
+- `aggregate` : get signals in or out of a given period signal
 - [create_registry](#RepProcessorsPracticalGuide-create_registry_rp) : create a virtual signal of a registry to some common medical situations (Diabetes, Hypertension)
 - [limit_history](History%20Limit%20repo%20processor.md) : limit or eliminate signals. Needed mainly as a pre processor
- 
+- [noiser](Noiser.md) : Noises the input raw signals, drops values (like "dropouts")
+
+> [!NOTE]
+> The arguments for each component are not always shown in this wiki. You can either see an examples of common components or look at the code `::init` function for the arguments of each component.
+
 ## Rep Processors usage in a MedModel
 Rep processors are the first elements running in a MedModel run. They are packed into MultiProcessors, each containing 1 or more rep processors. Each such multi processor contains processors allowed to run in parallel to each other, and indeed the MedModel will parallelize those runs. This is true for both learn and apply stages (mainly for learn, as in apply we anyway parallize on the pids records). Hence once defined it is important to pack the processors in the way that allows maximal parallelism.
 Example of packing processors when defining them in a json file:

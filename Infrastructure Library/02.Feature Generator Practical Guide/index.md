@@ -2,13 +2,12 @@
 Main page for describing Feature Generators We have and how to use them.
 
 ## **Specific FGs** :
-- Basic : "basic" : generating a wide range of simple (powerful) features such as last, min, max, avg, etc...
-- Age : "age"  : generating age , taking into account time units and the birth year / date.
-- Singleton : "singleton" : take the value of a time-less signal
-- Gender : "gender" : special case of Singleton
-- Binned LM : "binnedLM" : creating linear model for esitmating feature in time points
-- Smoking : "smoking" : very THIN related : converting THIN basic smoking signals to features.
-- KP Smoking : "kp_smoking" : very KP related : converting KP basic smoking signals to features.
+- Basic : `basic` : generating a wide range of simple (powerful) features such as last, min, max, avg, etc...
+- Age : `age ` : generating age , taking into account time units and the birth year / date.
+- Singleton : `singleton` : take the value of a time-less signal
+- Gender : `gender` : special case of Singleton
+- Binned LM : `binnedLM` : creating linear model for esitmating feature in time points
+- Smoking : [unified_smoking](Unified_Smoking.md) : Smoking feature generation
 - Range : "range" : features related to range signals (such as some registries)
 - Drug Intake : "drugIntake" : coverage of prescription times
 - Alcohol : "alcohol" : very THIN related : convertin raw alcohol THIN signals to features
