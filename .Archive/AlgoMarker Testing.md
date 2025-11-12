@@ -231,9 +231,7 @@ for pred_index,pred_row in preds_df.iterrows():
     pid_signals_data = []
     #pid_data = []
     request_id='req_{}_{}_{}'.format(req_id_count, pid, pred_time)
-        
     #generate request
-    
     for sig_name,sig_df in signals.items():
         if pid in sig_df.index:
             datapoints = []
@@ -262,9 +260,7 @@ for pred_index,pred_row in preds_df.iterrows():
     pid_req = encode_request(request_id=request_id,
                              customer_id=conf['customer_id'],calculator=conf['calculator_name'],
                              signals=pid_signals_data,x_api_key=conf['x_api_key'])
-    
     #generate resoponse
-    
     messages = []
     status = 0
     for row in codes_df[(codes_df['pid']==pid) & (codes_df['date']==pred_time)].iterrows():
@@ -279,13 +275,10 @@ for pred_index,pred_row in preds_df.iterrows():
     if req_id_count != 0:
         resp_file.write('\n,\n')
         req_file.write('\n,\n')
-    
     #req_data.append(pid_req)
     json.dump(pid_req, req_file, sort_keys=False, indent=1)
     json.dump(resp_data, resp_file, sort_keys=False, indent=1)
-    
     req_id_count += 1
-    
     if req_id_count % 1000 == 0:
         print("request # {}".format(req_id_count))
 resp_file.write('\n]')
@@ -331,7 +324,7 @@ def get_sql_engine(SQL_SERVER, DBNAME,  username='', password=''):
     elif SQL_SERVER == 'D6_POSTGRESSQL':
         return create_postgres_url(DBNAME, username, password)
     print(SQL_SERVER + ' Unkowen source')
-    
+
 def load_json_obj(jsonfile):
     jstr=''
     line=jsonfile.readline().rstrip()
@@ -378,7 +371,7 @@ while req!=None and resp != None:
     if req['body']['requestId'] != resp['requestId']:
         raise Exception('Error - NON MATCHING REQ IDs {} != {}'.format(req['body']['requestId'],resp['requestId']))
     requestId = req['body']['requestId']
-    
+
     data.append({
         'Id':requestId,
         'TestId':requestId,
@@ -387,12 +380,12 @@ while req!=None and resp != None:
         "ExpectedResponseBody" : json.dumps(resp, sort_keys=False, indent=0).replace('\n',''),
         "Epic" : conf['epic_flag']
     })
-    
+
     if len(data)>=1000:
         res = conn.execute(table.insert(),data)
         print('{} rows inserted (+{})'.format(i, res.rowcount))
         data=[]
-    
+
     req, resp = req_excapsulate(load_json_obj(req_file)) , load_json_obj(resp_file)
 if len(data)>0:
     res = conn.execute(table.insert(),data)

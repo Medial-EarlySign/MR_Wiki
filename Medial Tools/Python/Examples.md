@@ -155,25 +155,25 @@ samples.write_to_file('write_to_samples_file')
 rep_path='' #Path of repositroy
 json_model ='' #Path of json
 samples_file = '' #path of samples or load samples from DataFrame using: samples.from_df(dataframe_object with the right columns)
- 
+
 print("Reading basic Repository structure for fitting model")
 rep = med.PidRepository()
 rep.init(rep_path) #init model for first proccesing of "model.fit_for_repository"
-  
+
 print("Reading Model")
 model = med.Model()
 model.init_from_json_file(model_file)
 model.fit_for_repository(rep)
 signalNamesSet = model.get_required_signal_names() #Get list of relevant signals the model needed to fetch from repository
-  
+
 print("Reading Samples")
 samples = med.Samples()
 samples.read_from_file(samples_file)
 ids = samples.get_ids() #Fetch relevant ids from samples to read from repository
-  
+
 print("Reading Repository")
 rep.read_all(rep_path, ids, signalNamesSet) #read needed repository data
-  
+
 #Learn model:
 model.learn(rep, samples)
 model.features.to_df().write_to_file('write_to_matrix_file')

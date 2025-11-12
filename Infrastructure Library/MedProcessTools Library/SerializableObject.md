@@ -131,14 +131,12 @@ virtual void pre_serialization()
 2. add the ADD_CLASS_NAME(class name) macro to your class.
 3. add the MEDSERIALIZE_SUPPORT(class name) after your class definition in the same h file.
 4. Use the ADD_SERIALIZATION_FUNCS(...) macro to list the variables you need to serialize.
-  
-1. if you can't: maybe the pre_serialization() trick can solve your problem? if so - great, implement it, and use the macro.
-  
-2. If you still can't due to a complex case: implement the get_size, serialize, and deserialize methods directly.
-2. If your class is a Base class , make sure to implement the new_polymorphic method for it.
-3. If your class is a derived class, make sure the new_polymorphic method of its base class supports your derived class.
-4. Avoid changing variable names , as it will break the serialization backward support.
-5. Avoid using a variable names size . This is an unclear bug (may be a compiler bug) , but using it makes the compiler think its type is different. Simply don't use it as a serialized variable.
+	1. if you can't: maybe the pre_serialization() trick can solve your problem? if so - great, implement it, and use the macro.
+	2. If you still can't due to a complex case: implement the get_size, serialize, and deserialize methods directly.
+5. If your class is a Base class , make sure to implement the new_polymorphic method for it.
+6. If your class is a derived class, make sure the new_polymorphic method of its base class supports your derived class.
+7. Avoid changing variable names , as it will break the serialization backward support.
+8. Avoid using a variable names size . This is an unclear bug (may be a compiler bug) , but using it makes the compiler think its type is different. Simply don't use it as a serialized variable.
 ### Tips for writing an easily serialized class and a correct one
 1. Do not use c style arrays such as int * to different sizes using new or malloc. Use vector<> instead.
 2. Give good names to variables (so that later they won't be changed) (don't use size as a varialble -> there's a bug when using it)

@@ -63,7 +63,7 @@ df=clean_suffix(df, '(Manual checked)')
 df=clean_suffix(df, '(NRBC excluded)')
 #extract number:
 df['value_00']=pd.to_numeric(df.value_0.apply(lambda x: re.compile('^([0-9]+(\.[0-9]+)?)(\s.*)').sub(r'\1', x).strip()) ,errors='coerce')
-    
+
 df['has_num']=df['value_0'].apply(lambda x: len(re.compile('[0-9]').findall(x))>0)
 print('Excluded values:')
 print(df[~df['has_num']].value_0.value_counts())
@@ -72,7 +72,7 @@ df=df[df['has_num']].reset_index(drop=True)
 if len(df)!=before_nana:
     print(f'Removed non numeric size was {before_nana}, now {len(df)}. Excluded {before_nana-len(df)}')
 df=df.drop(columns=['has_num'])
-    
+
 print('Excluded more non numeric values:')
 print(df[df['value_00'].isnull()].value_0.value_counts())
 before_nana=len(df)

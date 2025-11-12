@@ -110,11 +110,9 @@ $MR_ROOT/Projects/Shared/Projects/scripts/But_Why/run_all.sh
 script args are:
 1. the explainer cfg name: look for the available names above under [The Explainers](#ButWhy-Explainers-Explainers_ButWhy) section. For example "tree" or "KNN" or "LIME_gibbs_QRF"
 2. Run_mode - a number with 2 bits:
-  
-1. First bit if on - will run explainer to explain predictions on the test samples - will override existing results
-  
-2. Second bit if on - Will run train\adjust model - Will force readjust modelFor Examples: 0 - do nothing just convert outputs. 1 - only apply and run explainer to explain test samples. 2 - will only run adjust_model. 3- will do both
-2. Summary run mode flag - if zero (default argument value) will finish run after Train\Apply explainer (depend on Run_Mode). if got 1 - will create a blinded random_test with all the explainers. If got 2 - will summarize all scores for all the explainers and will create a report****
+    1. First bit if on - will run explainer to explain predictions on the test samples - will override existing results
+    2. Second bit if on - Will run train\adjust model - Will force readjust modelFor Examples: 0 - do nothing just convert outputs. 1 - only apply and run explainer to explain test samples. 2 - will only run adjust_model. 3- will do both
+3. Summary run mode flag - if zero (default argument value) will finish run after Train\Apply explainer (depend on Run_Mode). if got 1 - will create a blinded random_test with all the explainers. If got 2 - will summarize all scores for all the explainers and will create a report****
 Full example for diabetes:
 ```bash
 #Force to run Train and Apply on KNN_TH. 3 - means in binary 11 - run train & Apply. Default is 0 to run only whats needed. If model noe exists will run train, if no results exists will run apply.

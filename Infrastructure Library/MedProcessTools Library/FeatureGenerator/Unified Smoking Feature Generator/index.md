@@ -42,19 +42,23 @@ The generator currently require the following signals (it doesn't depend anymore
 <td style="text-align: center;">v</td>
 </tr>
 </tbody></table>
-**Note:  Every repository should have those signals, even if they are not  (in that case they should be empty signals)**
+
 The **Smoking_Status** signal is a **categorical** signal, with the following values: Never, Passive, Former, Current, Never_or_Former. 
  
 **Extraction of the status in THIN is described in the Appendix**
 ## Output Features 
+
 **Boolean features:**
+
 1. Current_Smoker
 2. Ex_Smoker
 3. Never_Smoker
 4. Passive_Smoker
 5. Unknown_Smoker
 6. NLST_Criterion - 1 if age between 55 to 74, pack years > 30, time since quitting < 15 years.
-** features:**
+
+**features:**
+
 1. Smok_Days_Since_Quitting - For current smokers - 0, For Former smokers, time since quitting, for Never Smokers - time since birth
 2. Smok_Years_Since_Quitting - same as previous, but in years
 3. Smok_Pack_Years_Max - Maximal report of pack years (pack years if available) if not, it is estimated (and can be corrected with intensity
@@ -62,6 +66,7 @@ The **Smoking_Status** signal is a **categorical** signal, with the following v
 5. Smok_Pack_Years_Last - Last pack years report (without estimation)
 6. Smoking_Intensity - Number of pack per day
 7. Smoking_Years - Smoking duration.
+
 ## Config Example
 ```json
 "model_actions": [
@@ -77,6 +82,7 @@ The most basic information we need to extract is smoking status on different tim
 The logic is based on the paper: Development of an algorithm for determining smoking status and behaviour over the life course from UK electronic primary care records
  [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5217540/pdf/12911_2016_Article_400.pdf](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5217540/pdf/12911_2016_Article.pdf)
 The workflow is built  from the following methods:
+
 1. genFirstLastSmokingDates - For each status find the first time and last time it appears. This is the input for setting the status at each smoking status report.
 2. genSmokingStatus - generate for each point in smoking status vector a corrected smoking status. See **Figure** **1**
 3. genSmokingRanges - Build Smoking status ranges 

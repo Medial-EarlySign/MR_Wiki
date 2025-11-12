@@ -74,10 +74,10 @@ We now intend to use validate_1_A.samples or learn_1_A.samples to design an embe
 To train the embedding we need:
 1. x matrix , at some points in time, could be random points, or points similar to how we choose validation or learning samples. We will use the pid, time of validate_1_A.samples for that (~1.6M points, ~660K patients)
 2. y matrix : lots of options:
-  
+
 1. take y to be x : this is exactly learning an autoencoder.
 2. simply take the y time to be x time + some translation t from a set T of optional time translations:
-    
+
 1. T = {0} (semi-autoencoder) , T={365} (one year forward) , T={730} (two years forward) , T={-365} (one year backwards) etc... 
 2. T={0,365,730} , all options or random choice of one for each sample.
 We will use two options: semi-autoencoder (T for y is 0), and option 2b , and randomly set the y time to be 1y or 2y ahead from the sampling point.
@@ -212,17 +212,15 @@ To do that use the Embedder.py script, or copy it and change what you need insid
 1. Train through 3 layers (last is the embedding) 
 2. Train through 5 simetric layers with the middle as the embedding layer.
 3. Control parameters of network:
-  
-1. layers sizes
-  
-2. l1, l2, dropout regularizers on each layer
-3. control of extra weight given to cases in the loss function
-4. control leaky ReLU function parameters
-5. control noise added to embedding layer in training
-6. control number of epochs in training, also allow to continue training of a saved model.
-7. savind model in a way that can be later used in the infrastructure (.layers file)
-8. test modes to generate predictions/embedding layer results on a set of examples (to allow testing vs. the infrastructure)
-The Embedder.py script is in the git in .../MR/Projects/Shared/Embeddings/scripts/
+    1. layers sizes
+    2. l1, l2, dropout regularizers on each layer
+    3. control of extra weight given to cases in the loss function
+    4. control leaky ReLU function parameters
+    5. control noise added to embedding layer in training
+    6. control number of epochs in training, also allow to continue training of a saved model.
+    7. savind model in a way that can be later used in the infrastructure (.layers file)
+    8. test modes to generate predictions/embedding layer results on a set of examples (to allow testing vs. the infrastructure)
+    The Embedder.py script is in the git in .../MR/Projects/Shared/Embeddings/scripts/
  
 ```bash
 # example run training a model

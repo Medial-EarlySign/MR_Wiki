@@ -104,7 +104,6 @@ The json can be found in git under [https://github.com/Medial-EarlySign/AM_Lung
 		}
       ]
     }
-   
   ]
 }
 ```

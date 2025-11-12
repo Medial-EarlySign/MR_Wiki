@@ -102,7 +102,6 @@ A valid request to AlgoMarker should include the following fields:
                         ],
                         "unit": "fL"
                     },
-                    
                     {
                         "code": "GENDER",
                         "data": [

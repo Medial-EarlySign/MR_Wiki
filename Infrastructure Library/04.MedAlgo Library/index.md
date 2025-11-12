@@ -136,11 +136,11 @@ The gdlm package provides algorithms for linear and logistic regression with rid
 ```c++
 MedPredictor *predictor;
 predictor = MedPredictor::make_predictor("gdlm");
- 
+
 // classification example with logistic regression , lasso of 0.01 , learning rate of 0.001 and normalization pre running
 predictor->init_from_string("method=logistic_sgd;last_is_bias=0;stop_at_err=1e-4;batch_size=2048;momentum=0.95;rate=0.001;rate_decay=1;l_ridge=0;l_lasso=0.01;err_freq=10;nthreads=12;normalize=1");
 predictor->learn(Xtrain,Ytrain);
- 
+
 // same but regression example with least squares and lasso
 predictor->init_from_string("method=sgd;last_is_bias=0;stop_at_err=1e-4;batch_size=2048;momentum=0.95;rate=0.001;rate_decay=1;l_ridge=0;l_lasso=0.01;err_freq=10;nthreads=12;normalize=1");
 predictor->learn(Xtrain,Ytrain);

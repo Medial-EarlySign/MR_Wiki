@@ -34,7 +34,6 @@ Feature Generators in MedModel follow a specific sequence of method calls. Hereâ
    - `init_tables(MedDictionarySections)`  
      Initializes tables and stores needed signal IDs using dictionary sections.
    - `set_names` - stores the output names of the feature generator - please override.
-   
 
 6. **Feature Filtering**
    - `filter_features()`  

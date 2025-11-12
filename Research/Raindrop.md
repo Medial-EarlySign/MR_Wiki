@@ -154,22 +154,25 @@ Convert absolute time into days since 20010101 and remove pids which do not have
 ### Modifications applied to the Raindrop code
 Original Raindrop code is not well-suited for experimentation 
  for following reasons:
- 
+
 - Raindrop.py contains code specific to handling different datasets.
 - Training and testing are done in the same loop
 - In order to get a confidence interval for AUC authors train models for five different splits, rather than using Bootstrap
 - Many configuration parameters are hardcoded
 We made following modifications to the code:
+
 - Strip Raindrop.py of the code not relevant to MHS
 - Implement MHS processing based on the code handling Physionet 2012 (denoted P12 in the code). We will denote the code specific to MHS dataset as M12.
 - Split the code into RaindropTrain.py and RaindropTest.py
 - Add command-line parameters that allow setting configuration parameters from the command line
 - Implement model evaluation using Bootstrap, in order to be consistent with the SOTA model evaluation approach.
 New files:
+
 - RaindropTrain.py
 - RaindropTest.py
 Obsoleted files:
 - Raindrop.py
+
 ### Model evaluation
 After the model is applied to the test data during the call to RaindropTest.py we convert predictions into a format expected by the Medial's bootstrap_app.
  The script that implements this conversion is called BootstrapPrepare.py

@@ -2,9 +2,13 @@
 PostProcessors are processors which occours after predicitons.
 Full PostProcessor code doc: [https://Medial-EarlySign.github.io/MR_LIBS/classPostProcessor.html](https://Medial-EarlySign.github.io/MR_LIBS/classPostProcessor)
 Some PostProcessor, for full list of types and json values to put in names please reffer to [PostProcessor_Types](https://Medial-EarlySign.github.io/MR_LIBS/PostProcessor_8h.html#a1dab070b8206be89206ff19f321a1cfc).
-·          We have now MultiPostProcessor (for parallelism)
-·          Calibrator – to calibrate scores to probabilities for example
-·          ModelExplainer – Several options for ButWhy:
+
+* We have now MultiPostProcessor (for parallelism)
+* `Calibrator` - to calibrate scores to probabilities for example
+* ModelExplainer - Several options for ButWhy:
+	- `tree_shap` - The common and our method for explainability based on shapley values. There other "explainability" methods, some of them are model agnostic and not only for tree base (but they are more computational expensive)
+* `fairness_adjust` - Post processings of scores to adjust for fairness between groups. Was deployed in [AAA model](../../Models/AAA.md)
+
 <img src="../../attachments/11206670/11206674.png"/>
  
 PostProcessor API:

@@ -101,13 +101,12 @@ Rough registry definition:
     2. 1 Glucose test above 110, or 1 HbA1C above 5.7
     3. 2 Glucose tests within 2y above 100 (the second), but still not diabetic.
     4. Not taking diabetes drugs
-  
 3. Healthy   
     1. Non Diabetic
     2. Non PreDiabetic
     3. Normal range Glucose/HbA1C tests period.
 4. HyperTension: 
-  
+
 Example:
 ```json title="Example"
     {
@@ -126,7 +125,7 @@ Example:
 	  "signals":"BP,DIAGNOSIS,Drug,BDATE,_v_DM_Registry"
     },
 ```
-  
+
 2. The code (RepCreateRegistry) uses the following definitions - 
     1. High blood pressure - Diastolic BP over 90 or Systolic BP over 140 (for people younger than 60) or 150 (for people 60 or older)
     2. Drugs - Relevant drugs are divided into 4 groups. The first is always indicative of HT. The second is indicative of HT unless there are other indication of CHF. The third indicative of HT unless there are other indicaiton of Diabetes. The last is indicative of HT uless other indications of CHF, Diabetes or MI 
