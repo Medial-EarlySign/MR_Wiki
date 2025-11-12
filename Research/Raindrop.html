@@ -1238,6 +1238,8 @@
       
         
       
+        
+      
     
     
     
@@ -1333,6 +1335,34 @@
     
   
     How to Write a Feature Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Infrastructure%20Library/02.Feature%20Generator%20Practical%20Guide/Unified_Smoking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Smoking
   
 
     
@@ -10407,15 +10437,23 @@ However, applying the model to the whole test set
 <li>Raindrop.py contains code specific to handling different datasets.</li>
 <li>Training and testing are done in the same loop</li>
 <li>In order to get a confidence interval for AUC authors train models for five different splits, rather than using Bootstrap</li>
-<li>Many configuration parameters are hardcoded
-We made following modifications to the code:</li>
-<li>Strip Raindrop.py of the code not relevant to MHS</li>
+<li>
+<p>Many configuration parameters are hardcoded
+We made following modifications to the code:</p>
+</li>
+<li>
+<p>Strip Raindrop.py of the code not relevant to MHS</p>
+</li>
 <li>Implement MHS processing based on the code handling Physionet 2012 (denoted P12 in the code). We will denote the code specific to MHS dataset as M12.</li>
 <li>Split the code into RaindropTrain.py and RaindropTest.py</li>
 <li>Add command-line parameters that allow setting configuration parameters from the command line</li>
-<li>Implement model evaluation using Bootstrap, in order to be consistent with the SOTA model evaluation approach.
-New files:</li>
-<li>RaindropTrain.py</li>
+<li>
+<p>Implement model evaluation using Bootstrap, in order to be consistent with the SOTA model evaluation approach.
+New files:</p>
+</li>
+<li>
+<p>RaindropTrain.py</p>
+</li>
 <li>RaindropTest.py
 Obsoleted files:</li>
 <li>Raindrop.py</li>

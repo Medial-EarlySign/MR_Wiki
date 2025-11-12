@@ -1238,6 +1238,8 @@
       
         
       
+        
+      
     
     
     
@@ -1333,6 +1335,34 @@
     
   
     How to Write a Feature Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Infrastructure%20Library/02.Feature%20Generator%20Practical%20Guide/Unified_Smoking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Smoking
   
 
     
@@ -9744,7 +9774,8 @@ Each post_processor is json for adjust model with ModelExplainer to test - it ca
 <li>shapley_gibbs_lightGBM - estimating Shapley values by sub-sampling masks from all possible masks to estimate the sum of all the masks. Uses fixed weights (because of the sampling) thatthe sum of the experiments with weights will aggregate to the expected sum over all masks (with Shapley weights). Uses Gibb sampling of LightGBM model to estimate each variable value probabilitybased on other variables in the Gibb sampling</li>
 <li>shapley_gibbs_QRF - estimating Shapley values by sub-sampling masks from all possible masks to estimate the sum of all the masks. Uses fixed weights (because of the sampling) thatthe sum of the experiments with weights will aggregate to the expected sum over all masks (with Shapley weights). Uses Gibb sampling of QRF model to estimate each variable value probabilitybased on other variables in the Gibb sampling. Faster than LightGBM but less accurate</li>
 <li>tree - Uses tree algorithm for trees</li>
-<li>missing_shap - learn a respond model to mimic model result on missing values
+<li>
+<p>missing_shap - learn a respond model to mimic model result on missing values
 Can also add more configurations - Play with processings like grouping, covariance sum, to zero missing values and more... Need to define and close all options to test!
  
 <strong>How to generate explain results for model:</strong>
@@ -9758,15 +9789,10 @@ Use the scripts in:
 </code></pre></div></td></tr></table></div>
 script args are:
 1. the explainer cfg name: look for the available names above under <a href="#ButWhy-Explainers-Explainers_ButWhy">The Explainers</a> section. For example "tree" or "KNN" or "LIME_gibbs_QRF"
-2. Run_mode - a number with 2 bits:</li>
-</ul>
+2. Run_mode - a number with 2 bits:</p>
 <ol>
-<li>
-<p>First bit if on - will run explainer to explain predictions on the test samples - will override existing results</p>
-</li>
-<li>
-<p>Second bit if on - Will run train\adjust model - Will force readjust modelFor Examples: 0 - do nothing just convert outputs. 1 - only apply and run explainer to explain test samples. 2 - will only run adjust_model. 3- will do both</p>
-</li>
+<li>First bit if on - will run explainer to explain predictions on the test samples - will override existing results</li>
+<li>Second bit if on - Will run train\adjust model - Will force readjust modelFor Examples: 0 - do nothing just convert outputs. 1 - only apply and run explainer to explain test samples. 2 - will only run adjust_model. 3- will do both</li>
 <li>Summary run mode flag - if zero (default argument value) will finish run after Train\Apply explainer (depend on Run_Mode). if got 1 - will create a blinded random_test with all the explainers. If got 2 - will summarize all scores for all the explainers and will create a report<strong><em>*
 Full example for diabetes:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
@@ -9805,8 +9831,10 @@ To create summary resport run:
 </code></pre></div></td></tr></table></div>
 The summary can be found in files:</li>
 </ol>
-<ul>
-<li>summary.tsv - For each record (patient + prediction time) and explainer (now with the name, not blinded) will reveal Coby scores. A table for each sample records X explainer's names - the values in the cells are Coby's scores</li>
+</li>
+<li>
+<p>summary.tsv - For each record (patient + prediction time) and explainer (now with the name, not blinded) will reveal Coby scores. A table for each sample records X explainer's names - the values in the cells are Coby's scores</p>
+</li>
 <li>summary.sum.tsv - A summary for each explainer name and each score how mnay times it happened.
 Conclude into conclusion.
  

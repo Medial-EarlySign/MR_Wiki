@@ -1243,6 +1243,8 @@
       
         
       
+        
+      
     
     
     
@@ -1338,6 +1340,34 @@
     
   
     How to Write a Feature Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02.Feature%20Generator%20Practical%20Guide/Unified_Smoking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Smoking
   
 
     
@@ -9793,26 +9823,30 @@ It was based on THIN and KPSC databases.</p>
 <td style="text-align: center;">v</td>
 </tr>
 </tbody></table>
-<p><strong>Note:  Every repository should have those signals, even if they are not  (in that case they should be empty signals)</strong>
-The <strong>Smoking_Status</strong> signal is a <strong>categorical</strong> signal, with the following values: Never, Passive, Former, Current, Never_or_Former. 
+
+<p>The <strong>Smoking_Status</strong> signal is a <strong>categorical</strong> signal, with the following values: Never, Passive, Former, Current, Never_or_Former. 
  
 <strong>Extraction of the status in THIN is described in the Appendix</strong></p>
 <h2 id="output-features">Output Features</h2>
-<p><strong>Boolean features:</strong>
-1. Current_Smoker
-2. Ex_Smoker
-3. Never_Smoker
-4. Passive_Smoker
-5. Unknown_Smoker
-6. NLST_Criterion - 1 if age between 55 to 74, pack years &gt; 30, time since quitting &lt; 15 years.
-** features:**
-1. Smok_Days_Since_Quitting - For current smokers - 0, For Former smokers, time since quitting, for Never Smokers - time since birth
-2. Smok_Years_Since_Quitting - same as previous, but in years
-3. Smok_Pack_Years_Max - Maximal report of pack years (pack years if available) if not, it is estimated (and can be corrected with intensity
-4. Smok_Pack_Years - the same as Smok_Pack_Years_Max
-5. Smok_Pack_Years_Last - Last pack years report (without estimation)
-6. Smoking_Intensity - Number of pack per day
-7. Smoking_Years - Smoking duration.</p>
+<p><strong>Boolean features:</strong></p>
+<ol>
+<li>Current_Smoker</li>
+<li>Ex_Smoker</li>
+<li>Never_Smoker</li>
+<li>Passive_Smoker</li>
+<li>Unknown_Smoker</li>
+<li>NLST_Criterion - 1 if age between 55 to 74, pack years &gt; 30, time since quitting &lt; 15 years.</li>
+</ol>
+<p><strong>features:</strong></p>
+<ol>
+<li>Smok_Days_Since_Quitting - For current smokers - 0, For Former smokers, time since quitting, for Never Smokers - time since birth</li>
+<li>Smok_Years_Since_Quitting - same as previous, but in years</li>
+<li>Smok_Pack_Years_Max - Maximal report of pack years (pack years if available) if not, it is estimated (and can be corrected with intensity</li>
+<li>Smok_Pack_Years - the same as Smok_Pack_Years_Max</li>
+<li>Smok_Pack_Years_Last - Last pack years report (without estimation)</li>
+<li>Smoking_Intensity - Number of pack per day</li>
+<li>Smoking_Years - Smoking duration.</li>
+</ol>
 <h2 id="config-example">Config Example</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
@@ -9832,20 +9866,22 @@ The <strong>Smoking_Status</strong> signal is a <strong>categorical</strong> si
 <p>The most basic information we need to extract is smoking status on different time points
 The logic is based on the paper: Development of an algorithm for determining smoking status and behaviour over the life course from UK electronic primary care records
  <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5217540/pdf/12911_2016_Article.pdf">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5217540/pdf/12911_2016_Article_400.pdf</a>
-The workflow is built  from the following methods:
-1. genFirstLastSmokingDates - For each status find the first time and last time it appears. This is the input for setting the status at each smoking status report.
-2. genSmokingStatus - generate for each point in smoking status vector a corrected smoking status. See <strong>Figure</strong> <strong>1</strong>
-3. genSmokingRanges - Build Smoking status ranges 
-4. genLastStatus - Set the Boolean  smoking status features (take the last status according the the previous method output)
-5. calcQuitTime - generates Smok_Days_Since_Quitting/Smok_Years_Since_Quitting. Check that last status in the ranges vector - If former smoker, take the delta between sample time to beginning of the "former smoking" period, if Current smoker, take 0. if never smoker return time since birth date.
-6. calcSmokingIntensity - returns smoking intensity (averages the smoking intensity vector).
-7. calcPackYears - Set pack years according to the pack years vector.
-8. calcSmokingDuration - Return duration. runs over the ranges vector and integrates the period in which the status is "Current smoker"
-9. fixPackYearsSmokingIntensity - Fix pack years using smoking intensity  and duration. If Intensity is unknown and pack years is known calculate intensity.
+The workflow is built  from the following methods:</p>
+<ol>
+<li>genFirstLastSmokingDates - For each status find the first time and last time it appears. This is the input for setting the status at each smoking status report.</li>
+<li>genSmokingStatus - generate for each point in smoking status vector a corrected smoking status. See <strong>Figure</strong> <strong>1</strong></li>
+<li>genSmokingRanges - Build Smoking status ranges </li>
+<li>genLastStatus - Set the Boolean  smoking status features (take the last status according the the previous method output)</li>
+<li>calcQuitTime - generates Smok_Days_Since_Quitting/Smok_Years_Since_Quitting. Check that last status in the ranges vector - If former smoker, take the delta between sample time to beginning of the "former smoking" period, if Current smoker, take 0. if never smoker return time since birth date.</li>
+<li>calcSmokingIntensity - returns smoking intensity (averages the smoking intensity vector).</li>
+<li>calcPackYears - Set pack years according to the pack years vector.</li>
+<li>calcSmokingDuration - Return duration. runs over the ranges vector and integrates the period in which the status is "Current smoker"</li>
+<li>fixPackYearsSmokingIntensity - Fix pack years using smoking intensity  and duration. If Intensity is unknown and pack years is known calculate intensity.
  
 <strong>Example:</strong>
 Taken from THIN, birth date : July 1959, sample date 05/08/2011.
-Marked in Grey - Input (Raw) Data</p>
+Marked in Grey - Input (Raw) Data</li>
+</ol>
 <table><tbody>
 <tr>
 <td class="highlight-grey confluenceTd" data-highlight-colour="grey">Smoking Status</td>

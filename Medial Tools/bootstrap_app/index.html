@@ -1238,6 +1238,8 @@
       
         
       
+        
+      
     
     
     
@@ -1333,6 +1335,34 @@
     
   
     How to Write a Feature Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Infrastructure%20Library/02.Feature%20Generator%20Practical%20Guide/Unified_Smoking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Smoking
   
 
     
@@ -10017,7 +10047,7 @@ Only two parameters are mandatory for any run:</p>
 </code></pre></div></td></tr></table></div>
 <h3 id="explanation">Explanation</h3>
 <p>While <code>bootstrap_app</code> has many options, only two are mandatory for a basic run: <code>input</code> and <code>output</code>. The <strong>input file</strong> is a tab-separated TSV file that must contain columns for <code>pid</code> (patient ID), <code>outcome</code>, and <code>pred_0</code> (prediction score). For more details on this format, see the <a href="../../Infrastructure%20Library/MedProcessTools%20Library/MedSamples.html">MedSamples</a> documentation.</p>
-<p>The other parameters you see in the example, such as <code>rep</code>, <code>json_model</code>, and <code>cohorts_file</code>, are <strong>optional</strong> and used for advanced cohort analysis. The tool can automatically generate a feature matrix from a <code>json_model</code> and a data repository. Alternatively, you can directly provide a feature matrix as a CSV file by setting <code>input_type</code> to <code>features_csv</code> in this case, you don't need to specify <code>rep</code> or <code>json_model</code>.</p>
+<p>The other parameters you see in the example, such as <code>rep</code>, <code>json_model</code>, and <code>cohorts_file</code>, are <strong>optional</strong> and used for advanced cohort analysis/filtering of sub population. The tool can automatically generate a feature matrix from a <code>json_model</code> and a data repository. Alternatively, you can directly provide a feature matrix as a CSV file by setting <code>input_type</code> to <code>features_csv</code> in this case, you don't need to specify <code>rep</code> or <code>json_model</code>.</p>
 <h2 id="adjusting-incidence-with-an-incidence-file">Adjusting Incidence with an Incidence File</h2>
 <p>The tool estimates average incidence in your cohort based on sex, age group, and patient counts. For positive predictive value (PPV), it multiplies sensitivity by incidence, then divides by <code>sensitivity * incidence + FPR * (1 - incidence)</code>. This is equivalent to weighting cases as <code>average incidence * total cohort / total cases</code> and controls as <code>(1 - average incidence) * total cohort / total controls</code>.</p>
 <p>If the model is random (sensitivity = FPR), then PPV equals incidence. The bootstrap program also evaluates how additional cohort filters (beyond sex and age) affect incidence. For example, selecting anemic patients may bias toward cases and increase incidence compared to the global population (e.g., SEER data). The tool assumes the effect on stratified outcome, age, and sex is similar between your input samples and the reference population, and measures the lift in odds ratio before and after applying bootstrap filters. This is an adjustment for incidence-sensitive metrics, not an exact calculation.</p>

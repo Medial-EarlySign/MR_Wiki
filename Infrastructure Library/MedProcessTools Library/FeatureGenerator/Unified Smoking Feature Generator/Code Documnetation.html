@@ -1243,6 +1243,8 @@
       
         
       
+        
+      
     
     
     
@@ -1338,6 +1340,34 @@
     
   
     How to Write a Feature Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02.Feature%20Generator%20Practical%20Guide/Unified_Smoking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Smoking
   
 
     
@@ -3885,6 +3915,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Documnetation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="Code%20Documnetation.html" class="md-nav__link md-nav__link--active">
         
   
@@ -3901,6 +3949,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learn-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learn flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generate flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -9552,6 +9641,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learn-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learn flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generate flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -9686,58 +9805,34 @@
 
 
 <h1 id="code-documnetation">Code Documnetation</h1>
-<p>We will start with _learn
- 
-General comment: Passive smoker is treated as Never smoker status.
-NEVER_OR_EX_SMOKER =&gt; it is being resolved by all the smoking information if the patient has no indication of smoking, ex smoking or quit date, it is being used as never, otherwise EX.
-1. After reading signals it calls getQuitAge to store ageAtEx,deltaTime vectors for each patient. It ignores samples and being calculated per patient (uses last sample to ensure we are not using information after last time that will be later filtered to speedup. It has dates for each "change" so we can later filter it and use the information that is only available at prediction time).</p>
+<h2 id="learn-flow">Learn flow</h2>
+<p>General comment: Passive smoker is treated as Never smoker status.
+NEVER_OR_EX_SMOKER =&gt; it is being resolved by all the smoking information if the patient has no indication of smoking, ex smoking or quit date, it is being used as never, otherwise EX.</p>
 <ol>
-<li>
-<p>getQuitAge</p>
-</li>
-<li>
-<p>Calls genFirstLastSmokingDates =&gt; vector<int> dates: vector whenever something changes in the smoking info (either new smoking status information date or quit smoking date value, that refers the past). and map&lt;&gt; smokingStatusDates - for each smoking status first and last date of this indication. IT is being calculated by iterating over smoking_status signal + using smoking_quit date signal. When there is quit_date, it results in "current_smoker" status in the day before and "ex_smoker" status in quit date and it process this information to update smokingStatusDates. Also handles Never_or_Ex smoking status. If no indication of current smoking or ex smoking in smokingStatusDates after all this logic (means, even no quit date) it will use this information to update never_smoker status, otherwise it will use to update ex smoker.</p>
-</li>
-<li>
-<p>Calls genSmokingStatus =&gt; vector smokingStatusVec: iterate "dates" vector that indicates any change in smoking info and in each date updates the current status by decision tree. return if stopped smoking the stopped age and delta time between last current indication and stopped smoking date. If didn't stop - missing values. It's in order to learn relation between age that stopped smoking and delta time from quit date to last current<img src="../../../../attachments/12943639/12943648.png"/></p>
-</li>
-<li>
-<p>Learns a linear model from age at stopped smoking to time delta from quit date to last current status =&gt; slope + bias parameter
-Generate function:</p>
-</li>
+<li>After reading signals it calls getQuitAge to store ageAtEx,deltaTime vectors for each patient. It ignores samples and being calculated per patient (uses last sample to ensure we are not using information after last time that will be later filtered to speedup. It has dates for each "change" so we can later filter it and use the information that is only available at prediction time).</li>
+<li>getQuitAge</li>
+<li>Calls genFirstLastSmokingDates =&gt; vector<int> dates: vector whenever something changes in the smoking info (either new smoking status information date or quit smoking date value, that refers the past). and map&lt;&gt; smokingStatusDates - for each smoking status first and last date of this indication. IT is being calculated by iterating over smoking_status signal + using smoking_quit date signal. When there is quit_date, it results in "current_smoker" status in the day before and "ex_smoker" status in quit date and it process this information to update smokingStatusDates. Also handles Never_or_Ex smoking status. If no indication of current smoking or ex smoking in smokingStatusDates after all this logic (means, even no quit date) it will use this information to update never_smoker status, otherwise it will use to update ex smoker.</li>
+<li>Calls genSmokingStatus =&gt; vector smokingStatusVec: iterate "dates" vector that indicates any change in smoking info and in each date updates the current status by decision tree. return if stopped smoking the stopped age and delta time between last current indication and stopped smoking date. If didn't stop - missing values. It's in order to learn relation between age that stopped smoking and delta time from quit date to last current<img src="../../../../attachments/12943639/12943648.png"/></li>
+<li>Learns a linear model from age at stopped smoking to time delta from quit date to last current status =&gt; slope + bias parameter</li>
+</ol>
+<h2 id="generate-flow">Generate flow</h2>
+<ol>
 <li>calls genFirstLastSmokingDates as in _learn, but for each sample, limited till prediction date</li>
 <li>Calls genSmokingStatus as in _learn, but for each sample, limited till prediction date</li>
-<li>
-<p>Calls genSmokingRanges. generates time ranges for smoking status and returns it in sorted vector by date of smokeRanges. Iterates through status and update in each smoking status change:</p>
-</li>
-<li>
-<p>If past state was never/unkown =&gt;and changed to current smoking. set the start smoking time to current date status or to Age of 20 if no previous smoking status (was unknown and no indication of never after age 20). If there is indication of never smoker after age 20, this is the minimal start point for being never smoker till the smoking indication.</p>
-</li>
-<li>
-<p>If status is changed between  current_smoker and EX_Smoker - switch the time range in the middle </p>
-</li>
-<li>
-<p>If past state was never/unkown =&gt;and changed to EX smoking. calculates age that stopped smoknig indication</p>
-</li>
-<li>
-<p>if past was unknown and current indication is never. end unknown time range and start new time period for never smoker from this indication date. If had Quit_Smoking date, the difference in time between current and EX will be 1 day - no problem and no holes. If the change is due to smoking status - there is a hole in time between the statuses and it will use the linear slope from the age to determine the age the patient really stopped smoking. </p>
-</li>
+<li>Calls genSmokingRanges. generates time ranges for smoking status and returns it in sorted vector by date of smokeRanges. Iterates through status and update in each smoking status change:</li>
+<li>If past state was never/unkown =&gt;and changed to current smoking. set the start smoking time to current date status or to Age of 20 if no previous smoking status (was unknown and no indication of never after age 20). If there is indication of never smoker after age 20, this is the minimal start point for being never smoker till the smoking indication.</li>
+<li>If status is changed between  current_smoker and EX_Smoker - switch the time range in the middle </li>
+<li>If past state was never/unkown =&gt;and changed to EX smoking. calculates age that stopped smoknig indication</li>
+<li>if past was unknown and current indication is never. end unknown time range and start new time period for never smoker from this indication date. If had Quit_Smoking date, the difference in time between current and EX will be 1 day - no problem and no holes. If the change is due to smoking status - there is a hole in time between the statuses and it will use the linear slope from the age to determine the age the patient really stopped smoking. </li>
 <li>Calls genLastStatus - fetches last smoking status from smokeRanges for smoking_statuts features</li>
 <li>Calls calcQuitTime - Measure the number of days/years that stopped smoking. If current it's 0, if Never - it's like quit on his birth date, if ex smoker - using the ex date</li>
 <li>Calls calcSmokingIntensity - Smoking intensity valid values are 0-200 otherwise ignored. above 140 value is trimmed to 140 cigars/day.  calculates average number in all time window, 0 value for never smoker</li>
 <li>Calls calcPackYears - takes values &gt; 0. calculates max and last pack years in the time till the sample. If never smokers - it's 0. If has pack_years &gt;0, changes never_smoker status to 0. if not current_smoker, turns on the ex_smoker (<strong>MEANS you need to load PACK_YEARS only for smokers and non zero values</strong>)</li>
-<li>
-<p>Calls calcSmokingDuration - 0 for never smoker. if not unknown smoker. Calculate smoking_duration and smokingDurationBeforeLastPackYears. </p>
-</li>
-<li>
-<p>Calls getLastSmokingDuration -that return the last time and value of intensity before sample time. Calculates this again for last time before last pack_years date indication. </p>
-</li>
-<li>
-<p>Sums the current_smoker statuts time ranges - instead of using full time period, uses the lastDurationDateBeforTestDate as starting time point for calculation, since till this time you have the smoking intensity provided by the user. It does this also for last_pack_years - till the last pack years information</p>
-</li>
+<li>Calls calcSmokingDuration - 0 for never smoker. if not unknown smoker. Calculate smoking_duration and smokingDurationBeforeLastPackYears. </li>
+<li>Calls getLastSmokingDuration -that return the last time and value of intensity before sample time. Calculates this again for last time before last pack_years date indication. </li>
+<li>Sums the current_smoker statuts time ranges - instead of using full time period, uses the lastDurationDateBeforTestDate as starting time point for calculation, since till this time you have the smoking intensity provided by the user. It does this also for last_pack_years - till the last pack years information</li>
 <li>Calls fixPackYearsSmokingIntensity: if no last pack years and has smoking duration + intensity =&gt; calculate pack years. If last pack years exists, validate it when smoking duration exists and not zero. When smoking intensity exists - add the delta from last, max pack years date multiply by smoking intensity(average). If smoking intensity is missing =&gt; complete the intensity from pack years + duration
-You can set "debug_file" argument to debug smoking generation
- </li>
+You can set "debug_file" argument to debug smoking generation</li>
 </ol>
 
 

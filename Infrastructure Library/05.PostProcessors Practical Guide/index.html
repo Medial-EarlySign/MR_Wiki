@@ -1243,6 +1243,8 @@
       
         
       
+        
+      
     
     
     
@@ -1338,6 +1340,34 @@
     
   
     How to Write a Feature Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.Feature%20Generator%20Practical%20Guide/Unified_Smoking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Smoking
   
 
     
@@ -9638,11 +9668,17 @@
 <h1 id="postprocessors-practical-guide">PostProcessors Practical Guide</h1>
 <p>PostProcessors are processors which occours after predicitons.
 Full PostProcessor code doc: <a href="https://Medial-EarlySign.github.io/MR_LIBS/classPostProcessor">https://Medial-EarlySign.github.io/MR_LIBS/classPostProcessor.html</a>
-Some PostProcessor, for full list of types and json values to put in names please reffer to <a href="https://Medial-EarlySign.github.io/MR_LIBS/PostProcessor_8h.html#a1dab070b8206be89206ff19f321a1cfc">PostProcessor_Types</a>.
-·          We have now MultiPostProcessor (for parallelism)
-·          Calibrator – to calibrate scores to probabilities for example
-·          ModelExplainer – Several options for ButWhy:
-<img src="../../attachments/11206670/11206674.png"/>
+Some PostProcessor, for full list of types and json values to put in names please reffer to <a href="https://Medial-EarlySign.github.io/MR_LIBS/PostProcessor_8h.html#a1dab070b8206be89206ff19f321a1cfc">PostProcessor_Types</a>.</p>
+<ul>
+<li>We have now MultiPostProcessor (for parallelism)</li>
+<li><code>Calibrator</code> - to calibrate scores to probabilities for example</li>
+<li>ModelExplainer - Several options for ButWhy:<ul>
+<li><code>tree_shap</code> - The common and our method for explainability based on shapley values. There other "explainability" methods, some of them are model agnostic and not only for tree base (but they are more computational expensive)</li>
+</ul>
+</li>
+<li><code>fairness_adjust</code> - Post processings of scores to adjust for fairness between groups. Was deployed in <a href="../../Models/AAA.html">AAA model</a></li>
+</ul>
+<p><img src="../../attachments/11206670/11206674.png"/>
  
 PostProcessor API:
 <img src="../../attachments/11206670/11206675.png"/>

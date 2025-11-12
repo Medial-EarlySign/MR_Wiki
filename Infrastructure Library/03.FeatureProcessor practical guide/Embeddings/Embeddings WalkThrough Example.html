@@ -1243,6 +1243,8 @@
       
         
       
+        
+      
     
     
     
@@ -1338,6 +1340,34 @@
     
   
     How to Write a Feature Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.Feature%20Generator%20Practical%20Guide/Unified_Smoking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Smoking
   
 
     
@@ -10373,15 +10403,9 @@ To do that use the Embedder.py script, or copy it and change what you need insid
 <ol>
 <li>Train through 3 layers (last is the embedding) </li>
 <li>Train through 5 simetric layers with the middle as the embedding layer.</li>
-<li>
-<p>Control parameters of network:</p>
-</li>
-<li>
-<p>layers sizes</p>
-</li>
-<li>
-<p>l1, l2, dropout regularizers on each layer</p>
-</li>
+<li>Control parameters of network:<ol>
+<li>layers sizes</li>
+<li>l1, l2, dropout regularizers on each layer</li>
 <li>control of extra weight given to cases in the loss function</li>
 <li>control leaky ReLU function parameters</li>
 <li>control noise added to embedding layer in training</li>
@@ -10676,6 +10700,8 @@ The Embedder.py script is in the git in .../MR/Projects/Shared/Embeddings/script
 The one just before the gaussian noise. We take the third layer, then batch normalize it , so that it is in the N(0,1) distribution on each channel, and then add noise (only in training). This is done in order to make sure our embedding layer gives numbers in a reasonable numerical range, is normalized, and that it is immune to noising each channel, making it a more stable embedding.
  
 Some explanation on the model loss and evaluation:</li>
+</ol>
+</li>
 </ol>
 <ul>
 <li><strong>Loss function</strong> : we treat the y vector as a binary prediction goal, and to the whole problem as predicting together a vector of binary predictions (in the example above a vector of length 3986). The loss we take is the logloss on each channel , summed over all channels. You will note that our last layer before getting to the y layer is using sigmoid as activation into the y layer, hence predicting a probablily for each channel. Since the y vectors are very sparse we multiply by a weight the cases (y[i][j] == 1) , pushing the model to try better to be right on 1 predictions rather than 0 predictions.</li>

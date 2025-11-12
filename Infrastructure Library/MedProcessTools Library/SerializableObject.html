@@ -1243,6 +1243,8 @@
       
         
       
+        
+      
     
     
     
@@ -1338,6 +1340,34 @@
     
   
     How to Write a Feature Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.Feature%20Generator%20Practical%20Guide/Unified_Smoking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Smoking
   
 
     
@@ -10151,14 +10181,10 @@ Example: this is the pre_serialization function in MedModel:
 <li>Inherit from SerializableObject or from a class inheritting from it.</li>
 <li>add the ADD_CLASS_NAME(class name) macro to your class.</li>
 <li>add the MEDSERIALIZE_SUPPORT(class name) after your class definition in the same h file.</li>
-<li>
-<p>Use the ADD_SERIALIZATION_FUNCS(...) macro to list the variables you need to serialize.</p>
-</li>
-<li>
-<p>if you can't: maybe the pre_serialization() trick can solve your problem? if so - great, implement it, and use the macro.</p>
-</li>
-<li>
-<p>If you still can't due to a complex case: implement the get_size, serialize, and deserialize methods directly.</p>
+<li>Use the ADD_SERIALIZATION_FUNCS(...) macro to list the variables you need to serialize.<ol>
+<li>if you can't: maybe the pre_serialization() trick can solve your problem? if so - great, implement it, and use the macro.</li>
+<li>If you still can't due to a complex case: implement the get_size, serialize, and deserialize methods directly.</li>
+</ol>
 </li>
 <li>If your class is a Base class , make sure to implement the new_polymorphic method for it.</li>
 <li>If your class is a derived class, make sure the new_polymorphic method of its base class supports your derived class.</li>

@@ -1245,6 +1245,8 @@
       
         
       
+        
+      
     
     
     
@@ -1340,6 +1342,34 @@
     
   
     How to Write a Feature Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.Feature%20Generator%20Practical%20Guide/Unified_Smoking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unified Smoking
   
 
     
@@ -9683,26 +9713,31 @@
 
 
 <h1 id="rep-processors-practical-guide">Rep Processors Practical Guide</h1>
-<p>This page intends to list current RepProcessors with explanations on parameters and a json line example.</p>
+<p>This page intends to list current RepProcessors with explanations on parameters and a json line example.
+Available components for selection in <code>rp_type</code>:</p>
 <ul>
-<li>basic_cln : Basic outlier cleaner : learn ditribution and throw extreme values</li>
-<li>nbrs_outlier_cleaner : Neighborhood outlier cleaner</li>
-<li><a href="Cleaners%20Json%20Examples.html">configured_outlier_cleaner</a>: Configured outlier cleaner - Wrapper for basic_cln  with fixed bounderies for each signal</li>
+<li><code>basic_cln</code> : Basic outlier cleaner : learn ditribution and throw extreme values</li>
+<li><code>nbrs_outlier_cleaner</code> : Neighborhood outlier cleaner</li>
+<li><a href="Cleaners%20Json%20Examples.html">configured_outlier_cleaner</a>: Configured outlier cleaner - Wrapper for basic_cln with fixed bounderies for each signal</li>
 <li><a href="Cleaners%20Json%20Examples.html">rulebased_outlier_cleaner</a>: Rule Based outlier cleaner - Rules based on panels (for example BMI) to remove mismatched values in panels</li>
 <li><a href="Rep%20Calculator.html">calculator</a>: virtual signals calculator - Virtual signals calculator - linear sum, log, and more..</li>
 <li><a href="Full%20Rep%20Processor.html">complete</a>: panel completer - Completes signals using panels calculations. searches for signals in exact same time that are relate to calculate (TODO: time window support). for example BMI = Weight/Height^2</li>
-<li>req : check requirement processor</li>
-<li>sim_val : sim val processor  - When signal has more than one value in same time - which one to choose</li>
-<li>signal_rate : signal rate processor - divide signal value by time diff in 2 time channels that describe the signal period</li>
-<li>combine : combine signals processor - combines 2 signals to 1 signal with same name</li>
-<li>split : split signal processor - splits signal by rule for 2 different signals (to apply different rules for example on each split)</li>
-<li>aggregation_period : create periods signal of categorical signals</li>
-<li>basic_range_cleaner : range cleaner</li>
-<li>aggregate : get signals in or out of a given period signal</li>
+<li><code>req</code> : check requirement processor</li>
+<li><code>sim_val</code> : sim val processor - When signal has more than one value in same time - which one to choose</li>
+<li><code>signal_rate</code> : signal rate processor - divide signal value by time diff in 2 time channels that describe the signal period</li>
+<li><code>combine</code> : combine signals processor - combines 2 signals to 1 signal with same name</li>
+<li><code>split</code> : split signal processor - splits signal by rule for 2 different signals (to apply different rules for example on each split)</li>
+<li><code>aggregation_period</code> : create periods signal of categorical signals</li>
+<li><code>basic_range_cleaner</code> : range cleaner</li>
+<li><code>aggregate</code> : get signals in or out of a given period signal</li>
 <li><a href="#RepProcessorsPracticalGuide-create_registry_rp">create_registry</a> : create a virtual signal of a registry to some common medical situations (Diabetes, Hypertension)</li>
-<li><a href="History%20Limit%20repo%20processor.html">limit_history</a> : limit or eliminate signals. Needed mainly as a pre processor
- </li>
+<li><a href="History%20Limit%20repo%20processor.html">limit_history</a> : limit or eliminate signals. Needed mainly as a pre processor</li>
+<li><a href="Noiser.html">noiser</a> : Noises the input raw signals, drops values (like "dropouts")</li>
 </ul>
+<blockquote>
+<p>[!NOTE]
+The arguments for each component are not always shown in this wiki. You can either see an examples of common components or look at the code <code>::init</code> function for the arguments of each component.</p>
+</blockquote>
 <h2 id="rep-processors-usage-in-a-medmodel">Rep Processors usage in a MedModel</h2>
 <p>Rep processors are the first elements running in a MedModel run. They are packed into MultiProcessors, each containing 1 or more rep processors. Each such multi processor contains processors allowed to run in parallel to each other, and indeed the MedModel will parallelize those runs. This is true for both learn and apply stages (mainly for learn, as in apply we anyway parallize on the pids records). Hence once defined it is important to pack the processors in the way that allows maximal parallelism.
 Example of packing processors when defining them in a json file:
@@ -9816,18 +9851,14 @@ Rough registry definition:</li>
 </li>
 </ol>
 </li>
-<li>
-<p>PreDiabetes:  </p>
-<ol>
+<li>PreDiabetes:  <ol>
 <li>Non Diabetic</li>
 <li>1 Glucose test above 110, or 1 HbA1C above 5.7</li>
 <li>2 Glucose tests within 2y above 100 (the second), but still not diabetic.</li>
 <li>Not taking diabetes drugs</li>
 </ol>
 </li>
-<li>
-<p>Healthy   </p>
-<ol>
+<li>Healthy   <ol>
 <li>Non Diabetic</li>
 <li>Non PreDiabetic</li>
 <li>Normal range Glucose/HbA1C tests period.</li>
