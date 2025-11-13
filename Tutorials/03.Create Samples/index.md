@@ -1,4 +1,4 @@
-### Create MedSamples
+# Create MedSamples
 
 Create a tab-separated MedSamples file describing prediction times and outcomes for each patient: [MedSamples format](../../Infrastructure%20Library/MedProcessTools%20Library/MedSamples.md).
 
