@@ -10,8 +10,8 @@ Repository viewers provide a simple graphical interface for viewing patient sign
 
 ## Compiling
 
-- Compile AllTools with the `Tools/AllTools/full_build.sh` script.
-- The main application is `SimpleHttpServer`, found under `Linux/Release` after building.
+- Part of [MES Tools installation](../../Installation/MES%20Tools%20to%20Train%20and%20Test%20Models.md)
+- The main application is `SimpleHttpServer`
 
 ## SimpleHttpServer Parameters
 
@@ -50,15 +50,12 @@ Repository viewers provide a simple graphical interface for viewing patient sign
 
 You can create or modify configs as needed. The MedPlotly library parses these files and generates plotly inputs based on panel definitions and user requests.
 
-## Default Servers
-
-- Default servers usually run on node-01. You can start your own in different node.
-- If default servers are down, start your own or request a restart.
-
 ## Running the Viewers
+We wrapped this application to support multiple DataRepositories if needed.
+Please see those scripts:
 
-- Script location: `$MR_ROOT/Projects/Scripts/Bash-Scripts/run_viewer.sh` (included in your PATH).
-- To edit server/port list: `$MR_ROOT/Projects/Scripts/Python-scripts/viewers_config.py`
+- Script location: `MR_Scripts/Bash-Scripts/run_viewer.sh` (included in your PATH).
+- To edit server/port list: `MR_Scripts/Python-scripts/viewers_config.py`
 
 ```bash
 viewers start
@@ -68,9 +65,7 @@ viewers stop
 
 - Viewers run detached from your SSH session (they continue if your session ends).
 - No output is printed to your screen.
-- Error logs: `/nas1/Work/CancerData/Repositories/viewers_log`
-
-The script to launch servers and display the index page is at `$MR_ROOT/Projects/Scripts/Python-scripts/viewers_runner.py`. This file shows the latest commands for starting servers.
+- You can control error logs location
 
 ## Viewer Features
 

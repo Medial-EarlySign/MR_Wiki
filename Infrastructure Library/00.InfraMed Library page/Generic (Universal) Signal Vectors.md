@@ -1,6 +1,6 @@
 ## MedRepository SignalTypes
 
-Legacy signal types were previously referenced by numeric IDs—this approach is now deprecated:
+Legacy signal types were previously referenced by numeric IDs-this approach is now deprecated:
 ```c++
 string GenericSigVec::get_type_generic_spec(SigType t)
 {

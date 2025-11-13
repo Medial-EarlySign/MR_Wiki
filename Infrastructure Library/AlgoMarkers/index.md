@@ -1,6 +1,6 @@
 # AlgoMarkers
 
-AlgoMarkers are wrappers to models or calculators that are able to "talk" to the AlgoAnalyzer via the API defined in AlgoMarker.h (the api funcs start with AM_API_... ). Since the AlgoAnalyzer uses the AlgoMarker as a shared library from a c# code, it is written is "C" style bare bones to allow for the integration.
+AlgoMarkers are wrappers to models or calculators that are able to "talk" to other services via the API defined in AlgoMarker.h (the api funcs start with AM_API_... ). The AlgoMarker is a C library and we have a `AlgoMarker_Server` that exposes the library and model as REST API. This can alos be done easily with python FastAPI, but for minimal deployments, it might be better to use the `AlgoMarker_Server`.
 This page describes the following:
 
 - [How to write a new AlgoMarker](#how-to-write-a-new-custom-algomarker)

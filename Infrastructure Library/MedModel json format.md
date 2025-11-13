@@ -11,7 +11,7 @@ A MedModel JSON file describes:
 - The parameters for each component (as key-value pairs). This will call the component ["init" function](MedProcessTools%20Library/SerializableObject.md#init-from-string) with the key value pairs to initialize the component. This allows a simpler way to add components and pass arguments to them from the json.
 - How to reference additional configuration files or value lists
 
-This enables flexible, versioned, and shareable model definitions—ideal for both research and production.
+This enables flexible, versioned, and shareable model definitions-ideal for both research and production.
 
 ## How to Write a MedModel JSON: Step-by-Step
 
@@ -35,7 +35,7 @@ These fields configure the overall behavior of the pipeline. Most are optional a
 
 ### 2. The Pipeline: `model_actions`
 
-This is the heart of the model definition—a list of components executed in order. Each component is an object specifying:
+This is the heart of the model definition-a list of components executed in order. Each component is an object specifying:
 
 - `action_type`: What kind of step this is (data cleaning, feature generation, etc.)
 - Other keys: Parameters specific to the step

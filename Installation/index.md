@@ -12,17 +12,7 @@ A prebuild for `MES Tools` can be found in here: [MES Tools](https://github.com/
 
 ## Prerequisites
 
-Before building the tools, complete the following steps:
-
-### 1. Install Compiler and Build Tools (Ubuntu)
-
-Install the required compiler and build tools:
-
-```bash
-sudo apt install binutils gcc g++ cmake make -y
-```
-
-### 2. Install OpenMP Support (Ubuntu)
+### Install OpenMP Support (Ubuntu)
 
 Install OpenMP for parallel processing:
 
@@ -31,8 +21,21 @@ sudo apt install libgomp1 -y
 ```
 
 > **Note:** This step is required even if you don't plan to compile the tools. It is required for runtime.
+> Equivalent package exists in other linux distros, but here we will cover Ubuntu.
 
-### 3. Install Boost Libraries (Ubuntu)
+## Building the tools yourself
+
+Before building the tools, complete the following steps:
+
+### 1. Install Compiler and Build Tools (Ubuntu)
+
+Install the required compiler and build tools if you want to build the software yourself:
+
+```bash
+sudo apt install binutils gcc g++ cmake make -y
+```
+
+### 2. Install Boost Libraries (Ubuntu)
 
 #### Compiling Boost from Source
 
@@ -85,15 +88,15 @@ sudo apt install libboost-system1.83-dev libboost-filesystem1.83-dev libboost-re
 
 You can install any of the following five components:
 
-1. [AlgoMarker Shared Library](AlgoMarker_Library.md): A shared Linux C library for accessing the AlgoMarker API and generating predictions/outputs from a model. Designed for production use, it supports only the essential "predict" and related APIs.
-2. [AlgoMarker Wrapper](AlgoMarker%20Wrapper): A REST API wrapper for the AlgoMarker Shared Library.
+1. [AlgoMarker Shared Library](AlgoMarker_Library.md): A shared Linux C library for accessing the AlgoMarker API and generating predictions/outputs from a model. Designed for **production use**, it supports only the essential "predict" and related APIs. Follow those steps only if you want to **productize** your model.
+2. [AlgoMarker Wrapper](AlgoMarker%20Wrapper): A REST API wrapper for the AlgoMarker Shared Library. Follow those steps only if you want to **productize** your model.
 3. [MES Tools to Train and Test Models](MES%20Tools%20to%20Train%20and%20Test%20Models.md): Command-line executables for training, testing, and manipulating models using the MR_LIBS infrastructure. Required for training new models. Alternatively, you can use the Python API.
-4. [Python API for MES Infrastructure](Python%20API%20for%20MES%20Infrastructure.md): Python API for MR_LIBS, enabling model training, testing, and manipulation from Python. Some features may only be available via MES Tools or by [extending the Python API](../Medial%20Tools/Python/Extend%20and%20Develop.md).
-5. [MR_Scripts]: Useful Python and Bash scripts. Clone the repository with `git clone git@github.com:Medial-EarlySign/MR_Scripts.git`.
+4. [Python API for MES Infrastructure](Python%20API%20for%20MES%20Infrastructure.md): Python API, enabling model training, testing, and manipulation from Python. Some features may only be available via MES Tools or by [extending the Python API](../Infrastructure%20Library/Medial%20Tools/Python/Extend%20and%20Develop.md).
+5. [MR_Scripts]: Useful Python and Bash scripts. Clone the repository with `git clone git@github.com:Medial-EarlySign/MR_Scripts.git`. No need to install it.
 
 ## Environment Setup Script
 
-After installing the required components, use the following script to configure your shell environment for all tools and scripts:
+After installing the required components, it is recommended to use the following script to configure your shell environment for all tools and scripts:
 
 ```bash title="Start-Up Script"
 #!/bin/bash

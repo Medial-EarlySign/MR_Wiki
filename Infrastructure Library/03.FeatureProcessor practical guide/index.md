@@ -146,7 +146,7 @@
 ```
 
 - importance_selector - selection of features based on most important features in a model that is trained on the data. 
-- iterative_selector - please use the tool to do it, it takes forever!! [Iterative Feature Selector](../../Medial%20Tools/Iterative%20Feature%20Selector.html)
+- iterative_selector - please use the tool to do it, it takes forever!! [Iterative Feature Selector](../../Infrastructure%20Library/Medial%20Tools/Iterative%20Feature%20Selector.html)
 - resample_with_missing - used in training to "generate" more samples with missing values and increasing data size (not doing imputations, that
 
 ```json
@@ -216,7 +216,7 @@ Instead of GIBBS, GAN, can select:
   - RANDOM_DIST - random value from normal dist around 0,5 (not related to feature dist)
   - UNIVARIATE_DIST - strata by some features, store distribution in each strata. In apply, find strata and select value randomly from dist
   - MISSING - put missing value
-  - GAN - generator_args is path to trained model. Please refer to this path to train: [TrainingMaskedGAN](../../Medial%20Tools/Deprecated/GANs%20for%20imputing%20matrices/TrainingMaskedGAN.md)
+  - GAN - generator_args is path to trained model. Please refer to this path to train: [TrainingMaskedGAN](../../Archive/Deprecated/GANs%20for%20imputing%20matrices/TrainingMaskedGAN.md)
   - GIBBS - arguments 
       - sampling_args - 
           - burn_in_count - how many round to do in the start and to ignore them till stablize on reasonable vector. 

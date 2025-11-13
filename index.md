@@ -21,17 +21,16 @@ The documentation and tooling are organized around three main areas:
 
 - Data repository layer - MedRepository: an internal, compact format and API for storing and reading EMR signals efficiently.
 - MedModel - a full ML pipeline that accepts data from MedRepository or JSON EMR inputs and produces predictions and explainability output. Supports training and inference with existing models.
-- Tools - training and evaluation utilities for model performance (bootstrap analysis, fairness checks, explainability) while utilizing the infrastructure of both MedRepository and MedModel into a workflow. See: [Medial Tools](Medial%20Tools)
+- Tools - training and evaluation utilities for model performance (bootstrap analysis, fairness checks, explainability) while utilizing the infrastructure of both MedRepository and MedModel into a workflow. See: [Medial Tools](Infrastructure%20Library/Medial%20Tools)
 
 ## Getting started
 
 Choose a starting path:
 
 - Use an existing model:
-    - If the model is already deployed, follow: [How To Use Deployed AlgoMarker](Infrastructure%20Library/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-use-the-deployed-algomarker)
-    - If the model exists but needs deployment: [AlgoMarker Deployment](Infrastructure%20Library/AlgoMarkers/Howto%20Use%20AlgoMarker.md#how-to-deploy-algomarker)
+    - If the model exists but needs deployment: [AlgoMarker Deployment](Tutorials/07.Deployment)
     - Browse available models: [Models](Models)
-- Build a new model or evaluate an existing one: follow the step-by-step guides in [Medial Tools](Medial%20Tools)
+- Build a new model or evaluate an existing one: follow the step-by-step guides in [Tutorials](Tutorials/)
 
 ## Repositories and resources
 

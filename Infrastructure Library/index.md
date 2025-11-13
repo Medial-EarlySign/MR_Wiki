@@ -14,14 +14,14 @@ Key benefits at a glance:
 This framework is deployed in production across multiple healthcare sites and played a key role in our award-winning submission to the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge).
 
 ### Howto Use this
-* Use en existing model: [Howto use AlgoMarker](AlgoMarkers/Howto%20Use%20AlgoMarker.md)
-* Build your own model - [Medial Tools](../Medial%20Tools)
+* Use en existing model: [Deploy a model](../Tutorials/07.Deployment)
+* Build your own model - [Tutorials](../Tutorials/)
 
 This page only covers:
 * Explaination about the infrastructure, the components
 * How to extend the infrastructure and write application that uses it
 
-For usage, please refer to [Medial Tools](../Medial%20Tools)
+For usage, please refer to [Tutorials](../Tutorials/)
 
 ### Main contributers from recent years:
 - [Avi Shoshan](https://www.linkedin.com/in/avi-shoshan-a684933b/)
@@ -61,12 +61,12 @@ For usage, please refer to [Medial Tools](../Medial%20Tools)
     * **[Rep Processors](01.Rep%20Processors%20Practical%20Guide/)**: Clean or derive "raw" virtual signals, while preventing leakage of future data
         - Example: Outlier cleaner that omits values only when abnormality is detected by future readings (e.g., a hemoglobin value on 2023-Feb-04 flagged only by a 2023-May-21 test remains until after May 21).
         - Example: Virtual BMI signal computed from weight/height, or imputed when only two of three inputs exist
-    * **[Feature Generators](MedProcessTools%20Library/FeatureGenerator/)**: Convert cleaned signals into predictive features.
+    * **[Feature Generators](02.Feature%20Generator%20Practical%20Guide/)**: Convert cleaned signals into predictive features.
         - Examples:
             * "Last hemoglobin in past 365 days"
             * "Hemoglobin slope over three years"
             * "COPD diagnosis code during any emergency admission in last three years"
-    * **[Feature Processors](02.Feature%20Generator%20Practical%20Guide/)**: Operate on the feature matrix—imputation, selection, PCA, etc. 
+    * **[Feature Processors](03.FeatureProcessor%20practical%20guide)**: Operate on the feature matrix-imputation, selection, PCA, etc. 
     * **[Predictors/Classifiers](04.MedAlgo%20Library/)**: LightGBM, XGBoost, or custom algorithms.
     * **[Post-processing](05.PostProcessors%20Practical%20Guide/)**: Score calibration, explainability layers, fairness adjustments, etc.
 3. **JSON-driven pipeline configuration** - Define every processor, feature generator, and model step in a single JSON file. [Json Format](MedModel%20json%20format.md)
@@ -238,13 +238,13 @@ For usage, please refer to [Medial Tools](../Medial%20Tools)
 
 
 4. Comprehensive evaluation toolkit
-    * [Bootstrap-based](../Medial%20Tools/bootstrap_app/) cohort analysis allows batch testing across thousands of user-defined subgroups (e.g., age 50–80, males only, prediction window of 365 days, COPD patients).
+    * [Bootstrap-based](../Infrastructure%20Library/Medial%20Tools/bootstrap_app/) cohort analysis allows batch testing across thousands of user-defined subgroups (e.g., age 50–80, males only, prediction window of 365 days, COPD patients).
     * Automatically extracts AUC, ROC points at each 1% FPR increment, odds ratios, PPV/NPV, and applies incidence-rate adjustments or KPI weights
     * Includes explainability and fairness audits
 5. **Unified API wrapper for production deployment**
     * Ready for productization out of the box, no need to reinvent integration or design a new interface each time. See [AlgoMarker](AlgoMarkers/)
     * Packages the entire end-to-end pipeline (raw time-series ingestion through inference) into a single, stable SDK.
-    * Core infrastructure implemented in C++ for performance and portability, with a lightweight [Python wrapper](../Medial%20Tools/Python) for seamless integration.
+    * Core infrastructure implemented in C++ for performance and portability, with a lightweight [Python wrapper](../Infrastructure%20Library/Medial%20Tools/Python) for seamless integration.
     * Although powered by C++, the team mainly uses and maintains workflows via the Python SDK, ensuring rapid development and minimal friction. Experienced user might use the C++ API more often, since the python interface is more limited. 
 
 

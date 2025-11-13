@@ -47,3 +47,7 @@ extra:
     property: G-Y86BQ68W8H
 
 use_directory_urls: false
+not_in_nav: |
+  /LICENCE.md
+  /CONTRIBUTING.md
+  /Archive

@@ -1,6 +1,6 @@
 # MedSignals / Unified Signals
 
-MedSignals is an internal class in MedRepository that defines signal types and manages `.signals` files—dictionaries mapping signal names to their properties. Each MedRepository instance has a `sigs` object for basic `.signals` operations. All signal definitions are found in `MedSignals.h`.
+MedSignals is an internal class in MedRepository that defines signal types and manages `.signals` files-dictionaries mapping signal names to their properties. Each MedRepository instance has a `sigs` object for basic `.signals` operations. All signal definitions are found in `MedSignals.h`.
 
 When initializing a repository, one of the first steps is to read the signals configuration file (specified in the repository config) and set up all signal definitions.
 

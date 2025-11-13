@@ -14,19 +14,19 @@ SampleFilter is a virtual class. See below for the list of implemeted children c
 <tr>
 <td>train</td>
 <td>SMPL_FILTER_TRN</td>
-<td><a href="BasicTrainFilter.html">BasicTrainFilter</a></td>
+<td>BasicTrainFilter</td>
 <td>Generate a training set</td>
 </tr>
 <tr>
 <td>test</td>
 <td>SMPL_FILTER_TST</td>
-<td><a href="BasicTestFilter.html">BasicTestFilter</a></td>
+<td>BasicTestFilter</td>
 <td>Generate a test set</td>
 </tr>
 <tr>
 <td>outliers</td>
 <td>SMPL_FILTER_OUTLIERS</td>
-<td><a href="OutlierSampleFilter.html">OutlierSampleFilter</a></td>
+<td>OutlierSampleFilter</td>
 <td>Remove outlying outcomes</td>
 </tr>
 <tr>

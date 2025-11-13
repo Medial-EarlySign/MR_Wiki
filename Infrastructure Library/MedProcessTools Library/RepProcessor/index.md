@@ -16,7 +16,7 @@ RepProcessor is a virtual class. See below for the list of implemeted children c
 <tr>
 <td>multi, multi_processor</td>
 <td>REP_PROCESS_MULTI</td>
-<td><a href="RepMultiProcessor.html">RepMultiProcessor</a></td>
+<td>RepMultiProcessor</td>
 <td>A container for a set of processors that can be learned simultanously (e.g. cleaneds of different signals)</td>
 </tr>
 <tr>
@@ -28,7 +28,7 @@ RepProcessor is a virtual class. See below for the list of implemeted children c
 <tr>
 <td>nbrs_cln, nbrs_outlier_cleaner</td>
 <td>REP_PROCESS_NBRS_OUTLIER_CLEANER</td>
-<td><a href="RepNbrsOutlierCleaner.html">RepNbrsOutlierCleaner</a></td>
+<td>RepNbrsOutlierCleaner</td>
 <td>Outliers cleaning (removing and trimming) working on values and their neighborhoods</td>
 </tr>
 <tr>

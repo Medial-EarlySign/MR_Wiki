@@ -1,7 +1,7 @@
 # History Limit repo processor
 A rep processor that allows to limit the history of a signal to a given time range relative to the prediction time point.
 There is also an option to virtually erase the signal completely so when the model will try to access the signal it will be empty.
-Mainly used as a [pre processor](../../Medial%20Tools/Using%20the%20Flow%20App/Using%20Pre%20Processors.md) in model apply to see how history impact performance.
+Mainly used as a [pre processor](../../Infrastructure%20Library/Medial%20Tools/Using%20the%20Flow%20App/Using%20Pre%20Processors.md) in model apply to see how history impact performance.
 
 - name : "limit_history" or "history_limit"
 parameters:

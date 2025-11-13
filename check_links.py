@@ -165,7 +165,7 @@ if __name__ == "__main__":
     df = df.join(df_sources, how="outer")
     df.reset_index(inplace=True)
     print(df[df["status"] == 0])
-    df[df["status"] == 0].to_csv("~/res.csv", index=False)
+    df[df["status"] == 0].sort_values(["source"], ignore_index=True).to_csv("~/res.csv", index=False)
     df.to_csv("~/res_full.csv", index=False)
     # Generate sitemap:
     df2 = (

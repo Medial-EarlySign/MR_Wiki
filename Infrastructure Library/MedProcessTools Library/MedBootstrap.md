@@ -32,7 +32,7 @@ void run_bootstrap_on_samples(const string &samples_path, map<string, map<string
 }
 ```
 
-An application using `MedBootstrap` is available here: [bootstrap_app](../../Medial%20Tools/bootstrap_app)
+An application using `MedBootstrap` is available here: [bootstrap_app](../../Infrastructure%20Library/Medial%20Tools/bootstrap_app)
 
 ## Running Bootstrap with a Custom Measurement Function
 

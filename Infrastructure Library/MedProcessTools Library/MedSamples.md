@@ -25,7 +25,7 @@ Explain:
 
 ## Overview
 
-MedSamples is a data structure and set of helper functions for managing samples—combinations of individuals, time-points (dates), and associated information such as outcomes, outcome times, splits, and predictions.
+MedSamples is a data structure and set of helper functions for managing samples-combinations of individuals, time-points (dates), and associated information such as outcomes, outcome times, splits, and predictions.
 
 The data is organized in a three-tier hierarchy:
 
