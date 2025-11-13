@@ -25,7 +25,7 @@ def sort_page_key(url: str):
         return 2
     elif url.find("/DataRepository/") > 0:
         return 3
-    elif url.find("/Medial%20Tools/") > 0:
+    elif url.find("/Infrastructure%20Library/Medial%20Tools/") > 0:
         return 4
     elif url.find("/Infrastructure%20Library/") > 0:
         return 5
