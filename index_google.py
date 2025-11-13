@@ -16,6 +16,13 @@ import time
 import os
 
 
+def filter_pages(url:str) -> bool:
+    if url.find("/Archive/") > 0:
+        return False
+    if url.endswith("/LICENCE.html") or url.endswith("/CONTRIBUTING.html"):
+        return False
+    return True
+
 def sort_page_key(url: str):
     if url.find("/MR_Wiki/index.html") > 0:
         return 0
@@ -23,7 +30,7 @@ def sort_page_key(url: str):
         return 1
     elif url.find("/Installation/") > 0:
         return 2
-    elif url.find("/DataRepository/") > 0:
+    elif url.find("/Tutorials/") > 0:
         return 3
     elif url.find("/Infrastructure%20Library/Medial%20Tools/") > 0:
         return 4
@@ -42,6 +49,8 @@ def get_pages(site: str) -> list[str]:
     all_res = xml.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
     # .replace("/MR_Wiki/", "/MR_WIKI/")
     all_urls = list(map(lambda x: x.text, all_res))
+    # Remove:
+    all_urls = list(filter(lambda x: filter_pages(x), all_urls))
     all_urls = sorted(all_urls, key=sort_page_key)
 
     return all_urls
