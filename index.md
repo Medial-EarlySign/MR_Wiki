@@ -1,39 +1,39 @@
+# Welcome to Medial EarlySign's Open Source Platform
 
-# Home
+**A note on our journey:** Medial EarlySign was a company that developed a proprietary platform for machine learning on electronic medical records. Following the company's liquidation, the decision was made to release the core software as an open-source project to allow the community to benefit from and build upon this technology.
 
-## Medial EarlySign - Documentation Overview
+Our platform is designed to transform complex, semi-structured Electronic Medical Records (EMR) into **machine-learning-ready** data and reproducible model pipelines. The framework is optimized for the unique challenges of sparse, time-series EMR data, delivering **low memory usage** and **high-speed processing** at scale.
 
-Medial EarlySign provides an infrastructure to convert **Electronic Medical Records (EMR)** - a complex, semi-structured time-series dataset into **machine-learning-ready** data and reproducible model pipelines. The library is optimized for sparse time-series EMR data and is designed for low memory usage and fast processing at scale.
-Unlike images or free text, EMR data can be stored in complex format. The infrastructure standardize both the storage and the processing of time-series signals. We can think about this infrastructure as "TensorFlow" of medical data machine learning.
+It was conceived as a "TensorFlow" for machine learning on medical data.
 
-Key benefits at a glance:
+All software is now open-sourced under the MIT license. Some of the models developed by Medial EarlySign that are currently in production are available exclusively through our partners.
 
-- **Fast and memory-efficient processing** for large-scale EMR sparse time series where general-purpose libraries (e.g., pandas) are often impractical.
-- Shareable, tested pipelines and methods that save engineering time and reduce duplicated effort.
-- Built-in safeguards to reduce **data leakage** and time-series-specific overfitting.
-- **Production-ready**: easily deployable in Docker or minimal Linux images.
+The framework was battle-tested in production across multiple healthcare sites and was a key component of an **award-winning** submission to the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge).
 
-This framework is deployed in production across multiple healthcare sites and played a key role in our award-winning submission to the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge).
+## Why Use This Platform?
 
-### Core components
+*   **High-Performance Processing:** Engineered for large-scale, sparse EMR time-series data where general-purpose libraries like pandas fall short.
+*   **Reusable Pipelines:** Save valuable engineering time by providing shareable, tested pipelines and methods.
+*   **Built-in Safeguards:** Mitigate common pitfalls like data leakage and time-series-specific overfitting.
+*   **Production-Ready:** Designed for easy deployment using Docker or minimal distroless Linux images.
 
-The documentation and tooling are organized around three main areas:
+## Core Components
 
-- Data repository layer - MedRepository: an internal, compact format and API for storing and reading EMR signals efficiently.
-- MedModel - a full ML pipeline that accepts data from MedRepository or JSON EMR inputs and produces predictions and explainability output. Supports training and inference with existing models.
-- Tools - training and evaluation utilities for model performance (bootstrap analysis, fairness checks, explainability) while utilizing the infrastructure of both MedRepository and MedModel into a workflow. See: [Medial Tools](Infrastructure%20Library/Medial%20Tools)
+The platform is built on three key pillars:
 
-## Getting started
+*   **MedRepository:** A compact, efficient data repository and API for storing and accessing EMR signals. Querying categorical signals like perscriptions and diagnosis in an easy and efficient API. 
+*   **MedModel:** An end-to-end machine learning pipeline that takes data from MedRepository or JSON EMR inputs to produce predictions and explainability outputs. It supports both training and inference.
+*   **Medial Tools:** A suite of utilities for training, evaluation, and workflow management, including bootstrap analysis, fairness checks, and explainability.
 
-Choose a starting path:
+## Getting Started
 
-- Use an existing model:
-    - If the model exists but needs deployment: [AlgoMarker Deployment](Tutorials/07.Deployment)
-    - Browse available models: [Models](Models)
-- Build a new model or evaluate an existing one: follow the step-by-step guides in [Tutorials](Tutorials/)
+*   **Build a new model:** Follow the step-by-step [Tutorials](Tutorials/) to build a model from scratch.
+*   **Use an existing model:** Browse the collection of [Models](Models) or learn how to deploy a model with [AlgoMarker Deployment](Tutorials/07.Deployment).
 
-## Repositories and resources
+## Resources
 
-- [MR_LIBS](https://github.com/Medial-EarlySign/MR_Libs) - Core infrastructure libraries
-- [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools) - Tools and pipelines built on MR_LIBS
-- [MR_Scripts](https://github.com/Medial-EarlySign/MR_Scripts) - Helper scripts and utilities
+*   **[MR_LIBS](https://github.com/Medial-EarlySign/MR_Libs):** The core infrastructure libraries.
+*   **[MR_Tools](https://github.com/Medial-EarlySign/MR_Tools):** Tools and pipelines built on top of MR_LIBS.
+*   **[MR_Scripts](https://github.com/Medial-EarlySign/MR_Scripts):** A collection of helper scripts and utilities.
+
+Explore the documentation to understand the architecture and tools.
