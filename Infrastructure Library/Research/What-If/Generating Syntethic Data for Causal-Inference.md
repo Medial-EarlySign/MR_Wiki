@@ -2,10 +2,10 @@
 The program for generating synthetic data is located in - H:\MR\Projects\Shared\CausalEffects\CausalEffectsUtils\generate_realistic_data
 the program implements the following model - 
  
-<img src="../../attachments/11207537/11207557.png"/>Where - 
+<img src="../../../attachments/11207537/11207557.png"/>Where - 
 
 - Poly-Tree = Tree with polynomials at the  nodes
-- Transformed-input = apply the following transformation before calculating the polynomial (currently n=3 is hard-coded):<img src="../../attachments/11207537/11207550.png"/>
+- Transformed-input = apply the following transformation before calculating the polynomial (currently n=3 is hard-coded):<img src="../../../attachments/11207537/11207550.png"/>
 - Noisy-Indexing = apply logistic function on value, with minimal/maximal values moved from [0.0,1.0] to [ε,1-ε'], and then use that as probability for deciding on the dichotomic Treatment/Outcome
 - +/- = requiring that the first-order contributions of a parameter to the polynomial is set to be positive (negative)
 - Parameters for running the generation are:
