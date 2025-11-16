@@ -5635,14 +5635,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Infrastructure%20Library/Medial%20Tools/Python/Python%20AlgoMarker%20API%20Wrapper.html" class="md-nav__link">
+      <a href="../../Infrastructure%20Library/Medial%20Tools/Python/Python%20AlgoMarker%20API%20Server.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python AlgoMarker API Wrapper
+    Python AlgoMarker API Server
   
 
     
@@ -6502,14 +6502,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Installation/AlgoMarker%20Wrapper/Python%20Wrapper.html" class="md-nav__link">
+      <a href="../../Installation/AlgoMarker%20Wrapper/Python%20Server%20Wrapper.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python Wrapper
+    Python Server Wrapper
   
 
     
@@ -9110,7 +9110,8 @@
 
 <h1 id="create-medsamples">Create MedSamples</h1>
 <p>Create a tab-separated MedSamples file describing prediction times and outcomes for each patient: <a href="../../Infrastructure%20Library/MedProcessTools%20Library/MedSamples.html">MedSamples format</a>.</p>
-<p>Use the Python API when possible to generate MedSamples. Each row typically contains a patient identifier, prediction time, outcome (0/1 or numeric for regression), outcome time, and optional split/metadata fields.</p>
+<p>Use the Python API when possible to generate MedSamples. Each row typically contains a patient identifier, prediction time, outcome (0/1 or numeric for regression), outcome time, and optional split/metadata fields.
+This is the core step for defining the prediction target for training and testing. This is one of the main differences between each model.</p>
 <p>Suggested process:</p>
 <ol>
 <li>Generate candidate samples (patient id + date) without labels.</li>

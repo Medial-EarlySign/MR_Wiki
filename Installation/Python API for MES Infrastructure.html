@@ -5635,14 +5635,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../Infrastructure%20Library/Medial%20Tools/Python/Python%20AlgoMarker%20API%20Wrapper.html" class="md-nav__link">
+      <a href="../Infrastructure%20Library/Medial%20Tools/Python/Python%20AlgoMarker%20API%20Server.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python AlgoMarker API Wrapper
+    Python AlgoMarker API Server
   
 
     
@@ -6589,14 +6589,14 @@
   
   
     <li class="md-nav__item">
-      <a href="AlgoMarker%20Wrapper/Python%20Wrapper.html" class="md-nav__link">
+      <a href="AlgoMarker%20Wrapper/Python%20Server%20Wrapper.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python Wrapper
+    Python Server Wrapper
   
 
     
@@ -9242,6 +9242,10 @@ Train and manipulate new models.</p>
 <li>Build the Python API:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>Internal/MedPyExport/generate_binding/make-simple.sh
 </code></pre></div></td></tr></table></div></li>
+<li>Make the library accessible to your python by adding it to <code>PYTHONPATH</code> variable: 
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python<span class="si">${</span><span class="nv">PY_VERSION</span><span class="si">}</span>
+</code></pre></div></td></tr></table></div>
+   Change MR_LIBS to your cloned path of MR_LIBS and ${PY_VERSION} to your python version, eg. 312 for python 3.12.</li>
 </ol>
 <p>A full docker image for compilation steps can be found under this link:</p>
 <ul>

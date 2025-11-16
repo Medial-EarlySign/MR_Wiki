@@ -29,7 +29,7 @@
     
     
       
-        <title>Training a model - Medial EarlySign Documentation</title>
+        <title>Training a Model - Medial EarlySign Documentation</title>
       
     
     
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Training a model
+              Training a Model
             
           </span>
         </div>
@@ -5635,14 +5635,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Infrastructure%20Library/Medial%20Tools/Python/Python%20AlgoMarker%20API%20Wrapper.html" class="md-nav__link">
+      <a href="../../Infrastructure%20Library/Medial%20Tools/Python/Python%20AlgoMarker%20API%20Server.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python AlgoMarker API Wrapper
+    Python AlgoMarker API Server
   
 
     
@@ -6502,14 +6502,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Installation/AlgoMarker%20Wrapper/Python%20Wrapper.html" class="md-nav__link">
+      <a href="../../Installation/AlgoMarker%20Wrapper/Python%20Server%20Wrapper.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Python Wrapper
+    Python Server Wrapper
   
 
     
@@ -9011,6 +9011,114 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-define-the-model-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Define the Model Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-1-training-with-the-python-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 1: Training with the Python API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method 1: Training with the Python API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-training-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python Training Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-a-trained-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loading a Trained Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-2-training-with-command-line-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 2: Training with Command-Line Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method 2: Training with Command-Line Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Training Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -9108,19 +9216,167 @@
   
 
 
-<h1 id="training-a-model">Training a model</h1>
+<h1 id="training-a-model">Training a Model</h1>
+<p>This guide covers two primary methods for training a model: using the Python API for a code-driven approach or using command-line tools.</p>
+<h2 id="step-1-define-the-model-architecture">Step 1: Define the Model Architecture</h2>
+<p>Before training, you must define the model's architecture in a JSON file. This file specifies the entire pipeline, including feature generators, processors, and the algorithm to be used. This is conceptually similar to defining layers and stacking them in a deep learning framework.</p>
+<p>For detailed instructions on the file format, see the <a href="../../Infrastructure%20Library/MedModel%20json%20format.html">MedModel JSON format documentation</a>.</p>
+<h2 id="method-1-training-with-the-python-api">Method 1: Training with the Python API</h2>
+<p>This method provides control over the training process within a Python script.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Ensure you have completed the following setup steps:</p>
 <ol>
-<li>Define the model pipeline and components in a MedModel JSON file: <a href="../../Infrastructure%20Library/MedModel%20json%20format.html">MedModel JSON format</a>.</li>
-<li>Train the model using either:<ul>
-<li>Python: <a href="../../Infrastructure%20Library/Medial%20Tools/Python/Examples.html#learn-model-from-json-to-generate-matrix">Train Model Using Python API</a></li>
-<li>Tools:<ul>
-<li><a href="../../Infrastructure%20Library/Medial%20Tools/Using%20the%20Flow%20App/index.html#training-a-model">Training with Flow</a> - simple training run without hyperparameter search</li>
-<li><a href="../../Infrastructure%20Library/Medial%20Tools/Optimizer.html">Optimizer</a> - grid-search-style training with penalties to balance generalization (note: Optuna can be used externally for more flexible tuning)</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><strong>Install Python API</strong>: <a href="../../Installation/Python%20API%20for%20MES%20Infrastructure.html">Python API for MES Infrastructure</a>.</li>
+<li><strong>Load Data Repository</strong>: Follow the <a href="../01.ETL%20Tutorial/index.html">ETL Tutorial</a>.</li>
+<li><strong>Create Samples</strong>: Prepare your training data as described in the <a href="../03.Create%20Samples/index.html">Create Samples Tutorial</a>.</li>
 </ol>
+<h3 id="python-training-example">Python Training Example</h3>
+<p>The following script demonstrates the end-to-end process of training a model.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#__codelineno-0-40">40</a></span>
+<span class="normal"><a href="#__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#__codelineno-0-47">47</a></span>
+<span class="normal"><a href="#__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#__codelineno-0-49">49</a></span>
+<span class="normal"><a href="#__codelineno-0-50">50</a></span>
+<span class="normal"><a href="#__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#__codelineno-0-53">53</a></span>
+<span class="normal"><a href="#__codelineno-0-54">54</a></span>
+<span class="normal"><a href="#__codelineno-0-55">55</a></span>
+<span class="normal"><a href="#__codelineno-0-56">56</a></span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1"># --- 1. Configuration ---</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">rep_path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/your/repository_file&#39;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">model_json_path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/your/model_architecture.json&#39;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="n">samples_path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/your/training_samples.tsv&#39;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="n">output_model_path</span> <span class="o">=</span> <span class="s1">&#39;trained_model.bin&#39;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="c1"># --- 2. Initialize Model and Fit to Repository ---</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initializing model and fitting to the repository...&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="c1"># Load the model architecture from the JSON file</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="n">model</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="n">model</span><span class="o">.</span><span class="n">init_from_json_file</span><span class="p">(</span><span class="n">model_json_path</span><span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="c1"># Before loading all data, initialize a repository to analyze its structure</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="c1"># This helps the model determine which signals are &quot;virtual&quot; (i.e., can be</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="c1"># generated from other signals, like BMI from Height and Weight) versus</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="c1"># which need to be fetched directly.</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="n">rep</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">rep_path</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="n">model</span><span class="o">.</span><span class="n">fit_for_repository</span><span class="p">(</span><span class="n">rep</span><span class="p">)</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="c1"># Get the list of signals that must be fetched from the repository</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="n">required_signals</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_required_signal_names</span><span class="p">()</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="c1"># --- 3. Load Data ---</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading training samples and repository data...&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="c1"># Load the training samples (patient IDs, dates, and labels)</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Samples</span><span class="p">()</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="n">samples</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="n">samples_path</span><span class="p">)</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="c1"># Alternatively, load from a pandas DataFrame:</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="c1"># samples.from_df(your_dataframe)</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="c1"># Get the unique patient IDs required for training</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="n">patient_ids</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">get_ids</span><span class="p">()</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="c1"># Load the actual data for the required signals and patients</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="n">rep</span><span class="o">.</span><span class="n">read_all</span><span class="p">(</span><span class="n">rep_path</span><span class="p">,</span> <span class="n">patient_ids</span><span class="p">,</span> <span class="n">required_signals</span><span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="c1"># --- 4. Train the Model ---</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting model training...&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">rep</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training complete.&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="c1"># --- 5. Save the Trained Model ---</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="n">model</span><span class="o">.</span><span class="n">write_to_file</span><span class="p">(</span><span class="n">output_model_path</span><span class="p">)</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model saved to </span><span class="si">{</span><span class="n">output_model_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="c1"># --- Optional: Post-Training Steps ---</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="c1"># Access the generated feature matrix as a pandas DataFrame</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="n">feature_matrix_df</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="c1"># Apply the trained model to a new set of samples (e.g., a test set)</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="c1"># test_samples = med.Samples()</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="c1"># test_samples.read_from_file(&#39;path/to/test_samples.tsv&#39;)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="c1"># predictions = model.apply(rep, test_samples)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="loading-a-trained-model">Loading a Trained Model</h3>
+<p>You can load a previously trained binary model file directly without needing the original JSON or data.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="n">model</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="s1">&#39;trained_model.bin&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="method-2-training-with-command-line-tools">Method 2: Training with Command-Line Tools</h2>
+<p>For users who prefer command-line operations, MES provides tools to train models without writing Python code.</p>
+<h3 id="prerequisites_1">Prerequisites</h3>
+<p>First, ensure you have set up the <a href="../../Installation/MES%20Tools%20to%20Train%20and%20Test%20Models.html">MES Tools for Training and Testing Models</a>.</p>
+<h3 id="training-tools">Training Tools</h3>
+<ul>
+<li><strong>Flow App</strong>: For a straightforward training run without hyperparameter tuning.<ul>
+<li><strong>Guide</strong>: <a href="../../Infrastructure%20Library/Medial%20Tools/Using%20the%20Flow%20App/index.html#training-a-model">Training with Flow</a></li>
+</ul>
+</li>
+<li><strong>Optimizer</strong>: For grid-search style hyperparameter tuning with built-in regularization to improve generalization. For more advanced tuning, consider using external libraries like Optuna.<ul>
+<li><strong>Guide</strong>: <a href="../../Infrastructure%20Library/Medial%20Tools/Optimizer.html">Optimizer Tool</a></li>
+</ul>
+</li>
+</ul>
 
 
 
