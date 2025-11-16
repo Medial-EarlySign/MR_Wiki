@@ -1,6 +1,6 @@
-# Python AlgoMarker API Wrapper
+# Python AlgoMarker API Server
 
-This project provides a Python wrapper for the AlgoMarker C library (`libdyn_AlgoMarker.so`). The wrapper allows you to interact with AlgoMarker using Python.
+This project provides a Python server wrapper for the AlgoMarker C library (`libdyn_AlgoMarker.so`). The wrapper allows you to interact with AlgoMarker using python code or as a server with a REST API. The server uses python FastAPI.
 
 ## Location
 
@@ -8,7 +8,7 @@ You can find the Python library and a tool for querying AlgoMarkers in the [MR_T
 
 ## Files
 
-- **AlgoMarker.py**: Main Python wrapper for the C library. The wrapper will use the new JSON API if available, or fall back to the older API for compatibility.
+- **AlgoMarker.py**: Main Python wrapper for the C library. The wrapper will use the new JSON API if available, or fall back to the older API for compatibility. Can be also used directly without FastAPI with python code.
 - **test_algomarker_lib.py**: Utility tool that uses `AlgoMarker.py` to query AlgoMarker.
 - **AlgoMarker_minimal.py**: Minimal version of the wrapper with fewer functions.
 - **simple_app_example.py**: Example app demonstrating usage of the minimal wrapper.

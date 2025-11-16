@@ -30,6 +30,11 @@ A prebuilt release is available on the [Release page](https://github.com/Medial-
    ```bash
    Internal/MedPyExport/generate_binding/make-simple.sh
    ```
+6. Make the library accessible to your python by adding it to `PYTHONPATH` variable: 
+   ```bash
+   export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python${PY_VERSION}
+   ```
+   Change MR_LIBS to your cloned path of MR_LIBS and ${PY_VERSION} to your python version, eg. 312 for python 3.12.
 
 A full docker image for compilation steps can be found under this link:
 

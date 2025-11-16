@@ -1,15 +1,21 @@
 # Tutorial 
 
-Those page describes the command-line tools and Python helpers that interact with the MES infrastructure. It explains how to prepare data, train and evaluate models, and how to use the available tools for common workflows.
+Welcome to the Medial EarlySign (MES) tutorials! This guide provides a high-level overview of the end-to-end machine learning workflows for healthcare, from initial setup to model deployment. Each step in this guide links to a more detailed tutorial that will walk you through the specifics.
+The tutorials uses command-line tools and Python helpers that interact with the MES infrastructure.
+
+All the software is released under MIT open source licence. Some of the models are also planned to be released while some other will be accesible only through our parteners. 
 
 ## Overview
 
-Medial EarlySign (MES) provides two main ways to work with the infrastructure for model development:
+Medial EarlySign (MES) provides three  ways to work with the infrastructure:
 
-1. A Python API that exposes many infrastructure capabilities for loading data, creating sample files, training, and inference.
+1. A Python API that exposes many infrastructure capabilities for accessing and manipulating the data, creating sample files, training, and inference.
 2. Standalone applications (executables) that implement infrastructure workflows; these are useful when the Python API does not yet cover a specific feature.
+3. When a model is deployed, we will use `AlgoMarker` which is a minimal API with mainly inference capability. Deployment does not require the full training API or a training data repository. Deployed models accepts JSON-formatted patient records and don't need full MES infrastructure. See [Deployment](07.Deployment) for details. The AlgoMarker is very minimal and can be also run in a distroless linux images
 
-When a model is deployed, we will use AlgoMarker with only a small runtime API. Deployment does not require the full training API or a training data repository. Deployed models accepts JSON-formatted patient records and don't need full MES infrastructure. See [Deployment](07.Deployment) for details.
+## Who is this for?
+
+These tutorials are for data scientists and developers who want to use the MES infrastructure to build and deploy machine learning models. Whether you are new to the MES ecosystem or an experienced user, these guides will help you get the most out of our tools.
 
 ## Setup requirements
 
@@ -30,3 +36,9 @@ In most cases, Python plus a few tools will be sufficient - it is uncommon need 
 * [05.Apply Model](05.Apply%20Model)
 * [06.Model Evaluation](06.Model%20Evaluation)
 * [07.Deployment](07.Deployment)
+
+
+
+## Let's Get Started!
+
+Ready to dive in? Start with the [Load the data](./01.ETL%20Tutorial) guide.
