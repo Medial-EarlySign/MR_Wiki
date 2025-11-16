@@ -9282,7 +9282,7 @@
 Due to a large number of RC and ATC codes, the total number of RC/ATC features can be very high (200K in CKD Fast Progressors project).
 In addition, these features are extremely sparse.
 It would be computationally prohibitive to handle all this features in XGBoost.
-In order to solve this problem, there exists a "<a href="../Infrastructure%20Library/02.Feature%20Generator%20Practical%20Guide">category_depend</a>" mechanism, which reduces a number of RC/ATC features by keeping only features which are highly correlated to the outcome.
+In order to solve this problem, there exists a "<a href="../../Infrastructure%20Library/02.Feature%20Generator%20Practical%20Guide">category_depend</a>" mechanism, which reduces a number of RC/ATC features by keeping only features which are highly correlated to the outcome.
 Therefore, information about some read codes or drugs is lost. 
  
 This project was undertaken in order to check whether it is possible to retain this information by means of  "Factorization Machines" method,
@@ -9304,8 +9304,8 @@ Where possible we compared results returned by libFM to those of XGBoost, traine
 <p>1. Age, Gender columns only
 2. Age,Gender and all RC-related and ATC-related columns of type "category set" used in CKD Fast Progressors project (not including features generated via "category_depend" mechanism)
 3.  Age,Gender,RC-related and ATC-related columns of type "category set" and "category_depend" used in CKD Fast Progressors project 
-4. Age,Gender and a sparse matrix of RC and ATC-related features generated using <a href="../Infrastructure%20Library/03.FeatureProcessor%20practical%20guide/Embeddings">Embeddings</a> project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
-5. Age,Gender and a sparse matrix of RC and ATC-related features generated using <a href="../Infrastructure%20Library/03.FeatureProcessor%20practical%20guide/Embeddings">Embeddings</a> project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.</p>
+4. Age,Gender and a sparse matrix of RC and ATC-related features generated using <a href="../../Infrastructure%20Library/03.FeatureProcessor%20practical%20guide/Embeddings">Embeddings</a> project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  
+5. Age,Gender and a sparse matrix of RC and ATC-related features generated using <a href="../../Infrastructure%20Library/03.FeatureProcessor%20practical%20guide/Embeddings">Embeddings</a> project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.</p>
 <h2 id="results">Results</h2>
 <ol>
 <li>Age, Gender columns only</li>
@@ -9334,8 +9334,8 @@ Results produced by libFM are marginally better in this scenario</li>
 
 <ol start="3">
 <li>Age,Gender,RC-related and ATC-related columns of type "category set" and "category_depend" used in CKD Fast Progressors project </li>
-<li>Age,Gender and a sparse matrix of RC and ATC-related features generated using <a href="../Infrastructure%20Library/03.FeatureProcessor%20practical%20guide/Embeddings">Embeddings</a> project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  </li>
-<li>Age,Gender and a sparse matrix of RC and ATC-related features generated using <a href="../Infrastructure%20Library/03.FeatureProcessor%20practical%20guide/Embeddings">Embeddings</a> project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
+<li>Age,Gender and a sparse matrix of RC and ATC-related features generated using <a href="../../Infrastructure%20Library/03.FeatureProcessor%20practical%20guide/Embeddings">Embeddings</a> project (with some columns dropped using "shrinkage" mechanism, descibed in the Embeddings project documentation)  </li>
+<li>Age,Gender and a sparse matrix of RC and ATC-related features generated using <a href="../../Infrastructure%20Library/03.FeatureProcessor%20practical%20guide/Embeddings">Embeddings</a> project (this time without using "shrinkage'). Resulting matrix has 200K+ columns.
  
  
  
