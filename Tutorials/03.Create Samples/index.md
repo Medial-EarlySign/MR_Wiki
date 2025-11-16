@@ -3,6 +3,7 @@
 Create a tab-separated MedSamples file describing prediction times and outcomes for each patient: [MedSamples format](../../Infrastructure%20Library/MedProcessTools%20Library/MedSamples.md).
 
 Use the Python API when possible to generate MedSamples. Each row typically contains a patient identifier, prediction time, outcome (0/1 or numeric for regression), outcome time, and optional split/metadata fields.
+This is the core step for defining the prediction target for training and testing. This is one of the main differences between each model.
 
 Suggested process:
 
