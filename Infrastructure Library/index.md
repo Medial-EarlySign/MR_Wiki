@@ -78,6 +78,7 @@ For usage, please refer to [Tutorials](../Tutorials/)
 
 ```json title="example json"
    {
+	"$schema": "https://raw.githubusercontent.com/Medial-EarlySign/MR_Tools/refs/heads/main/medmodel_schema.json",
 	"model_json_version": "2",
 	"serialize_learning_set": "0",
 	"model_actions": [

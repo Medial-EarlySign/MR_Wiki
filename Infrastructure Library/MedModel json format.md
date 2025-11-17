@@ -23,6 +23,7 @@ These fields configure the overall behavior of the pipeline. Most are optional a
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/Medial-EarlySign/MR_Tools/refs/heads/main/medmodel_schema.json",
   "model_json_version": "2",                // Required: version of the format (always use "2")
   "serialize_learning_set": "0",            // Optional: whether to save training samples in the model (default "0")
   "generate_masks_for_features": "0",       // Optional: track which features were imputed (default "0")
@@ -32,6 +33,7 @@ These fields configure the overall behavior of the pipeline. Most are optional a
 ```
 
 **Tip:** Only `model_json_version` is required for most users. The rest can typically be left out.
+**Tip2:** Use The $schema for autocomplete and validation, even though it is incomplete.
 
 ### 2. The Pipeline: `model_actions`
 
@@ -82,6 +84,7 @@ Let’s walk through an example and explain each major step:
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/Medial-EarlySign/MR_Tools/refs/heads/main/medmodel_schema.json",
   "model_json_version": "2",
   "serialize_learning_set": "0",
   "model_actions": [
