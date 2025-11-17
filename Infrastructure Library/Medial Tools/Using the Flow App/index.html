@@ -9087,6 +9087,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Creating a Feature Matrix for Samples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-generate-a-matrix-without-imputations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Generate a Matrix Without Imputations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -9303,7 +9320,6 @@ Use the <a href="../Optimizer.html">Optimizer</a> instead.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>Flow<span class="w"> </span>--get_model_preds<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--f_samples<span class="w"> </span><span class="nv">$PATH_TO_TRAIN_SAMPLES</span><span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$PATH_TO_TRAINED_MODEL_BINARY_FILE</span><span class="w"> </span>--f_preds<span class="w"> </span><span class="nv">$OUTPUT_PATH_TO_STORE_SAMPLES</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Pre-processors</strong> can be added to the beginning of the model pipeline to manipulate raw signals before they are fed into the model. This allows you to perform operations that don't require training or storage in the model itself, such as simulating the removal or limitation of a specific signal. For more details, see <a href="Using%20Pre%20Processors.html">Using Pre Processors</a></p>
-<p>To output the feature matrix, please use <code>--get_mat</code> switch in Flow instead of <code>--get_model_preds</code>, the output argument is <code>--f_matrix</code> and not <code>--f_preds</code></p>
 <h3 id="creating-a-feature-matrix-for-samples">Creating a Feature Matrix for Samples</h3>
 <p>To create a feature matrix, use the same inputs as for predicting/applying a model. The output will be a CSV file containing the feature matrix:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>Flow<span class="w"> </span>--get_mat<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--f_samples<span class="w"> </span><span class="nv">$PATH_TO_TRAIN_SAMPLES</span><span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$PATH_TO_TRAINED_MODEL_BINARY_FILE</span><span class="w"> </span>--f_matrix<span class="w"> </span><span class="nv">$OUTPUT_PATH_TO_STORE_MATRIX</span>
@@ -9311,6 +9327,9 @@ Use the <a href="../Optimizer.html">Optimizer</a> instead.</p>
 <p>To inspect the training matrix directly from the model JSON, use the following command. The inputs are the same as for model training, but the output is a matrix instead of a model:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>Flow<span class="w"> </span>--get_json_mat<span class="w"> </span>--rep<span class="w"> </span><span class="nv">$REPOSITORY_PATH</span><span class="w"> </span>--f_samples<span class="w"> </span><span class="nv">$PATH_TO_TRAIN_SAMPLES</span><span class="w"> </span>--f_json<span class="w"> </span><span class="nv">$PATH_TO_JSON_WITH_MODEL_INSTRUCTIONS</span><span class="w"> </span>--f_matrix<span class="w"> </span><span class="nv">$OUTPUT_PATH_TO_STORE_MATRIX</span>
 </code></pre></div></td></tr></table></div>
+<h4 id="how-to-generate-a-matrix-without-imputations">How to Generate a Matrix Without Imputations</h4>
+<p>To create a matrix that skips imputations and normalizations, add the <code>--stop_step 2</code> argument to your <code>--get_mat</code> command.</p>
+<p>This setting halts the pipeline after the feature generation step, skipping the "feature processors" that would normally handle imputation and normalization. In the resulting matrix, missing data will be marked with the value <code>-65536</code>.</p>
 <h3 id="print-trained-model-information">Print trained model information</h3>
 <p>To inspect model pipeline:</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>Flow<span class="w"> </span>--print_model_info<span class="w"> </span>--f_model<span class="w"> </span><span class="nv">$MODEL</span><span class="w"> </span>
