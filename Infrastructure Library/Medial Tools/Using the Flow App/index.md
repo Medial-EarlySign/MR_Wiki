@@ -108,8 +108,6 @@ Flow --get_model_preds --rep $REPOSITORY_PATH --f_samples $PATH_TO_TRAIN_SAMPLES
 
 **Pre-processors** can be added to the beginning of the model pipeline to manipulate raw signals before they are fed into the model. This allows you to perform operations that don't require training or storage in the model itself, such as simulating the removal or limitation of a specific signal. For more details, see [Using Pre Processors](Using%20Pre%20Processors.md)
 
-To output the feature matrix, please use `--get_mat` switch in Flow instead of `--get_model_preds`, the output argument is `--f_matrix` and not `--f_preds`
-
 ### Creating a Feature Matrix for Samples
 
 To create a feature matrix, use the same inputs as for predicting/applying a model. The output will be a CSV file containing the feature matrix:
@@ -123,6 +121,10 @@ To inspect the training matrix directly from the model JSON, use the following c
 ```bash
 Flow --get_json_mat --rep $REPOSITORY_PATH --f_samples $PATH_TO_TRAIN_SAMPLES --f_json $PATH_TO_JSON_WITH_MODEL_INSTRUCTIONS --f_matrix $OUTPUT_PATH_TO_STORE_MATRIX
 ```
+#### How to Generate a Matrix Without Imputations
+To create a matrix that skips imputations and normalizations, add the `--stop_step 2` argument to your `--get_mat` command.
+
+This setting halts the pipeline after the feature generation step, skipping the "feature processors" that would normally handle imputation and normalization. In the resulting matrix, missing data will be marked with the value `-65536`.
 
 ### Print trained model information
 
