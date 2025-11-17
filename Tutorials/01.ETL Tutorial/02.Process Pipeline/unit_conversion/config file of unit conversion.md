@@ -42,4 +42,4 @@ In this example, the `Ca` signal with the `mmol/l` unit was given a conversion f
  
 Full file:
  
-[map_units_stats.cfg](../../../../../attachments/13403029/13403028.cfg)
+[map_units_stats.cfg](../../../../attachments/13403029/13403028.cfg)

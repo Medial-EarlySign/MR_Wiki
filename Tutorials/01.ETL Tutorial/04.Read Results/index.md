@@ -82,12 +82,12 @@ Large ratios (for example ~10) often indicate unit mismatches. A common case for
 
 Monthly charts can look noisy when most data come from a single year. In that case, check both monthly and yearly views to avoid false alarms.
 
-<img src="../../../../attachments/13926413/13926420.png"/>
-<img src="../../../../attachments/13926413/13926421.png"/>
+<img src="../../../attachments/13926413/13926420.png"/>
+<img src="../../../attachments/13926413/13926421.png"/>
 
 ### Example 2 - distribution shape check
 
 On the right is a smooth (expected) distribution. On the left are unexplained "vibrations"; they may indicate data-quality issues or batch artifacts. Discuss with the dataset owner to confirm.
 
-<img src="../../../../attachments/13926413/13926422.png"/>
-<img src="../../../../attachments/13926413/13926423.png"/>
+<img src="../../../attachments/13926413/13926422.png"/>
+<img src="../../../attachments/13926413/13926423.png"/>

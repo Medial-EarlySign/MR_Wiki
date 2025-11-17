@@ -1,7 +1,7 @@
 # 📁 CODE_DIR: Your ETL Workspace
 
 The `CODE_DIR` is the primary location for all code specific to your ETL process. It typically contains two main Python files: a helper library for parsing and `load.py`, which is the entry point for the entire loading process.
-<img src="../../../../attachments/13402978/13402983.png"/>
+<img src="../../../attachments/13402978/13402983.png"/>
 
 ---
 
