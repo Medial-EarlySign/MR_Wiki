@@ -16,6 +16,7 @@ Before you begin, ensure you have:
 ### Basic Data Retrieval
 
 To get started, import the `med` library and initialize the `PidRepository` with the path to your loaded repository file.
+[Full API Sphinx Link](https://medial-earlysign.github.io/MR_Tools/index.html#medpython-api-documentation)
 
 ```python
 import med
@@ -52,7 +53,7 @@ Categorical signals, like 'DIAGNOSIS', can be handled in two ways.
 
 #### 1. Translated (String) Values
 
-By default, `get_sig` returns a DataFrame with human-readable string values. While convenient, this can be memory-intensive.
+By default, [get_sig](https://medial-earlysign.github.io/MR_Tools/MedPython.html#med.PidRepository.get_sig) returns a DataFrame with human-readable string values. While convenient, this can be memory-intensive.
 
 ```python
 # This can consume a lot of memory for large datasets
@@ -95,7 +96,7 @@ lut = rep.dict.prep_sets_lookup_table(sig_dict_section_id, ["ICD10_CODE:J00-J99"
 The `lut` now contains `1` at indices corresponding to the `J00-J99` codes and `0` otherwise. This mapping can handle complex relationships, such as mapping NDC drug codes to ATC codes, not just simple string matching.
 
 > [!NOTE]
-> You can pass multiple values to `prep_sets_lookup_table`, it acceptes a list of codes to create a single lookup table with OR condition between all codes.
+> You can pass multiple values to [prep_sets_lookup_table](https://medial-earlysign.github.io/MR_Tools/MedPython.html#med.PidRepository.dict_prep_sets_lookup_table), it acceptes a list of codes to create a single lookup table with OR condition between all codes.
 
 
 **Step 2: Apply the Lookup Table**

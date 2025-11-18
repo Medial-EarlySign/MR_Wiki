@@ -2,9 +2,11 @@
 
 This section explains how to construct a processing pipeline in the ETL workflow using the `prepare_final_signals` function. This function applies your custom processing logic to data fetched in the previous step.
 
+
 ## Step-by-Step Guide
 1. **Import Necessary Functions**: 
 Start by importing the `prepare_final_signals` function and your custom data_fetcher.
+[Sphinx API Link](https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.prepare_final_signals)
 
 ```python
 from ETL_Infra.etl_process import prepare_final_signals

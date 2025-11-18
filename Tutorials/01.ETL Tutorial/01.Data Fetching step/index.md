@@ -5,6 +5,7 @@ The goal of this step is to create a function that returns a **lazy iterator** f
 ```python
 def fetch_function(batch_size:int, start_batch:int) -> Generator[pd.DataFrame, None, None]
 ```
+[Sphinx API Link](https://medial-earlysign.github.io/MR_Tools/data_fetcher/data_fethcer.html)
 
 This step happens after [Setup](../00.Setup) and after creating a directory for source code of this current ETL process.
 Note: The folder for our current ETL process is refered as `CODE_DIR` and list of files/strucutre can be seen in [CODE_DIR](../High%20level%20-%20important%20paths/CODE_DIR.md). We will start with an empty direcotry and the ETL infrastracture will create some of the files for you.

@@ -14,6 +14,7 @@ Now we will **finalize the preparation** and generate all configuration files ne
 ## `finish_prepare_load`
 
 Finalizes preparation and loads your data into the repository.
+[Sphinx API Link](https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.finish_prepare_load)
 
 ```python
 finish_prepare_load(WORK_DIR, '/nas1/Work/CancerData/THIN/thin_20XX', 'thin')
@@ -75,7 +76,7 @@ This script is located at `WORK_DIR`/rep_configs/load_with_flow.sh. Run this scr
 
 ## Function Reference
 
-**1. `prepare_final_signals`**  
+**1. `prepare_final_signals`**   [Sphinx API Link](https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.prepare_final_signals)
 Processes and tests each data type. Handles batching if needed.
 
 - **Arguments:**
@@ -85,16 +86,16 @@ Processes and tests each data type. Handles batching if needed.
   - `batch_size`: Batch size (0 = no batching)
   - `override`: `'y'` to overwrite, `'n'` to skip completed signals
 
-**2. `prepare_dicts`**  
+**2. `prepare_dicts`**  [Sphinx API Link](https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.prepare_dicts)
 Creates mapping dictionaries for categorical signals.
 
-- **Arguments:**
+- **Arguments:**  
   - `workdir`: Working directory
   - `signal`: Signal name
   - `def_dict`: DataFrame with internal codes and descriptions (optional)
   - `set_dict`: DataFrame mapping client codes to known ontology
 
-**3. `finish_prepare_load`**  
+**3. `finish_prepare_load`**  [Sphinx API Link](https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.finish_prepare_load)
 Finalizes preparation, generates signals, and loads the repository.
 
 - **Arguments:**
