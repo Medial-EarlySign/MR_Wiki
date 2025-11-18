@@ -9210,7 +9210,8 @@
 <p>Now we will <strong>finalize the preparation</strong> and generate all configuration files needed for loading by using a third function: <code>finish_prepare_load</code>.</p>
 <hr />
 <h2 id="finish_prepare_load"><code>finish_prepare_load</code></h2>
-<p>Finalizes preparation and loads your data into the repository.</p>
+<p>Finalizes preparation and loads your data into the repository.
+<a href="https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.finish_prepare_load">Sphinx API Link</a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">finish_prepare_load</span><span class="p">(</span><span class="n">WORK_DIR</span><span class="p">,</span> <span class="s1">&#39;/nas1/Work/CancerData/THIN/thin_20XX&#39;</span><span class="p">,</span> <span class="s1">&#39;thin&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Parameters:</strong></p>
@@ -9287,7 +9288,7 @@
 This script is located at <code>WORK_DIR</code>/rep_configs/load_with_flow.sh. Run this script and confirm that it completes successfully with a success message at the end.</p>
 <hr />
 <h2 id="function-reference">Function Reference</h2>
-<p><strong>1. <code>prepare_final_signals</code></strong><br />
+<p><strong>1. <code>prepare_final_signals</code></strong>   <a href="https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.prepare_final_signals">Sphinx API Link</a>
 Processes and tests each data type. Handles batching if needed.</p>
 <ul>
 <li><strong>Arguments:</strong></li>
@@ -9297,16 +9298,16 @@ Processes and tests each data type. Handles batching if needed.</p>
 <li><code>batch_size</code>: Batch size (0 = no batching)</li>
 <li><code>override</code>: <code>'y'</code> to overwrite, <code>'n'</code> to skip completed signals</li>
 </ul>
-<p><strong>2. <code>prepare_dicts</code></strong><br />
+<p><strong>2. <code>prepare_dicts</code></strong>  <a href="https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.prepare_dicts">Sphinx API Link</a>
 Creates mapping dictionaries for categorical signals.</p>
 <ul>
-<li><strong>Arguments:</strong></li>
+<li><strong>Arguments:</strong>  </li>
 <li><code>workdir</code>: Working directory</li>
 <li><code>signal</code>: Signal name</li>
 <li><code>def_dict</code>: DataFrame with internal codes and descriptions (optional)</li>
 <li><code>set_dict</code>: DataFrame mapping client codes to known ontology</li>
 </ul>
-<p><strong>3. <code>finish_prepare_load</code></strong><br />
+<p><strong>3. <code>finish_prepare_load</code></strong>  <a href="https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.finish_prepare_load">Sphinx API Link</a>
 Finalizes preparation, generates signals, and loads the repository.</p>
 <ul>
 <li><strong>Arguments:</strong></li>

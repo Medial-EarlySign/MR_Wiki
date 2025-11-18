@@ -9247,7 +9247,8 @@
 <li>Loaded a Data Repository by following the <a href="../01.ETL%20Tutorial/index.html">ETL Tutorial</a>.</li>
 </ol>
 <h3 id="basic-data-retrieval">Basic Data Retrieval</h3>
-<p>To get started, import the <code>med</code> library and initialize the <code>PidRepository</code> with the path to your loaded repository file.</p>
+<p>To get started, import the <code>med</code> library and initialize the <code>PidRepository</code> with the path to your loaded repository file.
+<a href="https://medial-earlysign.github.io/MR_Tools/index.html#medpython-api-documentation">Full API Sphinx Link</a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -9291,7 +9292,7 @@
 <h3 id="working-with-categorical-signals">Working with Categorical Signals</h3>
 <p>Categorical signals, like 'DIAGNOSIS', can be handled in two ways.</p>
 <h4 id="1-translated-string-values">1. Translated (String) Values</h4>
-<p>By default, <code>get_sig</code> returns a DataFrame with human-readable string values. While convenient, this can be memory-intensive.</p>
+<p>By default, <a href="https://medial-earlysign.github.io/MR_Tools/MedPython.html#med.PidRepository.get_sig">get_sig</a> returns a DataFrame with human-readable string values. While convenient, this can be memory-intensive.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># This can consume a lot of memory for large datasets</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">diagnosis_strings</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">get_sig</span><span class="p">(</span><span class="s1">&#39;DIAGNOSIS&#39;</span><span class="p">)</span> 
@@ -9323,7 +9324,7 @@
 <p>The <code>lut</code> now contains <code>1</code> at indices corresponding to the <code>J00-J99</code> codes and <code>0</code> otherwise. This mapping can handle complex relationships, such as mapping NDC drug codes to ATC codes, not just simple string matching.</p>
 <blockquote>
 <p>[!NOTE]
-You can pass multiple values to <code>prep_sets_lookup_table</code>, it acceptes a list of codes to create a single lookup table with OR condition between all codes.</p>
+You can pass multiple values to <a href="https://medial-earlysign.github.io/MR_Tools/MedPython.html#med.PidRepository.dict_prep_sets_lookup_table">prep_sets_lookup_table</a>, it acceptes a list of codes to create a single lookup table with OR condition between all codes.</p>
 </blockquote>
 <p><strong>Step 2: Apply the Lookup Table</strong></p>
 <p>Now, use the lookup table to filter your DataFrame of diagnosis codes.</p>
