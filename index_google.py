@@ -16,12 +16,13 @@ import time
 import os
 
 
-def filter_pages(url:str) -> bool:
+def filter_pages(url: str) -> bool:
     if url.find("/Archive/") > 0:
         return False
     if url.endswith("/LICENCE.html") or url.endswith("/CONTRIBUTING.html"):
         return False
     return True
+
 
 def sort_page_key(url: str):
     if url.find("/MR_Wiki/index.html") > 0:
@@ -66,9 +67,18 @@ def index_page(
 
     element_locator = (
         By.CSS_SELECTOR,
-        f"input[aria-label='Inspect any URL in {base_site}/']",
+        f"input[type='text']",
     )
-    search_box = wait.until(EC.visibility_of_element_located(element_locator))
+    search_box = wait.until(EC.visibility_of_any_elements_located(element_locator))
+    # Find the element with aria-label='Inspect any URL in ..'
+    search_box = list(
+        filter(
+            lambda x: x.get_attribute("aria-label").startswith("Inspect any URL in"),
+            search_box,
+        )
+    )
+    assert len(search_box) == 1, f"Found {len(search_box)} search elements"
+    search_box = search_box[0]
 
     search_box.send_keys(index_url + "\n")
     time.sleep(3)
