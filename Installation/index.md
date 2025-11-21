@@ -63,7 +63,7 @@ cd boost_${VERSION_2}
 ./b2 --clean
 
 # Build static libraries
-./b2 cxxflags="-march=x86-64" link=static variant=release linkflags=-static-libstdc++ -j8 cxxflags="-fPIC" --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options --with-system --with-regex --with-filesystem
+./b2 cxxflags="-march=x86-64 -fPIC" link=static variant=release linkflags=-static-libstdc++ -j8 --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options --with-system --with-regex --with-filesystem
 
 mkdir -p ${WORK_BUILD_FOLDER}/Boost/include
 
@@ -71,7 +71,7 @@ mkdir -p ${WORK_BUILD_FOLDER}/Boost/include
 ln -sf ${WORK_BUILD_FOLDER}/boost_${VERSION_2}/boost  ${WORK_BUILD_FOLDER}/Boost/include
 
 # Build shared libraries (not needed for AlgoMarker, but needed for MES tools if you choose to compile)
-./b2 cxxflags="-march=x86-64" link=shared variant=release linkflags=-static-libstdc++ -j8 cxxflags="-fPIC" --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options --with-system --with-regex --with-filesystem
+./b2 cxxflags="-march=x86-64 -fPIC" link=shared variant=release linkflags=-static-libstdc++ -j8 --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options --with-system --with-regex --with-filesystem
 ```
 
 #### Installing Boost via Package Manager
