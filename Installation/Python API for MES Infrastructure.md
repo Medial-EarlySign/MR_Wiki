@@ -6,7 +6,12 @@
 This is a Python API wrapper for the MES Infrastructure, allowing you to interact with MES models from Python code.
 Train and manipulate new models.
 
-A prebuilt release is available on the [Release page](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0). The release is built with glibc 2.39 and works out of the box on systems with **glibc ≥ 2.39** (such as **Ubuntu 24.04**). If you need to build from source, follow the steps below.
+The simplest way to install our package is with this command (Requires Python >=3.10 and linux, there is source code package for windows and older python versinos):
+```bash
+pip install medpython
+```
+
+If you need to build from source, follow the instructions below.
 
 ### Installation Steps
 

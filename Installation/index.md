@@ -3,12 +3,12 @@
 
 ## Introduction
 
-This guide describes how to install and set up the MES Infrastructure and its components. You can choose to install all or only the components you need, depending on your use case. These tools allow you to use [published models](../Models), train new models with [MES Tools](MES%20Tools%20to%20Train%20and%20Test%20Models.md), or work with the [Python API](Python%20API%20for%20MES%20Infrastructure.md).
+This guide describes how to install and set up the MES Infrastructure and its components. You can choose to install all or only the components you need, depending on your use case. These tools allow you to use [published models](../Models). To use our tools, please refer to [Tutorials](../Tutorials/).
 
 ## Prebuilt Releases
 
-A prebuilt package (excluding [MES Tools](MES%20Tools%20to%20Train%20and%20Test%20Models.md)) is available for [direct download](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0). This eliminates the need for manual compilation. The binaries are built on **Ubuntu 24.04** and are compatible with any Linux distribution using **glibc ≥ 2.39**. You must also install [OpenMP support](#2-install-openmp-support-ubuntu).
-A prebuild for `MES Tools` can be found in here: [MES Tools](https://github.com/Medial-EarlySign/MR_Tools/releases/tag/V1.0)
+A prebuilt package is available for [direct download](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1). This eliminates the need for manual compilation. The binaries are built on **manylinux2014** and are compatible with any Linux distribution using **glibc ≥ 2.17** (Ubuntu >= 13.04, Centos>=7 or any other linux distro that has glibc>=2.17). You must also install [OpenMP support](#2-install-openmp-support-ubuntu).
+You might also want to install our [PyPi python package](https://pypi.org/project/medpython/) for working with python.
 
 ## Prerequisites
 
@@ -96,7 +96,7 @@ You can install any of the following five components:
 
 ## Environment Setup Script
 
-After installing the required components, it is recommended to use the following script to configure your shell environment for all tools and scripts:
+After installing the required components, it is recommended to use the following script to configure your shell environment for all tools and scripts (If not using precomplied ones and the python pypi package):
 
 ```bash title="Start-Up Script"
 #!/bin/bash
@@ -117,6 +117,7 @@ else
     export LD_LIBRARY_PATH=${LD_PATH}
 fi
 export AUTOTEST_LIB=${MR_TOOLS}/AutoValidation/kits
+# Those lines are needed only if compling from source/not installing pypi python package of medpython
 export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python${PY_VERSION}:${MR_TOOLS}/RepoLoadUtils/common
 export BOOST_ROOT
 ```

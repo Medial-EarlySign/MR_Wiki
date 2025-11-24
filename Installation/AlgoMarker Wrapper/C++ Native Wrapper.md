@@ -1,6 +1,6 @@
 ## C++ Native Wrapper
 
-A prebuilt release is available on the [Release page](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0). The release is built with glibc 2.39 and works out of the box on systems with **glibc ≥ 2.39** (such as **Ubuntu 24.04**). If you need to build from source, follow the steps below.
+A prebuilt release is available on the [Release page](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1). The release is built with glibc 2.17 and will work out of the box on systems with **glibc ≥ 2.17** (e.g., **Ubuntu >= 13.04**, **Centos>=7**, eg.). If you need to build from source, follow the instructions below.
 
 ### Compilation Steps
 
