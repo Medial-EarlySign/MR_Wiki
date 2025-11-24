@@ -9221,11 +9221,13 @@
 <p>This guide describes how to install and set up the MES Infrastructure and its components. You can choose to install all or only the components you need, depending on your use case. These tools allow you to use <a href="../Models">published models</a>. To use our tools, please refer to <a href="../Tutorials/">Tutorials</a>.</p>
 <h2 id="prebuilt-releases">Prebuilt Releases</h2>
 <p>A prebuilt package is available for <a href="https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1">direct download</a>. This eliminates the need for manual compilation. The binaries are built on <strong>manylinux2014</strong> and are compatible with any Linux distribution using <strong>glibc ≥ 2.17</strong> (Ubuntu &gt;= 13.04, Centos&gt;=7 or any other linux distro that has glibc&gt;=2.17). You must also install <a href="#2-install-openmp-support-ubuntu">OpenMP support</a>.
-You might also want to install our <a href="https://pypi.org/project/medpython/">PyPi python package</a> for working with python.</p>
+You might also want to install our <a href="https://pypi.org/project/medpython/">PyPi python package</a> for working with python.
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
+</code></pre></div></td></tr></table></div></p>
 <h2 id="prerequisites">Prerequisites</h2>
 <h3 id="install-openmp-support-ubuntu">Install OpenMP Support (Ubuntu)</h3>
 <p>Install OpenMP for parallel processing:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgomp1<span class="w"> </span>-y
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libgomp1<span class="w"> </span>-y
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <p><strong>Note:</strong> This step is required even if you don't plan to compile the tools. It is required for runtime.
@@ -9235,73 +9237,73 @@ Equivalent package exists in other linux distros, but here we will cover Ubuntu.
 <p>Before building the tools, complete the following steps:</p>
 <h3 id="1-install-compiler-and-build-tools-ubuntu">1. Install Compiler and Build Tools (Ubuntu)</h3>
 <p>Install the required compiler and build tools if you want to build the software yourself:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>binutils<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>cmake<span class="w"> </span>make<span class="w"> </span>-y
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>binutils<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>cmake<span class="w"> </span>make<span class="w"> </span>-y
 </code></pre></div></td></tr></table></div>
 <h3 id="2-install-boost-libraries-ubuntu">2. Install Boost Libraries (Ubuntu)</h3>
 <h4 id="compiling-boost-from-source">Compiling Boost from Source</h4>
 <p>You can <a href="https://www.boost.org/users/download/">download Boost</a> and compile it manually. Example steps for version 1.85.0:</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Boost Compilation</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#__codelineno-2-25">25</a></span>
-<span class="normal"><a href="#__codelineno-2-26">26</a></span>
-<span class="normal"><a href="#__codelineno-2-27">27</a></span>
-<span class="normal"><a href="#__codelineno-2-28">28</a></span>
-<span class="normal"><a href="#__codelineno-2-29">29</a></span>
-<span class="normal"><a href="#__codelineno-2-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># Install tools for download and extraction</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>bzip2<span class="w"> </span>wget<span class="w"> </span>-y
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1"># Download Boost</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.85.0
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="nv">VERSION_2</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F.<span class="w"> </span><span class="s1">&#39;{print $1 &quot;_&quot; $2 &quot;_&quot; $3}&#39;</span><span class="k">)</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>wget<span class="w"> </span>https://archives.boost.io/release/<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>/source/boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>.tar.bz2
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1"># Extract files</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>tar<span class="w"> </span>-xjf<span class="w"> </span>boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>.tar.bz2
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a>rm<span class="w"> </span>-f<span class="w"> </span>boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>.tar.bz2
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="c1"># Set up Boost install directory</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="nv">WORK_BUILD_FOLDER</span><span class="o">=</span><span class="k">$(</span>realpath<span class="w"> </span>.<span class="k">)</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="nb">cd</span><span class="w"> </span>boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="c1"># Configure and clean</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a>./bootstrap.sh
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a>./b2<span class="w"> </span>--clean
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="c1"># Build static libraries</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a>./b2<span class="w"> </span><span class="nv">cxxflags</span><span class="o">=</span>-march<span class="o">=</span>x86-64<span class="w"> </span><span class="nv">cxxflags</span><span class="o">=</span>-fPIC<span class="w"> </span><span class="nv">pch</span><span class="o">=</span>off<span class="w"> </span><span class="nv">link</span><span class="o">=</span>static<span class="w"> </span><span class="nv">variant</span><span class="o">=</span>release<span class="w"> </span><span class="nv">linkflags</span><span class="o">=</span>-static-libstdc++<span class="w"> </span>-j8<span class="w"> </span>--stagedir<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span><span class="s2">/Boost&quot;</span><span class="w"> </span>--with-program_options<span class="w"> </span>--with-system<span class="w"> </span>--with-regex<span class="w"> </span>--with-filesystem
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span>/Boost/include
-<a id="__codelineno-2-25" name="__codelineno-2-25"></a>
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="c1"># Link headers to Boost/include</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27"></a>ln<span class="w"> </span>-sf<span class="w"> </span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span>/boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>/boost<span class="w">  </span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span>/Boost/include
-<a id="__codelineno-2-28" name="__codelineno-2-28"></a>
-<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="c1"># Build shared libraries (not needed for AlgoMarker, but needed for MES tools if you choose to compile)</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a>./b2<span class="w"> </span><span class="nv">cxxflags</span><span class="o">=</span>-march<span class="o">=</span>x86-64<span class="w"> </span><span class="nv">cxxflags</span><span class="o">=</span>-fPIC<span class="w"> </span><span class="nv">pch</span><span class="o">=</span>off<span class="w"> </span><span class="nv">link</span><span class="o">=</span>shared<span class="w"> </span><span class="nv">variant</span><span class="o">=</span>release<span class="w"> </span><span class="nv">linkflags</span><span class="o">=</span>-static-libstdc++<span class="w"> </span>-j8<span class="w"> </span>--stagedir<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span><span class="s2">/Boost&quot;</span><span class="w"> </span>--with-program_options<span class="w"> </span>--with-system<span class="w"> </span>--with-regex<span class="w"> </span>--with-filesystem
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Boost Compilation</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># Install tools for download and extraction</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>bzip2<span class="w"> </span>wget<span class="w"> </span>-y
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1"># Download Boost</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.85.0
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="nv">VERSION_2</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F.<span class="w"> </span><span class="s1">&#39;{print $1 &quot;_&quot; $2 &quot;_&quot; $3}&#39;</span><span class="k">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>wget<span class="w"> </span>https://archives.boost.io/release/<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>/source/boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>.tar.bz2
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1"># Extract files</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>tar<span class="w"> </span>-xjf<span class="w"> </span>boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>.tar.bz2
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>rm<span class="w"> </span>-f<span class="w"> </span>boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>.tar.bz2
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="c1"># Set up Boost install directory</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="nv">WORK_BUILD_FOLDER</span><span class="o">=</span><span class="k">$(</span>realpath<span class="w"> </span>.<span class="k">)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="nb">cd</span><span class="w"> </span>boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="c1"># Configure and clean</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>./bootstrap.sh
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>./b2<span class="w"> </span>--clean
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="c1"># Build static libraries</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a>./b2<span class="w"> </span><span class="nv">cxxflags</span><span class="o">=</span>-march<span class="o">=</span>x86-64<span class="w"> </span><span class="nv">cxxflags</span><span class="o">=</span>-fPIC<span class="w"> </span><span class="nv">pch</span><span class="o">=</span>off<span class="w"> </span><span class="nv">link</span><span class="o">=</span>static<span class="w"> </span><span class="nv">variant</span><span class="o">=</span>release<span class="w"> </span><span class="nv">linkflags</span><span class="o">=</span>-static-libstdc++<span class="w"> </span>-j8<span class="w"> </span>--stagedir<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span><span class="s2">/Boost&quot;</span><span class="w"> </span>--with-program_options<span class="w"> </span>--with-system<span class="w"> </span>--with-regex<span class="w"> </span>--with-filesystem
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span>/Boost/include
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="c1"># Link headers to Boost/include</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a>ln<span class="w"> </span>-sf<span class="w"> </span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span>/boost_<span class="si">${</span><span class="nv">VERSION_2</span><span class="si">}</span>/boost<span class="w">  </span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span>/Boost/include
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="c1"># Build shared libraries (not needed for AlgoMarker, but needed for MES tools if you choose to compile)</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a>./b2<span class="w"> </span><span class="nv">cxxflags</span><span class="o">=</span>-march<span class="o">=</span>x86-64<span class="w"> </span><span class="nv">cxxflags</span><span class="o">=</span>-fPIC<span class="w"> </span><span class="nv">pch</span><span class="o">=</span>off<span class="w"> </span><span class="nv">link</span><span class="o">=</span>shared<span class="w"> </span><span class="nv">variant</span><span class="o">=</span>release<span class="w"> </span><span class="nv">linkflags</span><span class="o">=</span>-static-libstdc++<span class="w"> </span>-j8<span class="w"> </span>--stagedir<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">WORK_BUILD_FOLDER</span><span class="si">}</span><span class="s2">/Boost&quot;</span><span class="w"> </span>--with-program_options<span class="w"> </span>--with-system<span class="w"> </span>--with-regex<span class="w"> </span>--with-filesystem
 </code></pre></div></td></tr></table></div>
 <h4 id="installing-boost-via-package-manager">Installing Boost via Package Manager</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libboost-system1.83-dev<span class="w"> </span>libboost-filesystem1.83-dev<span class="w"> </span>libboost-regex1.83-dev<span class="w"> </span>libboost-program-options1.83-dev<span class="w"> </span>-y
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libboost-system1.83-dev<span class="w"> </span>libboost-filesystem1.83-dev<span class="w"> </span>libboost-regex1.83-dev<span class="w"> </span>libboost-program-options1.83-dev<span class="w"> </span>-y
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <p><strong>Note:</strong> On Ubuntu 22.04, Boost version 1.74 is available and compatible. It was also tested with newest Boost version 1.89.0(2025-August-14) as today</p>
@@ -9318,47 +9320,47 @@ Equivalent package exists in other linux distros, but here we will cover Ubuntu.
 </ol>
 <h2 id="environment-setup-script">Environment Setup Script</h2>
 <p>After installing the required components, it is recommended to use the following script to configure your shell environment for all tools and scripts (If not using precomplied ones and the python pypi package):</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Start-Up Script</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span>
-<span class="normal"><a href="#__codelineno-4-11">11</a></span>
-<span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span>
-<span class="normal"><a href="#__codelineno-4-17">17</a></span>
-<span class="normal"><a href="#__codelineno-4-18">18</a></span>
-<span class="normal"><a href="#__codelineno-4-19">19</a></span>
-<span class="normal"><a href="#__codelineno-4-20">20</a></span>
-<span class="normal"><a href="#__codelineno-4-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1"># Path to Boost Library (If you compiled the boost library)</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="nv">BOOST_ROOT</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/Boost
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1"># Path to Git repository clones - here in the example, we clones all repositories under ${HOME}/Documents/MES</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="nv">MR_LIBS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_LIBS
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="nv">MR_TOOLS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_Tools
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="nv">MR_SCRIPTS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_Scripts
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="nv">PY_VERSION</span><span class="o">=</span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import platform; print(&#39;&#39;.join(platform.python_version().split(&#39;.&#39;)[:2]))&quot;</span><span class="k">)</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="nv">LD_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">BOOST_ROOT</span><span class="si">}</span>/lib
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/AllTools/Linux/Release:<span class="si">${</span><span class="nv">MR_SCRIPTS</span><span class="si">}</span>/Python-scripts:<span class="si">${</span><span class="nv">MR_SCRIPTS</span><span class="si">}</span>/Bash-Scripts:<span class="si">${</span><span class="nv">MR_SCRIPTS</span><span class="si">}</span>/Perl-scripts
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="si">${</span><span class="nv">LD_PATH</span><span class="si">}</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="k">else</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">LD_PATH</span><span class="si">}</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="k">fi</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AUTOTEST_LIB</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/AutoValidation/kits
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="c1"># Those lines are needed only if compling from source/not installing pypi python package of medpython</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python<span class="si">${</span><span class="nv">PY_VERSION</span><span class="si">}</span>:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/RepoLoadUtils/common
-<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="nb">export</span><span class="w"> </span>BOOST_ROOT
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Start-Up Script</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1"># Path to Boost Library (If you compiled the boost library)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="nv">BOOST_ROOT</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/Boost
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="c1"># Path to Git repository clones - here in the example, we clones all repositories under ${HOME}/Documents/MES</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="nv">MR_LIBS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_LIBS
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="nv">MR_TOOLS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_Tools
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="nv">MR_SCRIPTS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_Scripts
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="nv">PY_VERSION</span><span class="o">=</span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import platform; print(&#39;&#39;.join(platform.python_version().split(&#39;.&#39;)[:2]))&quot;</span><span class="k">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="nv">LD_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">BOOST_ROOT</span><span class="si">}</span>/lib
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/AllTools/Linux/Release:<span class="si">${</span><span class="nv">MR_SCRIPTS</span><span class="si">}</span>/Python-scripts:<span class="si">${</span><span class="nv">MR_SCRIPTS</span><span class="si">}</span>/Bash-Scripts:<span class="si">${</span><span class="nv">MR_SCRIPTS</span><span class="si">}</span>/Perl-scripts
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="si">${</span><span class="nv">LD_PATH</span><span class="si">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="k">else</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">LD_PATH</span><span class="si">}</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="k">fi</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AUTOTEST_LIB</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/AutoValidation/kits
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="c1"># Those lines are needed only if compling from source/not installing pypi python package of medpython</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python<span class="si">${</span><span class="nv">PY_VERSION</span><span class="si">}</span>:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/RepoLoadUtils/common
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="nb">export</span><span class="w"> </span>BOOST_ROOT
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <p><strong>Tip:</strong> Adjust the <code>LD_PATH</code>, <code>MR_LIBS</code>, <code>MR_TOOLS</code>, and <code>MR_SCRIPTS</code> variables as needed for your system.</p>
