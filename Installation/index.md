@@ -9,6 +9,9 @@ This guide describes how to install and set up the MES Infrastructure and its co
 
 A prebuilt package is available for [direct download](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1). This eliminates the need for manual compilation. The binaries are built on **manylinux2014** and are compatible with any Linux distribution using **glibc ≥ 2.17** (Ubuntu >= 13.04, Centos>=7 or any other linux distro that has glibc>=2.17). You must also install [OpenMP support](#2-install-openmp-support-ubuntu).
 You might also want to install our [PyPi python package](https://pypi.org/project/medpython/) for working with python.
+```bash
+pip install medpython
+```
 
 ## Prerequisites
 
