@@ -9218,10 +9218,10 @@
 
 <h1 id="installation-guide">Installation Guide</h1>
 <h2 id="introduction">Introduction</h2>
-<p>This guide describes how to install and set up the MES Infrastructure and its components. You can choose to install all or only the components you need, depending on your use case. These tools allow you to use <a href="../Models">published models</a>, train new models with <a href="MES%20Tools%20to%20Train%20and%20Test%20Models.html">MES Tools</a>, or work with the <a href="Python%20API%20for%20MES%20Infrastructure.html">Python API</a>.</p>
+<p>This guide describes how to install and set up the MES Infrastructure and its components. You can choose to install all or only the components you need, depending on your use case. These tools allow you to use <a href="../Models">published models</a>. To use our tools, please refer to <a href="../Tutorials/">Tutorials</a>.</p>
 <h2 id="prebuilt-releases">Prebuilt Releases</h2>
-<p>A prebuilt package (excluding <a href="MES%20Tools%20to%20Train%20and%20Test%20Models.html">MES Tools</a>) is available for <a href="https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0">direct download</a>. This eliminates the need for manual compilation. The binaries are built on <strong>Ubuntu 24.04</strong> and are compatible with any Linux distribution using <strong>glibc ≥ 2.39</strong>. You must also install <a href="#2-install-openmp-support-ubuntu">OpenMP support</a>.
-A prebuild for <code>MES Tools</code> can be found in here: <a href="https://github.com/Medial-EarlySign/MR_Tools/releases/tag/V1.0">MES Tools</a></p>
+<p>A prebuilt package is available for <a href="https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1">direct download</a>. This eliminates the need for manual compilation. The binaries are built on <strong>manylinux2014</strong> and are compatible with any Linux distribution using <strong>glibc ≥ 2.17</strong> (Ubuntu &gt;= 13.04, Centos&gt;=7 or any other linux distro that has glibc&gt;=2.17). You must also install <a href="#2-install-openmp-support-ubuntu">OpenMP support</a>.
+You might also want to install our <a href="https://pypi.org/project/medpython/">PyPi python package</a> for working with python.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <h3 id="install-openmp-support-ubuntu">Install OpenMP Support (Ubuntu)</h3>
 <p>Install OpenMP for parallel processing:</p>
@@ -9317,7 +9317,7 @@ Equivalent package exists in other linux distros, but here we will cover Ubuntu.
 <li>[MR_Scripts]: Useful Python and Bash scripts. Clone the repository with <code>git clone git@github.com:Medial-EarlySign/MR_Scripts.git</code>. No need to install it.</li>
 </ol>
 <h2 id="environment-setup-script">Environment Setup Script</h2>
-<p>After installing the required components, it is recommended to use the following script to configure your shell environment for all tools and scripts:</p>
+<p>After installing the required components, it is recommended to use the following script to configure your shell environment for all tools and scripts (If not using precomplied ones and the python pypi package):</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Start-Up Script</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -9337,7 +9337,8 @@ Equivalent package exists in other linux distros, but here we will cover Ubuntu.
 <span class="normal"><a href="#__codelineno-4-17">17</a></span>
 <span class="normal"><a href="#__codelineno-4-18">18</a></span>
 <span class="normal"><a href="#__codelineno-4-19">19</a></span>
-<span class="normal"><a href="#__codelineno-4-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1"># Path to Boost Library (If you compiled the boost library)</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="nv">BOOST_ROOT</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/Boost
@@ -9355,8 +9356,9 @@ Equivalent package exists in other linux distros, but here we will cover Ubuntu.
 <a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">LD_PATH</span><span class="si">}</span>
 <a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="k">fi</span>
 <a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AUTOTEST_LIB</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/AutoValidation/kits
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python<span class="si">${</span><span class="nv">PY_VERSION</span><span class="si">}</span>:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/RepoLoadUtils/common
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="nb">export</span><span class="w"> </span>BOOST_ROOT
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="c1"># Those lines are needed only if compling from source/not installing pypi python package of medpython</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python<span class="si">${</span><span class="nv">PY_VERSION</span><span class="si">}</span>:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/RepoLoadUtils/common
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="nb">export</span><span class="w"> </span>BOOST_ROOT
 </code></pre></div></td></tr></table></div>
 <blockquote>
 <p><strong>Tip:</strong> Adjust the <code>LD_PATH</code>, <code>MR_LIBS</code>, <code>MR_TOOLS</code>, and <code>MR_SCRIPTS</code> variables as needed for your system.</p>

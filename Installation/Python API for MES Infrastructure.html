@@ -9202,29 +9202,32 @@
 <h3 id="overview">Overview</h3>
 <p>This is a Python API wrapper for the MES Infrastructure, allowing you to interact with MES models from Python code.
 Train and manipulate new models.</p>
-<p>A prebuilt release is available on the <a href="https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0">Release page</a>. The release is built with glibc 2.39 and works out of the box on systems with <strong>glibc ≥ 2.39</strong> (such as <strong>Ubuntu 24.04</strong>). If you need to build from source, follow the steps below.</p>
+<p>The simplest way to install our package is with this command (Requires Python &gt;=3.10 and linux, there is source code package for windows and older python versinos):
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
+</code></pre></div></td></tr></table></div></p>
+<p>If you need to build from source, follow the instructions below.</p>
 <h3 id="installation-steps">Installation Steps</h3>
 <ol>
 <li>Install required system libraries:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-dev<span class="w"> </span>swig<span class="w"> </span>-y
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-dev<span class="w"> </span>swig<span class="w"> </span>-y
 </code></pre></div></td></tr></table></div></li>
 <li><a href="index.html#compiling-boost-from-source">Compile the Boost library</a> from source.</li>
 <li>Edit <code>Internal/MedPyExport/generate_binding/CMakeLists.txt</code> and add/edit line:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">set</span><span class="p">(</span><span class="s">BOOST_ROOT</span><span class="w"> </span><span class="s2">&quot;$ENV{HOME}/boost-pic-install&quot;</span><span class="p">)</span>
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">set</span><span class="p">(</span><span class="s">BOOST_ROOT</span><span class="w"> </span><span class="s2">&quot;$ENV{HOME}/boost-pic-install&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
    Set this path to your Boost build directory (<code>WORK_BUILD_FOLDER</code> from step 2). Make sure the compiled libraries are in <code>/libs</code> and headers in <code>/include</code>.
    Alternatively you can just set your environment variable <code>BOOST_ROOT</code> to reference the Boost build directory. </li>
 <li>Ensure NumPy is installed:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy
 </code></pre></div></td></tr></table></div><blockquote>
 <p>This API supports both NumPy 1.x and 2.x. For maximum compatibility, compile with NumPy 2.x (works for clients with either version). Compiling with NumPy 1.x will <strong>not</strong> work for clients using 2.x.</p>
 </blockquote>
 </li>
 <li>Build the Python API:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>Internal/MedPyExport/generate_binding/make-simple.sh
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Internal/MedPyExport/generate_binding/make-simple.sh
 </code></pre></div></td></tr></table></div></li>
 <li>Make the library accessible to your python by adding it to <code>PYTHONPATH</code> variable: 
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python<span class="si">${</span><span class="nv">PY_VERSION</span><span class="si">}</span>
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python<span class="si">${</span><span class="nv">PY_VERSION</span><span class="si">}</span>
 </code></pre></div></td></tr></table></div>
    Change MR_LIBS to your cloned path of MR_LIBS and ${PY_VERSION} to your python version, eg. 312 for python 3.12.</li>
 </ol>
