@@ -25,7 +25,8 @@ If you need to build from source, follow the instructions below.
    set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
    ```
    Set this path to your Boost build directory (`WORK_BUILD_FOLDER` from step 2). Make sure the compiled libraries are in `/libs` and headers in `/include`.
-   Alternatively you can just set your environment variable `BOOST_ROOT` to reference the Boost build directory. 
+   Alternatively you can just set your environment variable `BOOST_ROOT` to reference the Boost build directory.
+   To use the **system Boost libraries**, be aware that they were **not compiled** with the `-fPIC` flag. This will cause the build to fail when linking against static objects. **To compile against shared Boost libraries**: Set `export BOOST_DISABLE_STATIC=1` before running the build script. **A critical side effect**: The resulting library will only work on your local machine because it will expect the Boost shared libraries to be present at runtime. It **cannot be deployed** to other systems.
 4. Ensure NumPy is installed:
    ```bash
    python -m pip install numpy
