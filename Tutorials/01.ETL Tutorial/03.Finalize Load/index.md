@@ -64,13 +64,14 @@ finish_prepare_load(WORK_DIR, '/nas1/Work/CancerData/THIN/thin_20XX', 'thin')
 ```
 
 ## Final Script to Create the Data Repository
-Look for a message on your screen similar to the last two lines below, which provide the full path to the script that runs `Flow` and generates the repository:
+Look for a message on your screen similar to the last two lines below, which provide the full path to the script that runs `Flow` and generates the repository (.../rep_configs/load_with_flow.sh).
+Alternatively - you can use medpython library and complete the run with the created script:
 
 ```text
 Full script to execute :
-.../rep_configs/load_with_flow.sh
+.../rep_configs/load_with_medpython.py
 ```
-This script is located at `WORK_DIR`/rep_configs/load_with_flow.sh. Run this script and confirm that it completes successfully with a success message at the end.
+This script is located at `WORK_DIR`/rep_configs/load_with_medpython.py. Run this script and confirm that it completes successfully with a success message at the end.
 
 ---
 

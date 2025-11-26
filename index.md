@@ -10,6 +10,32 @@ All software is now open-sourced under the MIT license. Some of the models devel
 
 The framework was battle-tested in production across multiple healthcare sites and was a key component of an **award-winning** submission to the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge).
 
+## Setup
+
+### Quick Installation
+
+You can quickly install the package using **pip**:
+
+```bash
+pip install medpython
+```
+
+**System Requirements**
+
+* **Supported Systems**: This pre-built version is available for **modern Linux** distributions (specifically `manylinux2014` equivalents, such as CentOS >= 7 or Ubuntu >= 13.04).
+* **Python**: Requires **Python 3.10 through 3.14**
+
+**Compilation for Other Systems**
+If you're using an **older Linux** or a **different platform/Python version >= 3.8**, you'll need to **compile the package yourself**.
+
+* **Note on Compilation**: Ensure the **Boost libraries** are installed. For a local setup, set the environment variable `BOOST_DISABLE_STATIC=1` to link against shared Boost libraries (The reason is that your system static libraries weren't compiled with `-fPIC` flag, so you can't use them inside python module):
+```bash
+export BOOST_DISABLE_STATIC=1
+```
+You can also set Boost installation directory with `BOOST_ROOT` environment variable if it is not part of the system libraries.
+
+You can also download command line tools for manylinux2014 from here: [https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1)
+
 ## Why Use This Platform?
 
 *   **High-Performance Processing:** Engineered for large-scale, sparse EMR time-series data where general-purpose libraries like pandas fall short.
@@ -152,7 +178,7 @@ df.dropna(subset=["value_0"], inplace=True)
 Finally, run the generated shell script to complete the data repository creation.
 
 ```bash
-/tmp/NHANES_ETL/rep_configs/load_with_flow.sh
+/tmp/NHANES_ETL/rep_configs/load_with_medpython.py
 ```
 
 #### Step 2: Generate Training Samples

@@ -21,6 +21,26 @@ We provide three libraries for use:
 
 ### Setup
 
+#### Using PyPI
+```bash
+pip install medpython
+```
+
+Usage
+```python
+import med
+from AlgoMarker import AlgoMarker
+from ETL_Infra import prepare_final_signals, prepare_dicts, finish_prepare_load, create_train_signal
+```
+
+More information on usage:
+
+* [ETL_Infra](../../../Tutorials/01.ETL%20Tutorial) 
+* [AlgoMarker](Python%20AlgoMarker%20API%20Server.md#simple-usage-example)
+* [med library](Examples.md)
+
+### Compile Yourself
+
 1. **Clone the Git Repositories**:
     * [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS)
     * [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools)

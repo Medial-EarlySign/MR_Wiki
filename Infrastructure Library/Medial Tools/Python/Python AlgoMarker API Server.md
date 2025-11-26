@@ -39,7 +39,7 @@ python MR_Tools/AlgoMarker_python_API/test_algomarker_lib.py \
 ## Simple Usage Example
 
 ```python
-from AlgoMarker_minimal import AlgoMarker
+from AlgoMarker import AlgoMarker
 import json
 
 ALGOMARKER_PATH = '/nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/lungflag.amconfig'
