@@ -9280,12 +9280,13 @@
 <a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="n">finish_prepare_load</span><span class="p">(</span><span class="n">WORK_DIR</span><span class="p">,</span> <span class="s1">&#39;/nas1/Work/CancerData/THIN/thin_20XX&#39;</span><span class="p">,</span> <span class="s1">&#39;thin&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="final-script-to-create-the-data-repository">Final Script to Create the Data Repository</h2>
-<p>Look for a message on your screen similar to the last two lines below, which provide the full path to the script that runs <code>Flow</code> and generates the repository:</p>
+<p>Look for a message on your screen similar to the last two lines below, which provide the full path to the script that runs <code>Flow</code> and generates the repository (.../rep_configs/load_with_flow.sh).
+Alternatively - you can use medpython library and complete the run with the created script:</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Full script to execute :
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>.../rep_configs/load_with_flow.sh
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>.../rep_configs/load_with_medpython.py
 </code></pre></div></td></tr></table></div>
-This script is located at <code>WORK_DIR</code>/rep_configs/load_with_flow.sh. Run this script and confirm that it completes successfully with a success message at the end.</p>
+This script is located at <code>WORK_DIR</code>/rep_configs/load_with_medpython.py. Run this script and confirm that it completes successfully with a success message at the end.</p>
 <hr />
 <h2 id="function-reference">Function Reference</h2>
 <p><strong>1. <code>prepare_final_signals</code></strong>   <a href="https://medial-earlysign.github.io/MR_Tools/ETL_Infra.html#ETL_Infra.etl_process.prepare_final_signals">Sphinx API Link</a>

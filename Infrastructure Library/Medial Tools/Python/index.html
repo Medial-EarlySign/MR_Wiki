@@ -9032,6 +9032,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-pypi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using PyPI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compile-yourself" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compile Yourself
+      
+    </span>
+  </a>
+  
 </li>
         
       </ul>
@@ -9179,6 +9207,23 @@
 <li><strong><a href="Python%20AlgoMarker%20API%20Server.html">Python AlgoMarker API Server</a></strong>: Documentation for the pure Python FastAPI server of the AlgoMarker library.</li>
 </ul>
 <h3 id="setup">Setup</h3>
+<h4 id="using-pypi">Using PyPI</h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
+</code></pre></div></td></tr></table></div>
+<p>Usage
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">AlgoMarker</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlgoMarker</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ETL_Infra</span><span class="w"> </span><span class="kn">import</span> <span class="n">prepare_final_signals</span><span class="p">,</span> <span class="n">prepare_dicts</span><span class="p">,</span> <span class="n">finish_prepare_load</span><span class="p">,</span> <span class="n">create_train_signal</span>
+</code></pre></div></td></tr></table></div></p>
+<p>More information on usage:</p>
+<ul>
+<li><a href="../../../Tutorials/01.ETL%20Tutorial">ETL_Infra</a> </li>
+<li><a href="Python%20AlgoMarker%20API%20Server.html#simple-usage-example">AlgoMarker</a></li>
+<li><a href="Examples.html">med library</a></li>
+</ul>
+<h3 id="compile-yourself">Compile Yourself</h3>
 <ol>
 <li><strong>Clone the Git Repositories</strong>:<ul>
 <li><a href="https://github.com/Medial-EarlySign/MR_LIBS">MR_LIBS</a></li>
@@ -9191,7 +9236,7 @@
 <li><strong>Configure Environment Variables</strong>:
    Ensure Python recognizes the libraries by setting the <code>PYTHONPATH</code> environment variable. Replace <code>${MR_LIBS}</code> with the path to the cloned <code>MR_LIBS</code> repository and <code>${MR_TOOLS}</code> with the path to the cloned <code>MR_Tools</code> repository.</li>
 </ol>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python312:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/RepoLoadUtils/common
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python312:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/RepoLoadUtils/common
 </code></pre></div></td></tr></table></div>
 <p>The Python AlgoMarker API Server does not require installation. Simply run the script directly when needed.</p>
 
