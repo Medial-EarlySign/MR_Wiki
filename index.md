@@ -50,6 +50,7 @@ You can also download command line tools for manylinux2014 from here: [https://g
 *   **Reusable Pipelines:** Save valuable engineering time by providing shareable, tested pipelines and methods.
 *   **Built-in Safeguards:** Mitigate common pitfalls like data leakage and time-series-specific overfitting.
 *   **Production-Ready:** Designed for easy deployment using Docker or minimal distroless Linux images.
+*   **Innovaitive Algorithms** During the years we have developed some outperforming algorithms for processing medical data, explainability, fairness, etc.
 
 ## Core Components
 
@@ -236,8 +237,8 @@ First, create a JSON file that specifies the sequence of actions for feature eng
                     "rp_type": "basic_cln",
                     "signal": ["Hemoglobin", "RBC", "MCH", "Hematocrit"],
                     "type": "iterative",
-                    "trimming_sd_num": 7, // Iteratively trim values beyond 7 SD.
-                    "removing_sd_num": 14, // Remove values beyond 14 SD.
+                    "trimming_sd_num": 7, // Iteratively trim values beyond 7 SD. This is being determined and fixed in training only
+                    "removing_sd_num": 14, // Remove values beyond 14 SD. This is being determined and fixed in training only
                     "range_min": 0
                 }
             ]
@@ -267,7 +268,8 @@ First, create a JSON file that specifies the sequence of actions for feature eng
                 }
             ]
         },
-        // Action: Generate 'Age' feature from the 'BDATE' signal.
+        // Those are simple features without "learning/fitting" to the outcomes. Keep in mind, it is not necessarily always the case.
+        // Action: Generate 'Age' feature from the 'BDATE' signal. 
         {
             "action_type": "feat_generator",
             "fg_type": "age"
