@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from io import BytesIO
+from io import BytesIO, StringIO
 import traceback
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -14,6 +14,9 @@ from tqdm import tqdm
 import pandas as pd
 import time
 import os
+import urllib.parse
+import glob
+from zipfile import ZipFile
 
 
 def filter_pages(url: str) -> bool:
@@ -55,6 +58,40 @@ def get_pages(site: str) -> list[str]:
     all_urls = sorted(all_urls, key=sort_page_key)
 
     return all_urls
+
+
+def get_already_indexed_pages(driver: webdriver.Chrome, site: str) -> pd.DataFrame:
+    site_strip = urllib.parse.quote(site, safe=[])
+    driver.get(
+        f"https://search.google.com/search-console/index/drilldown?resource_id={site_strip}&pages=ALL_URLS"
+    )
+    wait = WebDriverWait(driver, 30)
+    # div[role="button" aria-label="EXPORT"]
+    element_locator = (By.CSS_SELECTOR, "div[role='button'][aria-label='EXPORT']")
+    export_button = wait.until(EC.visibility_of_any_elements_located(element_locator))
+    export_button = driver.find_element(element_locator[0], element_locator[1])
+    export_button.click()
+
+    time.sleep(1)
+    csv_down = driver.find_element(By.CSS_SELECTOR, "span[aria-label='Download CSV']")
+    csv_down.click()
+    time.sleep(5)
+
+    home = os.path.expanduser("~")
+    downloadspath = os.path.join(home, "Downloads")
+    list_of_files = glob.glob(
+        downloadspath + r"/*.zip"
+    )  # * means all if need specific format then *.csv
+    latest_file = max(list_of_files, key=os.path.getctime)
+    with ZipFile(latest_file, "r") as zip_object:
+        with zip_object.open("Table.csv") as file_in_zip:
+            content = file_in_zip.read().decode("utf-8")
+    df_indexed = pd.read_csv(StringIO(content))
+    df_indexed["URL"] = df_indexed["URL"].apply(
+        lambda x: x.replace("\n", "").replace(" ", "%20")
+    )
+    os.remove(latest_file)
+    return df_indexed
 
 
 def index_page(
@@ -121,19 +158,17 @@ def index_page(
     return is_indexed, quata_limit
 
 
-def index_all(base_site: str, reindex: bool, file_index_path: str) -> dict[str, bool]:
+def index_all(base_site: str, reindex: bool) -> dict[str, bool]:
     all_urls = get_pages(base_site)
-    read_urls = set()
-    if os.path.exists(file_index_path):
-        with open(file_index_path, "r") as fr:
-            read_urls = fr.readlines()
-        read_urls = list(map(lambda x: x.strip(), read_urls))
-        read_urls = set(list(filter(lambda x: len(x) > 0, read_urls)))
     options = Options()
     hm_folder = os.environ["HOME"]
     options.add_argument(rf"--user-data-dir={hm_folder}/snap/chromium/common/chromium")
     options.add_argument(r"--profile-directory=Default")
+    options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(options=options)
+
+    read_urls_df = get_already_indexed_pages(driver, base_site)
+    read_urls = set(read_urls_df["URL"].unique())
     all_pages = {}
     for url in tqdm(all_urls):
         try:
@@ -143,8 +178,6 @@ def index_all(base_site: str, reindex: bool, file_index_path: str) -> dict[str, 
             was_indexed, quata_limit = index_page(driver, base_site, url, reindex)
             all_pages[url] = was_indexed
             if not (quata_limit):
-                with open(file_index_path, "a") as fw:
-                    fw.write(url + "\n")
                 read_urls.add(url)
             else:
                 print("Quata Limit Reached!")
@@ -159,8 +192,7 @@ def index_all(base_site: str, reindex: bool, file_index_path: str) -> dict[str, 
 if __name__ == "__main__":
     SITE = "https://medial-earlysign.github.io/MR_Wiki"
     REINDEX = False
-    store_indexed = os.path.join(os.environ["HOME"], "google_index.csv")
-    all_pages = index_all(SITE, REINDEX, store_indexed)
+    all_pages = index_all(SITE, REINDEX)
     all_pages = pd.DataFrame.from_dict(
         all_pages, orient="index", columns=["was_indexed"]
     ).reset_index()
