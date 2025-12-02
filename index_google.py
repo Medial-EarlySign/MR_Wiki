@@ -94,6 +94,13 @@ def get_already_indexed_pages(driver: webdriver.Chrome, site: str) -> pd.DataFra
     return df_indexed
 
 
+def get_already_indexed_pages_multiple(driver: webdriver.Chrome, sites: list[str]):
+    df = pd.concat(
+        [get_already_indexed_pages(driver, site) for site in sites], ignore_index=True
+    )
+    return df
+
+
 def index_page(
     driver: webdriver.Chrome, base_site: str, index_url: str, REINDEX: bool
 ) -> tuple[bool, bool]:

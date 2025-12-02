@@ -73,6 +73,9 @@ samples.write_to_file('output_samples.tsv')
 print("Inference complete. Results saved.")
 ```
 
+> [!NOTE]
+> To create feature matrix of the model, apply the model and in the end use model.features.to_df() to extract the feature matrix into dataframe.
+
 ## Method 2: Command-Line Tools
 
 If you prefer to work from the command line, MES offers tools to apply models without writing any Python code.
