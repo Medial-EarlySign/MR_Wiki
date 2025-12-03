@@ -9370,6 +9370,7 @@ You can also set Boost installation directory with <code>BOOST_ROOT</code> envir
 <li><strong>Reusable Pipelines:</strong> Save valuable engineering time by providing shareable, tested pipelines and methods.</li>
 <li><strong>Built-in Safeguards:</strong> Mitigate common pitfalls like data leakage and time-series-specific overfitting.</li>
 <li><strong>Production-Ready:</strong> Designed for easy deployment using Docker or minimal distroless Linux images.</li>
+<li><strong>Innovaitive Algorithms</strong> During the years we have developed some outperforming algorithms for processing medical data, explainability, fairness, etc.</li>
 </ul>
 <h2 id="core-components">Core Components</h2>
 <p>The platform is built on three key pillars:</p>
@@ -9698,7 +9699,8 @@ You can also set Boost installation directory with <code>BOOST_ROOT</code> envir
 <span class="normal"><a href="#__codelineno-7-60">60</a></span>
 <span class="normal"><a href="#__codelineno-7-61">61</a></span>
 <span class="normal"><a href="#__codelineno-7-62">62</a></span>
-<span class="normal"><a href="#__codelineno-7-63">63</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">// This is an example JSON file with comments. If your editor does not support comments in JSON, you may need to remove them.</span>
+<span class="normal"><a href="#__codelineno-7-63">63</a></span>
+<span class="normal"><a href="#__codelineno-7-64">64</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">// This is an example JSON file with comments. If your editor does not support comments in JSON, you may need to remove them.</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="p">{</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://raw.githubusercontent.com/Medial-EarlySign/MR_Tools/refs/heads/main/medmodel_schema.json&quot;</span><span class="p">,</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="nt">&quot;model_json_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
@@ -9711,8 +9713,8 @@ You can also set Boost installation directory with <code>BOOST_ROOT</code> envir
 <a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">                    </span><span class="nt">&quot;rp_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;basic_cln&quot;</span><span class="p">,</span>
 <a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">                    </span><span class="nt">&quot;signal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Hemoglobin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;RBC&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MCH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hematocrit&quot;</span><span class="p">],</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;iterative&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">                    </span><span class="nt">&quot;trimming_sd_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="c1">// Iteratively trim values beyond 7 SD.</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">                    </span><span class="nt">&quot;removing_sd_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="c1">// Remove values beyond 14 SD.</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">                    </span><span class="nt">&quot;trimming_sd_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="c1">// Iteratively trim values beyond 7 SD. This is being determined and fixed in training only</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">                    </span><span class="nt">&quot;removing_sd_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="c1">// Remove values beyond 14 SD. This is being determined and fixed in training only</span>
 <a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">                    </span><span class="nt">&quot;range_min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">                </span><span class="p">}</span>
 <a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">            </span><span class="p">]</span>
@@ -9742,25 +9744,26 @@ You can also set Boost installation directory with <code>BOOST_ROOT</code> envir
 <a id="__codelineno-7-42" name="__codelineno-7-42"></a><span class="w">                </span><span class="p">}</span>
 <a id="__codelineno-7-43" name="__codelineno-7-43"></a><span class="w">            </span><span class="p">]</span>
 <a id="__codelineno-7-44" name="__codelineno-7-44"></a><span class="w">        </span><span class="p">},</span>
-<a id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="w">        </span><span class="c1">// Action: Generate &#39;Age&#39; feature from the &#39;BDATE&#39; signal.</span>
-<a id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-7-47" name="__codelineno-7-47"></a><span class="w">            </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;feat_generator&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-48" name="__codelineno-7-48"></a><span class="w">            </span><span class="nt">&quot;fg_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;age&quot;</span>
-<a id="__codelineno-7-49" name="__codelineno-7-49"></a><span class="w">        </span><span class="p">},</span>
-<a id="__codelineno-7-50" name="__codelineno-7-50"></a><span class="w">        </span><span class="c1">// Action: Generate features from the last 3 years (1095 days) of data.</span>
-<a id="__codelineno-7-51" name="__codelineno-7-51"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-7-52" name="__codelineno-7-52"></a><span class="w">            </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;feat_generator&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-53" name="__codelineno-7-53"></a><span class="w">            </span><span class="nt">&quot;fg_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;basic&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-54" name="__codelineno-7-54"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;last&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;min&quot;</span><span class="p">],</span>
-<a id="__codelineno-7-55" name="__codelineno-7-55"></a><span class="w">            </span><span class="nt">&quot;win_from&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-7-56" name="__codelineno-7-56"></a><span class="w">            </span><span class="nt">&quot;win_to&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1095</span><span class="p">,</span>
-<a id="__codelineno-7-57" name="__codelineno-7-57"></a><span class="w">            </span><span class="nt">&quot;signal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Hemoglobin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;RBC&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MCH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hematocrit&quot;</span><span class="p">]</span>
-<a id="__codelineno-7-58" name="__codelineno-7-58"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-7-59" name="__codelineno-7-59"></a><span class="w">    </span><span class="p">],</span>
-<a id="__codelineno-7-60" name="__codelineno-7-60"></a><span class="w">    </span><span class="c1">// Define the predictor.</span>
-<a id="__codelineno-7-61" name="__codelineno-7-61"></a><span class="w">    </span><span class="nt">&quot;predictor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xgb&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-62" name="__codelineno-7-62"></a><span class="w">    </span><span class="nt">&quot;predictor_params&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tree_method=auto;booster=gbtree;objective=binary:logistic&quot;</span>
-<a id="__codelineno-7-63" name="__codelineno-7-63"></a><span class="p">}</span>
+<a id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="w">        </span><span class="c1">// Those are simple features without &quot;learning/fitting&quot; to the outcomes. Keep in mind, it is not necessarily always the case.</span>
+<a id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="w">        </span><span class="c1">// Action: Generate &#39;Age&#39; feature from the &#39;BDATE&#39; signal. </span>
+<a id="__codelineno-7-47" name="__codelineno-7-47"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-7-48" name="__codelineno-7-48"></a><span class="w">            </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;feat_generator&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-49" name="__codelineno-7-49"></a><span class="w">            </span><span class="nt">&quot;fg_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;age&quot;</span>
+<a id="__codelineno-7-50" name="__codelineno-7-50"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-7-51" name="__codelineno-7-51"></a><span class="w">        </span><span class="c1">// Action: Generate features from the last 3 years (1095 days) of data.</span>
+<a id="__codelineno-7-52" name="__codelineno-7-52"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-7-53" name="__codelineno-7-53"></a><span class="w">            </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;feat_generator&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-54" name="__codelineno-7-54"></a><span class="w">            </span><span class="nt">&quot;fg_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;basic&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-55" name="__codelineno-7-55"></a><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;last&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;min&quot;</span><span class="p">],</span>
+<a id="__codelineno-7-56" name="__codelineno-7-56"></a><span class="w">            </span><span class="nt">&quot;win_from&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-7-57" name="__codelineno-7-57"></a><span class="w">            </span><span class="nt">&quot;win_to&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1095</span><span class="p">,</span>
+<a id="__codelineno-7-58" name="__codelineno-7-58"></a><span class="w">            </span><span class="nt">&quot;signal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Hemoglobin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;RBC&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MCH&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hematocrit&quot;</span><span class="p">]</span>
+<a id="__codelineno-7-59" name="__codelineno-7-59"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-60" name="__codelineno-7-60"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-7-61" name="__codelineno-7-61"></a><span class="w">    </span><span class="c1">// Define the predictor.</span>
+<a id="__codelineno-7-62" name="__codelineno-7-62"></a><span class="w">    </span><span class="nt">&quot;predictor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xgb&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-63" name="__codelineno-7-63"></a><span class="w">    </span><span class="nt">&quot;predictor_params&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tree_method=auto;booster=gbtree;objective=binary:logistic&quot;</span>
+<a id="__codelineno-7-64" name="__codelineno-7-64"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>Finally, run the training script. It initializes the model from the JSON file, loads the necessary data from the repository, and trains the XGBoost predictor.</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">3. Train the Model</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
