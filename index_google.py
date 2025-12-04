@@ -165,7 +165,10 @@ def index_page(
     return is_indexed, quata_limit
 
 
-def index_all(base_site: str, reindex: bool) -> dict[str, bool]:
+def index_all(
+    base_site: str, reindex: bool, use_cache_file: bool = True
+) -> dict[str, bool]:
+    BASE_CACHE_PATH = os.path.join(os.environ["HOME"], "google_index.csv")
     all_urls = get_pages(base_site)
     options = Options()
     hm_folder = os.environ["HOME"]
@@ -176,6 +179,13 @@ def index_all(base_site: str, reindex: bool) -> dict[str, bool]:
 
     read_urls_df = get_already_indexed_pages(driver, base_site)
     read_urls = set(read_urls_df["URL"].unique())
+    if use_cache_file:
+        if os.path.exists(BASE_CACHE_PATH):
+            use_cache_file = True
+            read_urls_df = pd.read_csv(BASE_CACHE_PATH, sep="\t", names=["URL"])
+            read_urls_df = read_urls_df.drop_duplicates(ignore_index=True)
+            read_urls = read_urls.union(set(read_urls_df["URL"].unique()))
+
     all_pages = {}
     for url in tqdm(all_urls):
         try:
@@ -186,6 +196,9 @@ def index_all(base_site: str, reindex: bool) -> dict[str, bool]:
             all_pages[url] = was_indexed
             if not (quata_limit):
                 read_urls.add(url)
+                if use_cache_file:
+                    with open(BASE_CACHE_PATH, "a") as fw:
+                        fw.write(f"{url}\n")
             else:
                 print("Quata Limit Reached!")
                 break
