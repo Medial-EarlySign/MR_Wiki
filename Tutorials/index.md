@@ -37,6 +37,7 @@ This series of tutorials will guide you through the entire machine learning work
 *   **[05. Apply Model](05.Apply%20Model):** Use your trained model to make predictions.
 *   **[06. Model Evaluation](06.Model%20Evaluation):** Evaluate the performance of your model.
 *   **[07. Deployment](07.Deployment):** Deploy your model for use in a production environment.
+*   **[08. A Complete Example](08.A_Complete_Example.md)** A Complete Walk through example.
 
 ## Let's Get Started!
 

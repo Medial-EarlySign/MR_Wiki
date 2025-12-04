@@ -50,7 +50,7 @@ A valid request to AlgoMarker should include the following fields:
                                 ]
                             }
                         ],
-                        "unit": "fL"
+                        "unit": "g/dL"
                     },
                     {
                         "code": "Hematocrit",
@@ -64,7 +64,7 @@ A valid request to AlgoMarker should include the following fields:
                                 ]
                             }
                         ],
-                        "unit": "fL"
+                        "unit": "%"
                     },
                     {
                         "code": "RBC",
@@ -86,7 +86,7 @@ A valid request to AlgoMarker should include the following fields:
                                 ]
                             }
                         ],
-                        "unit": "fL"
+                        "unit": "10*12/L"
                     },
                     {
                         "code": "MCV",

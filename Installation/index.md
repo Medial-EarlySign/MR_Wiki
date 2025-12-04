@@ -99,7 +99,7 @@ You can install any of the following five components:
 
 ## Environment Setup Script
 
-After installing the required components, it is recommended to use the following script to configure your shell environment for all tools and scripts (If not using precomplied ones and the python pypi package):
+After installing the required components, it is recommended to use the following script to configure your shell environment for all tools and scripts (This is only needed, if you are not using the python pypi package or if you want to use the executables):
 
 ```bash title="Start-Up Script"
 #!/bin/bash
