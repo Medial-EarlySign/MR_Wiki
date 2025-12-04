@@ -14,15 +14,20 @@ Our platform is designed to transform complex, semi-structured Electronic Medica
 
 The framework was battle-tested in production across multiple healthcare sites and was a key component of an **award-winning** submission to the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge).
 
-## From Raw Data to Insight
+## From Raw Data to Insight in Three Simple Steps
 
-Our platform provides a complete, end-to-end workflow for developing and deploying clinical predictive models. For inference, raw JSON data can be used directly, bypassing the optimized store.
+Our platform streamlines the development and deployment of clinical predictive models, transforming raw patient data into actionable insights. For live predictions (inference), you can use raw JSON data directly, bypassing the need for an optimized data store.
 
 <img src="images/MES_Arch.png">
 
 This structured approach ensures that data is processed efficiently, models are built systematically, and the results are both accurate and interpretable.
 
-From Patient raw data like:
+### The Workflow
+
+**1. Start with Raw Patient Data**
+
+Begin with your data in a simple JSON format.
+
 ```json
 {
   "patient_id": "1",
@@ -40,16 +45,21 @@ From Patient raw data like:
     ]
   }
 }
-
 ```
 
-**Your workflow is simplified to three main steps:**
+**2. Define Your ML Pipeline**
 
-1. **Define the Data**: Specify your cohort and target labels for training. For each patient and time point what is the outcome. The time point will restrict the model from peeking into the future.
-2. **Configure the pipeline**: Define your entire ML pipeline (preprocessing, feature engineering, and model) via a [JSON schema](Infrastructure%20Library/MedModel%20json%20format.md)
-3. **Run**: Use the Python SDK to train the model and generate explainable insights.
+Configure your entire machine learning workflow from preprocessing and feature engineering to the final model using a single [JSON configuration file](Infrastructure%20Library/MedModel%20json%20format.md). This approach ensures your experiments are reproducible and easy to version.
 
-For more details refer to [Tutorials](Tutorials)
+**3. Get Explainable Predictions**
+
+Train your model using the Python SDK and generate predictions with clear, interpretable explanations. [Example output](Tutorials/07.Deployment/index.md#how-to-use-the-deployed-algomarker).
+
+This is an illustration of the final output in a visual format (Our infrastructure returns the data to create this):
+
+<img src="images/Explainability.png">
+
+For more details, refer to the [Tutorials](Tutorials).
 
 ## Quick Installation
 
