@@ -423,13 +423,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#from-raw-data-to-insight" class="md-nav__link">
+  <a href="#from-raw-data-to-insight-in-three-simple-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From Raw Data to Insight
+        From Raw Data to Insight in Three Simple Steps
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="From Raw Data to Insight in Three Simple Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -9133,13 +9150,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#from-raw-data-to-insight" class="md-nav__link">
+  <a href="#from-raw-data-to-insight-in-three-simple-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From Raw Data to Insight
+        From Raw Data to Insight in Three Simple Steps
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="From Raw Data to Insight in Three Simple Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -9249,11 +9283,13 @@
 <p><strong>A note on our journey:</strong> Medial EarlySign was a company that developed a proprietary platform for machine learning on electronic medical records. Following the company's liquidation, the decision was made to release the core software as an <strong>open-source</strong> project to allow the community to benefit from and build upon this technology. Please feel free to <a href="#community-and-contributions">reach me out</a> in any case of an issue. I'm voluntarily holding this, so please be patients.</p>
 <p>Our platform is designed to transform complex, semi-structured Electronic Medical Records (EMR) into <strong>machine-learning-ready</strong> data and reproducible model pipelines. The framework is optimized for the unique challenges of sparse, time-series EMR data, delivering <strong>low memory usage</strong> and <strong>high-speed processing</strong> at scale.</p>
 <p>The framework was battle-tested in production across multiple healthcare sites and was a key component of an <strong>award-winning</strong> submission to the <a href="https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge">CMS AI Health Outcomes Challenge</a>.</p>
-<h2 id="from-raw-data-to-insight">From Raw Data to Insight</h2>
-<p>Our platform provides a complete, end-to-end workflow for developing and deploying clinical predictive models. For inference, raw JSON data can be used directly, bypassing the optimized store.</p>
+<h2 id="from-raw-data-to-insight-in-three-simple-steps">From Raw Data to Insight in Three Simple Steps</h2>
+<p>Our platform streamlines the development and deployment of clinical predictive models, transforming raw patient data into actionable insights. For live predictions (inference), you can use raw JSON data directly, bypassing the need for an optimized data store.</p>
 <p><img src="images/MES_Arch.png"></p>
 <p>This structured approach ensures that data is processed efficiently, models are built systematically, and the results are both accurate and interpretable.</p>
-<p>From Patient raw data like:
+<h3 id="the-workflow">The Workflow</h3>
+<p><strong>1. Start with Raw Patient Data</strong></p>
+<p>Begin with your data in a simple JSON format.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -9285,14 +9321,14 @@
 <a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="p">]</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div></p>
-<p><strong>Your workflow is simplified to three main steps:</strong></p>
-<ol>
-<li><strong>Define the Data</strong>: Specify your cohort and target labels for training. For each patient and time point what is the outcome. The time point will restrict the model from peeking into the future.</li>
-<li><strong>Configure the pipeline</strong>: Define your entire ML pipeline (preprocessing, feature engineering, and model) via a <a href="Infrastructure%20Library/MedModel%20json%20format.html">JSON schema</a></li>
-<li><strong>Run</strong>: Use the Python SDK to train the model and generate explainable insights.</li>
-</ol>
-<p>For more details refer to <a href="Tutorials">Tutorials</a></p>
+</code></pre></div></td></tr></table></div>
+<p><strong>2. Define Your ML Pipeline</strong></p>
+<p>Configure your entire machine learning workflow from preprocessing and feature engineering to the final model using a single <a href="Infrastructure%20Library/MedModel%20json%20format.html">JSON configuration file</a>. This approach ensures your experiments are reproducible and easy to version.</p>
+<p><strong>3. Get Explainable Predictions</strong></p>
+<p>Train your model using the Python SDK and generate predictions with clear, interpretable explanations. <a href="Tutorials/07.Deployment/index.html#how-to-use-the-deployed-algomarker">Example output</a>.</p>
+<p>This is an illustration of the final output in a visual format (Our infrastructure returns the data to create this):</p>
+<p><img src="images/Explainability.png"></p>
+<p>For more details, refer to the <a href="Tutorials">Tutorials</a>.</p>
 <h2 id="quick-installation">Quick Installation</h2>
 <p>You can quickly install the package using <strong>pip</strong>:</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
