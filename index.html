@@ -9283,6 +9283,7 @@
 <p><strong>A note on our journey:</strong> Medial EarlySign was a company that developed a proprietary platform for machine learning on electronic medical records. Following the company's liquidation, the decision was made to release the core software as an <strong>open-source</strong> project to allow the community to benefit from and build upon this technology. Please feel free to <a href="#community-and-contributions">reach me out</a> in any case of an issue. I'm voluntarily holding this, so please be patients.</p>
 <p>Our platform is designed to transform complex, semi-structured Electronic Medical Records (EMR) into <strong>machine-learning-ready</strong> data and reproducible model pipelines. The framework is optimized for the unique challenges of sparse, time-series EMR data, delivering <strong>low memory usage</strong> and <strong>high-speed processing</strong> at scale.</p>
 <p>The framework was battle-tested in production across multiple healthcare sites and was a key component of an <strong>award-winning</strong> submission to the <a href="https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge">CMS AI Health Outcomes Challenge</a>.</p>
+<p>You can also refer to our <a href="Models">existing models</a> using our Infrastructure. Most of them are only available for usage through our partners, but some are planned to be released to the public.</p>
 <h2 id="from-raw-data-to-insight-in-four-simple-steps">From Raw Data to Insight in Four Simple Steps</h2>
 <p>Our platform streamlines the development and deployment of clinical predictive models, transforming raw patient data into actionable insights. For live predictions (inference), you can use raw JSON data directly, bypassing the need for an optimized data store.</p>
 <p><img src="images/MES_Arch.png"></p>
@@ -9336,8 +9337,9 @@
 <a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
+<p>Load it into our Optimized Store or use it "as is" in deployment.</p>
 <p><strong>2. Define Your Label</strong></p>
-<p>For each patient and a given date (prediction date, that information beyond this date won't be passed to the model), what is the outcome for training/testing.</p>
+<p>For each patient, and for any chosen prediction date (after which no future information is provided to the model), specify what the outcome label should be for training or testing</p>
 <p><strong>3. Define Your ML Pipeline</strong></p>
 <p>Configure your entire machine learning workflow from preprocessing and feature engineering to the final model using a single <a href="Infrastructure%20Library/MedModel%20json%20format.html">JSON configuration file</a>. This approach ensures your experiments are reproducible and easy to version.</p>
 <p><strong>4. Get Explainable Predictions</strong></p>
