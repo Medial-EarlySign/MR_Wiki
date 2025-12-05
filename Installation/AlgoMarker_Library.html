@@ -9231,13 +9231,13 @@
 <h2 id="algomarker-library">AlgoMarker Library</h2>
 <h3 id="overview">Overview</h3>
 <p>The AlgoMarker shared library enables deployment of the AlgoMarker model. It provides a C-level API to load, apply, and retrieve results from your binary model output.</p>
-<p>You can download a prebuilt release from the <a href="https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1">Release page</a>. The release is built with glibc 2.17 and will work out of the box on systems with <strong>glibc ≥ 2.17</strong> (e.g., <strong>Ubuntu &gt;= 13.04</strong>, <strong>Centos&gt;=7</strong>, eg.). If you need to build from source, follow the instructions below.</p>
+<p>You can download a prebuilt release from the <a href="https://github.com/Medial-EarlySign/medpython/releases/tag/V1.0.1">Release page</a>. The release is built with glibc 2.17 and will work out of the box on systems with <strong>glibc ≥ 2.17</strong> (e.g., <strong>Ubuntu &gt;= 13.04</strong>, <strong>Centos&gt;=7</strong>, eg.). If you need to build from source, follow the instructions below.</p>
 <h3 id="installation-steps">Installation Steps</h3>
 <ol>
 <li>Complete the <a href="index.html#prerequisites">Preliminary Steps</a> to set up your build environment (install cmake, gcc, and libgomp1).</li>
 <li><a href="index.html#compiling-boost-from-source">Compile the Boost Libraries</a>. You must build Boost from source.</li>
 <li>Clone the repository:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:Medial-EarlySign/MR_LIBS.git
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:Medial-EarlySign/medpython.git
 </code></pre></div></td></tr></table></div></li>
 <li>Edit <code>Internal/AlgoMarker/CMakeLists.txt</code> and add/edit line:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">set</span><span class="p">(</span><span class="s">BOOST_ROOT</span><span class="w"> </span><span class="s2">&quot;$ENV{HOME}/boost-pic-install&quot;</span><span class="p">)</span>

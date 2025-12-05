@@ -9220,15 +9220,15 @@
 <p>A Class that controls how to create <a href="../MedSamples.html">MedSamples</a>from <a href="../../MedProcessTools%20Library/MedRegistry">MedRegistry</a>by sampling methods.
 it has several subclasses, each has it's own parameters and logic to sample the samples form registry:
 <img src="../../../attachments/9765342/10911920.png"/>
-Code is documented <a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingStrategy">here</a>.
+Code is documented <a href="https://Medial-EarlySign.github.io/medpython/classMedSamplingStrategy">here</a>.
 do_sample aruments in MedSamplingRegistry:</p>
 <ul>
-<li>const vector&lt;<a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistryRecord">MedRegistryRecord</a>&gt; &amp;registry - the registry for the labeling the samples by the sampler (already initialized with sampling params)</li>
+<li>const vector&lt;<a href="https://Medial-EarlySign.github.io/medpython/classMedRegistryRecord">MedRegistryRecord</a>&gt; &amp;registry - the registry for the labeling the samples by the sampler (already initialized with sampling params)</li>
 <li><a href="../../MedProcessTools%20Library/MedRegistry">MedSamples</a> &amp;samples - the samples result</li>
-<li>const vector&lt; <a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedRegistryRecord">MedRegistryRecord</a> &gt; *censor_registry - optional arg for specifying censoring times for the sampling</li>
+<li>const vector&lt; <a href="https://Medial-EarlySign.github.io/medpython/classMedRegistryRecord">MedRegistryRecord</a> &gt; *censor_registry - optional arg for specifying censoring times for the sampling</li>
 </ul>
 <h3 id="important-samplers">Important Samplers:</h3>
-<p>**** - can be used by specifying MedSamplingRegistry::make_sampler("time_window"). from the updated documentition reffer to <a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingTimeWindow">doxygen</a>
+<p>**** - can be used by specifying MedSamplingRegistry::make_sampler("time_window"). from the updated documentition reffer to <a href="https://Medial-EarlySign.github.io/medpython/classMedSamplingTimeWindow">doxygen</a>
 Used to sample for each registry record randomly withing a specific time window.
 It can define diffrent time windows for cases/controls.
 Parameters:</p>
@@ -9276,8 +9276,8 @@ Parameters:</p>
 <td>0</td>
 </tr>
 </tbody></table>
-<p><strong>MedSamplingYearly</strong> - can be used by specifying MedSamplingRegistry::make_sampler("yearly"). from the updated documentition reffer to <a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingYearly">doxygen</a> 
-Used to sample from year to year by jumping periodically between sample times for each patient. for sampling in ICU (more generic sampler for sampling in Fixed time, please reffer to <a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingFixedTime">MedSamplingFixedTime</a>)
+<p><strong>MedSamplingYearly</strong> - can be used by specifying MedSamplingRegistry::make_sampler("yearly"). from the updated documentition reffer to <a href="https://Medial-EarlySign.github.io/medpython/classMedSamplingYearly">doxygen</a> 
+Used to sample from year to year by jumping periodically between sample times for each patient. for sampling in ICU (more generic sampler for sampling in Fixed time, please reffer to <a href="https://Medial-EarlySign.github.io/medpython/classMedSamplingFixedTime">MedSamplingFixedTime</a>)
 The arguments: time_from, time_to, conflict_method, outcome_interaction_mode, censor_interaction_mode - are common in almost all samplers.</p>
 <table><tbody>
 <tr>

@@ -9587,7 +9587,7 @@ Only two parameters are mandatory for any run:</p>
 <a id="__codelineno-7-8" name="__codelineno-7-8"></a>Age:40-89,Time-Window:0,365 SENS@FPR_03 10.34565
 </code></pre></div></td></tr></table></div>
 <h2 id="implementation-and-advanced-library-usage">Implementation and Advanced Library Usage</h2>
-<p>You can use <code>bootstrap</code> in C++ code at three levels (main code in <a href="https://github.com/Medial-EarlySign/MR_LIBS/">MR_Libs</a>):</p>
+<p>You can use <code>bootstrap</code> in C++ code at three levels (main code in <a href="https://github.com/Medial-EarlySign/medpython">medpython</a>):</p>
 <ol>
 <li><code>bootstrap.cpp</code>, <code>bootstrap.h</code> (in <code>Internal/MedStat/MedStat</code>): Basic bootstrap analysis API using standard C++ objects (e.g., vector, map). Main function: <code>booststrap_analyze</code>.</li>
 <li><code>MedBootstrap.cpp</code>, <code>MedBootstrap.h</code> (in <code>Internal/MedStat/MedStat</code>): Builds on the base API, providing a friendlier interface using MES C++ objects like <code>MedSamples</code> and <code>MedFeatures</code>.</li>

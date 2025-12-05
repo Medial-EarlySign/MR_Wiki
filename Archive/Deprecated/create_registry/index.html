@@ -9084,7 +9084,7 @@ The program steps:</p>
 <ul>
 <li>Creates or load from text file <a href="../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry">MedRegistry</a>. Can provide file path or config file to generate MedRegistry</li>
 <li>Creates or load from text file <a href="../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry">MedRegistry</a> for censoring (a time periods where that marks the patients "Membership" period, it's also in format of MedRegistry) - OPTIONAL, if not given, assume the patient has full membership</li>
-<li>Creates <a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedLabels">MedLabel</a> from registry and censor_registry with problem definition arguments - time window argument + labeling policy arguments. This object knows how to "label" the outcome for a sample in a given time or decide to exclude it based on MedRegistry and the LabelParams.</li>
+<li>Creates <a href="https://Medial-EarlySign.github.io/medpython/classMedLabels">MedLabel</a> from registry and censor_registry with problem definition arguments - time window argument + labeling policy arguments. This object knows how to "label" the outcome for a sample in a given time or decide to exclude it based on MedRegistry and the LabelParams.</li>
 <li>Creates <a href="../../../Infrastructure%20Library/MedProcessTools%20Library/MedSamples.html">MedSamples </a>from <a href="../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html">MedSamplingStrategy</a>arguments of how to sample + additional filtering arguments you may provide to restrict sampling (Age, Years...)</li>
 </ul>
 <h2 id="create-samples-from-medregistry">Create samples from MedRegistry</h2>
@@ -9098,9 +9098,9 @@ The program steps:</p>
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>LABELING_PARAMS - defines how to label the sample - is it case/control or other outcome value?- The initialization text for <a href="../../../Infrastructure%20Library/MedProcessTools%20Library/MedLabels.html">MedLabels</a></li>
-<li>SAMPER_TYPE - type of sampler. The options are in <a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingStrategy.html#a161f9af97fe2dd90bff67a5ac58679ff">here</a> (code documentation make_sampler) or can look for informaiton here: <a href="../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html">MedSamplingStrategy</a></li>
+<li>SAMPER_TYPE - type of sampler. The options are in <a href="https://Medial-EarlySign.github.io/medpython/classMedSamplingStrategy.html#a161f9af97fe2dd90bff67a5ac58679ff">here</a> (code documentation make_sampler) or can look for informaiton here: <a href="../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html">MedSamplingStrategy</a></li>
 <li>SAMPLER_ARGS - for the specific Sampler, the arguments for it. <a href="../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.html">MedSamplingStrategy</a> or browse the arguments of the specifc sampler</li>
-<li>OPTIONAL_FILTERING_PARAMS_LIKE_AGE - parameters to filter the samples like age. <a href="https://Medial-EarlySign.github.io/MR_LIBS/classFilterParams">FilterParams</a>. For example "min_age=0;max_age=90;min_time=20120101;max_time=20180101"
+<li>OPTIONAL_FILTERING_PARAMS_LIKE_AGE - parameters to filter the samples like age. <a href="https://Medial-EarlySign.github.io/medpython/classFilterParams">FilterParams</a>. For example "min_age=0;max_age=90;min_time=20120101;max_time=20180101"
 The SAMPLER_TYPE, SAMPLER_ARGS are independent of the labeing - they define just when to give score or try to give score.
  
 Example:
@@ -9127,7 +9127,7 @@ Needs to explain and give some examples on how to create MedRegistry</p>
 <li>allow_prediciton_in_case - if true will continue to process rules even if in "case" time period</li>
 <li>seperate_cases - will allow more than one time period of case. Might be useful fot influenza events that may occur several times.</li>
 <li>config_signals_rules - file path to registry rules to define the MedRegistry records<ul>
-<li>Tab delimted file with 2 columns: <a href="https://Medial-EarlySign.github.io/MR_LIBS/classRegistrySignal.html">RegistrySignalType</a>and it's arguments
+<li>Tab delimted file with 2 columns: <a href="https://Medial-EarlySign.github.io/medpython/classRegistrySignal.html">RegistrySignalType</a>and it's arguments
 Example config_signals_rules  file for CKD from 2 to 3 and up:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>

@@ -9170,7 +9170,7 @@
 
 
 <h1 id="repprocessor">RepProcessor</h1>
-<h3 id="repprocessor-applies-in-place-processing-to-the-information-held-for-a-single-patient-id-a-dynamicpidrec"><a href="https://Medial-EarlySign.github.io/MR_LIBS/classRepProcessor">RepProcessor </a>applies in-place processing to the information held for a single patient-id (a DynamicPidRec)</h3>
+<h3 id="repprocessor-applies-in-place-processing-to-the-information-held-for-a-single-patient-id-a-dynamicpidrec"><a href="https://Medial-EarlySign.github.io/medpython/classRepProcessor">RepProcessor </a>applies in-place processing to the information held for a single patient-id (a DynamicPidRec)</h3>
 <p>The main functionalities of a RepProcessor include learning the processing parameters from (a subset of) a repository, and applying to a single patient Id (DynamicPidRec) at selected time-points. A processor may act differently at different time points (e.g. a predictor that looks at a range of times, must not consider points after the sample-time) - this is achieved by generating different versions of the affected signals in the DynamicPidRec (a version per time point). If the DynamicPidRec already has different versions in the required signals (i.e. it has been processed by other rep_processors), the correct version should be used when learning and applying the processor.
 RepProcessor is a virtual class. See below for the list of implemeted children classes</p>
 <h3 id="include-file-is-hmrlibsinternalmedutilsmedprocesstoolsrepprocessh">Include file is - <em>H:/MR/Libs/Internal/MedUtils/MedProcessTools/RepProcess.h</em></h3>

@@ -9219,13 +9219,13 @@
 
 
 <h1 id="medcohort">MedCohort</h1>
-<h3 id="medcohort-is-a-data-structure-with-helpers-to-deal-with-a-cohort-a-list-of-individuals-with-dated-outcomes-and-followup-times"><a href="https://Medial-EarlySign.github.io/MR_LIBS/classMedCohort">MedCohort </a>is a data structure with helpers to deal with a cohort, a list of individuals with (dated) outcomes and followup times.</h3>
-<p>MedCohort contatins a vector of basic records (<a href="https://Medial-EarlySign.github.io/MR_LIBS/structCohortRec">CohortRec</a>), each representing a single period for a specific id (with a corresponding outcome) information.
-A MedCohort can be sampled to generate MedSamples files according to <a href="https://Medial-EarlySign.github.io/MR_LIBS/structSamplingParams">SamplingParams</a> using one of two fuctions:</p>
+<h3 id="medcohort-is-a-data-structure-with-helpers-to-deal-with-a-cohort-a-list-of-individuals-with-dated-outcomes-and-followup-times"><a href="https://Medial-EarlySign.github.io/medpython/classMedCohort">MedCohort </a>is a data structure with helpers to deal with a cohort, a list of individuals with (dated) outcomes and followup times.</h3>
+<p>MedCohort contatins a vector of basic records (<a href="https://Medial-EarlySign.github.io/medpython/structCohortRec">CohortRec</a>), each representing a single period for a specific id (with a corresponding outcome) information.
+A MedCohort can be sampled to generate MedSamples files according to <a href="https://Medial-EarlySign.github.io/medpython/structSamplingParams">SamplingParams</a> using one of two fuctions:</p>
 <ul>
 <li><em>int create_sampling_file(SamplingParams &amp;s_params, string out_sample_file)</em> : Generate samples within cohort times that fit SampleingParams criteria and windows. <strong>Sample dates are selected randomly for each window of s_params.jump_days in the legal period.</strong> </li>
 <li><em>int create_sampling_file_sticked(SamplingParams &amp;s_params, string out_sample_file)</em> : Generate samples within cohort times that fit SampleingParams criteria and windows. <strong>Sample dates are those with the required signals for each window of s_params.jump_days in the legal period (if existing).</strong>
-A MedCohort can also be used to estimate the age and gender dependent incidence rate. Estimation is done using the following function which according to <a href="https://Medial-EarlySign.github.io/MR_LIBS/structIncidenceParams">IncidenceParams</a>:</li>
+A MedCohort can also be used to estimate the age and gender dependent incidence rate. Estimation is done using the following function which according to <a href="https://Medial-EarlySign.github.io/medpython/structIncidenceParams">IncidenceParams</a>:</li>
 <li><em>int create_incidence_file(IncidenceParams &amp;i_params, string out_file) : </em>Generate an incidence file from cohort + incidence-params. Check all patient-years within cohort that fit IncidenceParams and count positive outcomes within the incidence_years_window.
 <strong>IncidenceParams initialization:</strong></li>
 </ul>
