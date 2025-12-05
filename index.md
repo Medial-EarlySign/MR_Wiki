@@ -14,6 +14,8 @@ Our platform is designed to transform complex, semi-structured Electronic Medica
 
 The framework was battle-tested in production across multiple healthcare sites and was a key component of an **award-winning** submission to the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge).
 
+You can also refer to our [existing models](Models) using our Infrastructure. Most of them are only available for usage through our partners, but some are planned to be released to the public.
+
 ## From Raw Data to Insight in Four Simple Steps
 
 Our platform streamlines the development and deployment of clinical predictive models, transforming raw patient data into actionable insights. For live predictions (inference), you can use raw JSON data directly, bypassing the need for an optimized data store.
@@ -54,9 +56,11 @@ Begin with your data in a simple JSON format.
 }
 ```
 
+Load it into our Optimized Store or use it "as is" in deployment.
+
 **2. Define Your Label**
 
-For each patient and a given date (prediction date, that information beyond this date won't be passed to the model), what is the outcome for training/testing.
+For each patient, and for any chosen prediction date (after which no future information is provided to the model), specify what the outcome label should be for training or testing
 
 **3. Define Your ML Pipeline**
 
