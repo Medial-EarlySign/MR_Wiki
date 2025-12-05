@@ -85,6 +85,8 @@ pip install medpython
 ```
 For detailed system requirements and compilation instructions, please see the [Installation Guide](Installation/index.md).
 
+> [NOTE!] Pay attention there are only pre-builds for Linux. I hope to publish pre-builds for windows soon through conda. Currently it doesn't compile on mac from source, only linux/windows. 
+
 ## Why Use This Platform?
 
 *   **High-Performance Processing:** Engineered for large-scale, sparse EMR time-series data where general-purpose libraries like pandas fall short.
