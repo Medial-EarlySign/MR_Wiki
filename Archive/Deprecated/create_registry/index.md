@@ -4,7 +4,7 @@ The program steps:
 
 - Creates or load from text file [MedRegistry](../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry). Can provide file path or config file to generate MedRegistry
 - Creates or load from text file [MedRegistry](../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry) for censoring (a time periods where that marks the patients "Membership" period, it's also in format of MedRegistry) - OPTIONAL, if not given, assume the patient has full membership
-- Creates [MedLabel](https://Medial-EarlySign.github.io/MR_LIBS/classMedLabels) from registry and censor_registry with problem definition arguments - time window argument + labeling policy arguments. This object knows how to "label" the outcome for a sample in a given time or decide to exclude it based on MedRegistry and the LabelParams.
+- Creates [MedLabel](https://Medial-EarlySign.github.io/medpython/classMedLabels) from registry and censor_registry with problem definition arguments - time window argument + labeling policy arguments. This object knows how to "label" the outcome for a sample in a given time or decide to exclude it based on MedRegistry and the LabelParams.
 - Creates [MedSamples ](../../../Infrastructure%20Library/MedProcessTools%20Library/MedSamples.md)from [MedSamplingStrategy](../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.md)arguments of how to sample + additional filtering arguments you may provide to restrict sampling (Age, Years...)
 ## Create samples from MedRegistry
 ```bash
@@ -15,9 +15,9 @@ create_registry --rep $REP_PATH --registry_load $PATH_TO_MED_REGISTRY_FILE --reg
 ```
 
 - LABELING_PARAMS - defines how to label the sample - is it case/control or other outcome value?- The initialization text for [MedLabels](../../../Infrastructure%20Library/MedProcessTools%20Library/MedLabels.md)
-- SAMPER_TYPE - type of sampler. The options are in [here](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamplingStrategy.html#a161f9af97fe2dd90bff67a5ac58679ff) (code documentation make_sampler) or can look for informaiton here: [MedSamplingStrategy](../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.md)
+- SAMPER_TYPE - type of sampler. The options are in [here](https://Medial-EarlySign.github.io/medpython/classMedSamplingStrategy.html#a161f9af97fe2dd90bff67a5ac58679ff) (code documentation make_sampler) or can look for informaiton here: [MedSamplingStrategy](../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.md)
 - SAMPLER_ARGS - for the specific Sampler, the arguments for it. [MedSamplingStrategy](../../../Infrastructure%20Library/MedProcessTools%20Library/MedRegistry/MedSamplingStrategy.md) or browse the arguments of the specifc sampler
-- OPTIONAL_FILTERING_PARAMS_LIKE_AGE - parameters to filter the samples like age. [FilterParams](https://Medial-EarlySign.github.io/MR_LIBS/classFilterParams). For example "min_age=0;max_age=90;min_time=20120101;max_time=20180101"
+- OPTIONAL_FILTERING_PARAMS_LIKE_AGE - parameters to filter the samples like age. [FilterParams](https://Medial-EarlySign.github.io/medpython/classFilterParams). For example "min_age=0;max_age=90;min_time=20120101;max_time=20180101"
 The SAMPLER_TYPE, SAMPLER_ARGS are independent of the labeing - they define just when to give score or try to give score.
  
 Example:
@@ -43,7 +43,7 @@ Needs to explain and give some examples on how to create MedRegistry
     - allow_prediciton_in_case - if true will continue to process rules even if in "case" time period
     - seperate_cases - will allow more than one time period of case. Might be useful fot influenza events that may occur several times.
     - config_signals_rules - file path to registry rules to define the MedRegistry records
-        - Tab delimted file with 2 columns: [RegistrySignalType](https://Medial-EarlySign.github.io/MR_LIBS/classRegistrySignal.html)and it's arguments
+        - Tab delimted file with 2 columns: [RegistrySignalType](https://Medial-EarlySign.github.io/medpython/classRegistrySignal.html)and it's arguments
 Example config_signals_rules  file for CKD from 2 to 3 and up:
 ```
 #Definition of controls- if CKD_State is less than 2, mark it as 0 for at least 1 year if not contradicted or contiuned:

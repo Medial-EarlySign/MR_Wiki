@@ -157,7 +157,7 @@ To make sure a model creates those attributes it is needed to make it do so in i
 4. ~~Document your freeze and branches/tags names.~~
 ----
 
-1. Each version that is being compiled with our scripts, contains the git last commit information and date of compilation for both MR_Libs and MR_Tools. No need to tag/create branches or things you might forget. 
+1. Each version that is being compiled with our scripts, contains the git last commit information and date of compilation for both medpython and MR_Tools. No need to tag/create branches or things you might forget. 
 2. Make sure you have everything prepared: 
     1. A model file trained for the AlgoMarker. Better test this very algomarker gives the expected results on your test set, and runs with the frozen libraries version.
     2. The repository files you were working with: main needed:

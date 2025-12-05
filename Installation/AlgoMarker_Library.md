@@ -5,7 +5,7 @@
 
 The AlgoMarker shared library enables deployment of the AlgoMarker model. It provides a C-level API to load, apply, and retrieve results from your binary model output.
 
-You can download a prebuilt release from the [Release page](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1). The release is built with glibc 2.17 and will work out of the box on systems with **glibc ≥ 2.17** (e.g., **Ubuntu >= 13.04**, **Centos>=7**, eg.). If you need to build from source, follow the instructions below.
+You can download a prebuilt release from the [Release page](https://github.com/Medial-EarlySign/medpython/releases/tag/V1.0.1). The release is built with glibc 2.17 and will work out of the box on systems with **glibc ≥ 2.17** (e.g., **Ubuntu >= 13.04**, **Centos>=7**, eg.). If you need to build from source, follow the instructions below.
 
 ### Installation Steps
 
@@ -13,7 +13,7 @@ You can download a prebuilt release from the [Release page](https://github.com/M
 2. [Compile the Boost Libraries](index.md#compiling-boost-from-source). You must build Boost from source.
 3. Clone the repository:
    ```bash
-   git clone git@github.com:Medial-EarlySign/MR_LIBS.git
+   git clone git@github.com:Medial-EarlySign/medpython.git
    ```
 4. Edit `Internal/AlgoMarker/CMakeLists.txt` and add/edit line:
    ```cmake

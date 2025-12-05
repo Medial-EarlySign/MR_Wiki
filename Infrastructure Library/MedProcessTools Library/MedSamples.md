@@ -29,9 +29,9 @@ MedSamples is a data structure and set of helper functions for managing samples-
 
 The data is organized in a three-tier hierarchy:
 
-1. [MedSamples](https://Medial-EarlySign.github.io/MR_LIBS/classMedSamples): Represents a collection of MedIdSamples for multiple patients
-2. [MedIdSamples](https://Medial-EarlySign.github.io/MR_LIBS/classMedIdSamples): Represents a set of samples for a specific patient (id).
-3. [MedSample](https://Medial-EarlySign.github.io/MR_LIBS/classMedSample):  Represents a single sample.
+1. [MedSamples](https://Medial-EarlySign.github.io/medpython/classMedSamples): Represents a collection of MedIdSamples for multiple patients
+2. [MedIdSamples](https://Medial-EarlySign.github.io/medpython/classMedIdSamples): Represents a set of samples for a specific patient (id).
+3. [MedSample](https://Medial-EarlySign.github.io/medpython/classMedSample):  Represents a single sample.
 
 ### Notes:
 

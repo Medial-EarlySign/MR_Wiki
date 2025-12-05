@@ -2,11 +2,11 @@
 
 ![Pepy Total Downloads](https://img.shields.io/pepy/dt/medpython)
 ![PyPI - License](https://img.shields.io/pypi/l/medpython)
-![GitHub contributors](https://img.shields.io/github/contributors-anon/Medial-EarlySign/MR_LIBS)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Medial-EarlySign/MR_LIBS)
+![GitHub contributors](https://img.shields.io/github/contributors-anon/Medial-EarlySign/medpython)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Medial-EarlySign/medpython)
 
-[![GitHub Repo](https://img.shields.io/badge/github-repo-blue?logo=github)](https://github.com/Medial-EarlySign/MR_LIBS)
-![GitHub Repo stars](https://img.shields.io/github/stars/Medial-EarlySign/MR_WIKI)
+[![GitHub Repo](https://img.shields.io/badge/github-repo-blue?logo=github)](https://github.com/Medial-EarlySign/medpython)
+![GitHub Repo stars](https://img.shields.io/github/stars/Medial-EarlySign/medpython)
 
 **A note on our journey:** Medial EarlySign was a company that developed a proprietary platform for machine learning on electronic medical records. Following the company's liquidation, the decision was made to release the core software as an **open-source** project to allow the community to benefit from and build upon this technology. Please feel free to [reach me out](#community-and-contributions) in any case of an issue. I'm voluntarily holding this, so please be patients.
 
@@ -14,7 +14,7 @@ Our platform is designed to transform complex, semi-structured Electronic Medica
 
 The framework was battle-tested in production across multiple healthcare sites and was a key component of an **award-winning** submission to the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge).
 
-## From Raw Data to Insight in Three Simple Steps
+## From Raw Data to Insight in Four Simple Steps
 
 Our platform streamlines the development and deployment of clinical predictive models, transforming raw patient data into actionable insights. For live predictions (inference), you can use raw JSON data directly, bypassing the need for an optimized data store.
 
@@ -41,17 +41,28 @@ Begin with your data in a simple JSON format.
           { "timestamp": [20250806], "value": ["14.5"] }
         ]
       },
+      {
+        "code": "Diagnosis",
+        "data": [
+          { "timestamp": [20240701], "value": ["ICD10_CODE:J20"] },
+          ...
+        ]
+      },
       ...
     ]
   }
 }
 ```
 
-**2. Define Your ML Pipeline**
+**2. Define Your Label**
+
+For each patient and a given date (prediction date, that information beyond this date won't be passed to the model), what is the outcome for training/testing.
+
+**3. Define Your ML Pipeline**
 
 Configure your entire machine learning workflow from preprocessing and feature engineering to the final model using a single [JSON configuration file](Infrastructure%20Library/MedModel%20json%20format.md). This approach ensures your experiments are reproducible and easy to version.
 
-**3. Get Explainable Predictions**
+**4. Get Explainable Predictions**
 
 Train your model using the Python SDK and generate predictions with clear, interpretable explanations. [Example output](Tutorials/07.Deployment/index.md#how-to-use-the-deployed-algomarker).
 
@@ -96,10 +107,10 @@ The platform is built on three key pillars:
 
 This is an open-source project, and we welcome contributions from the community.
 
-*   **Report issues or ask questions:** Please use our [Github Discussions](https://github.com/Medial-EarlySign/MR_LIBS/discussions).
+*   **Report issues or ask questions:** Please use our [Github Discussions](https://github.com/Medial-EarlySign/medpython/discussions).
 *   **Contribute to the code:** Check out our repositories:
-    *   [MR_LIBS](https://github.com/Medial-EarlySign/MR_Libs): The core infrastructure libraries.
-    *   [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools): Tools and pipelines built on top of MR_LIBS.
-    *   [MR_Scripts](https://github.com/Medial-EarlySign/MR_Scripts): A collection of helper scripts and utilities.
+    *   [medpython](https://github.com/Medial-EarlySign/medpython): The core infrastructure libraries.
+    *   [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools): Tools and pipelines built on top of medpython.
+    *   [MR_Scripts](https://github.com/Medial-EarlySign/MR_Scripts): Dev Ops tools
 
 All software is open-sourced under the MIT license.

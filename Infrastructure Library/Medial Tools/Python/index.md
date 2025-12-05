@@ -42,8 +42,8 @@ More information on usage:
 ### Compile Yourself
 
 1. **Clone the Git Repositories**:
-    * [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS)
-    * [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools)
+    * git clone [medpython](https://github.com/Medial-EarlySign/medpython).git MR_LIBS
+    * git clone [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools).git
 2. **Set Up MedPython**:
    Follow the instructions in [Setup MedPython](../../../Installation/index.md#4-python-api-for-mes-infrastructure).
    The **ETL Library** and **AlgoMarker API Server** doesn't requires installation and are pure python code.

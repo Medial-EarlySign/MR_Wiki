@@ -5,7 +5,7 @@
 
 These are command-line executables for training, testing, and manipulating models, as well as other utilities developed by MES.
 
-You can download a prebuilt release from the [Release page](https://github.com/Medial-EarlySign/MR_LIBS/releases/tag/V1.0.1). The release is built with glibc 2.17 and will work out of the box on systems with **glibc ≥ 2.17** (e.g., **Ubuntu >= 13.04**, **Centos>=7**, eg.). If you need to build from source, follow the instructions below.
+You can download a prebuilt release from the [Release page](https://github.com/Medial-EarlySign/medpython/releases/tag/V1.0.1). The release is built with glibc 2.17 and will work out of the box on systems with **glibc ≥ 2.17** (e.g., **Ubuntu >= 13.04**, **Centos>=7**, eg.). If you need to build from source, follow the instructions below.
 
 ### Installation Steps
 
@@ -13,7 +13,7 @@ You can download a prebuilt release from the [Release page](https://github.com/M
 2. Clone the required repositories:
    ```bash
    git clone git@github.com:Medial-EarlySign/MR_Tools.git
-   git clone git@github.com:Medial-EarlySign/MR_LIBS.git
+   git clone git@github.com:Medial-EarlySign/medpython.git
    ```
 3. Change to the `MR_Tools` directory:
    ```bash

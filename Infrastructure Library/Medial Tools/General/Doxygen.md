@@ -3,7 +3,7 @@ Automatic HTML Documentation with C++.
 
 # **Creating Comments in Libs**
 
-- You can create local documentation for your code for [MR_LIBS](https://github.com/Medial-EarlySign/MR_LIBS/) by runnig this:
+- You can create local documentation for your code for [MR_LIBS](https://github.com/Medial-EarlySign/medpython/) by runnig this:
 
 ```bash
 MR_LIBS/document_code_user.sh
@@ -16,7 +16,7 @@ The build process of this repository is being executed by runnnig this script:
 ```bash
 MR_LIBS/document_code_server.sh
 ```
-the documentation will be availabe in [https://Medial-EarlySign.github.io/MR_LIBS](https://Medial-EarlySign.github.io/MR_LIBS)
+the documentation will be availabe in [https://Medial-EarlySign.github.io/medpython](https://Medial-EarlySign.github.io/medpython)
 
 
 # **General Use of Doxygen tool for other projects:**

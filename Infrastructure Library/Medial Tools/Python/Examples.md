@@ -214,4 +214,4 @@ print(med.cerr())
  
 ## Additional Examples
 
-- See `$MR_LIBS/Internal/MedPyExport/examples/MedProcUtils/` for more Python implementations. [MR_LIBS](https://github.com/Medial-EarlySign/MR_libs) is git repository
+- See `$MR_LIBS/Internal/MedPyExport/examples/MedProcUtils/` for more Python implementations. [medpython](https://github.com/Medial-EarlySign/medpython) is git repository

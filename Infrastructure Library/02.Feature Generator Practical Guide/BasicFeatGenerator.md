@@ -36,10 +36,10 @@ Categorical example:
  
  
 For full list of arguments, please refer to:
-[https://Medial-EarlySign.github.io/MR_LIBS/classBasicFeatGenerator.html](https://Medial-EarlySign.github.io/MR_LIBS/classBasicFeatGenerator.html)
+[https://Medial-EarlySign.github.io/medpython/classBasicFeatGenerator.html](https://Medial-EarlySign.github.io/medpython/classBasicFeatGenerator.html)
  
 For full list of "type" params:
-[https://Medial-EarlySign.github.io/MR_LIBS/FeatureGenerator_8h.html](https://Medial-EarlySign.github.io/MR_LIBS/FeatureGenerator_8h.html)
+[https://Medial-EarlySign.github.io/medpython/FeatureGenerator_8h.html](https://Medial-EarlySign.github.io/medpython/FeatureGenerator_8h.html)
 Here are some common operators/types:
 
 - "last" - take last value in the time window

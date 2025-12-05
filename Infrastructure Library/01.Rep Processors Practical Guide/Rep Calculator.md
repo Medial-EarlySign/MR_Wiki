@@ -2,7 +2,7 @@
 Rep processor to calculate things:
  
 examples/rep_processor_calc.json
-Full parameter list: [https://Medial-EarlySign.github.io/MR_LIBS/classRepCalcSimpleSignals.html](https://Medial-EarlySign.github.io/MR_LIBS/classRepCalcSimpleSignals)
+Full parameter list: [https://Medial-EarlySign.github.io/medpython/classRepCalcSimpleSignals.html](https://Medial-EarlySign.github.io/medpython/classRepCalcSimpleSignals)
  
 The input signals is given with comma separated string in "signals" parameter - for example: ""
 
@@ -16,7 +16,7 @@ The input signals is given with comma separated string in "signals" parameter - 
 - calculator_init_params - additional arguments string based on "calculator" parameter. since it's can be multiple arguments, you need to escape the string with "{}" and put arguments inside of brackets as in the examples.
  
 ## Calculator type - "calculator" parameters
-All "calculator" parameter options can be found in here [https://Medial-EarlySign.github.io/MR_LIBS/classSimpleCalculator.html](https://Medial-EarlySign.github.io/MR_LIBS/classSimpleCalculator.html):
+All "calculator" parameter options can be found in here [https://Medial-EarlySign.github.io/medpython/classSimpleCalculator.html](https://Medial-EarlySign.github.io/medpython/classSimpleCalculator.html):
 
 - sum - linear combination of multiple signals    res := b0 + sum_sigma(i=1..N){ factor[i] * input[i]},    where b0 is a bias
     - calculator_init_params - can receive "b0" - to specify constant bias argument + "factors" which is comma separated numbers that correspond each input signal (default is list of ones)

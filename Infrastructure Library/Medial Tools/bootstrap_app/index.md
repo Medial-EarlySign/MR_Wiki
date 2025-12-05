@@ -241,7 +241,7 @@ Age:40-89,Time-Window:0,365	SENS@FPR_03	10.34565
 
 ## Implementation and Advanced Library Usage
 
-You can use `bootstrap` in C++ code at three levels (main code in [MR_Libs](https://github.com/Medial-EarlySign/MR_LIBS/)):
+You can use `bootstrap` in C++ code at three levels (main code in [medpython](https://github.com/Medial-EarlySign/medpython)):
 
 1. `bootstrap.cpp`, `bootstrap.h` (in `Internal/MedStat/MedStat`): Basic bootstrap analysis API using standard C++ objects (e.g., vector, map). Main function: `booststrap_analyze`.
 2. `MedBootstrap.cpp`, `MedBootstrap.h` (in `Internal/MedStat/MedStat`): Builds on the base API, providing a friendlier interface using MES C++ objects like `MedSamples` and `MedFeatures`.
