@@ -7,6 +7,32 @@ This isn't just a philosophical question. In the high-stakes world of medical da
 
 At Medial EarlySign, we wanted to move beyond just knowing *what* the model predicts, to understanding *why*. This is the story of our journey, a tale of failed experiments, surprising discoveries, and a brand-new way to look inside the mind of the machine.
 
+This is the story of how we broke the standard to build something better.
+
+## The Goal: A Clinical Story, Not Just a Score
+
+Before diving into the algorithms, let’s look at what we actually achieved. This is what our new engine produces for a colon cancer prediction model.
+
+Consider an *82-year-old patient* flagged as High Risk (Score: 0.9). A standard model just gives the alert. Our system tells the doctor:
+
+  * **MCH_Trends:** Sharply decreasing trend in Mean Corpuscular Hemoglobin.
+  * **MCH_Values:** Low absolute values and became anemic recently.
+  * **Age:** Advanced age contributes to risk.
+
+This is not just a math output, it empowers the doctor to act.
+But getting to this level of clarity required us to build a new framework upon the existing one.
+
+**But when we applied "Vanilla" Shapley to real medical data, it was a disaster**
+
+Our models use over 1,000 features, many of which are highly correlated (e.g., "last hemoglobin" vs. "average hemoglobin"). The standard Shapley method tried to be "fair" by splitting credit among all these similar features.
+The result? A long, repetitive list of weak signals that diluted the true clinical story. It was like trying to explain a picture of a cat by listing the color of every individual pixel.
+
+**The "Eosinophil#" Error**
+It got worse. In one test, standard Shapley told us that "eosinophils#" (a white blood cell) was a top risk factor for a patient, even though that value was **missing**! Because our imputation method used age and sex to fill gaps, the algorithm got confused. It attributed the risk to the missing blood cell count rather than the patient's age.
+We knew we had to do better.
+
+Here we will start by the process we went through to acheive a high quality explainable framework for clinical settings.
+
 ## The Explainability Competition
 
 To find the best explainer we held a competition. We benchmarked several explainability methods against each other, testing them on three of our real-world medical models for robustness:
@@ -15,9 +41,9 @@ To find the best explainer we held a competition. We benchmarked several explain
 *   [Pre2D](../Models/Pred2D.md): A model that assesses the risk of diabetes from pre-diabetic.
 *   [FluComplications](../Models/FluComplications.md): A model that predicts complications from the flu.
 
-Our judges were a panel of data scientists and our (Chief Medical Officer). They reviewed the explanations from each method in a "blind testing" and ranked each with a score 1(bad)-5(good). they didn't know which method produced which explanation. This helped us avoid bias and focus on what really mattered: which method gave the most intuitive and medically relevant explanations. Each reviewer was reviewing a specific prediction across all the different methods together to have also a relative sense of how good the presented explanation. 
+Our judges were a panel of data scientists and our Chief Medical Officer. They reviewed the explanations from each method in a "blind testing" and ranked each with a score 1(bad)-5(good). they didn't know which method produced which explanation. This helped us avoid bias and focus on what really mattered: which method gave the most intuitive and medically relevant explanations. Each reviewer was reviewing a specific prediction across all the different methods together to have also a relative sense of how good the presented explanation. 
 
-The process was iterative and in each step we explored more varaiation of the winning methods to improve our results that weren't satisfiying in the first steps.
+The process was iterative and in each step we explored more varaiation of the winning methods to improve our results that were promising, but weren't satisfiying in the previous step. Each evaluation included 3-7 different methods to review and rank.
 
 ## Common Explainability Methods
 
@@ -41,7 +67,7 @@ $$
 \phi_i(v) = \sum_{S \subseteq N \setminus \{i\}} \frac{|S|! (n - |S| - 1)!}{n!} (v(S \cup \{i\}) - v(S))
 $$
 
-Don't let the equation scare you. The core idea is in the $v(S \cup \{i\}) - v(S)$ part. It measures the added value of feature `i` when it's added to a group of features `S`. The formula then calculates the average of this added value over all possible groups of features.
+Don't let the equation scare you. The core idea is in the $v(S \cup \{i\}) - v(S)$ part. It measures the added value of feature `i` when it's added to a group of features `S`. The formula then calculates the average of this added value (knowing the parameter value VS not knowing) over all possible groups of features.
 
 This approach offers several valuable theoretical properties. Notably, the Shapley value is the **unique** attribution method that satisfies all the following axioms simultaneously:
 
@@ -79,8 +105,6 @@ The results were just awful. In one case, the model told us that "eosinophils#" 
 
 Another issue was that similar variables were appearing next ot each other as top contributors and as reviewers we wanted to see a different and minimal set of varaibels to explain a specific prediction.
 
-We knew we had to do better.
-
 ## Our Secret Sauce
 
 We realized that off-the-shelf solutions were insufficient for the complexities of clinical data. Consequently, we engineered our own implementation, introducing four key innovations now available in our [medpython](https://pypi.org/project/medpython) library:
@@ -94,7 +118,7 @@ We realized that off-the-shelf solutions were insufficient for the complexities 
 4.  **Domain-Specific Heuristics:**
     Finally, we integrated a layer of practical control. We allow for the filtering of contributions based on magnitude, direction (e.g., showing only factors that increase risk), and specific "blacklists." We also implemented strict handling for missing values. While our grouping and correlation methods solved most artifacts, this layer acts as a final safety net to ensure no "noise" from missing data affects the explanation.
 
-## The Grand Reveal
+## The Final Result
 
 So what does this all look like in practice? Let's take a look at two examples for a colon cancer prediction.
 
@@ -134,7 +158,7 @@ You can see more results and the raw scores from our final benchmark here (unbli
 
 ## Can we Use This?
 
-We've integrated this powerful explainability engine directly into our platform. If you're using our MedModel JSON format, you can add a `tree_shap` post-processor to your model pipeline definition at the end:
+We've integrated this powerful explainability engine directly into our platform. If you're using our MedModel JSON format, you can add a `tree_shap` post-processor to your model pipeline definition at the end and use our [Tutorial](../Tutorials/04.Train%20Model) to train your model:
 
 ```json
 {
@@ -148,6 +172,23 @@ We've integrated this powerful explainability engine directly into our platform.
 
 This will give you the same rich, diverse, and intuitive explanations that our doctors and data scientists found much more valuable.
 This Exactly same method was used in the [CMS AI Health Outcomes Challenge](https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge) for all caused mortality and COPD hospital readmission within 30 days. Our platform was resulted as award-winner in this competition.
+
+## Beyond Explanation: Debugging & Validation
+
+Beyond providing individual patient insights, these tools proved invaluable for **model debugging and bias detection**. In several cases, they helped us uncover hidden biases that required retraining or fixing our models.
+
+To do this, we developed a specific validation plot for our top features. We binned the data by feature value and, for each bin, overlaid three metrics:
+
+1.  **Average Shapley Value** (The explanation)
+2.  **True Outcome Probability** (The reality)
+3.  **Mean Model Score** (The prediction)
+
+It was particularly fascinating to analyze divergences. Specifically, instances where the Model Score and Outcome Probability rose, but the Shapley value for that specific feature remained flat. This gap allowed us to distinguish between features the model was actually *using* versus features that were merely *correlated* with the outcome.
+
+**A Real-World Example: The "BMI Paradox"**
+We saw a striking example of this in our **Flu Complications** model. In medical data, **Low BMI** is strongly correlated with children, and children are naturally at higher risk for complications like pneumonia.
+
+A naive analysis (or a standard correlation study) might suggest that Low BMI is a risk factor. However, our Shapley analysis confirmed that the model had successfully disentangled this relationship. The plots showed that while risk scores were high for these patients, the attribution went solely to **Young Age**. The model correctly identified Age as the driver and did not treat Low BMI as a risk factor, proving it wasn't relying on spurious correlations.
 
 ## Alternative Approaches Explored
 
@@ -168,23 +209,6 @@ However, even with sampling, the core challenge remains: accurately estimating $
 
 * **LIME (Local Interpretable Model-agnostic Explanations):**
     We also evaluated LIME, which approximates Shapley values by fitting a local linear model around the prediction. We view this as a more efficient way to sample and estimate contributions. However, LIME still faces the same "missing data" hurdle; to function correctly, it also required the underlying synthetic data generation techniques (Masked GAN or Gibbs) described above.
-
-## Beyond Explanation: Debugging & Validation
-
-Beyond providing individual patient insights, these tools proved invaluable for **model debugging and bias detection**. In several cases, they helped us uncover hidden biases that required retraining or fixing our models.
-
-To do this, we developed a specific validation plot for our top features. We binned the data by feature value and, for each bin, overlaid three metrics:
-
-1.  **Average Shapley Value** (The explanation)
-2.  **True Outcome Probability** (The reality)
-3.  **Mean Model Score** (The prediction)
-
-It was particularly fascinating to analyze divergences. Specifically, instances where the Model Score and Outcome Probability rose, but the Shapley value for that specific feature remained flat. This gap allowed us to distinguish between features the model was actually *using* versus features that were merely *correlated* with the outcome.
-
-**A Real-World Example: The "BMI Paradox"**
-We saw a striking example of this in our **Flu Complications** model. In medical data, **Low BMI** is strongly correlated with children, and children are naturally at higher risk for complications like pneumonia.
-
-A naive analysis (or a standard correlation study) might suggest that Low BMI is a risk factor. However, our Shapley analysis confirmed that the model had successfully disentangled this relationship. The plots showed that while risk scores were high for these patients, the attribution went solely to **Young Age**. The model correctly identified Age as the driver and did not treat Low BMI as a risk factor, proving it wasn't relying on spurious correlations.
 
 ## Final Notes
 
