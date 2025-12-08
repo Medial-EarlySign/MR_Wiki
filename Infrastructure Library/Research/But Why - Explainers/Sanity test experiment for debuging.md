@@ -76,7 +76,7 @@ Date: 18.11.2019It looks like all our methods are tuned (without a major bug).�
 </tr>
 </tbody></table>
 
- 
+
 * Tree = regular tree shapley implementation
 * missing_shap - shapley algorithm with 500 random masks. but instead of using GAN or gibbs to generate samples, we use additional predictor (xgboost regression model) to predict the diabetes model scores when seeing random masks of missing values.  the grouping is calculated internally.
 * LIME_GAN - LIME algorithm with GAN - sampling random masks and fitting a model - the grouping is calculated internally.
