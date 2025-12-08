@@ -1,3 +1,3 @@
 # Blog
 
-* 2025-December What I have learned from [Explainability in Medical Data](explainability.md)
+* 2025-December What I have learned from [A Journey into Explainable AI](explainability.md)
