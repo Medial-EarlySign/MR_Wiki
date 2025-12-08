@@ -1,7 +1,7 @@
 # A Journey into Explainable AI
 
 Have you ever wondered what a machine learning model is *really* thinking? We often treat them like black boxes. We feed them data, they spit out predictions, and we cross our fingers, hoping they're right. But what if we could peek inside? What if we could ask the AI, "Why did you make that decision?"
-It is different from *global* feature importance and importance of parameters of the model in general, we want *local* and specific explaination for our current prediction.
+Unlike *global* feature importance (which tells us what matters to the model in general), we wanted a *local* and specific explanation for every single prediction.
 
 This isn't just a philosophical question. In the high-stakes world of medical data, understanding the "why" can be a matter of life and death. It's crucial for debugging our models, building trust with doctors, and even discovering new ways to help patients.
 
@@ -169,11 +169,27 @@ However, even with sampling, the core challenge remains: accurately estimating $
 * **LIME (Local Interpretable Model-agnostic Explanations):**
     We also evaluated LIME, which approximates Shapley values by fitting a local linear model around the prediction. We view this as a more efficient way to sample and estimate contributions. However, LIME still faces the same "missing data" hurdle; to function correctly, it also required the underlying synthetic data generation techniques (Masked GAN or Gibbs) described above.
 
+## Beyond Explanation: Debugging & Validation
+
+Beyond providing individual patient insights, these tools proved invaluable for **model debugging and bias detection**. In several cases, they helped us uncover hidden biases that required retraining or fixing our models.
+
+To do this, we developed a specific validation plot for our top features. We binned the data by feature value and, for each bin, overlaid three metrics:
+
+1.  **Average Shapley Value** (The explanation)
+2.  **True Outcome Probability** (The reality)
+3.  **Mean Model Score** (The prediction)
+
+It was particularly fascinating to analyze divergences. Specifically, instances where the Model Score and Outcome Probability rose, but the Shapley value for that specific feature remained flat. This gap allowed us to distinguish between features the model was actually *using* versus features that were merely *correlated* with the outcome.
+
+**A Real-World Example: The "BMI Paradox"**
+We saw a striking example of this in our **Flu Complications** model. In medical data, **Low BMI** is strongly correlated with children, and children are naturally at higher risk for complications like pneumonia.
+
+A naive analysis (or a standard correlation study) might suggest that Low BMI is a risk factor. However, our Shapley analysis confirmed that the model had successfully disentangled this relationship. The plots showed that while risk scores were high for these patients, the attribution went solely to **Young Age**. The model correctly identified Age as the driver and did not treat Low BMI as a risk factor, proving it wasn't relying on spurious correlations.
+
 ## Final Notes
 
 We learned that the most popular methods aren't always the best, and that true innovation often requires getting your hands dirty and building something new.
-Creating Explainable model helps to build trust, empowering doctors, and paving the way for a future where AI in medicine is not just powerful, but also understandable.
-
-And that's a future we're excited to be a part of.
+Creating Explainable model helps to build better model, trust and to empower doctors.
+That's a future we're excited to be a part of.
 
 If you like this, please don't hesitate to message me on [Linkedin](https://www.linkedin.com/in/lanyado/) and tell me what part you liked the most.
