@@ -37,6 +37,8 @@ markdown_extensions:
   - tables
   - admonition
   - pymdownx.tilde
+  - pymdownx.arithmatex:
+      generic: true
 
 plugins:
   - search
@@ -45,6 +47,10 @@ extra:
   analytics:
     provider: google
     property: G-Y86BQ68W8H
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 use_directory_urls: false
 not_in_nav: |

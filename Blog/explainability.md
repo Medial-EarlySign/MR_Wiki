@@ -49,7 +49,7 @@ This approach offers several valuable theoretical properties. Notably, the Shapl
 * **Null Player:** A feature that has no impact on the prediction is assigned a Shapley value of zero.
 * **Symmetry:** Two features that contribute equally to the prediction receive the same Shapley value. This is particularly interesting when dealing with correlated variables.
     - **Example**: Consider two variables, $x_1$ and $x_3$, that are perfectly correlated (i.e., $x_1 = x_3$).
-    Now, assume a linear model: $$F(X) = 1 \cdot x_1 + 2 \cdot x_2 + 0 \cdot x_3$$
+    Now, assume a linear model: $F(X) = 1 \cdot x_1 + 2 \cdot x_2 + 0 \cdot x_3$
     Even though the model mathematically weights $x_3$ at zero, a correlation-aware Shapley calculation recognizes that $x_3$ carries the same information as $x_1$. Consequently, the contribution score is split equally between them. This demonstrates that the contribution score accounts for a variable's relationship with other features, not just its isolated mechanical effect on the output.
 
 ### The Computational Challenges
