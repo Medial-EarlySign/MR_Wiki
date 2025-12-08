@@ -9580,28 +9580,28 @@ Unlike <em>global</em> feature importance (which tells us what matters to the mo
 <p>So what are Shapley values, and why didn't they work for us?</p>
 <p>Imagine a team of players in a game, and you want to figure out how much each player contributed to the win. That's the basic idea behind Shapley values. They provide a way to fairly distribute the "payout" (the model's prediction) among the "players" (the input features).</p>
 <p>Mathematically, it looks like this:</p>
-<p>$$
-\phi_i(v) = \sum_{S \subseteq N \setminus {i}} \frac{|S|! (n - |S| - 1)!}{n!} (v(S \cup {i}) - v(S))
-$$</p>
-<p>Don't let the equation scare you. The core idea is in the $v(S \cup {i}) - v(S)$ part. It measures the added value of feature <code>i</code> when it's added to a group of features <code>S</code>. The formula then calculates the average of this added value over all possible groups of features.</p>
+<div class="arithmatex">\[
+\phi_i(v) = \sum_{S \subseteq N \setminus \{i\}} \frac{|S|! (n - |S| - 1)!}{n!} (v(S \cup \{i\}) - v(S))
+\]</div>
+<p>Don't let the equation scare you. The core idea is in the <span class="arithmatex">\(v(S \cup \{i\}) - v(S)\)</span> part. It measures the added value of feature <code>i</code> when it's added to a group of features <code>S</code>. The formula then calculates the average of this added value over all possible groups of features.</p>
 <p>This approach offers several valuable theoretical properties. Notably, the Shapley value is the <strong>unique</strong> attribution method that satisfies all the following axioms simultaneously:</p>
 <ul>
 <li><strong>Linearity:</strong> The sum of all individual feature contributions equals the total model prediction.</li>
 <li><strong>Null Player:</strong> A feature that has no impact on the prediction is assigned a Shapley value of zero.</li>
 <li><strong>Symmetry:</strong> Two features that contribute equally to the prediction receive the same Shapley value. This is particularly interesting when dealing with correlated variables.<ul>
-<li><strong>Example</strong>: Consider two variables, $x_1$ and $x_3$, that are perfectly correlated (i.e., $x_1 = x_3$).
-Now, assume a linear model: $$F(X) = 1 \cdot x_1 + 2 \cdot x_2 + 0 \cdot x_3$$
-Even though the model mathematically weights $x_3$ at zero, a correlation-aware Shapley calculation recognizes that $x_3$ carries the same information as $x_1$. Consequently, the contribution score is split equally between them. This demonstrates that the contribution score accounts for a variable's relationship with other features, not just its isolated mechanical effect on the output.</li>
+<li><strong>Example</strong>: Consider two variables, <span class="arithmatex">\(x_1\)</span> and <span class="arithmatex">\(x_3\)</span>, that are perfectly correlated (i.e., <span class="arithmatex">\(x_1 = x_3\)</span>).
+Now, assume a linear model: <span class="arithmatex">\(F(X) = 1 \cdot x_1 + 2 \cdot x_2 + 0 \cdot x_3\)</span>
+Even though the model mathematically weights <span class="arithmatex">\(x_3\)</span> at zero, a correlation-aware Shapley calculation recognizes that <span class="arithmatex">\(x_3\)</span> carries the same information as <span class="arithmatex">\(x_1\)</span>. Consequently, the contribution score is split equally between them. This demonstrates that the contribution score accounts for a variable's relationship with other features, not just its isolated mechanical effect on the output.</li>
 </ul>
 </li>
 </ul>
 <h3 id="the-computational-challenges">The Computational Challenges</h3>
 <p>While the theoretical properties of Shapley values are elegant, calculating them directly presents two significant practical hurdles:</p>
 <ol>
-<li><strong>The Combinatorial Explosion</strong> The summation requires iterating over every possible subset of features. For a model with $N$ features, calculating the contribution of just one feature involves summing over $2^{N-1}$ subsets. As $N$ grows, this quickly becomes NP-hard. In high-dimensional datasets, an exact calculation is computationally infeasible.</li>
-<li><strong>The "Missing Data" Problem</strong> Let’s look at the core of the equation, setting aside the combinatorial weight term $\frac{|S|! (n - |S| - 1)!}{n!}$. The calculation relies on the marginal contribution: $v(S \cup {i}) - v(S)$</li>
+<li><strong>The Combinatorial Explosion</strong> The summation requires iterating over every possible subset of features. For a model with <span class="arithmatex">\(N\)</span> features, calculating the contribution of just one feature involves summing over <span class="arithmatex">\(2^{N-1}\)</span> subsets. As <span class="arithmatex">\(N\)</span> grows, this quickly becomes NP-hard. In high-dimensional datasets, an exact calculation is computationally infeasible.</li>
+<li><strong>The "Missing Data" Problem</strong> Let’s look at the core of the equation, setting aside the combinatorial weight term <span class="arithmatex">\(\frac{|S|! (n - |S| - 1)!}{n!}\)</span>. The calculation relies on the marginal contribution: <span class="arithmatex">\(v(S \cup \{i\}) - v(S)\)</span></li>
 </ol>
-<p>Obtaining $v(S)$ - the model's output given only a subset of features $S$ is non-trivial. Most machine learning models require a fixed input vector and cannot naturally handle "missing" variables. To calculate $v(S)$ theoretically, we would need to marginalize out the features not in $S$. This implies integrating over the distribution of the missing features (essentially holding the features in $S$ fixed while averaging the model's output over samples drawn from the distribution of the omitted variables). This integration is computationally expensive and difficult to estimate accurately without a generative model of the data.</p>
+<p>Obtaining <span class="arithmatex">\(v(S)\)</span> - the model's output given only a subset of features <span class="arithmatex">\(S\)</span> is non-trivial. Most machine learning models require a fixed input vector and cannot naturally handle "missing" variables. To calculate <span class="arithmatex">\(v(S)\)</span> theoretically, we would need to marginalize out the features not in <span class="arithmatex">\(S\)</span>. This implies integrating over the distribution of the missing features (essentially holding the features in <span class="arithmatex">\(S\)</span> fixed while averaging the model's output over samples drawn from the distribution of the omitted variables). This integration is computationally expensive and difficult to estimate accurately without a generative model of the data.</p>
 <h3 id="from-theory-to-practice">From Theory to Practice</h3>
 <p>Due to these complexities, most Shapley value implementations in the wild rely on approximations rather than exact solutions. However, for specific model architectures, efficient algorithms exist.</p>
 <p>Notably, for <a href="https://www.nature.com/articles/s42256-019-0138-9">decision tree ensembles</a>, there is a polynomial-time algorithm (TreeSHAP) that estimates these values efficiently. At Medial EarlySign, we have expanded upon these tree-based implementations and explored model-agnostic approaches to extend these capabilities beyond standard decision trees.</p>
@@ -9676,11 +9676,11 @@ Even though the model mathematically weights $x_3$ at zero, a correlation-aware 
 This Exactly same method was used in the <a href="https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge">CMS AI Health Outcomes Challenge</a> for all caused mortality and COPD hospital readmission within 30 days. Our platform was resulted as award-winner in this competition.</p>
 <h2 id="alternative-approaches-explored">Alternative Approaches Explored</h2>
 <p>Before finalizing our methodology, we explored several model-agnostic approaches. Our goal was to estimate Shapley values by treating the model as a "black box" and approximating the exponential sum via Monte Carlo sampling.</p>
-<p>However, even with sampling, the core challenge remains: accurately estimating $v(S)$. To do this effectively, one must generate synthetic values for the "missing" variables based on the fixed known variables. We investigated two distinct generative strategies for this task:</p>
+<p>However, even with sampling, the core challenge remains: accurately estimating <span class="arithmatex">\(v(S)\)</span>. To do this effectively, one must generate synthetic values for the "missing" variables based on the fixed known variables. We investigated two distinct generative strategies for this task:</p>
 <ul>
 <li>
 <p><strong>Masked GAN (Generative Adversarial Networks):</strong>
-    We implemented a Deep Learning GAN architecture modified with an input mask ($S$) to designate fixed variables.</p>
+    We implemented a Deep Learning GAN architecture modified with an input mask (<span class="arithmatex">\(S\)</span>) to designate fixed variables.</p>
 <ul>
 <li><strong>The Mechanism:</strong> To ensure consistency, we applied a "hard" constraint before the discriminator stage: the generator's output is multiplied by the inverse mask and added to the original input multiplies by the mask. This forces the generator to "fill in the blanks" while preserving the known values exactly.</li>
 <li><strong>The Verdict:</strong> The results were promising and comparable to theoretical expectations. However, inference was significantly slower than optimized tree-based algorithms, making it less practical for real-time production use.</li>
@@ -9690,9 +9690,9 @@ This Exactly same method was used in the <a href="https://www.cms.gov/priorities
 <p><strong>Gibbs Sampling (Random Walk):</strong>
     We also explored statistical methods, specifically Gibbs sampling, to reconstruct the joint distribution of the data.</p>
 <ul>
-<li><strong>The Mechanism:</strong> This required training $N$ distinct predictors (one for each variable). To estimate the conditional probability $P(x_i | x_{-i})$, we avoided standard regression (which yields a single value) and instead used <strong>XGBoost for multi-class classification</strong>. We binned continuous variables into discrete categories, allowing us to predict a full probability distribution for every feature. Another option is using quantile regression. </li>
-<li><strong>The Process:</strong> We iterate through the variables not in set $S$, drawing new values from these predicted distributions. By repeating this random walk, the system converges to a high-quality synthetic sample.</li>
-<li><strong>The Verdict:</strong> In lower dimensions ($&lt;100$ variables), the quality of synthetic data exceeded that of the GAN. However, the process is computationally expensive and iterative. As dimensionality increases, the method suffers from stability issues and the "curse of dimensionality," where strong inter-variable dependencies make the random walk less efficient. Ultimately, it was too slow for our high-dimensional use cases.</li>
+<li><strong>The Mechanism:</strong> This required training <span class="arithmatex">\(N\)</span> distinct predictors (one for each variable). To estimate the conditional probability <span class="arithmatex">\(P(x_i | x_{-i})\)</span>, we avoided standard regression (which yields a single value) and instead used <strong>XGBoost for multi-class classification</strong>. We binned continuous variables into discrete categories, allowing us to predict a full probability distribution for every feature. Another option is using quantile regression. </li>
+<li><strong>The Process:</strong> We iterate through the variables not in set <span class="arithmatex">\(S\)</span>, drawing new values from these predicted distributions. By repeating this random walk, the system converges to a high-quality synthetic sample.</li>
+<li><strong>The Verdict:</strong> In lower dimensions (<span class="arithmatex">\(&lt;100\)</span> variables), the quality of synthetic data exceeded that of the GAN. However, the process is computationally expensive and iterative. As dimensionality increases, the method suffers from stability issues and the "curse of dimensionality," where strong inter-variable dependencies make the random walk less efficient. Ultimately, it was too slow for our high-dimensional use cases.</li>
 </ul>
 </li>
 <li>
@@ -9778,6 +9778,10 @@ That's a future we're excited to be a part of.</p>
     
     
       <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
