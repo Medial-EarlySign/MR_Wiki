@@ -27,13 +27,26 @@ But getting to this level of clarity required us to build a new framework upon t
 Our models use over 1,000 features, many of which are highly correlated (e.g., "last hemoglobin" vs. "average hemoglobin"). The standard Shapley method tried to be "fair" by splitting credit among all these similar features.
 The result? A long, repetitive list of weak signals that diluted the true clinical story. It was like trying to explain a picture of a cat by listing the color of every individual pixel.
 
-**The "Eosinophil#" Error**
+**The "Eosinophil#" Disaster**
 It got worse. In one test, standard Shapley told us that "eosinophils#" (a white blood cell) was a top risk factor for a patient, even though that value was **missing**! Because our imputation method used age and sex to fill gaps, the algorithm got confused. It attributed the risk to the missing blood cell count rather than the patient's age.
 We knew we had to do better.
 
-Here we will start by the process we went through to acheive a high quality explainable framework for clinical settings.
+## Our Secret Sauce
 
-## The Explainability Competition
+We realized that off-the-shelf solutions were insufficient for the complexities of clinical data. Consequently, we engineered our own implementation, introducing four key innovations now available in our [medpython](https://pypi.org/project/medpython) library:
+
+1.  **Native Variable Grouping:**
+    Instead of analyzing individual features, we aggregate them into clinical concepts (e.g., grouping all hemoglobin timestamps into a single "Hemoglobin" entity). This is analogous to moving from pixel-level analysis to object recognition in computer vision. It is far more intuitive. Crucially, we didn't just sum the Shapley values of individual features post-hoc. We modified the underlying C++ implementation to calculate Shapley values *directly on the groups*. This allows us to measure the marginal effect of knowing an entire clinical concept versus not knowing it.
+2.  **First-Order Adjustment for Correlated Variables:** 
+    To solve the credit-splitting problem, we built a "correlation-aware" system. We calculate the covariance matrix(and have experimented with mutual information) between all our feature groups and use it to adjust the contributions. This way, the contribution of a concept isn't diluted across many similar features.
+3.  **Iterative Diversity Selection:**
+    Even with grouping, standard ranking can yield a list of redundant concepts. To solve this, we implemented an iterative selection process within the C++ algorithm. We identify the most important group, "lock" its value (treat it as known), and then ask the model: "Given this information, what is the *next* most important factor?" This conditional approach produces a minimal, diverse set of features that tells a distinct clinical story.
+4.  **Domain-Specific Heuristics:**
+    Finally, we integrated a layer of practical control. We allow for the filtering of contributions based on magnitude, direction (e.g., showing only factors that increase risk), and specific "blacklists." We also implemented strict handling for missing values. While our grouping and correlation methods solved most artifacts, this layer acts as a final safety net to ensure no "noise" from missing data affects the explanation.
+
+## Deeper Dive Into Mathematics, Methodology and Algorithm Explored 
+
+### The Explainability Competition
 
 To find the best explainer we held a competition. We benchmarked several explainability methods against each other, testing them on three of our real-world medical models for robustness:
 
@@ -45,7 +58,7 @@ Our judges were a panel of data scientists and our Chief Medical Officer. They r
 
 The process was iterative and in each step we explored more varaiation of the winning methods to improve our results that were promising, but weren't satisfiying in the previous step. Each evaluation included 3-7 different methods to review and rank.
 
-## Common Explainability Methods
+### Common Explainability Methods
 
 We started with the most popular methods out there, which generally fall into three categories:
 
@@ -55,7 +68,7 @@ We started with the most popular methods out there, which generally fall into th
 
 **Spoiler alert:** The naive approach and simple noising methods were a disaster. Our medical data is a very complex, with variables on wildly different scales and distributions. These simple methods just couldn't handle it. Even the "vanilla" Shapley values, the supposed gold standard, fell too short.
 
-## Why the "Gold Standard" didn't worked
+### Why the "Gold Standard" didn't worked
 
 So what are Shapley values, and why didn't they work for us?
 
@@ -78,7 +91,7 @@ This approach offers several valuable theoretical properties. Notably, the Shapl
     Now, assume a linear model: $F(X) = 1 \cdot x_1 + 2 \cdot x_2 + 0 \cdot x_3$
     Even though the model mathematically weights $x_3$ at zero, a correlation-aware Shapley calculation recognizes that $x_3$ carries the same information as $x_1$. Consequently, the contribution score is split equally between them. This demonstrates that the contribution score accounts for a variable's relationship with other features, not just its isolated mechanical effect on the output.
 
-### The Computational Challenges
+#### The Computational Challenges
 
 While the theoretical properties of Shapley values are elegant, calculating them directly presents two significant practical hurdles:
 
@@ -87,13 +100,13 @@ While the theoretical properties of Shapley values are elegant, calculating them
 
 Obtaining $v(S)$ - the model's output given only a subset of features $S$ is non-trivial. Most machine learning models require a fixed input vector and cannot naturally handle "missing" variables. To calculate $v(S)$ theoretically, we would need to marginalize out the features not in $S$. This implies integrating over the distribution of the missing features (essentially holding the features in $S$ fixed while averaging the model's output over samples drawn from the distribution of the omitted variables). This integration is computationally expensive and difficult to estimate accurately without a generative model of the data.
 
-### From Theory to Practice
+#### From Theory to Practice
 
 Due to these complexities, most Shapley value implementations in the wild rely on approximations rather than exact solutions. However, for specific model architectures, efficient algorithms exist.
 
 Notably, for [decision tree ensembles](https://www.nature.com/articles/s42256-019-0138-9), there is a polynomial-time algorithm (TreeSHAP) that estimates these values efficiently. At Medial EarlySign, we have expanded upon these tree-based implementations and explored model-agnostic approaches to extend these capabilities beyond standard decision trees.
 
-### Results of Vanilla Shapley on Medical Data
+#### Results of Vanilla Shapley on Medical Data
 
 Sounds great, right? But here's the catch: in the messy world of real-world medical data, these properties doesn't work well.
 
@@ -105,20 +118,8 @@ The results were just awful. In one case, the model told us that "eosinophils#" 
 
 Another issue was that similar variables were appearing next ot each other as top contributors and as reviewers we wanted to see a different and minimal set of varaibels to explain a specific prediction.
 
-## Our Secret Sauce
 
-We realized that off-the-shelf solutions were insufficient for the complexities of clinical data. Consequently, we engineered our own implementation, introducing four key innovations now available in our [medpython](https://pypi.org/project/medpython) library:
-
-1.  **Native Variable Grouping:**
-    Instead of analyzing individual features, we aggregate them into clinical concepts (e.g., grouping all hemoglobin timestamps into a single "Hemoglobin" entity). This is analogous to moving from pixel-level analysis to object recognition in computer vision. It is far more intuitive. Crucially, we didn't just sum the Shapley values of individual features post-hoc. We modified the underlying C++ implementation to calculate Shapley values *directly on the groups*. This allows us to measure the marginal effect of knowing an entire clinical concept versus not knowing it.
-2.  **First-Order Adjustment for Correlated Variables:** 
-    To solve the credit-splitting problem, we built a "correlation-aware" system. We calculate the covariance matrix(and have experimented with mutual information) between all our feature groups and use it to adjust the contributions. This way, the contribution of a concept isn't diluted across many similar features.
-3.  **Iterative Diversity Selection:**
-    Even with grouping, standard ranking can yield a list of redundant concepts. To solve this, we implemented an iterative selection process within the C++ algorithm. We identify the most important group, "lock" its value (treat it as known), and then ask the model: "Given this information, what is the *next* most important factor?" This conditional approach produces a minimal, diverse set of features that tells a distinct clinical story.
-4.  **Domain-Specific Heuristics:**
-    Finally, we integrated a layer of practical control. We allow for the filtering of contributions based on magnitude, direction (e.g., showing only factors that increase risk), and specific "blacklists." We also implemented strict handling for missing values. While our grouping and correlation methods solved most artifacts, this layer acts as a final safety net to ensure no "noise" from missing data affects the explanation.
-
-## The Final Result
+### The Final Result
 
 So what does this all look like in practice? Let's take a look at two examples for a colon cancer prediction.
 
@@ -156,6 +157,26 @@ You can see more results and the raw scores from our final benchmark here (unbli
 *   [compare_all.Alon.xlsx](../../../attachments/11207625/11207623.xlsx)
 *   [compare_all - Coby.xlsx](../../../attachments/11207625/11207634.xlsx)
 
+### Alternative Approaches Explored
+
+Before finalizing our methodology, we explored several model-agnostic approaches. Our goal was to estimate Shapley values by treating the model as a "black box" and approximating the exponential sum via Monte Carlo sampling.
+
+However, even with sampling, the core challenge remains: accurately estimating $v(S)$. To do this effectively, one must generate synthetic values for the "missing" variables based on the fixed known variables. We investigated two distinct generative strategies for this task:
+
+* **Masked GAN (Generative Adversarial Networks):**
+    We implemented a Deep Learning GAN architecture modified with an input mask ($S$) to designate fixed variables.
+    * **The Mechanism:** To ensure consistency, we applied a "hard" constraint before the discriminator stage: the generator's output is multiplied by the inverse mask and added to the original input multiplies by the mask. This forces the generator to "fill in the blanks" while preserving the known values exactly.
+    * **The Verdict:** The results were promising and comparable to theoretical expectations. However, inference was significantly slower than optimized tree-based algorithms, making it less practical for real-time production use.
+
+* **Gibbs Sampling (Random Walk):**
+    We also explored statistical methods, specifically Gibbs sampling, to reconstruct the joint distribution of the data.
+    * **The Mechanism:** This required training $N$ distinct predictors (one for each variable). To estimate the conditional probability $P(x_i | x_{-i})$, we avoided standard regression (which yields a single value) and instead used **XGBoost for multi-class classification**. We binned continuous variables into discrete categories, allowing us to predict a full probability distribution for every feature. Another option is using quantile regression. 
+    * **The Process:** We iterate through the variables not in set $S$, drawing new values from these predicted distributions. By repeating this random walk, the system converges to a high-quality synthetic sample.
+    * **The Verdict:** In lower dimensions ($<100$ variables), the quality of synthetic data exceeded that of the GAN. However, the process is computationally expensive and iterative. As dimensionality increases, the method suffers from stability issues and the "curse of dimensionality," where strong inter-variable dependencies make the random walk less efficient. Ultimately, it was too slow for our high-dimensional use cases.
+
+* **LIME (Local Interpretable Model-agnostic Explanations):**
+    We also evaluated LIME, which approximates Shapley values by fitting a local linear model around the prediction. We view this as a more efficient way to sample and estimate contributions. However, LIME still faces the same "missing data" hurdle; to function correctly, it also required the underlying synthetic data generation techniques (Masked GAN or Gibbs) described above.
+
 ## Can we Use This?
 
 We've integrated this powerful explainability engine directly into our platform. If you're using our MedModel JSON format, you can add a `tree_shap` post-processor to your model pipeline definition at the end and use our [Tutorial](../Tutorials/04.Train%20Model) to train your model:
@@ -190,25 +211,7 @@ We saw a striking example of this in our **Flu Complications** model. In medical
 
 A naive analysis (or a standard correlation study) might suggest that Low BMI is a risk factor. However, our Shapley analysis confirmed that the model had successfully disentangled this relationship. The plots showed that while risk scores were high for these patients, the attribution went solely to **Young Age**. The model correctly identified Age as the driver and did not treat Low BMI as a risk factor, proving it wasn't relying on spurious correlations.
 
-## Alternative Approaches Explored
 
-Before finalizing our methodology, we explored several model-agnostic approaches. Our goal was to estimate Shapley values by treating the model as a "black box" and approximating the exponential sum via Monte Carlo sampling.
-
-However, even with sampling, the core challenge remains: accurately estimating $v(S)$. To do this effectively, one must generate synthetic values for the "missing" variables based on the fixed known variables. We investigated two distinct generative strategies for this task:
-
-* **Masked GAN (Generative Adversarial Networks):**
-    We implemented a Deep Learning GAN architecture modified with an input mask ($S$) to designate fixed variables.
-    * **The Mechanism:** To ensure consistency, we applied a "hard" constraint before the discriminator stage: the generator's output is multiplied by the inverse mask and added to the original input multiplies by the mask. This forces the generator to "fill in the blanks" while preserving the known values exactly.
-    * **The Verdict:** The results were promising and comparable to theoretical expectations. However, inference was significantly slower than optimized tree-based algorithms, making it less practical for real-time production use.
-
-* **Gibbs Sampling (Random Walk):**
-    We also explored statistical methods, specifically Gibbs sampling, to reconstruct the joint distribution of the data.
-    * **The Mechanism:** This required training $N$ distinct predictors (one for each variable). To estimate the conditional probability $P(x_i | x_{-i})$, we avoided standard regression (which yields a single value) and instead used **XGBoost for multi-class classification**. We binned continuous variables into discrete categories, allowing us to predict a full probability distribution for every feature. Another option is using quantile regression. 
-    * **The Process:** We iterate through the variables not in set $S$, drawing new values from these predicted distributions. By repeating this random walk, the system converges to a high-quality synthetic sample.
-    * **The Verdict:** In lower dimensions ($<100$ variables), the quality of synthetic data exceeded that of the GAN. However, the process is computationally expensive and iterative. As dimensionality increases, the method suffers from stability issues and the "curse of dimensionality," where strong inter-variable dependencies make the random walk less efficient. Ultimately, it was too slow for our high-dimensional use cases.
-
-* **LIME (Local Interpretable Model-agnostic Explanations):**
-    We also evaluated LIME, which approximates Shapley values by fitting a local linear model around the prediction. We view this as a more efficient way to sample and estimate contributions. However, LIME still faces the same "missing data" hurdle; to function correctly, it also required the underlying synthetic data generation techniques (Masked GAN or Gibbs) described above.
 
 ## Final Notes
 
