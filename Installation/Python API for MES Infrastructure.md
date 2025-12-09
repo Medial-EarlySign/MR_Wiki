@@ -46,3 +46,16 @@ A full docker image for compilation steps can be found under this link:
 
 * [01.basic_boost](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost) A base docker image with Boost
 * [04.medpython](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/04.medpython) A build with the python. Please edit, install your python version in the build. This will use the python 3.10 that was shipped with ubuntu 22.04. If you need a different version, please install it inside the docker before executing the setup script
+
+### Alpine
+
+Install those Alpine packages
+```bash
+apk add py3-pip
+apk add boost-dev gcc g++ make python3-dev 
+```
+
+Run this command before compilation:
+```bash
+export BOOST_DISABLE_STATIC=1
+```
