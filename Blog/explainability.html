@@ -9611,38 +9611,38 @@
 
 
 <h1 id="a-journey-into-explainable-ai">A Journey into Explainable AI</h1>
-<p>Have you ever wondered what a machine learning model is <em>really</em> thinking? We often treat them like black boxes. We feed them data, they spit out predictions, and we cross our fingers, hoping they're right. But what if we could peek inside? What if we could ask the AI, "Why did you make that decision?"
-Unlike <em>global</em> feature importance (which tells us what matters to the model in general), we wanted a <em>local</em> and specific explanation for every single prediction.</p>
+<p>Have you ever wondered what a machine learning model is <strong>really</strong> thinking? We often treat them like black boxes. We feed them data, they spit out predictions, and we cross our fingers, hoping they're right. But what if we could peek inside? What if we could ask the AI, "Why did you make that decision?"
+Unlike <strong>global</strong> feature importance (which tells us what matters to the model in general), we wanted a <strong>local</strong> and specific explanation for every single prediction.</p>
 <p>This isn't just a philosophical question. In the high-stakes world of medical data, understanding the "why" can be a matter of life and death. It's crucial for debugging our models, building trust with doctors, and even discovering new ways to help patients.</p>
-<p>At Medial EarlySign, we wanted to move beyond just knowing <em>what</em> the model predicts, to understanding <em>why</em>. This is the story of our journey, a tale of failed experiments, surprising discoveries, and a brand-new way to look inside the mind of the machine.</p>
+<p>At Medial EarlySign, we wanted to move beyond just knowing <strong>what</strong> the model predicts, to understanding <strong>why</strong>. This is the story of our journey, a tale of failed experiments, surprising discoveries, and a brand-new way to look inside the mind of the machine.</p>
 <p>This is the story of how we broke the standard to build something better.</p>
 <h2 id="the-goal-a-clinical-story-not-just-a-score">The Goal: A Clinical Story, Not Just a Score</h2>
 <p>Before diving into the algorithms, let’s look at what we actually achieved. This is what our new engine produces for a colon cancer prediction model.</p>
-<p>Consider an <em>82-year-old patient</em> flagged as High Risk (Score: 0.9). A standard model just gives the alert. Our system tells the doctor:</p>
+<p>Consider an 82-year-old patient flagged as High Risk (Score: 0.9). A standard model just gives the alert. Our system tells the doctor:</p>
 <ul>
-<li><strong>MCH_Trends:</strong> Sharply decreasing trend in Mean Corpuscular Hemoglobin.</li>
-<li><strong>MCH_Values:</strong> Low absolute values and became anemic recently.</li>
-<li><strong>Age:</strong> Advanced age contributes to risk.</li>
+<li><strong>MCH_Trends</strong>: Sharply decreasing trend in Mean Corpuscular Hemoglobin.</li>
+<li><strong>MCH_Values</strong>: Low absolute values and became anemic recently.</li>
+<li><strong>Age</strong>: Advanced age contributes to risk.</li>
 </ul>
 <p>This is not just a math output, it empowers the doctor to act.
 But getting to this level of clarity required us to build a new framework upon the existing one.</p>
 <p><strong>But when we applied "Vanilla" Shapley to real medical data, it was a disaster</strong></p>
 <p>Our models use over 1,000 features, many of which are highly correlated (e.g., "last hemoglobin" vs. "average hemoglobin"). The standard Shapley method tried to be "fair" by splitting credit among all these similar features.
 The result? A long, repetitive list of weak signals that diluted the true clinical story. It was like trying to explain a picture of a cat by listing the color of every individual pixel.</p>
-<p><strong>The "Eosinophil#" Disaster</strong>
-It got worse. In one test, standard Shapley told us that "eosinophils#" (a white blood cell) was a top risk factor for a patient, even though that value was <strong>missing</strong>! Because our imputation method used age and sex to fill gaps, the algorithm got confused. It attributed the risk to the missing blood cell count rather than the patient's age.
+<p><strong>The "Eosinophil#" Disaster</strong></p>
+<p>It got worse. In one test, standard Shapley told us that "eosinophils#" (a white blood cell) was a top risk factor for a patient, even though that value was <strong>missing</strong>! Because our imputation method used age and sex to fill gaps, the algorithm got confused. It attributed the risk to the missing blood cell count rather than the patient's age.
 We knew we had to do better.</p>
 <h2 id="our-secret-sauce">Our Secret Sauce</h2>
-<p>We realized that off-the-shelf solutions were insufficient for the complexities of clinical data. Consequently, we engineered our own implementation, introducing four key innovations now available in our <a href="https://pypi.org/project/medpython">medpython</a> library:</p>
+<p>We realized that off-the-shelf solutions were insufficient for the complexities of clinical data. Consequently, we engineered our own implementation, introducing four key innovations now available in our <a href="https://pypi.org/project/medpython">MedPython</a> library:</p>
 <ol>
-<li><strong>Native Variable Grouping:</strong>
-    Instead of analyzing individual features, we aggregate them into clinical concepts (e.g., grouping all hemoglobin timestamps into a single "Hemoglobin" entity). This is analogous to moving from pixel-level analysis to object recognition in computer vision. It is far more intuitive. Crucially, we didn't just sum the Shapley values of individual features post-hoc. We modified the underlying C++ implementation to calculate Shapley values <em>directly on the groups</em>. This allows us to measure the marginal effect of knowing an entire clinical concept versus not knowing it.</li>
-<li><strong>First-Order Adjustment for Correlated Variables:</strong> 
+<li><strong>Native Variable Grouping</strong>:
+    Instead of analyzing individual features, we aggregate them into clinical concepts (e.g., grouping all hemoglobin timestamps into a single "Hemoglobin" entity). This is analogous to moving from pixel-level analysis to object recognition in computer vision. It is far more intuitive. Crucially, we didn't just sum the Shapley values of individual features post-hoc. We modified the underlying C++ implementation to calculate Shapley values <strong>directly on the groups</strong>. This allows us to measure the marginal effect of knowing an entire clinical concept versus not knowing it.</li>
+<li><strong>First-Order Adjustment for Correlated Variables</strong>:
     To solve the credit-splitting problem, we built a "correlation-aware" system. We calculate the covariance matrix(and have experimented with mutual information) between all our feature groups and use it to adjust the contributions. This way, the contribution of a concept isn't diluted across many similar features.</li>
-<li><strong>Iterative Diversity Selection:</strong>
-    Even with grouping, standard ranking can yield a list of redundant concepts. To solve this, we implemented an iterative selection process within the C++ algorithm. We identify the most important group, "lock" its value (treat it as known), and then ask the model: "Given this information, what is the <em>next</em> most important factor?" This conditional approach produces a minimal, diverse set of features that tells a distinct clinical story.</li>
-<li><strong>Domain-Specific Heuristics:</strong>
-    Finally, we integrated a layer of practical control. We allow for the filtering of contributions based on magnitude, direction (e.g., showing only factors that increase risk), and specific "blacklists." We also implemented strict handling for missing values. While our grouping and correlation methods solved most artifacts, this layer acts as a final safety net to ensure no "noise" from missing data affects the explanation.</li>
+<li><strong>Iterative Diversity Selection</strong>:
+    Even with grouping, standard ranking can yield a list of redundant concepts. To solve this, we implemented an iterative selection process within the C++ algorithm. We identify the most important group, "lock" its value (treat it as known), and then ask the model: "Given this information, what is the <strong>next</strong> most important factor?" This conditional approach produces a minimal, diverse set of features that tells a distinct clinical story.</li>
+<li><strong>Domain-Specific Heuristics</strong>:
+    Finally, we integrated a layer of practical control. We allow for the filtering of contributions based on magnitude, direction (e.g., showing only factors that increase risk), and specific "blacklists" We also implemented strict handling for missing values. While our grouping and correlation methods solved most artifacts, this layer acts as a final safety net to ensure no "noise" from missing data affects the explanation.</li>
 </ol>
 <h2 id="beyond-explanation-debugging-validation">Beyond Explanation: Debugging &amp; Validation</h2>
 <p>Beyond providing individual patient insights, these tools proved invaluable for <strong>model debugging and bias detection</strong>. In several cases, they helped us uncover hidden biases that required retraining or fixing our models.</p>
@@ -9652,10 +9652,13 @@ We knew we had to do better.</p>
 <li><strong>True Outcome Probability</strong> (The reality)</li>
 <li><strong>Mean Model Score</strong> (The prediction)</li>
 </ol>
-<p>It was particularly fascinating to analyze divergences. Specifically, instances where the Model Score and Outcome Probability rose, but the Shapley value for that specific feature remained flat. This gap allowed us to distinguish between features the model was actually <em>using</em> versus features that were merely <em>correlated</em> with the outcome.</p>
+<p>It was particularly fascinating to analyze divergences. Specifically, instances where the Model Score and Outcome Probability rose, but the Shapley value for that specific feature remained flat. This gap allowed us to distinguish between features the model was actually <strong>using</strong> versus features that were merely <strong>correlated</strong> with the outcome.</p>
 <p><strong>A Real-World Example: The "BMI Paradox"</strong>
 We saw a striking example of this in our <strong>Flu Complications</strong> model. In medical data, <strong>Low BMI</strong> is strongly correlated with children, and children are naturally at higher risk for complications like pneumonia.</p>
 <p>A naive analysis (or a standard correlation study) might suggest that Low BMI is a risk factor. However, our Shapley analysis confirmed that the model had successfully disentangled this relationship. The plots showed that while risk scores were high for these patients, the attribution went solely to <strong>Young Age</strong>. The model correctly identified Age as the driver and did not treat Low BMI as a risk factor, proving it wasn't relying on spurious correlations.</p>
+<p>As can be seen from <a href="https://pubmed.ncbi.nlm.nih.gov/35893436/">FluComplication Paper</a>
+<img src="../images/bmi_flu.png"/>
+We can see the U shape of the risk score as a function of BMI in orange, but the Shapley Values in blue, remains low in lower values of BMI.</p>
 <h2 id="can-we-use-this">Can we Use This?</h2>
 <p>We've integrated this powerful explainability engine directly into our platform. If you're using our MedModel JSON format, you can add a <code>tree_shap</code> post-processor to your model pipeline definition at the end and use our <a href="../Tutorials/04.Train%20Model">Tutorial</a> to train your model:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
@@ -9674,8 +9677,8 @@ We saw a striking example of this in our <strong>Flu Complications</strong> mode
 </code></pre></div></td></tr></table></div>
 <p>This will give you the same rich, diverse, and intuitive explanations that our doctors and data scientists found much more valuable.
 This Exactly same method was used in the <a href="https://www.cms.gov/priorities/innovation/innovation-models/artificial-intelligence-health-outcomes-challenge">CMS AI Health Outcomes Challenge</a> for all caused mortality and COPD hospital readmission within 30 days. Our platform was resulted as award-winner in this competition.</p>
-<p>This method is only applicable for tree based model in our platform - xgboost, lightgbm, qrf(Quantized Random Forest - our implementation for random forest), BART(Baysian Additive Regression Trees).
-The other predictor will need to use other shapley method that is model agnostic and not related to trees from our available explainers.</p>
+<p>This method is only applicable for tree based model in our platform - xgboost, lightgbm, QRF(Quantized Random Forest - our implementation for random forest), BART(Baysian Additive Regression Trees).
+The other predictor will need to use our other shapley methods that are model agnostic and unrelated to trees. They are slower, but also performs quite well.</p>
 <h2 id="deeper-dive-into-mathematics-methodology-and-algorithm-explored">Deeper Dive Into Mathematics, Methodology and Algorithm Explored</h2>
 <h3 id="the-explainability-competition">The Explainability Competition</h3>
 <p>To find the best explainer we held a competition. We benchmarked several explainability methods against each other, testing them on three of our real-world medical models for robustness:</p>
@@ -9689,11 +9692,11 @@ The other predictor will need to use other shapley method that is model agnostic
 <h3 id="common-explainability-methods">Common Explainability Methods</h3>
 <p>We started with the most popular methods out there, which generally fall into three categories:</p>
 <ol>
-<li><strong>Shapley Values-based methods:</strong> These are the state of the art for the data science world, based on a concept from game theory.</li>
-<li><strong>LIME and Noising methods:</strong> These methods work by "noising" the model - changing the input data slightly to see how the prediction changes.</li>
-<li><strong>The Naive Approach:</strong> The simplest method of all - just removing a feature (setting it to 0 or missing value) to see what happens.</li>
+<li><strong>Shapley Values-based methods</strong>: These are the state of the art for the data science world, based on a concept from game theory.</li>
+<li><strong>LIME and Noising methods</strong>: These methods work by "noising" the model - changing the input data slightly to see how the prediction changes.</li>
+<li><strong>The Naive Approach</strong>: The simplest method of all - just removing a feature (setting it to 0 or missing value) to see what happens.</li>
 </ol>
-<p><strong>Spoiler alert:</strong> The naive approach and simple noising methods were a disaster. Our medical data is a very complex, with variables on wildly different scales and distributions. These simple methods just couldn't handle it. Even the "vanilla" Shapley values, the supposed gold standard, fell too short.</p>
+<p><strong>Spoiler alert</strong>: The naive approach and simple noising methods were a disaster. Our medical data is a very complex, with variables on wildly different scales and distributions. These simple methods just couldn't handle it. Even the "vanilla" Shapley values, the supposed gold standard, fell too short.</p>
 <h3 id="why-the-gold-standard-didnt-worked">Why the "Gold Standard" didn't worked</h3>
 <p>So what are Shapley values, and why didn't they work for us?</p>
 <p>Imagine a team of players in a game, and you want to figure out how much each player contributed to the win. That's the basic idea behind Shapley values. They provide a way to fairly distribute the "payout" (the model's prediction) among the "players" (the input features).</p>
@@ -9704,9 +9707,9 @@ The other predictor will need to use other shapley method that is model agnostic
 <p>Don't let the equation scare you. The core idea is in the <span class="arithmatex">\(v(S \cup \{i\}) - v(S)\)</span> part. It measures the added value of feature <code>i</code> when it's added to a group of features <code>S</code>. The formula then calculates the average of this added value (knowing the parameter value VS not knowing) over all possible groups of features.</p>
 <p>This approach offers several valuable theoretical properties. Notably, the Shapley value is the <strong>unique</strong> attribution method that satisfies all the following axioms simultaneously:</p>
 <ul>
-<li><strong>Linearity:</strong> The sum of all individual feature contributions equals the total model prediction.</li>
-<li><strong>Null Player:</strong> A feature that has no impact on the prediction is assigned a Shapley value of zero.</li>
-<li><strong>Symmetry:</strong> Two features that contribute equally to the prediction receive the same Shapley value. This is particularly interesting when dealing with correlated variables.<ul>
+<li><strong>Linearity</strong>: The sum of all individual feature contributions equals the total model prediction.</li>
+<li><strong>Null Player</strong>: A feature that has no impact on the prediction is assigned a Shapley value of zero.</li>
+<li><strong>Symmetry</strong>: Two features that contribute equally to the prediction receive the same Shapley value. This is particularly interesting when dealing with correlated variables.<ul>
 <li><strong>Example</strong>: Consider two variables, <span class="arithmatex">\(x_1\)</span> and <span class="arithmatex">\(x_3\)</span>, that are perfectly correlated (i.e., <span class="arithmatex">\(x_1 = x_3\)</span>).
 Now, assume a linear model: <span class="arithmatex">\(F(X) = 1 \cdot x_1 + 2 \cdot x_2 + 0 \cdot x_3\)</span>
 Even though the model mathematically weights <span class="arithmatex">\(x_3\)</span> at zero, a correlation-aware Shapley calculation recognizes that <span class="arithmatex">\(x_3\)</span> carries the same information as <span class="arithmatex">\(x_1\)</span>. Consequently, the contribution score is split equally between them. This demonstrates that the contribution score accounts for a variable's relationship with other features, not just its isolated mechanical effect on the output.</li>
@@ -9730,9 +9733,9 @@ Even though the model mathematically weights <span class="arithmatex">\(x_3\)</s
 <p>The results were just awful. In one case, the model told us that "eosinophils#" (a type of white blood cell) was a top contributor for a patient's colon cancer risk, even though the value was missing for 99% of patients! This was because our imputation method used age and sex, and age is a huge factor in colon cancer. The Shapley values got confused and attributed the importance of age to the missing feature. It prefered a combination of age + sex over age alone.</p>
 <p>Another issue was that similar variables were appearing next ot each other as top contributors and as reviewers we wanted to see a different and minimal set of varaibels to explain a specific prediction.</p>
 <h3 id="the-final-result">The Final Result</h3>
-<p>So what does this all look like in practice? Let's take a look at two examples for a colon cancer prediction.</p>
+<p>So what does this all look like in practice after applying our methods? Let's take a look at two examples for a colon cancer prediction.</p>
 <p><strong>Case 1: A Low-Risk Patient (Score: 0.002)</strong></p>
-<p>A 40-year-old patient. The top contributors to their <em>low</em> risk score are:</p>
+<p>A 40-year-old patient. The top contributors to their <strong>low</strong> risk score are:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
@@ -9745,7 +9748,7 @@ Even though the model mathematically weights <span class="arithmatex">\(x_3\)</s
 </code></pre></div></td></tr></table></div>
 <p>The explanation is clear: the patient's young age is the biggest factor driving their low risk. Their normal blood test results (MCH, MCHC) also contribute (You can't see here the MCH, MCHC values, but after inspecting them, they were well in the normal range).</p>
 <p><strong>Case 2: A High-Risk Patient (Score: 0.9)</strong></p>
-<p>An 82-year-old patient. The top contributors to their <em>high</em> risk score are:</p>
+<p>An 82-year-old patient. The top contributors to their <strong>high</strong> risk score are:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
@@ -9758,32 +9761,31 @@ Even though the model mathematically weights <span class="arithmatex">\(x_3\)</s
 <p>This is the kind of insight that is not just intellectually satisfying, but clinically actionable.</p>
 <p>You can see more results and the raw scores from our final benchmark here (unblinded):</p>
 <ul>
-<li><a href="../../../attachments/11207625/11207623.xlsx">compare_all.Alon.xlsx</a></li>
-<li><a href="../../../attachments/11207625/11207634.xlsx">compare_all - Coby.xlsx</a></li>
+<li><a href="../attachments/11207625/11207634.xlsx">compare_all.reviewer1.xlsx</a></li>
 </ul>
 <h3 id="alternative-approaches-explored">Alternative Approaches Explored</h3>
 <p>Before finalizing our methodology, we explored several model-agnostic approaches. Our goal was to estimate Shapley values by treating the model as a "black box" and approximating the exponential sum via Monte Carlo sampling.</p>
 <p>However, even with sampling, the core challenge remains: accurately estimating <span class="arithmatex">\(v(S)\)</span>. To do this effectively, one must generate synthetic values for the "missing" variables based on the fixed known variables. We investigated two distinct generative strategies for this task:</p>
 <ul>
 <li>
-<p><strong>Masked GAN (Generative Adversarial Networks):</strong>
+<p><strong>Masked GAN (Generative Adversarial Networks)</strong>:
     We implemented a Deep Learning GAN architecture modified with an input mask (<span class="arithmatex">\(S\)</span>) to designate fixed variables.</p>
 <ul>
-<li><strong>The Mechanism:</strong> To ensure consistency, we applied a "hard" constraint before the discriminator stage: the generator's output is multiplied by the inverse mask and added to the original input multiplies by the mask. This forces the generator to "fill in the blanks" while preserving the known values exactly.</li>
-<li><strong>The Verdict:</strong> The results were promising and comparable to theoretical expectations. However, inference was significantly slower than optimized tree-based algorithms, making it less practical for real-time production use.</li>
+<li><strong>The Mechanism</strong>: To ensure consistency, we applied a "hard" constraint before the discriminator stage: the generator's output is multiplied by the inverse mask and added to the original input multiplies by the mask. This forces the generator to "fill in the blanks" while preserving the known values exactly.</li>
+<li><strong>The Verdict</strong>: The results were promising and comparable to theoretical expectations. However, inference was significantly slower than optimized tree-based algorithms, making it less practical for real-time production use.</li>
 </ul>
 </li>
 <li>
-<p><strong>Gibbs Sampling (Random Walk):</strong>
+<p><strong>Gibbs Sampling (Random Walk)</strong>:
     We also explored statistical methods, specifically Gibbs sampling, to reconstruct the joint distribution of the data.</p>
 <ul>
-<li><strong>The Mechanism:</strong> This required training <span class="arithmatex">\(N\)</span> distinct predictors (one for each variable). To estimate the conditional probability <span class="arithmatex">\(P(x_i | x_{-i})\)</span>, we avoided standard regression (which yields a single value) and instead used <strong>XGBoost for multi-class classification</strong>. We binned continuous variables into discrete categories, allowing us to predict a full probability distribution for every feature. Another option is using quantile regression. </li>
-<li><strong>The Process:</strong> We iterate through the variables not in set <span class="arithmatex">\(S\)</span>, drawing new values from these predicted distributions. By repeating this random walk, the system converges to a high-quality synthetic sample.</li>
-<li><strong>The Verdict:</strong> In lower dimensions (<span class="arithmatex">\(&lt;100\)</span> variables), the quality of synthetic data exceeded that of the GAN. However, the process is computationally expensive and iterative. As dimensionality increases, the method suffers from stability issues and the "curse of dimensionality," where strong inter-variable dependencies make the random walk less efficient. Ultimately, it was too slow for our high-dimensional use cases.</li>
+<li><strong>The Mechanism</strong>: This required training <span class="arithmatex">\(N\)</span> distinct predictors (one for each variable). To estimate the conditional probability <span class="arithmatex">\(P(x_i | x_{-i})\)</span>, we avoided standard regression (which yields a single value) and instead used <strong>XGBoost for multi-class classification</strong>. We binned continuous variables into discrete categories, allowing us to predict a full probability distribution for every feature. Another option is using quantile regression. </li>
+<li><strong>The Process</strong>: We iterate through the variables not in set <span class="arithmatex">\(S\)</span>, drawing new values from these predicted distributions. By repeating this random walk, the system converges to a high-quality synthetic sample.</li>
+<li><strong>The Verdict</strong>: In lower dimensions (<span class="arithmatex">\(&lt;100\)</span> variables), the quality of synthetic data exceeded that of the GAN. However, the process is computationally expensive and iterative. As dimensionality increases, the method suffers from stability issues and the "curse of dimensionality", where strong inter-variable dependencies make the random walk less efficient. Ultimately, it was too slow for our high-dimensional use cases.</li>
 </ul>
 </li>
 <li>
-<p><strong>LIME (Local Interpretable Model-agnostic Explanations):</strong>
+<p><strong>LIME (Local Interpretable Model-agnostic Explanations)</strong>:
     We also evaluated LIME, which approximates Shapley values by fitting a local linear model around the prediction. We view this as a more efficient way to sample and estimate contributions. However, LIME still faces the same "missing data" hurdle; to function correctly, it also required the underlying synthetic data generation techniques (Masked GAN or Gibbs) described above.</p>
 </li>
 </ul>
