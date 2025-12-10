@@ -7396,7 +7396,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Installation Steps">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#alpine" class="md-nav__link">
@@ -7406,6 +7407,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -9273,7 +9279,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Installation Steps">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#alpine" class="md-nav__link">
@@ -9283,6 +9290,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -9376,12 +9388,15 @@
 
 <h2 id="python-api-for-mes-infrastructure">Python API for MES Infrastructure</h2>
 <h3 id="overview">Overview</h3>
-<p>This is a Python API wrapper for the MES Infrastructure, allowing you to interact with MES models from Python code.
-Train and manipulate new models.</p>
-<p>The simplest way to install our package is with this command (Requires Python &gt;=3.10 and linux, there is source code package for windows and older python versinos):
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
-</code></pre></div></td></tr></table></div></p>
-<p>If you need to build from source, follow the instructions below.</p>
+<p><code>MedPython</code> package provides a Python API for the MES Infrastructure, allowing you to train and manipulate MES models.</p>
+<p><strong>Installation</strong></p>
+<p>Requires Python 3.8+.</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
+</code></pre></div></td></tr></table></div>
+<strong>Platform Support</strong> </p>
+<p>We provide pre-built binaries for <strong>x86_64</strong> architectures on <strong>Linux</strong> (Python 3.10-3.14) and <strong>Windows</strong>/<strong>macOS</strong> (Python 3.10-3.13).</p>
+<p>If you are using <strong>Alpine Linux</strong> (Musl instead of GlibC), a different architecture (such as <strong>ARM/Apple Silicon</strong>) or a Python version not listed above, you will need to compile the package manually. </p>
+<p>See the "Build from Source" instructions below.</p>
 <h3 id="installation-steps">Installation Steps</h3>
 <ol>
 <li>Install required system libraries:
@@ -9401,26 +9416,24 @@ Train and manipulate new models.</p>
 </blockquote>
 </li>
 <li>Build the Python API:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Internal/MedPyExport/generate_binding/make-simple.sh
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>Internal/MedPyExport/generate_binding
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>-vv
 </code></pre></div></td></tr></table></div></li>
-<li>Make the library accessible to your python by adding it to <code>PYTHONPATH</code> variable: 
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python<span class="si">${</span><span class="nv">PY_VERSION</span><span class="si">}</span>
-</code></pre></div></td></tr></table></div>
-   Change MR_LIBS to your cloned path of MR_LIBS and ${PY_VERSION} to your python version, eg. 312 for python 3.12.</li>
 </ol>
 <p>A full docker image for compilation steps can be found under this link:</p>
 <ul>
 <li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost">01.basic_boost</a> A base docker image with Boost</li>
 <li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/04.medpython">04.medpython</a> A build with the python. Please edit, install your python version in the build. This will use the python 3.10 that was shipped with ubuntu 22.04. If you need a different version, please install it inside the docker before executing the setup script</li>
 </ul>
-<h3 id="alpine">Alpine</h3>
+<h4 id="alpine">Alpine</h4>
 <p>Install those Alpine packages
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
-<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>apk<span class="w"> </span>add<span class="w"> </span>py3-pip
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a>apk<span class="w"> </span>add<span class="w"> </span>boost-dev<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>python3-dev<span class="w"> </span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>apk<span class="w"> </span>add<span class="w"> </span>py3-pip
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>apk<span class="w"> </span>add<span class="w"> </span>boost-dev<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>python3-dev<span class="w"> </span>
 </code></pre></div></td></tr></table></div></p>
 <p>Run this command before compilation:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">BOOST_DISABLE_STATIC</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">BOOST_DISABLE_STATIC</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div></td></tr></table></div></p>
 
 
