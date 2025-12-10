@@ -86,7 +86,9 @@ pip install medpython
 ```
 For detailed system requirements and compilation instructions, please see the [Installation Guide](Installation/index.md).
 
-> [NOTE!] Pay attention there are only pre-builds for Linux. I hope to publish pre-builds for windows soon through conda. Currently it doesn't compile on mac from source, only linux/windows. 
+> **[NOTE]** Pre-builds are provided for Python 3.10-3.13 on Linux, Windows, and Mac.
+> 
+> Users on Alpine (or other non-glibc distros) and other Python versions must compile manually. See the Alpine compilation guide for instructions.
 
 ## Why Use This Platform?
 

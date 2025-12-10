@@ -3,15 +3,22 @@
 
 ### Overview
 
-This is a Python API wrapper for the MES Infrastructure, allowing you to interact with MES models from Python code.
-Train and manipulate new models.
+`MedPython` package provides a Python API for the MES Infrastructure, allowing you to train and manipulate MES models.
 
-The simplest way to install our package is with this command (Requires Python >=3.10 and linux, there is source code package for windows and older python versinos):
+**Installation**
+
+Requires Python 3.8+.
+
 ```bash
 pip install medpython
 ```
+**Platform Support** 
 
-If you need to build from source, follow the instructions below.
+We provide pre-built binaries for **x86_64** architectures on **Linux** (Python 3.10-3.14) and **Windows**/**macOS** (Python 3.10-3.13).
+
+If you are using **Alpine Linux** (Musl instead of GlibC), a different architecture (such as **ARM/Apple Silicon**) or a Python version not listed above, you will need to compile the package manually. 
+
+See the "Build from Source" instructions below.
 
 ### Installation Steps
 
@@ -34,20 +41,16 @@ If you need to build from source, follow the instructions below.
    > This API supports both NumPy 1.x and 2.x. For maximum compatibility, compile with NumPy 2.x (works for clients with either version). Compiling with NumPy 1.x will **not** work for clients using 2.x.
 5. Build the Python API:
    ```bash
-   Internal/MedPyExport/generate_binding/make-simple.sh
+   cd Internal/MedPyExport/generate_binding
+   pip install . -vv
    ```
-6. Make the library accessible to your python by adding it to `PYTHONPATH` variable: 
-   ```bash
-   export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python${PY_VERSION}
-   ```
-   Change MR_LIBS to your cloned path of MR_LIBS and ${PY_VERSION} to your python version, eg. 312 for python 3.12.
 
 A full docker image for compilation steps can be found under this link:
 
 * [01.basic_boost](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost) A base docker image with Boost
 * [04.medpython](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/04.medpython) A build with the python. Please edit, install your python version in the build. This will use the python 3.10 that was shipped with ubuntu 22.04. If you need a different version, please install it inside the docker before executing the setup script
 
-### Alpine
+#### Alpine
 
 Install those Alpine packages
 ```bash
