@@ -9394,9 +9394,41 @@
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
 </code></pre></div></td></tr></table></div>
 <strong>Platform Support</strong> </p>
-<p>We provide pre-built binaries for <strong>x86_64</strong> architectures on <strong>Linux</strong> (Python 3.10-3.14) and <strong>Windows</strong>/<strong>macOS</strong> (Python 3.10-3.13).</p>
-<p>If you are using <strong>Alpine Linux</strong> (Musl instead of GlibC), a different architecture (such as <strong>ARM/Apple Silicon</strong>) or a Python version not listed above, you will need to compile the package manually. </p>
-<p>See the "Build from Source" instructions below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">x86_64 (Intel/AMD)</th>
+<th style="text-align: left;">aarch64 (ARM / Apple Silicon)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Linux (glibc)</strong></td>
+<td style="text-align: left;">✅ Pre-built (Py 3.10-3.14)</td>
+<td style="text-align: left;">✅ Pre-built (Py 3.12)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Linux (Alpine/musl)</strong></td>
+<td style="text-align: left;">🛠️ Compile Required</td>
+<td style="text-align: left;">🛠️ Compile Required</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Windows</strong></td>
+<td style="text-align: left;">✅ Pre-built (Py 3.10-3.13)</td>
+<td style="text-align: left;">🛠️ Compile Required</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>macOS</strong></td>
+<td style="text-align: left;">✅ Pre-built (Py 3.10-3.13)</td>
+<td style="text-align: left;">🛠️ Compile Required</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> For any Compile Required or either not listed as Pre-built. Compliation is required.
+See the "Build from Source" instructions below.</p>
+</blockquote>
 <h3 id="installation-steps">Installation Steps</h3>
 <ol>
 <li>Install required system libraries:
@@ -9432,7 +9464,7 @@
 <span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>apk<span class="w"> </span>add<span class="w"> </span>py3-pip
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a>apk<span class="w"> </span>add<span class="w"> </span>boost-dev<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>python3-dev<span class="w"> </span>
 </code></pre></div></td></tr></table></div></p>
-<p>Run this command before compilation:
+<p>Run this command before the build (<code>pip install . -vv</code>), unless you have compiled Boost yourself as a static library:
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">BOOST_DISABLE_STATIC</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div></td></tr></table></div></p>
 
