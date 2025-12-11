@@ -14,11 +14,15 @@ pip install medpython
 ```
 **Platform Support** 
 
-We provide pre-built binaries for **x86_64** architectures on **Linux** (Python 3.10-3.14) and **Windows**/**macOS** (Python 3.10-3.13).
+| Platform | x86_64 (Intel/AMD) | aarch64 (ARM / Apple Silicon) |
+| :--- | :--- | :--- |
+| **Linux (glibc)** | ✅ Pre-built (Py 3.10-3.14) | ✅ Pre-built (Py 3.12) |
+| **Linux (Alpine/musl)**| 🛠️ Compile Required | 🛠️ Compile Required |
+| **Windows** | ✅ Pre-built (Py 3.10-3.13) | 🛠️ Compile Required |
+| **macOS** | ✅ Pre-built (Py 3.10-3.13) | 🛠️ Compile Required |
 
-If you are using **Alpine Linux** (Musl instead of GlibC), a different architecture (such as **ARM/Apple Silicon**) or a Python version not listed above, you will need to compile the package manually. 
-
-See the "Build from Source" instructions below.
+> **Note:** For any Compile Required or either not listed as Pre-built. Compliation is required.
+> See the "Build from Source" instructions below.
 
 ### Installation Steps
 
@@ -58,7 +62,7 @@ apk add py3-pip
 apk add boost-dev gcc g++ make python3-dev 
 ```
 
-Run this command before compilation:
+Run this command before the build (`pip install . -vv`), unless you have compiled Boost yourself as a static library:
 ```bash
 export BOOST_DISABLE_STATIC=1
 ```

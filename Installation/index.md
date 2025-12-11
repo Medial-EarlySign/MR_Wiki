@@ -7,11 +7,23 @@ This guide describes how to install and set up the MES Infrastructure and its co
 
 ## Prebuilt Releases
 
-A prebuilt package is available for [direct download](https://github.com/Medial-EarlySign/medpython/releases/tag/V1.0.1). This eliminates the need for manual compilation. The binaries are built on **manylinux2014** and are compatible with any Linux distribution using **glibc ≥ 2.17** (Ubuntu >= 13.04, Centos>=7 or any other linux distro that has glibc>=2.17). You must also install [OpenMP support](#2-install-openmp-support-ubuntu).
+A prebuilt package of executables is available for [direct download](https://github.com/Medial-EarlySign/medpython/releases/tag/V1.0.1). This eliminates the need for manual compilation. The binaries are built on **manylinux2014** and are compatible with any Linux distribution using **glibc ≥ 2.17** (Ubuntu >= 13.04, Centos>=7 or any other linux distro that has glibc>=2.17). You must also install [OpenMP support](#2-install-openmp-support-ubuntu).
+
 You might also want to install our [PyPi python package](https://pypi.org/project/medpython/) for working with python.
 ```bash
 pip install medpython
 ```
+**Platform Support for MedPython** 
+
+| Platform | x86_64 (Intel/AMD) | aarch64 (ARM / Apple Silicon) |
+| :--- | :--- | :--- |
+| **Linux (glibc)** | ✅ Pre-built (Py 3.10-3.14) | ✅ Pre-built (Py 3.12) |
+| **Linux (Alpine/musl)**| 🛠️ Compile Required | 🛠️ Compile Required |
+| **Windows** | ✅ Pre-built (Py 3.10-3.13) | 🛠️ Compile Required |
+| **macOS** | ✅ Pre-built (Py 3.10-3.13) | 🛠️ Compile Required |
+
+> **Note:** For any Compile Required or either not listed as Pre-built. Compliation is required.
+> See the "Build from Source" instructions below.
 
 ## Prerequisites
 
