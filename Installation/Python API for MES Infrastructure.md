@@ -56,10 +56,9 @@ A full docker image for compilation steps can be found under this link:
 Install those Alpine packages
 ```bash
 apk add py3-pip
-apk add boost-dev gcc g++ make python3-dev 
-```
+apk add gcc g++ make python3-dev 
 
-Run this command before the build (`pip install . -vv`), unless you have compiled Boost yourself as a static library:
-```bash
-export BOOST_DISABLE_STATIC=1
+python -m pip install numpy "swig<4.3"
 ```
+ 
+ Just run the install script `pip install . -vv`
