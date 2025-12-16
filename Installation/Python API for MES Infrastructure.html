@@ -9391,9 +9391,12 @@
 <p><code>MedPython</code> package provides a Python API for the MES Infrastructure, allowing you to train and manipulate MES models.</p>
 <p><strong>Installation</strong></p>
 <p>Requires Python 3.8+.</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
 </code></pre></div></td></tr></table></div>
-<strong>Platform Support</strong> </p>
+<p>Build from source:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;medpython @ git+https://github.com/Medial-EarlySign/medpython.git/#subdirectory=Internal/MedPyExport/generate_binding&quot;</span>
+</code></pre></div></td></tr></table></div></p>
+<p><strong>Platform Support</strong> </p>
 <table>
 <thead>
 <tr>
@@ -9432,15 +9435,8 @@ See the "Build from Source" instructions below.</p>
 <h3 id="installation-steps">Installation Steps</h3>
 <ol>
 <li>Install required system libraries:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-dev<span class="w"> </span>swig<span class="w"> </span>-y
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-dev<span class="w"> </span>swig<span class="w"> </span>-y
 </code></pre></div></td></tr></table></div></li>
-<li><a href="index.html#compiling-boost-from-source">Compile the Boost library</a> from source.</li>
-<li>Edit <code>Internal/MedPyExport/generate_binding/CMakeLists.txt</code> and add/edit line:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">set</span><span class="p">(</span><span class="s">BOOST_ROOT</span><span class="w"> </span><span class="s2">&quot;$ENV{HOME}/boost-pic-install&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-   Set this path to your Boost build directory (<code>WORK_BUILD_FOLDER</code> from step 2). Make sure the compiled libraries are in <code>/libs</code> and headers in <code>/include</code>.
-   Alternatively you can just set your environment variable <code>BOOST_ROOT</code> to reference the Boost build directory.
-   To use the <strong>system Boost libraries</strong>, be aware that they were <strong>not compiled</strong> with the <code>-fPIC</code> flag. This will cause the build to fail when linking against static objects. <strong>To compile against shared Boost libraries</strong>: Set <code>export BOOST_DISABLE_STATIC=1</code> before running the build script. <strong>A critical side effect</strong>: The resulting library will only work on your local machine because it will expect the Boost shared libraries to be present at runtime. It <strong>cannot be deployed</strong> to other systems.</li>
 <li>Ensure NumPy is installed:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy
 </code></pre></div></td></tr></table></div><blockquote>
@@ -9455,8 +9451,7 @@ See the "Build from Source" instructions below.</p>
 </ol>
 <p>A full docker image for compilation steps can be found under this link:</p>
 <ul>
-<li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost">01.basic_boost</a> A base docker image with Boost</li>
-<li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/04.medpython">04.medpython</a> A build with the python. Please edit, install your python version in the build. This will use the python 3.10 that was shipped with ubuntu 22.04. If you need a different version, please install it inside the docker before executing the setup script</li>
+<li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/04.medpython">04.medpython</a> A build with the python. Please edit, install your python version in the build. This will use the python 3.10 on manylinux2014 (Centos 7) to support all linux distros with glibc &gt;= 2.17. If you need a different version, please install it inside the docker before executing the setup script</li>
 </ul>
 <h4 id="alpine">Alpine</h4>
 <p>Install those Alpine packages
