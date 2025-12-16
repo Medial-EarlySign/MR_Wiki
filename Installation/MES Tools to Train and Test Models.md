@@ -59,6 +59,6 @@ export LD_LIBRARY_PATH=/path/to/BOOST_ROOT/lib
 ```
 If Boost was installed via the system packages (Ubuntu 22.04 uses 1.74, 24.04 uses 1.83), install the appropriate dev packages instead of adjusting `LD_LIBRARY_PATH`:
 ```bash
-sudo apt install libboost-system1.83-dev libboost-filesystem1.83-dev libboost-regex1.83-dev libboost-program-options1.83-dev -y
+sudo apt install libboost-program-options1.83-dev -y
 ```
 Replace 1.83 with 1.74 on Ubuntu 22.04 when needed.
