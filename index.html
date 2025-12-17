@@ -9462,7 +9462,8 @@ It was conceived as a <strong>TensorFlow</strong> for machine learning on medica
 <a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>Load it into our Optimized Store or use it "as is" in deployment.</p>
+<p>Load it into our Optimized Store or use it "as is" in deployment.
+Seamlessly integrate with standard systems using a <a href="https://github.com/Medial-EarlySign/MR_Tools/blob/main/test_algomarker/fhir_to_medpython.py">lightweight Python script</a> to transform FHIR/Epic JSON into the AlgoMarker format on deployment (map input signal name and units).</p>
 <p><strong>2. Define Your Label</strong></p>
 <p>For each patient, and for any chosen prediction date (after which no future information is provided to the model), specify what the outcome label should be for training or testing</p>
 <p><strong>3. Define Your ML Pipeline</strong></p>
@@ -9486,7 +9487,7 @@ For detailed system requirements and compilation instructions, please see the <a
 <li><strong>High-Performance Processing:</strong> Engineered for large-scale, sparse EMR time-series data where general-purpose libraries like pandas fall short.</li>
 <li><strong>Reusable Pipelines:</strong> Save valuable engineering time by providing shareable, tested pipelines and methods.</li>
 <li><strong>Built-in Safeguards:</strong> Mitigate common pitfalls like data leakage and time-series-specific overfitting.</li>
-<li><strong>Production-Ready:</strong> Designed for easy deployment using Docker or minimal distroless Linux images.</li>
+<li><strong>Production-Ready:</strong> Designed for easy deployment using Docker or minimal distroless Linux images. <strong>FHIR Ready</strong> with lightweight python script convert to AlgoMarker format in deployment.</li>
 <li><strong>Innovative Algorithms:</strong> Access to outperforming algorithms for processing medical data, explainability, fairness, and more.</li>
 </ul>
 <h2 id="core-components">Core Components</h2>

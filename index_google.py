@@ -103,7 +103,8 @@ def get_already_indexed_pages_multiple(driver: webdriver.Chrome, sites: list[str
 
 def index_page(
     driver: webdriver.Chrome, base_site: str, index_url: str, REINDEX: bool
-) -> tuple[bool, bool]:
+) -> str:
+    final_status = 'unknown'
     base_site = base_site.strip("/")
     driver.get(f"https://search.google.com/search-console?resource_id={base_site}")
 
@@ -129,9 +130,22 @@ def index_page(
     is_indexed = (
         len(driver.find_elements(By.XPATH, "//div[text() = 'Page is indexed']")) > 0
     )
+    
+    if is_indexed:
+        final_status = 'indexed'
     if is_indexed and not (REINDEX):
-        return is_indexed, False
-
+        return final_status
+    indexing_div_stats = driver.find_elements(By.XPATH, "//div[text() = 'Page indexing']/../div")
+    indexing_div_stats = list(filter(lambda x: x.text != 'Page indexing',indexing_div_stats))
+    is_duplicate_issue = False
+    if len(indexing_div_stats) > 0:
+        indexing_div_stats = indexing_div_stats[0]
+        status = indexing_div_stats.text
+        is_duplicate_issue = status.find("Duplicate, Google chose different canonical than user") >= 0
+        final_status = status
+    if is_duplicate_issue and not (REINDEX):
+        return 'duplicate'
+    
     # live index: 'Test live URL'
     element_locator_live = (
         By.XPATH,
@@ -162,7 +176,9 @@ def index_page(
     quata_limit = (
         len(driver.find_elements(By.XPATH, "//span[text() = 'Quota Exceeded']")) > 0
     )
-    return is_indexed, quata_limit
+    if quata_limit:
+        final_status = 'quota'
+    return final_status
 
 
 def index_all(
@@ -174,7 +190,7 @@ def index_all(
     hm_folder = os.environ["HOME"]
     options.add_argument(rf"--user-data-dir={hm_folder}/snap/chromium/common/chromium")
     options.add_argument(r"--profile-directory=Default")
-    options.add_argument("--no-sandbox")
+    #options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(options=options)
 
     read_urls_df = get_already_indexed_pages(driver, base_site)
@@ -192,8 +208,9 @@ def index_all(
             if url in read_urls:
                 print(f"Skip url {url}")
                 continue
-            was_indexed, quata_limit = index_page(driver, base_site, url, reindex)
-            all_pages[url] = was_indexed
+            final_status = index_page(driver, base_site, url, reindex)
+            all_pages[url] = final_status
+            quata_limit = final_status == "quota"
             if not (quata_limit):
                 read_urls.add(url)
                 if use_cache_file:

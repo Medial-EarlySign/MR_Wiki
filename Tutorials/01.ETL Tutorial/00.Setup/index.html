@@ -9155,71 +9155,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clone-the-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Clone the Repository
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-python-to-recognize-the-library" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configure Python to Recognize the Library
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configure Python to Recognize the Library">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-1-update-your-environment-variable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option 1: Update Your Environment Variable
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-2-modify-individual-python-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option 2: Modify Individual Python Files
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#verify-the-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
         Verify the Setup
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes:
       
     </span>
   </a>
@@ -9355,34 +9294,17 @@
 
 
 <h1 id="setup">Setup</h1>
-<p>To begin working with the ETL infrastructure, you need to clone the repository. 
-Note that this is not a PyPI package; it is designed to be used as part of the environment/codebase.</p>
-<h2 id="clone-the-repository">Clone the Repository</h2>
-<p>Start by cloning the <a href="https://github.com/Medial-EarlySign/MR_Tools">MR_Tools</a> repository from GitHub to a folder on your computer.</p>
-<h2 id="configure-python-to-recognize-the-library">Configure Python to Recognize the Library</h2>
-<p>Install required python packages:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>plotly<span class="w"> </span>sqlalchemy<span class="w"> </span>ipython
-</code></pre></div></td></tr></table></div></p>
-<h3 id="option-1-update-your-environment-variable">Option 1: Update Your Environment Variable</h3>
-<p>The easiest way to use the infrastructure is by adding the "<strong>RepoLoadUtils/common</strong>" directory to your <code>PYTHONPATH</code> environment variable. This allows you to directly import modules from the ETL infrastructure in any Python file.</p>
-<h3 id="option-2-modify-individual-python-files">Option 2: Modify Individual Python Files</h3>
-<p>If you prefer not to modify your environment settings, you can add the following code snippet at the beginning of each Python file that needs access to the ETL infrastructure. This temporarily adds the required directory to the system path, enabling module imports.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1"># Replace &quot;ABSOLUTE PATH TO&quot; with the actual path on your computer</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;ABSOLUTE PATH TO RepoLoadUtils/common&quot;</span><span class="p">)</span> 
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1"># Now you can import the needed modules from ETL_Infra</span>
+<p>Just install our MedPython package, it is now part of the PyPi package:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip install medpython
 </code></pre></div></td></tr></table></div>
+or medpython-etl which is just the etl library.</p>
+<ul>
+<li>Code Repository - <a href="https://github.com/Medial-EarlySign/MR_Tools">MR_Tools</a>. You might clone it and work directly from source code. The library code is under <code>RepoLoadUtils/common/ETL_Infra</code>. You will need: numpy pandas plotly</li>
+</ul>
 <h2 id="verify-the-setup">Verify the Setup</h2>
 <p>To confirm everything is set up correctly, run the following command:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import ETL_Infra&#39;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import ETL_Infra&#39;</span>
 </code></pre></div></td></tr></table></div>
-<p>Alternatively, if using Option 2, wrap the snippet in a script and add <code>import ETL_Infra</code> at the end to verify it works.</p>
-<h2 id="notes">Notes:</h2>
-<p>The <code>ETL_Infra</code> directory that we imported, is refered as <a href="../High%20level%20-%20important%20paths/ETL_INFRA_DIR.html">ETL_INFRA_DIR</a> in this guide.
-You don't need to touch it, unless you want to extend the infrastrucutre, fix bugs for all ETLs, add tests for all ETLs. </p>
 <h2 id="next-steps">Next Steps</h2>
 <p><a href="https://medial-earlysign.github.io/MR_Tools">Sphinx API Link</a></p>
 <p>The first step in the ETL process is to create a module or script that fetches data in batches. This method is highly efficient and preferred over returning a single <code>DataFrame</code> from a simple function.</p>
