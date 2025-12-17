@@ -81,6 +81,7 @@ Once the server is running, it exposes two main API endpoints:
 2. **POST `/calculate`**  
    - Accepts a JSON request with either a single patient or a batch of patients.
    - Request format details: [Request json format](../../Infrastructure%20Library/AlgoMarkers/Request%20Json%20Format.md)
+   - A reference implementation for converting FHIR/Epic data to the AlgoMarker request format is provided in this [python adaptor script](https://github.com/Medial-EarlySign/MR_Tools/blob/main/test_algomarker/fhir_to_medpython.py). 
 
 **Example Response:**
 ```json title="Example Response"

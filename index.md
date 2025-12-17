@@ -58,6 +58,7 @@ Begin with your data in a simple JSON format.
 ```
 
 Load it into our Optimized Store or use it "as is" in deployment.
+Seamlessly integrate with standard systems using a [lightweight Python script](https://github.com/Medial-EarlySign/MR_Tools/blob/main/test_algomarker/fhir_to_medpython.py) to transform FHIR/Epic JSON into the AlgoMarker format on deployment (map input signal name and units).
 
 **2. Define Your Label**
 
@@ -95,7 +96,7 @@ For detailed system requirements and compilation instructions, please see the [I
 *   **High-Performance Processing:** Engineered for large-scale, sparse EMR time-series data where general-purpose libraries like pandas fall short.
 *   **Reusable Pipelines:** Save valuable engineering time by providing shareable, tested pipelines and methods.
 *   **Built-in Safeguards:** Mitigate common pitfalls like data leakage and time-series-specific overfitting.
-*   **Production-Ready:** Designed for easy deployment using Docker or minimal distroless Linux images.
+*   **Production-Ready:** Designed for easy deployment using Docker or minimal distroless Linux images. **FHIR Ready** with lightweight python script convert to AlgoMarker format in deployment.
 *   **Innovative Algorithms:** Access to outperforming algorithms for processing medical data, explainability, fairness, and more.
 
 ## Core Components
