@@ -151,6 +151,11 @@ While this is a powerful technique, it is not a silver bullet. There are thress 
     * *The Fix:* Identify these non-overlapping groups. If your validation set literally contains zero information about a specific sub-population, you must explicitly exclude that sub-population from the comparison and flag it as "unknown territory."
 3. **Propensity Model Quality**: Since we rely on a model ($M_p$) to estimate weights, any inaccuracies or poor calibration in this model will introduce noise. For low-dimensional shifts (like a single 'Age' variable), this is negligible, but for high-dimensional complex shifts, ensuring $M_p$ is well-calibrated is critical.
 
+> **⚠️ A Note on Statistical Power**
+> Be aware that using weights changes your **Effective Sample Size**. High-variance weights reduce the stability of your estimates. 
+> * **Bootstrapping:** If you use bootstrapping, you are safe as long as you incorporate the weights into the resampling process itself.
+> * **Power Calculations:** Do not use the raw number of rows ($N$). Please refer to the **Effective Sample Size** formula (Kish's ESS) to understand the true power of your weighted analysis.
+
 ## Summary
 
 The best practice for evaluating model performance on tabular data is to strictly account for covariance shift. Instead of using shift as an excuse for poor performance, use **Importance Weighting** to estimate how your model should perform in the new environment.
