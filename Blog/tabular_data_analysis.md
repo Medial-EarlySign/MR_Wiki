@@ -101,12 +101,12 @@ import numpy as np
 import plotly.graph_objects as go
 
 df = pd.DataFrame({"Age": np.random.randint(40,89, 10000) })
-
 df2 = pd.DataFrame({"Age": np.random.normal(65, 10, 10000) })
 df2["Age"] = df2["Age"].round().astype(int)
+df2 = df2[df2["Age"].between(40,89)].reset_index(drop=True)
+
 df["count"]=1
 df2["count"]=1
-df2 = df2[df2["Age"].between(40,89)].reset_index(drop=True)
 
 age_count1 = df.groupby("Age").count().reset_index().sort_values("Age")
 age_count1["Percentage"] = 100 * age_count1["count"] / len(df)
