@@ -9673,6 +9673,12 @@ It is very simple and still rarely used.
 </li>
 <li><strong>Propensity Model Quality</strong>: Since we rely on a model (<span class="arithmatex">\(M_p\)</span>) to estimate weights, any inaccuracies or poor calibration in this model will introduce noise. For low-dimensional shifts (like a single 'Age' variable), this is negligible, but for high-dimensional complex shifts, ensuring <span class="arithmatex">\(M_p\)</span> is well-calibrated is critical.</li>
 </ol>
+<blockquote>
+<p><strong>⚠️ A Note on Statistical Power</strong>
+Be aware that using weights changes your <strong>Effective Sample Size</strong>. High-variance weights reduce the stability of your estimates. 
+* <strong>Bootstrapping:</strong> If you use bootstrapping, you are safe as long as you incorporate the weights into the resampling process itself.
+* <strong>Power Calculations:</strong> Do not use the raw number of rows (<span class="arithmatex">\(N\)</span>). Please refer to the <strong>Effective Sample Size</strong> formula (Kish's ESS) to understand the true power of your weighted analysis.</p>
+</blockquote>
 <h2 id="summary">Summary</h2>
 <p>The best practice for evaluating model performance on tabular data is to strictly account for covariance shift. Instead of using shift as an excuse for poor performance, use <strong>Importance Weighting</strong> to estimate how your model should perform in the new environment.</p>
 <p>This allows you to answer the hardest question in deployment: "Is the performance drop due to the data changing, or is the model actually broken?"</p>
