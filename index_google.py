@@ -32,18 +32,20 @@ def sort_page_key(url: str):
         return 0
     elif url.find("/Models/") > 0:
         return 1
-    elif url.find("/Installation/") > 0:
+    elif url.find("/Blog/") > 0:
         return 2
-    elif url.find("/Tutorials/") > 0:
+    elif url.find("/Installation/") > 0:
         return 3
-    elif url.find("/Infrastructure%20Library/Medial%20Tools/") > 0:
+    elif url.find("/Tutorials/") > 0:
         return 4
-    elif url.find("/Infrastructure%20Library/") > 0:
+    elif url.find("/Infrastructure%20Library/Medial%20Tools/") > 0:
         return 5
-    elif url.find("/Research/") > 0:
+    elif url.find("/Infrastructure%20Library/") > 0:
         return 6
-    else:
+    elif url.find("/Research/") > 0:
         return 7
+    else:
+        return 8
 
 
 def get_pages(site: str) -> list[str]:

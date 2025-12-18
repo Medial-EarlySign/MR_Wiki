@@ -27,7 +27,8 @@ Suppose our test dataset contains millions of records aged 50–80, and **one si
 * Do we compare our results to the validation 40-80 range?
 * Do we compare to the 50-80 range?
 
-If we ignore the specific age distribution (which most standard analyses do), that single 40-year-old patient theoretically shifts the definition of the cohort. In practice, we might just delete that outlier. But can we generalize this? Can we automate this process to handle differences in **multiple variables** simultaneously without manually filtering data?
+If we ignore the specific age distribution (which most standard analyses do), that single 40-year-old patient theoretically shifts the definition of the cohort. In practice, we might just delete that outlier. But can we generalize this? Can we automate this process to handle differences in **multiple variables** simultaneously without manually filtering data? Filtering data is also not a good solution since it does not account for distribution shifts.
+
 
 ## The Solution: Importance Weighting
 
@@ -87,9 +88,10 @@ $$
 ### Does it work?
 Yes, like magic. If you take your validation set, apply these weights, and then plot the distributions of your variables, they will perfectly overlay the distributions of your target test set.
 It is even more **powerful** than that: it aligns the **joint distribution** of all variables, not just their individual marginals. Your weighted validation data becomes practically indistinguishable from the target test data.
+This is a generalization of the single variable we saw earlier and yield the exact same result when the precitor is optimal.
 
-You can for example this code snippet for generating 2 age distributions: one uniform, the other random, with the obvious transformation.
-It is very simple and still rarely used.
+You can for example this code snippet for generating 2 age distributions: one uniform(validation set), the other random (target test set), with the obvious transformation. It is very simple and still rarely used in data analysis.
+
 <img src="../images/Age_dist.png">
 
 <details>
@@ -104,39 +106,33 @@ df = pd.DataFrame({"Age": np.random.randint(40,89, 10000) })
 df2 = pd.DataFrame({"Age": np.random.normal(65, 10, 10000) })
 df2["Age"] = df2["Age"].round().astype(int)
 df2 = df2[df2["Age"].between(40,89)].reset_index(drop=True)
+df3 = df.copy()
 
-df["count"]=1
-df2["count"]=1
+def get_fig(df:pd.DataFrame, title:str):
+    if 'weight' not in df.columns:
+        df["weight"] = 1
+    age_count = df.groupby("Age")["weight"].sum().reset_index().sort_values("Age")
+    tot = df["weight"].sum()
+    age_count["Percentage"] = 100 * age_count["weight"] / tot
+    f = go.Bar(x=age_count["Age"], y=age_count["Percentage"], name=title)
+    return f, age_count
 
-age_count1 = df.groupby("Age").count().reset_index().sort_values("Age")
-age_count1["Percentage"] = 100 * age_count1["count"] / len(df)
-
-age_count2 = df2.groupby("Age").count().reset_index().sort_values("Age")
-age_count2["Percentage"] = 100 * age_count2["count"] / len(df2)
+f1, age_count1 = get_fig(df, "ValidationSet")
+f2, age_count2 = get_fig(df2, "TargetTestSet")
 
 age_stats = age_count1[["Age", "Percentage"]].merge(age_count2[["Age", "Percentage"]].rename(columns={"Percentage": "Percentage2"}), on=["Age"])
 age_stats["weight"] = age_stats["Percentage2"] / age_stats["Percentage"]
 
-df3 = df.copy()
 df3 = df3.merge(age_stats[["Age", "weight"]], on=["Age"])
-tot = df3["weight"].sum()
+f3, _ = get_fig(df3, "ValidationSet-Weighted")
 
-age_count3 = df3.groupby("Age")["weight"].sum().reset_index().sort_values("Age")
-age_count3["Percentage"] = 100 * age_count3["weight"] / tot
-
-fig = go.Figure()
-f1 = go.Bar(x=age_count1["Age"], y=age_count1["Percentage"], name="Age-Uniform")
-f2 = go.Bar(x=age_count2["Age"], y=age_count2["Percentage"], name="Age-Normal")
-f3 = go.Bar(x=age_count3["Age"], y=age_count3["Percentage"], name="Age-Uniform-to-norm-weights")
-
+fig = go.Figure(layout={"title":"Age Distribution"})
 fig.add_trace(f1)
 fig.add_trace(f2)
 fig.add_trace(f3)
 
 fig.update_xaxes(title_text='Age') # Set the x-axis title
 fig.update_yaxes(title_text='Percentage') # Set the y-axis title
-fig.update_layout(title="Age Distribution")
-
 fig.show()
 ```
 
