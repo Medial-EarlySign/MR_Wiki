@@ -31,7 +31,7 @@ If we ignore the specific age distribution (which most standard analyses do), th
 
 ## The Solution: Importance Weighting
 
-The solution is to mathematically re-weight our validation data to look like the test data. Instead of binary inclusion/exclusion (keeping or dropping a row), we assign a continuous **weight** to each record in our validation set.
+The solution is to mathematically re-weight our validation data to look like the test data. Instead of binary inclusion/exclusion (keeping or dropping a row), we assign a continuous **weight** to each record in our validation set. It is like an extenstion of the above simple filtering method to match the same age range.
 
 * **Weight = 1:** Standard analysis.
 * **Weight = 0:** Exclude the record (filtering).
@@ -82,9 +82,65 @@ $$
 * If $M_p(x) \approx 0.5$, the data points are indistinguishable, and the weight is 1.
 * If $M_p(x) \rightarrow 1$, the model is very sure this looks like Test data, and the weight increases.
 
+<img src="../images/propensity_diagram.png">
+
 ### Does it work?
 Yes, like magic. If you take your validation set, apply these weights, and then plot the distributions of your variables, they will perfectly overlay the distributions of your target test set.
 It is even more **powerful** than that: it aligns the **joint distribution** of all variables, not just their individual marginals. Your weighted validation data becomes practically indistinguishable from the target test data.
+
+You can for example this code snippet for generating 2 age distributions: one uniform, the other random, with the obvious transformation.
+It is very simple and still rarely used.
+<img src="../images/Age_dist.png">
+
+<details>
+       <summary>Code snippet</summary>
+
+```python title="Code to generate the simple samples with 1 variable"
+import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+
+df = pd.DataFrame({"Age": np.random.randint(40,89, 10000) })
+
+df2 = pd.DataFrame({"Age": np.random.normal(65, 10, 10000) })
+df2["Age"] = df2["Age"].round().astype(int)
+df["count"]=1
+df2["count"]=1
+df2 = df2[df2["Age"].between(40,89)].reset_index(drop=True)
+
+age_count1 = df.groupby("Age").count().reset_index().sort_values("Age")
+age_count1["Percentage"] = 100 * age_count1["count"] / len(df)
+
+age_count2 = df2.groupby("Age").count().reset_index().sort_values("Age")
+age_count2["Percentage"] = 100 * age_count2["count"] / len(df2)
+
+age_stats = age_count1[["Age", "Percentage"]].merge(age_count2[["Age", "Percentage"]].rename(columns={"Percentage": "Percentage2"}), on=["Age"])
+age_stats["weight"] = age_stats["Percentage2"] / age_stats["Percentage"]
+
+df3 = df.copy()
+df3 = df3.merge(age_stats[["Age", "weight"]], on=["Age"])
+tot = df3["weight"].sum()
+
+age_count3 = df3.groupby("Age")["weight"].sum().reset_index().sort_values("Age")
+age_count3["Percentage"] = 100 * age_count3["weight"] / tot
+
+fig = go.Figure()
+f1 = go.Bar(x=age_count1["Age"], y=age_count1["Percentage"], name="Age-Uniform")
+f2 = go.Bar(x=age_count2["Age"], y=age_count2["Percentage"], name="Age-Normal")
+f3 = go.Bar(x=age_count3["Age"], y=age_count3["Percentage"], name="Age-Uniform-to-norm-weights")
+
+fig.add_trace(f1)
+fig.add_trace(f2)
+fig.add_trace(f3)
+
+fig.update_xaxes(title_text='Age') # Set the x-axis title
+fig.update_yaxes(title_text='Percentage') # Set the y-axis title
+fig.update_layout(title="Age Distribution")
+
+fig.show()
+```
+
+</details>
 
 ## Limitations
 
