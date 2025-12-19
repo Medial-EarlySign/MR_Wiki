@@ -8,7 +8,7 @@ We provide three libraries for use:
 2. **ETL Library**: A pure Python utility designed to assist in creating Data Repositories.
 3. **AlgoMarker API Server**: A pure Python server wrapper for utilizing the AlgoMarker library (limited to predict/apply for implementation setting. Much lighter as opposed to MedPython).
 
-> **Note**: These libraries are not currently available as PyPi packages. To use them, you need to set the `PYTHONPATH` environment variable to their installation paths. For more information: [Setup](#setup)
+> **Note**: These libraries are currently available as PyPi package. To use them, just type pip install medpython. For more information: [Setup](#setup)
 
 ## Pages
 
@@ -39,19 +39,17 @@ More information on usage:
 * [AlgoMarker](Python%20AlgoMarker%20API%20Server.md#simple-usage-example)
 * [med library](Examples.md)
 
-### Compile Yourself
+### Use From Source Code
 
 1. **Clone the Git Repositories**:
     * git clone [medpython](https://github.com/Medial-EarlySign/medpython).git MR_LIBS
     * git clone [MR_Tools](https://github.com/Medial-EarlySign/MR_Tools).git
 2. **Set Up MedPython**:
    Follow the instructions in [Setup MedPython](../../../Installation/index.md#4-python-api-for-mes-infrastructure).
-   The **ETL Library** and **AlgoMarker API Server** doesn't requires installation and are pure python code.
+   The **ETL Library** and **AlgoMarker API Server** are pure python code, so you can just configure environment variable of PYTHONPATH to use them from source code. 
 3. **Configure Environment Variables**:
-   Ensure Python recognizes the libraries by setting the `PYTHONPATH` environment variable. Replace `${MR_LIBS}` with the path to the cloned `MR_LIBS` repository and `${MR_TOOLS}` with the path to the cloned `MR_Tools` repository.
+   Ensure Python recognizes the libraries by setting the `PYTHONPATH` environment variable. Replace `${MR_TOOLS}` with the path to the cloned `MR_Tools` repository.
 
    ```bash
-   export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python312:${MR_TOOLS}/RepoLoadUtils/common
+   export PYTHONPATH=${MR_TOOLS}/RepoLoadUtils/common
    ```
-
-The Python AlgoMarker API Server does not require installation. Simply run the script directly when needed.
