@@ -140,13 +140,17 @@ def index_page(
     indexing_div_stats = driver.find_elements(By.XPATH, "//div[text() = 'Page indexing']/../div")
     indexing_div_stats = list(filter(lambda x: x.text != 'Page indexing',indexing_div_stats))
     is_duplicate_issue = False
+    is_alternatve_issue = False
     if len(indexing_div_stats) > 0:
         indexing_div_stats = indexing_div_stats[0]
         status = indexing_div_stats.text
         is_duplicate_issue = status.find("Duplicate, Google chose different canonical than user") >= 0
+        is_alternatve_issue = status.find("Page is not indexed: Alternate page with proper canonical tag") >= 0
         final_status = status
     if is_duplicate_issue and not (REINDEX):
         return 'duplicate'
+    if is_alternatve_issue and not (REINDEX):
+        return 'Alternate page with proper canonical tag'
     
     # live index: 'Test live URL'
     element_locator_live = (

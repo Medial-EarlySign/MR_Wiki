@@ -9509,7 +9509,7 @@
 
 
 <h1 id="stop-blaming-the-data-a-better-way-to-handle-covariance-shift">Stop Blaming the Data: A Better Way to Handle Covariance Shift</h1>
-<p>Despite tabular data being the bread and butter of industry data science, there is a pervasive oversight when analyzing model performance.</p>
+<p>Despite tabular data being the bread and butter of industry data science, there is a miss conception when analyzing model performance.</p>
 <p>We’ve all been there: You develop a machine learning model, achieve great results on your validation set, and then deploy it (or test it) on a new, real-world dataset. Suddenly, performance drops.</p>
 <p><strong>So, what is the problem?</strong></p>
 <p>Usually, we point the finger at <strong>Covariance Shift</strong>. The distribution of features in the new data is different from the training data. We use this as a "Get Out of Jail Free" card: "The data changed, so naturally, the performance is lower. It's the data's fault, not the model's."</p>
@@ -9520,7 +9520,7 @@
 <p>Imagine we trained a model on patients aged <strong>40-89</strong>. However, in our new target test data, the age range is stricter: <strong>50-80</strong>.</p>
 <p>If we simply run the model on the test data and compare it to our original validation scores, we are cheating. To compare "apples to apples," a diligent data scientist would go back to the validation set, filter for patients aged 50-80, and recalculate the baseline performance.</p>
 <p><strong>But let's make it harder.</strong></p>
-<p>Suppose our test dataset contains millions of records aged 50–80, and <strong>one single patient</strong> aged 40.</p>
+<p>Suppose our test dataset contains millions of records aged 50-80, and <strong>one single patient</strong> aged 40.</p>
 <ul>
 <li>Do we compare our results to the validation 40-80 range?</li>
 <li>Do we compare to the 50-80 range?</li>
@@ -9550,7 +9550,7 @@ w(x) = \frac{P_t(x)}{P_v(x)}
 <p>This is a statistical technique often called <strong>Importance Sampling</strong> or <strong>Inverse Probability Weighting (IPW)</strong>.</p>
 <p>By applying these weights when calculating metrics (like Accuracy, AUC, or RMSE) on your validation set, you create a synthetic cohort that perfectly matches the test domain. You can now compare apples to apples without complaining about the shift.</p>
 <h2 id="the-extension-handling-high-dimensional-shifts">The Extension: Handling High-Dimensional Shifts</h2>
-<p>Doing this for one variable (Age) is easy-you can just use histograms/bins. But what if the data shifts across 50 different variables simultaneously? We cannot build a 50-dimensional histogram.</p>
+<p>Doing this for one variable (Age) is easy. You can just use histograms/bins. But what if the data shifts across dozens of different variables simultaneously? We cannot build a dozen dimensional histogram.</p>
 <p>The solution is a clever trick using a binary classifier.</p>
 <p>We train a new model (a "Propensity Model," let's call it <span class="arithmatex">\(M_p\)</span>) to distinguish between the two datasets.</p>
 <ul>
@@ -9569,9 +9569,9 @@ w(x) = \frac{M_p(x)}{1 - M_p(x)}
 <p><img src="../images/propensity_diagram.png"></p>
 <h3 id="does-it-work">Does it work?</h3>
 <p>Yes, like magic. If you take your validation set, apply these weights, and then plot the distributions of your variables, they will perfectly overlay the distributions of your target test set.
-It is even more <strong>powerful</strong> than that: it aligns the <strong>joint distribution</strong> of all variables, not just their individual marginals. Your weighted validation data becomes practically indistinguishable from the target test data.
+It is even more <strong>powerful</strong> than that: it aligns the <strong>joint distribution</strong> of all variables, not just their individual distribution. Your weighted validation data becomes practically indistinguishable from the target test data.
 This is a generalization of the single variable we saw earlier and yield the exact same result when the precitor is optimal.</p>
-<p>You can for example this code snippet for generating 2 age distributions: one uniform(validation set), the other random (target test set), with the obvious transformation. It is very simple and still rarely used in data analysis.</p>
+<p>You can for example look at this code snippet for generating 2 age distributions: one uniform(validation set), the other normal distribution (target test set), with the obvious transformation. It is very simple and still rarely used in data analysis.</p>
 <p><img src="../images/Age_dist.png"></p>
 <details>
        <summary>Code snippet</summary>
@@ -9652,11 +9652,11 @@ This is a generalization of the single variable we saw earlier and yield the exa
 </details>
 
 <h2 id="limitations">Limitations</h2>
-<p>While this is a powerful technique, it is not a silver bullet. There are thress main statistical limitations:</p>
+<p>While this is a powerful technique, it is not a perfect. There are three main statistical limitations:</p>
 <ol>
-<li><strong>Hidden Confounders:</strong> If the shift is caused by a variable you didn't measure (e.g., a genetic marker you don't have in your tabular data), you cannot weigh for it. However, as model developers, we usually assume the most predictive features are already in our dataset.</li>
-<li><strong>Ignorability (Lack of Overlap):</strong> You cannot divide by zero. If <span class="arithmatex">\(P_v(x)\)</span> is zero (e.g., your training data has <em>no</em> patients over 90, but the test set does), the weight explodes to infinity.<ul>
-<li><em>The Fix:</em> Identify these non-overlapping groups. If your validation set literally contains zero information about a specific sub-population, you must explicitly exclude that sub-population from the comparison and flag it as "unknown territory."</li>
+<li><strong>Hidden Confounders:</strong> If the shift is caused by a variable you didn't measure (e.g., a genetic marker you don't have in your tabular data), you cannot weigh for it. However, as model developers, we usually assume or hopes the most predictive features are already in our dataset.</li>
+<li><strong>Ignorability (Lack of Overlap):</strong> You cannot divide by zero. If <span class="arithmatex">\(P_v(x)\)</span> is zero (e.g., your training data has <strong>no</strong> patients over 90, but the test set does), the weight explodes to infinity.<ul>
+<li><strong>The Fix:</strong> Identify these non-overlapping groups. If your validation set literally contains zero information about a specific sub-population, you must explicitly exclude that sub-population from the comparison and flag it as "unknown territory".</li>
 </ul>
 </li>
 <li><strong>Propensity Model Quality</strong>: Since we rely on a model (<span class="arithmatex">\(M_p\)</span>) to estimate weights, any inaccuracies or poor calibration in this model will introduce noise. For low-dimensional shifts (like a single 'Age' variable), this is negligible, but for high-dimensional complex shifts, ensuring <span class="arithmatex">\(M_p\)</span> is well-calibrated is critical.</li>
@@ -9668,9 +9668,9 @@ Be aware that using weights changes your <strong>Effective Sample Size</strong>.
 * <strong>Power Calculations:</strong> Do not use the raw number of rows (<span class="arithmatex">\(N\)</span>). Please refer to the <strong>Effective Sample Size</strong> formula (Kish's ESS) to understand the true power of your weighted analysis.</p>
 </blockquote>
 <h2 id="summary">Summary</h2>
-<p>The best practice for evaluating model performance on tabular data is to strictly account for covariance shift. Instead of using shift as an excuse for poor performance, use <strong>Importance Weighting</strong> to estimate how your model should perform in the new environment.</p>
-<p>This allows you to answer the hardest question in deployment: "Is the performance drop due to the data changing, or is the model actually broken?"</p>
-<p>If you utilize this method, you can explain the gap between training and production metrics with mathematical precision.</p>
+<p>The best practice for evaluating model performance on tabular data is to strictly account for covariance shift. Instead of using shift as an excuse for poor performance, use <strong>Inverse Probability Weighting</strong> to estimate how your model should perform in the new environment.</p>
+<p>This allows you to answer one of the hardest question in deployment: "Is the performance drop due to the data changing, or is the model actually broken?"</p>
+<p>If you utilize this method, you can explain the gap between training and production metrics.</p>
 <hr />
 <p>If you found this useful, let's connect on <a href="https://www.linkedin.com/in/lanyado/">LinkedIn</a></p>
 
