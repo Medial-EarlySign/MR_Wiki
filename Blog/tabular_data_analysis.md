@@ -10,7 +10,7 @@ Usually, we point the finger at **Covariance Shift**. The distribution of featur
 
 But what if we stopped using covariance shift as an excuse and started using it as a tool? 
 
-I believe there is a more robust way to handle this: a "gold standard" for analyzing tabular data that allows us to estimate performance accurately, even when the ground shifts beneath our feet.
+I believe there is a better way to handle this: a "gold standard" for analyzing tabular data that allows us to estimate performance accurately, even when the ground shifts beneath our feet.
 
 ## The Problem: Comparing Apples to Oranges
 
@@ -18,7 +18,7 @@ Let’s look at a simple example from the medical world.
 
 Imagine we trained a model on patients aged **40-89**. However, in our new target test data, the age range is stricter: **50-80**.
 
-If we simply run the model on the test data and compare it to our original validation scores, we are cheating. To compare "apples to apples," a diligent data scientist would go back to the validation set, filter for patients aged 50-80, and recalculate the baseline performance.
+If we simply run the model on the test data and compare it to our original validation scores, we are cheating. To compare "apples to apples," a good data scientist would go back to the validation set, filter for patients aged 50-80, and recalculate the baseline performance.
 
 **But let's make it harder.**
 
@@ -27,7 +27,7 @@ Suppose our test dataset contains millions of records aged 50-80, and **one sing
 * Do we compare our results to the validation 40-80 range?
 * Do we compare to the 50-80 range?
 
-If we ignore the specific age distribution (which most standard analyses do), that single 40-year-old patient theoretically shifts the definition of the cohort. In practice, we might just delete that outlier. But can we generalize this? Can we automate this process to handle differences in **multiple variables** simultaneously without manually filtering data? Filtering data is also not a good solution since it does not account for distribution shifts.
+If we ignore the specific age distribution (which most standard analyses do), that single 40-year-old patient theoretically shifts the definition of the cohort. In practice, we might just delete that outlier. But can we generalize this? Can we automate this process to handle differences in **multiple variables** simultaneously without manually filtering data? Filtering data is also not a good solution since it does not account for distribution shifts, only the range.
 
 
 ## The Solution: Importance Weighting
@@ -83,7 +83,12 @@ $$
 * If $M_p(x) \approx 0.5$, the data points are indistinguishable, and the weight is 1.
 * If $M_p(x) \rightarrow 1$, the model is very sure this looks like Test data, and the weight increases.
 
+<figure>
 <img src="../images/propensity_diagram.png">
+<figcaption>
+    Image by author (created with Mermaid).
+</figcaption>
+</figure>
 
 ### Does it work?
 Yes, like magic. If you take your validation set, apply these weights, and then plot the distributions of your variables, they will perfectly overlay the distributions of your target test set.
@@ -92,7 +97,12 @@ This is a generalization of the single variable we saw earlier and yield the exa
 
 You can for example look at this code snippet for generating 2 age distributions: one uniform(validation set), the other normal distribution (target test set), with the obvious transformation. It is very simple and still rarely used in data analysis.
 
+<figure>
 <img src="../images/Age_dist.png">
+<figcaption>
+    Image by author.
+</figcaption>
+</figure>
 
 <details>
        <summary>Code snippet</summary>
