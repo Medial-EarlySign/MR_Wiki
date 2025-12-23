@@ -1,6 +1,6 @@
 # Stop Blaming the Data: A Better Way to Handle Covariance Shift
 
-Despite tabular data being the bread and butter of industry data science, there is a pervasive oversight when analyzing model performance.
+Despite tabular data being the bread and butter of industry data science, there is a miss conception when analyzing model performance.
 
 We’ve all been there: You develop a machine learning model, achieve great results on your validation set, and then deploy it (or test it) on a new, real-world dataset. Suddenly, performance drops.
 
@@ -22,7 +22,7 @@ If we simply run the model on the test data and compare it to our original valid
 
 **But let's make it harder.**
 
-Suppose our test dataset contains millions of records aged 50–80, and **one single patient** aged 40.
+Suppose our test dataset contains millions of records aged 50-80, and **one single patient** aged 40.
 
 * Do we compare our results to the validation 40-80 range?
 * Do we compare to the 50-80 range?
@@ -63,7 +63,7 @@ By applying these weights when calculating metrics (like Accuracy, AUC, or RMSE)
 
 ## The Extension: Handling High-Dimensional Shifts
 
-Doing this for one variable (Age) is easy-you can just use histograms/bins. But what if the data shifts across 50 different variables simultaneously? We cannot build a 50-dimensional histogram.
+Doing this for one variable (Age) is easy. You can just use histograms/bins. But what if the data shifts across dozens of different variables simultaneously? We cannot build a dozen dimensional histogram.
 
 The solution is a clever trick using a binary classifier.
 
@@ -87,10 +87,10 @@ $$
 
 ### Does it work?
 Yes, like magic. If you take your validation set, apply these weights, and then plot the distributions of your variables, they will perfectly overlay the distributions of your target test set.
-It is even more **powerful** than that: it aligns the **joint distribution** of all variables, not just their individual marginals. Your weighted validation data becomes practically indistinguishable from the target test data.
+It is even more **powerful** than that: it aligns the **joint distribution** of all variables, not just their individual distribution. Your weighted validation data becomes practically indistinguishable from the target test data.
 This is a generalization of the single variable we saw earlier and yield the exact same result when the precitor is optimal.
 
-You can for example this code snippet for generating 2 age distributions: one uniform(validation set), the other random (target test set), with the obvious transformation. It is very simple and still rarely used in data analysis.
+You can for example look at this code snippet for generating 2 age distributions: one uniform(validation set), the other normal distribution (target test set), with the obvious transformation. It is very simple and still rarely used in data analysis.
 
 <img src="../images/Age_dist.png">
 
@@ -140,11 +140,11 @@ fig.show()
 
 ## Limitations
 
-While this is a powerful technique, it is not a silver bullet. There are thress main statistical limitations:
+While this is a powerful technique, it is not a perfect. There are three main statistical limitations:
 
-1.  **Hidden Confounders:** If the shift is caused by a variable you didn't measure (e.g., a genetic marker you don't have in your tabular data), you cannot weigh for it. However, as model developers, we usually assume the most predictive features are already in our dataset.
-2.  **Ignorability (Lack of Overlap):** You cannot divide by zero. If $P_v(x)$ is zero (e.g., your training data has *no* patients over 90, but the test set does), the weight explodes to infinity.
-    * *The Fix:* Identify these non-overlapping groups. If your validation set literally contains zero information about a specific sub-population, you must explicitly exclude that sub-population from the comparison and flag it as "unknown territory."
+1.  **Hidden Confounders:** If the shift is caused by a variable you didn't measure (e.g., a genetic marker you don't have in your tabular data), you cannot weigh for it. However, as model developers, we usually assume or hopes the most predictive features are already in our dataset.
+2.  **Ignorability (Lack of Overlap):** You cannot divide by zero. If $P_v(x)$ is zero (e.g., your training data has **no** patients over 90, but the test set does), the weight explodes to infinity.
+    * **The Fix:** Identify these non-overlapping groups. If your validation set literally contains zero information about a specific sub-population, you must explicitly exclude that sub-population from the comparison and flag it as "unknown territory".
 3. **Propensity Model Quality**: Since we rely on a model ($M_p$) to estimate weights, any inaccuracies or poor calibration in this model will introduce noise. For low-dimensional shifts (like a single 'Age' variable), this is negligible, but for high-dimensional complex shifts, ensuring $M_p$ is well-calibrated is critical.
 
 > **⚠️ A Note on Statistical Power**
@@ -154,11 +154,11 @@ While this is a powerful technique, it is not a silver bullet. There are thress 
 
 ## Summary
 
-The best practice for evaluating model performance on tabular data is to strictly account for covariance shift. Instead of using shift as an excuse for poor performance, use **Importance Weighting** to estimate how your model should perform in the new environment.
+The best practice for evaluating model performance on tabular data is to strictly account for covariance shift. Instead of using shift as an excuse for poor performance, use **Inverse Probability Weighting** to estimate how your model should perform in the new environment.
 
-This allows you to answer the hardest question in deployment: "Is the performance drop due to the data changing, or is the model actually broken?"
+This allows you to answer one of the hardest question in deployment: "Is the performance drop due to the data changing, or is the model actually broken?"
 
-If you utilize this method, you can explain the gap between training and production metrics with mathematical precision.
+If you utilize this method, you can explain the gap between training and production metrics.
 
 ---
 If you found this useful, let's connect on [LinkedIn](https://www.linkedin.com/in/lanyado/)
