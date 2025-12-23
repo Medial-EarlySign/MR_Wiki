@@ -53,6 +53,7 @@ In our example (Test: Age 50-80 + one 40yo), the solution is to mimic the test c
 
 ### The Math
 Let's formalize this. We need to define two probabilities:
+
 * $P_t(x)$: The probability of seeing feature $x$ (e.g., Age) in the **Target Test** data.
 * $P_v(x)$: The probability of seeing feature $x$ in the **Validation** data.
 
