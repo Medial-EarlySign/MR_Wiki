@@ -9514,18 +9514,18 @@
 <p><strong>So, what is the problem?</strong></p>
 <p>Usually, we point the finger at <strong>Covariance Shift</strong>. The distribution of features in the new data is different from the training data. We use this as a "Get Out of Jail Free" card: "The data changed, so naturally, the performance is lower. It's the data's fault, not the model's."</p>
 <p>But what if we stopped using covariance shift as an excuse and started using it as a tool? </p>
-<p>I believe there is a more robust way to handle this: a "gold standard" for analyzing tabular data that allows us to estimate performance accurately, even when the ground shifts beneath our feet.</p>
+<p>I believe there is a better way to handle this: a "gold standard" for analyzing tabular data that allows us to estimate performance accurately, even when the ground shifts beneath our feet.</p>
 <h2 id="the-problem-comparing-apples-to-oranges">The Problem: Comparing Apples to Oranges</h2>
 <p>Let’s look at a simple example from the medical world.</p>
 <p>Imagine we trained a model on patients aged <strong>40-89</strong>. However, in our new target test data, the age range is stricter: <strong>50-80</strong>.</p>
-<p>If we simply run the model on the test data and compare it to our original validation scores, we are cheating. To compare "apples to apples," a diligent data scientist would go back to the validation set, filter for patients aged 50-80, and recalculate the baseline performance.</p>
+<p>If we simply run the model on the test data and compare it to our original validation scores, we are cheating. To compare "apples to apples," a good data scientist would go back to the validation set, filter for patients aged 50-80, and recalculate the baseline performance.</p>
 <p><strong>But let's make it harder.</strong></p>
 <p>Suppose our test dataset contains millions of records aged 50-80, and <strong>one single patient</strong> aged 40.</p>
 <ul>
 <li>Do we compare our results to the validation 40-80 range?</li>
 <li>Do we compare to the 50-80 range?</li>
 </ul>
-<p>If we ignore the specific age distribution (which most standard analyses do), that single 40-year-old patient theoretically shifts the definition of the cohort. In practice, we might just delete that outlier. But can we generalize this? Can we automate this process to handle differences in <strong>multiple variables</strong> simultaneously without manually filtering data? Filtering data is also not a good solution since it does not account for distribution shifts.</p>
+<p>If we ignore the specific age distribution (which most standard analyses do), that single 40-year-old patient theoretically shifts the definition of the cohort. In practice, we might just delete that outlier. But can we generalize this? Can we automate this process to handle differences in <strong>multiple variables</strong> simultaneously without manually filtering data? Filtering data is also not a good solution since it does not account for distribution shifts, only the range.</p>
 <h2 id="the-solution-importance-weighting">The Solution: Importance Weighting</h2>
 <p>The solution is to mathematically re-weight our validation data to look like the test data. Instead of binary inclusion/exclusion (keeping or dropping a row), we assign a continuous <strong>weight</strong> to each record in our validation set. It is like an extenstion of the above simple filtering method to match the same age range.</p>
 <ul>
@@ -9566,13 +9566,25 @@ w(x) = \frac{M_p(x)}{1 - M_p(x)}
 <li>If <span class="arithmatex">\(M_p(x) \approx 0.5\)</span>, the data points are indistinguishable, and the weight is 1.</li>
 <li>If <span class="arithmatex">\(M_p(x) \rightarrow 1\)</span>, the model is very sure this looks like Test data, and the weight increases.</li>
 </ul>
-<p><img src="../images/propensity_diagram.png"></p>
+<figure>
+<img src="../images/propensity_diagram.png">
+<figcaption>
+    Image by author (created with Mermaid).
+</figcaption>
+</figure>
+
 <h3 id="does-it-work">Does it work?</h3>
 <p>Yes, like magic. If you take your validation set, apply these weights, and then plot the distributions of your variables, they will perfectly overlay the distributions of your target test set.
 It is even more <strong>powerful</strong> than that: it aligns the <strong>joint distribution</strong> of all variables, not just their individual distribution. Your weighted validation data becomes practically indistinguishable from the target test data.
 This is a generalization of the single variable we saw earlier and yield the exact same result when the precitor is optimal.</p>
 <p>You can for example look at this code snippet for generating 2 age distributions: one uniform(validation set), the other normal distribution (target test set), with the obvious transformation. It is very simple and still rarely used in data analysis.</p>
-<p><img src="../images/Age_dist.png"></p>
+<figure>
+<img src="../images/Age_dist.png">
+<figcaption>
+    Image by author.
+</figcaption>
+</figure>
+
 <details>
        <summary>Code snippet</summary>
 
