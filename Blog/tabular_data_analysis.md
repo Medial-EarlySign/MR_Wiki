@@ -4,6 +4,13 @@ Despite tabular data being the bread and butter of industry data science, there 
 
 We’ve all been there: You develop a machine learning model, achieve great results on your validation set, and then deploy it (or test it) on a new, real-world dataset. Suddenly, performance drops.
 
+<figure>
+<img src="../images/apples_to_apples.jpg">
+<figcaption>
+    Image by author (generated with Google Gemini).
+</figcaption>
+</figure>
+
 **So, what is the problem?**
 
 Usually, we point the finger at **Covariance Shift**. The distribution of features in the new data is different from the training data. We use this as a "Get Out of Jail Free" card: "The data changed, so naturally, the performance is lower. It's the data's fault, not the model's."
@@ -100,7 +107,7 @@ You can for example look at this code snippet for generating 2 age distributions
 <figure>
 <img src="../images/Age_dist.png">
 <figcaption>
-    Image by author.
+    Image by author (created by the code snippet).
 </figcaption>
 </figure>
 
@@ -157,7 +164,7 @@ While this is a powerful technique, it is not a perfect. There are three main st
     * **The Fix:** Identify these non-overlapping groups. If your validation set literally contains zero information about a specific sub-population, you must explicitly exclude that sub-population from the comparison and flag it as "unknown territory".
 3. **Propensity Model Quality**: Since we rely on a model ($M_p$) to estimate weights, any inaccuracies or poor calibration in this model will introduce noise. For low-dimensional shifts (like a single 'Age' variable), this is negligible, but for high-dimensional complex shifts, ensuring $M_p$ is well-calibrated is critical.
 
-> **⚠️ A Note on Statistical Power**
+> **A Note on Statistical Power**
 > Be aware that using weights changes your **Effective Sample Size**. High-variance weights reduce the stability of your estimates. 
 > * **Bootstrapping:** If you use bootstrapping, you are safe as long as you incorporate the weights into the resampling process itself.
 > * **Power Calculations:** Do not use the raw number of rows ($N$). Please refer to the **Effective Sample Size** formula (Kish's ESS) to understand the true power of your weighted analysis.
