@@ -9511,6 +9511,13 @@
 <h1 id="stop-blaming-the-data-a-better-way-to-handle-covariance-shift">Stop Blaming the Data: A Better Way to Handle Covariance Shift</h1>
 <p>Despite tabular data being the bread and butter of industry data science, there is a miss conception when analyzing model performance.</p>
 <p>We’ve all been there: You develop a machine learning model, achieve great results on your validation set, and then deploy it (or test it) on a new, real-world dataset. Suddenly, performance drops.</p>
+<figure>
+<img src="../images/apples_to_apples.jpg">
+<figcaption>
+    Image by author (generated with Google Gemini).
+</figcaption>
+</figure>
+
 <p><strong>So, what is the problem?</strong></p>
 <p>Usually, we point the finger at <strong>Covariance Shift</strong>. The distribution of features in the new data is different from the training data. We use this as a "Get Out of Jail Free" card: "The data changed, so naturally, the performance is lower. It's the data's fault, not the model's."</p>
 <p>But what if we stopped using covariance shift as an excuse and started using it as a tool? </p>
@@ -9581,7 +9588,7 @@ This is a generalization of the single variable we saw earlier and yield the exa
 <figure>
 <img src="../images/Age_dist.png">
 <figcaption>
-    Image by author.
+    Image by author (created by the code snippet).
 </figcaption>
 </figure>
 
@@ -9674,7 +9681,7 @@ This is a generalization of the single variable we saw earlier and yield the exa
 <li><strong>Propensity Model Quality</strong>: Since we rely on a model (<span class="arithmatex">\(M_p\)</span>) to estimate weights, any inaccuracies or poor calibration in this model will introduce noise. For low-dimensional shifts (like a single 'Age' variable), this is negligible, but for high-dimensional complex shifts, ensuring <span class="arithmatex">\(M_p\)</span> is well-calibrated is critical.</li>
 </ol>
 <blockquote>
-<p><strong>⚠️ A Note on Statistical Power</strong>
+<p><strong>A Note on Statistical Power</strong>
 Be aware that using weights changes your <strong>Effective Sample Size</strong>. High-variance weights reduce the stability of your estimates. 
 * <strong>Bootstrapping:</strong> If you use bootstrapping, you are safe as long as you incorporate the weights into the resampling process itself.
 * <strong>Power Calculations:</strong> Do not use the raw number of rows (<span class="arithmatex">\(N\)</span>). Please refer to the <strong>Effective Sample Size</strong> formula (Kish's ESS) to understand the true power of your weighted analysis.</p>
