@@ -9546,9 +9546,11 @@
 <p>[!Note:] While it is possible to transform these weights into binary inclusion/exclusion via random sub-sampling, this generally offers no statistical advantage over using the weights directly. Sub-sampling is primarily useful for intuition or if your specific performance analysis tools cannot handle weighted data.</p>
 </blockquote>
 <h3 id="the-math">The Math</h3>
-<p>Let's formalize this. We need to define two probabilities:
-* <span class="arithmatex">\(P_t(x)\)</span>: The probability of seeing feature <span class="arithmatex">\(x\)</span> (e.g., Age) in the <strong>Target Test</strong> data.
-* <span class="arithmatex">\(P_v(x)\)</span>: The probability of seeing feature <span class="arithmatex">\(x\)</span> in the <strong>Validation</strong> data.</p>
+<p>Let's formalize this. We need to define two probabilities:</p>
+<ul>
+<li><span class="arithmatex">\(P_t(x)\)</span>: The probability of seeing feature <span class="arithmatex">\(x\)</span> (e.g., Age) in the <strong>Target Test</strong> data.</li>
+<li><span class="arithmatex">\(P_v(x)\)</span>: The probability of seeing feature <span class="arithmatex">\(x\)</span> in the <strong>Validation</strong> data.</li>
+</ul>
 <p>The weight <span class="arithmatex">\(w\)</span> for any given record with feature <span class="arithmatex">\(x\)</span> is the ratio of these probabilities:</p>
 <div class="arithmatex">\[
 w(x) = \frac{P_t(x)}{P_v(x)}
