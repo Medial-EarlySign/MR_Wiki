@@ -9280,6 +9280,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#using-medpython-with-json-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using MedPython with Json Data
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -10910,6 +10921,103 @@ More details can be found <a href="../../Infrastructure%20Library/Medial%20Tools
 <p>Additional fields may be included in the response, for example, if explainability is requested.</p>
 <p>For the full API specification, refer to:<br />
 <a href="../../SharePoint_Documents/General/AlgoMarker/RDG-04-11-33%20AM%20Library%20SW%20Version%201.1%20Software%20Design%20Document%20-%20Rev%20D.docx">AlgoMarker Spec</a></p>
+<h2 id="using-medpython-with-json-data">Using MedPython with Json Data</h2>
+<p>MedPython allows developers to run existing models directly against JSON input data. This approach loads data into memory, bypassing the need for a full repository setup and skipping AlgoMarker validation steps.</p>
+<p>JSON Structure Input data can be formatted for a single patient or a batch of patients:</p>
+<ul>
+<li>Single Patient (can be called multiple times):
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span><span class="nt">&quot;patient_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">  </span><span class="nt">&quot;signals&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">sig</span><span class="kc">nal</span><span class="w"> </span><span class="err">blocks</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div></li>
+<li>Multiple Patients (can be called multiple times): 
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;multiple&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;patient_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;patient_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div></li>
+</ul>
+<p>Implementation Example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span>
+<span class="normal"><a href="#__codelineno-8-32">32</a></span>
+<span class="normal"><a href="#__codelineno-8-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">med</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="n">REP_CONFIG_PATH</span><span class="o">=</span> <span class="s2">&quot;path/to/config&quot;</span> <span class="c1"># Repository config (definitions only, no data) - like in AlgoMarker</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="n">JSON_FILE_PATH</span> <span class="o">=</span> <span class="s2">&quot;path/to/data.json&quot;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="n">MODEL_PATH</span> <span class="o">=</span> <span class="s2">&quot;path/to/model&quot;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="c1"># 1. Initialize Repository in Memory Mode</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="n">rep</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">PidRepository</span><span class="p">()</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="n">rep</span><span class="o">.</span><span class="n">switch_to_in_mem</span><span class="p">()</span> <span class="c1"># Enable in-memory loading for JSON</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="n">rep</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">REP_CONFIG_PATH</span><span class="p">)</span> 
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="c1"># 2. Load Data</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="n">rep</span><span class="o">.</span><span class="n">load_from_json</span><span class="p">(</span><span class="n">JSON_FILE_PATH</span><span class="p">)</span> <span class="c1"># Or use load_from_json_str (when we have the json content)</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="c1"># Note: Use rep.load_from_json_str(json_string) for raw string input.</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="n">rep</span><span class="o">.</span><span class="n">finish_load_data</span><span class="p">()</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="c1"># (Optional *): You can test loaded data with rep.uget(patient_id, rep.sig_id(&quot;signal_name&quot;)) and iterate over the result. </span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="c1"># 3. Initialize Model</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="n">model</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="n">model</span><span class="o">.</span><span class="n">read_from_file</span><span class="p">(</span><span class="n">MODEL_PATH</span><span class="p">)</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a>
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="c1"># 4. Create a DataFrame for the patients you wish to predict</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a><span class="n">samples_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">rep</span><span class="o">.</span><span class="n">pids</span><span class="p">})</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a><span class="c1"># Set the prediction cutoff time (YYYYMMDD). </span>
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a><span class="c1"># Data timestamps after this date will be ignored by the model.</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a><span class="n">samples_df</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20241108</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a><span class="n">samples</span> <span class="o">=</span> <span class="n">med</span><span class="o">.</span><span class="n">Samples</span><span class="p">()</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a><span class="n">samples</span><span class="o">.</span><span class="n">from_df</span><span class="p">(</span><span class="n">samples_df</span><span class="p">)</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30"></a>
+<a id="__codelineno-8-31" name="__codelineno-8-31"></a><span class="c1"># 5. Run Inference</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32"></a><span class="n">model</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">rep</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33"></a><span class="n">result_df</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><code>get_sig</code> to explore loaded data will only work from source using virtual repository, or in next version &gt; 1.1.0. You can only use <code>uget</code> for now.</li>
+</ul>
 
 
 
