@@ -816,3 +816,65 @@ Additional fields may be included in the response, for example, if explainabilit
 
 For the full API specification, refer to:  
 [AlgoMarker Spec](../../SharePoint_Documents/General/AlgoMarker/RDG-04-11-33%20AM%20Library%20SW%20Version%201.1%20Software%20Design%20Document%20-%20Rev%20D.docx)
+
+## Using MedPython with Json Data
+MedPython allows developers to run existing models directly against JSON input data. This approach loads data into memory, bypassing the need for a full repository setup and skipping AlgoMarker validation steps.
+
+JSON Structure Input data can be formatted for a single patient or a batch of patients:
+
+* Single Patient (can be called multiple times):
+```json
+{
+  "patient_id": 1,
+  "signals": [ ... signal blocks ... ]
+}
+```
+* Multiple Patients (can be called multiple times): 
+```json
+{
+  "multiple": [
+    { "patient_id": 1, ... },
+    { "patient_id": 2, ... }
+  ]
+}
+```
+
+Implementation Example:
+
+```python
+import med
+import json
+import pandas as pd
+REP_CONFIG_PATH= "path/to/config" # Repository config (definitions only, no data) - like in AlgoMarker
+JSON_FILE_PATH = "path/to/data.json"
+MODEL_PATH = "path/to/model"
+
+# 1. Initialize Repository in Memory Mode
+rep = med.PidRepository()
+rep.switch_to_in_mem() # Enable in-memory loading for JSON
+rep.init(REP_CONFIG_PATH) 
+
+# 2. Load Data
+rep.load_from_json(JSON_FILE_PATH) # Or use load_from_json_str (when we have the json content)
+# Note: Use rep.load_from_json_str(json_string) for raw string input.
+rep.finish_load_data()
+# (Optional *): You can test loaded data with rep.uget(patient_id, rep.sig_id("signal_name")) and iterate over the result. 
+
+# 3. Initialize Model
+model = med.Model()
+model.read_from_file(MODEL_PATH)
+
+# 4. Create a DataFrame for the patients you wish to predict
+samples_df = pd.DataFrame({"id": rep.pids})
+# Set the prediction cutoff time (YYYYMMDD). 
+# Data timestamps after this date will be ignored by the model.
+samples_df["time"] = 20241108
+samples = med.Samples()
+samples.from_df(samples_df)
+
+# 5. Run Inference
+model.apply(rep, samples)
+result_df = samples.to_df()
+```
+
+* `get_sig` to explore loaded data will only work from source using virtual repository, or in next version > 1.1.0. You can only use `uget` for now.
