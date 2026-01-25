@@ -548,10 +548,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-goal-a-clinical-story-not-just-a-score" class="md-nav__link">
+  <a href="#example-result-a-clinical-story" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Goal: A Clinical Story, Not Just a Score
+        Example Result: A Clinical Story
       
     </span>
   </a>
@@ -9394,10 +9394,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-goal-a-clinical-story-not-just-a-score" class="md-nav__link">
+  <a href="#example-result-a-clinical-story" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Goal: A Clinical Story, Not Just a Score
+        Example Result: A Clinical Story
       
     </span>
   </a>
@@ -9641,22 +9641,19 @@
 
 
 <h1 id="a-journey-into-explainable-ai">A Journey into Explainable AI</h1>
-<p>Have you ever wondered what a machine learning model is <strong>really</strong> thinking? We often treat them like black boxes. We feed them data, they spit out predictions, and we cross our fingers, hoping they're right. But what if we could peek inside? What if we could ask the AI, "Why did you make that decision?"
-Unlike <strong>global</strong> feature importance (which tells us what matters to the model in general), we wanted a <strong>local</strong> and specific explanation for every single prediction.</p>
-<p>This isn't just a philosophical question. In the high-stakes world of medical data, understanding the "why" can be a matter of life and death. It's crucial for debugging our models, building trust with doctors, and even discovering new ways to help patients.</p>
-<p>At Medial EarlySign, we wanted to move beyond just knowing <strong>what</strong> the model predicts, to understanding <strong>why</strong>. This is the story of our journey, a tale of failed experiments, surprising discoveries, and a brand-new way to look inside the mind of the machine.</p>
-<p>This is the story of how we broke the standard to build something better.</p>
-<h2 id="the-goal-a-clinical-story-not-just-a-score">The Goal: A Clinical Story, Not Just a Score</h2>
+<p>This is a deeper explaination for my post in Towards Data Science: <a href="https://towardsdatascience.com/when-shapley-values-break-a-guide-to-robust-model-explainability/">When Shapley Values Break: A Guide to Robust Model Explainability</a></p>
+<h2 id="example-result-a-clinical-story">Example Result: A Clinical Story</h2>
 <p>Before diving into the algorithms, let’s look at what we actually achieved. This is what our new engine produces for a colon cancer prediction model.</p>
-<p>Consider an 82-year-old patient flagged as High Risk (Score: 0.9). A standard model just gives the alert. Our system tells the doctor:</p>
+<p>Consider an 82-year-old patient flagged as High Risk (Score: 0.9). Our system tells the doctor:</p>
 <ul>
 <li><strong>MCH_Trends</strong>: Sharply decreasing trend in Mean Corpuscular Hemoglobin.</li>
 <li><strong>MCH_Values</strong>: Low absolute values and became anemic recently.</li>
 <li><strong>Age</strong>: Advanced age contributes to risk.</li>
 </ul>
-<p>This is not just a math output, it empowers the doctor to act.
-But getting to this level of clarity required us to build a new framework upon the existing one.</p>
-<p><strong>But when we applied "Vanilla" Shapley to real medical data, it was a disaster</strong></p>
+<p>This output empowers the doctor to act.
+In this case, the phisican will usually tell us: "I don't understand why I need you, this is obvious. The patient is deteriorating and need colonscopy"
+I love those responses. It means the model and the explanation is very good. Of course, I took a very clear example of a high score, but anyway, it wasn't working well before doing all our adjustments.</p>
+<p><strong>When we applied "Vanilla" Shapley to real medical data, it was a disaster</strong></p>
 <p>Our models use over 1,000 features, many of which are highly correlated (e.g., "last hemoglobin" vs. "average hemoglobin"). The standard Shapley method tried to be "fair" by splitting credit among all these similar features.
 The result? A long, repetitive list of weak signals that diluted the true clinical story. It was like trying to explain a picture of a cat by listing the color of every individual pixel.</p>
 <p><strong>The "Eosinophil#" Disaster</strong></p>

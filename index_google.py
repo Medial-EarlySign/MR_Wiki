@@ -129,6 +129,11 @@ def index_page(
 
     search_box.send_keys(index_url + "\n")
     time.sleep(3)
+    element_locator_indexing = (
+        By.XPATH,
+        "//div[text() = 'Page indexing']",
+    )
+    wait.until(EC.visibility_of_any_elements_located(element_locator_indexing))
     is_indexed = (
         len(driver.find_elements(By.XPATH, "//div[text() = 'Page is indexed']")) > 0
     )
