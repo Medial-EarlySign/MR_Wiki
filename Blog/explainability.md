@@ -1,28 +1,22 @@
 # A Journey into Explainable AI
 
-Have you ever wondered what a machine learning model is **really** thinking? We often treat them like black boxes. We feed them data, they spit out predictions, and we cross our fingers, hoping they're right. But what if we could peek inside? What if we could ask the AI, "Why did you make that decision?"
-Unlike **global** feature importance (which tells us what matters to the model in general), we wanted a **local** and specific explanation for every single prediction.
+This is a deeper explaination for my post in Towards Data Science: [When Shapley Values Break: A Guide to Robust Model Explainability](https://towardsdatascience.com/when-shapley-values-break-a-guide-to-robust-model-explainability/)
 
-This isn't just a philosophical question. In the high-stakes world of medical data, understanding the "why" can be a matter of life and death. It's crucial for debugging our models, building trust with doctors, and even discovering new ways to help patients.
-
-At Medial EarlySign, we wanted to move beyond just knowing **what** the model predicts, to understanding **why**. This is the story of our journey, a tale of failed experiments, surprising discoveries, and a brand-new way to look inside the mind of the machine.
-
-This is the story of how we broke the standard to build something better.
-
-## The Goal: A Clinical Story, Not Just a Score
+## Example Result: A Clinical Story
 
 Before diving into the algorithms, let’s look at what we actually achieved. This is what our new engine produces for a colon cancer prediction model.
 
-Consider an 82-year-old patient flagged as High Risk (Score: 0.9). A standard model just gives the alert. Our system tells the doctor:
+Consider an 82-year-old patient flagged as High Risk (Score: 0.9). Our system tells the doctor:
 
   * **MCH_Trends**: Sharply decreasing trend in Mean Corpuscular Hemoglobin.
   * **MCH_Values**: Low absolute values and became anemic recently.
   * **Age**: Advanced age contributes to risk.
 
-This is not just a math output, it empowers the doctor to act.
-But getting to this level of clarity required us to build a new framework upon the existing one.
+This output empowers the doctor to act.
+In this case, the phisican will usually tell us: "I don't understand why I need you, this is obvious. The patient is deteriorating and need colonscopy"
+I love those responses. It means the model and the explanation is very good. Of course, I took a very clear example of a high score, but anyway, it wasn't working well before doing all our adjustments.
 
-**But when we applied "Vanilla" Shapley to real medical data, it was a disaster**
+**When we applied "Vanilla" Shapley to real medical data, it was a disaster**
 
 Our models use over 1,000 features, many of which are highly correlated (e.g., "last hemoglobin" vs. "average hemoglobin"). The standard Shapley method tried to be "fair" by splitting credit among all these similar features.
 The result? A long, repetitive list of weak signals that diluted the true clinical story. It was like trying to explain a picture of a cat by listing the color of every individual pixel.
