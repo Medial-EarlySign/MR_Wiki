@@ -59,7 +59,7 @@ Interpretation advice:
 
 ## Example output snippet
 
-<img src="../../../../../attachments/13926516/13926518.png"/>
+<img src="../../../../../attachments/13926516/13926518.png" alt="Example of coverage output report"/>
 
 This analysis inspects the model's performance specifically within a high-risk cohort defined as: **Age: 70-75** AND **Last Hemoglobin (Hgb) < 11**.
 

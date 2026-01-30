@@ -91,11 +91,11 @@ It is recommended to manually check logs and charts for all important features. 
 
 * Example 1: Monthly distribution of Hemoglobin samples from a dataset prepared in mid-2023. Monthly samples may look suspicious, but the yearly graph shows samples are only from the last year, so more samples in early months are expected.
 
-<img src="../../../../../attachments/13926413/13926420.png"/>
-<img src="../../../../../attachments/13926413/13926421.png"/>
+<img src="../../../../../attachments/13926413/13926420.png" alt="Distribution of signal count by Month"/>
+<img src="../../../../../attachments/13926413/13926421.png" alt="Distribution of signal count by Year"/>
 
 * Example 2: On the right, a normal distribution of a lab measurement. On the left, unclear 'vibrations'. This may not affect the model, but you should check with the dataset owner to ensure it does not hide a larger issue.
 
-<img src="../../../../../attachments/13926413/13926422.png"/>
-<img src="../../../../../attachments/13926413/13926423.png"/>
+<img src="../../../../../attachments/13926413/13926422.png" alt="Distribution of signal values without issue"/>
+<img src="../../../../../attachments/13926413/13926423.png" alt="Distribution of signal values with vibration issue"/>
  

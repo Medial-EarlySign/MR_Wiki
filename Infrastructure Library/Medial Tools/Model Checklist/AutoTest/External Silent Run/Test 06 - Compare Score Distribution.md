@@ -71,8 +71,10 @@ Test_Run.Original	0.1240	0.0460
 ...
 ```
 
-* Score distribution compare: <img src="../../../../../attachments/13926497/13926500.png"/>
-* Age distribution compare: <img src="../../../../../attachments/13926497/13926501.png"/>
+* Score distribution compare: <img src="../../../../../attachments/13926497/13926500.png" alt="Score Distribution compare to reference"/>
+* Age distribution compare: <img src="../../../../../attachments/13926497/13926501.png" alt="Age Distribution compare to reference"/>
+
+Contents of `${WORK_DIR}/compare/score_dist.tsv
 
 ## Notes and Implementation Details
 

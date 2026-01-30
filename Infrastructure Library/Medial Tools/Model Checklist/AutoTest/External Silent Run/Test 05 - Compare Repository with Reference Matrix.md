@@ -95,13 +95,13 @@ t22 = pd.read_csv(f, skiprows=cut+1, sep='\t')
 ```
 The first dataframe, t21, should be ignored.
 t21 shows moments, range and missing values count, for every feature, comparing the reference to the new dataset.
-<img src="../../../../../attachments/13926455/13926475.png"/>
+<img src="../../../../../attachments/13926455/13926475.png" alt="Comparing features report example"/>
 The second dataframe, t22, shows the same information (without range), plus Mann Whitney test result.
 
 - _1 is for the new dataset
 - _2 is for the reference
 - The Mann-Whitney U Test assesses whether two sampled groups are likely to derive from the same population, but note test limitations - if median and shape are the same for both samples, P_value would be high even for different std/scale. 
-<img src="../../../../../attachments/13926455/13926476.png"/>
+<img src="../../../../../attachments/13926455/13926476.png" alt="Comparing features report example 2nd part"/>
 In table t22: t21 shows moments, range, and missing value counts for every feature, comparing reference to new dataset.
 
 - We need to make sure we don't see low P_value for any important feature to the model, or proxy for such features, i.e.. we may list MCH.min.win_0_180 as important feature, and we don't want it or MCH.min.win_0_360 to have low P-value.
@@ -112,7 +112,7 @@ In table t22: t21 shows moments, range, and missing value counts for every featu
 AUC_Mean is 0.98 - very high. However no significant different seen in compare_rep.txt 
 Here is the Graph of a specific signal with big difference form shapley analysis:
 
-<img src="../../../../../attachments/13926455/13926485.png"/>
+<img src="../../../../../attachments/13926455/13926485.png" alt="Distribution plot of a specific feature - comparing reference with current data"/>
 We see that the reference has several dominant values and this is due to imputations.
 
 - In this case we use as reference a dataset different from the one we use for model training and feature importance.

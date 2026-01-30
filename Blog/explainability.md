@@ -57,7 +57,7 @@ We saw a striking example of this in our **Flu Complications** model. In medical
 A naive analysis (or a standard correlation study) might suggest that Low BMI is a risk factor. However, our Shapley analysis confirmed that the model had successfully disentangled this relationship. The plots showed that while risk scores were high for these patients, the attribution went solely to **Young Age**. The model correctly identified Age as the driver and did not treat Low BMI as a risk factor, proving it wasn't relying on spurious correlations.
 
 As can be seen from [FluComplication Paper](https://pubmed.ncbi.nlm.nih.gov/35893436/)
-<img src="../images/bmi_flu.png"/>
+<img src="../images/bmi_flu.png" alt="Explainabilty report of BMI effect on Flu Complications model"/>
 We can see the U shape of the risk score as a function of BMI in orange, but the Shapley Values in blue, remains low in lower values of BMI.
 
 ## Can we Use This?

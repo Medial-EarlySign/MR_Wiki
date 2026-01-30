@@ -9,13 +9,13 @@ Some PostProcessor, for full list of types and json values to put in names pleas
 	- `tree_shap` - The common and our method for explainability based on shapley values. There other "explainability" methods, some of them are model agnostic and not only for tree base (but they are more computational expensive)
 * `fairness_adjust` - Post processings of scores to adjust for fairness between groups. Was deployed in [AAA model](../../Models/AAA.md)
 
-<img src="../../attachments/11206670/11206674.png"/>
+<img src="../../attachments/11206670/11206674.png" alt="All PostProcessors Types"/>
  
 PostProcessor API:
-<img src="../../attachments/11206670/11206675.png"/>
+<img src="../../attachments/11206670/11206675.png" alt="PostProcessor API"/>
  
 ModelExplainer API:
-<img src="../../attachments/11206670/11206676.png"/>
+<img src="../../attachments/11206670/11206676.png" alt="ModelExplainer API"/>
  
 Examples:
 

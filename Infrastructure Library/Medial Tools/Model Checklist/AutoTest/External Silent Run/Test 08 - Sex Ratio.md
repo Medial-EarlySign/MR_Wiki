@@ -59,7 +59,7 @@ Analyze cutoff of score 0.25000 (test|ref) => males ratio (60.0%|55.0%), total_f
 This means at cutoff 0.25, 60% of flagged subjects are male in the test set vs 55% in the reference; 200 subjects flagged in the test set representing 5% of the test population while the reference had 4% flagged.
 
 Full example:
-<img src="../../../../../attachments/13926532/13926530.png"/>
+<img src="../../../../../attachments/13926532/13926530.png" alt="Full example of sex ratio analysis output"/>
 
 ## Notes and Implementation Details
 

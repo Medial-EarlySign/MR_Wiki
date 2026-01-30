@@ -1,7 +1,7 @@
 # Explainers (But Why)
 [ModelExplainer (code doc)](https://Medial-EarlySign.github.io/medpython/classModelExplainer)
 ModelExplainer API:
-<img src="../../attachments/11206683/11206684.png"/>
+<img src="../../attachments/11206683/11206684.png" alt="ModelExplainer API" />
  
 ## ModelExplainer Types:
 - [TreeExplainer](https://Medial-EarlySign.github.io/medpython/classTreeExplainer)  – explains model with SHAPLEY implementation for trees (it has 2 additional flags – do interaction calculation for shap values or use approximate calculation which is faster):

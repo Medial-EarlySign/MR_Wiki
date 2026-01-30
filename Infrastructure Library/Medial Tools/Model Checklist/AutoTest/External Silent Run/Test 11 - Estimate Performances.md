@@ -61,7 +61,7 @@ Interpretation advice:
 ## Example output files
 
 - `${WORK_DIR}/compare.no_overfitting/summary_table.estimated_performance.tsv` (example values rendered by the test runner)
-<img src="../../../../../attachments/13926552/13926554.png"/>
+<img src="../../../../../attachments/13926552/13926554.png" alt="Example of summary_table.estimated_performance.tsv"/>
 
 - Detailed bootstrap analysis can be found in `${WORK_DIR}/compare.no_overfitting/bt_reference.estimated.pivot_txt`
 

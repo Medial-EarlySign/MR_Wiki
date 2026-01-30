@@ -21,7 +21,7 @@ You can also refer to our [existing models](Models) using our Infrastructure. Mo
 
 Our platform streamlines the development and deployment of clinical predictive models, transforming raw patient data into actionable insights. For live predictions (inference), you can use raw JSON data directly, bypassing the need for an optimized data store.
 
-<img src="images/MES_Arch.png">
+<img src="images/MES_Arch.png" alt="MES Architecture" />
 
 This structured approach ensures that data is processed efficiently, models are built systematically, and the results are both accurate and interpretable.
 
@@ -74,7 +74,7 @@ Train your model using the Python SDK and generate predictions with clear, inter
 
 This is an illustration of the final output in a visual format (Our infrastructure returns the data to create this):
 
-<img src="images/Explainability.png">
+<img src="images/Explainability.png" alt="Example of Explainability report" />
 
 For more details, refer to the [Tutorials](Tutorials).
 

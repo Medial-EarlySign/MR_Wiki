@@ -70,11 +70,11 @@ Interpretation advice:
 
 1) `features_stats.tsv` example:
 
-<img src="../../../../../attachments/13926544/13926548.png"/>
+<img src="../../../../../attachments/13926544/13926548.png" alt="Example of features_stats.tsv"/>
 
 2) Log file `10.analyze_features.log`
 
-<img src="../../../../../attachments/13926544/13926546.png"/>
+<img src="../../../../../attachments/13926544/13926546.png" alt="Example of 10.analyze_features.log"/>
 
 3) Histogram Graph of features in `${WORK_DIR}/features_graphs`
 

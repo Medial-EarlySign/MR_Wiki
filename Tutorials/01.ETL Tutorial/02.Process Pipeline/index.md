@@ -155,7 +155,7 @@ Every pipeline includes the following stages:
 5. **Storing:**  
     - Sort and save the processed data in `[WORK_DIR]/FinalSignals`.
 
-<img src="../../../attachments/14811382/14811576.png"/>
+<img src="../../../attachments/14811382/14811576.png" alt="Process overview diagram"/>
 
 ## Next Step: Prepare Dicts if needed
 
