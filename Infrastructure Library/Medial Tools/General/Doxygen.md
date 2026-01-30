@@ -1,7 +1,7 @@
 # Doxygen
 Automatic HTML Documentation with C++.
 
-# **Creating Comments in Libs**
+## Creating Comments in Libs
 
 - You can create local documentation for your code for [MR_LIBS](https://github.com/Medial-EarlySign/medpython/) by runnig this:
 
@@ -19,7 +19,7 @@ MR_LIBS/document_code_server.sh
 the documentation will be availabe in [https://Medial-EarlySign.github.io/medpython](https://Medial-EarlySign.github.io/medpython)
 
 
-# **General Use of Doxygen tool for other projects:**
+## General Use of Doxygen tool for other projects:
 1. Create a Doxygen configuration file by running (on Linux) to create default config file:
 
 ```bash
@@ -42,7 +42,7 @@ sudo doxygen Doxyfile
 
 If OUTPUT_DIRECTORY was empty, simply view html/index.html in the project directory with any browser. The public documentation (e.g., for Libs) look for Creating Lib documentation section
 
-# How to create documentation in code
+## How to create documentation in code
 1. An example of documenting class members:
 
 ```

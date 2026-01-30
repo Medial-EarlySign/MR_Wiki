@@ -2,7 +2,7 @@
 There are several domains of medical knowledge/onthologies that is getting updated over time - for example diagnosis and medications.
 We have several tools for generating dictionaries for those vocabularies.
  
-# Updating Medical Vocabulary
+## Updating Medical Vocabulary
 We have several scripts under TOOLS git repository - MR_Tools/DictUtils:
 Steps to update medications:
 
