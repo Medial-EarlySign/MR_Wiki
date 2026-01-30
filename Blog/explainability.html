@@ -9684,7 +9684,7 @@ We knew we had to do better.</p>
 We saw a striking example of this in our <strong>Flu Complications</strong> model. In medical data, <strong>Low BMI</strong> is strongly correlated with children, and children are naturally at higher risk for complications like pneumonia.</p>
 <p>A naive analysis (or a standard correlation study) might suggest that Low BMI is a risk factor. However, our Shapley analysis confirmed that the model had successfully disentangled this relationship. The plots showed that while risk scores were high for these patients, the attribution went solely to <strong>Young Age</strong>. The model correctly identified Age as the driver and did not treat Low BMI as a risk factor, proving it wasn't relying on spurious correlations.</p>
 <p>As can be seen from <a href="https://pubmed.ncbi.nlm.nih.gov/35893436/">FluComplication Paper</a>
-<img src="../images/bmi_flu.png"/>
+<img src="../images/bmi_flu.png" alt="Explainabilty report of BMI effect on Flu Complications model"/>
 We can see the U shape of the risk score as a function of BMI in orange, but the Shapley Values in blue, remains low in lower values of BMI.</p>
 <h2 id="can-we-use-this">Can we Use This?</h2>
 <p>We've integrated this powerful explainability engine directly into our platform. If you're using our MedModel JSON format, you can add a <code>tree_shap</code> post-processor to your model pipeline definition at the end and use our <a href="../Tutorials/04.Train%20Model">Tutorial</a> to train your model:</p>

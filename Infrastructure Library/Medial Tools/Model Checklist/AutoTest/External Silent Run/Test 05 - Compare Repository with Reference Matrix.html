@@ -9756,14 +9756,14 @@ Or include as part of the full suite:
 </code></pre></div></td></tr></table></div>
 The first dataframe, t21, should be ignored.
 t21 shows moments, range and missing values count, for every feature, comparing the reference to the new dataset.
-<img src="../../../../../attachments/13926455/13926475.png"/>
+<img src="../../../../../attachments/13926455/13926475.png" alt="Comparing features report example"/>
 The second dataframe, t22, shows the same information (without range), plus Mann Whitney test result.</p>
 <ul>
 <li>_1 is for the new dataset</li>
 <li>_2 is for the reference</li>
 <li>
 <p>The Mann-Whitney U Test assesses whether two sampled groups are likely to derive from the same population, but note test limitations - if median and shape are the same for both samples, P_value would be high even for different std/scale. 
-<img src="../../../../../attachments/13926455/13926476.png"/>
+<img src="../../../../../attachments/13926455/13926476.png" alt="Comparing features report example 2nd part"/>
 In table t22: t21 shows moments, range, and missing value counts for every feature, comparing reference to new dataset.</p>
 </li>
 <li>
@@ -9774,7 +9774,7 @@ In table t22: t21 shows moments, range, and missing value counts for every featu
 <h4 id="example">Example</h4>
 <p>AUC_Mean is 0.98 - very high. However no significant different seen in compare_rep.txt 
 Here is the Graph of a specific signal with big difference form shapley analysis:</p>
-<p><img src="../../../../../attachments/13926455/13926485.png"/>
+<p><img src="../../../../../attachments/13926455/13926485.png" alt="Distribution plot of a specific feature - comparing reference with current data"/>
 We see that the reference has several dominant values and this is due to imputations.</p>
 <ul>
 <li>In this case we use as reference a dataset different from the one we use for model training and feature importance.</li>
