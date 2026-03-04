@@ -51,6 +51,7 @@ sudo apt install binutils gcc g++ cmake make -y
 ```
 
 ### 2. Install Boost Libraries (Ubuntu)
+This is only needed if you need to use MES Legacy Tools/Executables.
 
 #### Compiling Boost from Source
 
@@ -101,13 +102,12 @@ sudo apt install libboost-program-options1.83-dev -y
 
 ## Available Components
 
-You can install any of the following five components:
+You can install any of the following four components:
 
 1. [AlgoMarker Shared Library](AlgoMarker_Library.md): A shared Linux C library for accessing the AlgoMarker API and generating predictions/outputs from a model. Designed for **production use**, it supports only the essential "predict" and related APIs. Follow those steps only if you want to **productize** your model.
 2. [AlgoMarker Wrapper](AlgoMarker%20Wrapper): A REST API wrapper for the AlgoMarker Shared Library. Follow those steps only if you want to **productize** your model.
 3. [MES Tools to Train and Test Models](MES%20Tools%20to%20Train%20and%20Test%20Models.md): Command-line executables for training, testing, and manipulating models using the MR_LIBS infrastructure. Required for training new models. Alternatively, you can use the Python API.
-4. [Python API for MES Infrastructure](Python%20API%20for%20MES%20Infrastructure.md): Python API, enabling model training, testing, and manipulation from Python. Some features may only be available via MES Tools or by [extending the Python API](../Infrastructure%20Library/Medial%20Tools/Python/Extend%20and%20Develop.md).
-5. [MR_Scripts]: Useful Python and Bash scripts. Clone the repository with `git clone git@github.com:Medial-EarlySign/MR_Scripts.git`. No need to install it.
+4. [Python API for MES Infrastructure](Python%20API%20for%20MES%20Infrastructure.md): Python API, enabling model training, testing, and manipulation from Python. Some features may only be available via MES Tools or by [extending the Python API](../Infrastructure%20Library/Medial%20Tools/Python/Extend%20and%20Develop.md). Can be install via `pip install medpython`
 
 ## Environment Setup Script
 
@@ -115,29 +115,29 @@ After installing the required components, it is recommended to use the following
 
 ```bash title="Start-Up Script"
 #!/bin/bash
-
 # Path to Boost Library (If you compiled the boost library)
 BOOST_ROOT=${HOME}/Documents/MES/Boost
 # Path to Git repository clones - here in the example, we clones all repositories under ${HOME}/Documents/MES
 MR_LIBS=${HOME}/Documents/MES/MR_LIBS
 MR_TOOLS=${HOME}/Documents/MES/MR_Tools
-MR_SCRIPTS=${HOME}/Documents/MES/MR_Scripts
-PY_VERSION=$(python -c "import platform; print(''.join(platform.python_version().split('.')[:2]))")
 
 LD_PATH=${BOOST_ROOT}/lib
-export PATH=$PATH:${MR_TOOLS}/AllTools/Linux/Release:${MR_SCRIPTS}/Python-scripts:${MR_SCRIPTS}/Bash-Scripts:${MR_SCRIPTS}/Perl-scripts
 if [ ! -z "$LD_LIBRARY_PATH" ]; then
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${LD_PATH}
 else
     export LD_LIBRARY_PATH=${LD_PATH}
 fi
+
+export PATH=$PATH:${MR_TOOLS}/AllTools/Linux/Release:${MR_TOOLS}/Scripts/Python-scripts:${MR_TOOLS}/Scripts/Bash-Scripts:${MR_TOOLS}/Scripts/Perl-scripts
 export AUTOTEST_LIB=${MR_TOOLS}/AutoValidation/kits
-# Those lines are needed only if compling from source/not installing pypi python package of medpython
+###################### Setup Section if you compile from source or haven't install medpython pacakge from pypi ######################
+PY_VERSION=$(python -c "import platform; print(''.join(platform.python_version().split('.')[:2]))")
+
 export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python${PY_VERSION}:${MR_TOOLS}/RepoLoadUtils/common
 export BOOST_ROOT
 ```
 
-> **Tip:** Adjust the `LD_PATH`, `MR_LIBS`, `MR_TOOLS`, and `MR_SCRIPTS` variables as needed for your system.
+> **Tip:** Adjust the `BOOST_ROOT`, `MR_LIBS`, and `MR_TOOLS` variables as needed for your system.
 
 
 

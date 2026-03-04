@@ -10,23 +10,15 @@ You can download a prebuilt release from the [Release page](https://github.com/M
 ### Installation Steps
 
 1. Complete the [Preliminary Steps](index.md#prerequisites) to set up your build environment (install cmake, gcc, and libgomp1).
-2. [Compile the Boost Libraries](index.md#compiling-boost-from-source). You must build Boost from source.
+2. (**Optional Step**) [Compile the Boost Libraries](index.md#compiling-boost-from-source). Don't forget to set environment variable `BOOST_ROOT` to reference the Boost build directory. Ensure the compiled libraries are in `/libs` and headers in `/include`.
 3. Clone the repository:
    ```bash
    git clone git@github.com:Medial-EarlySign/medpython.git
    ```
-4. Edit `Internal/AlgoMarker/CMakeLists.txt` and add/edit line:
-   ```cmake
-   set(BOOST_ROOT "$ENV{HOME}/boost-pic-install")
-   ```
-   Set this path to your Boost build directory (`WORK_BUILD_FOLDER` from step 2). Ensure the compiled libraries are in `/libs` and headers in `/include`.
-   Alternatively you can just set your environment variable `BOOST_ROOT` to reference the Boost build directory. 
-5. Build the library:
+4. Build the library:
    ```bash
    Internal/AlgoMarker/full_build.sh
    ```
 
 A full docker image for compilation steps can be found under this link:
-
-* [01.basic_boost](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost) A base docker image with Boost
 * [03.algomarker](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/03.algomarker) A build with algomarker library
