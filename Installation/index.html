@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../images/icons/faveicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -9460,6 +9460,7 @@ Equivalent package exists in other linux distros, but here we will cover Ubuntu.
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>binutils<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>cmake<span class="w"> </span>make<span class="w"> </span>-y
 </code></pre></div></td></tr></table></div>
 <h3 id="2-install-boost-libraries-ubuntu">2. Install Boost Libraries (Ubuntu)</h3>
+<p>This is only needed if you need to use MES Legacy Tools/Executables.</p>
 <h4 id="compiling-boost-from-source">Compiling Boost from Source</h4>
 <p>You can <a href="https://www.boost.org/users/download/">download Boost</a> and compile it manually. Example steps for version 1.85.0:</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Boost Compilation</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
@@ -9530,13 +9531,12 @@ Equivalent package exists in other linux distros, but here we will cover Ubuntu.
 <p><strong>Important:</strong> This method is <strong>not</strong> required for the AlgoMarker library or the Python API. This is only for working with the legacy tools</p>
 </blockquote>
 <h2 id="available-components">Available Components</h2>
-<p>You can install any of the following five components:</p>
+<p>You can install any of the following four components:</p>
 <ol>
 <li><a href="AlgoMarker_Library.html">AlgoMarker Shared Library</a>: A shared Linux C library for accessing the AlgoMarker API and generating predictions/outputs from a model. Designed for <strong>production use</strong>, it supports only the essential "predict" and related APIs. Follow those steps only if you want to <strong>productize</strong> your model.</li>
 <li><a href="AlgoMarker%20Wrapper">AlgoMarker Wrapper</a>: A REST API wrapper for the AlgoMarker Shared Library. Follow those steps only if you want to <strong>productize</strong> your model.</li>
 <li><a href="MES%20Tools%20to%20Train%20and%20Test%20Models.html">MES Tools to Train and Test Models</a>: Command-line executables for training, testing, and manipulating models using the MR_LIBS infrastructure. Required for training new models. Alternatively, you can use the Python API.</li>
-<li><a href="Python%20API%20for%20MES%20Infrastructure.html">Python API for MES Infrastructure</a>: Python API, enabling model training, testing, and manipulation from Python. Some features may only be available via MES Tools or by <a href="../Infrastructure%20Library/Medial%20Tools/Python/Extend%20and%20Develop.html">extending the Python API</a>.</li>
-<li>[MR_Scripts]: Useful Python and Bash scripts. Clone the repository with <code>git clone git@github.com:Medial-EarlySign/MR_Scripts.git</code>. No need to install it.</li>
+<li><a href="Python%20API%20for%20MES%20Infrastructure.html">Python API for MES Infrastructure</a>: Python API, enabling model training, testing, and manipulation from Python. Some features may only be available via MES Tools or by <a href="../Infrastructure%20Library/Medial%20Tools/Python/Extend%20and%20Develop.html">extending the Python API</a>. Can be install via <code>pip install medpython</code></li>
 </ol>
 <h2 id="environment-setup-script">Environment Setup Script</h2>
 <p>After installing the required components, it is recommended to use the following script to configure your shell environment for all tools and scripts (This is only needed, if you are not using the python pypi package or if you want to use the executables):</p>
@@ -9561,29 +9561,29 @@ Equivalent package exists in other linux distros, but here we will cover Ubuntu.
 <span class="normal"><a href="#__codelineno-5-19">19</a></span>
 <span class="normal"><a href="#__codelineno-5-20">20</a></span>
 <span class="normal"><a href="#__codelineno-5-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1"># Path to Boost Library (If you compiled the boost library)</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="nv">BOOST_ROOT</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/Boost
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="c1"># Path to Git repository clones - here in the example, we clones all repositories under ${HOME}/Documents/MES</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="nv">MR_LIBS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_LIBS
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="nv">MR_TOOLS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_Tools
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="nv">MR_SCRIPTS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_Scripts
-<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="nv">PY_VERSION</span><span class="o">=</span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import platform; print(&#39;&#39;.join(platform.python_version().split(&#39;.&#39;)[:2]))&quot;</span><span class="k">)</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10"></a>
-<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="nv">LD_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">BOOST_ROOT</span><span class="si">}</span>/lib
-<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/AllTools/Linux/Release:<span class="si">${</span><span class="nv">MR_SCRIPTS</span><span class="si">}</span>/Python-scripts:<span class="si">${</span><span class="nv">MR_SCRIPTS</span><span class="si">}</span>/Bash-Scripts:<span class="si">${</span><span class="nv">MR_SCRIPTS</span><span class="si">}</span>/Perl-scripts
-<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="si">${</span><span class="nv">LD_PATH</span><span class="si">}</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="k">else</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">LD_PATH</span><span class="si">}</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="k">fi</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AUTOTEST_LIB</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/AutoValidation/kits
-<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="c1"># Those lines are needed only if compling from source/not installing pypi python package of medpython</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="c1"># Path to Boost Library (If you compiled the boost library)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nv">BOOST_ROOT</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/Boost
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1"># Path to Git repository clones - here in the example, we clones all repositories under ${HOME}/Documents/MES</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="nv">MR_LIBS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_LIBS
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="nv">MR_TOOLS</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/Documents/MES/MR_Tools
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="nv">LD_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">BOOST_ROOT</span><span class="si">}</span>/lib
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="si">${</span><span class="nv">LD_PATH</span><span class="si">}</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="k">else</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">LD_PATH</span><span class="si">}</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="k">fi</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/AllTools/Linux/Release:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/Scripts/Python-scripts:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/Scripts/Bash-Scripts:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/Scripts/Perl-scripts
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AUTOTEST_LIB</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/AutoValidation/kits
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="c1">###################### Setup Section if you compile from source or haven&#39;t install medpython pacakge from pypi ######################</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="nv">PY_VERSION</span><span class="o">=</span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import platform; print(&#39;&#39;.join(platform.python_version().split(&#39;.&#39;)[:2]))&quot;</span><span class="k">)</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a>
 <a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MR_LIBS</span><span class="si">}</span>/Internal/MedPyExport/generate_binding/Release/medial-python<span class="si">${</span><span class="nv">PY_VERSION</span><span class="si">}</span>:<span class="si">${</span><span class="nv">MR_TOOLS</span><span class="si">}</span>/RepoLoadUtils/common
 <a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="nb">export</span><span class="w"> </span>BOOST_ROOT
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<p><strong>Tip:</strong> Adjust the <code>LD_PATH</code>, <code>MR_LIBS</code>, <code>MR_TOOLS</code>, and <code>MR_SCRIPTS</code> variables as needed for your system.</p>
+<p><strong>Tip:</strong> Adjust the <code>BOOST_ROOT</code>, <code>MR_LIBS</code>, and <code>MR_TOOLS</code> variables as needed for your system.</p>
 </blockquote>
 
 

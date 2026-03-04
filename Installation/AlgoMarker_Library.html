@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../images/icons/faveicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -9389,24 +9389,16 @@
 <h3 id="installation-steps">Installation Steps</h3>
 <ol>
 <li>Complete the <a href="index.html#prerequisites">Preliminary Steps</a> to set up your build environment (install cmake, gcc, and libgomp1).</li>
-<li><a href="index.html#compiling-boost-from-source">Compile the Boost Libraries</a>. You must build Boost from source.</li>
+<li>(<strong>Optional Step</strong>) <a href="index.html#compiling-boost-from-source">Compile the Boost Libraries</a>. Don't forget to set environment variable <code>BOOST_ROOT</code> to reference the Boost build directory. Ensure the compiled libraries are in <code>/libs</code> and headers in <code>/include</code>.</li>
 <li>Clone the repository:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:Medial-EarlySign/medpython.git
 </code></pre></div></td></tr></table></div></li>
-<li>Edit <code>Internal/AlgoMarker/CMakeLists.txt</code> and add/edit line:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">set</span><span class="p">(</span><span class="s">BOOST_ROOT</span><span class="w"> </span><span class="s2">&quot;$ENV{HOME}/boost-pic-install&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-   Set this path to your Boost build directory (<code>WORK_BUILD_FOLDER</code> from step 2). Ensure the compiled libraries are in <code>/libs</code> and headers in <code>/include</code>.
-   Alternatively you can just set your environment variable <code>BOOST_ROOT</code> to reference the Boost build directory. </li>
 <li>Build the library:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Internal/AlgoMarker/full_build.sh
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>Internal/AlgoMarker/full_build.sh
 </code></pre></div></td></tr></table></div></li>
 </ol>
-<p>A full docker image for compilation steps can be found under this link:</p>
-<ul>
-<li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost">01.basic_boost</a> A base docker image with Boost</li>
-<li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/03.algomarker">03.algomarker</a> A build with algomarker library</li>
-</ul>
+<p>A full docker image for compilation steps can be found under this link:
+* <a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/03.algomarker">03.algomarker</a> A build with algomarker library</p>
 
 
 
