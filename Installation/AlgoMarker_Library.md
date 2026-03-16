@@ -13,7 +13,7 @@ You can download a prebuilt release from the [Release page](https://github.com/M
 2. (**Optional Step**) [Compile the Boost Libraries](index.md#compiling-boost-from-source). Don't forget to set environment variable `BOOST_ROOT` to reference the Boost build directory. Ensure the compiled libraries are in `/libs` and headers in `/include`.
 3. Clone the repository:
    ```bash
-   git clone git@github.com:Medial-EarlySign/medpython.git
+   git clone git@github.com:Medial-EarlySign/medpython.git MR_LIBS
    ```
 4. Build the library:
    ```bash

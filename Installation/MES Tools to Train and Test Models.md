@@ -13,7 +13,7 @@ You can download a prebuilt release from the [Release page](https://github.com/M
 2. Clone the required repositories:
    ```bash
    git clone git@github.com:Medial-EarlySign/MR_Tools.git
-   git clone git@github.com:Medial-EarlySign/medpython.git
+   git clone git@github.com:Medial-EarlySign/medpython.git MR_LIBS
    ```
 3. Change to the `MR_Tools` directory:
    ```bash
