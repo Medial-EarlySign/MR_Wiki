@@ -49,7 +49,7 @@ def sort_page_key(url: str):
 
 
 def get_pages(site: str) -> list[str]:
-    resp = requests.get(f"{site}/sitemap")
+    resp = requests.get(f"{site}/MR_Wiki/sitemap")
     data = resp.content
     xml = ET.parse(BytesIO(data))
     all_res = xml.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
@@ -238,7 +238,7 @@ def index_all(
 
 
 if __name__ == "__main__":
-    SITE = "https://medial-earlysign.github.io/MR_Wiki"
+    SITE = "https://medial-earlysign.github.io"
     REINDEX = False
     all_pages = index_all(SITE, REINDEX)
     all_pages = pd.DataFrame.from_dict(
