@@ -7400,6 +7400,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -9340,6 +9351,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -9443,9 +9465,10 @@
 <h3 id="overview">Overview</h3>
 <p>These are command-line executables for training, testing, and manipulating models, as well as other utilities developed by MES.</p>
 <p>You can download a prebuilt release from the <a href="https://github.com/Medial-EarlySign/medpython/releases/tag/V1.0.1">Release page</a>. The release is built with glibc 2.17 and will work out of the box on systems with <strong>glibc ≥ 2.17</strong> (e.g., <strong>Ubuntu &gt;= 13.04</strong>, <strong>Centos&gt;=7</strong>, eg.). If you need to build from source, follow the instructions below.</p>
+<p>For general instructions on how to use prebuilt binaries, refer to the Prebuilt Releases section in the main Installation Guide.</p>
 <h3 id="installation-steps">Installation Steps</h3>
 <ol>
-<li><a href="index.html#3-install-boost-libraries-ubuntu">Install Boost Libraries</a>. Compilation is not required, you might install from pacakge manager.</li>
+<li><strong>Install Boost Libraries:</strong> Follow the instructions in the <a href="index.html#3-install-boost-libraries-ubuntu">Install Boost Libraries</a> section of the main Installation Guide. Boost is a core dependency for MES Tools. If you compile Boost from source, ensure <code>BOOST_ROOT</code> is set correctly.</li>
 <li>Clone the required repositories:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:Medial-EarlySign/MR_Tools.git
@@ -9454,47 +9477,65 @@
 <li>Change to the <code>MR_Tools</code> directory:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>MR_Tools
 </code></pre></div></td></tr></table></div></li>
-<li>Edit <code>All_Tools/CMakeLists.txt</code> to set <code>LIBS_PATH</code> to the path of your MR_LIBS clone. If your directory structure is:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<li>
+<p><strong>Configure Build Paths:</strong> Instead of directly editing <code>CMakeLists.txt</code>, it's recommended to pass configuration variables via CMake arguments or environment variables.</p>
+<ul>
+<li>
+<p><strong><code>MR_LIBS</code> Path:</strong> The build system needs to know the location of your <code>medpython</code> (MR_LIBS) clone.
+    If your directory structure is:
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Root Directory
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a>├── MR_LIBS
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a>└── MR_Tools
 </code></pre></div></td></tr></table></div>
-   then no changes are needed. If you compiled Boost, also set <code>BOOST_ROOT</code> in the CMakeLists.txt file.</li>
-<li>Edit <code>All_Tools/CMakeLists.txt</code> and add/edit line:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">set</span><span class="p">(</span><span class="s">BOOST_ROOT</span><span class="w"> </span><span class="s2">&quot;$ENV{HOME}/boost-pic-install&quot;</span><span class="p">)</span>
+    then the build script should automatically detect <code>MR_LIBS</code>. Otherwise, you might need to set the <code>LIBS_PATH</code> environment variable before running the build script, or pass it as a CMake argument.</p>
+</li>
+<li>
+<p><strong><code>BOOST_ROOT</code> Path (if compiled from source):</strong> If you compiled Boost from source, ensure the <code>BOOST_ROOT</code> environment variable is set to your Boost installation directory (e.g., <code>/home/user/my_builds/Boost</code>). The build system will use this to find Boost.</p>
+</li>
+</ul>
+<p><strong>Example of setting environment variables before building:</strong>
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>export LIBS_PATH=&quot;/path/to/your/medpython/clone&quot; # e.g., /home/user/Documents/MES/MR_LIBS
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>export BOOST_ROOT=&quot;/path/to/your/compiled/Boost&quot; # Only if you compiled Boost from source
 </code></pre></div></td></tr></table></div>
-   Set this path to your Boost build directory (<code>WORK_BUILD_FOLDER</code> from step 2). Make sure the compiled libraries are in <code>/libs</code> and headers in <code>/include</code>.
-   Alternatively you can just set your environment variable <code>BOOST_ROOT</code> to reference the Boost build directory. </li>
-<li>Build the tools:
+5. Build the tools:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>AllTools/full_build.sh
-</code></pre></div></td></tr></table></div></li>
+</code></pre></div></td></tr></table></div></p>
+</li>
 </ol>
 <p>A full docker image for compilation steps can be found under this link:</p>
 <ul>
 <li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/01.basic_boost">01.basic_boost</a> A base docker image with Boost</li>
 <li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/02.build_tools">02.build_tools</a> A build with tools prepared for usage</li>
 </ul>
+<h3 id="verification">Verification</h3>
+<p>To verify that the MES Tools have been successfully built, you can try running one of the command-line executables.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1"># After sourcing your environment setup script (e.g., source ~/setup_mes_env.sh)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>Flow<span class="w"> </span>--version
+</code></pre></div></td></tr></table></div>
+<p>This command should output the version information for the <code>Flow</code> executable, indicating a successful build and correct environment setup.</p>
 <h2 id="common-issues">Common Issues</h2>
 <ol>
 <li>
 <p>Can't find Boost libray errors in compilation - Please delete the "./build" folder to recreate all Makefiles again. It holds some bad settings of Boost in cache.</p>
 </li>
 <li>
-<p>Can't find <code>boost_atomic.so</code> in runtime. Please add <code>atomic</code> in CMakeLists.txt under <code>BOOST_LIBS</code> and recompile</p>
+<p><strong>Can't find <code>boost_atomic.so</code> in runtime:</strong> This usually indicates a linking issue. Ensure that your <code>BOOST_ROOT</code> (if compiled from source) is correctly set and that <code>LD_LIBRARY_PATH</code> includes the Boost library directory. The <code>full_build.sh</code> script and <code>CMakeLists.txt</code> should ideally handle linking <code>boost_atomic</code> automatically if it's a required component. If not, you might need to explicitly add it to the <code>BOOST_LIBS</code> in the <code>CMakeLists.txt</code>.</p>
 </li>
 <li>
 <p>Running an executable may fail with:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>$&gt;<span class="w"> </span>Flow<span class="w"> </span>...
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>Flow:<span class="w"> </span>error<span class="w"> </span><span class="k">while</span><span class="w"> </span>loading<span class="w"> </span>shared<span class="w"> </span>libraries:<span class="w"> </span>libboost_regex.so.1.85.0:<span class="w"> </span>cannot<span class="w"> </span>open<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span>file:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>$&gt;<span class="w"> </span>Flow<span class="w"> </span>...
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>Flow:<span class="w"> </span>error<span class="w"> </span><span class="k">while</span><span class="w"> </span>loading<span class="w"> </span>shared<span class="w"> </span>libraries:<span class="w"> </span>libboost_regex.so.1.85.0:<span class="w"> </span>cannot<span class="w"> </span>open<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span>file:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
 </code></pre></div></td></tr></table></div>
 This indicates the Boost shared libraries are not found at runtime. Set <code>LD_LIBRARY_PATH</code> to point to your Boost lib directory. Add to your ~/.bashrc or run once per session:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/path/to/BOOST_ROOT/lib
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/path/to/BOOST_ROOT/lib
 </code></pre></div></td></tr></table></div>
 If Boost was installed via the system packages (Ubuntu 22.04 uses 1.74, 24.04 uses 1.83), install the appropriate dev packages instead of adjusting <code>LD_LIBRARY_PATH</code>:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libboost-program-options1.83-dev<span class="w"> </span>-y
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libboost-program-options1.83-dev<span class="w"> </span>-y
 </code></pre></div></td></tr></table></div>
 Replace 1.83 with 1.74 on Ubuntu 22.04 when needed.</p>
 </li>
