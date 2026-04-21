@@ -4,22 +4,21 @@ A prebuilt release is available on the [Release page](https://github.com/Medial-
 
 ### Compilation Steps
 
-1. Follow the [Preliminary Steps](../index.md#prerequisites) to setup build enviroment with cmake, cmake, gcc and libgopmp1
-2. (**Optional Step**) [Compile the Boost Libraries](../index.md#compiling-boost-from-source). Don't forget to set environment variable `BOOST_ROOT` to reference the Boost build directory. Ensure the compiled libraries are in `/libs` and headers in `/include`.
-3. Clone the repository:
+1. Follow the [Preliminary Steps](../index.md#common-prerequisites) to setup build enviroment with cmake, cmake, gcc and libgopmp1
+2. Clone the repository:
    ```bash
    git clone git@github.com:Medial-EarlySign/MR_Tools.git
    ```
-4. Compile the wrapper:
+3. Compile the wrapper:
    ```bash
    AlgoMarker_python_API/ServerHandler/compile.sh
    ```
-5. Execute the server:
+4. Execute the server:
    ```bash
    AlgoMarker_python_API/ServerHandler/Linux/Release/AlgoMarker_Server --algomarker_path $AM_CONFIG --library_path $AM_LIB --port 1234
    ```
 
-    * `AM_CONFIG`: Path to the AlgoMarker configuration file.
+   * `AM_CONFIG`: Path to the AlgoMarker configuration file.
    * `AM_LIB`: Path to the AlgoMarker shared library. 
       Refer to [AlgoMarker Library](../AlgoMarker_Library.md)) for compilation steps.
 
