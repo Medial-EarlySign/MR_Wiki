@@ -2,10 +2,23 @@
 # Installation Guide
 
 ## Introduction
+The MES Infrastructure is a suite of tools and libraries designed for building, training, and deploying machine learning models, particularly in medical contexts.
 
-This guide describes how to install and set up the MES Infrastructure and its components. You can choose to install all or only the components you need, depending on your use case. These tools allow you to use [published models](../Models). To use our tools, please refer to [Tutorials](../Tutorials/).
+This guide describes how to install and set up the MES Infrastructure and its various components. You can choose to install all or only the specific components you need, depending on your use case. These tools allow you to use [published models](../Models). For guidance on how to use our tools, please refer to the Tutorials section.
 
 ## Prebuilt Releases
+
+For convenience, prebuilt packages of executables and Python wheels are available. Using these eliminates the need for manual compilation.
+
+### How to Use Prebuilt Binaries
+
+1.  **Download:** Obtain the appropriate prebuilt release package from the Release page.
+2.  **Extract:** Unzip or untar the downloaded archive to a location on your system (e.g., `~/mes_binaries`).
+3.  **Add to PATH (Optional but Recommended):** To easily run the executables from any directory, add the directory containing the binaries to your system's `PATH` environment variable.
+    ```bash
+    export PATH="/path/to/your/extracted/binaries:$PATH"
+    ```
+4.  **Set `LD_LIBRARY_PATH`:** The C++ executables, are dependent in Boost library. Set `LD_LIBRARY_PATH` to include the directory containing shared libraries (e.g., Boost). Refer to the Environment Setup Script for guidance.
 
 A prebuilt package of executables is available for [direct download](https://github.com/Medial-EarlySign/medpython/releases/tag/V1.0.1). This eliminates the need for manual compilation. The binaries are built on **manylinux2014** and are compatible with any Linux distribution using **glibc ≥ 2.17** (Ubuntu >= 13.04, Centos>=7 or any other linux distro that has glibc>=2.17). You must also install [OpenMP support](#2-install-openmp-support-ubuntu). In Mac the prebuild is for macOS >= 14
 
@@ -23,13 +36,21 @@ pip install medpython
 | **macOS** | 🛠️ Compile Required | ✅ Pre-built (Py 3.10-3.13) |
 
 > **Note:** For any Compile Required or either not listed as Pre-built. Compliation is required.
-> See the "Build from Source" instructions below.
+> See the "Building the tools yourself" instructions below.
 
-## Prerequisites
+## Common Prerequisites
 
-### Install OpenMP Support (Ubuntu)
+These prerequisites are generally required for both running prebuilt binaries and building from source.
 
-Install OpenMP for parallel processing:
+### 1. General System Requirements
+
+*   **Operating System:** Linux (Ubuntu 13.04+, CentOS 7+ recommended), macOS (14+ for prebuilt Python wheels).
+*   **Memory:** 4GB RAM minimum, 16GB+ recommended for model training.
+*   **Disk Space:** 10GB+ free space for source code, dependencies, and build artifacts.
+
+### 2. Install OpenMP Support (Ubuntu)
+
+OpenMP is required for parallel processing in many of the C++ components.
 
 ```bash
 sudo apt install libgomp1 -y
@@ -50,12 +71,63 @@ Install the required compiler and build tools if you want to build the software 
 sudo apt install binutils gcc g++ cmake make -y
 ```
 
-### 2. Install Boost Libraries (Ubuntu)
-This is only needed if you need to use MES Legacy Tools/Executables.
+### 2. Install Boost Libraries
+Boost is a collection of C++ libraries. It is needed for the C++-based MES Tools.
 
-#### Compiling Boost from Source
+> **Important Note:**
+> *   For the Python API (`medpython`), Boost is handled automatically by the build process and does not require manual installation.
+> *   For AlgoMarker Library, Boost is handled automatically by the build process and does not require manual installation.
+> *   For AlgoMarker Wrapper, Boost is unneeded.
+> *   For MES Tools, Boost is a core dependency.
 
-You can [download Boost](https://www.boost.org/users/download/) and compile it manually. Example steps for version 1.85.0:
+#### When is Boost needed?
+
+*   **MES Tools:** Required.
+*   **AlgoMarker Library:** Handled automatically, manual installation not needed.
+*   **Python API:** Handled automatically, manual installation not needed.
+
+#### Which Boost version?
+
+The MES Infrastructure is generally compatible with Boost versions 1.67 and newer.
+
+#### How to install Boost:
+
+**Option A: Install via Package Manager (Recommended for most users)**
+
+This is the simplest method and often sufficient.
+
+```bash
+# For Ubuntu 22.04 (Boost 1.74)
+# sudo apt install libboost-program-options1.74-dev  -y
+
+# For Ubuntu 24.04 (Boost 1.83)
+sudo apt install libboost-program-options1.83-dev -y
+```
+
+> **Note:** The exact package names might vary slightly depending on your Ubuntu version. Install the `dev` packages to get both libraries and headers.
+
+**Option B: Compile Boost from Source (Advanced / Specific Requirements)**
+
+This method is only necessary if:
+
+*   Your system's package manager does not provide a compatible Boost version.
+*   You need a specific, custom-built version of Boost.
+
+For detailed instructions on compiling Boost from source, refer to the Advanced: Installation Script below.
+
+If you compile Boost from source, remember to set the `BOOST_ROOT` environment variable to point to your compiled Boost installation directory (e.g., `/path/to/your/compiled/Boost`). This is crucial for the build system to find the correct Boost libraries and headers.
+
+```bash
+# Example if you compiled Boost to /home/user/my_builds/Boost
+export BOOST_ROOT="/home/user/my_builds/Boost"
+```
+
+> **Important:** If you install Boost via a package manager, `BOOST_ROOT` is typically not needed as the system's CMake/pkg-config will find it automatically. Only set `BOOST_ROOT` if you compiled Boost manually.
+
+
+**Installation Script**
+You can [download Boost](https://www.boost.org/users/download/) and compile it manually. 
+Example steps for version 1.90.0:
 
 ```bash title="Boost Compilation"
 # Install tools for download and extraction
@@ -90,16 +162,6 @@ ln -sf ${WORK_BUILD_FOLDER}/boost_${VERSION_2}/boost  ${WORK_BUILD_FOLDER}/Boost
 ./b2 cxxflags=-march=x86-64 cxxflags=-fPIC pch=off link=shared variant=release -j8 --stagedir="${WORK_BUILD_FOLDER}/Boost" --with-program_options
 ```
 
-#### Installing Boost via Package Manager
-
-```bash
-sudo apt install libboost-program-options1.83-dev -y
-```
-
-> **Note:** On Ubuntu 22.04, Boost version 1.74 is available and compatible. It was also tested with newest Boost version 1.89.0(2025-August-14) as today
-> 
-> **Important:** This method is **not** required for the AlgoMarker library or the Python API. This is only for working with the legacy tools
-
 ## Available Components
 
 You can install any of the following four components:
@@ -129,8 +191,8 @@ else
 fi
 
 export PATH=$PATH:${MR_TOOLS}/AllTools/Linux/Release:${MR_TOOLS}/Scripts/Python-scripts:${MR_TOOLS}/Scripts/Bash-Scripts:${MR_TOOLS}/Scripts/Perl-scripts
-export AUTOTEST_LIB=${MR_TOOLS}/AutoValidation/kits
-###################### Setup Section if you compile from source or haven't install medpython pacakge from pypi ######################
+export AUTOTEST_LIB="${MR_TOOLS}/AutoValidation/kits"
+# --- Python API Setup (if built from source) ---
 PY_VERSION=$(python -c "import platform; print(''.join(platform.python_version().split('.')[:2]))")
 
 export PYTHONPATH=${MR_LIBS}/Internal/MedPyExport/generate_binding/Release/medial-python${PY_VERSION}:${MR_TOOLS}/RepoLoadUtils/common
@@ -138,6 +200,3 @@ export BOOST_ROOT
 ```
 
 > **Tip:** Adjust the `BOOST_ROOT`, `MR_LIBS`, and `MR_TOOLS` variables as needed for your system.
-
-
-

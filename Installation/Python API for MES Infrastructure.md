@@ -2,12 +2,16 @@
 ## Python API for MES Infrastructure
 
 ### Overview
-
 `MedPython` package provides a Python API for the MES Infrastructure, allowing you to train and manipulate MES models.
 
 **Installation**
 
 Requires Python 3.8+.
+
+There are two primary ways to install `medpython`:
+
+1.  **Using `pip` from PyPI (Recommended for most users):**
+    This is the simplest method and provides prebuilt wheels for supported platforms.
 
 ```bash
 pip install medpython
