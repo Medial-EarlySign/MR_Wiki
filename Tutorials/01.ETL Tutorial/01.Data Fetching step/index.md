@@ -16,7 +16,7 @@ This guide uses a file-based example to demonstrate the process, but the same pr
 
 ### 1. Setup and Imports
 
-First, import the necessary helper libraries. The example uses pre-built functions for file handling.
+First, import the necessary helper libraries. The example uses pre-built functions for file handling. We also have helper functions for [databases](fetching_from_db.md).
 
 ```python
 from ETL_Infra.data_fetcher.files_fetcher import files_fetcher, list_directory_files, big_files_fetcher
