@@ -38,7 +38,7 @@ Future implementations will be easier with a straightforward ETL process. The on
 To see a full example for FHIR/EPIC loading process please refer to:
 
 * A reference implementation for converting FHIR/Epic data to the AlgoMarker request format is provided in this [python adaptor script](https://github.com/Medial-EarlySign/MR_Tools/blob/main/test_algomarker/fhir_to_medpython.py) to convert into AlgoMarker format
-* ETL of AlgoMarker format: to be completed...
+* **AlgoMarker Format ETL:** Converts data from the AlgoMarker Request format into the MedRepository format for faster and more comprehensive data access. This script utilizes the `medpython-etl` infrastructure and serves as an excellent reference example: [algomarker_to_medrepository.py](https://github.com/Medial-EarlySign/MR_Tools/blob/main/test_algomarker/algomarker_to_medrepository.py)
 
 The first step is to setup the ETL infrastructure.
 Follow the detailed instructions in the [Setup](00.Setup) documentation to begin.
