@@ -9419,25 +9419,22 @@
 <p>A prebuilt release is available on the <a href="https://github.com/Medial-EarlySign/medpython/releases/tag/V1.0.1">Release page</a>. The release is built with glibc 2.17 and will work out of the box on systems with <strong>glibc ≥ 2.17</strong> (e.g., <strong>Ubuntu &gt;= 13.04</strong>, <strong>Centos&gt;=7</strong>, eg.). If you need to build from source, follow the instructions below.</p>
 <h3 id="compilation-steps">Compilation Steps</h3>
 <ol>
-<li>Follow the <a href="../index.html#prerequisites">Preliminary Steps</a> to setup build enviroment with cmake, cmake, gcc and libgopmp1</li>
-<li>(<strong>Optional Step</strong>) <a href="../index.html#compiling-boost-from-source">Compile the Boost Libraries</a>. Don't forget to set environment variable <code>BOOST_ROOT</code> to reference the Boost build directory. Ensure the compiled libraries are in <code>/libs</code> and headers in <code>/include</code>.</li>
+<li>Follow the <a href="../index.html#common-prerequisites">Preliminary Steps</a> to setup build enviroment with cmake, cmake, gcc and libgopmp1</li>
 <li>Clone the repository:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:Medial-EarlySign/MR_Tools.git
 </code></pre></div></td></tr></table></div></li>
 <li>Compile the wrapper:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>AlgoMarker_python_API/ServerHandler/compile.sh
 </code></pre></div></td></tr></table></div></li>
-<li>
-<p>Execute the server:
+<li>Execute the server:
    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>AlgoMarker_python_API/ServerHandler/Linux/Release/AlgoMarker_Server<span class="w"> </span>--algomarker_path<span class="w"> </span><span class="nv">$AM_CONFIG</span><span class="w"> </span>--library_path<span class="w"> </span><span class="nv">$AM_LIB</span><span class="w"> </span>--port<span class="w"> </span><span class="m">1234</span>
-</code></pre></div></td></tr></table></div></p>
+</code></pre></div></td></tr></table></div></li>
+</ol>
 <ul>
 <li><code>AM_CONFIG</code>: Path to the AlgoMarker configuration file.</li>
 <li><code>AM_LIB</code>: Path to the AlgoMarker shared library. 
-  Refer to <a href="../AlgoMarker_Library.html">AlgoMarker Library</a>) for compilation steps.</li>
+      Refer to <a href="../AlgoMarker_Library.html">AlgoMarker Library</a>) for compilation steps.</li>
 </ul>
-</li>
-</ol>
 <p>A full docker image for compilation steps can be found under this link:</p>
 <ul>
 <li><a href="https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/medbuild_tools.new/05.algomarker_wrapper">05.algomarker_wrapper</a> A build with algomarker wrapper</li>
