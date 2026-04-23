@@ -133,3 +133,7 @@ A valid request to AlgoMarker should include the following fields:
 
 ### FHIR/EPIC Conversions
 A reference implementation for converting FHIR/Epic data to the AlgoMarker request format is provided in this [python adaptor script](https://github.com/Medial-EarlySign/MR_Tools/blob/main/test_algomarker/fhir_to_medpython.py).
+
+## AlgoMarker Response Format
+
+A full example can be seen here: [Deployment](../../Tutorials/07.Deployment/index.md#how-to-use-the-deployed-algomarker)

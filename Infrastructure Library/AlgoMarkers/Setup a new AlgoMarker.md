@@ -27,7 +27,7 @@ The setup script defines variables for the model, repository, reference matrix, 
     - You can copy the config files from the repository used during model training, but it is recommended to clean them up and remove unused signals. A script is available to assist with this from GastroFlag.
 
 5. **Create the AlgoMarker Configuration File (`amconfig`)**
-    - See the [Configuration File section](../AlgoMarkers) for details and a full example.
+    - See the [Configuration File section](../AlgoMarkers/Configuration.md) for details and a full example.
     - Keep `TYPE` as `MEDIAL_INFRA`
     - `NAME` is free text to store name for AlgoMarker and will be returned in discovery call request.
     - The `FILTER` rows allow you to define eligibility rules and warnings. For testing, you may skip these filters.
@@ -46,7 +46,7 @@ The setup script defines variables for the model, repository, reference matrix, 
     ```
 
     - Filters can enforce rules such as minimum/maximum number of results, allowed values, age ranges, dictionary validation, and outlier limits.
-    - See the full example in [Eligibility rules configuration section](../AlgoMarkers)
+    - See the full example in [Eligibility rules configuration section](../AlgoMarkers/Configuration.md#eligibility-rules-configuration)
     - `REPOSITORY` and `MODEL` refer to file paths: `REPOSITORY` is the path to the repository config file (used in Step 4), and `MODEL` is the path to the model binary (used in Step 2). 
 
       It's recommended to use relative paths and place both files in the same folder hierarchy for simplicity.
