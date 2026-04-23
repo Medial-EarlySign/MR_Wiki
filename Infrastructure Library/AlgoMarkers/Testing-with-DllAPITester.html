@@ -12,7 +12,7 @@
         <meta name="author" content="Medial EarlySign">
       
       
-        <link rel="canonical" href="https://medial-earlysign.github.io/MR_Wiki/Infrastructure%20Library/AlgoMarkers/The%20new%20DllAPITester.html">
+        <link rel="canonical" href="https://medial-earlysign.github.io/MR_Wiki/Infrastructure%20Library/AlgoMarkers/Testing-with-DllAPITester.html">
       
       
         <link rel="prev" href="Setup%20a%20new%20AlgoMarker.html">
@@ -29,7 +29,7 @@
     
     
       
-        <title>The new DllAPITester - Medial EarlySign Documentation</title>
+        <title>Testing with DllAPITester - Medial EarlySign Documentation</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-new-dllapitester" class="md-skip">
+        <a href="#testing-with-dllapitester" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The new DllAPITester
+              Testing with DllAPITester
             
           </span>
         </div>
@@ -2367,6 +2367,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -2434,6 +2438,62 @@
     
   
     AlgoMarker inspection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AlgoMarker Configuration &amp; Eligibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Custom%20Development.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom AlgoMarker Development
   
 
     
@@ -2526,7 +2586,7 @@
   <span class="md-ellipsis">
     
   
-    The new DllAPITester
+    Testing with DllAPITester
   
 
     
@@ -2537,14 +2597,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="The%20new%20DllAPITester.html" class="md-nav__link md-nav__link--active">
+      <a href="Testing-with-DllAPITester.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    The new DllAPITester
+    Testing with DllAPITester
   
 
     
@@ -2570,76 +2630,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-dllapitester-is-a-testing-tool-for-algomarkers-that-contains-several-useful-options" class="md-nav__link">
+  <a href="#application-code-and-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The DllAPITester is a testing tool for AlgoMarkers that contains several useful options:
+        Application Code and Build
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Code and Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-a-batch-of-examples-and-comparing-infrastructure-to-algomarker-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing a Batch of examples and comparing infrastructure to AlgoMarker implementation
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#general-app-parameters" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#testing-a-single-example-directly" class="md-nav__link">
     <span class="md-ellipsis">
       
-        General App Parameters
+        Testing a Single Example Directly
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#score-compare-testing-results-of-an-algomarker-vs-results-directly-from-the-infrastructure-and-much-more" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Score Compare: Testing results of an AlgoMarker vs. results directly from the infrastructure, and much more
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#generating-json-outputs" class="md-nav__link">
+  <a href="#generating-json-requests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Generating json outputs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-on-input-json-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running on input json examples
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generating-dictionaries-for-algomarkers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Generating Dictionaries for AlgoMarkers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#working-with-input-json-requests-and-output-json-responses" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Working with input json requests and output json responses
+        Generating json requests
       
     </span>
   </a>
@@ -9342,76 +9375,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-dllapitester-is-a-testing-tool-for-algomarkers-that-contains-several-useful-options" class="md-nav__link">
+  <a href="#application-code-and-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The DllAPITester is a testing tool for AlgoMarkers that contains several useful options:
+        Application Code and Build
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Code and Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-a-batch-of-examples-and-comparing-infrastructure-to-algomarker-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing a Batch of examples and comparing infrastructure to AlgoMarker implementation
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#general-app-parameters" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#testing-a-single-example-directly" class="md-nav__link">
     <span class="md-ellipsis">
       
-        General App Parameters
+        Testing a Single Example Directly
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#score-compare-testing-results-of-an-algomarker-vs-results-directly-from-the-infrastructure-and-much-more" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Score Compare: Testing results of an AlgoMarker vs. results directly from the infrastructure, and much more
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#generating-json-outputs" class="md-nav__link">
+  <a href="#generating-json-requests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Generating json outputs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-on-input-json-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Running on input json examples
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generating-dictionaries-for-algomarkers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Generating Dictionaries for AlgoMarkers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#working-with-input-json-requests-and-output-json-responses" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Working with input json requests and output json responses
+        Generating json requests
       
     </span>
   </a>
@@ -9501,7 +9507,7 @@
 
 
   
-    <a href="https://github.com/Medial-EarlySign/MR_Wiki/edit/main/Infrastructure Library/AlgoMarkers/The new DllAPITester.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/Medial-EarlySign/MR_Wiki/edit/main/Infrastructure Library/AlgoMarkers/Testing-with-DllAPITester.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -9510,152 +9516,124 @@
     
       
     
-    <a href="https://github.com/Medial-EarlySign/MR_Wiki/raw/main/Infrastructure Library/AlgoMarkers/The new DllAPITester.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/Medial-EarlySign/MR_Wiki/raw/main/Infrastructure Library/AlgoMarkers/Testing-with-DllAPITester.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="the-new-dllapitester">The new DllAPITester</h1>
-<h2 id="the-dllapitester-is-a-testing-tool-for-algomarkers-that-contains-several-useful-options">The DllAPITester is a testing tool for AlgoMarkers that contains several useful options:</h2>
+<h1 id="testing-with-dllapitester">Testing with DllAPITester</h1>
+<p>The <code>DllAPITester</code> is a comprehensive testing tool for AlgoMarkers. It contains several useful features:</p>
 <ul>
 <li>Testing results on a sample set via the infrastructure and via the AlgoMarker</li>
 <li>Testing via the AlgoMarker library in the infrastructure or via the .so compiled for it.</li>
 <li>Generating json examples from data.</li>
 <li>Testing on json examples.</li>
-<li>Generating dictionaries for AlgoMarkers.</li>
-<li>Testing also using the newer json requests and json responses.
-It is a must use tool whenever packing a new algomarker.
-In the following explanations we will assume one has an AlgoMarker with a model inside, a repository to test on, and a samples file to work with.
- </li>
 </ul>
-<h2 id="general-app-parameters">General App Parameters</h2>
-<p>The App is in ../MR/Libs/Internal/AlgoMarker/Linux/Release/DllAPITester , to compile simply compile the AlgoMarker directory (smake_rel).
-Major parameters:
- </p>
-<table><tbody>
-<tr>
-<th>parameter</th>
-<th>comment</th>
-</tr>
-<tr>
-<td>rep</td>
-<td>repository to use</td>
-</tr>
-<tr>
-<td>samples</td>
-<td>samples file</td>
-</tr>
-<tr>
-<td>model</td>
-<td>the model file (typically the one in the AlgoMarker wrap)</td>
-</tr>
-<tr>
-<td>amconfig</td>
-<td>the algomarker (config) to work with</td>
-</tr>
-<tr>
-<td>amlib</td>
-<td>the actual .so to use when calling AM_API calls. Optional. Without it will use the AM_API as is currently in the infrastructure.</td>
-</tr>
-<tr>
-<td>json_dict</td>
-<td>A list of dictionaries to load into the AlgoMarker when loading it (prior to actual usage of loading data and getting results)</td>
-</tr>
-<tr>
-<td>am_res_file</td>
-<td>(optional) The predictions file of the AlgoMarker as generated by calling the AlgoMarker</td>
-</tr>
-<tr>
-<td>direct_csv</td>
-<td>(optional) The full feature matrix generated by running through the infrastructure</td>
-</tr>
-<tr>
-<td>am_csv</td>
-<td>(optional) The full feature matrix generated by running through the AlgoMarker</td>
-</tr>
-<tr>
-<td>single</td>
-<td>Run tests one by one rather than in batch. Slower. Some modes, such as generating json outputs work only in single mode.</td>
-</tr>
-<tr>
-<td>out_jsons</td>
-<td>if given will generate a file with a list of jsons (in a long array) that contain all the data needed to give a prediction. These can be used for direct tests in the AlgoAnalyzer.</td>
-</tr>
-<tr>
-<td>in_jsons</td>
-<td>if given will take input data from the given jsons.</td>
-</tr>
-<tr>
-<td>jreq</td>
-<td>input json request (could contain also data)</td>
-</tr>
-<tr>
-<td>jresp</td>
-<td>get output as a json response</td>
-</tr>
-<tr>
-<td>create_jreq</td>
-<td>generate a request for a given samples file (will need also jreq_defs, optionally the --add_data_to_jreq flag) and an output file in --jreq_out)</td>
-</tr>
-</tbody></table>
-<h2 id="score-compare-testing-results-of-an-algomarker-vs-results-directly-from-the-infrastructure-and-much-more">Score Compare: Testing results of an AlgoMarker vs. results directly from the infrastructure, and much more</h2>
-<p>This test is currently testing the prediction only (for single prediction models). Not testing other accompanied infomation that could be on top in json responses.
-It is the major test to be done, to run it:
-DllAPITester --rep <rep> --samples <samples file> --model <model file> --amconfig <algomarker config file>
-This will so a batch run and test the whole samples, producing a summary report.
-In many cases you would need to add:</p>
-<ul>
-<li>--json_dict <list of dictionaries> : if you require additional dictionaries to be loaded.</li>
-<li>--single : if you wish to do the test in single mode, one by one, mimicking how it is used by AlgoAnalyzer.</li>
-<li>optional output files:</li>
-<li>--amlib <lib> : point to an .so file (typically the one in the AlgoMarker library). If given , the run will use the API from the library, as would happen in real life usage. Without it the API as is currently in the infrastructure will be used.</li>
-<li>--out_jsons <output file> : generating json examples out of this run.</li>
-<li>--am_csv <file> , --direct_csv <file> : when needing the actual feature matrix via the AlgoMarker or via the infrastructure (or both).</li>
-<li>--am_res_file : the predictions as generated by the AlgoMarker.
- 
-An example of a full run example with some options on:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>DllAPITester<span class="w"> </span>--rep<span class="w"> </span>/home/Repositories/KPNW/kpnw_apr20/kpnw.repository<span class="w"> </span>--samples<span class="w"> </span>./nwp_100.samples<span class="w"> </span>--model<span class="w"> </span>/nas1/Products/COVID19/QA_Versions/dev_20200608/COVID19-Comp-Flag-2020-05-04.model<span class="w"> </span>--amconfig<span class="w"> </span>/nas1/Products/COVID19/QA_Versions/dev_20200608/COVID19-Comp-Flag-2020-05-04.amconfig<span class="w"> </span>--json_dict<span class="w"> </span>/nas1/Work/AlgoMarkers/COVID19/Avi/DIAGNOSIS.txt,/nas1/Work/AlgoMarkers/COVID19/Avi/Drug.txt,/nas1/Work/AlgoMarkers/COVID19/Avi/ADMISSION.txt<span class="w"> </span>--single<span class="w"> </span>--am_res<span class="w"> </span>am.preds<span class="w"> </span>--out_jsons<span class="w"> </span>n100.jsons
+<p>In the following explanations we will assume one has an AlgoMarker with a model inside, a repository to test on, and a samples file to work with.</p>
+<p><strong>DllAPITester Help Command</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>DllAPITester<span class="w"> </span>--help
 </code></pre></div></td></tr></table></div>
-This example will test the covid predictor on some samples, on the requested repository, but also load some dictionaries prior to that, do the run in single mode, and output both the predictions into a file, and a file containing jsons for all the samples.</li>
-</ul>
-<h2 id="generating-json-outputs">Generating json outputs</h2>
-<p>To do that simply run a score compare run with the out_jsons file requested. You need to be in single mode for this option to work.
-You can set up some parameters for the creation (optional):</p>
+<p><strong>Options:</strong></p>
 <ul>
-<li>--accountId <arg> :  accountId for output json</li>
-<li>--calculator <arg> :  calculator name for output json</li>
-<li>--units <arg> : list of units to add for requested signals (example: BMI,kg/m^2,Weight,kg,Height,cm,Pack_Years,pack*years,Smoking_Intensity,cigs/day,Smoking_Quit_Date,date,Smoking_Duration,years)</li>
-<li>--scoreOnDate : flag, use to have that field in output jsons.
- 
-The jsons will be created with a request_id field "req_id" of the form : req_<pid>_<time for prediction> , coding the actual time for prediction that it was made for.</li>
+<li><code>--rep</code>: Repository file name</li>
+<li><code>--samples</code>: MedSamples file to use</li>
+<li><code>--model</code>: Model file to use</li>
+<li><code>--amconfig</code>: AlgoMarker configuration file</li>
+<li><code>--amlib</code>: The actual .so to use when calling AM_API calls (if not given will use current recent code compiled with DllAPITester)</li>
+<li><code>--direct_csv</code>: (optional) The full feature matrix generated by running through the infrastructure</li>
+<li><code>--am_csv</code>: (optional) The full feature matrix generated by running through the AlgoMarker</li>
+<li><code>--out_jsons</code>: (optional) if given will generate a file with a list of jsons (in a long array) that contain all the data needed to give a prediction. These can be used for direct tests in the AlgoAnalyzer.</li>
+<li><code>--in_jsons</code>: (optional) if given will take input data from the given jsons, instead of the repository and samples.</li>
+<li><code>--jreq</code>: input json request (could contain also data of in_jsons)</li>
+<li><code>--jresp</code>: get output as a json response to store in file</li>
+<li><code>--create_jreq</code>: generate a request for a given samples file (will need also jreq_defs, optionally the --add_data_to_jreq flag) and an output file in --jreq_out)</li>
 </ul>
-<h2 id="running-on-input-json-examples">Running on input json examples</h2>
-<p>Sometimes it is useful to generate a run on a given file of jsons, in order to recreate a bug or a prediction on specific cases.
-This can be done by simply using the --in_jsons option (if given , then you don't need a repository and samples).
-Currently this option runs over the jsons in the given file one by one (as in single mode), and prints the score to each. It doesn't compare it to anything.
-You can generate a preds file for all the given jsons using the --preds_json <file> option.
-You can also generate the matrix using the --am_csv option. However this currently will simply write the matrix for the last json given in the file (could be improved in future).</p>
-<h2 id="generating-dictionaries-for-algomarkers">Generating Dictionaries for AlgoMarkers</h2>
-<p>AlgoMarkers with categorial signals may need accompanying dictionaries to adjust them to the actual dictionaries in the AlgoMarker.
-Those dictionaries can be created in anyway and manner as long as they are in the correct format and meaning at the end.
-The DllAPITester allows generating such dictionaries for a given AlgoMarker and repository.
-To do that one must supply a config file. The config file is composed of tab delimited lines with 3 fields:
-<signal> <IN or OUT> <categorial value>
-IN means : the value is an input categorial value
-OUT means : an output value, a valid value to send to the AlgoMarker.
-There are 2 possible formates for the output, for the one used by the AlgoAnalyzer use --simple_dict option.
-Example run:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>DllAPITester<span class="w"> </span>--rep<span class="w"> </span>/home/Repositories/KPNW/kpnw_apr20/kpnw.repository<span class="w"> </span>--dicts_config<span class="w"> </span>../../../NWP/covid_testing/dev_20200504/full_dicts/dicts.config<span class="w"> </span>--out_json_dict<span class="w"> </span>./dict.json<span class="w"> </span>--simple_dict
+<h2 id="application-code-and-build">Application Code and Build</h2>
+<p>The App is located in <code>../MR/Libs/Internal/AlgoMarker/Linux/Release/DllAPITester</code>. To compile, simply compile the AlgoMarker directory with Boost Library (<code>Internal/AlgoMarker/full_build.sh</code>).</p>
+<h3 id="testing-a-batch-of-examples-and-comparing-infrastructure-to-algomarker-implementation">Testing a Batch of examples and comparing infrastructure to AlgoMarker implementation</h3>
+<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Example Run</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>./Linux/Release/DllAPITester<span class="w"> </span>--rep<span class="w"> </span>/home/Repositories/THIN/thin_jun2017/thin.repository<span class="w"> </span>--samples<span class="w"> </span>/server/Work/Users/Tal/Temp/test.samples<span class="w"> </span>--model<span class="w"> </span>/server/Products/Pre2D/QA_Versions/1.0.0.1/pre2d.model<span class="w"> </span>--amconfig<span class="w"> </span>/server/Products/Pre2D/QA_Versions/1.0.0.1/pre2d.amconfig
 </code></pre></div></td></tr></table></div>
-<h2 id="working-with-input-json-requests-and-output-json-responses">Working with input json requests and output json responses</h2>
-<p>The newer APIs in the library allow for a new way of generating outputs. It is possible now to load data from a rep+samples or in_jsons (As shown above), and then use a json request (–jreq option) for inputs, and get out a json response (–jresp). More than that: requests can contain actual data for the patients and if that is used then one can skip loading the data from a repository and samples or in_jsons.
-To use these options simply do a usual run, but then add a valid --jreq <json request file> and an output --jresp <output response>.
-The DllAPITester contains also options to generate such json requests with/without data.
-(TBD: detailed description of the json request input options, and the structure of the output json response).
- 
- </p>
+The tester will compare the scores given by both methods and will return passed/failed. For example:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Example Output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>...
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>#Res1 :: pid 5000529 time 20060308 pred 0.135475 #Res2 pid 5000529 time 20060308 pred 0.135475
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>#Res1 :: pid 5000529 time 20060315 pred 0.090177 #Res2 pid 5000529 time 20060315 pred 0.090177
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>Comparing 99 scores
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>&gt;&gt;&gt;&gt;&gt;TEST1: test DLL API batch: total 99 : n_similar 81 : n_bad 0 : n_miss 18
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>PASSED
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>[!NOTE]  This only tests for scores and not other outputs, like explainability, or outliers warnings.</p>
+</blockquote>
+<p>A full usage example of creating json inputs and comparing the results with using directly the infrasturure, can be see in this script:
+<a href="https://github.com/Medial-EarlySign/MR_Tools/blob/main/test_algomarker/scripts_template/run_minimal_score_compare.sh">MR_Tools/test_algomarker/scripts_template/run_minimal_score_compare.sh</a></p>
+<h3 id="testing-a-single-example-directly">Testing a Single Example Directly</h3>
+<p>Another option is running a direct test using self-explanatory test data formats:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Testing a single example directly</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>Linux/Release/DllAPITester<span class="w"> </span>--rep<span class="w"> </span>/home/Repositories/THIN/thin_jun2017/thin.repository<span class="w"> </span>--amconfig<span class="w"> </span>/nas1/Products/Pre2D/QA_Versions/dev/pre2d.amconfig<span class="w"> </span>--direct_test<span class="w"> </span>--test_data<span class="w"> </span><span class="s2">&quot;Glucose:120:20171101;GENDER:1;BYEAR:1988&quot;</span><span class="w"> </span>--date<span class="w"> </span><span class="m">20180520</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Single test result</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span>
+<span class="normal"><a href="#__codelineno-4-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Algomarker Pre2D was loaded with config file /nas1/Products/Pre2D/QA_Versions/dev/pre2d.amconfig
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>Adding Data: sig Glucose :: vals: 120.000000,  times: 20171101,
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>Adding Data: sig GENDER :: vals: 1.000000,  times:
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>...
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>Got 1 responses
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>Response Messages: 0
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>Score 0 Messages: 0
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>resp_rc = 0
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>i 0 , pid 1 ts 20180520 scr 0.272233
+</code></pre></div></td></tr></table></div>
+<h2 id="generating-json-requests">Generating json requests</h2>
+<ol>
+<li>To create JSON request from repository and samples files, use:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>DllAPITester<span class="w"> </span>--rep<span class="w"> </span><span class="si">${</span><span class="nv">REP_PATH</span><span class="si">}</span><span class="w"> </span>--samples<span class="w"> </span><span class="si">${</span><span class="nv">SAMPLES_PATH</span><span class="si">}</span><span class="w"> </span>--model<span class="w">  </span><span class="si">${</span><span class="nv">MODEL_PATH</span><span class="si">}</span><span class="w"> </span>--amconfig<span class="w"> </span><span class="si">${</span><span class="nv">AM_CONFIG</span><span class="si">}</span><span class="w"> </span>--create_jreq<span class="w"> </span>--single<span class="w"> </span>--jreq_defs<span class="w"> </span><span class="si">${</span><span class="nv">PATH_TO_REQUEST_DEFINITION_FILE</span><span class="si">}</span><span class="w"> </span>--jreq_out<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT_JREP_PATH</span><span class="si">}</span><span class="w"> </span>
+</code></pre></div></td></tr></table></div></li>
+</ol>
+<p>Here is jreq_defs example:
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;request&quot;</span><span class="w"> </span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="nt">&quot;request_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my test&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="nt">&quot;export&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">        </span><span class="nt">&quot;prediction&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pred_0&quot;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+This will create JSON inputs for the AlgoMarker from our repository and samples.</p>
+<ol start="2">
+<li>Create json data for AddDataByType request (if we haven't included --add_data_to_jreq in above code, so the data is provided in a different API call):
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>DllAPITester<span class="w"> </span>--rep<span class="w"> </span><span class="si">${</span><span class="nv">REP_PATH</span><span class="si">}</span><span class="w"> </span>--samples<span class="w"> </span><span class="si">${</span><span class="nv">SAMPLES_PATH</span><span class="si">}</span><span class="w"> </span>--model<span class="w">  </span><span class="si">${</span><span class="nv">MODEL_PATH</span><span class="si">}</span><span class="w"> </span>--amconfig<span class="w"> </span><span class="si">${</span><span class="nv">AM_CONFIG</span><span class="si">}</span><span class="w"> </span>--out_jsons<span class="w"> </span><span class="si">${</span><span class="nv">EXP_DIR</span><span class="si">}</span>/data.json<span class="w"> </span>--single<span class="w"> </span>--calculator<span class="w"> </span><span class="s2">&quot;AlgoMarkerName_To_Be_Documented_In_The_Request&quot;</span><span class="w"> </span>--allow_rep_adjustment<span class="w"> </span><span class="m">1</span><span class="w"> </span>--signal_categ_regex<span class="w"> </span><span class="si">${</span><span class="nv">CURR_DIR</span><span class="si">}</span>/signal_regex_filter.tsv<span class="w"> </span>--rename_signal<span class="w"> </span><span class="si">${</span><span class="nv">CURR_DIR</span><span class="si">}</span>/signal_rename.tsv
+</code></pre></div></td></tr></table></div></li>
+</ol>
+<ul>
+<li>You can use the <code>--rename_signal</code> flag to provide a file that maps repository signal names to official AlgoMarker names. This tab-delimited file allows for standardized naming; for example, converting <strong>GENDER</strong> to <strong>SEX</strong>.</li>
+<li>You can use the <code>--signal_categ_regex</code> to keep only categorical values that matched a specific regex, to avoid uneccerary categorical values that aren't supported by the AlgoMarker.</li>
+</ul>
+<ol start="3">
+<li>Get Full response from the AlgoMarker (without repository, samples):
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>DllAPITester<span class="w"> </span>--amlib<span class="w"> </span><span class="nv">$LIB_PATH</span><span class="w"> </span>--amconfig<span class="w"> </span><span class="nv">$AM_CONFIG</span><span class="w"> </span>--json_req_test<span class="w"> </span>--in_jsons<span class="w"> </span><span class="si">${</span><span class="nv">PATH_TO_DATA_JSON_FROM_STEP2_IF_NOT_INSIDE_JREQ</span><span class="si">}</span><span class="w"> </span>--jreq<span class="w"> </span><span class="si">${</span><span class="nv">PATH_TO_REQ_JSON_FROM_STEP1</span><span class="si">}</span><span class="w"> </span>--jresp<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT_PATH</span><span class="si">}</span><span class="w"> </span>--single<span class="w"> </span>--discovery<span class="w"> </span><span class="si">${</span><span class="nv">AM_DIR</span><span class="si">}</span>/discovery.json
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="k">fi</span>
+</code></pre></div></td></tr></table></div></li>
+</ol>
+<p>You can also provide path to get the discovery API json with <code>--discovery</code></p>
 
 
 

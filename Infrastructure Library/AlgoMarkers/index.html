@@ -2367,6 +2367,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -2454,6 +2458,62 @@
   
   
     <li class="md-nav__item">
+      <a href="Configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AlgoMarker Configuration &amp; Eligibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Custom%20Development.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom AlgoMarker Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="Request%20Json%20Format.html" class="md-nav__link">
         
   
@@ -2510,14 +2570,14 @@
   
   
     <li class="md-nav__item">
-      <a href="The%20new%20DllAPITester.html" class="md-nav__link">
+      <a href="Testing-with-DllAPITester.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    The new DllAPITester
+    Testing with DllAPITester
   
 
     
@@ -9218,10 +9278,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-write-a-new-custom-algomarker" class="md-nav__link">
+  <a href="#documentation-directory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to write a new Custom AlgoMarker
+        Documentation Directory
       
     </span>
   </a>
@@ -9229,99 +9289,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#compile-the-algomarker-library" class="md-nav__link">
+  <a href="#algomarker-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compile The AlgoMarker library
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-medialinfra-algomarker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The MedialInfra AlgoMarker
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The MedialInfra AlgoMarker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuration-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration File
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#eligibility-rules-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Eligibility rules configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Eligibility rules configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters-for-simple-filter-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameters for simple filter type
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameters-for-attribute-attr-filter-type" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameters for attribute ('attr') filter type
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-freeze-a-medialinfra-algomarker-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to freeze a MedialInfra AlgoMarker Version
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-test-the-algomarker-library" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to test the AlgoMarker library
+        AlgoMarker Architecture
       
     </span>
   </a>
@@ -9428,370 +9399,26 @@
 
 
 <h1 id="algomarkers">AlgoMarkers</h1>
-<p>AlgoMarkers are wrappers to models or calculators that are able to "talk" to other services via the API defined in AlgoMarker.h (the api funcs start with AM_API_... ). The AlgoMarker is a C library and we have a <code>AlgoMarker_Server</code> that exposes the library and model as REST API. This can alos be done easily with python FastAPI, but for minimal deployments, it might be better to use the <code>AlgoMarker_Server</code>.
-This page describes the following:</p>
+<p>AlgoMarkers are wrappers for models or calculators that "talk" to other services via the API defined in <code>AlgoMarker.h</code> (API functions start with <code>AM_API_...</code>). The AlgoMarker is a C library, and we provide an <code>AlgoMarker_Server</code> that exposes the library and model as a REST API. While this can also be easily done with Python FastAPI, using the <code>AlgoMarker_Server</code> might be better for minimal deployments.</p>
+<p>This section has been reorganized to make finding information easier. Please select a topic from the directory below:</p>
+<h2 id="documentation-directory">Documentation Directory</h2>
 <ul>
-<li><a href="#how-to-write-a-new-custom-algomarker">How to write a new AlgoMarker</a></li>
-<li><a href="#compile-the-algomarker-library">Compile the AlgoMarker shared library</a></li>
-<li><a href="#the-medialinfra-algomarker">The MedialInfra AlgoMarker</a><ul>
-<li><a href="#configuration-file">Configuration file</a></li>
-<li><a href="#eligibility-rules-configuration">Eligibility rules configuration</a></li>
+<li><a href="Setup%20a%20new%20AlgoMarker.html">Setup &amp; Packaging</a>: A step-by-step guide to packaging, configuring, and freezing a new AlgoMarker for production.<ul>
+<li><a href="Configuration.html">Configuration &amp; Eligibility Rules</a>: Learn how to configure a standard MedialInfra AlgoMarker and define eligibility filters (<code>.amconfig</code>).</li>
 </ul>
 </li>
-<li><a href="#how-to-freeze-a-medialinfra-algomarker-version">How to freeze a MedialInfra AlgoMarker</a></li>
-<li><a href="#how-to-test-the-algomarker-dll">How to test the AlgoMarker shared library</a>
- </li>
+<li><a href="Testing-with-DllAPITester.html">Testing with DllAPITester</a>: How to use the <code>DllAPITester</code> tool to validate your compiled AlgoMarker.</li>
+<li><a href="Request%20Json%20Format.html">Request JSON Format</a>: Details on the expected JSON request and response formats.</li>
+<li><a href="Custom%20Development.html">Custom AlgoMarker Development</a>: Advanced guide on writing and compiling a custom C++ AlgoMarker class.</li>
+<li><a href="AlgoMarker%20inspection.html">AlgoMarker Inspection</a>: Cheatsheet for listing rules, outliers, and model info.</li>
 </ul>
-<h2 id="how-to-write-a-new-custom-algomarker">How to write a new Custom AlgoMarker</h2>
-<p>The AlgoMarker base class is in AlgoMarker.h in the AlgoMarker lib which is part of medial research libs git. So to work with it pull it from git first.
-In order to write a new AlgoMarker one has to go through the following steps:</p>
-<ol>
-<li>Write a new class that inherits from AlgoMarker (or from one of its derived classes), and make sure the following virtual functions are all filled:<ul>
-<li>virtual int Load(const char *config_f) : gets a config file (or NULL if you don't need one), and gets the AlgoMarker into a working state.</li>
-<li>virtual int Unload()  : releases all allocated memory and closes</li>
-<li>virtual int AddData(int patient_id, const char <em>signalName,  int TimeStamps_len, long long</em> TimeStamps, int Values_len, float* Values)<ul>
-<li>Adds data to the AlgoMarker which later could be used to ask scores for</li>
-<li>Data is added per pid, for a specific signalName, and then 2 arrays giving the time and value channels. The order in each array is element by element and then each channel for each element.</li>
-</ul>
-</li>
-<li>virtual int ClearData() : Clear all data in the AlgoMarker</li>
-<li>virtual int Calculate(AMRequest <em>request, AMResponses </em>responses)<ul>
-<li>Major API : once the AlgoMarker is loaded and has data, one can give it requests and get responses (=results).</li>
-<li>To handle requests and responses one can check their classes and the example AlgoMarkers already implemented.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Add a type to your new AlgoMarker in the enum AlgoMarkerType</li>
-<li>Update the AlgoMarker::make_algomarker routine to support your new class</li>
-<li>That's It !! compile and ready to go. NO NEED to touch any of the API routines - they only rely on the implementation of the 5 routines in (1).</li>
-</ol>
-<blockquote>
-<p>[!NOTE]<br />
-In most use cases(all till now), you won't need to do that and write a custom AlgoMarker. You can use TYPE = "MEDIAL_INFRA" and our existing implementation supports all what you need. So you can skip this step.</p>
-</blockquote>
-<h2 id="compile-the-algomarker-library">Compile The AlgoMarker library</h2>
+<h2 id="algomarker-architecture">AlgoMarker Architecture</h2>
+<p>The usage is very simple, there are 2 main API endpoints:</p>
 <ul>
-<li>Follow the <a href="../../Installation/index.html#1-algomarker-library">AlgoMarker Library Setup</a> to build the <code>libdyn_AlgoMarker.so</code> library, or use a pre-built version if available.</li>
+<li>discovery: no inputs, just returns information about the AlgoMarker name, inputs, and outputs</li>
+<li>calcualte: the request with the data for processing</li>
 </ul>
-<h2 id="the-medialinfra-algomarker">The MedialInfra AlgoMarker</h2>
-<p>The MedialInfra AlgoMarker allows using any model that was trained using Medial MedProcessTools infrastructure. On top of that it allows also for some nice configuration of eligibility testing on input data, and is packaged with a configuration file that's easy to edit and work with.</p>
-<h3 id="configuration-file">Configuration File</h3>
-<p>When Loading a new MedialInfra AlgoMarker a configuration file is given. The format of the general file is explained in the next example:</p>
-<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Configuration File Example</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span>
-<span class="normal"><a href="#__codelineno-0-24">24</a></span>
-<span class="normal"><a href="#__codelineno-0-25">25</a></span>
-<span class="normal"><a href="#__codelineno-0-26">26</a></span>
-<span class="normal"><a href="#__codelineno-0-27">27</a></span>
-<span class="normal"><a href="#__codelineno-0-28">28</a></span>
-<span class="normal"><a href="#__codelineno-0-29">29</a></span>
-<span class="normal"><a href="#__codelineno-0-30">30</a></span>
-<span class="normal"><a href="#__codelineno-0-31">31</a></span>
-<span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span>
-<span class="normal"><a href="#__codelineno-0-38">38</a></span>
-<span class="normal"><a href="#__codelineno-0-39">39</a></span>
-<span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span>
-<span class="normal"><a href="#__codelineno-0-42">42</a></span>
-<span class="normal"><a href="#__codelineno-0-43">43</a></span>
-<span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal"><a href="#__codelineno-0-45">45</a></span>
-<span class="normal"><a href="#__codelineno-0-46">46</a></span>
-<span class="normal"><a href="#__codelineno-0-47">47</a></span>
-<span class="normal"><a href="#__codelineno-0-48">48</a></span>
-<span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span>
-<span class="normal"><a href="#__codelineno-0-52">52</a></span>
-<span class="normal"><a href="#__codelineno-0-53">53</a></span>
-<span class="normal"><a href="#__codelineno-0-54">54</a></span>
-<span class="normal"><a href="#__codelineno-0-55">55</a></span>
-<span class="normal"><a href="#__codelineno-0-56">56</a></span>
-<span class="normal"><a href="#__codelineno-0-57">57</a></span>
-<span class="normal"><a href="#__codelineno-0-58">58</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>#################################################################################
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a># MedialInfra AlgoMarker config example file
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>#################################################################################
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a># comment lines start with #
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a># all (non comments) separators are tab
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a># type of AlgoMarker
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a># shoule be MEDIAL_INFRA for a MedialInfra AlgoMarker, otherwise will fail loading
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>TYPE    MEDIAL_INFRA
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a># name : One can get the name via the AM_API
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>NAME    PRE2D
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a># repository file configuration : to enable load of signal names and dictionaries, or optionally also data
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>REPOSITORY  thin.repository
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a># basic time unit for signals used in the specific marker (typically : Date for in patient, Minutes for out patient)
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>TIME_UNIT   Date
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a># model file for AlgoMarker , if name does not start with &#39;/&#39; the file position will be relative to the directory in which the config file was at
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>MODEL   pre2d.model
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a>#################################################################################
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a># Eligibility
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a>#################################################################################
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a># Following parts are optional: when defining eligibility rules
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a># if a file is given it will be used, if &quot;.&quot; is the file name, then it means this config file contains also the filters definitions.
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>INPUT_TESTER_CONFIG .
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a> 
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a># each filter is in the following format:
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a># FILTER    &lt;filter type&gt;|&lt;filter params&gt;|&lt;warning_or_error&gt;|&lt;use_for_max_outliers_flag&gt;|&lt;external_rc&gt;|&lt;internal_rc&gt;|&lt;err_msg&gt;
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a># &lt;filter type&gt; : currently always &#39;simple&#39; or &#39;attr&#39;
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a># &lt;filter params&gt; : see examples below, and/or read documentation. Params should be separated with &#39;;&#39; .
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a># &lt;warining_or_error&gt;: values are WARNING or ERROR
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a># &lt;use_for_max_outliers_flag&gt;: ACC=1 or ACC=0 : state from which filters to accumulate the overall number of outliers
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a># &lt;external_rc&gt; : read code to return in the message case the test did not pass
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a># &lt;internal_rc&gt; : internal read code returned (another layer of error codes that is needed)
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a># &lt;err_msg&gt; : string - free text that will be returned as the error message in case the test did not pass.
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a># TESTER_NAME : mainly for debug prints etc...
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>TESTER_NAME pre2d_tester
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a> 
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a># example for a filter to force a minimal number of results in a certain time window (defualt given in days)
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>FILTER  simple|sig=Glucose;win_from=0;win_to=730;min_Nvals=2|ERROR|ACC=0|310|310|Not enough Glucose tests in the last 2 years
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a> 
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a># example for a filter that forces also a maximal number of results for a signal
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a>FILTER  simple|sig=GENDER;min_Nvals=1;max_Nvals=1|ERROR|ACC=0|310|310|Missing GENDER or more than 1 GENDER signal
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a> 
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a># example for a filter that forces values to be in a given list (allowed_values)
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>FILTER  simple|sig=GENDER;allowed_values=1,3|WARNING|ACC=0|310|310|WARNING: GENDER Value Not 1 or 3
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a> 
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a># example for an AGE filter (ages should be &gt;= and &lt;= the given range)
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>FILTER  simple|sig=AGE;min_val=50;max_val=60|WARNING|ACC=0|320|320|age not in range 50-60
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a> 
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a># example for a filter that verifies that the values of a signal are defined in the repository dictionary (important for categorical signals)
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>FILTER  simple|sig=Drug;values_in_dictionary=1|ERROR|ACC=0|320|320|Drug code not in dictionary
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a> 
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a># example for filters that check for a maximal number of outliers
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>FILTER  simple|sig=Glucose;win_from=0;win_to=3650;min_val=10;max_val=2000;max_outliers=3|ERROR|ACC=1|321|321|Too many glucose outliers
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a>FILTER  simple|sig=HbA1C;win_from=0;win_to=3650;min_val=3;max_val=12;max_outliers=3|ERROR|ACC=1|321|321|Too many HbA1C outliers
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a># if the model has Glucose_nRem attributes we can create the following rule by testing it directly.
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a>FILTER  attr|attr_name=Glucose_nRem;max=0|ERROR|ACC=0|321|321|Too many glucose outliers
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a> 
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a># max outliers allowed when summing over all the ACC=1 filters
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a>MAX_OVERLALL_OUTLIERS   1
-</code></pre></div></td></tr></table></div>
- </p>
-<h3 id="eligibility-rules-configuration">Eligibility rules configuration</h3>
-<p>Most of the options can be seen in the above example, here are the basics:</p>
-<ul>
-<li>Each filter is given in a line : FILTER <filter type>|<filter params>|<warning_or_error>|<use_for_max_outliers_flag>|<external_rc>|<internal_rc>|<err_msg></li>
-<li>Currently <filter type> is always 'simple' or 'attr'</li>
-<li><filter params> : see examples above and definitions below</li>
-<li><warning_or_error> : one of WARNING or ERROR. A warning will run the test, report the problem if found, but not fail the example and still will give a score for it.</li>
-<li><use_for_max_outliers_flag>: ACC=1 or ACC=0 : state from which filters to accumulate the overall number of outliers (MAX_OVERALL_OUTLIERS)</li>
-<li><external_rc> : read code to return in the message case the test did not pass</li>
-<li><internal_rc> : internal read code returned (another layer of error codes that is neededed</li>
-<li><err_msg> : string - free text that will be returned as the error message in case the test did not pass.
- 
-Filter params is given in a string , separator is ';' and there should be no spaces/tabs. It has many options, see the class SanitySampleFilter to view them formally. </li>
-</ul>
-<h4 id="parameters-for-simple-filter-type">Parameters for simple filter type</h4>
-<ul>
-<li>sig : name of the signal we want to test</li>
-<li>time_ch , val_ch : time and value channels to test signal with (defaults are 0 and 0)</li>
-<li>win_time_unit : default Days</li>
-<li>samples_time_unit: default Date</li>
-<li>min_val , max_val : min and max allowed values for a signal (&gt;=min &lt;=max) when testing for outliers.</li>
-<li>win_from, win_to : a time window before and relative to the sample in which we apply the test:<ul>
-<li>Each of the tests asked for will be done only on the signal results in the given time window.</li>
-<li>Default is all the tests (infinite window to the past)</li>
-</ul>
-</li>
-<li>min_Nvals, max_Nvals : test min or max number of values (ALL values not just those in a given range if one is given) for the given signal and window.</li>
-<li>max_outliers : maximal allowed number of outliers for the signal in the given time window</li>
-<li>min_left : minimal number of results left after throwing the outliers.</li>
-<li>allowed_values : list of values , seprated by comma (',') . Test verifies that all values (in the given window) are one of the given allowed values.</li>
-<li>values_in_dictionary : if =1 (default 0) , will test that all the values of the signal are valid values in the repository dictionary. Useful for categorical data such as Drug or RC.
-A filter can be configured to do one simple test, or several. As explained above many filters can be defined. All filters defined will run on every point (pid,timepoint pair) , and all the filters that did not pass will push their error message into the relevant response messages. For cases in which the sample did not pass a filter defined as ERROR , the AlgoMarker will not generate a score. However for cases which only had warnings, it will.
- </li>
-</ul>
-<h4 id="parameters-for-attribute-attr-filter-type">Parameters for attribute ('attr') filter type</h4>
-<p>To set this filter use 'attr' in filter type (see example above).
-The use of this filters relies on the fact the model was built with an option to create those attributes and inject them into the resulted MedSamples object at prediction time. The classical use is to let cleaners and testers running in the model to report their results this way. Formally these actions will add an attribute to each prediction, and the filter defined here is able to create rules based on those attributes.
-Parameters:</p>
-<ul>
-<li>name : the name of the attribute to test</li>
-<li>
-<p>max : the maximal value allowed. An error or warning will be given for any value larger than this.
- 
-To make sure a model creates those attributes it is needed to make it do so in its json definition.</p>
-</li>
-<li>
-<p>To a basic cleaner ( "rp_type": "basic_cln" in json) add : "nrem_attr": "nRem","ntrim_attr": "nTrim",   in order to get an attribute of the number of removed signals, and/or trimmed ones. Note this counts the total number and not in a specific time window....</p>
-</li>
-<li>To force a panel use for example:<ul>
-<li>{"action_type":"rep_processor","rp_type":"req","signals":"Hemoglobin,RBC,Hematocrit", "win_from": "0", "win_to": "365"},</li>
-<li>this will count how many of the panel signals are missing in the given time window (relative to prediction point). Note that if placed AFTER cleaners (reccomended) it will test this on the cleaned data that may have some values removed.</li>
-</ul>
-</li>
-</ul>
-<h2 id="how-to-freeze-a-medialinfra-algomarker-version">How to freeze a MedialInfra AlgoMarker Version</h2>
-<ol>
-<li><del>If using a non frozen libraries version:</del><ol>
-<li><del>Either create a branch with a suitable name for your freeze for the Libs git</del></li>
-<li><del>Tag your version in the branch you want to work with.</del></li>
-</ol>
-</li>
-<li><del>It is reccomended to freeze also code for Tools git, and code for releavant projects (for example the Diabetes git project for a diabetes algomarker, etc).</del></li>
-<li><del>When freezing several different gits, make sure to tag all of them with the same tag</del></li>
-<li><del>Document your freeze and branches/tags names.</del></li>
-</ol>
-<hr />
-<ol>
-<li>Each version that is being compiled with our scripts, contains the git last commit information and date of compilation for both medpython and MR_Tools. No need to tag/create branches or things you might forget. </li>
-<li>Make sure you have everything prepared: <ol>
-<li>A model file trained for the AlgoMarker. Better test this very algomarker gives the expected results on your test set, and runs with the frozen libraries version.</li>
-<li>The repository files you were working with: main needed:</li>
-<li>the .repository file</li>
-<li>the .signals file</li>
-<li>the dictionary files for the signals you are using.</li>
-</ol>
-</li>
-<li>Create a new directory, call it with the agreed upon algomarker+version name</li>
-<li>Put there: <ol>
-<li>The algomarker model file</li>
-<li>The repository files used</li>
-<li>Prepare an algo marker config file as explained above</li>
-</ol>
-</li>
-<li>Make sure the eligibility rules are the ones you want.</li>
-<li>Good time to run a small unit-test here to see it loads, runs and gives expected results on some prepared data set.</li>
-<li>Zip directory.</li>
-</ol>
-<p>It is also describred in <a href="Setup%20a%20new%20AlgoMarker.html">here</a>
- </p>
-<h2 id="how-to-test-the-algomarker-library">How to test the AlgoMarker library</h2>
-<p>The AlgoMarker project includes the DllAPITester, which can be used to test the DLL and compare its output to scores given by the Flow app with existing repository.
-With this way we can run score compare and check that the results using AlgoMarker library and our tools used in the research are equivelent.
-After all json/format conversions and using this wrapper. </p>
-<p><strong>DllAPITester Help</strong></p>
-<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">DllAPITester Help</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>DllAPITester<span class="w"> </span>--h
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>Reading<span class="w"> </span>params
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>Program<span class="w"> </span>options:
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span>--help<span class="w">                                </span>produce<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span>--rep<span class="w"> </span>arg<span class="w"> </span><span class="o">(=</span>/home/Repositories/THIN/thin_mar2017/thin.repository<span class="o">)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">                                        </span>repository<span class="w"> </span>file<span class="w"> </span>name
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">  </span>--samples<span class="w"> </span>arg<span class="w">                         </span>medsamples<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>use
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span>--model<span class="w"> </span>arg<span class="w">                           </span>model<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>use
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">  </span>--amconfig<span class="w"> </span>arg<span class="w">                        </span>algo<span class="w"> </span>marker<span class="w"> </span>configuration<span class="w"> </span>file
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span>--direct_test<span class="w">                         </span>split<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>dedicated<span class="w"> </span>debug<span class="w"> </span>routine
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">  </span>--test_data<span class="w"> </span>arg<span class="w">                       </span><span class="nb">test</span><span class="w"> </span>data<span class="w"> </span><span class="k">for</span><span class="w"> </span>--direct_test<span class="w"> </span>option
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">  </span>--date<span class="w"> </span>arg<span class="w"> </span><span class="o">(=</span><span class="m">20180101</span><span class="o">)</span><span class="w">                </span><span class="nb">test</span><span class="w"> </span>date
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">  </span>--egfr_test<span class="w">                           </span>split<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>debug<span class="w"> </span>routine<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>simple
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">                                        </span>egfr<span class="w"> </span>algomarker
-</code></pre></div></td></tr></table></div>
-After compiling, it can be used as follows:</p>
-<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Example Run</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>./Linux/Release/DllAPITester<span class="w"> </span>--rep<span class="w"> </span>/home/Repositories/THIN/thin_jun2017/thin.repository<span class="w"> </span>--samples<span class="w"> </span>/server/Work/Users/Tal/Temp/test.samples<span class="w"> </span>--model<span class="w"> </span>/server/Products/Pre2D/QA_Versions/1.0.0.1/pre2d.model<span class="w"> </span>--amconfig<span class="w"> </span>/server/Products/Pre2D/QA_Versions/1.0.0.1/pre2d.amconfig
-</code></pre></div></td></tr></table></div>
-The tester will compare the scores given by both methods and will return passed/failed. For example:</p>
-<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Example Output</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>...
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>#Res1 :: pid 5000529 time 20060308 pred 0.135475 #Res2 pid 5000529 time 20060308 pred 0.135475
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>#Res1 :: pid 5000529 time 20060315 pred 0.090177 #Res2 pid 5000529 time 20060315 pred 0.090177
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>#Res1 :: pid 5000529 time 20060818 pred 0.111277 #Res2 pid 5000529 time 20060818 pred 0.111277
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>#Res1 :: pid 5000529 time 20070907 pred 0.085166 #Res2 pid 5000529 time 20070907 pred 0.085166
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>#Res1 :: pid 5000529 time 20080225 pred 0.103451 #Res2 pid 5000529 time 20080225 pred 0.103451
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>#Res1 :: pid 5000529 time 20080411 pred 0.075562 #Res2 pid 5000529 time 20080411 pred 0.075562
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a>#Res1 :: pid 5000529 time 20090324 pred 0.132835 #Res2 pid 5000529 time 20090324 pred 0.132835
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a>#Res1 :: pid 5000529 time 20110124 pred 0.170343 #Res2 pid 5000529 time 20110124 pred 0.170343
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a>Comparing 99 scores
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a>&gt;&gt;&gt;&gt;&gt;TEST1: test DLL API batch: total 99 : n_similar 81 : n_bad 0 : n_miss 18
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a>PASSED
-</code></pre></div></td></tr></table></div>
- 
-Another option is running a direct test (note the self explanatory test_data format):</p>
-<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Testing a single example directly</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Linux/Release/DllAPITester<span class="w"> </span>--rep<span class="w"> </span>/home/Repositories/THIN/thin_jun2017/thin.repository<span class="w"> </span>--amconfig<span class="w"> </span>/nas1/Products/Pre2D/QA_Versions/dev/pre2d.amconfig<span class="w"> </span>--direct_test<span class="w"> </span>--test_data<span class="w"> </span><span class="s2">&quot;Glucose:120:20171101;GENDER:1;BYEAR:1988&quot;</span><span class="w"> </span>--date<span class="w"> </span><span class="m">20180520</span>
-</code></pre></div></td></tr></table></div>
-and get the result :</p>
-<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Single test result</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-5-10">10</a></span>
-<span class="normal"><a href="#__codelineno-5-11">11</a></span>
-<span class="normal"><a href="#__codelineno-5-12">12</a></span>
-<span class="normal"><a href="#__codelineno-5-13">13</a></span>
-<span class="normal"><a href="#__codelineno-5-14">14</a></span>
-<span class="normal"><a href="#__codelineno-5-15">15</a></span>
-<span class="normal"><a href="#__codelineno-5-16">16</a></span>
-<span class="normal"><a href="#__codelineno-5-17">17</a></span>
-<span class="normal"><a href="#__codelineno-5-18">18</a></span>
-<span class="normal"><a href="#__codelineno-5-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>...
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>Algomarker Pre2D was loaded with config file /nas1/Products/Pre2D/QA_Versions/dev/pre2d.amconfig
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>Adding Data: sig Glucose :: vals: 120.000000,  times: 20171101,
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a>Adding Data: sig GENDER :: vals: 1.000000,  times:
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a>Adding Data: sig BYEAR :: vals: 1988.000000,  times:
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a>Creating Request
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a>Before Calculate
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a>...
-<a id="__codelineno-5-9" name="__codelineno-5-9"></a>...
-<a id="__codelineno-5-10" name="__codelineno-5-10"></a>Shared Messages: 0
-<a id="__codelineno-5-11" name="__codelineno-5-11"></a>Got 1 responses
-<a id="__codelineno-5-12" name="__codelineno-5-12"></a>Getting response no. 0
-<a id="__codelineno-5-13" name="__codelineno-5-13"></a>Response Messages: 0
-<a id="__codelineno-5-14" name="__codelineno-5-14"></a>Score 0 Messages: 0
-<a id="__codelineno-5-15" name="__codelineno-5-15"></a>resp_rc = 0
-<a id="__codelineno-5-16" name="__codelineno-5-16"></a>i 0 , pid 1 ts 20180520 scr 0.272233
-<a id="__codelineno-5-17" name="__codelineno-5-17"></a>ptr for _scr_type 5288768
-<a id="__codelineno-5-18" name="__codelineno-5-18"></a>_scr_type Raw
-<a id="__codelineno-5-19" name="__codelineno-5-19"></a>Finished debug_me() test
-</code></pre></div></td></tr></table></div>
- 
- 
- 
- </p>
+<p><img src="../../images/am_arch.jpg" alt="AlgoMarker Architecture" /></p>
 
 
 
