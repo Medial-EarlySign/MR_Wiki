@@ -43,12 +43,13 @@ Review results in your configured output directory.
 - [Test 10 - Compare Important Feature](Test%2010%20-%20Compare%20Important%20Feature.md)
 - [Test 11 - Estimate Performances](Test%2011%20-%20Estimate%20Performances.md)
 - [Test 12 - Lab Frequency](Test%2012%20-%20Lab%20Frequency.md)
-- [Test 13 - test_but_why]()
-- [Test 14 - 14.test_model_explainability]()
-- [Test 16 - Sample Dates]()
-- [Test 17 - Estimate Performance from Calibration]()
-- [Test 18 - Analyze Messages]()
-- [Test 19 - Search Missing mappings]()
+- [Test 13 - Test But Why](Test%2013%20-%20But%20Why%20(Shapley).md)
+- [Test 14 - Model Explainability](Test%2014%20-%20Model%20Explainability.md)
+- [Test 15 - Feature and Flags](Test%2015%20-%20Features%20and%20Flag.md)
+- [Test 16 - Sample Dates](Test%2016%20-%20Sample%20Dates.md)
+- [Test 17 - Estimate Performance from Calibration](Test%2017%20-%20Estimate%20Performance%20from%20Calibration.md)
+- [Test 18 - Analyze Messages](Test%2018%20-%20Analyze%20Messages.md)
+- [Test 19 - Search Missing mappings](Test%2019%20-%20Missing%20mappings.md)
 
 ## Configuration
 
