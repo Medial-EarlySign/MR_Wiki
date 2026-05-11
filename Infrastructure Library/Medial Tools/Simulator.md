@@ -35,7 +35,7 @@ Default port: 3764. Use the full path to `ui.py` if you run it from another work
 
 To register a new AlgoMarker in the simulator UI:
 
-1. Copy an existing AlgoMarker Python file (for example `LungFlag.py`) into the `algomarkers/` folder.
+1. Copy an existing AlgoMarker Python file (for example `ModelName.py`) into the `algomarkers/` folder.
    - The chosen filename (without `.py`) will appear in the UI. Filenames may use `_SLASH_` to show a `/` in the UI.
 2. Create or edit the AlgoMarker config Python file (the module the UI imports) and define the following fields:
     - **am_regions**: dict mapping region keys to `ReferenceInfo` objects (paths to reference matrices, repository paths, CV results, etc.).
@@ -118,7 +118,7 @@ optional_signals = [
     InputSignalsExistence(signal_name='Spirometry', list_raw_signals=['Fev1']),
 ]
 
-model_path = '/earlysign/AlgoMarkers/LungFlag/lungflag.model'
+model_path = '/earlysign/AlgoMarkers/ModelName/modelname.model'
 orderdinal = 1
 ```
 

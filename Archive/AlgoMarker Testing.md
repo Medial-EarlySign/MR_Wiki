@@ -6,12 +6,12 @@ To use it you should execute the command normally and provide req/req file names
 
 ```bash
 ./AMApiTester \
-  --amfile /nas1/Products/LGI-ColonFlag-3.0/QA_Versions/LGI_3.1.0.0/libdyn_AlgoMarker.25102018_1.so \
+  --amfile /nas1/Products/ModelName/QA_Versions/ModelName/libdyn_AlgoMarker.25102018_1.so \
   --single --print_msgs \
   --rep $REP \
   --samples ./samples/LastHg.samples \
-  --model /nas1/Products/LGI-ColonFlag-3.0/QA_Versions/LGI_3.1.0.0/LGI-Flag-3.1.model \
-  --amconfig /nas1/Products/LGI-ColonFlag-3.0/QA_Versions/LGI_3.1.0.0/LGI-Flag-3.1.amconfig \
+  --model /nas1/Products/ModelName/QA_Versions/ModelName/ModelName.model \
+  --amconfig /nas1/Products/ModelName/QA_Versions/ModelName/ModelName.amconfig \
   --am_res_file ./res/LGI_test_am.preds \
   --med_res_file ./res/LGI_test_med.preds \
   --json-reqfile ./res/LGI_test_req.json \

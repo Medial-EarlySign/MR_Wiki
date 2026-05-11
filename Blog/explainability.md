@@ -86,7 +86,7 @@ The other predictor will need to use our other shapley methods that are model ag
 
 To find the best explainer we held a competition. We benchmarked several explainability methods against each other, testing them on three of our real-world medical models for robustness:
 
-*   [ColonFlag](../Models/ColonFlag.md): A model that predicts the risk of colon cancer.
+*   ColonFlag: A model that predicts the risk of colon cancer.
 *   [Pre2D](../Models/Pred2D.md): A model that assesses the risk of diabetes from pre-diabetic.
 *   [FluComplications](../Models/FluComplications.md): A model that predicts complications from the flu.
 

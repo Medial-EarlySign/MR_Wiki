@@ -85,7 +85,7 @@ df=df.drop(columns=['value_00'])
 df['RESULTUNIT']=df['RESULTUNIT'].astype(str).apply(lambda x: x.lower())
 df=df.rename(columns={'RESULTUNIT': 'unit'})
 #generate_labs_mapping_and_units_config(df, 5)
-#Please edit the file "/mnt/earlysign/workspace/LungFlag/ETL/configs/map_units_stats.cfg" and then comment out previous line for speedup in next run
+#Please edit the file "/mnt/earlysign/workspace/ETL/configs/map_units_stats.cfg" and then comment out previous line for speedup in next run
 df=map_and_fix_units(df)
 df=df.drop(columns=['signal.original', 'mapped'])
 ```

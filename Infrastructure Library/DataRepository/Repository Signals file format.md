@@ -42,7 +42,7 @@ For source code please refer to `MedSignals.h` `type_enc::encode`
 ```
 # Tab-delimited format
 
-# Legacy signals definition (Used only for ColonFlag AlgoMarker)
+# Legacy signals definition (Used only for Old AlgoMarkers)
 SIGNAL  GENDER      100     0       Male=1,Female=2    1  
 SIGNAL  BP          920     8    systolic,diastoloc    00    mmHg|mmHg
 SIGNAL  Hemoglobin  1000    1     cbc   0   mg/dL

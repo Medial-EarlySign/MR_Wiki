@@ -19,11 +19,11 @@ Run the utility tool with:
 
 ```bash
 python MR_Tools/AlgoMarker_python_API/test_algomarker_lib.py \
-  --amconfig /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/lungflag.amconfig \
+  --amconfig /nas1/Products/LungCancer/QA_Versions/model_name/model_name.amconfig \
   --output /tmp/results.txt \
-  --add_data_json_path /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/examples/data.single.json \
-  --request_json_path /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/examples/req.single.json \
-  --amlib /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/lib/libdyn_AlgoMarker.so
+  --add_data_json_path /nas1/Products/LungCancer/QA_Versions/model_name/examples/data.single.json \
+  --request_json_path /nas1/Products/LungCancer/QA_Versions/model_name/examples/req.single.json \
+  --amlib /nas1/Products/LungCancer/QA_Versions/model_name/lib/libdyn_AlgoMarker.so
 ```
 
 - `--amlib` (optional): Specify a custom library path.
@@ -31,9 +31,9 @@ python MR_Tools/AlgoMarker_python_API/test_algomarker_lib.py \
 
 ```bash
 python MR_Tools/AlgoMarker_python_API/test_algomarker_lib.py \
-  --amconfig /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/lungflag.amconfig \
+  --amconfig /nas1/Products/LungCancer/QA_Versions/model_name/model_name.amconfig \
   --output /tmp/results.txt \
-  --request_json_path /nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/examples/req.full.json
+  --request_json_path /nas1/Products/LungCancer/QA_Versions/model_name/examples/req.full.json
 ```
 
 ## Simple Usage Example
@@ -42,8 +42,8 @@ python MR_Tools/AlgoMarker_python_API/test_algomarker_lib.py \
 from AlgoMarker import AlgoMarker
 import json
 
-ALGOMARKER_PATH = '/nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/lungflag.amconfig'
-REQUEST_JSON = '/nas1/Products/LungCancer/QA_Versions/LungFlag3.NEW.2023-07-26.With_ButWhy/examples/req.full.json'
+ALGOMARKER_PATH = '/nas1/Products/LungCancer/QA_Versions/model_name/model_name.amconfig'
+REQUEST_JSON = '/nas1/Products/LungCancer/QA_Versions/model_name/examples/req.full.json'
 
 def read_text_file(path):
     with open(path, 'r') as fr:
