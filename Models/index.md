@@ -22,8 +22,8 @@ Each model page provides both conceptual and technical details, helping users un
 | [FastProgressors](FastProgressors.md) | Predicts rapid decline in eGFR	 | Planned to be open source |
 | [Mortality](MortalityCMS.md) | Predicts mortality using CMS claims data | TBD |
 | [Unplanned COPD Admission Prediction Model](COPDCMS.md) | Predicts COPD hospitalization using CMS claims data | TBD |
-| LGI/Colon-Flag | Detects colon cancer using age, sex, and CBCs | | 
-| LungFlag | Detects lung cancer using age, sex, smoking information, and common blood tests | |
-| GastroFlag | Detects gastric cancer using age, sex, and common blood tests | |
+| [Colon Cancer](ColonCancer.md) | Detects colon cancer using age, sex, and CBCs | | 
+| [Lung Cancer](LungCancer.md) | Detects lung cancer using age, sex, smoking information, and common blood tests | |
+| Gastric Cancer | Detects gastric cancer using age, sex, and common blood tests | |
 
 Instructions for using an existing model can be found [here](../Tutorials/07.Deployment/index.md#how-to-use-the-deployed-algomarker)
