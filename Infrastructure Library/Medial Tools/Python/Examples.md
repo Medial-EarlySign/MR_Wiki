@@ -18,7 +18,6 @@ if hasattr(med.Global, 'version_info'):
 
 ## Inspect Available Functions
 
-Documentation is a work in progress.  
 To inspect available methods:
 
 ```python

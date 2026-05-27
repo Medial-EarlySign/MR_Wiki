@@ -32,4 +32,3 @@ Or include as part of the full suite:
 - If the log lists missing imputers, update your configuration to define them
 - The test passes only if all signals have imputation rules
 
-@@@[PLEASE_COMPLETE]: Add troubleshooting tips and example log output

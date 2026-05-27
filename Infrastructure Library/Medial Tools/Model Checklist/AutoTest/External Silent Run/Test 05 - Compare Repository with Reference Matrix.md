@@ -147,5 +147,3 @@ And for the restricted comparison:
 
 - `${WORK_DIR}/compare.no_overfitting/compare_rep.txt`
 - `${WORK_DIR}/compare.no_overfitting/shapley_report.tsv` and `.../ButWhy/`
-
-If additional examples or parsing snippets are desired (for example, the Python snippet used historically to parse `compare_rep.txt`), add them here. @@@[PLEASE_COMPLETE]
