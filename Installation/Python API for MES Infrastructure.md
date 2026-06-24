@@ -17,6 +17,12 @@ There are two primary ways to install `medpython`:
 pip install medpython
 ```
 
+Alternatively anaconda can be used with `conda-forge` channel:
+
+```bash
+conda install medpython
+```
+
 Build from source:
 ```bash
 python -m pip install -v "medpython @ git+https://github.com/Medial-EarlySign/medpython.git/#subdirectory=Internal/MedPyExport/generate_binding"
@@ -26,10 +32,12 @@ python -m pip install -v "medpython @ git+https://github.com/Medial-EarlySign/me
 
 | Platform | x86_64 (Intel/AMD) | aarch64 (ARM / Apple Silicon) |
 | :--- | :--- | :--- |
-| **Linux (glibc)** | ✅ Pre-built (Py 3.10-3.14) | ✅ Pre-built (Py 3.12) |
+| **Linux (glibc)** | ✅ Pre-built (Py 3.10-3.14) | ✅ Pre-built (Py 3.13) |
 | **Linux (Alpine/musl)**| 🛠️ Compile Required | 🛠️ Compile Required |
-| **Windows** | ✅ Pre-built (Py 3.10-3.13) | 🛠️ Compile Required |
-| **macOS** | ✅ Pre-built (Py 3.10-3.13) | 🛠️ Compile Required |
+| **Windows** | ✅ Pre-built (Py 3.10-3.14) | 🛠️ Compile Required |
+| **macOS** | ✅ Pre-built (Py 3.10-3.14) | 🛠️ Compile Required |
+
+Conda provide precompiled binaries for all python 3.10-3.14 within windows, macOS, linux_x86_64, linux_aarch64
 
 > **Note:** For any Compile Required or either not listed as Pre-built. Compliation is required.
 > See the "Build from Source" instructions below.
