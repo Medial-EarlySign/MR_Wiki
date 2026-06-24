@@ -2,8 +2,10 @@
 
 ![Pepy Total Downloads](https://img.shields.io/pepy/dt/medpython)
 ![PyPI - License](https://img.shields.io/pypi/l/medpython)
-![GitHub contributors](https://img.shields.io/github/contributors-anon/Medial-EarlySign/medpython)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Medial-EarlySign/medpython)
+
+[![Anaconda-Server Badge](https://anaconda.org/conda-forge/medpython/badges/version.svg)](https://anaconda.org/conda-forge/medpython)
+[![Anaconda-Server Badge](https://anaconda.org/conda-forge/medpython/badges/platforms.svg)](https://anaconda.org/conda-forge/medpython)
+[![Anaconda-Server Badge](https://anaconda.org/conda-forge/medpython/badges/downloads.svg)](https://anaconda.org/conda-forge/medpython)
 
 [![GitHub Repo](https://img.shields.io/badge/github-repo-blue?logo=github)](https://github.com/Medial-EarlySign/medpython)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Medial-EarlySign/medpython)
@@ -85,9 +87,14 @@ You can quickly install the package using **pip**:
 ```bash
 pip install medpython
 ```
+Alternatively you can install it through `conda-forge` channel:
+```bash
+conda install medpython
+```
+
 For detailed system requirements and compilation instructions, please see the [Installation Guide](Installation/index.md).
 
-> **[NOTE]** Pre-builds are provided for Python 3.10-3.13 on Linux, Windows, and Mac.
+> **[NOTE]** Pre-builds are provided for Python 3.10-3.14 on Linux, Windows, and Mac.
 > 
 > Users on Alpine (or other non-glibc distros) and other Python versions must compile manually. See the Alpine compilation guide for instructions.
 
