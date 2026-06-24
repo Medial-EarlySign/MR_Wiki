@@ -26,14 +26,22 @@ You might also want to install our [PyPi python package](https://pypi.org/projec
 ```bash
 pip install medpython
 ```
+You can also use `conda-forge` channel within anaconda or mamba to install medpython:
+
+```bash
+conda install medpython
+```
+
 **Platform Support for MedPython** 
 
 | Platform | x86_64 (Intel/AMD) | aarch64 (ARM / Apple Silicon) |
 | :--- | :--- | :--- |
-| **Linux (glibc)** | ✅ Pre-built (Py 3.10-3.14) | ✅ Pre-built (Py 3.12) |
+| **Linux (glibc)** | ✅ Pre-built (Py 3.10-3.14) | ✅ Pre-built (Py 3.13) |
 | **Linux (Alpine/musl)**| 🛠️ Compile Required | 🛠️ Compile Required |
-| **Windows** | ✅ Pre-built (Py 3.10-3.13) | 🛠️ Compile Required |
-| **macOS** | 🛠️ Compile Required | ✅ Pre-built (Py 3.10-3.13) |
+| **Windows** | ✅ Pre-built (Py 3.11-3.14) | 🛠️ Compile Required |
+| **macOS** | 🛠️ Compile Required | ✅ Pre-built (Py 3.11-3.14) |
+
+Prebuilds in anaconda are available for python 3.10-3.14 for windows, macOS, linux_x86_64 and linux_aarch64. 
 
 > **Note:** For any Compile Required or either not listed as Pre-built. Compliation is required.
 > See the "Building the tools yourself" instructions below.
