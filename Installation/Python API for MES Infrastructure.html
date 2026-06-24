@@ -9523,8 +9523,11 @@
 </ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>medpython
 </code></pre></div></td></tr></table></div>
+<p>Alternatively anaconda can be used with <code>conda-forge</code> channel:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>conda<span class="w"> </span>install<span class="w"> </span>medpython
+</code></pre></div></td></tr></table></div>
 <p>Build from source:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;medpython @ git+https://github.com/Medial-EarlySign/medpython.git/#subdirectory=Internal/MedPyExport/generate_binding&quot;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;medpython @ git+https://github.com/Medial-EarlySign/medpython.git/#subdirectory=Internal/MedPyExport/generate_binding&quot;</span>
 </code></pre></div></td></tr></table></div></p>
 <p><strong>Platform Support</strong> </p>
 <table>
@@ -9539,7 +9542,7 @@
 <tr>
 <td style="text-align: left;"><strong>Linux (glibc)</strong></td>
 <td style="text-align: left;">✅ Pre-built (Py 3.10-3.14)</td>
-<td style="text-align: left;">✅ Pre-built (Py 3.12)</td>
+<td style="text-align: left;">✅ Pre-built (Py 3.13)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Linux (Alpine/musl)</strong></td>
@@ -9548,16 +9551,17 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Windows</strong></td>
-<td style="text-align: left;">✅ Pre-built (Py 3.10-3.13)</td>
+<td style="text-align: left;">✅ Pre-built (Py 3.10-3.14)</td>
 <td style="text-align: left;">🛠️ Compile Required</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>macOS</strong></td>
-<td style="text-align: left;">✅ Pre-built (Py 3.10-3.13)</td>
+<td style="text-align: left;">✅ Pre-built (Py 3.10-3.14)</td>
 <td style="text-align: left;">🛠️ Compile Required</td>
 </tr>
 </tbody>
 </table>
+<p>Conda provide precompiled binaries for all python 3.10-3.14 within windows, macOS, linux_x86_64, linux_aarch64</p>
 <blockquote>
 <p><strong>Note:</strong> For any Compile Required or either not listed as Pre-built. Compliation is required.
 See the "Build from Source" instructions below.</p>
@@ -9565,18 +9569,18 @@ See the "Build from Source" instructions below.</p>
 <h3 id="installation-steps">Installation Steps</h3>
 <ol>
 <li>Install required system libraries:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-dev<span class="w"> </span>swig<span class="w"> </span>-y
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-dev<span class="w"> </span>swig<span class="w"> </span>-y
 </code></pre></div></td></tr></table></div></li>
 <li>Ensure NumPy is installed:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy
 </code></pre></div></td></tr></table></div><blockquote>
 <p>This API supports both NumPy 1.x and 2.x. For maximum compatibility, compile with NumPy 2.x (works for clients with either version). Compiling with NumPy 1.x will <strong>not</strong> work for clients using 2.x.</p>
 </blockquote>
 </li>
 <li>Build the Python API:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>Internal/MedPyExport/generate_binding
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>-vv
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>Internal/MedPyExport/generate_binding
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>-vv
 </code></pre></div></td></tr></table></div></li>
 </ol>
 <p>A full docker image for compilation steps can be found under this link:</p>
@@ -9585,13 +9589,13 @@ See the "Build from Source" instructions below.</p>
 </ul>
 <h4 id="alpine">Alpine</h4>
 <p>Install those Alpine packages
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>apk<span class="w"> </span>add<span class="w"> </span>py3-pip
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>apk<span class="w"> </span>add<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>python3-dev<span class="w"> </span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span><span class="s2">&quot;swig&lt;4.3&quot;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>apk<span class="w"> </span>add<span class="w"> </span>py3-pip
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>apk<span class="w"> </span>add<span class="w"> </span>gcc<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>python3-dev<span class="w"> </span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span><span class="s2">&quot;swig&lt;4.3&quot;</span>
 </code></pre></div></td></tr></table></div></p>
 <p>Just run the install script <code>pip install . -vv</code></p>
 
