@@ -1,6 +1,6 @@
 # Home
 
-![Pepy Total Downloads](https://img.shields.io/pepy/dt/medpython)
+![Pepy Total Downloads](https://img.shields.io/pepy/dt/medpython?label=PyPi|downloads)
 ![PyPI - License](https://img.shields.io/pypi/l/medpython)
 
 [![Anaconda-Server Badge](https://anaconda.org/conda-forge/medpython/badges/version.svg)](https://anaconda.org/conda-forge/medpython)
