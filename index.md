@@ -5,7 +5,8 @@
 
 [![Anaconda-Server Badge](https://anaconda.org/conda-forge/medpython/badges/version.svg)](https://anaconda.org/conda-forge/medpython)
 [![Anaconda-Server Badge](https://anaconda.org/conda-forge/medpython/badges/platforms.svg)](https://anaconda.org/conda-forge/medpython)
-[![Anaconda-Server Badge](https://anaconda.org/conda-forge/medpython/badges/downloads.svg)](https://anaconda.org/conda-forge/medpython)
+![Conda Downloads](https://img.shields.io/conda/d/conda-forge/medpython)
+
 
 [![GitHub Repo](https://img.shields.io/badge/github-repo-blue?logo=github)](https://github.com/Medial-EarlySign/medpython)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Medial-EarlySign/medpython)
