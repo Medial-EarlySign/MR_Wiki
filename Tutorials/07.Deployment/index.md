@@ -36,12 +36,13 @@ More details can be found [here](../../Infrastructure%20Library/Medial%20Tools/P
 #### Using Docker
 
 1. **Create a Base Image**  
-   - The recommended base is the chiselled Ubuntu image (~10MB, minimal attack surface).
+   - The recommended base is the `chainguard/glibc-dynamic` which is distroless image with 0 CVEs (~10MB, minimal attack surface) and than you can skip this step. You can also use chiselled Ubuntu image.
    - Alternatively, use a full Ubuntu image and add the following to your Dockerfile:
      ```bash
      apt-get update && apt-get install libgomp1 -y
      ```
-   - To build the chiselled Ubuntu image, run `create.sh` in [Docker/chiselled-ubuntu](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/chiselled-ubuntu).
+   - To build the chiselled Ubuntu image, run `create.sh` in [Docker/chiselled-ubuntu](https://github.com/Medial-EarlySign/MR_Scripts/tree/main/Docker/chiselled-ubuntu), if you want to use the chiselled ubuntu or you can used the recommended chainguard/glibc-dynamic image directly.
+
 
 2. **Prepare the Application Directory**  
    - Copy the AlgoMarker directory into the `data/app` folder next to your Dockerfile. Ensure `libdyn_AlgoMarker.so` is in a `lib` directory next to the `.amconfig` file.
@@ -50,13 +51,22 @@ More details can be found [here](../../Infrastructure%20Library/Medial%20Tools/P
 3. **Build the Docker Image**  
    Use the following Dockerfile template:
    ```Dockerfile
-   FROM chiselled-ubuntu:latest
+    FROM cgr.dev/chainguard/wolfi-base:latest AS builder
+    RUN apk add --no-cache libgomp
 
-   COPY data /
+    FROM cgr.dev/chainguard/glibc-dynamic:latest
 
-   ENTRYPOINT [ "/app/AlgoMarker_Server", "--algomarker_path", "/app/PATH_TO_AM_CONFIG_FILE", "--port", "1234", "--no_print", "1" ]
+    # 1. Copy ONLY the libgomp library from stage 1
+    COPY --from=builder /usr/lib/libgomp.so* /usr/lib/
+
+    # 2. Copy your app files
+    COPY data /
+
+    USER nonroot
+    EXPOSE ${PORT}
+    ENTRYPOINT [ "/app/AlgoMarker_Server", "--no_print", "1", "--algomarker_path" ,"${AM_CONFIG_PATH}", "--port", "${PORT}"]
    ```
-   Adjust `PATH_TO_AM_CONFIG_FILE` and the port as needed. You can also specify the path to `libdyn_AlgoMarker.so` using the `--library_path` argument.
+   Adjust `AM_CONFIG_PATH` and the `PORT` as needed. You can also specify the path to `libdyn_AlgoMarker.so` using the `--library_path` argument.
 
    Build the image with:
    ```bash
